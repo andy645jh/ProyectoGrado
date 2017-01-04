@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/plantilla.xhtml">
+        <ui:define name="content">  
+            <h:form id="form">                
+                <p:panel>
+                    
+                    <p:breadCrumb>
+                        <p:menuitem url="#"></p:menuitem>
+                        <p:menuitem value="#{GeneralTxt.bienvenidos} #{loginController.usuario}" url="#"></p:menuitem>
+                    </p:breadCrumb>
+                    <br/>
+                                   
+                    <p:fieldset legend="#{tipoModTxt.tipoMod}" style="margin-bottom:20px" collapsed="true" toggleable="true" toggleSpeed="500">                        
+                        
+                        <p:commandButton value="#{tipoModTxt.crear} #{tipoModTxt.tipoMod}" actionListener="#{tipoModalidadesController.abrirCrear()}" icon="ui-icon-disk" >
+                            <p:ajax event="dialogReturn" update=":form:mensajes :form:ListarModalidad" />                            
+                        </p:commandButton>                   
+                        <p:separator/>
+                        <br/>
+                        <p:dataTable id="ListarModalidad" value="#{tipoModalidadesController.listado}" var="registro">
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{tipoModTxt.codigo}</f:facet>
+                                #{registro.codtipo}
+                            </p:column>
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{tipoModTxt.nombre}</f:facet>
+                                #{registro.nombre}
+                            </p:column>                            
+
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{tipoModTxt.opciones}</f:facet>
+                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{tipoModalidadesController.borrar(registro)}"></p:commandButton>
+                                <p:commandButton ajax="false" icon="ui-icon-pencil" action="#{tipoModalidadesController.abrirActualizar(registro)}">
+                                    <p:ajax event="dialogReturn" update=":form:mensajes :form:ListarModalidad" oncomplete="#{tipoModalidadesController.mostrarMensaje()}"/>                            
+                                </p:commandButton>  
+
+                            </p:column> 
+                        </p:dataTable>
+                    </p:fieldset>  
+                    
+                    <p:fieldset legend="#{docentesTxt.docentes}" style="margin-bottom:20px" collapsed="true" toggleable="true" toggleSpeed="500">                        
+                        
+                        <p:commandButton value="#{docentesTxt.crear} #{docentesTxt.docentes}" actionListener="#{docentesController.abrirCrear()}" icon="ui-icon-disk" >
+                            <p:ajax event="dialogReturn" update=":form:mensajes :form:listarDoc" />                            
+                        </p:commandButton>                   
+                        <p:separator/>
+                        <br/>
+                        <p:dataTable id="listarDoc" value="#{docentesController.listado}" var="registro">
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{docentesTxt.cedula}</f:facet>
+                                #{registro.cedula}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{docentesTxt.nombre}</f:facet>
+                                #{registro.nombres}
+                            </p:column> 
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{docentesTxt.apellido}</f:facet>
+                                #{registro.apellidos}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{docentesTxt.codigo}</f:facet>
+                                #{registro.codigo}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{docentesTxt.facultad}</f:facet>
+                                <h:outputText rendered="#{registro.facultad=='1'}" value="Ciencias Naturales e Ingenierias"/>
+                                <h:outputText rendered="#{registro.facultad=='2'}" value="Ciencias Socioeconomicas y Empresariales" />
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{docentesTxt.unidadAcadem}</f:facet>
+                                #{registro.unidad}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{docentesTxt.semestre}</f:facet>
+                                #{registro.semestre}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{docentesTxt.formacion}</f:facet>
+                                #{registro.formacion}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{docentesTxt.direccion}</f:facet>
+                                #{registro.direccion}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{docentesTxt.telefono}</f:facet>
+                                #{registro.telefono}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{docentesTxt.correo}</f:facet>
+                                #{registro.correo}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{docentesTxt.opciones}</f:facet>
+                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{docentesController.borrar(registro)}"></p:commandButton>
+                                <p:commandButton  icon="ui-icon-pencil" action="#{docentesController.abrirActualizar(registro)}">
+                                    <p:ajax event="dialogReturn" update=":form:mensajes :form:listarDoc" oncomplete="#{docentesController.mostrarMensaje()}"/>                            
+                                </p:commandButton> 
+                            </p:column> 
+                        </p:dataTable>
+                    </p:fieldset> 
+                    
+                    <p:fieldset legend="#{convencionesTxt.convenciones}" style="margin-bottom:20px" collapsed="true" toggleable="true" toggleSpeed="500">                        
+                        
+                        <p:commandButton value="#{convencionesTxt.crear} #{convencionesTxt.convenciones}" actionListener="#{convencionesController.abrirCrear()}" icon="ui-icon-disk" >
+                            <p:ajax event="dialogReturn" update=":form:mensajes :form:listarConv" />                            
+                        </p:commandButton>                   
+                        <p:separator/>
+                        <br/>
+                        <p:dataTable id="listarConv" value="#{convencionesController.listado}" var="registro">
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{convencionesTxt.codigo}</f:facet>
+                                #{registro.codconvencion}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{convencionesTxt.nombre}</f:facet>
+                                #{registro.nombre}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{convencionesTxt.opciones}</f:facet>
+                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{convencionesController.borrar(registro)}"></p:commandButton>
+                                <p:commandButton icon="ui-icon-pencil" action="#{convencionesController.abrirActualizar(registro)}">
+                                    <p:ajax event="dialogReturn" update=":form:mensajes :form:listarConv" oncomplete="#{convencionesController.mostrarMensaje()}"/>                            
+                                </p:commandButton>   
+                            </p:column> 
+                        </p:dataTable>
+                    </p:fieldset>
+                    <f:facet name="footer">
+                        <p:commandButton value="#{GeneralTxt.cerrarsesion}" ajax="false" action="#{loginController.logout()}"/>
+                    </f:facet> 
+                    <p:growl id="mensajes" sticky="true" showDetail="true"/> 
+                </p:panel>
+            </h:form>
+        </ui:define>
+        </ui:composition>
+</html>
+
