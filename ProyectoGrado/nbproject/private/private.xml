@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/E:/repositorios/proyectogradoing/ProyectoGrado/src/java/com/proyecto/facades/FacultadFacade.java</file>
+            <file>file:/E:/repositorios/proyectogradoing/ProyectoGrado/src/java/com/proyecto/persistences/Coordinacion.java</file>
+            <file>file:/E:/repositorios/proyectogradoing/ProyectoGrado/src/java/com/proyecto/persistences/Productos.java</file>
+            <file>file:/E:/repositorios/proyectogradoing/ProyectoGrado/src/java/com/proyecto/facades/CoordinacionFacade.java</file>
+            <file>file:/E:/repositorios/proyectogradoing/ProyectoGrado/src/java/com/proyecto/persistences/Convenciones.java</file>
+            <file>file:/E:/repositorios/proyectogradoing/ProyectoGrado/src/java/com/proyecto/facades/ConvencionesFacade.java</file>
+            <file>file:/E:/repositorios/proyectogradoing/ProyectoGrado/src/java/com/proyecto/persistences/Facultad.java</file>
+        </group>
     </open-files>
 </project-private>
