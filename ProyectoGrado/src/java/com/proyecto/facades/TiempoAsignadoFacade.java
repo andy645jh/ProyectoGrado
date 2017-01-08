@@ -1,6 +1,6 @@
 package com.proyecto.facades;
 
-import com.proyecto.persistences.Facultad;
+import com.proyecto.persistences.TiempoAsignado;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,17 +10,18 @@ import javax.persistence.PersistenceContext;
  * @author User
  */
 @Stateless
-public class FacultadFacade extends AbstractFacade<Facultad> {
+public class TiempoAsignadoFacade extends AbstractFacade<TiempoAsignado> {
     @PersistenceContext(unitName = "ProyectoGradoPU")
     private EntityManager em;
 
-    public FacultadFacade() {
-        super(Facultad.class);
-    }
-    
      @Override
     protected EntityManager obtenerEntidad() 
     {
         return em;
     }   
+
+    public TiempoAsignadoFacade() {
+        super(TiempoAsignado.class);
+    }
+    
 }

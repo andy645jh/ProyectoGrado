@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -31,12 +33,7 @@ public class Docentes implements Serializable
     
     @Column(name = "codigo")
     private String _codigo;  
-    
-    @Column(name = "semestre")   
-    @NotNull
-    @Size(min = 1, max = 50)
-    private String _semestre;  
-    
+       
     @NotNull
     @Column(name = "direccion")
     @Size(min = 1, max = 50)
@@ -54,12 +51,12 @@ public class Docentes implements Serializable
     
     @NotNull
     @Size(min = 1, max = 200)
-    @Column(name = "unidadacademica") 
-    private String _unidad;
+    @Column(name = "foto") 
+    private String _foto;
     
-    @NotNull
-    @Column(name = "facultad") 
-    private int _facultad;   
+    @JoinColumn(name = "codcoordinacion", referencedColumnName = "codcoordinacion")
+    @ManyToOne(optional = false)
+    private Coordinacion _codcoordinacion;   
 
     @NotNull
     @Column(name = "formacion")
@@ -142,29 +139,20 @@ public class Docentes implements Serializable
         this._correo = _correo;
     }
 
-    public String getUnidad() {
-        return _unidad;
+    public String getFoto() {
+        return _foto;
     }
 
-    public void setUnidad(String _unidad) {
-        this._unidad = _unidad;
+    public void setFoto(String _foto) {
+        this._foto = _foto;
     }
 
-    public int getFacultad() {
-        
-        return _facultad;
+    public Coordinacion getCodcoordinacion() {
+        return _codcoordinacion;
     }
 
-    public void setFacultad(int _facultad) {
-        this._facultad = _facultad;
-    }
-
-    public String getSemestre() {
-        return _semestre;
-    }
-
-    public void setSemestre(String _semestre) {
-        this._semestre = _semestre;
+    public void setCodcoordinacion(Coordinacion _codcoordinacion) {
+        this._codcoordinacion = _codcoordinacion;
     }
     
     public String getFormacion() {
