@@ -4,8 +4,10 @@ package com.proyecto.controllers;
 import com.proyecto.facades.FacultadFacade;
 import com.proyecto.persistences.Convenciones;
 import com.proyecto.persistences.Facultad;
+import com.proyecto.utilities.Mensajes;
 import com.sun.xml.xsom.impl.scd.Iterators;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -14,6 +16,7 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import org.primefaces.context.RequestContext;
 
 
@@ -38,6 +41,17 @@ public class FacultadesControllers {
     public void resetear()
     {
         _obj = null;
+    }
+    
+    public List<Facultad> getListado()
+    {
+        return _ejbFacade.listado();
+    }
+    
+    public void mostrarMensaje()
+    {        
+        if(message!=null) FacesContext.getCurrentInstance().addMessage("mensajes", message);
+        message=null;
     }
     
     public void abrirCrear() {
@@ -105,5 +119,24 @@ public class FacultadesControllers {
         
         RequestContext context = RequestContext.getCurrentInstance();
         context.closeDialog(null);
+    } 
+    
+    public void borrar(Facultad faceObj)
+    {
+        String titulo,detalle;
+        
+        try {
+            _ejbFacade.borrar(faceObj);
+            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
+            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarExitoso");
+            Mensajes.exito(titulo, detalle);
+            
+        } catch (Exception e) 
+        {
+            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
+            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarError");
+            Mensajes.error(titulo, detalle);
+            Logger.getLogger(Convenciones.class.getName()).log(Level.SEVERE,null,e);
+        }
     }  
 }

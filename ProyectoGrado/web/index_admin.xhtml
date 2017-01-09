@@ -73,20 +73,10 @@
                                 #{registro.codigo}
                             </p:column>
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{docentesTxt.facultad}</f:facet>
-                                <h:outputText rendered="#{registro.facultad=='1'}" value="Ciencias Naturales e Ingenierias"/>
-                                <h:outputText rendered="#{registro.facultad=='2'}" value="Ciencias Socioeconomicas y Empresariales" />
-                            </p:column>
 
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">#{docentesTxt.unidadAcadem}</f:facet>
-                                #{registro.unidad}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{docentesTxt.semestre}</f:facet>
-                                #{registro.semestre}
+                                #{registro.codcoordinacion}
                             </p:column>
 
                             <p:column style="width: 10px; text-align: center">
@@ -142,6 +132,39 @@
                                 <p:commandButton ajax="false" icon="ui-icon-trash" action="#{convencionesController.borrar(registro)}"></p:commandButton>
                                 <p:commandButton icon="ui-icon-pencil" action="#{convencionesController.abrirActualizar(registro)}">
                                     <p:ajax event="dialogReturn" update=":form:mensajes :form:listarConv" oncomplete="#{convencionesController.mostrarMensaje()}"/>                            
+                                </p:commandButton>   
+                            </p:column> 
+                        </p:dataTable>
+                    </p:fieldset>
+                    
+                    <p:fieldset legend="#{FacultadTxt.Facultad}" style="margin-bottom:20px" collapsed="true" toggleable="true" toggleSpeed="500">                        
+                        
+                        <p:commandButton value="#{FacultadTxt.crear} #{FacultadTxt.Facultad}" actionListener="#{facultadesControllers.abrirCrear()}" icon="ui-icon-disk" >
+                            <p:ajax event="dialogReturn" update=":form:mensajes :form:listarFac" />                            
+                        </p:commandButton>                   
+                        <p:separator/>
+                        <br/>
+                        <p:dataTable id="listarFac" value="#{facultadesControllers.listado}" var="registro">
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{FacultadTxt.codigo}</f:facet>
+                                #{registro.codfacultad}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{FacultadTxt.Nombre}</f:facet>
+                                #{registro.nombre}
+                            </p:column>
+                            
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{FacultadTxt.Abr}</f:facet>
+                                #{registro.abreviatura}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{FacultadTxt.opciones}</f:facet>
+                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{facultadesControllers.borrar(registro)}"></p:commandButton>
+                                <p:commandButton icon="ui-icon-pencil" action="#{facultadesControllers.abrirActualizar(registro)}">
+                                    <p:ajax event="dialogReturn" update=":form:mensajes :form:listarFac" oncomplete="#{facultadesControllers.mostrarMensaje()}"/>                            
                                 </p:commandButton>   
                             </p:column> 
                         </p:dataTable>
