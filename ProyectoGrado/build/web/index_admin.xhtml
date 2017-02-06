@@ -169,6 +169,106 @@
                             </p:column> 
                         </p:dataTable>
                     </p:fieldset>
+                    
+                    <p:fieldset legend="#{CoordinacionTxt.Coor}" style="margin-bottom:20px" collapsed="true" toggleable="true" toggleSpeed="500">                        
+                        
+                        <p:commandButton value="#{CoordinacionTxt.crear} #{CoordinacionTxt.Coor}" actionListener="#{coordinacionController.abrirCrear()}" icon="ui-icon-disk" >
+                            <p:ajax event="dialogReturn" update=":form:mensajes :form:listarCoord" />                            
+                        </p:commandButton>                   
+                        <p:separator/>
+                        <br/>
+                        <p:dataTable id="listarCoord" value="#{coordinacionController.listado}" var="registro">
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{CoordinacionTxt.codigo}</f:facet>
+                                #{registro.codcoordinacion}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{CoordinacionTxt.Nombre}</f:facet>
+                                #{registro.nombre}
+                            </p:column>
+                            
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{CoordinacionTxt.facultad}</f:facet>
+                                #{registro.codfacultad}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{CoordinacionTxt.opciones}</f:facet>
+                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{facultadesControllers.borrar(registro)}"></p:commandButton>
+                                <p:commandButton icon="ui-icon-pencil" action="#{facultadesControllers.abrirActualizar(registro)}">
+                                    <p:ajax event="dialogReturn" update=":form:mensajes :form:listarCoord" oncomplete="#{facultadesControllers.mostrarMensaje()}"/>                            
+                                </p:commandButton>   
+                            </p:column> 
+                        </p:dataTable>
+                    </p:fieldset>
+                    
+                    <p:fieldset legend="act" style="margin-bottom:20px" collapsed="true" toggleable="true" toggleSpeed="500">                        
+                        
+                        <p:commandButton value="#{CoordinacionTxt.crear} #{CoordinacionTxt.Coor}" actionListener="#{actividadMisionalController.abrirCrear()}" icon="ui-icon-disk" >
+                            <p:ajax event="dialogReturn" update=":form:mensajes :form:listarActMi" />                            
+                        </p:commandButton>                   
+                        <p:separator/>
+                        <br/>
+                        <p:dataTable id="listarActMi" value="#{actividadMisionalController.listado}" var="registro">
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{CoordinacionTxt.codigo}</f:facet>
+                                #{registro.codactividadmisional}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{CoordinacionTxt.Nombre}</f:facet>
+                                #{registro.nombre}
+                            </p:column>
+                            
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{CoordinacionTxt.opciones}</f:facet>
+                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{actividadMisionalController.borrar(registro)}"></p:commandButton>
+                                <p:commandButton icon="ui-icon-pencil" action="#{actividadMisionalController.abrirActualizar(registro)}">
+                                    <p:ajax event="dialogReturn" update=":form:mensajes :form:listarActMi" oncomplete="#{actividadMisionalController.mostrarMensaje()}"/>                            
+                                </p:commandButton>   
+                            </p:column> 
+                        </p:dataTable>
+                    </p:fieldset>
+                    
+                    <p:fieldset legend="promedio" style="margin-bottom:20px" collapsed="true" toggleable="true" toggleSpeed="500">                        
+                        
+                        <p:commandButton value="#{CoordinacionTxt.crear} #{CoordinacionTxt.Coor}" actionListener="#{actividadMisionalController.abrirCrear()}" icon="ui-icon-disk" >
+                            <p:ajax event="dialogReturn" update=":form:mensajes :form:listarPromedio" />                            
+                        </p:commandButton>                   
+                        <p:separator/>
+                        <br/>
+                        <p:dataTable id="listarPromedio" value="#{porcentajeController.listado}" var="registro">
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{CoordinacionTxt.codigo}</f:facet>
+                                #{registro.codporcentaje}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{CoordinacionTxt.Nombre}</f:facet>
+                                #{registro.porcentaje}
+                            </p:column>
+                            
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{CoordinacionTxt.Nombre}</f:facet>
+                                #{registro.codcoordinador}
+                            </p:column>
+                            
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{CoordinacionTxt.Nombre}</f:facet>
+                                #{registro.codobliatoria}
+                            </p:column>
+                            
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{CoordinacionTxt.opciones}</f:facet>
+                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{actividadMisionalController.borrar(registro)}"></p:commandButton>
+                                <p:commandButton icon="ui-icon-pencil" action="#{actividadMisionalController.abrirActualizar(registro)}">
+                                    <p:ajax event="dialogReturn" update=":form:mensajes :form:listarPromedio" oncomplete="#{actividadMisionalController.mostrarMensaje()}"/>                            
+                                </p:commandButton>   
+                            </p:column> 
+                        </p:dataTable>
+                    </p:fieldset>
+                    
                     <f:facet name="footer">
                         <p:commandButton value="#{GeneralTxt.cerrarsesion}" ajax="false" action="#{loginController.logout()}"/>
                     </f:facet> 
