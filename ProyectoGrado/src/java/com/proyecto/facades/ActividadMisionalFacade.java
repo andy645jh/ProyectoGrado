@@ -5,6 +5,7 @@
  */
 package com.proyecto.facades;
 
+import com.proyecto.persistences.ActividadMisional;
 import com.proyecto.persistences.ActividadObligatoria;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -15,7 +16,7 @@ import javax.persistence.PersistenceContext;
  * @author User
  */
 @Stateless
-public class ActividadMisionalFacade extends AbstractFacade<ActividadObligatoria> {
+public class ActividadMisionalFacade extends AbstractFacade<ActividadMisional> {
     @PersistenceContext(unitName = "ProyectoGradoPU")
     private EntityManager em;
 
@@ -26,7 +27,7 @@ public class ActividadMisionalFacade extends AbstractFacade<ActividadObligatoria
     } 
 
     public ActividadMisionalFacade() {
-        super(ActividadObligatoria.class);
+        super(ActividadMisional.class);
     }
     
 }
