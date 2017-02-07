@@ -90,7 +90,7 @@ public class Coordinacion implements Serializable {
 
     @Override
     public String toString() {
-        return "Coordinacion{" + "_nombre=" + _nombre + '}';
+        return _nombre;
     }
      
      

@@ -28,13 +28,13 @@ public class Porcentaje implements Serializable {
     @NotNull
     private Double _porcentaje;
     
-    @JoinColumn(name = "codcoordinador", referencedColumnName = "codcoordinador")
+    @JoinColumn(name = "codcoordinacion", referencedColumnName = "codcoordinacion")
     @ManyToOne(optional = false)
-    private Coordinacion _codcoordinador;
+    private Coordinacion _codcoordinacion;
     
-    @JoinColumn(name = "codobliatoria", referencedColumnName = "codactividadmisional")
+    @JoinColumn(name = "codactividadmisional", referencedColumnName = "codactividadmisional")
     @ManyToOne(optional = false)
-    private ActividadObligatoria _codobliatoria;
+    private ActividadMisional _codmisional;
 
     public Porcentaje() {
     }
@@ -56,20 +56,30 @@ public class Porcentaje implements Serializable {
     }
 
     public Coordinacion getCodcoordinador() {
-        return _codcoordinador;
+        return _codcoordinacion;
     }
 
     public void setCodcoordinador(Coordinacion _codcoordinador) {
-        this._codcoordinador = _codcoordinador;
+        this._codcoordinacion = _codcoordinador;
     }
 
-    public ActividadObligatoria getCodobliatoria() {
-        return _codobliatoria;
+    public Coordinacion getCodcoordinacion() {
+        return _codcoordinacion;
     }
 
-    public void setCodobliatoria(ActividadObligatoria _codobliatoria) {
-        this._codobliatoria = _codobliatoria;
+    public void setCodcoordinacion(Coordinacion _codcoordinacion) {
+        this._codcoordinacion = _codcoordinacion;
     }
+
+    public ActividadMisional getCodmisional() {
+        return _codmisional;
+    }
+
+    public void setCodmisional(ActividadMisional _codmisional) {
+        this._codmisional = _codmisional;
+    }
+
+
 
    
 
