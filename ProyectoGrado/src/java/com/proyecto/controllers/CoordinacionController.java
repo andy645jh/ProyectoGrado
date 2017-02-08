@@ -13,7 +13,10 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
 import org.primefaces.context.RequestContext;
 
@@ -89,5 +92,32 @@ public class CoordinacionController {
     public SelectItem[] combo(String texto)
     {
         return Formulario.addObject(_ejbFacade.listado(), texto);
+    }
+    @FacesConverter(forClass = Coordinacion.class, value = "coordinacionConverter")
+    public static class CoordinacionControllerConverter implements Converter{
+
+        @Override
+        public Object getAsObject(FacesContext context, UIComponent component, String value) {
+            try{
+                if (value == null || value.length() == 0) return null;
+                
+                Integer id = Integer.parseInt(value);
+                CoordinacionController controller = (CoordinacionController) context.getApplication().getELResolver().
+                        getValue(context.getELContext(), null, "coordinacionController");
+                return controller._ejbFacade.buscar(id);
+            }catch(NumberFormatException e){
+                Logger.getLogger(Coordinacion.class.getName()).log(Level.SEVERE, null, e);               
+                return null;
+            }
+        }
+
+        @Override
+        public String getAsString(FacesContext context, UIComponent component, Object value) {
+            if (value instanceof Coordinacion){
+                Coordinacion obj = (Coordinacion) value;
+                return String.valueOf(obj.getCodcoordinacion());
+            }
+            return null;
+        }
     }
 }

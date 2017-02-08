@@ -23,7 +23,7 @@
                     <p:outputLabel value="Actividad Misional" />                   
                     <p:selectOneMenu id="codact" value="#{porcentajeController.codActMi}"> 
                         <f:selectItems value="#{actividadMisionalController.combo('Selecione un opcion')}" />
-                    </p:selectOneMenu>
+                    </p:selectOneMenu> 
 
                         <f:facet name="footer">
                             <p:commandButton id="btngrabar" value="#{FacultadTxt.crear}" ajax="true" action="#{porcentajeController.agregar()}"/>
