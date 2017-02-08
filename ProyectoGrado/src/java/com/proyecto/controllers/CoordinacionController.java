@@ -2,6 +2,7 @@ package com.proyecto.controllers;
 
 import com.proyecto.facades.CoordinacionFacade;
 import com.proyecto.persistences.Coordinacion;
+import com.proyecto.utilities.Formulario;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import org.primefaces.context.RequestContext;
 
 
@@ -83,5 +85,9 @@ public class CoordinacionController {
             Logger.getLogger(Coordinacion.class.getName()).log(Level.SEVERE,null,e);
             
         }
+    }
+    public SelectItem[] combo(String texto)
+    {
+        return Formulario.addObject(_ejbFacade.listado(), texto);
     }
 }

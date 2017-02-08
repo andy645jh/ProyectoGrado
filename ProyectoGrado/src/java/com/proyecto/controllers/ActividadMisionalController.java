@@ -3,6 +3,7 @@ package com.proyecto.controllers;
 import com.proyecto.facades.ActividadMisionalFacade;
 import com.proyecto.persistences.ActividadMisional;
 import com.proyecto.persistences.Convenciones;
+import com.proyecto.utilities.Formulario;
 import com.proyecto.utilities.Mensajes;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -19,6 +20,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.faces.model.SelectItem;
 import org.primefaces.context.RequestContext;
 
 /**
@@ -143,6 +145,11 @@ public class ActividadMisionalController implements Serializable{
     {        
         if(message!=null) FacesContext.getCurrentInstance().addMessage("mensajes", message);
         message=null;
+    }
+    
+     public SelectItem[] combo(String texto)
+    {
+        return Formulario.addObject(_ejbFacade.listado(), texto);
     }
     
     @FacesConverter(forClass = Convenciones.class, value = "actMisionalConverter")
