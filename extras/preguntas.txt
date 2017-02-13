@@ -1,0 +1,3 @@
+-el rector tendra un rol para asignar los porcentajes
+-el proyecto permite porcentajes diferentes por facultad o por coordinacion
+- el reporte es sobre el porcentaje?
