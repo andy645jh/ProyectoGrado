@@ -31,6 +31,7 @@ public class DocentesController implements Serializable
     @EJB
     private DocentesFacade _ejbFacade;
     private Docentes _obj;
+    private int _codCoord;
     
     private String _rutaTxt = "/com/java/utilities/txtDocentes"; 
     private String _titulo="Operacion";
@@ -163,6 +164,16 @@ public class DocentesController implements Serializable
         usuDocente =_loginController.getUsuario();
         return _ejbFacade.buscar(Integer.parseInt(usuDocente));
     }
+
+    public int getCodCoord() {
+        return _codCoord;
+    }
+
+    public void setCodCoord(int _codCoord) {
+        this._codCoord = _codCoord;
+    }
+    
+    
     
     @FacesConverter(forClass = Docentes.class, value = "docentesConverter")
     public static class DocentesControllerConverter implements Converter{

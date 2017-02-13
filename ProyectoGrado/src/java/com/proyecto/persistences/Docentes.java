@@ -61,7 +61,7 @@ public class Docentes implements Serializable
     @NotNull
     @Column(name = "formacion")
     private String _formacion; 
-    
+        
     public Docentes() { }
 
     @Override
@@ -170,5 +170,6 @@ public class Docentes implements Serializable
     public void setCodigo(String _codigo) {
         this._codigo = _codigo;
     }
+    
     
 }

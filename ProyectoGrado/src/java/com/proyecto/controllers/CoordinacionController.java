@@ -3,6 +3,7 @@ package com.proyecto.controllers;
 import com.proyecto.facades.CoordinacionFacade;
 import com.proyecto.persistences.Coordinacion;
 import com.proyecto.utilities.Formulario;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,7 @@ import org.primefaces.context.RequestContext;
 
 @ManagedBean
 @SessionScoped
-public class CoordinacionController {
+public class CoordinacionController implements Serializable{
 
     @EJB
     private CoordinacionFacade _ejbFacade;
@@ -93,6 +94,8 @@ public class CoordinacionController {
     {
         return Formulario.addObject(_ejbFacade.listado(), texto);
     }
+    
+    
     @FacesConverter(forClass = Coordinacion.class, value = "coordinacionConverter")
     public static class CoordinacionControllerConverter implements Converter{
 

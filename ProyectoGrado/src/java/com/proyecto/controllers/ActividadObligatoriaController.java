@@ -1,11 +1,10 @@
-
 package com.proyecto.controllers;
 
-import com.proyecto.facades.FacultadFacade;
+import com.proyecto.facades.ActividadObligatoriaFacade;
+import com.proyecto.persistences.ActividadMisional;
+import com.proyecto.persistences.ActividadObligatoria;
 import com.proyecto.persistences.Convenciones;
-import com.proyecto.persistences.Facultad;
 import com.proyecto.utilities.Mensajes;
-import com.sun.xml.xsom.impl.scd.Iterators;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -16,27 +15,34 @@ import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.context.RequestContext;
 
-
 @ManagedBean
 @SessionScoped
-public class FacultadesControllers implements Serializable{
+public class ActividadObligatoriaController implements Serializable{
 
-   @EJB
-    private FacultadFacade _ejbFacade;
-    private Facultad _obj;
+    @EJB
+    private ActividadObligatoriaFacade _ejbFacade;
     private FacesMessage message;
+    private ActividadObligatoria _obj;
     
-    public FacultadesControllers() {
+    public ActividadObligatoriaController() {
     }
-    
-    public Facultad getCampo()
+       
+    public List<ActividadObligatoria> getListado()
     {
-        if(_obj==null)  _obj= new Facultad();
-        return _obj;        
+        return _ejbFacade.listado();
+    }
+
+    public void abrirCrear() {
+        Map<String,Object> options = new HashMap<String, Object>();
+        options.put("resizable", false);
+        options.put("draggable", false);
+        options.put("modal", true);
+        RequestContext.getCurrentInstance().openDialog("/actobligatoria/crear", options, null);
     }
     
     public void resetear()
@@ -44,29 +50,10 @@ public class FacultadesControllers implements Serializable{
         _obj = null;
     }
     
-    public List<Facultad> getListado()
-    {
-        return _ejbFacade.listado();
-    }
-    
-    public void mostrarMensaje()
-    {        
-        if(message!=null) FacesContext.getCurrentInstance().addMessage("mensajes", message);
-        message=null;
-    }
-    
-    public void abrirCrear() {
-        Map<String,Object> options = new HashMap<String, Object>();
-        options.put("resizable", false);
-        options.put("draggable", false);
-        options.put("modal", true);
-        RequestContext.getCurrentInstance().openDialog("/facultades/crear", options, null);
-    }
-    
     public void agregar()
     {
         String titulo,detalle;
-        System.out.println("VA A GUARDAR "+_obj.toString());
+        
         try {         
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
@@ -78,7 +65,7 @@ public class FacultadesControllers implements Serializable{
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardarError");
             message = new FacesMessage(FacesMessage.SEVERITY_ERROR,titulo,detalle);
-            Logger.getLogger(Facultad.class.getName()).log(Level.SEVERE,null,e);
+            Logger.getLogger(Convenciones.class.getName()).log(Level.SEVERE,null,e);
             
            
         }
@@ -86,21 +73,21 @@ public class FacultadesControllers implements Serializable{
         RequestContext context = RequestContext.getCurrentInstance();
         context.closeDialog(null);
     }
-    
-    public void abrirActualizar(Facultad objtemp) {
+
+    public void abrirActualizar(ActividadObligatoria objtemp) {
         
         _obj = objtemp;
         Map<String,Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);
-        RequestContext.getCurrentInstance().openDialog("/facultades/actualizar", options, null);
+        RequestContext.getCurrentInstance().openDialog("/actobligatoria/actualizar", options, null);
     }
     
     public void actualizar()
     {
         String titulo,detalle;
-        System.out.println("VA A actualizar "+_obj.toString());
+        
         try {
             
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
@@ -120,9 +107,15 @@ public class FacultadesControllers implements Serializable{
         
         RequestContext context = RequestContext.getCurrentInstance();
         context.closeDialog(null);
-    } 
+    }  
     
-    public void borrar(Facultad faceObj)
+    public void mostrarMensaje()
+    {        
+        if(message!=null) FacesContext.getCurrentInstance().addMessage("mensajes", message);
+        message=null;
+    }
+    
+     public void borrar(ActividadObligatoria faceObj)
     {
         String titulo,detalle;
         
@@ -139,5 +132,18 @@ public class FacultadesControllers implements Serializable{
             Mensajes.error(titulo, detalle);
             Logger.getLogger(Convenciones.class.getName()).log(Level.SEVERE,null,e);
         }
-    }  
+    } 
+    
+    
+    public ActividadObligatoria getObj() {
+        
+        if(_obj==null){
+            _obj= new ActividadObligatoria();
+        }
+        return _obj;
+    }
+
+    public void setObj(ActividadObligatoria _obj) {
+        this._obj = _obj;
+    }    
 }
