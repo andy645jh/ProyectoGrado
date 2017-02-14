@@ -1,9 +1,11 @@
 
 package com.proyecto.controllers;
 
+import com.proyecto.facades.CoordinacionFacade;
 import com.proyecto.utilities.Formulario;
 import com.proyecto.utilities.Mensajes;
 import com.proyecto.facades.DocentesFacade;
+import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Docentes;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -32,6 +34,8 @@ public class DocentesController implements Serializable
     private DocentesFacade _ejbFacade;
     private Docentes _obj;
     private int _codCoord;
+    @EJB
+    private CoordinacionFacade _coordFacade;
     
     private String _rutaTxt = "/com/java/utilities/txtDocentes"; 
     private String _titulo="Operacion";
@@ -61,7 +65,9 @@ public class DocentesController implements Serializable
     public void agregar()
     {
         String titulo,detalle;
-        
+        Coordinacion c = _coordFacade.buscar(_codCoord);
+        _obj.setCodcoordinacion(c);
+        System.out.println("VA A AGREGAR DOCENTE "+_obj.getCodcoordinacion());
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");

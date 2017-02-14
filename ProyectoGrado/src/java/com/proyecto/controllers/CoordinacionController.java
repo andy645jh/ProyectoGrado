@@ -92,7 +92,17 @@ public class CoordinacionController implements Serializable{
     }
     public SelectItem[] combo(String texto)
     {
-        return Formulario.addObject(_ejbFacade.listado(), texto);
+        List<Coordinacion> lista =_ejbFacade.listado(); 
+        SelectItem[] listaItems = new SelectItem[lista.size()];
+        int index=0;
+        for (Coordinacion coordinacion : lista) {
+            SelectItem item = new SelectItem(coordinacion.getCodcoordinacion(), coordinacion.getNombre());
+            
+            listaItems[index]=item;
+            index++;
+        }
+        
+        return listaItems;
     }
     
     
