@@ -311,25 +311,32 @@
                         </p:commandButton>                   
                         <p:separator/>
                         <br/>
-                        <p:dataTable id="listarTiempoDoc" value="#{porcentajeController.listado}" var="registro">
+                        <p:dataTable id="listarTiempoDoc" value="#{tiempoAsignadoController.listado}" var="registro">
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">#{CoordinacionTxt.codigo}</f:facet>
-                                    #{registro.codporcentaje}
+                                #{registro.codtiempoasignado}
                             </p:column>
 
                             <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Docente</f:facet>
+                                    #{registro.coddocente}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Actividad Docencia</f:facet>
+                                    #{registro.codobliatoria}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Hora</f:facet>
+                                <h:outputText  value="#{registro.horas}">
+                                    <f:convertDateTime pattern="HH:mm" />
+                                </h:outputText>  
+                            </p:column>
+                            
+                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">Porcentaje</f:facet>
-                                    #{registro.porcentaje}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Coordinador</f:facet>
-                                    #{registro.codcoordinador}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Actividad Misional</f:facet>
-                                    #{registro.codmisional}
+                                    #{registro.codporcentaje}
                             </p:column>
 
                             <p:column style="width: 10px; text-align: center">
