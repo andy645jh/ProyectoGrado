@@ -89,7 +89,7 @@ public class ActividadObligatoria implements Serializable {
 
     @Override
     public String toString() {
-        return "ActividadMisional{" + "_codactividadmisional=" + _codactobligatorias + ", _nombre=" + _nombre + '}';
+        return  _nombre;
     }
     
     

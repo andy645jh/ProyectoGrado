@@ -306,7 +306,7 @@
 
                     <p:fieldset legend="tiempo docente" style="margin-bottom:20px" collapsed="true" toggleable="true" toggleSpeed="500">                        
 
-                        <p:commandButton value="#{CoordinacionTxt.crear} #{CoordinacionTxt.Coor}" actionListener="#{porcentajeController.abrirCrear()}" icon="ui-icon-disk" >
+                        <p:commandButton value="#Agregar Tiempo Docente" actionListener="#{tiempoAsignadoController.abrirCrear()}" icon="ui-icon-disk" >
                             <p:ajax event="dialogReturn" update=":form:mensajes :form:listarTiempoDoc" />                            
                         </p:commandButton>                   
                         <p:separator/>
