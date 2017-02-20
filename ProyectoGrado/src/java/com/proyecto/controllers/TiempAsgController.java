@@ -30,7 +30,7 @@ public class TiempAsgController implements Serializable {
     @EJB
     private TiempoAsignadoFacade _ejbFacade;
     private FacesMessage message;
-    private int codigito;
+    private int _codigito;
     private int codDocente;
     private int codHoraDocencia;
     
@@ -89,15 +89,7 @@ public class TiempAsgController implements Serializable {
     public void setObj(TiempoAsignado _obj) {
         this._obj = _obj;
     }
-
-    public int setCodigito() {
-        return codigito;
-    }
-
-    public void getCodigito(int codigito) {
-        this.codigito = codigito;
-    }
-
+    
     public int getCodDocente() {
         return codDocente;
     }
@@ -112,6 +104,14 @@ public class TiempAsgController implements Serializable {
 
     public void setCodHoraDocencia(int codHoraDocencia) {
         this.codHoraDocencia = codHoraDocencia;
+    }
+
+    public int getCodigito() {
+        return _codigito;
+    }
+
+    public void setCodigito(int _codigito) {
+        this._codigito = _codigito;
     }
     
     
