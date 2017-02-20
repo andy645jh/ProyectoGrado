@@ -6,6 +6,7 @@ import com.proyecto.facades.PorcentajeFacade;
 import com.proyecto.persistences.ActividadMisional;
 import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Porcentaje;
+import com.proyecto.persistences.TipoModalidades;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +18,7 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.model.SelectItem;
 import org.primefaces.context.RequestContext;
 
 /**
@@ -87,9 +89,22 @@ public class PorcentajeController implements Serializable{
             
             Logger.getLogger(Porcentaje.class.getName()).log(Level.SEVERE,null,e);
             
+        } 
+    }
+    
+    public SelectItem[] combo(String texto)
+    {
+        List<Porcentaje> lista =_ejbFacade.listado(); 
+        SelectItem[] listaItems = new SelectItem[lista.size()];
+        int index=0;
+        for (Porcentaje porcentaje : lista) {
+            SelectItem item = new SelectItem(porcentaje.getCodporcentaje(), porcentaje.getPorcentaje()+"");
+            
+            listaItems[index]=item;
+            index++;
         }
-        
-        
+        System.out.println("LISTADO "+lista.size());
+        return listaItems;
     }
 
     public int getCodCoordinacion() {

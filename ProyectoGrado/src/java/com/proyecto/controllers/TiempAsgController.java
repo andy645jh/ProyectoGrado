@@ -4,7 +4,6 @@ package com.proyecto.controllers;
 import com.proyecto.facades.TiempoAsignadoFacade;
 import com.proyecto.persistences.TiempoAsignado;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -14,22 +13,28 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import org.primefaces.context.RequestContext;
 
 /**
  *
  * @author Usuario
  */
-@Named(value = "tiempoAsignadoController")
+@ManagedBean
 @SessionScoped
-public class TiempoAsignadoController implements Serializable {
+
+public class TiempAsgController implements Serializable {
 
     private TiempoAsignado _obj;
     @EJB
     private TiempoAsignadoFacade _ejbFacade;
     private FacesMessage message;
+    private int codigito;
+    private int codDocente;
+    private int codHoraDocencia;
     
-    public TiempoAsignadoController() {
+    public TiempAsgController() {
     }
     
     public List<TiempoAsignado> getListado()
@@ -37,12 +42,13 @@ public class TiempoAsignadoController implements Serializable {
         return _ejbFacade.listado();
     }
     
-     public void abrirCrear() {
-         Map<String,Object> options = new HashMap<String, Object>();
+    public void abrirCrear() {
+        Map<String,Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);
-         RequestContext.getCurrentInstance().openDialog("/tiempodoc/crear", options, null);
+        RequestContext.getCurrentInstance().openDialog("/tiempodoc/crear", options, null);
+//        return "/tiempodoc/crear";
     }
     
     public void agregar()
@@ -71,9 +77,6 @@ public class TiempoAsignadoController implements Serializable {
     }
     
     
-    
-    
-    
 
     public TiempoAsignado getObj() {
         
@@ -85,6 +88,30 @@ public class TiempoAsignadoController implements Serializable {
 
     public void setObj(TiempoAsignado _obj) {
         this._obj = _obj;
+    }
+
+    public int setCodigito() {
+        return codigito;
+    }
+
+    public void getCodigito(int codigito) {
+        this.codigito = codigito;
+    }
+
+    public int getCodDocente() {
+        return codDocente;
+    }
+
+    public void setCodDocente(int codDocente) {
+        this.codDocente = codDocente;
+    }
+
+    public int getCodHoraDocencia() {
+        return codHoraDocencia;
+    }
+
+    public void setCodHoraDocencia(int codHoraDocencia) {
+        this.codHoraDocencia = codHoraDocencia;
     }
     
     

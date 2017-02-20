@@ -4,6 +4,7 @@ import com.proyecto.facades.ActividadObligatoriaFacade;
 import com.proyecto.persistences.ActividadMisional;
 import com.proyecto.persistences.ActividadObligatoria;
 import com.proyecto.persistences.Convenciones;
+import com.proyecto.persistences.TipoModalidades;
 import com.proyecto.utilities.Mensajes;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -18,6 +19,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import org.primefaces.context.RequestContext;
 
 @ManagedBean
@@ -134,6 +136,20 @@ public class ActividadObligatoriaController implements Serializable{
         }
     } 
     
+     public SelectItem[] combo(String texto)
+    {
+        List<ActividadObligatoria> lista =_ejbFacade.listado(); 
+        SelectItem[] listaItems = new SelectItem[lista.size()];
+        int index=0;
+        for (ActividadObligatoria actObligatoria : lista) {
+            SelectItem item = new SelectItem(actObligatoria.getCodactobligatorias(), actObligatoria.getNombre());
+            
+            listaItems[index]=item;
+            index++;
+        }
+        
+        return listaItems;
+    }
     
     public ActividadObligatoria getObj() {
         

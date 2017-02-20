@@ -12,18 +12,23 @@
                 <p:panel>        
                     <br/>
                     <p:panelGrid columns="2">                    
-                        <p:outputLabel value="Porcentaje"  />
-                        <p:inputText id="descripcion" value="#{tiempoAsignadoController.obj.horas}"/> 
+                        <p:outputLabel value="Horas"  />
+                        <p:inputText id="descripcion" value="#{tiempAsgController.obj.horas}"/> 
 
-                    <p:outputLabel value="Coordinacion"  />                    
-                    <p:selectOneMenu id="codact" value="#{porcentajeController.codCoordinacion}"> 
-                        <f:selectItems value="#{coordinacionController.combo('Selecione un opcion')}" />
-                    </p:selectOneMenu>
-
-                    <p:outputLabel value="Actividad Misional" />                   
-                    <p:selectOneMenu id="codact" value="#{porcentajeController.codActMi}"> 
-                        <f:selectItems value="#{actividadMisionalController.combo('Selecione un opcion')}" />
-                    </p:selectOneMenu> 
+                        <p:outputLabel value="Porcentaje" for="codpo" />
+                        <p:selectOneMenu id="codpo" value="#{tiempAsgController.codigito}"> 
+                            <f:selectItems value="#{porcentajeController.combo('Selecione un opcion')}" />
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="Docente" for="coddoc" />
+                        <p:selectOneMenu id="coddoc" value="#{tiempAsgController.codDocente}"> 
+                            <f:selectItems value="#{docentesController.combo('Selecione un opcion')}" />
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="Actividad de Docencia" for="codact" />
+                        <p:selectOneMenu id="codact" value="#{tiempAsgController.codHoraDocencia}"> 
+                            <f:selectItems value="#{tipoModalidadesController.combo('Selecione un opcion')}" />
+                        </p:selectOneMenu>
 
                         <f:facet name="footer">
                             <p:commandButton id="btngrabar" value="#{FacultadTxt.crear}" ajax="true" action="#{porcentajeController.agregar()}"/>

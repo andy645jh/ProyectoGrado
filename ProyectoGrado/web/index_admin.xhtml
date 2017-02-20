@@ -304,14 +304,14 @@
                         </p:dataTable>
                     </p:fieldset>
 
-                    <p:fieldset legend="tiempo docente" style="margin-bottom:20px" collapsed="true" toggleable="true" toggleSpeed="500">                        
+                    <p:fieldset legend="tiempodocente" style="margin-bottom:20px" collapsed="true" toggleable="true" toggleSpeed="500">                        
 
-                        <p:commandButton value="#Agregar Tiempo Docente" actionListener="#{tiempoAsignadoController.abrirCrear()}" icon="ui-icon-disk" >
-                            <p:ajax event="dialogReturn" update=":form:mensajes :form:listarTiempoDoc" />                            
-                        </p:commandButton>                   
+                        <p:commandButton value="Crear Actividad Obligatoria" actionListener="#{tiempAsgController.abrirCrear()}" icon="ui-icon-disk" >
+                            <p:ajax event="dialogReturn" update=":form:mensajes :form:listarObligacion" />                            
+                        </p:commandButton>                      
                         <p:separator/>
                         <br/>
-                        <p:dataTable id="listarTiempoDoc" value="#{tiempoAsignadoController.listado}" var="registro">
+                        <p:dataTable id="listarTiempoDoc" value="#{tiempotiempAsgControllerdo}" var="registro">
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">#{CoordinacionTxt.codigo}</f:facet>
                                 #{registro.codtiempoasignado}

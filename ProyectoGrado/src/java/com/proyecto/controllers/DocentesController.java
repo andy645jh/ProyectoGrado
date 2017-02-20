@@ -90,7 +90,9 @@ public class DocentesController implements Serializable
     
     public SelectItem[] combo(String texto)
     {
+         System.out.println("LISTADO "+_ejbFacade.listado().size());
         return Formulario.addObject(_ejbFacade.listado(), texto);
+       
     }
     
     public List<Docentes> getListado()
