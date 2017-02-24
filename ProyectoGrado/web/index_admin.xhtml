@@ -195,8 +195,8 @@
 
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">#{CoordinacionTxt.opciones}</f:facet>
-                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{facultadesControllers.borrar(registro)}"></p:commandButton>
-                                <p:commandButton icon="ui-icon-pencil" action="#{facultadesControllers.abrirActualizar(registro)}">
+                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{coordinacionController.borrar(registro)}"></p:commandButton>
+                                <p:commandButton icon="ui-icon-pencil" action="#{coordinacionController.abrirActualizar(registro)}">
                                     <p:ajax event="dialogReturn" update=":form:mensajes :form:listarCoord" oncomplete="#{facultadesControllers.mostrarMensaje()}"/>                            
                                 </p:commandButton>   
                             </p:column> 

@@ -30,17 +30,10 @@
                         <p:outputLabel value="#{docentesTxt.codigo}  " for="codigo" />
                         <p:inputText id="codigo"  value="#{docentesController.campo.codigo}"/> 
 
-                        <p:outputLabel value="#{docentesTxt.facultad}  " for="facultad" />
-                        <p:selectOneMenu id="facultad" required="true" requiredMessage="No ha seleccionado"  value="#{docentesController.campo.facultad}"> 
-                            <f:selectItem itemValue="1" itemLabel="Ciencias Naturales e Ingenierias"/>
-                            <f:selectItem itemValue="2" itemLabel="Ciencias Socioeconomicas y Empresariales" />
+                        <p:outputLabel value="Coordinacion" for="coord" />
+                        <p:selectOneMenu id="coord" value="#{docentesController.codCoord}"> 
+                            <f:selectItems value="#{coordinacionController.combo('Seleccione')}" />
                         </p:selectOneMenu>
-
-                        <p:outputLabel value="#{docentesTxt.unidadAcadem}  " for="unidad" />
-                        <p:inputText id="unidad" required="true" value="#{docentesController.campo.unidad}"/> 
-
-                        <p:outputLabel value="#{docentesTxt.semestre}  " for="semestre" />
-                        <p:inputText id="semestre" required="true" value="#{docentesController.campo.semestre}"/> 
 
                         <p:outputLabel value="#{docentesTxt.formacion}  " for="formacion" />
                         <p:inputTextarea id="formacion" required="true" value="#{docentesController.campo.formacion}"/>                     
@@ -53,6 +46,9 @@
 
                         <p:outputLabel value="#{docentesTxt.correo}  " for="correo" />
                         <p:inputText id="correo" required="true" value="#{docentesController.campo.correo}"/> 
+                        
+                        <p:outputLabel value="Foto" for="foto" />
+                        <p:inputTextarea id="foto" required="true" value="#{docentesController.campo.foto}"/> 
 
                         <f:facet name="footer">
                             <p:commandButton id="btngrabar" value="#{docentesTxt.actualizar}" ajax="true" action="#{docentesController.actualizar()}"/>

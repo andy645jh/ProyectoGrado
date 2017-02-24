@@ -47,6 +47,9 @@
 
                         <p:outputLabel value="#{docentesTxt.correo}  " for="correo" />
                         <p:inputText id="correo" required="true" value="#{docentesController.campo.correo}"/> 
+                        
+                        <p:outputLabel value="Foto" for="foto" />
+                        <p:inputTextarea id="foto" required="true" value="#{docentesController.campo.foto}"/> 
 
                         <f:facet name="footer">
                             <p:commandButton id="btngrabar" value="#{docentesTxt.crear}" ajax="true" action="#{docentesController.agregar()}"/>

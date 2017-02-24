@@ -24,6 +24,7 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
 import org.primefaces.context.RequestContext;
+import org.primefaces.model.UploadedFile;
 
 
 @ManagedBean
@@ -45,6 +46,7 @@ public class DocentesController implements Serializable
     
     private String usuDocente;
     private LoginController _loginController;
+    private UploadedFile file;
     
     public DocentesController() { }
     
@@ -64,6 +66,7 @@ public class DocentesController implements Serializable
     
     public void agregar()
     {
+        System.out.println("LO Q ES EL FILE "+file);
         String titulo,detalle;
         Coordinacion c = _coordFacade.buscar(_codCoord);
         _obj.setCodcoordinacion(c);
@@ -135,6 +138,10 @@ public class DocentesController implements Serializable
         System.out.println("ENTRO A LA FUNCION ACTUALIZAR");
         String titulo,detalle;
         
+        Coordinacion c = _coordFacade.buscar(_codCoord);
+        _obj.setCodcoordinacion(c);
+        System.out.println("VA A AGREGAR DOCENTE "+_obj.getCodcoordinacion());
+        
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
@@ -179,6 +186,14 @@ public class DocentesController implements Serializable
 
     public void setCodCoord(int _codCoord) {
         this._codCoord = _codCoord;
+    }
+
+    public UploadedFile getFile() {
+        return file;
+    }
+
+    public void setFile(UploadedFile file) {
+        this.file = file;
     }
     
     
