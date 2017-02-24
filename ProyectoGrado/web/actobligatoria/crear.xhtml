@@ -11,24 +11,13 @@
             <h:form>
                 <p:panel>        
                     <br/>
-                    <p:panelGrid columns="2">                    
+                    <p:panelGrid columns="2">  
+                        
+                        <p:outputLabel value="Nombre"  />
+                        <p:inputText id="descripcion" value="#{actividadObligatoriaController.obj.nombre}"/> 
+                        
                         <p:outputLabel value="Hora"  />
                         <p:calendar id="time" value="#{actividadObligatoriaController.obj.hora}" pattern="HH:mm" timeOnly="true"  /> 
-
-                        <p:outputLabel value="Porcentaje" />                   
-                        <p:selectOneMenu id="codpor" value="#{porcentajeController.codActMi}"> 
-                            <f:selectItems value="#{actividadMisionalController.combo('Selecione un opcion')}" />
-                        </p:selectOneMenu> 
-
-                        <p:outputLabel value="Docentes" />                   
-                        <p:selectOneMenu id="coddoc" value="#{porcentajeController.codActMi}"> 
-                            <f:selectItems value="#{actividadMisionalController.combo('Selecione un opcion')}" />
-                        </p:selectOneMenu> 
-
-                        <p:outputLabel value="Actividad Docencia" />                   
-                        <p:selectOneMenu id="codact" value="#{porcentajeController.codActMi}"> 
-                            <f:selectItems value="#{actividadMisionalController.combo('Selecione un opcion')}" />
-                        </p:selectOneMenu> 
 
                         <f:facet name="footer">
                             <p:commandButton id="btngrabar" value="#{FacultadTxt.crear}" ajax="true" action="#{actividadObligatoriaController.agregar()}"/>
