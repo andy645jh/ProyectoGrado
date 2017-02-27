@@ -93,8 +93,17 @@ public class DocentesController implements Serializable
     
     public SelectItem[] combo(String texto)
     {
-         System.out.println("LISTADO "+_ejbFacade.listado().size());
-        return Formulario.addObject(_ejbFacade.listado(), texto);
+        List<Docentes> lista =_ejbFacade.listado(); 
+        SelectItem[] listaItems = new SelectItem[lista.size()];
+        int index=0;
+        for (Docentes doc : lista) {
+            SelectItem item = new SelectItem(doc.getCedula(), doc.getNombres()+" "+doc.getApellidos());
+            
+            listaItems[index]=item;
+            index++;
+        }
+        
+        return listaItems;
        
     }
     

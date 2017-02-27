@@ -6,8 +6,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/plantilla.xhtml">
-        <ui:define name="content">
-            #{facultadesControllers.resetear()}
+        <ui:define name="content">       
             <h:form>
                 <p:panel>        
                     <br/>
@@ -31,7 +30,7 @@
                         </p:selectOneMenu>
 
                         <f:facet name="footer">
-                            <p:commandButton id="btngrabar" value="#{FacultadTxt.crear}" ajax="true" action="#{tiempAsgController.agregar()}"/>
+                            <p:commandButton id="btngrabar" value="#{FacultadTxt.crear}" ajax="true" action="#{tiempAsgController.actualizar()}"/>
                         </f:facet>
                     </p:panelGrid>
                 </p:panel>
