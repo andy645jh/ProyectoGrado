@@ -306,12 +306,12 @@
 
                     <p:fieldset legend="tiempodocente" style="margin-bottom:20px" collapsed="true" toggleable="true" toggleSpeed="500">                        
 
-                        <p:commandButton value="Crear Actividad Obligatoria" actionListener="#{tiempAsgController.abrirCrear()}" icon="ui-icon-disk" >
-                            <p:ajax event="dialogReturn" update=":form:mensajes :form:listarObligacion" />                            
+                        <p:commandButton value="Crear Tiempo Docente" actionListener="#{tiempAsgController.abrirCrear()}" icon="ui-icon-disk" >
+                            <p:ajax event="dialogReturn" update=":form:mensajes :form:listarTiempoDoc" />                            
                         </p:commandButton>                      
                         <p:separator/>
                         <br/>
-                        <p:dataTable id="listarTiempoDoc" value="#{tiempotiempAsgControllerdo}" var="registro">
+                        <p:dataTable id="listarTiempoDoc" value="#{tiempAsgController.listado}" var="registro">
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">#{CoordinacionTxt.codigo}</f:facet>
                                 #{registro.codtiempoasignado}
@@ -341,8 +341,8 @@
 
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">#{CoordinacionTxt.opciones}</f:facet>
-                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{actividadMisionalController.borrar(registro)}"></p:commandButton>
-                                <p:commandButton icon="ui-icon-pencil" action="#{actividadMisionalController.abrirActualizar(registro)}">
+                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{tiempAsgController.borrar(registro)}"></p:commandButton>
+                                <p:commandButton icon="ui-icon-pencil" action="#{tiempAsgController.abrirActualizar(registro)}">
                                     <p:ajax event="dialogReturn" update=":form:mensajes :form:listarTiempoDoc" oncomplete="#{actividadMisionalController.mostrarMensaje()}"/>                            
                                 </p:commandButton>   
                             </p:column> 
@@ -350,7 +350,7 @@
                     </p:fieldset>
 
                     <f:facet name="footer">
-                        <p:commandButton value="#{tiempAsgController.codigito}" ajax="false" action="#{loginController.logout()}"/>
+                        <p:commandButton value="Cerrar Sesión" ajax="false" action="#{loginController.logout()}"/>
                     </f:facet> 
                     <p:growl id="mensajes" sticky="true" showDetail="true"/> 
                 </p:panel>
