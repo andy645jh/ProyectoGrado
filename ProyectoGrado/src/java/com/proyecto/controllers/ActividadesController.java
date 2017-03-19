@@ -138,7 +138,8 @@ public class ActividadesController implements Serializable
     public List<Actividades> getListado()
     {
         Docentes doc = docentesFacade.getCurrentDocente();
-        cedula= doc.getCedula()+"";
+        //cedula= doc.getCedula()+"";
+        cedula= "109877";
         return _ejbFacade.buscarCampo("_coddocente",cedula);
     }
     

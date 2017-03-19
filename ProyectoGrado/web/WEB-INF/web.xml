@@ -32,8 +32,6 @@
             <description/>
             <url-pattern>/faces/fechas_seguimiento/*</url-pattern>
             <url-pattern>/faces/index_docentes.xhtml</url-pattern>
-            <url-pattern>/faces/actividades/*</url-pattern>
-            <url-pattern>/faces/productos/*</url-pattern>
         </web-resource-collection>
         <web-resource-collection>
             <web-resource-name>folderclase</web-resource-name>

@@ -6,16 +6,16 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/plantilla.xhtml">
-        
+            
         <ui:define name="content">
             #{actividadesController.resetear()}
             
             <h:form>
-                <p:panel>
-                
+                <p:panel>                
                     <p:breadCrumb>
                         <p:menuitem url="#"></p:menuitem>
-                        <p:menuitem value="#{GeneralTxt.bienvenidos} #{loginController.buscarDocente()}" url="/faces/index_docentes.xhtml"></p:menuitem>
+                      
+                        <p:menuitem value="#{GeneralTxt.bienvenidos}" url="/faces/index_docentes.xhtml"></p:menuitem>
                         <p:menuitem value="#{actividadesTxt.creacionAc}" url="#"></p:menuitem>
                     </p:breadCrumb>
                  
