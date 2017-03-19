@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.proyecto.persistences;
 
 import java.io.Serializable;
@@ -13,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -21,6 +17,7 @@ import javax.validation.constraints.Size;
  * @author User
  */
 @Entity
+@Table(name = "coordinacion")
 public class Coordinacion implements Serializable {
    
     @Id

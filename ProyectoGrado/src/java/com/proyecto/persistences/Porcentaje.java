@@ -107,7 +107,7 @@ public class Porcentaje implements Serializable {
 
     @Override
     public String toString() {
-        return "Porcentaje{" + "_porcentaje=" + _porcentaje + '}';
+        return _porcentaje.toString();
     }
    
 }

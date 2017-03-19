@@ -80,9 +80,7 @@ public class ActividadesController implements Serializable
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
-//            _obj.setCoddocente(docentesFacade.getCurrentDocente());
-            
-            _obj.setCoddocente(docentesFacade.buscar("109877"));
+            _obj.setCoddocente(docentesFacade.getCurrentDocente());
             _ejbFacade.crear(_obj);
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);

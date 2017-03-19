@@ -1,9 +1,11 @@
 
 package com.proyecto.controllers;
 
+import com.proyecto.facades.CoordinacionFacade;
 import com.proyecto.utilities.Formulario;
 import com.proyecto.utilities.Mensajes;
 import com.proyecto.facades.DocentesFacade;
+import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Docentes;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -22,6 +24,7 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
 import org.primefaces.context.RequestContext;
+import org.primefaces.model.UploadedFile;
 
 
 @ManagedBean
@@ -31,6 +34,9 @@ public class DocentesController implements Serializable
     @EJB
     private DocentesFacade _ejbFacade;
     private Docentes _obj;
+    private int _codCoord;
+    @EJB
+    private CoordinacionFacade _coordFacade;
     
     private String _rutaTxt = "/com/java/utilities/txtDocentes"; 
     private String _titulo="Operacion";
@@ -40,6 +46,7 @@ public class DocentesController implements Serializable
     
     private String usuDocente;
     private LoginController _loginController;
+    private UploadedFile file;
     
     public DocentesController() { }
     
@@ -59,8 +66,11 @@ public class DocentesController implements Serializable
     
     public void agregar()
     {
+        System.out.println("LO Q ES EL FILE "+file);
         String titulo,detalle;
-        
+        Coordinacion c = _coordFacade.buscar(_codCoord);
+        _obj.setCodcoordinacion(c);
+        System.out.println("VA A AGREGAR DOCENTE "+_obj.getCodcoordinacion());
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
@@ -83,7 +93,18 @@ public class DocentesController implements Serializable
     
     public SelectItem[] combo(String texto)
     {
-        return Formulario.addObject(_ejbFacade.listado(), texto);
+        List<Docentes> lista =_ejbFacade.listado(); 
+        SelectItem[] listaItems = new SelectItem[lista.size()];
+        int index=0;
+        for (Docentes doc : lista) {
+            SelectItem item = new SelectItem(doc.getCedula(), doc.getNombres()+" "+doc.getApellidos());
+            
+            listaItems[index]=item;
+            index++;
+        }
+        
+        return listaItems;
+       
     }
     
     public List<Docentes> getListado()
@@ -126,6 +147,10 @@ public class DocentesController implements Serializable
         System.out.println("ENTRO A LA FUNCION ACTUALIZAR");
         String titulo,detalle;
         
+        Coordinacion c = _coordFacade.buscar(_codCoord);
+        _obj.setCodcoordinacion(c);
+        System.out.println("VA A AGREGAR DOCENTE "+_obj.getCodcoordinacion());
+        
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
@@ -163,6 +188,24 @@ public class DocentesController implements Serializable
         usuDocente =_loginController.getUsuario();
         return _ejbFacade.buscar(Integer.parseInt(usuDocente));
     }
+
+    public int getCodCoord() {
+        return _codCoord;
+    }
+
+    public void setCodCoord(int _codCoord) {
+        this._codCoord = _codCoord;
+    }
+
+    public UploadedFile getFile() {
+        return file;
+    }
+
+    public void setFile(UploadedFile file) {
+        this.file = file;
+    }
+    
+    
     
     @FacesConverter(forClass = Docentes.class, value = "docentesConverter")
     public static class DocentesControllerConverter implements Converter{
