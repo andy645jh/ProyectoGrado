@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/plantilla.xhtml">
+        <ui:define name="content">
+            #{facultadesControllers.resetear()}
+            <h:form>
+                <p:panel>        
+                    <br/>
+                    <p:panelGrid columns="2">                    
+                        <p:outputLabel value="Porcentaje"  />
+                        <p:inputText id="descripcion" value="#{porcentajeController.campo.porcentaje}"/> 
+
+                    <p:outputLabel value="Coordinacion"  />                    
+                    <p:selectOneMenu id="codcoor" value="#{porcentajeController.codCoordinacion}"> 
+                        <f:selectItems value="#{coordinacionController.combo('Selecione un opcion')}" />
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="Actividad Misional" />                   
+                    <p:selectOneMenu id="codact" value="#{porcentajeController.codActMi}"> 
+                        <f:selectItems value="#{actividadMisionalController.combo('Selecione un opcion')}" />
+                    </p:selectOneMenu> 
+
+                        <f:facet name="footer">
+                            <p:commandButton id="btngrabar" value="#{FacultadTxt.crear}" ajax="true" action="#{porcentajeController.actualizar()}"/>
+                        </f:facet>
+                    </p:panelGrid>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+
