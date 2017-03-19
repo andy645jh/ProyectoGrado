@@ -6,7 +6,6 @@ import com.proyecto.persistences.Convenciones;
 import com.proyecto.persistences.Facultad;
 import com.proyecto.utilities.Mensajes;
 import com.sun.xml.xsom.impl.scd.Iterators;
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,13 +17,12 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.model.SelectItem;
 import org.primefaces.context.RequestContext;
 
 
 @ManagedBean
 @SessionScoped
-public class FacultadesControllers implements Serializable{
+public class FacultadesControllers {
 
    @EJB
     private FacultadFacade _ejbFacade;
@@ -141,19 +139,4 @@ public class FacultadesControllers implements Serializable{
             Logger.getLogger(Convenciones.class.getName()).log(Level.SEVERE,null,e);
         }
     }  
-    
-    public SelectItem[] combo(String texto)
-    {
-        List<Facultad> lista =_ejbFacade.listado(); 
-        SelectItem[] listaItems = new SelectItem[lista.size()];
-        int index=0;
-        for (Facultad facultad : lista) {
-            SelectItem item = new SelectItem(facultad.getCodfacultad(), facultad.getNombre());
-            
-            listaItems[index]=item;
-            index++;
-        }
-        
-        return listaItems;
-    }
 }

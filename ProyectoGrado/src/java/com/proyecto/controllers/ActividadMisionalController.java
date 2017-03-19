@@ -149,17 +149,7 @@ public class ActividadMisionalController implements Serializable{
     
      public SelectItem[] combo(String texto)
     {
-        List<ActividadMisional> lista =_ejbFacade.listado(); 
-        SelectItem[] listaItems = new SelectItem[lista.size()];
-        int index=0;
-        for (ActividadMisional actMisional : lista) {
-            SelectItem item = new SelectItem(actMisional.getCodactividadmisional(), actMisional.getNombre());
-            
-            listaItems[index]=item;
-            index++;
-        }
-        
-        return listaItems;
+        return Formulario.addObject(_ejbFacade.listado(), texto);
     }
     
     @FacesConverter(forClass = Convenciones.class, value = "actMisionalConverter")

@@ -52,7 +52,6 @@ public class ConvencionesController implements Serializable{
     public void agregar()
     {
         String titulo,detalle;
-        _obj.setColor("b36161");
         
         try {         
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");

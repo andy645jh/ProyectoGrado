@@ -6,7 +6,6 @@ import com.proyecto.facades.PorcentajeFacade;
 import com.proyecto.persistences.ActividadMisional;
 import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Porcentaje;
-import com.proyecto.persistences.TipoModalidades;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +17,6 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.model.SelectItem;
 import org.primefaces.context.RequestContext;
 
 /**
@@ -68,13 +66,8 @@ public class PorcentajeController implements Serializable{
         String titulo,detalle;
         Coordinacion coordinacion= _coordinacionFacade.buscar(_codCoordinacion);
         ActividadMisional actMisional= _actMisionalFacade.buscar(_codActMi);
-        
-        
         _obj.setCodcoordinacion(coordinacion);
         _obj.setCodmisional(actMisional);
-        
-        System.out.println("LO Q HAY EN COORDI "+_obj.getCodcoordinacion());
-        System.out.println("LO Q HAY EN ACT MISIONAL "+_obj.getCodmisional());
                 
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
@@ -94,57 +87,9 @@ public class PorcentajeController implements Serializable{
             
             Logger.getLogger(Porcentaje.class.getName()).log(Level.SEVERE,null,e);
             
-        } 
-    }
-    
-    public void abrirActualizar(Porcentaje objtemp) {
-        
-        _obj = objtemp;
-        Map<String,Object> options = new HashMap<String, Object>();
-        options.put("resizable", false);
-        options.put("draggable", false);
-        options.put("modal", true);
-        RequestContext.getCurrentInstance().openDialog("/actmisional/actualizar", options, null);
-    }
-    
-    public void actualizar()
-    {
-        String titulo,detalle;
-        
-        try {
-            
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
-            _ejbFacade.actualizar(_obj);
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle); 
-            
-            
-        } catch (Exception e) 
-        {
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarError");
-            message = new FacesMessage(FacesMessage.SEVERITY_ERROR,titulo,detalle);
-            Logger.getLogger(Porcentaje.class.getName()).log(Level.SEVERE,null,e);
-           
         }
         
-        RequestContext context = RequestContext.getCurrentInstance();
-        context.closeDialog(null);
-    }  
-    
-    public SelectItem[] combo(String texto)
-    {
-        List<Porcentaje> lista =_ejbFacade.listado(); 
-        SelectItem[] listaItems = new SelectItem[lista.size()];
-        int index=0;
-        for (Porcentaje porcentaje : lista) {
-            SelectItem item = new SelectItem(porcentaje.getCodporcentaje(), porcentaje.getPorcentaje()+"");
-            
-            listaItems[index]=item;
-            index++;
-        }
-        System.out.println("LISTADO "+lista.size());
-        return listaItems;
+        
     }
 
     public int getCodCoordinacion() {

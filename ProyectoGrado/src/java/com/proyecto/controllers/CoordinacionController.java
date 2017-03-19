@@ -1,13 +1,8 @@
 package com.proyecto.controllers;
 
 import com.proyecto.facades.CoordinacionFacade;
-import com.proyecto.facades.FacultadFacade;
-import com.proyecto.persistences.Convenciones;
 import com.proyecto.persistences.Coordinacion;
-import com.proyecto.persistences.Facultad;
 import com.proyecto.utilities.Formulario;
-import com.proyecto.utilities.Mensajes;
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,16 +23,14 @@ import org.primefaces.context.RequestContext;
 
 @ManagedBean
 @SessionScoped
-public class CoordinacionController implements Serializable{
-    
-    @EJB
-    private FacultadFacade _facultadFacade;
+public class CoordinacionController {
 
     @EJB
-    private CoordinacionFacade _ejbFacade;    
-    private Coordinacion _obj;    
+    private CoordinacionFacade _ejbFacade;
+    
+    private Coordinacion _obj;
+    
     private FacesMessage message;
-    private int codFacultad;
     
     public CoordinacionController() {
     }
@@ -75,8 +68,6 @@ public class CoordinacionController implements Serializable{
     public void agregar()
     {
         String titulo,detalle;
-        Facultad f=_facultadFacade.buscar(codFacultad);        
-        _obj.setCodfacultad(f);
         
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
@@ -98,81 +89,10 @@ public class CoordinacionController implements Serializable{
             
         }
     }
-    
-    public void borrar(Coordinacion faceObj)
-    {
-        String titulo,detalle;
-        
-        try {
-            _ejbFacade.borrar(faceObj);
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarExitoso");
-            Mensajes.exito(titulo, detalle);
-            
-        } catch (Exception e) 
-        {
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarError");
-            Mensajes.error(titulo, detalle);
-            Logger.getLogger(Coordinacion.class.getName()).log(Level.SEVERE,null,e);
-        }
-    }
-    
-    public void abrirActualizar(Coordinacion objtemp) {
-        
-        
-        _obj = objtemp;
-        codFacultad=_obj.getCodfacultad().getCodfacultad();
-        Map<String,Object> options = new HashMap<String, Object>();
-        options.put("resizable", false);
-        options.put("draggable", false);
-        options.put("modal", true);
-        RequestContext.getCurrentInstance().openDialog("/coordinacion/actualizar", options, null);
-    }
-    
-    public void actualizar()
-    {
-        String titulo,detalle;
-        System.out.println("VA A actualizar "+_obj.toString());
-        Facultad f=_facultadFacade.buscar(codFacultad);        
-        _obj.setCodfacultad(f);
-        try {
-            
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
-            _ejbFacade.actualizar(_obj);
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle); 
-            
-            
-        } catch (Exception e) 
-        {
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarError");
-            message = new FacesMessage(FacesMessage.SEVERITY_ERROR,titulo,detalle);
-            Logger.getLogger(Coordinacion.class.getName()).log(Level.SEVERE,null,e);
-           
-        }
-        
-        RequestContext context = RequestContext.getCurrentInstance();
-        context.closeDialog(null);
-    } 
-    
     public SelectItem[] combo(String texto)
     {
-        List<Coordinacion> lista =_ejbFacade.listado(); 
-        SelectItem[] listaItems = new SelectItem[lista.size()];
-        int index=0;
-        for (Coordinacion coordinacion : lista) {
-            SelectItem item = new SelectItem(coordinacion.getCodcoordinacion(), coordinacion.getNombre());
-            
-            listaItems[index]=item;
-            index++;
-        }
-        
-        return listaItems;
+        return Formulario.addObject(_ejbFacade.listado(), texto);
     }
-    
-    
     @FacesConverter(forClass = Coordinacion.class, value = "coordinacionConverter")
     public static class CoordinacionControllerConverter implements Converter{
 
@@ -200,14 +120,4 @@ public class CoordinacionController implements Serializable{
             return null;
         }
     }
-
-    public int getCodFacultad() {
-        return codFacultad;
-    }
-
-    public void setCodFacultad(int codFacultad) {
-        this.codFacultad = codFacultad;
-    }
-    
-    
 }

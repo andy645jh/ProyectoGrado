@@ -35,7 +35,10 @@ public class Actividades implements Serializable
     @Size(min = 1, max = 100)
     @NotNull
     private String _responsable;
-       
+    
+    @Column(name = "valoracion")  
+    private double _valoracion;
+    
     @JoinColumn(name = "coddocente", referencedColumnName = "cedula")
     @ManyToOne(optional = false)
     private Docentes _coddocente;
@@ -76,6 +79,9 @@ public class Actividades implements Serializable
             return false;
         }
         if (!Objects.equals(this._responsable, other._responsable)) {
+            return false;
+        }
+        if (this._valoracion != other._valoracion) {
             return false;
         }
         if (!Objects.equals(this._coddocente, other._coddocente)) {
@@ -123,6 +129,16 @@ public class Actividades implements Serializable
     public void setResponsable(String _responsable) {
         this._responsable = _responsable;
     }
+
+    public double getValoracion() {
+        return _valoracion;
+    }
+
+    public void setValoracion(double _valoracion) {
+        this._valoracion = _valoracion;
+    }
+
+    
 
     public Docentes getCoddocente() {
         return _coddocente;

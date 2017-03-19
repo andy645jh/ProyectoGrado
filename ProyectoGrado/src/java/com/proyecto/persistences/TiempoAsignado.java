@@ -29,17 +29,13 @@ public class TiempoAsignado implements Serializable {
     @Column(name = "horas")    
     private Date _horas;  
         
-    @JoinColumn(name = "codobligatoria", referencedColumnName = "codactividadobligatorias")
+    @JoinColumn(name = "codobliatoria", referencedColumnName = "codactividadmisional")
     @ManyToOne(optional = false)
     private ActividadObligatoria _codobliatoria;
         
     @JoinColumn(name = "coddocente", referencedColumnName = "cedula")
     @ManyToOne(optional = false)
     private Docentes _coddocente;
-    
-    @JoinColumn(name = "codporcentaje", referencedColumnName = "codporcentaje")
-    @ManyToOne(optional = false)
-    private Porcentaje _codporcentaje;
 
     public TiempoAsignado() {
     }
@@ -75,16 +71,6 @@ public class TiempoAsignado implements Serializable {
     public void setCoddocente(Docentes _coddocente) {
         this._coddocente = _coddocente;
     }
-
-    public Porcentaje getCodporcentaje() {
-        return _codporcentaje;
-    }
-
-    public void setCodporcentaje(Porcentaje _codporcentaje) {
-        this._codporcentaje = _codporcentaje;
-    }
-    
-    
 
     @Override
     public int hashCode() {

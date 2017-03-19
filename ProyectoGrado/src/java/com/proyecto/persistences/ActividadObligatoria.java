@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -18,13 +17,12 @@ import javax.validation.constraints.Size;
  * @author User
  */
 @Entity
-@Table(name = "actividadobligatorias")
 public class ActividadObligatoria implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "codactividadobligatorias")
-    private int _codactobligatorias;
+    @Column(name = "codactividadmisional")
+    private int _codactividadmisional;
     
     @Column(name = "nombre")
     @Size(min = 1, max = 100)
@@ -38,15 +36,13 @@ public class ActividadObligatoria implements Serializable {
     public ActividadObligatoria() {
     }
 
-    public int getCodactobligatorias() {
-        return _codactobligatorias;
+    public int getCodactividadmisional() {
+        return _codactividadmisional;
     }
 
-    public void setCodactobligatorias(int _codactobligatorias) {
-        this._codactobligatorias = _codactobligatorias;
+    public void setCodactividadmisional(int _codactividadmisional) {
+        this._codactividadmisional = _codactividadmisional;
     }
-
-   
 
     public String getNombre() {
         return _nombre;
@@ -68,7 +64,7 @@ public class ActividadObligatoria implements Serializable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 71 * hash + this._codactobligatorias;
+        hash = 71 * hash + this._codactividadmisional;
         return hash;
     }
 
@@ -81,7 +77,7 @@ public class ActividadObligatoria implements Serializable {
             return false;
         }
         final ActividadObligatoria other = (ActividadObligatoria) obj;
-        if (this._codactobligatorias != other._codactobligatorias) {
+        if (this._codactividadmisional != other._codactividadmisional) {
             return false;
         }
         return true;
@@ -89,7 +85,7 @@ public class ActividadObligatoria implements Serializable {
 
     @Override
     public String toString() {
-        return  _nombre;
+        return "ActividadMisional{" + "_codactividadmisional=" + _codactividadmisional + ", _nombre=" + _nombre + '}';
     }
     
     
