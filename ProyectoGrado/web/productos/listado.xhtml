@@ -14,27 +14,22 @@
                     <p:menuitem  value="Act" outcome="/actividades/listado.xhtml" icon="ui-icon-disk" />
                     <p:menuitem  value="Prod" action="#"  icon="ui-icon-disk" />
                     <p:menuitem  value="Horario" outcome="/actividades/listado.xhtml"  icon="ui-icon-disk" />
-                    <p:menuitem  value="Perfil" outcome="/actividades/listado.xhtml"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Perfil" outcome="#{docentesController.abrirPerfil()}"  icon="ui-icon-disk" />
                 </p:menu>
             </h:form>
         </ui:define>
         
         <ui:define name="content">           
-            <h:form id="form">
+            <h:form id="formProductos">
                 <p:panel>                    
                     <p:growl id="mensajito" sticky="true" showDetail="true"/>           
                     <br/>
                         <p:commandButton value="#{productosTxt.crear} #{productosTxt.productos}" actionListener="#{productosController.abrirCrear()}" icon="ui-icon-disk" >
-                                                 
+                            <p:ajax event="dialogReturn" update=":formProductos:listado :formProductos:mensajito" />                     
                         </p:commandButton>                   
                         <p:separator/>
                         <br/>
                         <p:dataTable id="listado" value="#{productosController.listado}" var="registro">
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{productosTxt.codigo}</f:facet>
-                                #{registro.codproducto}
-                            </p:column>
 
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">#{productosTxt.actividad}</f:facet>
@@ -69,7 +64,7 @@
                                 <f:facet name="header">#{productosTxt.opciones}</f:facet>
                                 <p:commandButton ajax="false" icon="ui-icon-trash" action="#{productosController.borrar(registro)}"/>                                    
                                 <p:commandButton icon="ui-icon-pencil" action="#{productosController.abrirActualiar(registro)}">
-                                    <p:ajax event="dialogReturn"  oncomplete="#{productosController.mostrarMensaje()}"/>                            
+                                    <p:ajax event="dialogReturn" update=":formProductos:listado :formProductos:mensajito" oncomplete="#{productosController.mostrarMensaje()}"/>                            
                                 </p:commandButton> 
                             </p:column> 
                         </p:dataTable>           

@@ -14,30 +14,25 @@
                     <p:menuitem  value="Act" action="#"  icon="ui-icon-disk" />
                     <p:menuitem  value="Prod" outcome="/productos/listado.xhtml"  icon="ui-icon-disk" />
                     <p:menuitem  value="Horario" outcome="/actividades/listado.xhtml"  icon="ui-icon-disk" />
-                    <p:menuitem  value="Perfil" outcome="/actividades/listado.xhtml"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Perfil" outcome="#{docentesController.abrirPerfil()}"  icon="ui-icon-disk" />
                 </p:menu>
             </h:form>
         </ui:define>
         
         <ui:define name="content">           
-            <h:form id="form">
+            <h:form id="formActividades">
                 <p:panel>
                     
                     <p:growl id="mensajito" sticky="true" showDetail="true"/>           
                     <br/>
           
-                        
                         <p:commandButton value="#{actividadesTxt.crear} #{actividadesTxt.actividades}" actionListener="#{actividadesController.abrirCrear()}" icon="ui-icon-disk" >
-                                                   
+                            <p:ajax event="dialogReturn" update=":formActividades:listar :formActividades:mensajito" />                          
                         </p:commandButton>                   
                         <p:separator/>
                         <br/>
                         <p:dataTable id="listar" value="#{actividadesController.listado}" var="registro">
-                        <p:column style="width: 10px; text-align: center">
-                            <f:facet name="header">#{actividadesTxt.codigo}</f:facet>
-                            #{registro.codactividad}
-                        </p:column>
-                        
+                                                
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">#{actividadesTxt.nombre}</f:facet>
                             #{registro.nombre}
@@ -65,10 +60,15 @@
                         </p:column>
                         
                         <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">Valoración</f:facet>
+                            #{registro.valoracion}
+                        </p:column>    
+                            
+                        <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
                             <p:commandButton ajax="false" icon="ui-icon-trash" action="#{actividadesController.borrar(registro)}"></p:commandButton>
                             <p:commandButton icon="ui-icon-pencil" action="#{actividadesController.abrirActualizar(registro)}">
-                                <!--<p:ajax event="dialogReturn" update=":formActividades:listar :formActividades:mensajesClases" oncomplete="#{actividadesController.mostrarMensaje()}"/>-->                                  
+                                <p:ajax event="dialogReturn" update=":formActividades:listar :formActividades:mensajito" oncomplete="#{actividadesController.mostrarMensaje()}"/>                                  
                             </p:commandButton>  
                         </p:column> 
                     </p:dataTable>

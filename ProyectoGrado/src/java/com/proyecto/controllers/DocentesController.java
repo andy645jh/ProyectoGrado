@@ -142,6 +142,14 @@ public class DocentesController implements Serializable
         RequestContext.getCurrentInstance().openDialog("/docentes/actualizar", options, null);
     }
     
+    public String abrirPerfil() {
+        
+        _obj = _ejbFacade.buscar(109877);
+        System.out.println("CODIGO "+_obj.getFoto());
+        
+        return "/docentes/perfil";
+    }
+    
     public void actualizar()
     {
         System.out.println("ENTRO A LA FUNCION ACTUALIZAR");

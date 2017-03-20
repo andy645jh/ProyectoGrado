@@ -1,6 +1,7 @@
 package com.proyecto.persistences;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -61,6 +63,10 @@ public class Docentes implements Serializable
     @NotNull
     @Column(name = "formacion")
     private String _formacion; 
+    
+    @Column(name = "fechanac")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date _fechanac;
         
     public Docentes() { }
 
@@ -169,6 +175,14 @@ public class Docentes implements Serializable
 
     public void setCodigo(String _codigo) {
         this._codigo = _codigo;
+    }
+
+    public Date getFechanac() {
+        return _fechanac;
+    }
+
+    public void setFechanac(Date _fechanac) {
+        this._fechanac = _fechanac;
     }
     
     
