@@ -34,6 +34,7 @@ public class DocentesController implements Serializable
     @EJB
     private DocentesFacade _ejbFacade;
     private Docentes _obj;
+    private UploadedFile foto;
     private int _codCoord;
     @EJB
     private CoordinacionFacade _coordFacade;
@@ -46,7 +47,7 @@ public class DocentesController implements Serializable
     
     private String usuDocente;
     private LoginController _loginController;
-    private UploadedFile file;
+ 
     
     public DocentesController() { }
     
@@ -66,7 +67,7 @@ public class DocentesController implements Serializable
     
     public void agregar()
     {
-        System.out.println("LO Q ES EL FILE "+file);
+       
         String titulo,detalle;
         Coordinacion c = _coordFacade.buscar(_codCoord);
         _obj.setCodcoordinacion(c);
@@ -152,12 +153,12 @@ public class DocentesController implements Serializable
     
     public void actualizar()
     {
-        System.out.println("ENTRO A LA FUNCION ACTUALIZAR");
+        System.out.println("ENTRO A LA FUNCION ACTUALIZAR "+foto.getFileName());
         String titulo,detalle;
         
-        Coordinacion c = _coordFacade.buscar(_codCoord);
-        _obj.setCodcoordinacion(c);
-        System.out.println("VA A AGREGAR DOCENTE "+_obj.getCodcoordinacion());
+//        Coordinacion c = _coordFacade.buscar(_codCoord);
+//        _obj.setCodcoordinacion(c);
+//        System.out.println("VA A AGREGAR DOCENTE "+_obj.getCodcoordinacion());
         
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
@@ -205,12 +206,14 @@ public class DocentesController implements Serializable
         this._codCoord = _codCoord;
     }
 
-    public UploadedFile getFile() {
-        return file;
+  
+
+    public UploadedFile getFoto() {
+        return foto;
     }
 
-    public void setFile(UploadedFile file) {
-        this.file = file;
+    public void setFoto(UploadedFile foto) {
+        this.foto = foto;
     }
     
     

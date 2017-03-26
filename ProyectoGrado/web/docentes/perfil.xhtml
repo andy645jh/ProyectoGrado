@@ -72,7 +72,9 @@
                         </div>
                         <div class="col-md-3 ">
                             <p:outputLabel value="Foto" for="foto" />
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="foto" required="true" value="#{docentesController.campo.foto}"/></pre> 
+                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;">
+                                <p:fileUpload id="foto" value="#{docentesController.foto}" mode="simple" />
+                            </pre> 
                         </div>
                         <div class="col-md-3 ">
                             <p:outputLabel value="#{docentesTxt.formacion}  " for="formacion" />
@@ -88,7 +90,7 @@
                         </div>
                     </div>
                     <f:facet name="footer">
-                        <p:commandButton id="btngrabar" value="#{docentesTxt.actualizar}" ajax="true" action="#{docentesController.actualizar()}"/>
+                        <p:commandButton id="btngrabar" value="Actualizar" ajax="false" action="#{docentesController.actualizar()}"/>
                     </f:facet>
 
                 </p:panel>  
