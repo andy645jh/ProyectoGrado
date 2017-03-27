@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/plantilla.xhtml">
+
+        <ui:define name="menu">
+            <h:form >  
+                <p:menu style="width: 5em;">                    
+                    <p:menuitem  value="Act" outcome="/actividades/listado.xhtml" icon="ui-icon-disk" />
+                    <p:menuitem  value="Prod" outcome="/productos/listado.xhtml"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Horario" outcome="/actividades/listado.xhtml"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Perfil" action="#"  icon="ui-icon-disk" />
+                </p:menu>
+            </h:form>
+        </ui:define>
+
+        <ui:define name="content">            
+            <p:panel>
+                    <p:fieldset legend="#{clasesTxt.clases}" style="margin-bottom:20px" collapsed="true" toggleable="true" toggleSpeed="500"> 
+
+                        <p:schedule id="schedule" value="#{horarioController.eventModel}" widgetVar="myschedule" timeZone="GMT+5" locale="es"> 
+                            <p:ajax event="dateSelect" listener="#{horarioController.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
+                            <p:ajax event="eventSelect" listener="#{horarioController.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />                        
+                        </p:schedule>
+
+                        <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip" onHide="#{horarioController.mostrarMensaje()}">
+                            <p:ajax event="close" update=":formActividades:mensajesClases :formActividades:listarClases" listener="#{horarioController.mostrarMensaje()}" />
+                            <h:panelGrid id="eventDetails" columns="2">                           
+
+                                <p:outputLabel value="#{clasesTxt.nombre}  " for="nombre" />
+                                <p:inputText id="nombre" value="#{horarioController.campo.nombre}"/> 
+
+                                <p:outputLabel for="from" value="#{clasesTxt.horaIni} " />
+                                <p:calendar id="from" timeZone="GMT+5" pattern="dd/MM/yyyy HH:mm" value="#{horarioController.campo.horainicio}"/>
+
+                                <p:outputLabel for="to" value="#{clasesTxt.horafin} " />
+                                <p:calendar id="to" timeZone="GMT+5" pattern="dd/MM/yyyy HH:mm" value="#{horarioController.campo.horafinal}"/>
+
+                                <p:outputLabel value="#{clasesTxt.convencion} " for="codconvencion" />
+                                <p:selectOneMenu id="codconvencion" value="#{horarioController.codigo}"> 
+                                    <f:selectItems value="#{convencionesController.combo('')}" />
+                                </p:selectOneMenu>
+
+                                <f:facet name="footer">
+                                    <p:commandButton id="btngrabar" value="#{clasesTxt.guardar}" actionListener="#{horarioController.agregar}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>                                    
+                                    <p:commandButton id="btnborrar" value="#{clasesTxt.borrar}" ajax="true" actionListener="#{horarioController.borrar}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>                                                                   
+                                </f:facet>
+                            </h:panelGrid>
+                        </p:dialog>
+
+
+                        <br/>
+                        <p:dataTable id="listarClases" value="#{horarioController.listado}" var="registro">
+                            <f:facet name="header">#{clasesTxt.lista}</f:facet>
+                        
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">#{clasesTxt.nombre}</f:facet>
+                            #{registro.nombre}
+                        </p:column>
+
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">#{clasesTxt.horaIni}</f:facet>
+                            <h:outputText value="#{registro.horainicio}">
+                                <f:convertDateTime dateStyle="full"/>                                
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">#{clasesTxt.horafin}</f:facet>
+                            <h:outputText value="#{registro.horafinal}">
+                                <f:convertDateTime dateStyle="full"/>                                
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">#{clasesTxt.convencion}</f:facet>
+                            #{registro.codconvencion}
+                        </p:column>                                                
+                    </p:dataTable>
+                </p:fieldset>
+                    <p:commandButton value="#{GeneralTxt.cerrarsesion}" ajax="false" action="#{loginController.logout()}"/> 
+                </p:panel>
+        </ui:define>
+    </ui:composition>
+</html>
+

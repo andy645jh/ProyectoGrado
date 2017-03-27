@@ -12,14 +12,14 @@
                 <p:menu style="width: 5em;">                    
                     <p:menuitem  value="Act" outcome="/actividades/listado.xhtml" icon="ui-icon-disk" />
                     <p:menuitem  value="Prod" outcome="/productos/listado.xhtml"  icon="ui-icon-disk" />
-                    <p:menuitem  value="Horario" outcome="/actividades/listado.xhtml"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Horario" outcome="/horario/horario.xhtml"  icon="ui-icon-disk" />
                     <p:menuitem  value="Perfil" action="#"  icon="ui-icon-disk" />
                 </p:menu>
             </h:form>
         </ui:define>
 
         <ui:define name="content">            
-            <h:form>
+            <h:form enctype="multipart/form-data">
                 <p:panel>
                     <p:breadCrumb>
                         <p:menuitem url="#"></p:menuitem>
@@ -77,16 +77,16 @@
                             </pre> 
                         </div>
                         <div class="col-md-3 ">
-                            <p:outputLabel value="#{docentesTxt.formacion}  " for="formacion" />
+                            <p:outputLabel value="#{docentesTxt.formacion}" for="formacion" />
                             <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputTextarea id="formacion" required="true" value="#{docentesController.campo.formacion}"/></pre>
                         </div>
                         <div class="col-md-1 ">
                             <p:outputLabel value="Usuario" />
-                            <p:outputLabel value="Usuario" />
+                            <p:outputLabel value="#{docentesController.usuario}"/>
                         </div>
                         <div class="col-md-2 ">
                             <p:outputLabel value="Clave" for="clave" />
-                            <p:inputText id="clave" required="true" /> 
+                            <p:inputText id="clave" value="#{docentesController.clave}" required="true" /> 
                         </div>
                     </div>
                     <f:facet name="footer">
