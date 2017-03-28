@@ -33,7 +33,9 @@
                             <f:selectItems value="#{tipoModalidadesController.combo('Selecione un opcion')}" />
                         </p:selectOneMenu>
 
-
+                        <p:outputLabel value="Valoración" for="valoracion" />
+                        <p:inputText id="valoracion" value="#{actividadesController.campo.valoracion}"/> 
+                        
                         <f:facet name="footer">
                             <p:commandButton id="btngrabar" value="#{actividadesTxt.actualizar}" ajax="true" action="#{actividadesController.actualizar()}"/>                                
                         </f:facet>

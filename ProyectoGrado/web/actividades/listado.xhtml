@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:composition template="/plantilla.xhtml">
+        
+        <ui:define name="menu">
+            <h:form >  
+                <p:menu style="width: 5em;">                    
+                    <p:menuitem  value="Act" action="#"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Prod" outcome="/productos/listado.xhtml"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Horario" outcome="/horario/horario.xhtml"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Perfil" outcome="#{docentesController.abrirPerfil()}"  icon="ui-icon-disk" />
+                </p:menu>
+            </h:form>
+        </ui:define>
+        
+        <ui:define name="content">           
+            <h:form id="formActividades">
+                <p:panel>
+                    
+                    <p:growl id="mensajito" sticky="true" showDetail="true"/>           
+                    <br/>
+          
+                        <p:commandButton value="#{actividadesTxt.crear} #{actividadesTxt.actividades}" actionListener="#{actividadesController.abrirCrear()}" icon="ui-icon-disk" >
+                            <p:ajax event="dialogReturn" update=":formActividades:listar :formActividades:mensajito" />                          
+                        </p:commandButton>                   
+                        <p:separator/>
+                        <br/>
+                        <p:dataTable id="listar" value="#{actividadesController.listado}" var="registro">
+                                                
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">#{actividadesTxt.nombre}</f:facet>
+                            #{registro.nombre}
+                        </p:column> 
+                        
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">#{actividadesTxt.horas}</f:facet>
+                            #{registro.horas}
+                        </p:column> 
+                        
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">#{actividadesTxt.descripcion}</f:facet>
+                            #{registro.descripcion}
+                        </p:column>
+                        
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">#{actividadesTxt.responsable}</f:facet>
+                            #{registro.responsable}
+                        </p:column>
+                        
+                        
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">#{actividadesTxt.tipoMod}</f:facet>
+                            #{registro.codtipo}
+                        </p:column>
+                        
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">Valoración</f:facet>
+                            #{registro.valoracion}
+                        </p:column>    
+                            
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
+                            <p:commandButton ajax="false" icon="ui-icon-trash" action="#{actividadesController.borrar(registro)}"></p:commandButton>
+                            <p:commandButton icon="ui-icon-pencil" action="#{actividadesController.abrirActualizar(registro)}">
+                                <p:ajax event="dialogReturn" update=":formActividades:listar :formActividades:mensajito" oncomplete="#{actividadesController.mostrarMensaje()}"/>                                  
+                            </p:commandButton>  
+                        </p:column> 
+                    </p:dataTable>
+             
+                </p:panel>  
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+

@@ -47,6 +47,9 @@ public class Actividades implements Serializable
     @Column(name = "horas")   
     @NotNull
     private double _horas;
+    
+    @Column(name = "valoracion")   
+    private int _valoracion;
 
     public Actividades() {  }
 
@@ -146,6 +149,14 @@ public class Actividades implements Serializable
 
     public void setHoras(double _horas) {
         this._horas = _horas;
+    }
+
+    public int getValoracion() {
+        return _valoracion;
+    }
+
+    public void setValoracion(int _valoracion) {
+        this._valoracion = _valoracion;
     }
 
     

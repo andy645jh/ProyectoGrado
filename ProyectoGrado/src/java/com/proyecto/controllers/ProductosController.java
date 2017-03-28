@@ -122,8 +122,10 @@ public class ProductosController implements Serializable
     
     public List<Productos> getListado()
     {        
-        Docentes doc =docentesFacade.getCurrentDocente();       
-        List<Actividades> listaActividades =_actividadesFacade.buscarCampo("_coddocente",doc.getCedula()+"");
+//        Docentes doc =docentesFacade.getCurrentDocente();       
+             
+//        List<Actividades> listaActividades =_actividadesFacade.buscarCampo("_coddocente",doc.getCedula()+"");
+        List<Actividades> listaActividades =_actividadesFacade.buscarCampo("_coddocente","109877");
         
         List<Productos> listaProd = new ArrayList<>();
         for (Actividades acti : listaActividades)
@@ -161,13 +163,14 @@ public class ProductosController implements Serializable
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);
-        RequestContext.getCurrentInstance().openDialog("faces/productos/actualizar", options, null);
+        RequestContext.getCurrentInstance().openDialog("/productos/actualizar", options, null);
     }
     
     public void actualizar()
     {
         String titulo,detalle;
-        
+        Actividades actividad= _actividadesFacade.buscar(_codigo);
+        _obj.setCodactividad(actividad);
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");

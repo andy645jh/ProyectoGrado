@@ -5,8 +5,10 @@ import com.proyecto.facades.CoordinacionFacade;
 import com.proyecto.utilities.Formulario;
 import com.proyecto.utilities.Mensajes;
 import com.proyecto.facades.DocentesFacade;
+import com.proyecto.facades.PermisosFacade;
 import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Docentes;
+import com.proyecto.persistences.Permisos;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -33,11 +35,15 @@ public class DocentesController implements Serializable
 {  
     @EJB
     private DocentesFacade _ejbFacade;
-    private Docentes _obj;
-    private int _codCoord;
     @EJB
-    private CoordinacionFacade _coordFacade;
-    
+    private CoordinacionFacade _coordFacade;    
+    @EJB
+    private PermisosFacade _permFacade;   
+    private String clave;
+    private String usuario;
+    private Docentes _obj;
+    private UploadedFile foto;
+    private int _codCoord;
     private String _rutaTxt = "/com/java/utilities/txtDocentes"; 
     private String _titulo="Operacion";
     private String _mensajeCorrecto = "Se ha realizado correctamente";
@@ -46,7 +52,7 @@ public class DocentesController implements Serializable
     
     private String usuDocente;
     private LoginController _loginController;
-    private UploadedFile file;
+ 
     
     public DocentesController() { }
     
@@ -66,7 +72,7 @@ public class DocentesController implements Serializable
     
     public void agregar()
     {
-        System.out.println("LO Q ES EL FILE "+file);
+       
         String titulo,detalle;
         Coordinacion c = _coordFacade.buscar(_codCoord);
         _obj.setCodcoordinacion(c);
@@ -142,14 +148,27 @@ public class DocentesController implements Serializable
         RequestContext.getCurrentInstance().openDialog("/docentes/actualizar", options, null);
     }
     
+    public String abrirPerfil() {
+        
+        _obj = _ejbFacade.buscar(109877);
+        System.out.println("CODIGO "+_obj.getFoto());
+        Permisos p =_permFacade.buscarCampo("usuario", _obj.getCedula()+"");
+        clave=p.getClave();
+        usuario=p.getUsuario();
+        return "/docentes/perfil";
+    }
+    
     public void actualizar()
     {
-        System.out.println("ENTRO A LA FUNCION ACTUALIZAR");
-        String titulo,detalle;
         
-        Coordinacion c = _coordFacade.buscar(_codCoord);
-        _obj.setCodcoordinacion(c);
-        System.out.println("VA A AGREGAR DOCENTE "+_obj.getCodcoordinacion());
+        System.out.println("ACTUALIZARRRRRRRRR ");
+        System.out.println("ENTRO A LA FUNCION ACTUALIZAR "+foto.getFileName());
+        String titulo,detalle;
+        _obj.setFoto(foto.getFileName());
+        
+//        Coordinacion c = _coordFacade.buscar(_codCoord);
+//        _obj.setCodcoordinacion(c);
+//        System.out.println("VA A AGREGAR DOCENTE "+_obj.getCodcoordinacion());
         
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
@@ -197,14 +216,31 @@ public class DocentesController implements Serializable
         this._codCoord = _codCoord;
     }
 
-    public UploadedFile getFile() {
-        return file;
+  
+
+    public UploadedFile getFoto() {
+        return foto;
     }
 
-    public void setFile(UploadedFile file) {
-        this.file = file;
+    public void setFoto(UploadedFile foto) {
+        this.foto = foto;
     }
-    
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
     
     
     @FacesConverter(forClass = Docentes.class, value = "docentesConverter")

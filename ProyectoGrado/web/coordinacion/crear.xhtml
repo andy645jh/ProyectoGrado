@@ -15,10 +15,8 @@
                         <p:outputLabel value="#{CoordinacionTxt.Nombre}  " for="nombre" />
                         <p:inputText id="nombre" value="#{coordinacionController.campo.nombre}"/> 
 
-                        <p:outputLabel value="#{CoordinacionTxt.facultad}  " for="coord" />
-                        <p:selectOneMenu id="coord" value="#{coordinacionController.codFacultad}"> 
-                            <f:selectItems value="#{facultadesControllers.combo('Seleccione')}" />
-                        </p:selectOneMenu>
+                        <p:outputLabel value="#{CoordinacionTxt.facultad}  " for="facultad" />
+                        <p:inputText id="facultad" value="#{coordinacionController.campo.codfacultad}"/> 
                         
                         <f:facet name="footer">
                             <p:commandButton id="btngrabar" value="#{CoordinacionTxt.crear}" ajax="true" action="#{coordinacionController.agregar()}"/>

@@ -74,13 +74,15 @@ public class ActividadesController implements Serializable
     {
         String titulo,detalle;
         TipoModalidades modalidad= _modalidadFacade.buscar(_codigo);
+        Docentes d=docentesFacade.buscar(109877);
         _obj.setCodtipo(modalidad);
         
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
-            _obj.setCoddocente(docentesFacade.getCurrentDocente());
+            
+            _obj.setCoddocente(d);
             _ejbFacade.crear(_obj);
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);
@@ -103,7 +105,9 @@ public class ActividadesController implements Serializable
     
     public SelectItem[] comboFiltrado(String texto)
     {
-        Docentes doc=docentesFacade.getCurrentDocente();
+//        Docentes doc=docentesFacade.getCurrentDocente();
+        Docentes doc=docentesFacade.buscar(109877);
+        
         int ced = doc.getCedula();
         
         List<Actividades> lista =_ejbFacade.buscarCampo("_coddocente", ""+ced); 
@@ -138,7 +142,8 @@ public class ActividadesController implements Serializable
     public List<Actividades> getListado()
     {
         Docentes doc = docentesFacade.getCurrentDocente();
-        cedula= doc.getCedula()+"";
+        //cedula= doc.getCedula()+"";
+        cedula= "109877";
         return _ejbFacade.buscarCampo("_coddocente",cedula);
     }
     
@@ -229,13 +234,15 @@ public class ActividadesController implements Serializable
     {        
         String titulo,detalle;
         TipoModalidades modalidad= _modalidadFacade.buscar(_codigo);
+        Docentes d=docentesFacade.buscar(109877);
         _obj.setCodtipo(modalidad);
         
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
                        
-            _obj.setCoddocente(docentesFacade.getCurrentDocente());
+//            _obj.setCoddocente(docentesFacade.getCurrentDocente());
+            _obj.setCoddocente(d);
             _ejbFacade.actualizar(_obj);
             
             message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);

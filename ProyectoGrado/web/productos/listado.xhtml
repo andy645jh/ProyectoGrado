@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:composition template="/plantilla.xhtml">
+        
+        <ui:define name="menu">
+            <h:form >  
+                <p:menu style="width: 5em;">                    
+                    <p:menuitem  value="Act" outcome="/actividades/listado.xhtml" icon="ui-icon-disk" />
+                    <p:menuitem  value="Prod" action="#"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Horario" outcome="/horario/horario.xhtml"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Perfil" outcome="#{docentesController.abrirPerfil()}"  icon="ui-icon-disk" />
+                </p:menu>
+            </h:form>
+        </ui:define>
+        
+        <ui:define name="content">           
+            <h:form id="formProductos">
+                <p:panel>                    
+                    <p:growl id="mensajito" sticky="true" showDetail="true"/>           
+                    <br/>
+                        <p:commandButton value="#{productosTxt.crear} #{productosTxt.productos}" actionListener="#{productosController.abrirCrear()}" icon="ui-icon-disk" >
+                            <p:ajax event="dialogReturn" update=":formProductos:listado :formProductos:mensajito" />                     
+                        </p:commandButton>                   
+                        <p:separator/>
+                        <br/>
+                        <p:dataTable id="listado" value="#{productosController.listado}" var="registro">
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{productosTxt.actividad}</f:facet>
+                                #{registro.codactividad}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{productosTxt.descripcion}</f:facet>
+                                #{registro.descripcion}
+                            </p:column> 
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{productosTxt.fechaComp}</f:facet>
+                                <h:outputText value="#{registro.fechacompromiso}" >
+                                    <f:convertDateTime dateStyle="medium"/>
+                                </h:outputText>   
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{productosTxt.fechaEntr}</f:facet>
+                                <h:outputText value="#{registro.fechaentrega}" >
+                                    <f:convertDateTime dateStyle="medium"/>
+                                </h:outputText>   
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{productosTxt.comentarios}</f:facet>
+                                #{registro.comentarios}
+                            </p:column>  
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{productosTxt.opciones}</f:facet>
+                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{productosController.borrar(registro)}"/>                                    
+                                <p:commandButton icon="ui-icon-pencil" action="#{productosController.abrirActualiar(registro)}">
+                                    <p:ajax event="dialogReturn" update=":formProductos:listado :formProductos:mensajito" oncomplete="#{productosController.mostrarMensaje()}"/>                            
+                                </p:commandButton> 
+                            </p:column> 
+                        </p:dataTable>           
+                </p:panel>  
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+

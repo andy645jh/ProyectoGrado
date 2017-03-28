@@ -28,14 +28,6 @@
     <security-constraint>
         <display-name>docentefaces</display-name>
         <web-resource-collection>
-            <web-resource-name>folderdoc</web-resource-name>
-            <description/>
-            <url-pattern>/faces/fechas_seguimiento/*</url-pattern>
-            <url-pattern>/faces/index_docentes.xhtml</url-pattern>
-            <url-pattern>/faces/actividades/*</url-pattern>
-            <url-pattern>/faces/productos/*</url-pattern>
-        </web-resource-collection>
-        <web-resource-collection>
             <web-resource-name>folderclase</web-resource-name>
             <description/>
             <url-pattern>/faces/clases/*</url-pattern>
@@ -56,11 +48,6 @@
             <web-resource-name>convenciones</web-resource-name>
             <description/>
             <url-pattern>/faces/convenciones/*</url-pattern>
-        </web-resource-collection>
-        <web-resource-collection>
-            <web-resource-name>docentes</web-resource-name>
-            <description/>
-            <url-pattern>/faces/docentes/*</url-pattern>
         </web-resource-collection>
         <web-resource-collection>
             <web-resource-name>horas</web-resource-name>

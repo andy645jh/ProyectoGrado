@@ -58,11 +58,18 @@
   text-decoration : underline;
 }
 
-.panel{
+.ui-panel{
     position: relative;
     height: 560px;
-    background-color: #F0EBE6;
+    background-color: white;
     padding: 5px;
-    
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    border: 1px solid #dfd9c3;
 }
 
+.ui-widget-content {    
+
+    color: #d7dde4;
+}
