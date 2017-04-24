@@ -36,22 +36,22 @@ public class Docentes implements Serializable
     @Column(name = "codigo")
     private String _codigo;  
        
-    @NotNull
+    
     @Column(name = "direccion")
     @Size(min = 1, max = 50)
     private String _direccion;
     
-    @NotNull
+    
     @Column(name = "telefono")
     @Size(min = 1, max = 50)
     private String _telefono;
     
-    @NotNull
+    
     @Column(name = "correo")
     @Size(min = 1, max = 50)
     private String _correo;
     
-    @NotNull
+    
     @Size(min = 1, max = 200)
     @Column(name = "foto") 
     private String _foto;
@@ -60,9 +60,13 @@ public class Docentes implements Serializable
     @ManyToOne(optional = false)
     private Coordinacion _codcoordinacion;   
 
-    @NotNull
+    
     @Column(name = "formacion")
     private String _formacion; 
+    
+    @NotNull
+    @Column(name = "tipo_contrato")
+    private int _tipocontrato; 
     
     @Column(name = "fechanac")
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -183,6 +187,14 @@ public class Docentes implements Serializable
 
     public void setFechanac(Date _fechanac) {
         this._fechanac = _fechanac;
+    }
+
+    public int getTipocontrato() {
+        return _tipocontrato;
+    }
+
+    public void setTipocontrato(int _tipocontrato) {
+        this._tipocontrato = _tipocontrato;
     }
     
     

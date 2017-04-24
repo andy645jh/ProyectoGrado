@@ -37,11 +37,11 @@ public class Horario implements Serializable {
     private String _nombre;
     
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "horainicio")    
+    @Column(name = "hora_inicio")    
     private Date _horainicio;   
     
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "horafinal")    
+    @Column(name = "hora_fin")    
     private Date _horafinal;  
         
     @JoinColumn(name = "coddocente", referencedColumnName = "cedula")

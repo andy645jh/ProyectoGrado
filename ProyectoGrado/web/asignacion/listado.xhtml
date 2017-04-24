@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:composition template="/plantilla.xhtml">
+
+        <ui:define name="menu">
+            <h:form >  
+                <p:menu style="width: 5em;">                    
+                    <p:menuitem  value="Act" action="#"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Prod" outcome="/productos/listado.xhtml"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Horario" outcome="/horario/horario.xhtml"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Perfil" outcome="#{docentesController.abrirPerfil()}"  icon="ui-icon-disk" />
+                </p:menu>
+            </h:form>
+        </ui:define>
+
+        <ui:define name="content">
+
+            <h:form>
+                <p:outputLabel value="Investigación" for="inv" />
+                <p:inputText id="inv" value="#{convencionesController.campo.nombre}"/>
+
+                <p:outputLabel value="Extensión" for="ext" />
+                <p:inputText id="ext" value="#{convencionesController.campo.nombre}"/> 
+
+                <p:outputLabel value="Comites" for="com" />
+                <p:inputText id="com" value="#{convencionesController.campo.nombre}"/> 
+
+                <p:outputLabel value="ODA" for="oda" />
+                <p:inputText id="oda" value="#{convencionesController.campo.nombre}"/> 
+
+                <p:outputLabel value="Acreditación" for="acred" />
+                <p:inputText id="acred" value="#{convencionesController.campo.nombre}"/> 
+
+                <p:outputLabel value="Virtualidad" for="virt" />
+                <p:inputText id="virt" value="#{convencionesController.campo.nombre}"/> 
+
+                <p:outputLabel value="Docentes" for="doc" />
+                <p:selectOneMenu id="doc" value="#{docentesController.codCoord}"> 
+                    <f:selectItems value="#{docentesController.combo('')}" />
+                </p:selectOneMenu>
+
+
+                <p:commandButton value="Calcular" actionListener="#{docentesController.abrirCrear()}" icon="ui-icon-disk" >
+                    <p:ajax event="dialogReturn" update=":formActividades:listar :formActividades:mensajito" />                          
+                </p:commandButton>
+
+            </h:form>
+
+
+            <h:form id="formActividades">
+                <p:panel>
+
+                    <p:growl id="mensajito" sticky="true" showDetail="true"/>           
+                    <br/>           
+                    <p:separator/>
+                    <br/>
+                    <p:dataTable id="listar" value="#{tiempAsgController.listado}" var="registro" editable="true" editMode="cell" widgetVar="cellCars">
+
+                        <p:ajax event="cellEdit" listener="#{tiempAsgController.onCellEdit}" update=":formActividades:mensajito" />
+
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">Docente</f:facet>
+                                #{registro.coddocente.toString()} 
+                            <f:facet name="footer">Total horas por actividad</f:facet>
+                        </p:column>
+
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">Tipo Contrato</f:facet>
+                                #{registro.coddocente.tipocontrato}
+                        </p:column> 
+
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header" >HC</f:facet>
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{registro.codporcentaje}" /></f:facet>
+                                <f:facet name="input"><p:inputText id="modelInput" value="#{tiempAsgController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                            </p:cellEditor>
+                            <f:facet name="footer">Total horas por actividad</f:facet>
+                        </p:column>
+
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">PC</f:facet>
+                                #{registro.codporcentaje}
+                            <f:facet name="footer">Total horas por actividad</f:facet>
+                        </p:column>
+
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">HC</f:facet>
+                                #{registro.codporcentaje}
+                            <f:facet name="footer">Total horas por actividad</f:facet>
+                        </p:column>
+
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header" >CD</f:facet>
+                                #{registro.codporcentaje}
+                            <f:facet name="footer">Total horas por actividad</f:facet>
+                        </p:column>
+
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">HI</f:facet>
+                                #{registro.codporcentaje}
+                            <f:facet name="footer">Total horas por actividad</f:facet>
+                        </p:column>
+
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">PS</f:facet>
+                                #{registro.codporcentaje}
+                            <f:facet name="footer">Total horas por actividad</f:facet>
+                        </p:column>
+
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">ODA</f:facet>
+                                #{registro.codporcentaje}
+                            <f:facet name="footer">Total horas por actividad</f:facet>
+                        </p:column>
+
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header" >P</f:facet>
+                                #{registro.codporcentaje}
+                            <f:facet name="footer">Total horas por actividad</f:facet>
+                        </p:column>
+
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">V</f:facet>
+                                #{registro.codporcentaje}
+                            <f:facet name="footer">Total horas por actividad</f:facet>
+                        </p:column>
+
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">C</f:facet>
+                                #{registro.codporcentaje}
+                            <f:facet name="footer">Total horas por actividad</f:facet>
+                        </p:column>
+
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">Total Horas</f:facet>
+                                #{registro.horas}
+                            <f:facet name="footer">Total horas por actividad</f:facet>
+                        </p:column>
+
+                    </p:dataTable>
+                    <p:contextMenu for="listar" widgetVar="cMenu">   
+                        <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();
+                                return false;"/>  
+                        <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>  
+                    </p:contextMenu> 
+
+                </p:panel>  
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+

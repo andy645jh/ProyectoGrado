@@ -62,7 +62,7 @@ public class HorarioController implements Serializable{
     @PostConstruct
     public void init() {
         eventModel = new DefaultScheduleModel();        
-                
+                System.out.println("TAMAÑO "+getListado().size());
         for(Horario obj:getListado())
         {            
             eventModel.addEvent(new DefaultScheduleEvent(obj.getNombre(), obj.getHorainicio(), obj.getHorafinal(),obj));
@@ -92,12 +92,17 @@ public class HorarioController implements Serializable{
         String titulo,detalle;
         Convenciones convencion = _convencionesFacade.buscar(_codigo);
         _objHorario.setCodconvencion(convencion);
+        _objHorario.setDia("lunes");
+        System.out.println("convencion "+_objHorario.getCodconvencion());
         
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
-            _objHorario.setCoddocente(docentesFacade.getCurrentDocente());
+//            _objHorario.setCoddocente(docentesFacade.getCurrentDocente());
+            _objHorario.setCoddocente(docentesFacade.buscar(109877));
+            
+            System.out.println("docente "+_objHorario.getCoddocente().getNombres());
             
             if(evento.getId()==null)
             {               
@@ -128,7 +133,8 @@ public class HorarioController implements Serializable{
     public List<Horario> getListado()
     {
         Docentes doc = docentesFacade.getCurrentDocente();
-        String cedula= doc.getCedula()+"";
+//        String cedula= doc.getCedula()+"";
+        String cedula= "109877";
        
         return horarioFacade.buscarCampo("_coddocente",cedula);
     }

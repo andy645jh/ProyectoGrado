@@ -1,16 +1,16 @@
-
 package com.proyecto.controllers;
 
-import com.proyecto.facades.ActividadObligatoriaFacade;
-import com.proyecto.facades.DocentesFacade;
-import com.proyecto.facades.PorcentajeFacade;
-import com.proyecto.facades.TiempoAsignadoFacade;
-import com.proyecto.persistences.ActividadObligatoria;
-import com.proyecto.persistences.Docentes;
-import com.proyecto.persistences.Porcentaje;
-import com.proyecto.persistences.TiempoAsignado;
+import com.proyecto.facades.ActividadesFacade;
+import com.proyecto.facades.CoordinacionFacade;
+import com.proyecto.facades.FacultadFacade;
+import com.proyecto.facades.SemanaFacade;
+import com.proyecto.persistences.Actividades;
+import com.proyecto.persistences.Convenciones;
+import com.proyecto.persistences.Coordinacion;
+import com.proyecto.persistences.Facultad;
+import com.proyecto.persistences.Semana;
+import com.proyecto.utilities.Formulario;
 import com.proyecto.utilities.Mensajes;
-import javax.inject.Named;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -22,39 +22,47 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
+import javax.faces.model.SelectItem;
 import org.primefaces.context.RequestContext;
-import org.primefaces.event.CellEditEvent;
 
-/**
- *
- * @author Usuario
- */
+
 @ManagedBean
 @SessionScoped
-
-public class TiempAsgController implements Serializable {
-
-    private TiempoAsignado _obj;
-    @EJB
-    private TiempoAsignadoFacade _ejbFacade;
-    @EJB
-    private DocentesFacade _facadeDoc;
-    @EJB
-    private PorcentajeFacade _facadePorcentaje;
-    @EJB
-    private ActividadObligatoriaFacade _facadeActDoc;
-    private FacesMessage message;
-    private int _codPorcentaje;
-    private int codDocente;
-    private int codActDocencia;
+public class SemanaController implements Serializable{
     
-    public TiempAsgController() {
+
+    @EJB
+    private SemanaFacade _ejbFacade;    
+    private Semana _obj;    
+    private FacesMessage message;
+    
+    public SemanaController() {
     }
     
-    public List<TiempoAsignado> getListado()
+    public Semana getCampo()
+    {
+        if(_obj==null)  _obj= new Semana();
+        return _obj;        
+    }
+    
+    public void resetear()
+    {
+        _obj = null;
+    }
+    
+    public List<Semana> getListado()
     {
         return _ejbFacade.listado();
+    }
+    
+    public void mostrarMensaje()
+    {        
+        if(message!=null) FacesContext.getCurrentInstance().addMessage("mensajes", message);
+        message=null;
     }
     
     public void abrirCrear() {
@@ -62,22 +70,13 @@ public class TiempAsgController implements Serializable {
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);
-        RequestContext.getCurrentInstance().openDialog("/tiempodoc/crear", options, null);
-//        return "/tiempodoc/crear";
+        RequestContext.getCurrentInstance().openDialog("/semana/crear", options, null);
     }
     
     public void agregar()
     {
-        
-        Docentes d = _facadeDoc.buscar(codDocente);
-        Porcentaje p = _facadePorcentaje.buscar(_codPorcentaje);
-        ActividadObligatoria a = _facadeActDoc.buscar(codActDocencia);
-        
-        _obj.setCoddocente(d);
-        _obj.setCodporcentaje(p);
-        _obj.setCodobliatoria(a);
-        
         String titulo,detalle;
+        
         
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
@@ -95,12 +94,12 @@ public class TiempAsgController implements Serializable {
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);
             
-            Logger.getLogger(TiempoAsignado.class.getName()).log(Level.SEVERE,null,e);
+            Logger.getLogger(Coordinacion.class.getName()).log(Level.SEVERE,null,e);
             
         }
     }
     
-     public void borrar(TiempoAsignado faceObj)
+    public void borrar(Semana faceObj)
     {
         String titulo,detalle;
         
@@ -115,30 +114,25 @@ public class TiempAsgController implements Serializable {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarError");
             Mensajes.error(titulo, detalle);
-            Logger.getLogger(TiempoAsignado.class.getName()).log(Level.SEVERE,null,e);
+            Logger.getLogger(Coordinacion.class.getName()).log(Level.SEVERE,null,e);
         }
     }
-     
-     public void abrirActualizar(TiempoAsignado objtemp) {
+    
+    public void abrirActualizar(Semana objtemp) {
+        
         
         _obj = objtemp;
         Map<String,Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);
-        RequestContext.getCurrentInstance().openDialog("/tiempodoc/actualizar", options, null);
+        RequestContext.getCurrentInstance().openDialog("/semana/actualizar", options, null);
     }
     
     public void actualizar()
     {
         String titulo,detalle;
-        Docentes d = _facadeDoc.buscar(codDocente);
-        Porcentaje p = _facadePorcentaje.buscar(_codPorcentaje);
-        ActividadObligatoria a = _facadeActDoc.buscar(codActDocencia);
-        
-        _obj.setCoddocente(d);
-        _obj.setCodporcentaje(p);
-        _obj.setCodobliatoria(a);
+        System.out.println("VA A actualizar "+_obj.toString());
         
         try {
             
@@ -153,60 +147,13 @@ public class TiempAsgController implements Serializable {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarError");
             message = new FacesMessage(FacesMessage.SEVERITY_ERROR,titulo,detalle);
-            Logger.getLogger(TiempoAsignado.class.getName()).log(Level.SEVERE,null,e);
+            Logger.getLogger(Coordinacion.class.getName()).log(Level.SEVERE,null,e);
            
         }
         
         RequestContext context = RequestContext.getCurrentInstance();
         context.closeDialog(null);
     } 
-    
-    public void onCellEdit(CellEditEvent event) {
-        Object oldValue = event.getOldValue();
-        Object newValue = event.getNewValue();
-         
-        if(newValue != null && !newValue.equals(oldValue)) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-        }
-    }
 
-    public TiempoAsignado getObj() {
-        
-        if(_obj==null){
-            _obj= new TiempoAsignado();
-        }
-        return _obj;
-    }
-
-    public void setObj(TiempoAsignado _obj) {
-        this._obj = _obj;
-    }
-    
-    public int getCodDocente() {
-        return codDocente;
-    }
-
-    public void setCodDocente(int codDocente) {
-        this.codDocente = codDocente;
-    }
-
-    public int getCodActDocencia() {
-        return codActDocencia;
-    }
-
-    public void setCodActDocencia(int codActDocencia) {
-        this.codActDocencia = codActDocencia;
-    }
-
-    public int getCodPorcentaje() {
-        return _codPorcentaje;
-    }
-
-    public void setCodPorcentaje(int _codigito) {
-        this._codPorcentaje = _codigito;
-    }
-    
-    
     
 }

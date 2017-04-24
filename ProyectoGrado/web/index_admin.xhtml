@@ -52,61 +52,7 @@
                         </p:commandButton>                   
                         <p:separator/>
                         <br/>
-                        <p:dataTable id="listarDoc" value="#{docentesController.listado}" var="registro">
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{docentesTxt.cedula}</f:facet>
-                                #{registro.cedula}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{docentesTxt.nombre}</f:facet>
-                                #{registro.nombres}
-                            </p:column> 
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{docentesTxt.apellido}</f:facet>
-                                #{registro.apellidos}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{docentesTxt.codigo}</f:facet>
-                                #{registro.codigo}
-                            </p:column>
-
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{docentesTxt.unidadAcadem}</f:facet>
-                                #{registro.codcoordinacion}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{docentesTxt.formacion}</f:facet>
-                                #{registro.formacion}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{docentesTxt.direccion}</f:facet>
-                                #{registro.direccion}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{docentesTxt.telefono}</f:facet>
-                                #{registro.telefono}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{docentesTxt.correo}</f:facet>
-                                #{registro.correo}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{docentesTxt.opciones}</f:facet>
-                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{docentesController.borrar(registro)}"></p:commandButton>
-                                <p:commandButton  icon="ui-icon-pencil" action="#{docentesController.abrirActualizar(registro)}">
-                                    <p:ajax event="dialogReturn" update=":form:mensajes :form:listarDoc" oncomplete="#{docentesController.mostrarMensaje()}"/>                            
-                                </p:commandButton> 
-                            </p:column> 
-                        </p:dataTable>
+                        
                     </p:fieldset> 
                     
                     <p:fieldset legend="#{convencionesTxt.convenciones}" style="margin-bottom:20px" collapsed="true" toggleable="true" toggleSpeed="500">                        

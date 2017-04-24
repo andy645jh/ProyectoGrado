@@ -6,15 +6,15 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/plantilla.xhtml">
-        <ui:define name="content">            
+        <ui:define name="content">
             <h:form>
                 <p:panel>
                     <p:breadCrumb>
                         <p:menuitem url="#"></p:menuitem>
-                        <p:menuitem value="#{GeneralTxt.bienvenidos} #{loginController.usuario}" url="/faces/index_admin.xhtml"></p:menuitem>
-                        <p:menuitem value="#{docentesTxt.actualizDoc}" url="#"></p:menuitem>
+                        <p:menuitem value="Bienvenido #{loginController.usuario}" url="/faces/index_admin.xhtml"></p:menuitem>
+                        <p:menuitem value="Creacion de Docentes" url="#"></p:menuitem>
                     </p:breadCrumb>
-                
+
                     <p:growl id="mensajes" sticky="true" showDetail="true"/>                
                     <br/>
                     <p:panelGrid columns="2">                    
@@ -27,38 +27,21 @@
                         <p:outputLabel value="#{docentesTxt.apellido}  " for="apellidos" />
                         <p:inputText id="apellidos" required="true" value="#{docentesController.campo.apellidos}"/> 
 
-                        <p:outputLabel value="#{docentesTxt.codigo}  " for="codigo" />
-                        <p:inputText id="codigo"  value="#{docentesController.campo.codigo}"/> 
+                        <p:outputLabel value="Tipo Contrato" for="contrato" />
+                        <p:inputText id="contrato" required="true" value="#{docentesController.campo.tipocontrato}"/> 
 
-                        <p:outputLabel value="#{docentesTxt.facultad}  " for="facultad" />
-                        <p:selectOneMenu id="facultad" required="true" requiredMessage="No ha seleccionado"  value="#{docentesController.campo.facultad}"> 
-                            <f:selectItem itemValue="1" itemLabel="Ciencias Naturales e Ingenierias"/>
-                            <f:selectItem itemValue="2" itemLabel="Ciencias Socioeconomicas y Empresariales" />
+
+                        <p:outputLabel value="Coordinacion" for="coordinacion" />
+                        <p:selectOneMenu id="coordinacion" value="#{docentesController.codCoord}"> 
+                            <f:selectItems value="#{coordinacionController.combo('')}" />
                         </p:selectOneMenu>
 
-                        <p:outputLabel value="#{docentesTxt.unidadAcadem}  " for="unidad" />
-                        <p:inputText id="unidad" required="true" value="#{docentesController.campo.unidad}"/> 
-
-                        <p:outputLabel value="#{docentesTxt.semestre}  " for="semestre" />
-                        <p:inputText id="semestre" required="true" value="#{docentesController.campo.semestre}"/> 
-
-                        <p:outputLabel value="#{docentesTxt.formacion}  " for="formacion" />
-                        <p:inputTextarea id="formacion" required="true" value="#{docentesController.campo.formacion}"/>                     
-
-                        <p:outputLabel value="#{docentesTxt.direccion}  " for="direccion" />
-                        <p:inputText id="direccion" required="true" value="#{docentesController.campo.direccion}"/> 
-
-                        <p:outputLabel value="#{docentesTxt.telefono}  " for="telefono" />
-                        <p:inputText id="telefono" required="true" value="#{docentesController.campo.telefono}"/> 
-
-                        <p:outputLabel value="#{docentesTxt.correo}  " for="correo" />
-                        <p:inputText id="correo" required="true" value="#{docentesController.campo.correo}"/> 
 
                         <f:facet name="footer">
-                            <p:commandButton id="btngrabar" value="#{docentesTxt.actualizar}" ajax="true" action="#{docentesController.actualizar()}"/>
+                            <p:commandButton id="btngrabar" value="#{docentesTxt.crear}" ajax="true" action="#{docentesController.actualizar()}"/>
                         </f:facet>
                     </p:panelGrid>
-                </p:panel>  
+                </p:panel>
             </h:form>
         </ui:define>
     </ui:composition>
