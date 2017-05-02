@@ -11,10 +11,9 @@
         <ui:define name="menu">
             <h:form >  
                 <p:menu style="width: 5em;">                    
-                    <p:menuitem  value="Act" action="#"  icon="ui-icon-disk" />
-                    <p:menuitem  value="Prod" outcome="/productos/listado.xhtml"  icon="ui-icon-disk" />
-                    <p:menuitem  value="Horario" outcome="/horario/horario.xhtml"  icon="ui-icon-disk" />
-                    <p:menuitem  value="Perfil" outcome="#{docentesController.abrirPerfil()}"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Docentes" outcome="/docentes/listado.xhtml"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Semanas" action="#"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Asigancion" outcome="/asignacion/listado.xhtml"  icon="ui-icon-disk" />
                 </p:menu>
             </h:form>
         </ui:define>
@@ -26,7 +25,7 @@
                     <p:growl id="mensajito" sticky="true" showDetail="true"/>           
                     <br/>
           
-                        <p:commandButton value="#{actividadesTxt.crear} #{actividadesTxt.actividades}" actionListener="#{semanaController.abrirCrear()}" icon="ui-icon-disk" >
+                        <p:commandButton value="#{actividadesTxt.crear} Semanas" actionListener="#{semanaController.abrirCrear()}" icon="ui-icon-disk" >
                             <p:ajax event="dialogReturn" update=":formActividades:listar :formActividades:mensajito" />                          
                         </p:commandButton>                   
                         <p:separator/>

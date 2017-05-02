@@ -69,7 +69,7 @@ public class ActividadMisional implements Serializable {
 
     @Override
     public String toString() {
-        return  _nombre;
+        return  _codactividadmisional+"";
     }
     
     

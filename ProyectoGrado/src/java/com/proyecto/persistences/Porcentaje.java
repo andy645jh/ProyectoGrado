@@ -24,8 +24,6 @@ public class Porcentaje implements Serializable {
     private int _codporcentaje;
     
     @Column(name = "porcentaje")
-    @Size(min = 1, max = 300)
-    @NotNull
     private Double _porcentaje;
     
     @JoinColumn(name = "codcoordinacion", referencedColumnName = "codcoordinacion")

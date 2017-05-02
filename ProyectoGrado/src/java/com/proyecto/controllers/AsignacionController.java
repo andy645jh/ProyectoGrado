@@ -1,10 +1,12 @@
 package com.proyecto.controllers;
 
 import com.proyecto.facades.ActividadObligatoriaFacade;
+import com.proyecto.facades.AsignacionFacade;
 import com.proyecto.facades.DocentesFacade;
 import com.proyecto.facades.PorcentajeFacade;
 import com.proyecto.facades.TiempoAsignadoFacade;
 import com.proyecto.persistences.ActividadObligatoria;
+import com.proyecto.persistences.Asignacion;
 import com.proyecto.persistences.Docentes;
 import com.proyecto.persistences.Porcentaje;
 import com.proyecto.persistences.TiempoAsignado;
@@ -32,27 +34,24 @@ import org.primefaces.event.CellEditEvent;
 @ManagedBean
 @SessionScoped
 
-public class TiempAsgController implements Serializable {
+public class AsignacionController implements Serializable {
 
-    private TiempoAsignado _obj;
+    private Asignacion _obj;
     @EJB
-    private TiempoAsignadoFacade _ejbFacade;
+    private AsignacionFacade _ejbFacade;
     @EJB
     private DocentesFacade _facadeDoc;
-    @EJB
-    private PorcentajeFacade _facadePorcentaje;
-    @EJB
-    private ActividadObligatoriaFacade _facadeActDoc;
+   
     private FacesMessage message;
     private int _codPorcentaje;
     private int codDocente;
     private int codActDocencia;
 
-    public TiempAsgController() {
+    public AsignacionController() {
     }
 
-    public List<TiempoAsignado> getListado() {
-        return _ejbFacade.listadoAgrupado();
+    public List<Asignacion> getListado() {
+        return _ejbFacade.listado();
     }
 
     public void abrirCrear() {
@@ -103,7 +102,7 @@ public class TiempAsgController implements Serializable {
         }
     }
 
-    public void borrar(TiempoAsignado faceObj) {
+    public void borrar(Asignacion faceObj) {
         String titulo, detalle;
 
         try {
@@ -120,7 +119,7 @@ public class TiempAsgController implements Serializable {
         }
     }
 
-    public void abrirActualizar(TiempoAsignado objtemp) {
+    public void abrirActualizar(Asignacion objtemp) {
 
         _obj = objtemp;
         Map<String, Object> options = new HashMap<String, Object>();
@@ -133,12 +132,8 @@ public class TiempAsgController implements Serializable {
     public void actualizar() {
         String titulo, detalle;
         Docentes d = _facadeDoc.buscar(codDocente);
-        Porcentaje p = _facadePorcentaje.buscar(_codPorcentaje);
-        ActividadObligatoria a = _facadeActDoc.buscar(codActDocencia);
 
         _obj.setCoddocente(d);
-        _obj.setCodporcentaje(p);
-        _obj.setCodobliatoria(a);
 
         try {
 
@@ -168,18 +163,21 @@ public class TiempAsgController implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
+    
+    public void controlHoras(){
+        
+    }
+    
 
-    public TiempoAsignado getObj() {
-
-        if (_obj == null) {
-            _obj = new TiempoAsignado();
-        }
+    public Asignacion getObj() {
         return _obj;
     }
 
-    public void setObj(TiempoAsignado _obj) {
+    public void setObj(Asignacion _obj) {
         this._obj = _obj;
     }
+
+    
 
     public int getCodDocente() {
         return codDocente;
