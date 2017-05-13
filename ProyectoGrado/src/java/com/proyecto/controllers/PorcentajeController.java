@@ -177,9 +177,11 @@ public class PorcentajeController implements Serializable {
                     if(d.getTipocontrato()==1){
                         t.setHorasclase(24.0);
                         t.setPreparacion(4.0);
+                        t.setCapacitacion(4.0);
                     }else if(d.getTipocontrato()==2){
                         t.setHorasclase(12.0);
                         t.setPreparacion(2.0);
+                        t.setCapacitacion(0.0);
                     }
                     
                     t.setTotalinv(_porcentaje_investigacion*120);
