@@ -101,7 +101,7 @@
                             <f:facet name="header">PC</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.preparacion}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="preparacion" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="input"><p:inputText id="preparacion" value="#{registro.preparacion}" style="width:96%"/></f:facet>
                             </p:cellEditor>
                           
                         </p:column>
@@ -110,7 +110,7 @@
                             <f:facet name="header">HC</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.capacitacion}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="capacitacion" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="input"><p:inputText id="capacitacion" value="#{registro.capacitacion}" style="width:96%"/></f:facet>
                             </p:cellEditor>
                             
                         </p:column>

@@ -63,7 +63,7 @@ public class AsignacionController implements Serializable {
     }
 
     public List<Asignacion> getListadoAsign() {
-          /*prueba="prueba";
+          /*prueba="prueba";*/
         totalHC=0;
         totalPC=0;
         totalCap=0;
@@ -86,7 +86,7 @@ public class AsignacionController implements Serializable {
             if(asg.getVirtualidad()!=null){totalvirt+=asg.getVirtualidad();}
             if(asg.getComites()!=null){totalCom+=asg.getComites();}
             
-        }*/
+        }
         if(_listadoAsign==null) _listadoAsign = _ejbFacade.listado();
         return _listadoAsign;
     }
