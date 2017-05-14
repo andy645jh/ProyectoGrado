@@ -34,44 +34,33 @@ public class Asignacion implements Serializable {
     
     @Column(name = "horasclase")
     private Double _horasclase;
-    @Column(name = "totalhc")
-    private Double _totalhc;
+    
     @Column(name = "preparacion")
     private Double _preparacion;
-    @Column(name = "totalprep")
-    private Double _totalprep;
+   
     @Column(name = "capacitacion")
     private Double _capacitacion;
-    @Column(name = "totalcapa")
-    private Double _totalcapa;
+    
     @Column(name = "colectivo")
     private Double _colectivo;
-    @Column(name = "totalcolectivo")
-    private Double _totalcolectivo;
+   
     @Column(name = "investigacion")
     private Double _investigacion;
-    @Column(name = "totalinv")
-    private Double _totalinv;
+  
     @Column(name = "social")
     private Double _social;
-    @Column(name = "totalsocial")
-    private Double _totalsocial;
+    
     @Column(name = "oda")
     private Double _oda;
-    @Column(name = "totaloda")
-    private Double _totaloda;
+  
     @Column(name = "planeacion")
     private Double _planeacion;
-    @Column(name = "totalplan")
-    private Double _totalplan;
+   
     @Column(name = "virtualidad")
     private Double _virtualidad;
-    @Column(name = "totalvirt")
-    private Double _totalvirt;
+    
     @Column(name = "comites")
     private Double _comites;
-    @Column(name = "totalcom")
-    private Double _totalcom;
 
     public Asignacion() {
     }
@@ -92,13 +81,7 @@ public class Asignacion implements Serializable {
         this._horasclase = _horasclase;
     }
 
-    public Double getTotalhc() {
-        return _totalhc;
-    }
-
-    public void setTotalhc(Double _totalhc) {
-        this._totalhc = _totalhc;
-    }
+   
 
     public Double getPreparacion() {
         return _preparacion;
@@ -108,28 +91,13 @@ public class Asignacion implements Serializable {
         this._preparacion = _preparacion;
     }
 
-    public Double getTotalprep() {
-        return _totalprep;
-    }
-
-    public void setTotalprep(Double _totalprep) {
-        this._totalprep = _totalprep;
-    }
-
+   
     public Double getCapacitacion() {
         return _capacitacion;
     }
 
     public void setCapacitacion(Double _capacitacion) {
         this._capacitacion = _capacitacion;
-    }
-
-    public Double getTotalcapa() {
-        return _totalcapa;
-    }
-
-    public void setTotalcapa(Double _totalcapa) {
-        this._totalcapa = _totalcapa;
     }
 
     public Double getColectivo() {
@@ -140,14 +108,7 @@ public class Asignacion implements Serializable {
         this._colectivo = _colectivo;
     }
 
-    public Double getTotalcolectivo() {
-        return _totalcolectivo;
-    }
-
-    public void setTotalcolectivo(Double _totalcolectivo) {
-        this._totalcolectivo = _totalcolectivo;
-    }
-
+   
     public Double getInvestigacion() {
         return _investigacion;
     }
@@ -156,13 +117,7 @@ public class Asignacion implements Serializable {
         this._investigacion = _investigacion;
     }
 
-    public Double getTotalinv() {
-        return _totalinv;
-    }
-
-    public void setTotalinv(Double _totalinv) {
-        this._totalinv = _totalinv;
-    }
+  
 
     public Double getSocial() {
         return _social;
@@ -172,13 +127,7 @@ public class Asignacion implements Serializable {
         this._social = _social;
     }
 
-    public Double getTotalsocial() {
-        return _totalsocial;
-    }
-
-    public void setTotalsocial(Double _totalsocial) {
-        this._totalsocial = _totalsocial;
-    }
+    
 
     public Double getOda() {
         return _oda;
@@ -186,14 +135,6 @@ public class Asignacion implements Serializable {
 
     public void setOda(Double _oda) {
         this._oda = _oda;
-    }
-
-    public Double getTotaloda() {
-        return _totaloda;
-    }
-
-    public void setTotaloda(Double _totaloda) {
-        this._totaloda = _totaloda;
     }
 
     public Double getPlaneacion() {
@@ -204,13 +145,7 @@ public class Asignacion implements Serializable {
         this._planeacion = _planeacion;
     }
 
-    public Double getTotalplan() {
-        return _totalplan;
-    }
-
-    public void setTotalplan(Double _totalplan) {
-        this._totalplan = _totalplan;
-    }
+    
 
     public Double getVirtualidad() {
         return _virtualidad;
@@ -220,13 +155,7 @@ public class Asignacion implements Serializable {
         this._virtualidad = _virtualidad;
     }
 
-    public Double getTotalvirt() {
-        return _totalvirt;
-    }
-
-    public void setTotalvirt(Double _totalvirt) {
-        this._totalvirt = _totalvirt;
-    }
+    
 
     public Double getComites() {
         return _comites;
@@ -236,13 +165,7 @@ public class Asignacion implements Serializable {
         this._comites = _comites;
     }
 
-    public Double getTotalcom() {
-        return _totalcom;
-    }
-
-    public void setTotalcom(Double _totalcom) {
-        this._totalcom = _totalcom;
-    }
+    
 
     public Docentes getCoddocente() {
         return _coddocente;

@@ -100,6 +100,7 @@ public class PorcentajeController implements Serializable {
 
     public void agregar() {
         String titulo, detalle;
+        double totalHC=0, totalPC=0, totalHCap=0;
 
 //
 //        System.out.println("LO Q HAY EN COORDI " + _obj.getCodcoordinacion());
@@ -175,21 +176,16 @@ public class PorcentajeController implements Serializable {
                     t.setCoddocente(d);
                     //tiempo completo
                     if(d.getTipocontrato()==1){
+                        
                         t.setHorasclase(24.0);
                         t.setPreparacion(4.0);
                         t.setCapacitacion(4.0);
                     }else if(d.getTipocontrato()==2){
+                       
                         t.setHorasclase(12.0);
                         t.setPreparacion(2.0);
                         t.setCapacitacion(0.0);
                     }
-                    
-                    t.setTotalinv(_porcentaje_investigacion*120);
-                    t.setTotalsocial(_porcentaje_extension*120);
-                    t.setTotaloda(_porcentaje_ODA*120);
-                    t.setTotalplan(_porcentaje_acreditacion*120);
-                    t.setTotalvirt(_porcentaje_virtualidad*120);
-                    t.setTotalcom(_porcentaje_comites*120);
                     _asignacionFacade.crear(t);
                 }
             RequestContext context = RequestContext.getCurrentInstance();

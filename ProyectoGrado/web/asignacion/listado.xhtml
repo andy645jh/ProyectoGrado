@@ -73,14 +73,14 @@
                     <br/>           
                     <p:separator/>
                     <br/>
-                    <p:dataTable id="listar" value="#{asignacionController.listado}" var="registro" editable="true" editMode="cell" widgetVar="cellCars">
+                    <p:dataTable id="listar" value="#{asignacionController.listadoAsign}" var="registro" editable="true" editMode="cell" widgetVar="cellCars">
 
-                        <p:ajax event="cellEdit" listener="#{tiempAsgController.onCellEdit}" update=":formActividades:mensajito" />
+                        <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" immediate="true" process="@this" update=":formActividades:mensajito" />
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Docente</f:facet>
                                 #{registro.coddocente.toString()} 
-                            <f:facet name="footer">Total horas por actividad</f:facet>
+                           
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
@@ -91,98 +91,114 @@
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header" >HC</f:facet>
                             <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{registro.horasclase}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="clase" value="#{tiempAsgController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="output"><h:outputText value="#{registro.horasclase}"/></f:facet>
+                                <f:facet name="input"><p:inputText id="clase" value="#{registro.horasclase}" style="width:96%"/></f:facet>
                             </p:cellEditor>
-                            <f:facet name="footer">#{registro.totalhc}</f:facet>
+                            
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">PC</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.preparacion}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="preparacion" value="#{tiempAsgController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="input"><p:inputText id="preparacion" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
                             </p:cellEditor>
-                            <f:facet name="footer">#{registro.totalprep}</f:facet>
+                          
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">HC</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.capacitacion}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="capacitacion" value="#{tiempAsgController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="input"><p:inputText id="capacitacion" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
                             </p:cellEditor>
-                            <f:facet name="footer">#{registro.totalcapa}</f:facet>
+                            
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header" >CD</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.colectivo}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="colectivo" value="#{tiempAsgController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="input"><p:inputText id="colectivo" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
                             </p:cellEditor>
-                            <f:facet name="footer">#{registro.totalcolectivo}</f:facet>
+                            
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">HI</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.investigacion}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="inv" value="#{tiempAsgController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="input"><p:inputText id="inv" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
                             </p:cellEditor>                                
-                            <f:facet name="footer">#{registro.totalinv}</f:facet>
+                            
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">PS</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.social}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="social" value="#{tiempAsgController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="input"><p:inputText id="social" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
                             </p:cellEditor> 
-                            <f:facet name="footer">#{registro.totalsocial}</f:facet>
+                           
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">ODA</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.oda}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="oda" value="#{tiempAsgController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="input"><p:inputText id="oda" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
                             </p:cellEditor>
-                            <f:facet name="footer">#{registro.totaloda}</f:facet>
+                            
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header" >P</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.planeacion}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="planeacion" value="#{tiempAsgController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="input"><p:inputText id="planeacion" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
                             </p:cellEditor>
-                            <f:facet name="footer">#{registro.totalplan}</f:facet>
+                          
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">V</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.virtualidad}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="virtualidad" value="#{tiempAsgController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="input"><p:inputText id="virtualidad" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
                             </p:cellEditor>
-                            <f:facet name="footer">#{registro.totalvirt}</f:facet>
+                           
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">C</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.comites}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="comites" value="#{tiempAsgController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="input"><p:inputText id="comites" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
                             </p:cellEditor>
-                            <f:facet name="footer" ><h:outputText value="comites #{registro.totalcom}" /></f:facet>
+                            
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Total Horas</f:facet>
-                                
                             <f:facet name="footer">Total horas por actividad</f:facet>
                         </p:column>
+
+                        <p:columnGroup type="footer">
+                            <p:row>
+                                <p:column colspan="2" style="text-align:right" footerText="Total de horas por actividad:" />
+                                <p:column footerText="#{asignacionController.totalHC}" />
+                                <p:column footerText="#{asignacionController.totalPC}" />
+                                <p:column footerText="#{asignacionController.totalCap}" />
+                                <p:column footerText="#{asignacionController.totalCD}" />
+                                <p:column footerText="#{asignacionController.totalHI}" />
+                                <p:column footerText="#{asignacionController.totalPS}" />
+                                <p:column footerText="#{asignacionController.totalODA}" />
+                                <p:column footerText="#{asignacionController.totalPlan}" />
+                                <p:column footerText="#{asignacionController.totalvirt}" />
+                                <p:column footerText="#{asignacionController.totalCom}" />
+                                <p:column footerText="#{asignacionController.totalCom}" />
+                            </p:row>
+                        </p:columnGroup>
 
                     </p:dataTable>
                     <p:contextMenu for="listar" widgetVar="cMenu">   

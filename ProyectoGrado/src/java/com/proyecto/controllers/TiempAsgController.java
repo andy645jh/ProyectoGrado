@@ -47,11 +47,17 @@ public class TiempAsgController implements Serializable {
     private int _codPorcentaje;
     private int codDocente;
     private int codActDocencia;
+    private int totalHC;
 
     public TiempAsgController() {
     }
 
     public List<TiempoAsignado> getListado() {
+        
+        
+        
+        
+        totalHC=87;
         return _ejbFacade.listadoAgrupado();
     }
 
@@ -204,5 +210,7 @@ public class TiempAsgController implements Serializable {
     public void setCodPorcentaje(int _codigito) {
         this._codPorcentaje = _codigito;
     }
+
+    
 
 }

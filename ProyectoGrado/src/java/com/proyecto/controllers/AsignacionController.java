@@ -46,12 +46,49 @@ public class AsignacionController implements Serializable {
     private int _codPorcentaje;
     private int codDocente;
     private int codActDocencia;
-
+    private double totalHC;
+    private double totalPC;
+    private double totalCap;
+    private double totalCD;
+    private double totalHI;
+    private double totalPS;
+    private double totalODA;
+    private double totalPlan;
+    private double totalvirt;
+    private double totalCom;
+    private String prueba;
+    private List<Asignacion> _listadoAsign;
+    
     public AsignacionController() {
     }
 
-    public List<Asignacion> getListado() {
-        return _ejbFacade.listado();
+    public List<Asignacion> getListadoAsign() {
+          /*prueba="prueba";
+        totalHC=0;
+        totalPC=0;
+        totalCap=0;
+        totalCD=0;
+        totalHI=0;
+        totalPS=0;
+        totalODA=0;
+        totalPlan=0;
+        totalvirt=0;
+        totalCom=0;
+        for (Asignacion asg : _ejbFacade.listado()) {
+            if(asg.getHorasclase()!=null){totalHC+=asg.getHorasclase();}
+            if(asg.getPreparacion()!=null){totalPC+=asg.getPreparacion();}
+            if(asg.getCapacitacion()!=null){totalCap+=asg.getCapacitacion();}
+            if(asg.getColectivo()!=null){totalCD+=asg.getColectivo();}
+            if(asg.getInvestigacion()!=null){totalHI+=asg.getInvestigacion();}
+            if(asg.getSocial()!=null){totalPS+=asg.getSocial();}
+            if(asg.getOda()!=null){totalODA+=asg.getOda();}
+            if(asg.getPlaneacion()!=null){ totalPlan+=asg.getPlaneacion();}
+            if(asg.getVirtualidad()!=null){totalvirt+=asg.getVirtualidad();}
+            if(asg.getComites()!=null){totalCom+=asg.getComites();}
+            
+        }*/
+        if(_listadoAsign==null) _listadoAsign = _ejbFacade.listado();
+        return _listadoAsign;
     }
 
     public void abrirCrear() {
@@ -155,9 +192,13 @@ public class AsignacionController implements Serializable {
     }
 
     public void onCellEdit(CellEditEvent event) {
+        
         Object oldValue = event.getOldValue();
         Object newValue = event.getNewValue();
-
+        
+        System.out.println("VALOR ANTES "+oldValue);
+        System.out.println("VALOR DESPUES "+newValue);
+        
         if (newValue != null && !newValue.equals(oldValue)) {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
             FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -203,4 +244,91 @@ public class AsignacionController implements Serializable {
         this._codPorcentaje = _codigito;
     }
 
+    public double getTotalHC() {
+        return totalHC;
+    }
+
+    public void setTotalHC(double totalHC) {
+        this.totalHC = totalHC;
+    }
+
+    public double getTotalPC() {
+        return totalPC;
+    }
+
+    public void setTotalPC(double totalPC) {
+        this.totalPC = totalPC;
+    }
+
+    public double getTotalCap() {
+        return totalCap;
+    }
+
+    public void setTotalCap(double totalCap) {
+        this.totalCap = totalCap;
+    }
+
+    public double getTotalCD() {
+        return totalCD;
+    }
+
+    public void setTotalCD(double totalCD) {
+        this.totalCD = totalCD;
+    }
+
+    public double getTotalHI() {
+        return totalHI;
+    }
+
+    public void setTotalHI(double totalHI) {
+        this.totalHI = totalHI;
+    }
+
+    public double getTotalPS() {
+        return totalPS;
+    }
+
+    public void setTotalPS(double totalPS) {
+        this.totalPS = totalPS;
+    }
+
+    public double getTotalODA() {
+        return totalODA;
+    }
+
+    public void setTotalODA(double totalODA) {
+        this.totalODA = totalODA;
+    }
+
+    public double getTotalPlan() {
+        return totalPlan;
+    }
+
+    public void setTotalPlan(double totalPlan) {
+        this.totalPlan = totalPlan;
+    }
+
+    public double getTotalvirt() {
+        return totalvirt;
+    }
+
+    public void setTotalvirt(double totalvirt) {
+        this.totalvirt = totalvirt;
+    }
+
+    public double getTotalCom() {
+        return totalCom;
+    }
+
+    public void setTotalCom(double totalCom) {
+        this.totalCom = totalCom;
+    }
+
+    public String getPrueba() {
+        return prueba;
+    }
+
+    public void setPrueba(String prueba) {
+        this.prueba = prueba;
+    }    
 }
