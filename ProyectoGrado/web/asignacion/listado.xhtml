@@ -75,7 +75,7 @@
                     <br/>
                     <p:dataTable id="listar" value="#{asignacionController.listadoAsign}" var="registro" editable="true" editMode="cell" widgetVar="cellCars">
 
-                        <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" immediate="true" process="@this" update=":formActividades:mensajito" />
+                        <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update=":formActividades:mensajito" />
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Docente</f:facet>
@@ -129,7 +129,7 @@
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.investigacion}" /></f:facet>
                                 <f:facet name="input"><p:inputText id="inv" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
-                            </p:cellEditor>                                
+                            </p:cellEditor>                               
                             
                         </p:column>
 
