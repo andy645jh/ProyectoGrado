@@ -73,7 +73,7 @@
                     <br/>           
                     <p:separator/>
                     <br/>
-                    <p:dataTable id="listar" value="#{asignacionController.listadoAsign}" var="registro" editable="true" editMode="cell" widgetVar="cellCars">
+                    <p:dataTable id="listar" value="#{asignacionController.listadoAsign}" var="registro"  editable="true" editMode="cell" widgetVar="cellCars">
 
                         <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update=":formActividades:mensajito" />
 
@@ -88,7 +88,7 @@
                                 #{registro.coddocente.tipocontrato}
                         </p:column> 
 
-                        <p:column style="width: 10px; text-align: center">
+                        <p:column  style="width: 10px; text-align: center">
                             <f:facet name="header" >HC</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.horasclase}"/></f:facet>
@@ -119,7 +119,7 @@
                             <f:facet name="header" >CD</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.colectivo}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="colectivo" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="input"><p:inputText id="colectivo" value="#{registro.colectivo}" style="width:96%"/></f:facet>
                             </p:cellEditor>
                             
                         </p:column>
@@ -128,7 +128,7 @@
                             <f:facet name="header">HI</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.investigacion}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="inv" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="input"><p:inputText id="inv" value="#{registro.investigacion}" style="width:96%"/></f:facet>
                             </p:cellEditor>                               
                             
                         </p:column>
@@ -137,7 +137,7 @@
                             <f:facet name="header">PS</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.social}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="social" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="input"><p:inputText id="social" value="#{registro.social}" style="width:96%"/></f:facet>
                             </p:cellEditor> 
                            
                         </p:column>
@@ -146,7 +146,7 @@
                             <f:facet name="header">ODA</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.oda}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="oda" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="input"><p:inputText id="oda" value="#{registro.oda}" style="width:96%"/></f:facet>
                             </p:cellEditor>
                             
                         </p:column>
@@ -155,7 +155,7 @@
                             <f:facet name="header" >P</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.planeacion}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="planeacion" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="input"><p:inputText id="planeacion" value="#{registro.planeacion}" style="width:96%"/></f:facet>
                             </p:cellEditor>
                           
                         </p:column>
@@ -164,7 +164,7 @@
                             <f:facet name="header">V</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.virtualidad}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="virtualidad" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="input"><p:inputText id="virtualidad" value="#{registro.virtualidad}" style="width:96%"/></f:facet>
                             </p:cellEditor>
                            
                         </p:column>
@@ -173,7 +173,7 @@
                             <f:facet name="header">C</f:facet>
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.comites}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="comites" value="#{asignacionController.obj.codporcentaje}" style="width:96%"/></f:facet>
+                                <f:facet name="input"><p:inputText id="comites" value="#{registro.comites}" style="width:96%"/></f:facet>
                             </p:cellEditor>
                             
                         </p:column>

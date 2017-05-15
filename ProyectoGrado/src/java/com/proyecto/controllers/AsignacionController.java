@@ -118,8 +118,11 @@ public class AsignacionController implements Serializable {
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
 
+            
             for (String docente : selectedDocentes) {
                 System.out.println("VA A AGREGAR UN DOCENTE "+docente);
+                
+                
 //                _obj = new TiempoAsignado();
 //                _obj.setCoddocente(null);
             }
@@ -166,11 +169,11 @@ public class AsignacionController implements Serializable {
         RequestContext.getCurrentInstance().openDialog("/tiempodoc/actualizar", options, null);
     }
 
-    public void actualizar() {
+    public void actualizar(Asignacion _obj) {
         String titulo, detalle;
-        Docentes d = _facadeDoc.buscar(codDocente);
-
-        _obj.setCoddocente(d);
+//        Docentes d = _facadeDoc.buscar(codDocente);
+//
+//        _obj.setCoddocente(d);
 
         try {
 
@@ -187,22 +190,28 @@ public class AsignacionController implements Serializable {
 
         }
 
-        RequestContext context = RequestContext.getCurrentInstance();
-        context.closeDialog(null);
+//        RequestContext context = RequestContext.getCurrentInstance();
+//        context.closeDialog(null);
     }
 
-    public void onCellEdit(CellEditEvent event) {
+    public String onCellEdit(CellEditEvent event) {
         
         Object oldValue = event.getOldValue();
         Object newValue = event.getNewValue();
         
-        System.out.println("VALOR ANTES "+oldValue);
-        System.out.println("VALOR DESPUES "+newValue);
+         if(_listadoAsign==null) _listadoAsign = _ejbFacade.listado();
+         
+         actualizar(_listadoAsign.get(event.getRowIndex()));
         
-        if (newValue != null && !newValue.equals(oldValue)) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-        }
+        System.out.println("VALOR ANTES "+oldValue+" FILA "+event.getRowIndex()+" COLUMNA "+_listadoAsign.get(event.getRowIndex()).getCoddocente());
+        System.out.println("VALOR DESPUES "+newValue+" OBJETO  "+_listadoAsign.get(event.getRowIndex()).getCodasg());
+        
+//        if (newValue != null && !newValue.equals(oldValue)) {
+//            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
+//            FacesContext.getCurrentInstance().addMessage(null, msg);
+//        }
+        
+        return "/asignacion/listado";
     }
     
     public void controlHoras(){
