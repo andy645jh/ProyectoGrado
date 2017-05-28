@@ -28,9 +28,29 @@
     <security-constraint>
         <display-name>docentefaces</display-name>
         <web-resource-collection>
-            <web-resource-name>folderclase</web-resource-name>
+            <web-resource-name>actividades</web-resource-name>
             <description/>
-            <url-pattern>/faces/clases/*</url-pattern>
+            <url-pattern>/faces/actividades/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>index</web-resource-name>
+            <description/>
+            <url-pattern>/faces/index_docentes.xhtml</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>productos</web-resource-name>
+            <description/>
+            <url-pattern>/faces/productos/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>horario</web-resource-name>
+            <description/>
+            <url-pattern>/faces/horario/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>docentes</web-resource-name>
+            <description/>
+            <url-pattern>/faces/docentes/perfil.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>
@@ -45,19 +65,21 @@
             <url-pattern>/faces/index_admin.xhtml</url-pattern>
         </web-resource-collection>
         <web-resource-collection>
-            <web-resource-name>convenciones</web-resource-name>
+            <web-resource-name>semanas</web-resource-name>
             <description/>
-            <url-pattern>/faces/convenciones/*</url-pattern>
+            <url-pattern>/faces/semana/*</url-pattern>
         </web-resource-collection>
         <web-resource-collection>
-            <web-resource-name>horas</web-resource-name>
+            <web-resource-name>docentes</web-resource-name>
             <description/>
-            <url-pattern>/faces/horas/*</url-pattern>
+            <url-pattern>/faces/docentes/actualizar.xhtml</url-pattern>
+            <url-pattern>/faces/docentes/crear.xhtml</url-pattern>
+            <url-pattern>/faces/docentes/listado.xhtml</url-pattern>
         </web-resource-collection>
         <web-resource-collection>
-            <web-resource-name>tipo_modal</web-resource-name>
+            <web-resource-name>asignacion</web-resource-name>
             <description/>
-            <url-pattern>/faces/tipo_mdalidad/*</url-pattern>
+            <url-pattern>/faces/asignacion/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>

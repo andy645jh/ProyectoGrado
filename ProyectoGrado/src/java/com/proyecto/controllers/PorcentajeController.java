@@ -168,18 +168,22 @@ public class PorcentajeController implements Serializable {
                 _ejbFacade.crear(_obj);
                
             }
-             for (String docente : selectedDocentes) {
-                    System.out.println("VA A AGREGAR UN DOCENTE " + docente);
-                    Docentes d = _docenteFacade.buscar(Integer.parseInt(docente));
+            
+             for (int i=0; i<selectedDocentes.length; i++) {
+                    System.out.println("VA A AGREGAR UN DOCENTE " + selectedDocentes[i]);
+                    Docentes d = _docenteFacade.buscar(Integer.parseInt(selectedDocentes[i]));
                     System.out.println("DOCENTE ENCONTRADO " + d);
                     Asignacion t = new Asignacion();
                     t.setCoddocente(d);
+                   
+                     
                     //tiempo completo
                     if(d.getTipocontrato()==1){
                         
                         t.setHorasclase(24.0);
                         t.setPreparacion(4.0);
                         t.setCapacitacion(4.0);
+                      
                     }else if(d.getTipocontrato()==2){
                        
                         t.setHorasclase(12.0);
@@ -187,6 +191,7 @@ public class PorcentajeController implements Serializable {
                         t.setCapacitacion(0.0);
                     }
                     _asignacionFacade.crear(t);
+                   
                 }
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);

@@ -57,6 +57,7 @@ public class AsignacionController implements Serializable {
     private double totalvirt;
     private double totalCom;
     private String prueba;
+    private double totalHoras;
     private List<Asignacion> _listadoAsign;
     
     public AsignacionController() {
@@ -203,8 +204,19 @@ public class AsignacionController implements Serializable {
          
          actualizar(_listadoAsign.get(event.getRowIndex()));
         
-        System.out.println("VALOR ANTES "+oldValue+" FILA "+event.getRowIndex()+" COLUMNA "+_listadoAsign.get(event.getRowIndex()).getCoddocente());
+        System.out.println("VALOR ANTES "+oldValue+" FILA "+event.getRowIndex()+" COLUMNA "+_listadoAsign.get(event.getRowIndex()).getCoddocente().getTipocontrato());
         System.out.println("VALOR DESPUES "+newValue+" OBJETO  "+_listadoAsign.get(event.getRowIndex()).getCodasg());
+        
+        if(_listadoAsign.get(event.getRowIndex()).getCoddocente().getTipocontrato()==1){
+            
+            System.out.println("TIPO CONTRATO 1");
+            
+            totalHoras=_listadoAsign.get(event.getRowIndex()).getCapacitacion();
+            
+        }else if(_listadoAsign.get(event.getRowIndex()).getCoddocente().getTipocontrato()==2){
+            
+            System.out.println("TIPO CONTRATO 2");
+        }
         
 //        if (newValue != null && !newValue.equals(oldValue)) {
 //            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
@@ -339,5 +351,15 @@ public class AsignacionController implements Serializable {
 
     public void setPrueba(String prueba) {
         this.prueba = prueba;
-    }    
+    }  
+
+    public double getTotalHoras() {
+        return totalHoras;
+    }
+
+    public void setTotalHoras(double totalHoras) {
+        this.totalHoras = totalHoras;
+    }
+    
+    
 }
