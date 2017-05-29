@@ -211,11 +211,20 @@ public class AsignacionController implements Serializable {
             
             System.out.println("TIPO CONTRATO 1");
             
-            totalHoras=_listadoAsign.get(event.getRowIndex()).getCapacitacion();
+            totalHoras=_listadoAsign.get(event.getRowIndex()).getCapacitacion()+_listadoAsign.get(event.getRowIndex()).getHorasclase()+
+                    _listadoAsign.get(event.getRowIndex()).getPreparacion()+_listadoAsign.get(event.getRowIndex()).getColectivo()+
+                    _listadoAsign.get(event.getRowIndex()).getInvestigacion()+_listadoAsign.get(event.getRowIndex()).getSocial()+
+                    _listadoAsign.get(event.getRowIndex()).getOda()+_listadoAsign.get(event.getRowIndex()).getPlaneacion()+
+                    _listadoAsign.get(event.getRowIndex()).getVirtualidad()+_listadoAsign.get(event.getRowIndex()).getComites();
             
         }else if(_listadoAsign.get(event.getRowIndex()).getCoddocente().getTipocontrato()==2){
             
             System.out.println("TIPO CONTRATO 2");
+            totalHoras=_listadoAsign.get(event.getRowIndex()).getCapacitacion()+_listadoAsign.get(event.getRowIndex()).getHorasclase()+
+                    _listadoAsign.get(event.getRowIndex()).getPreparacion()+_listadoAsign.get(event.getRowIndex()).getColectivo()+
+                    _listadoAsign.get(event.getRowIndex()).getInvestigacion()+_listadoAsign.get(event.getRowIndex()).getSocial()+
+                    _listadoAsign.get(event.getRowIndex()).getOda()+_listadoAsign.get(event.getRowIndex()).getPlaneacion()+
+                    _listadoAsign.get(event.getRowIndex()).getVirtualidad()+_listadoAsign.get(event.getRowIndex()).getComites();
         }
         
 //        if (newValue != null && !newValue.equals(oldValue)) {
