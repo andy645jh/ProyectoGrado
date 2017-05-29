@@ -52,11 +52,7 @@
                                     <p:outputLabel>Falta agregar el nombre de usuario</p:outputLabel> 
                                 </ui:insert>
                                 
-                                <p:menuButton value="Options">                                    
-                                    <p:menuitem value="Save" actionListener="#{toolbarView.save}" update="messages" icon="fa fa-user" />
-                                    <p:menuitem value="Update" actionListener="#{toolbarView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w" />
-                                    <p:menuitem value="Delete" actionListener="#{toolbarView.delete}" ajax="false" icon="ui-icon-close" />                                   
-                                </p:menuButton>
+                                <p:commandButton value="Cerrar Sesion" ajax="false" action="#{loginController.logout()}"></p:commandButton>                                                                 
                             </f:facet>
 
                         </p:toolbar>
