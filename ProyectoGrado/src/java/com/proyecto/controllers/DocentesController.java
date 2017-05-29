@@ -111,8 +111,8 @@ public class DocentesController implements Serializable {
     public List<Docentes> getListado() {
         
         Docentes doc = _ejbFacade.getCurrentDocente();
-        String coordinacion= doc.getCodcoordinacion()+"";
-        return _ejbFacade.listado();
+        String coordinacion= doc.getCodcoordinacion().getCodcoordinacion()+"";
+        return _ejbFacade.buscarCampo("_codcoordinacion",coordinacion);
     }
 
     public void borrar(Docentes faceObj) {

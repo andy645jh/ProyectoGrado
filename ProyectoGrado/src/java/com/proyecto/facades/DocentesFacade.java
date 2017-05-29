@@ -2,6 +2,7 @@
 package com.proyecto.facades;
 
 import com.proyecto.persistences.Actividades;
+import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Docentes;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -45,22 +46,25 @@ public class DocentesFacade extends AbstractFacade<Docentes>{
     public List<Docentes> buscarCampo(String columna,String valorBuscar)
     {
         CriteriaBuilder cb= obtenerEntidad().getCriteriaBuilder();
-        CriteriaQuery<Actividades> cq= cb.createQuery(Actividades.class);
-        Root<Actividades> objActividades = cq.from(Actividades.class);
+        CriteriaQuery<Docentes> cq= cb.createQuery(Docentes.class);
+        Root<Docentes> objDocentes = cq.from(Docentes.class);
         
         if(!valorBuscar.equals("") && !columna.equals(""))
         {            
-            if(columna.equals("_coddocente"))
+            if(columna.equals("_codcoordinacion"))
             {
-                Join<Actividades,Docentes> doc = objActividades.join("_coddocente");
-                Expression<String> valor = doc.get("_cedula");
+                Join<Coordinacion,Docentes> doc = objDocentes.join("_codcoordinacion");
+                Expression<String> valor = doc.get("_codcoordinacion");
                 String cadena = valorBuscar;
+                
+                System.out.println("VALOR "+valor+" CADENA "+cadena);
+                
                 Predicate condicion = cb.equal(valor, cadena);                
                 cq.where(condicion);
             }else{           
        
                 System.out.println("Columna: " + columna);
-                Expression<String> valorCampo = objActividades.get(columna);
+                Expression<String> valorCampo = objDocentes.get(columna);
                 String cadena = valorBuscar;
                 Predicate condicion = cb.equal(valorCampo, cadena);
                 cq.where(condicion);               
@@ -68,7 +72,7 @@ public class DocentesFacade extends AbstractFacade<Docentes>{
             
             
         }else{
-            cq.from(Actividades.class);                     
+            cq.from(Docentes.class);                     
         }
         
         Query consulta = _em.createQuery(cq);
