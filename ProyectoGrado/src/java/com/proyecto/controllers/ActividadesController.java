@@ -74,7 +74,8 @@ public class ActividadesController implements Serializable
     {
         String titulo,detalle;
         TipoModalidades modalidad= _modalidadFacade.buscar(_codigo);
-        Docentes d=docentesFacade.buscar(109877);
+//        Docentes d=docentesFacade.buscar(109877);
+        Docentes d=docentesFacade.getCurrentDocente();
         _obj.setCodtipo(modalidad);
         
         try {
@@ -105,8 +106,8 @@ public class ActividadesController implements Serializable
     
     public SelectItem[] comboFiltrado(String texto)
     {
-//        Docentes doc=docentesFacade.getCurrentDocente();
-        Docentes doc=docentesFacade.buscar(109877);
+        Docentes doc=docentesFacade.getCurrentDocente();
+//        Docentes doc=docentesFacade.buscar(109877);
         
         int ced = doc.getCedula();
         
@@ -142,8 +143,8 @@ public class ActividadesController implements Serializable
     public List<Actividades> getListado()
     {
         Docentes doc = docentesFacade.getCurrentDocente();
-        //cedula= doc.getCedula()+"";
-        cedula= "109877";
+        cedula= doc.getCedula()+"";
+//        cedula= "109877";
         return _ejbFacade.buscarCampo("_coddocente",cedula);
     }
     

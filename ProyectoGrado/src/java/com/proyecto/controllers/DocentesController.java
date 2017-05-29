@@ -109,6 +109,9 @@ public class DocentesController implements Serializable {
     }
 
     public List<Docentes> getListado() {
+        
+        Docentes doc = _ejbFacade.getCurrentDocente();
+        String coordinacion= doc.getCodcoordinacion()+"";
         return _ejbFacade.listado();
     }
 

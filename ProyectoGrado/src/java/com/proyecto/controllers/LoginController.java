@@ -68,7 +68,9 @@ public class LoginController implements Serializable{
             
             if(request.isUserInRole("administrador"))
             {   
-                System.out.println("ADMINISTRADOR");           
+                System.out.println("ADMINISTRADOR");   
+                docentesFacade.setCurrentDocente(buscarDocente());
+                
                 return "index_admin?faces-redirect=true";
             }else if(request.isUserInRole("docente"))
             {

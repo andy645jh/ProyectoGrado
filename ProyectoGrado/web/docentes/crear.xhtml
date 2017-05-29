@@ -8,42 +8,51 @@
     <ui:composition template="/plantilla.xhtml">
         <ui:define name="content">
             #{docentesController.resetear()}
-            <h:form>
-                <p:panel>
-                    <p:breadCrumb>
-                        <p:menuitem url="#"></p:menuitem>
-                        <p:menuitem value="Bienvenido #{loginController.usuario}" url="/faces/index_admin.xhtml"></p:menuitem>
-                        <p:menuitem value="Creacion de Docentes" url="#"></p:menuitem>
-                    </p:breadCrumb>
 
-                    <p:growl id="mensajes" sticky="true" showDetail="true"/>                
-                    <br/>
-                    <p:panelGrid columns="2">                    
-                        <p:outputLabel value="#{docentesTxt.cedula}  " for="cedula" />
-                        <p:inputText id="cedula" required="true" value="#{docentesController.campo.cedula}"/> 
+            <div style="width: auto;
+                        height: auto;
+                        left: 479px;
+                        top: -100px !important;
+                        visibility: visible;
+                        z-index: 1002;
+                        display: block;">
+                <h:form >
+                    <p:panel>
+                        <p:breadCrumb>
+                            <p:menuitem url="#"></p:menuitem>
+                            <p:menuitem value="Bienvenido #{loginController.usuario}" url="/faces/index_admin.xhtml"></p:menuitem>
+                            <p:menuitem value="Creacion de Docentes" url="#"></p:menuitem>
+                        </p:breadCrumb>
 
-                        <p:outputLabel value="#{docentesTxt.nombre}  " for="nombres" />
-                        <p:inputText id="nombres" required="true" value="#{docentesController.campo.nombres}"/> 
+                        <p:growl id="mensajes" sticky="true" showDetail="true"/>                
+                        <br/>
+                        <p:panelGrid columns="2">                    
+                            <p:outputLabel value="#{docentesTxt.cedula}  " for="cedula" />
+                            <p:inputText id="cedula" required="true" value="#{docentesController.campo.cedula}"/> 
 
-                        <p:outputLabel value="#{docentesTxt.apellido}  " for="apellidos" />
-                        <p:inputText id="apellidos" required="true" value="#{docentesController.campo.apellidos}"/> 
+                            <p:outputLabel value="#{docentesTxt.nombre}  " for="nombres" />
+                            <p:inputText id="nombres" required="true" value="#{docentesController.campo.nombres}"/> 
 
-                        <p:outputLabel value="Tipo Contrato" for="contrato" />
-                        <p:inputText id="contrato" required="true" value="#{docentesController.campo.tipocontrato}"/> 
+                            <p:outputLabel value="#{docentesTxt.apellido}  " for="apellidos" />
+                            <p:inputText id="apellidos" required="true" value="#{docentesController.campo.apellidos}"/> 
 
-
-                        <p:outputLabel value="Coordinacion" for="coordinacion" />
-                        <p:selectOneMenu id="coordinacion" value="#{docentesController.codCoord}"> 
-                            <f:selectItems value="#{coordinacionController.combo('')}" />
-                        </p:selectOneMenu>
+                            <p:outputLabel value="Tipo Contrato" for="contrato" />
+                            <p:inputText id="contrato" required="true" value="#{docentesController.campo.tipocontrato}"/> 
 
 
-                        <f:facet name="footer">
-                            <p:commandButton id="btngrabar" value="#{docentesTxt.crear}" ajax="true" action="#{docentesController.agregar()}"/>
-                        </f:facet>
-                    </p:panelGrid>
-                </p:panel>
-            </h:form>
+                            <p:outputLabel value="Coordinacion" for="coordinacion" />
+                            <p:selectOneMenu id="coordinacion" value="#{docentesController.codCoord}"> 
+                                <f:selectItems value="#{coordinacionController.combo('')}" />
+                            </p:selectOneMenu>
+
+
+                            <f:facet name="footer">
+                                <p:commandButton id="btngrabar" value="#{docentesTxt.crear}" ajax="true" action="#{docentesController.agregar()}"/>
+                            </f:facet>
+                        </p:panelGrid>
+                    </p:panel>
+                </h:form>
+            </div>
         </ui:define>
     </ui:composition>
 </html>
