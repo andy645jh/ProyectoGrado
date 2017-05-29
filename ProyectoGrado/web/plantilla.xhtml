@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 
 
@@ -19,26 +20,47 @@
         <!--<link href="resources/css/app.css" rel="stylesheet" type="text/css"/>-->
 
         <!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>-->
-        
+
         <title>Formato RDC-54</title>
         <h:outputStylesheet name="grid/grid.css" library="primefaces" />
     </h:head>
 
     <h:body style="margin: 0;">        
-  
+
         <div class="ui-g">
-            <div class="ui-g-12 ui-md-2">                  
-                <p:graphicImage name="img/uts3.jpg" style="width:100%"/>               
-                <img src="#{facesContext.externalContext.requestContextPath}/resources/img/uts3.jpg" alt="logo"/>
-                <img src="#{facesContext.externalContext.requestContextPath}/resources/img/logo_pequeño4.png" alt=""/>
+            <div class="ui-g-12 ui-md-2">                                     
+                <img src="#{facesContext.externalContext.requestContextPath}/resources/img/logo_pequeño4.png" alt="logo"/>
+                <h3>Unidades Tecnologicas de Santander</h3>
                 <ui:insert name="menu">
                     <span>Menu</span>
                 </ui:insert>
             </div>
-       
+
             <div class="ui-g-12 ui-md-10 ui-g-nopad">
                 <div class="ui-g-12">
-                    Bar
+
+                    <h:form>     
+                        <p:growl id="messages" showDetail="true" />
+
+                        <p:toolbar>
+                            <f:facet name="left">
+                                <p:outputLabel>Formato RDC-54</p:outputLabel>                               
+                            </f:facet>
+
+                            <f:facet name="right">
+                                <ui:insert name="usuario">
+                                    <p:outputLabel>Falta agregar el nombre de usuario</p:outputLabel> 
+                                </ui:insert>
+                                
+                                <p:menuButton value="Options">                                    
+                                    <p:menuitem value="Save" actionListener="#{toolbarView.save}" update="messages" icon="fa fa-user" />
+                                    <p:menuitem value="Update" actionListener="#{toolbarView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w" />
+                                    <p:menuitem value="Delete" actionListener="#{toolbarView.delete}" ajax="false" icon="ui-icon-close" />                                   
+                                </p:menuButton>
+                            </f:facet>
+
+                        </p:toolbar>
+                    </h:form>
                 </div>
                 <div class="ui-g-12 ui-g-nopad">
                     <ui:insert name="content" >
