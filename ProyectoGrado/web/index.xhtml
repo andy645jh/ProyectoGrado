@@ -5,21 +5,9 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <ui:composition template="/plantilla.xhtml">
-
-        <ui:define name="header">            
-        </ui:define>
-
-        <ui:define name="menu">            
-        </ui:define>
-
-        <ui:define name="content">
+    <h:outputStylesheet name="grid/grid.css" library="primefaces" />
+    
             <h:form>
-                <!--<p:panel>-->
-                <!--                    <p:breadCrumb>
-                                        <p:menuitem value="login" url="/faces/index.xhtml"></p:menuitem>
-                                        <p:menuitem value="Formato de Registro y Evaluación de Actividades" url="/faces/index.xhtml"></p:menuitem>
-                                    </p:breadCrumb>-->
 
                 <p:growl id="mensajes" sticky="true" showDetail="true"/>              
                 <br/>
@@ -47,7 +35,6 @@
                 </div>
                 <!--</p:panel>--> 
             </h:form>
-        </ui:define>
-    </ui:composition>  
+       
 </html>
 
