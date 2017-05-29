@@ -10,7 +10,6 @@ import com.proyecto.persistences.ActividadMisional;
 import com.proyecto.persistences.Asignacion;
 import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Docentes;
-import com.proyecto.persistences.Docentes_;
 import com.proyecto.persistences.Porcentaje;
 import com.proyecto.persistences.TiempoAsignado;
 import com.proyecto.persistences.TipoModalidades;
