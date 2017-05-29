@@ -8,46 +8,41 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <!--        <h:outputStylesheet name="./css/default.css"/>
-                <h:outputStylesheet name="./css/cssLayout.css"/>-->
+        <!--
+            <h:outputStylesheet name="./css/default.css"/>
+            <h:outputStylesheet name="./css/cssLayout.css"/>
+        -->
 
         <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"/>-->
         <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css" />-->
         <!--<link href="resources/css/app.css" rel="stylesheet" type="text/css"/>-->
 
         <!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>-->
-
         
-
         <title>Formato RDC-54</title>
+        <h:outputStylesheet name="grid/grid.css" library="primefaces" />
     </h:head>
 
-    <h:body>
-        
-
-        <div class="cabecera">
-            <ui:insert name="header" >
-                <span>Bienvenido</span>
-            </ui:insert>
-        </div>
-
-        <div class="menu" style="width:10%;
-                position:relative;
-                float:left;">
-            <ui:insert name="menu" >
-                <span>Menu</span>
-            </ui:insert>
-        </div>
-
-        <div class="contenido" style="width:90%;
-                position:relative;
-                float:right;">
-            <ui:insert name="content" >
-                <span>Página en construcción</span>
-            </ui:insert>
+    <h:body>        
+  
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-2">
+                <ui:insert name="menu" >
+                    <span>Menu</span>
+                </ui:insert>
+            </div>
+       
+            <div class="ui-g-12 ui-md-10 ui-g-nopad">
+                <div class="ui-g-12">
+                    Bar
+                </div>
+                <div class="ui-g-12 ui-g-nopad">
+                    <ui:insert name="content" >
+                        <span>Página en construcción</span>
+                    </ui:insert>
+                </div>
+            </div>
+            <div class="ui-g-12">Footer</div>
         </div>
     </h:body>
-
-   
-
 </html>

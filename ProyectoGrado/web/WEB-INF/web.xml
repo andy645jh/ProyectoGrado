@@ -121,6 +121,6 @@
     </security-role>
     <context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>south-street</param-value>
+        <param-value>custom</param-value>
     </context-param>
 </web-app>

@@ -1,0 +1,5 @@
+verde -> #bfd730
+gris oscuro -> #636365
+gris medio -> #bcbdc0
+gris claro -> #f6f6f6
+morado -> #652d91
