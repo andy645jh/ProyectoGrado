@@ -441,3 +441,8 @@ a.ui-button:active,
 	-webkit-box-shadow: 0px 0px 5px #666666;
 	box-shadow: 0px 0px 5px #666666;
 }
+
+/* agregado por elkin */
+.ui-dialog-titlebar{
+    background-color: #bfd730;
+}

@@ -24,28 +24,16 @@
         <h:outputStylesheet name="grid/grid.css" library="primefaces" />
     </h:head>
 
-    <h:body style="margin: 0;">        
+    <h:body>        
   
-        <div class="ui-g">
-            <div class="ui-g-12 ui-md-2">                  
-                <p:graphicImage name="img/uts3.jpg" style="width:100%"/>               
-                <img src="#{facesContext.externalContext.requestContextPath}/resources/img/uts3.jpg" alt="logo"/>
-                <ui:insert name="menu">
-                    <span>Menu</span>
-                </ui:insert>
-            </div>
-       
-            <div class="ui-g-12 ui-md-10 ui-g-nopad">
-                <div class="ui-g-12">
-                    Bar
-                </div>
+        <div class="ui-g"> 
+            <div class="ui-g-12 ui-md-10 ui-g-nopad">                
                 <div class="ui-g-12 ui-g-nopad">
                     <ui:insert name="content" >
                         <span>Página en construcción</span>
                     </ui:insert>
                 </div>
-            </div>
-            <div class="ui-g-12">Footer</div>
+            </div>            
         </div>
     </h:body>
 </html>
