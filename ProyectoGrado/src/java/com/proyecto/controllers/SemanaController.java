@@ -67,6 +67,7 @@ public class SemanaController implements Serializable{
     
     public void abrirCrear() {
         Map<String,Object> options = new HashMap<String, Object>();
+        options.put("height", 300);
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);
@@ -123,6 +124,7 @@ public class SemanaController implements Serializable{
         
         _obj = objtemp;
         Map<String,Object> options = new HashMap<String, Object>();
+        options.put("height", 300);
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);
