@@ -29,10 +29,10 @@
 	font-size: 1em;
 }
 .ui-widget.ui-widget-content {
-	border: 1px solid #c5c5c5;
+	/*border: 1px solid #c5c5c5;*/
 }
 .ui-widget-content {
-	border: 1px solid #dddddd;
+	/*border: 1px solid #dddddd;*/
 	background: #ffffff;
 	color: #333333;
 }
@@ -443,6 +443,24 @@ a.ui-button:active,
 }
 
 /* agregado por elkin */
+html, body, .row-100h{
+    height: 100%;
+}
+
 .ui-dialog-titlebar{
     background-color: #bfd730;
+}
+
+.menu-lateral{
+    background-color: #f6f6f6;
+    height: 90%;
+    border-right: 1px solid #bcbdc0;
+}
+
+.sin-borde{
+    border: none;
+}
+
+.label-nombre-usuario{
+    padding-right: 10px;
 }
