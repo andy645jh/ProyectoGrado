@@ -23,6 +23,7 @@ public class LoginController implements Serializable{
     
     private String _usuario;
     private String _clave;
+    private String _nombreUsuario;
     
     public LoginController() {
     }
@@ -42,6 +43,16 @@ public class LoginController implements Serializable{
     public void setClave(String _clave) {
         this._clave = _clave;
     }
+
+    public String getNombreUsuario() {
+        return _nombreUsuario;
+    }
+
+    public void setNombreUsuario(String _nombreUsuario) {
+        this._nombreUsuario = _nombreUsuario;
+    }
+    
+    
     
     public String login(){
         
@@ -70,12 +81,14 @@ public class LoginController implements Serializable{
             {   
                 System.out.println("ADMINISTRADOR");   
                 docentesFacade.setCurrentDocente(buscarDocente());
+                _nombreUsuario=buscarDocente().toString();
                 
                 return "index_admin?faces-redirect=true";
             }else if(request.isUserInRole("docente"))
             {
                 System.out.println("DOCENTES");
                 docentesFacade.setCurrentDocente(buscarDocente());
+                _nombreUsuario=buscarDocente().toString();
                 return "index_docentes?faces-redirect=true";
             }else if(request.isUserInRole("evaluador"))
             {
