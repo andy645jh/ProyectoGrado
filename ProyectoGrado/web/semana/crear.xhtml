@@ -5,12 +5,12 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <ui:composition template="/plantilla.xhtml">
+    <ui:composition template="/plantilla_modal.xhtml">
 
         <ui:define name="content">
             #{semanaController.resetear()}
 
-            <h:form>
+            <h:form style="height: 280px">
                 <p:panel>                
                     <p:breadCrumb>
                         <p:menuitem url="#"></p:menuitem>
