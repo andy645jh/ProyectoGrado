@@ -453,8 +453,9 @@ html, body, .row-100h{
 
 .menu-lateral{
     background-color: #f6f6f6;
-    height: 90%;
+    height: 100%;
     border-right: 1px solid #bcbdc0;
+    font-size: 1.5em;
 }
 
 .sin-borde{
@@ -463,4 +464,8 @@ html, body, .row-100h{
 
 .label-nombre-usuario{
     padding-right: 10px;
+}
+
+.ancho-menu{
+    width: auto !important;
 }
