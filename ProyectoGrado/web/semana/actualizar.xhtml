@@ -5,7 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <ui:composition template="/plantilla.xhtml">
+    <ui:composition template="/plantilla_modal.xhtml">
 
         <ui:define name="content">
 
@@ -23,10 +23,10 @@
                     <p:panelGrid columns="2">
 
                         <p:outputLabel for="from" value="Fecha Inicio" />
-                        <p:calendar id="from" timeZone="GMT+5" pattern="dd/MM/yyyy" value="#{semanaController.campo.horainicio}"/>
+                        <p:calendar id="from"  pattern="dd/MM/yyyy" value="#{semanaController.campo.horainicio}"/>
 
                         <p:outputLabel for="to" value="Fecha Fin" />
-                        <p:calendar id="to" timeZone="GMT+5" pattern="dd/MM/yyyy" value="#{semanaController.campo.horafinal}"/>
+                        <p:calendar id="to"  pattern="dd/MM/yyyy" value="#{semanaController.campo.horafinal}"/>
 
                         <f:facet name="footer">
                             <p:commandButton id="btngrabar" value="#{actividadesTxt.crear}" actionListener="#{semanaController.actualizar()}" ajax="true"/>                             

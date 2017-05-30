@@ -5,7 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <ui:composition template="/plantilla.xhtml">
+    <ui:composition template="/plantilla_modal.xhtml">
         <ui:define name="content">
             #{docentesController.resetear()}
 
@@ -37,15 +37,11 @@
                             <p:inputText id="apellidos" required="true" value="#{docentesController.campo.apellidos}"/> 
 
                             <p:outputLabel value="Tipo Contrato" for="contrato" />
-                            <p:inputText id="contrato" required="true" value="#{docentesController.campo.tipocontrato}"/> 
-
-
-                            <p:outputLabel value="Coordinacion" for="coordinacion" />
-                            <p:selectOneMenu id="coordinacion" value="#{docentesController.codCoord}"> 
-                                <f:selectItems value="#{coordinacionController.combo('')}" />
+                            <p:selectOneMenu id="contrato" required="true" value="#{docentesController.campo.tipocontrato}"> 
+                                <f:selectItem itemLabel="Tiempo Completo" itemValue="1" />
+                                <f:selectItem itemLabel="Medio Tiempo" itemValue="2" />
                             </p:selectOneMenu>
-
-
+                            
                             <f:facet name="footer">
                                 <p:commandButton id="btngrabar" value="#{docentesTxt.crear}" ajax="true" action="#{docentesController.agregar()}"/>
                             </f:facet>

@@ -32,12 +32,6 @@
                         <p:inputText id="contrato" required="true" value="#{docentesController.campo.tipocontrato}"/> 
 
 
-                        <p:outputLabel value="Coordinacion" for="coordinacion" />
-                        <p:selectOneMenu id="coordinacion" value="#{docentesController.codCoord}"> 
-                            <f:selectItems value="#{coordinacionController.combo('')}" />
-                        </p:selectOneMenu>
-
-
                         <f:facet name="footer">
                             <p:commandButton id="btngrabar" value="#{docentesTxt.crear}" ajax="true" action="#{docentesController.actualizar()}"/>
                         </f:facet>

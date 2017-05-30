@@ -73,8 +73,12 @@ public class DocentesController implements Serializable {
 
         String titulo, detalle;
         Coordinacion c = _coordFacade.buscar(_codCoord);
-        _obj.setCodcoordinacion(c);
         System.out.println("VA A AGREGAR DOCENTE " + _obj.getCodcoordinacion());
+        Docentes doc = _ejbFacade.getCurrentDocente();
+//        String coordinacion= doc.getCodcoordinacion().getCodcoordinacion()+"";
+        _obj.setCodcoordinacion(doc.getCodcoordinacion());
+//        _obj.setCodcoordinacion(c);
+//        _obj.setCod(c);
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
