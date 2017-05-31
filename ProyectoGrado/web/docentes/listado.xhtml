@@ -6,14 +6,14 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    
     <ui:composition template="/plantilla.xhtml">
-
         <ui:define name="menu">
             <h:form >  
-                <p:menu style="width: auto;">                    
-                    <p:menuitem  value="Docentes" action="#"  icon="ui-icon-disk" />
-                    <p:menuitem  value="Semanas" outcome="/semana/listado.xhtml"  icon="ui-icon-disk" />
-                    <p:menuitem  value="Asiganacion" outcome="/asignacion/listado.xhtml"  icon="ui-icon-disk" />
+                <p:menu class="ancho-menu fondo-menu">                    
+                    <p:menuitem value="Docentes" action="#"/>
+                    <p:menuitem value="Semanas" outcome="/semana/listado.xhtml"/>
+                    <p:menuitem value="Asignacion" outcome="/asignacion/listado.xhtml" />
                 </p:menu>
             </h:form>
         </ui:define>

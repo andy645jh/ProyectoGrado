@@ -30,19 +30,17 @@
         <div class="ui-g row-100h">
             <div class="ui-g-12 ui-md-2 menu-lateral">
                 <div>
-                <img src="#{facesContext.externalContext.requestContextPath}/resources/img/uts_peque.jpg" alt="logo" style="    position: relative;
-    left: 53%;
-    transform: translate(-60%, 0%);"/>
+                    <img src="#{facesContext.externalContext.requestContextPath}/resources/img/uts_peque.jpg" alt="logo" class="img-responsive"/>
                 </div>
-                <h3>Unidades Tecnologicas de Santander</h3>
+                <hr></hr>
                 <ui:insert name="menu">
                     <span>Menu</span>
                 </ui:insert>
-                <div class="ui-g-12">Footer</div>
+                <!--<div class="ui-g-12">Footer</div>-->
             </div>
 
             <div class="ui-g-12 ui-md-10 ui-g-nopad">
-                <div class="ui-g-12">
+                <div class="ui-g-12 bar">
 
                     <h:form>     
                         <p:growl id="messages" showDetail="true" />
@@ -53,11 +51,10 @@
                             </f:facet>
 
                             <f:facet name="right">
-                                <ui:insert name="usuario">
-                                    <p:outputLabel class="label-nombre-usuario">#{loginController.nombreUsuario}</p:outputLabel> 
-                                </ui:insert>
                                 
-                                <p:commandButton value="Cerrar Sesion" ajax="false" action="#{loginController.logout()}"></p:commandButton>                                                                 
+                                <p:menuButton value="#{loginController.nombreUsuario}">                                    
+                                    <p:menuitem value="Salir" ajax="false" actionListener="#{loginController.logout()}" icon="ui-icon-extlink"/>                                    
+                                </p:menuButton>
                             </f:facet>
 
                         </p:toolbar>
@@ -69,7 +66,7 @@
                     </ui:insert>                    
                 </div>
             </div>
-            
+
         </div>
     </h:body>
 </html>
