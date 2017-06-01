@@ -5,18 +5,9 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <ui:composition template="/plantilla.xhtml">
+    <ui:composition template="/menu_docentes.xhtml">
 
-        <ui:define name="menu">
-            <h:form >  
-                <p:menu style="width: 5em;">                    
-                    <p:menuitem  value="Act" outcome="/actividades/listado.xhtml" icon="ui-icon-disk" />
-                    <p:menuitem  value="Prod" outcome="/productos/listado.xhtml"  icon="ui-icon-disk" />
-                    <p:menuitem  value="Horario" outcome="/horario/horario.xhtml"  icon="ui-icon-disk" />
-                    <p:menuitem  value="Perfil" action="#"  icon="ui-icon-disk" />
-                </p:menu>
-            </h:form>
-        </ui:define>
+       
 
         <ui:define name="content">            
             <h:form enctype="multipart/form-data">

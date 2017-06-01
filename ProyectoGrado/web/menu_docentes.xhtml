@@ -13,10 +13,10 @@
         <ui:define name="menu">
             <h:form >  
                 <p:menu style="width: 5em;">                    
-                    <p:menuitem  value="Act" action="actividades/listado"  icon="ui-icon-disk" />
-                    <p:menuitem  value="Prod" action="actividades/listado"  icon="ui-icon-disk" />
-                    <p:menuitem  value="Horario" action="actividades/listado"  icon="ui-icon-disk" />
-                    <p:menuitem  value="Perfil" action="actividades/listado"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Act" action="/actividades/listado.xhtml"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Prod" action="/productos/listado.xhtml"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Horario" action="/horario/horario.xhtml"  icon="ui-icon-disk" />
+                    <p:menuitem  value="Perfil" action="#{docentesController.abrirPerfil()}"  icon="ui-icon-disk" />
                 </p:menu>
             </h:form>
         </ui:define>
