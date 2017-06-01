@@ -15,8 +15,8 @@
 /* Component containers
 ----------------------------------*/
 .ui-widget {
-	font-family: Myriad pro regular,Helvetica,sans-serif;
-	font-size: 1em;
+    font-family: Myriad pro regular,Helvetica,sans-serif;
+    font-size: 1em;
 }
 .ui-widget .ui-widget {
 	font-size: 1em;
@@ -446,6 +446,7 @@ a.ui-button:active,
 /* agregado por elkin */
 html, body, .row-100h{
     height: 100%;
+    font-family: Myriad pro regular,Helvetica,sans-serif;
 }
 
 .ui-dialog-titlebar{
@@ -473,6 +474,7 @@ html, body, .row-100h{
 
 .img-responsive{
     width: 100%;
+    height: 100%;
 }
 
 .fondo-menu{
@@ -499,4 +501,27 @@ html, body, .row-100h{
 
 .ui-datatable-odd {
     background: none repeat scroll 0 0 #f6f6f6;
+}
+
+/* login */
+.login-container{
+    border: 1px solid #f6f6f6;
+    min-width: 100px;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 9px 0px black;
+    background-color: #ffffff;
+}
+
+.login-container>*{
+    margin-top: 15px !important;    
+}
+
+.login-container button, .login-container input{
+    width: 100% !important;
+}
+
+.login-container button {
+    margin-bottom: 15px;    
 }

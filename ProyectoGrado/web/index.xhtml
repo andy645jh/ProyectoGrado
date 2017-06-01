@@ -5,38 +5,44 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:outputStylesheet name="grid/grid.css" library="primefaces" />
-        <h:head>
+
+    <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Formato RDC-54</title>
         <h:outputStylesheet name="grid/grid.css" library="primefaces" />
     </h:head>
-    <h:form>
+    
+    <h:body style="background-color: #f6f6f6;">
+        <h:form>
+            <p:growl id="mensajes" sticky="true" showDetail="true"/>              
+            <br/>
 
-        <p:growl id="mensajes" sticky="true" showDetail="true"/>              
-        <br/>
+            #{loginController.resetear()}
+            <div class="ui-g-12">
+                <div class="login-container">
+                    <div class="ui-g">
+                        <img src="http://localhost:8082/ProyectoGradox/faces/resources/img/uts3.jpg" alt="j" class="img-responsive"/>
+                        <!--<h2>Registro y Evaluación de Actividades</h2>-->
+                    </div>
 
-        #{loginController.resetear()}
-        <div style="position: absolute; left: 53%; transform: translate(-60%, 20%);">
+                    <div class="ui-g">
+                        <p:inputText placeholder="#{GeneralTxt.usuario}" id="usuario" required="true" requiredMessage="ingrese un usuario" value="#{loginController.usuario}"/>
+                    </div>
 
-            <img src="http://localhost:8082/ProyectoGradox/faces/resources/img/uts3.jpg" alt="j"/>
-            <h2>Registro y Evaluación de Actividades</h2>
+                    <div class="ui-g">
+                        <p:password placeholder="#{GeneralTxt.clave}" id="clave" required="true" requiredMessage="ingrese una clave" value="#{loginController.clave}"/>
+                    </div>                
 
-            <p:panelGrid columns="2">                        
-                <p:outputLabel value="#{GeneralTxt.usuario}"/>
-                <p:inputText id="usuario" required="true" requiredMessage="ingrese un usuario" value="#{loginController.usuario}"/>
+                    <div class="ui-g">
+                        <p:commandButton value="#{GeneralTxt.iniciarsesion}" ajax="false" action="#{loginController.login()}"/>
+                    </div>   
+                </div>
 
-                <p:outputLabel value="#{GeneralTxt.clave}"/>
-                <p:password id="clave" required="true" requiredMessage="ingrese una clave" value="#{loginController.clave}"/>
+            </div>
+            <!--</p:panel>--> 
+        </h:form>
+    </h:body>
 
-                <f:facet name="footer">
-                    <p:commandButton value="#{GeneralTxt.iniciarsesion}" ajax="false" action="#{loginController.login()}"/>
-                </f:facet>                   
-
-            </p:panelGrid>
-        </div>
-        <!--</p:panel>--> 
-    </h:form>
 
 </html>
 
