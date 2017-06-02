@@ -9,13 +9,7 @@
     <ui:composition template="/plantilla.xhtml">
 
         <ui:define name="menu">
-            <h:form >  
-                <p:menu style="width: 5em;">                    
-                    <p:menuitem  value="Docentes" outcome="/docentes/listado.xhtml"  icon="ui-icon-disk" />
-                    <p:menuitem  value="Semanas" outcome="/semana/listado.xhtml"  icon="ui-icon-disk" />
-                    <p:menuitem  value="Asigancion" action="#"  icon="ui-icon-disk" />
-                </p:menu>
-            </h:form>
+            <ui:decorate template="/menu_docentes.xhtml"/>            
         </ui:define>
 
         <ui:define name="content">
