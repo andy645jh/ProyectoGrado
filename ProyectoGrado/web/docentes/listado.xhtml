@@ -9,13 +9,7 @@
     
     <ui:composition template="/plantilla.xhtml">
         <ui:define name="menu">
-            <h:form >  
-                <p:menu class="ancho-menu fondo-menu">                    
-                    <p:menuitem value="Docentes" action="#"/>
-                    <p:menuitem value="Semanas" outcome="/semana/listado.xhtml"/>
-                    <p:menuitem value="Asignacion" outcome="/asignacion/listado.xhtml" />
-                </p:menu>
-            </h:form>
+            <ui:decorate template="/menu_docentes.xhtml"/>            
         </ui:define>
 
         <ui:define name="content">           
@@ -53,14 +47,8 @@
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Tipo Contrato</f:facet>
-                            
-                            <c:if test='#{registro.tipocontrato} ==2'>
-                                tiempo
-                            </c:if>
-                            
-                            
-
-
+                            <h:outputText value="Medio Completo" rendered="#{registro.tipocontrato == 1}"/>
+                            <h:outputText value="Tiempo Completo" rendered="#{registro.tipocontrato == 0}"/>                            
                         </p:column>
 
 
