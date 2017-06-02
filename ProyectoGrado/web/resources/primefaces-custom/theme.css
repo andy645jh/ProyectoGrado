@@ -69,6 +69,12 @@ html .ui-button.ui-state-disabled:active {
 	color: #454545;
         border:none;
 }
+
+.ui-inputfield, .ui-inputfield:hover
+{
+    background: none !important;
+}
+
 .ui-state-default a,
 .ui-state-default a:link,
 .ui-state-default a:visited,
@@ -529,4 +535,29 @@ html, body, .row-100h{
 
 .login-container button {
     margin-bottom: 15px;    
+}
+
+.ui-panelgrid{
+    margin: 0 auto;
+}
+
+.no-background{
+    background: none;   
+}
+
+.ui-panelgrid .ui-panelgrid-cell {
+    border-width: 0 !important;   
+}
+
+input{
+    border:1px solid #c5c5c5 !important;
+}
+
+input:hover{
+    border:1px solid #c5c5c5 !important;
+}
+
+table button 
+{
+    width: 100%;
 }
