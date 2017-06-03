@@ -561,3 +561,7 @@ table button
 {
     width: 100%;
 }
+
+.active {
+    color: #bfd730 !important;
+}

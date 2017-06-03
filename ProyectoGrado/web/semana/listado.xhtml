@@ -6,12 +6,13 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
     <ui:composition template="/plantilla.xhtml">
-
         <ui:define name="menu">
-            <ui:decorate template="/menu_docentes.xhtml"/>            
+            <ui:decorate template="/menu_docentes.xhtml">
+                <ui:param name="estaActivo" value="semanas"/>
+            </ui:decorate> 
         </ui:define>
-
         <ui:define name="content">           
             <h:form id="formActividades">
                 <p:panel>

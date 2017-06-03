@@ -22,9 +22,9 @@
 
     <h:form >  
         <p:menu class="ancho-menu fondo-menu">                    
-            <p:menuitem value="Docentes" outcome="/docentes/listado.xhtml"/>
-            <p:menuitem value="Semanas" outcome="/semana/listado.xhtml"/>
-            <p:menuitem value="Asignacion" outcome="/asignacion/listado.xhtml" />
+            <p:menuitem class="#{estaActivo == 'docentes' ? 'active' : ''}" value="Docentes" outcome="/docentes/listado.xhtml"/>
+            <p:menuitem class="#{estaActivo == 'semanas' ? 'active' : ''}" value="Semanas" outcome="/semana/listado.xhtml"/>
+            <p:menuitem class="#{estaActivo == 'asignacion' ? 'active' : ''}" value="Asignacion" outcome="/asignacion/listado.xhtml" />            
         </p:menu>
     </h:form>
 
