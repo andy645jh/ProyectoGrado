@@ -68,6 +68,7 @@ public class ProductosController implements Serializable
         String titulo,detalle;
         Actividades actividad= _actividadesFacade.buscar(_codigo);
         _obj.setCodactividad(actividad);
+            System.out.println("AVTIVIDAD "+_obj.getCodactividad()+" PROD "+_obj.getDescripcion());
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
@@ -122,10 +123,9 @@ public class ProductosController implements Serializable
     
     public List<Productos> getListado()
     {        
-//        Docentes doc =docentesFacade.getCurrentDocente();       
+        Docentes doc =docentesFacade.getCurrentDocente();       
              
-//        List<Actividades> listaActividades =_actividadesFacade.buscarCampo("_coddocente",doc.getCedula()+"");
-        List<Actividades> listaActividades =_actividadesFacade.buscarCampo("_coddocente","109877");
+        List<Actividades> listaActividades =_actividadesFacade.buscarCampo("_coddocente",doc.getCedula()+"");
         
         List<Productos> listaProd = new ArrayList<>();
         for (Actividades acti : listaActividades)

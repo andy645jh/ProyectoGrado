@@ -74,8 +74,8 @@ public class ActividadesController implements Serializable
     {
         String titulo,detalle;
         TipoModalidades modalidad= _modalidadFacade.buscar(_codigo);
-//        Docentes d=docentesFacade.buscar(109877);
         Docentes d=docentesFacade.getCurrentDocente();
+        System.out.println("CREAR DOCENTE   "+d.getCedula());
         _obj.setCodtipo(modalidad);
         
         try {
@@ -235,7 +235,8 @@ public class ActividadesController implements Serializable
     {        
         String titulo,detalle;
         TipoModalidades modalidad= _modalidadFacade.buscar(_codigo);
-        Docentes d=docentesFacade.buscar(109877);
+        Docentes d=docentesFacade.getCurrentDocente();
+        System.out.println("EDITAR DOCENTE   "+d.getCedula());
         _obj.setCodtipo(modalidad);
         
         try {

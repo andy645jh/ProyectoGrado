@@ -6,25 +6,13 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <!--
-    <ui:define name="menu">
-        <h:form >  
-            <p:menu style="width: 5em;">                    
-                <p:menuitem  value="Act" action="/actividades/listado.xhtml"  icon="ui-icon-disk" />
-                <p:menuitem  value="Prod" action="/productos/listado.xhtml"  icon="ui-icon-disk" />
-                <p:menuitem  value="Horario" action="/horario/horario.xhtml"  icon="ui-icon-disk" />
-                <p:menuitem  value="Perfil" action="#{docentesController.abrirPerfil()}"  icon="ui-icon-disk" />
-            </p:menu>
-        </h:form>
-    </ui:define>
-    -->
-
-
     <h:form >  
-        <p:menu class="ancho-menu fondo-menu">                    
-            <p:menuitem class="#{estaActivo == 'docentes' ? 'active' : ''}" value="Docentes" outcome="/docentes/listado.xhtml"/>
-            <p:menuitem class="#{estaActivo == 'semanas' ? 'active' : ''}" value="Semanas" outcome="/semana/listado.xhtml"/>
-            <p:menuitem class="#{estaActivo == 'asignacion' ? 'active' : ''}" value="Asignacion" outcome="/asignacion/listado.xhtml" />            
+        <p:menu class="ancho-menu fondo-menu">      
+            <p:menuitem class="#{estaActivo == 'actividades' ? 'active' : ''}" value="Actividades" action="/actividades/listado.xhtml"  icon="ui-icon-disk" />
+            <p:menuitem class="#{estaActivo == 'productos' ? 'active' : ''}" value="Productos" action="/productos/listado.xhtml"  icon="ui-icon-disk" />
+            <p:menuitem class="#{estaActivo == 'horario' ? 'active' : ''}" value="Horario" action="/horario/horario.xhtml"  icon="ui-icon-disk" />
+            <p:menuitem class="#{estaActivo == 'perfil' ? 'active' : ''}" value="Perfil" action="#{docentesController.abrirPerfil()}"  icon="ui-icon-disk" />
+                      
         </p:menu>
     </h:form>
 

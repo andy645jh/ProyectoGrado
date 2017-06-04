@@ -9,7 +9,7 @@
     
     <ui:composition template="/plantilla.xhtml">
         <ui:define name="menu">
-            <ui:decorate template="/menu_docentes.xhtml">
+            <ui:decorate template="/menu_coordinador.xhtml">
                 <ui:param name="estaActivo" value="docentes"/>
             </ui:decorate>            
         </ui:define>
@@ -49,8 +49,8 @@
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Tipo Contrato</f:facet>
-                            <h:outputText value="Medio Completo" rendered="#{registro.tipocontrato == 1}"/>
-                            <h:outputText value="Tiempo Completo" rendered="#{registro.tipocontrato == 0}"/>                            
+                            <h:outputText value="Medio Completo" rendered="#{registro.tipocontrato == 2}"/>
+                            <h:outputText value="Tiempo Completo" rendered="#{registro.tipocontrato == 1}"/>                            
                         </p:column>
 
 

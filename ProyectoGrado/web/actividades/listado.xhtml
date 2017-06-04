@@ -5,10 +5,13 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <ui:composition template="/menu_docentes.xhtml">
-        
-       
-        
+    
+    <ui:composition template="/plantilla.xhtml">
+        <ui:define name="menu">
+            <ui:decorate template="/menu_docentes.xhtml">
+                <ui:param name="estaActivo" value="actividades"/>
+            </ui:decorate>            
+        </ui:define>
         <ui:define name="content">           
             <h:form id="formActividades">
                 <p:panel>

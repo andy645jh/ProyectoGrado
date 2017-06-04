@@ -29,11 +29,14 @@
                         <p:inputText id="apellidos" required="true" value="#{docentesController.campo.apellidos}"/> 
 
                         <p:outputLabel value="Tipo Contrato" for="contrato" />
-                        <p:inputText id="contrato" required="true" value="#{docentesController.campo.tipocontrato}"/> 
+                        <p:selectOneMenu id="contrato" required="true" value="#{docentesController.campo.tipocontrato}"> 
+                                <f:selectItem itemLabel="Tiempo Completo" itemValue="1" />
+                                <f:selectItem itemLabel="Medio Tiempo" itemValue="2" />
+                            </p:selectOneMenu>
 
 
                         <f:facet name="footer" class="no-background">
-                            <p:commandButton id="btngrabar" value="#{docentesTxt.crear}" ajax="true" action="#{docentesController.actualizar()}"/>
+                            <p:commandButton id="btngrabar" value="Actualizar" ajax="true" action="#{docentesController.actualizar()}"/>
                         </f:facet>
                     </p:panelGrid>
                 </p:panel>
