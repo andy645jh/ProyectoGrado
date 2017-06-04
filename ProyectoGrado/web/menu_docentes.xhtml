@@ -8,10 +8,10 @@
 
     <h:form >  
         <p:menu class="ancho-menu fondo-menu">      
-            <p:menuitem class="#{estaActivo == 'actividades' ? 'active' : ''}" value="Actividades" action="/actividades/listado.xhtml"  icon="ui-icon-disk" />
-            <p:menuitem class="#{estaActivo == 'productos' ? 'active' : ''}" value="Productos" action="/productos/listado.xhtml"  icon="ui-icon-disk" />
-            <p:menuitem class="#{estaActivo == 'horario' ? 'active' : ''}" value="Horario" action="/horario/horario.xhtml"  icon="ui-icon-disk" />
-            <p:menuitem class="#{estaActivo == 'perfil' ? 'active' : ''}" value="Perfil" action="#{docentesController.abrirPerfil()}"  icon="ui-icon-disk" />
+            <p:menuitem class="#{estaActivo == 'actividades' ? 'active' : ''}" value="Actividades" action="/actividades/listado.xhtml"  />
+            <p:menuitem class="#{estaActivo == 'productos' ? 'active' : ''}" value="Productos" action="/productos/listado.xhtml"  />
+            <p:menuitem class="#{estaActivo == 'horario' ? 'active' : ''}" value="Horario" action="/horario/horario.xhtml"  />
+            <p:menuitem class="#{estaActivo == 'perfil' ? 'active' : ''}" value="Perfil" action="#{docentesController.abrirPerfil()}"  />
                       
         </p:menu>
     </h:form>

@@ -16,9 +16,9 @@
         <ui:define name="content">
 
             <h:form>
-                <div class="ui-g">
+                <div class="ui-g form-asig-label">
                     <div class="ui-g-12">
-                        <div class="ui-g-3">
+                        <div class="ui-g-3 ">
                             <p:outputLabel value="Investigación" for="inv" />
                             <p:inputText id="inv" value="#{porcentajeController.porcentaje_investigacion}"/>
                         </div>
@@ -27,11 +27,11 @@
                             <p:inputText id="ext" value="#{porcentajeController.porcentaje_extension}"/> 
                         </div>
                         <div class="ui-g-3">
-                            <p:outputLabel value="Comites" for="com" /><br/>
+                            <p:outputLabel value="Comites" for="com" />
                             <p:inputText id="com" value="#{porcentajeController.porcentaje_comites}"/> 
                         </div>
                         <div class="ui-g-3">
-                            <p:outputLabel value="ODA" for="oda" /><br/>
+                            <p:outputLabel value="ODA" for="oda" />
                             <p:inputText id="oda" value="#{porcentajeController.porcentaje_ODA}"/> 
                         </div>
                     </div>                
@@ -46,9 +46,8 @@
                             <p:inputText id="virt" value="#{porcentajeController.porcentaje_virtualidad}"/> 
                         </div>
                         <div class="ui-g-3">
-                            <p:outputLabel value="Docentes" for="doc" /><br/>
-                            <p:selectCheckboxMenu id="doc" value="#{porcentajeController.selectedDocentes}" label="Cities" 
-                                                  filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                            <p:outputLabel value="Docentes" for="doc" />
+                            <p:selectCheckboxMenu id="doc" value="#{porcentajeController.selectedDocentes}" label="Cities" filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
                                 <f:selectItems value="#{docentesController.combo('')}" />
                             </p:selectCheckboxMenu>
                         </div>
