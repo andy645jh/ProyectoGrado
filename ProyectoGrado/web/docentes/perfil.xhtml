@@ -5,7 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
+
     <ui:composition template="/plantilla.xhtml">
         <ui:define name="menu">
             <ui:decorate template="/menu_docentes.xhtml">
@@ -50,12 +50,12 @@
                         </div>  
                     </div>
                     <div class="ui-g">
-                        
+
                         <div class="ui-md-2 ">
                             <p:outputLabel value="Fecha de Nacimiento" for="fechanac" />                   
                             <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:calendar id="fechanac" showOn="button" value="#{docentesController.campo.fechanac}"></p:calendar></pre>
                         </div>
-                        
+
                         <div class="ui-md-2 ">
                             <p:outputLabel value="#{docentesTxt.telefono}  " for="telefono" />
                             <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="telefono" required="true" value="#{docentesController.campo.telefono}"/> </pre>
@@ -74,9 +74,51 @@
                             <p:outputLabel value="#{docentesTxt.formacion}" for="formacion" />
                             <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputTextarea id="formacion" required="true" value="#{docentesController.campo.formacion}"/></pre>
                         </div>
-                    </div>
+                    </div>                 
+
                     <div class="ui-g">
-                        
+
+                        <div class="ui-md-2 ">
+                            <p:outputLabel value="Lugar de Nacimiento" for="lugar" />                   
+                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:calendar id="lugar" showOn="button" value="#{docentesController.campo.lugar_nac}"></p:calendar></pre>
+                        </div>
+
+                        <div class="ui-md-2 ">
+                            <p:outputLabel value="Genero" for="genero" />
+                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="genero" required="true" value="#{docentesController.campo.genero}"/> </pre>
+                        </div>  
+                        <div class="ui-md-2 ">
+                            <p:outputLabel value="Fecha de Expedición" for="fecha_exp" />
+                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="fecha_exp" required="true" value="#{docentesController.campo.fecha_exp}"/></pre> 
+                        </div>
+
+                        <div class="ui-md-2 ">
+                            <p:outputLabel value="Matricula Profesional" for="matricula" />
+                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="matricula" required="true" value="#{docentesController.campo.matricula_prof}"/></pre>
+                        </div>
+
+                        <div class="ui-md-2 ">
+                            <p:outputLabel value="Celular" for="celular" />
+                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="celular" required="true" value="#{docentesController.campo.celular}"/></pre>
+                        </div>
+                    </div>                 
+
+                    <div class="ui-g">  
+                        <div class="ui-md-2 ">
+                            <p:outputLabel value="Tipo Documento" for="tipo_doc" />
+                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="tipo_doc" required="true" value="#{docentesController.campo.tipo_doc}"/></pre>
+                        </div>
+
+                        <div class="ui-md-2 ">
+                            <p:outputLabel value="Lugar de Expedición" for="lugar_exp" />
+                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="lugar_exp" required="true" value="#{docentesController.campo.lugar_exp}"/></pre>
+                        </div>
+
+                        <div class="ui-md-2 ">
+                            <p:outputLabel value="Municipio" for="municipio" />
+                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="municipio" required="true" value="#{docentesController.campo.municipio}"/></pre>
+                        </div>
+
                         <div class="ui-md-1 ">
                             <p:outputLabel value="Usuario" />
                             <p:outputLabel value="#{docentesController.usuario}"/>
@@ -85,11 +127,31 @@
                             <p:outputLabel value="Clave" for="clave" />
                             <p:inputText id="clave" value="#{docentesController.clave}" required="true" /> 
                         </div>
+                        <div class="ui-md-2 ">
+                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;">
+                            <p:commandButton id="btngrabar" value="Actualizar" ajax="false" action="#{docentesController.actualizar()}"/>
+                            </pre>
+                        </div>
                     </div>
-                    <f:facet name="footer">
-                        <p:commandButton id="btngrabar" value="Actualizar" ajax="false" action="#{docentesController.actualizar()}"/>
-                    </f:facet>
 
+                    <p:accordionPanel>
+                        <p:tab title="Godfather Part I">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <h:outputText
+                                    value="The story begins as Don Vito Corleone..." />
+                            </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Godfather Part II">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <h:outputText value="Francis Ford Coppola's legendary..." />
+                            </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Godfather Part III">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <h:outputText value="After a break of more than 15 years..." />
+                            </h:panelGrid>
+                        </p:tab>
+                    </p:accordionPanel>
                 </p:panel>  
             </h:form>
         </ui:define>
