@@ -565,3 +565,16 @@ table button
 .active {
     color: #bfd730 !important;
 }
+
+.ui-cell-editing{
+    background: none !important;
+    border:none !important;
+}
+
+.letra-tabla{
+    //font-size: 12px !important;
+}
+
+.ui-selectcheckboxmenu, .ui-selectcheckboxmenu-trigger{
+    background: none;
+}
