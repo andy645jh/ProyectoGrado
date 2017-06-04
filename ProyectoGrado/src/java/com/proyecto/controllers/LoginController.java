@@ -83,13 +83,13 @@ public class LoginController implements Serializable{
                 docentesFacade.setCurrentDocente(buscarDocente());
                 _nombreUsuario=buscarDocente().toString();
                 
-                return "index_admin?faces-redirect=true";
+                return "/docentes/listado?faces-redirect=true";
             }else if(request.isUserInRole("docente"))
             {
                 System.out.println("DOCENTES");
                 docentesFacade.setCurrentDocente(buscarDocente());
                 _nombreUsuario=buscarDocente().toString();
-                return "index_docentes?faces-redirect=true";
+                return "/actividades/listado?faces-redirect=true";
             }else if(request.isUserInRole("evaluador"))
             {
                 System.out.println("EVALUADOR");

@@ -15,7 +15,7 @@
         </ui:define>
         <ui:define name="content">
 
-            <h:form>
+            <h:form id="form">
                 <div class="ui-g">
                     <div class="ui-g-12">
                         <div class="ui-g-3">
@@ -54,24 +54,19 @@
                         </div>
                         <div class="ui-g-3">
                             <p:commandButton value="Calcular" actionListener="#{porcentajeController.agregar()}" icon="ui-icon-disk" ajax="true" >
-                                <p:ajax event="dialogReturn" update=":formActividades:listar :formActividades:mensajito" />                          
+                                <p:ajax event="dialogReturn" update=":form:listar :form:mensajito" />                          
                             </p:commandButton>
                         </div>
                     </div>
                 </div>
-            </h:form>
-
-
-            <h:form id="formActividades">
-                <p:panel>
-
+          
                     <p:growl id="mensajito" sticky="true" showDetail="true"/>           
                     <br/>           
                     <p:separator/>
                     <br/>
                     <p:dataTable class="letra-tabla" id="listar" value="#{asignacionController.listadoAsign}" var="registro"  editable="true" editMode="cell" widgetVar="cellCars">
 
-                        <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update=":formActividades:mensajito" />
+                        <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update=":form:listar :form:mensajito" />
 
                         <p:column style="text-align: center">
                             <f:facet name="header">Docente</f:facet>
@@ -89,7 +84,6 @@
                                 <f:facet name="output"><h:outputText value="#{registro.horasclase}"/></f:facet>
                                 <f:facet name="input"><p:inputText id="clase" value="#{registro.horasclase}" style="width:96%"/></f:facet>
                             </p:cellEditor>
-
                         </p:column>
 
                         <p:column style="text-align: center">
@@ -98,7 +92,6 @@
                                 <f:facet name="output"><h:outputText value="#{registro.preparacion}" /></f:facet>
                                 <f:facet name="input"><p:inputText id="preparacion" value="#{registro.preparacion}" style="width:96%"/></f:facet>
                             </p:cellEditor>
-
                         </p:column>
 
                         <p:column style="text-align: center">
@@ -107,7 +100,6 @@
                                 <f:facet name="output"><h:outputText value="#{registro.capacitacion}" /></f:facet>
                                 <f:facet name="input"><p:inputText id="capacitacion" value="#{registro.capacitacion}" style="width:96%"/></f:facet>
                             </p:cellEditor>
-
                         </p:column>
 
                         <p:column style="text-align: center">
@@ -116,7 +108,6 @@
                                 <f:facet name="output"><h:outputText value="#{registro.colectivo}" /></f:facet>
                                 <f:facet name="input"><p:inputText id="colectivo" value="#{registro.colectivo}" style="width:96%"/></f:facet>
                             </p:cellEditor>
-
                         </p:column>
 
                         <p:column style="text-align: center">
@@ -124,8 +115,7 @@
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{registro.investigacion}" /></f:facet>
                                 <f:facet name="input"><p:inputText id="inv" value="#{registro.investigacion}" style="width:96%"/></f:facet>
-                            </p:cellEditor>                               
-
+                            </p:cellEditor>     
                         </p:column>
 
                         <p:column style="text-align: center">
@@ -134,7 +124,6 @@
                                 <f:facet name="output"><h:outputText value="#{registro.social}" /></f:facet>
                                 <f:facet name="input"><p:inputText id="social" value="#{registro.social}" style="width:96%"/></f:facet>
                             </p:cellEditor> 
-
                         </p:column>
 
                         <p:column style="text-align: center">
@@ -143,7 +132,6 @@
                                 <f:facet name="output"><h:outputText value="#{registro.oda}" /></f:facet>
                                 <f:facet name="input"><p:inputText id="oda" value="#{registro.oda}" style="width:96%"/></f:facet>
                             </p:cellEditor>
-
                         </p:column>
 
                         <p:column style="text-align: center">
@@ -161,7 +149,6 @@
                                 <f:facet name="output"><h:outputText value="#{registro.virtualidad}" /></f:facet>
                                 <f:facet name="input"><p:inputText id="virtualidad" value="#{registro.virtualidad}" style="width:96%"/></f:facet>
                             </p:cellEditor>
-
                         </p:column>
 
                         <p:column style="text-align: center">
@@ -170,7 +157,6 @@
                                 <f:facet name="output"><h:outputText value="#{registro.comites}" /></f:facet>
                                 <f:facet name="input"><p:inputText id="comites" value="#{registro.comites}" style="width:96%"/></f:facet>
                             </p:cellEditor>
-
                         </p:column>
 
                         <p:column style="text-align: center">
@@ -196,13 +182,12 @@
                         </p:columnGroup>
 
                     </p:dataTable>
-                    <p:contextMenu for="listar" widgetVar="cMenu">   
+<!--                    <p:contextMenu for="listar" widgetVar="cMenu">   
                         <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();
                                 return false;"/>  
                         <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>  
-                    </p:contextMenu> 
+                    </p:contextMenu> -->
 
-                </p:panel>  
             </h:form>
         </ui:define>
     </ui:composition>

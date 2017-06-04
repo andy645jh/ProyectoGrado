@@ -5,23 +5,14 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <script name="jquery/jquery.js" library="primefaces"></script>
-    </h:head>
+    
     <ui:composition template="/plantilla.xhtml">
-        
-      <ui:define name="menu">
-            <h:form >  
-                <p:menu style="width: 5em;">                    
-                    <p:menuitem  value="Act" outcome="/actividades/listado.xhtml" icon="ui-icon-disk" />
-                    <p:menuitem  value="Prod" outcome="/productos/listado.xhtml"  icon="ui-icon-disk" />
-                    <p:menuitem  value="Horario" outcome="/horario/horario.xhtml"  icon="ui-icon-disk" />
-                    <p:menuitem  value="Perfil" outcome="#{docentesController.abrirPerfil()}"  icon="ui-icon-disk" />
-                </p:menu>
-            </h:form>
+        <ui:define name="menu">
+            <ui:decorate template="/menu_docentes.xhtml">
+                <ui:param name="estaActivo" value="perfil"/>
+            </ui:decorate>            
         </ui:define>
-        
-        <ui:define name="content">           
+        <ui:define name="content">          
             AQUI VA A IR ALGO
         </ui:define>
     </ui:composition>

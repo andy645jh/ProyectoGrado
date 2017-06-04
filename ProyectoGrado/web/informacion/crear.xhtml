@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/plantilla_modal.xhtml">
+            
+        <ui:define name="content">
+            #{informacionAcademicaController.resetear()}
+            
+            <h:form>
+                <p:panel>  
+                 
+                    <p:growl id="mensajes" sticky="true" showDetail="true"/>                
+                    <br/>
+                    <p:panelGrid columns="2">
+
+                        <p:outputLabel value="Nivel" for="nombre" />
+                        <p:inputText id="nombre" value="#{informacionAcademicaController.campo.nivel}"/> 
+
+                        <p:outputLabel value="Título" for="titulo" />
+                        <p:inputText id="titulo" value="#{informacionAcademicaController.campo.titulo}"/> 
+
+                        <p:outputLabel value="Año de graduación" for="fechanac" />
+                        <p:calendar id="fechanac" showOn="button" value="#{informacionAcademicaController.campo.ano_grado}"></p:calendar>
+
+                        <p:outputLabel value="No Registro" for="responsable" />
+                        <p:inputText id="responsable" value="#{informacionAcademicaController.campo.registro}"/> 
+
+                        <p:outputLabel value="País" for="valoracion" />
+                        <p:inputText id="valoracion" value="#{informacionAcademicaController.campo.pais}"/> 
+                        
+                        <p:outputLabel value="Horas" for="horas" />
+                        <p:inputText id="horas" value="#{informacionAcademicaController.campo.horas}"/> 
+                        
+                        <p:outputLabel value="Tipo" for="codtipo" />
+                        <p:selectOneMenu id="codtipo" value="#{informacionAcademicaController.campo.tipo}"> 
+                            <f:selectItem itemLabel="Titulos" itemValue="1" />
+                            <f:selectItem itemLabel="Cursos" itemValue="2" />
+                        </p:selectOneMenu>
+                        
+                        <f:facet name="footer">
+                            <p:commandButton id="btngrabar" value="#{actividadesTxt.crear}" actionListener="#{informacionAcademicaController.agregar()}" ajax="true"/>                             
+                        </f:facet>
+                    </p:panelGrid>
+                </p:panel> 
+            </h:form>
+            
+        </ui:define>
+        
+    </ui:composition>
+</html>
+

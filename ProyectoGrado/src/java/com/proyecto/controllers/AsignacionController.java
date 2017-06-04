@@ -41,7 +41,7 @@ public class AsignacionController implements Serializable {
     private AsignacionFacade _ejbFacade;
     @EJB
     private DocentesFacade _facadeDoc;
-   
+
     private FacesMessage message;
     private int _codPorcentaje;
     private int codDocente;
@@ -59,36 +59,62 @@ public class AsignacionController implements Serializable {
     private String prueba;
     private double totalHoras;
     private List<Asignacion> _listadoAsign;
-    
+
     public AsignacionController() {
     }
 
     public List<Asignacion> getListadoAsign() {
-          /*prueba="prueba";*/
-        totalHC=0;
-        totalPC=0;
-        totalCap=0;
-        totalCD=0;
-        totalHI=0;
-        totalPS=0;
-        totalODA=0;
-        totalPlan=0;
-        totalvirt=0;
-        totalCom=0;
+        /*prueba="prueba";*/
+
+        System.out.println("entro a la funcion");
+
+        totalHC = 0;
+        totalPC = 0;
+        totalCap = 0;
+        totalCD = 0;
+        totalHI = 0;
+        totalPS = 0;
+        totalODA = 0;
+        totalPlan = 0;
+        totalvirt = 0;
+        totalCom = 0;
         for (Asignacion asg : _ejbFacade.listado()) {
-            if(asg.getHorasclase()!=null){totalHC+=asg.getHorasclase();}
-            if(asg.getPreparacion()!=null){totalPC+=asg.getPreparacion();}
-            if(asg.getCapacitacion()!=null){totalCap+=asg.getCapacitacion();}
-            if(asg.getColectivo()!=null){totalCD+=asg.getColectivo();}
-            if(asg.getInvestigacion()!=null){totalHI+=asg.getInvestigacion();}
-            if(asg.getSocial()!=null){totalPS+=asg.getSocial();}
-            if(asg.getOda()!=null){totalODA+=asg.getOda();}
-            if(asg.getPlaneacion()!=null){ totalPlan+=asg.getPlaneacion();}
-            if(asg.getVirtualidad()!=null){totalvirt+=asg.getVirtualidad();}
-            if(asg.getComites()!=null){totalCom+=asg.getComites();}
-            
+            if (asg.getHorasclase() != null) {
+                totalHC += asg.getHorasclase();
+            }
+            if (asg.getPreparacion() != null) {
+                totalPC += asg.getPreparacion();
+            }
+            if (asg.getCapacitacion() != null) {
+                totalCap += asg.getCapacitacion();
+            }
+            if (asg.getColectivo() != null) {
+                totalCD += asg.getColectivo();
+            }
+            if (asg.getInvestigacion() != null) {
+                totalHI += asg.getInvestigacion();
+            }
+            if (asg.getSocial() != null) {
+                totalPS += asg.getSocial();
+            }
+            if (asg.getOda() != null) {
+                totalODA += asg.getOda();
+            }
+            if (asg.getPlaneacion() != null) {
+                totalPlan += asg.getPlaneacion();
+            }
+            if (asg.getVirtualidad() != null) {
+                totalvirt += asg.getVirtualidad();
+            }
+            if (asg.getComites() != null) {
+                totalCom += asg.getComites();
+            }
+
         }
-        if(_listadoAsign==null) _listadoAsign = _ejbFacade.listado();
+        if (_listadoAsign == null) {
+            _listadoAsign = _ejbFacade.listado();
+        }
+        System.out.println("tamaño de la lista " + _listadoAsign.size());
         return _listadoAsign;
     }
 
@@ -110,7 +136,6 @@ public class AsignacionController implements Serializable {
 //        _obj.setCoddocente(d);
 //        _obj.setCodporcentaje(p);
 //        _obj.setCodobliatoria(a);
-        
         System.out.println("FUNCUIN AGREGAR");
         String titulo, detalle;
 
@@ -119,11 +144,9 @@ public class AsignacionController implements Serializable {
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
 
-            
             for (String docente : selectedDocentes) {
-                System.out.println("VA A AGREGAR UN DOCENTE "+docente);
-                
-                
+                System.out.println("VA A AGREGAR UN DOCENTE " + docente);
+
 //                _obj = new TiempoAsignado();
 //                _obj.setCoddocente(null);
             }
@@ -196,49 +219,81 @@ public class AsignacionController implements Serializable {
     }
 
     public String onCellEdit(CellEditEvent event) {
-        
+
         Object oldValue = event.getOldValue();
         Object newValue = event.getNewValue();
-        
-         if(_listadoAsign==null) _listadoAsign = _ejbFacade.listado();
-         
-         actualizar(_listadoAsign.get(event.getRowIndex()));
-        
-        System.out.println("VALOR ANTES "+oldValue+" FILA "+event.getRowIndex()+" COLUMNA "+_listadoAsign.get(event.getRowIndex()).getCoddocente().getTipocontrato());
-        System.out.println("VALOR DESPUES "+newValue+" OBJETO  "+_listadoAsign.get(event.getRowIndex()).getCodasg());
-        
-        if(_listadoAsign.get(event.getRowIndex()).getCoddocente().getTipocontrato()==1){
-            
-            System.out.println("TIPO CONTRATO 1");
-            
-            totalHoras=_listadoAsign.get(event.getRowIndex()).getCapacitacion()+_listadoAsign.get(event.getRowIndex()).getHorasclase()+
-                    _listadoAsign.get(event.getRowIndex()).getPreparacion()+_listadoAsign.get(event.getRowIndex()).getColectivo()+
-                    _listadoAsign.get(event.getRowIndex()).getInvestigacion()+_listadoAsign.get(event.getRowIndex()).getSocial()+
-                    _listadoAsign.get(event.getRowIndex()).getOda()+_listadoAsign.get(event.getRowIndex()).getPlaneacion()+
-                    _listadoAsign.get(event.getRowIndex()).getVirtualidad()+_listadoAsign.get(event.getRowIndex()).getComites();
-            
-        }else if(_listadoAsign.get(event.getRowIndex()).getCoddocente().getTipocontrato()==2){
-            
-            System.out.println("TIPO CONTRATO 2");
-            totalHoras=_listadoAsign.get(event.getRowIndex()).getCapacitacion()+_listadoAsign.get(event.getRowIndex()).getHorasclase()+
-                    _listadoAsign.get(event.getRowIndex()).getPreparacion()+_listadoAsign.get(event.getRowIndex()).getColectivo()+
-                    _listadoAsign.get(event.getRowIndex()).getInvestigacion()+_listadoAsign.get(event.getRowIndex()).getSocial()+
-                    _listadoAsign.get(event.getRowIndex()).getOda()+_listadoAsign.get(event.getRowIndex()).getPlaneacion()+
-                    _listadoAsign.get(event.getRowIndex()).getVirtualidad()+_listadoAsign.get(event.getRowIndex()).getComites();
+
+        if (_listadoAsign == null) {
+            _listadoAsign = _ejbFacade.listado();
         }
-        
-//        if (newValue != null && !newValue.equals(oldValue)) {
-//            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
-//            FacesContext.getCurrentInstance().addMessage(null, msg);
-//        }
-        
-        return "/asignacion/listado";
+
+        actualizar(_listadoAsign.get(event.getRowIndex()));
+
+        System.out.println("VALOR ANTES " + oldValue + " FILA " + event.getRowIndex() + " COLUMNA " + _listadoAsign.get(event.getRowIndex()).getCoddocente().getTipocontrato());
+        System.out.println("VALOR DESPUES " + newValue + " OBJETO  " + _listadoAsign.get(event.getRowIndex()).getCodasg());
+
+        if (_listadoAsign.get(event.getRowIndex()).getCapacitacion() == null) {
+            _listadoAsign.get(event.getRowIndex()).setCapacitacion(0.0);
+        }
+        if (_listadoAsign.get(event.getRowIndex()).getHorasclase() == null) {
+            _listadoAsign.get(event.getRowIndex()).setHorasclase(0.0);
+        }
+        if (_listadoAsign.get(event.getRowIndex()).getPreparacion() == null) {
+            _listadoAsign.get(event.getRowIndex()).setPreparacion(0.0);
+        }
+        if (_listadoAsign.get(event.getRowIndex()).getColectivo() == null) {
+            _listadoAsign.get(event.getRowIndex()).setColectivo(0.0);
+        }
+        if (_listadoAsign.get(event.getRowIndex()).getInvestigacion() == null) {
+            _listadoAsign.get(event.getRowIndex()).setInvestigacion(0.0);
+        }
+        if (_listadoAsign.get(event.getRowIndex()).getSocial() == null) {
+            _listadoAsign.get(event.getRowIndex()).setSocial(0.0);
+        }
+        if (_listadoAsign.get(event.getRowIndex()).getOda() == null) {
+            _listadoAsign.get(event.getRowIndex()).setOda(0.0);
+        }
+        if (_listadoAsign.get(event.getRowIndex()).getPlaneacion() == null) {
+            _listadoAsign.get(event.getRowIndex()).setPlaneacion(0.0);
+        }
+        if (_listadoAsign.get(event.getRowIndex()).getVirtualidad() == null) {
+            _listadoAsign.get(event.getRowIndex()).setVirtualidad(0.0);
+        }
+        if (_listadoAsign.get(event.getRowIndex()).getComites() == null) {
+            _listadoAsign.get(event.getRowIndex()).setComites(0.0);
+        }
+
+        if (_listadoAsign.get(event.getRowIndex()).getCoddocente().getTipocontrato() == 1) {
+
+            totalHoras = _listadoAsign.get(event.getRowIndex()).getCapacitacion() + _listadoAsign.get(event.getRowIndex()).getHorasclase()
+                    + _listadoAsign.get(event.getRowIndex()).getPreparacion() + _listadoAsign.get(event.getRowIndex()).getColectivo()
+                    + _listadoAsign.get(event.getRowIndex()).getInvestigacion() + _listadoAsign.get(event.getRowIndex()).getSocial()
+                    + _listadoAsign.get(event.getRowIndex()).getOda() + _listadoAsign.get(event.getRowIndex()).getPlaneacion()
+                    + _listadoAsign.get(event.getRowIndex()).getVirtualidad() + _listadoAsign.get(event.getRowIndex()).getComites();
+
+            System.out.println("antes de ir a la funcion");
+            getListadoAsign();
+
+        } else if (_listadoAsign.get(event.getRowIndex()).getCoddocente().getTipocontrato() == 2) {
+            totalHoras = _listadoAsign.get(event.getRowIndex()).getCapacitacion() + _listadoAsign.get(event.getRowIndex()).getHorasclase()
+                    + _listadoAsign.get(event.getRowIndex()).getPreparacion() + _listadoAsign.get(event.getRowIndex()).getColectivo()
+                    + _listadoAsign.get(event.getRowIndex()).getInvestigacion() + _listadoAsign.get(event.getRowIndex()).getSocial()
+                    + _listadoAsign.get(event.getRowIndex()).getOda() + _listadoAsign.get(event.getRowIndex()).getPlaneacion()
+                    + _listadoAsign.get(event.getRowIndex()).getVirtualidad() + _listadoAsign.get(event.getRowIndex()).getComites();
+
+            System.out.println("antes de ir a la funcion");
+            getListadoAsign();
+        }
+
+        System.out.println("antes de ir a la funcion");
+        getListadoAsign();
+
+        return "/actividades/listado";
     }
-    
-    public void controlHoras(){
-        
+
+    public void controlHoras() {
+
     }
-    
 
     public Asignacion getObj() {
         return _obj;
@@ -247,8 +302,6 @@ public class AsignacionController implements Serializable {
     public void setObj(Asignacion _obj) {
         this._obj = _obj;
     }
-
-    
 
     public int getCodDocente() {
         return codDocente;
@@ -360,7 +413,7 @@ public class AsignacionController implements Serializable {
 
     public void setPrueba(String prueba) {
         this.prueba = prueba;
-    }  
+    }
 
     public double getTotalHoras() {
         return totalHoras;
@@ -369,6 +422,5 @@ public class AsignacionController implements Serializable {
     public void setTotalHoras(double totalHoras) {
         this.totalHoras = totalHoras;
     }
-    
-    
+
 }

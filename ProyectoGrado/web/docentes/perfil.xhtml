@@ -133,36 +133,90 @@
                             </pre>
                         </div>
                     </div>
-
-                    <p:accordionPanel>
-                        <p:tab title="Información Academica">
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <h:outputText
-                                    value="The story begins as Don Vito Corleone..." />
-                            </h:panelGrid>
-                        </p:tab>
-                        <p:tab title="Experiencia">
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <h:outputText value="Francis Ford Coppola's legendary..." />
-                            </h:panelGrid>
-                        </p:tab>
-                        <p:tab title="Producción Intelectual e Investigativa">
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <h:outputText value="After a break of more than 15 years..." />
-                            </h:panelGrid>
-                        </p:tab>
-                        <p:tab title="Socialización de la Investigación">
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <h:outputText value="After a break of more than 15 years..." />
-                            </h:panelGrid>
-                        </p:tab>
-                        <p:tab title="Participaciones">
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <h:outputText value="After a break of more than 15 years..." />
-                            </h:panelGrid>
-                        </p:tab>
-                    </p:accordionPanel>
                 </p:panel>  
+            </h:form>
+
+            <h:form id="perfil">
+                <p:accordionPanel>
+                    <p:tab title="Información Academica">
+                        <p:commandButton value="Agregar" actionListener="#{informacionAcademicaController.abrirCrear()}" icon="ui-icon-disk" >
+                            <p:ajax event="dialogReturn" update=":perfil:listar" />                            
+                        </p:commandButton>                   
+                        <p:separator/>
+                        <br/>
+                        <p:dataTable id="listar" value="#{informacionAcademicaController.listado}" var="registro">
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Nivel</f:facet>
+                                    #{registro.nivel}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Título</f:facet>
+                                    #{registro.titulo}
+                            </p:column> 
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Institución</f:facet>
+                                    #{registro.institucion}
+                            </p:column> 
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Año de Graduación</f:facet>
+                                    #{registro.ano_grado}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Registro</f:facet>
+                                    #{registro.registro}
+                            </p:column>
+
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Horas</f:facet>
+                                    #{registro.horas}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Pais</f:facet>
+                                    #{registro.pais}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Tipo</f:facet>
+                                    #{registro.tipo}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
+                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{informacionAcademicaController.borrar(registro)}"></p:commandButton>
+                                <p:commandButton icon="ui-icon-pencil" action="#{informacionAcademicaController.abrirActualizar(registro)}">
+                                    <p:ajax event="dialogReturn" update="listar " oncomplete="#{informacionAcademicaController.mostrarMensaje()}"/>                                  
+                                </p:commandButton>  
+                            </p:column> 
+                        </p:dataTable>
+                    </p:tab>
+                    <p:tab title="Experiencia">
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <h:outputText value="Francis Ford Coppola's legendary..." />
+                        </h:panelGrid>
+                    </p:tab>
+                    <p:tab title="Producción Intelectual e Investigativa">
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <h:outputText value="After a break of more than 15 years..." />
+                        </h:panelGrid>
+                    </p:tab>
+                    <p:tab title="Socialización de la Investigación">
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <h:outputText value="After a break of more than 15 years..." />
+                        </h:panelGrid>
+                    </p:tab>
+                    <p:tab title="Participaciones">
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <h:outputText value="After a break of more than 15 years..." />
+                        </h:panelGrid>
+                    </p:tab>
+                </p:accordionPanel>
+
             </h:form>
         </ui:define>
     </ui:composition>
