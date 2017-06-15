@@ -1,6 +1,7 @@
 package com.proyecto.controllers;
 
 import com.proyecto.facades.CoordinacionFacade;
+import com.proyecto.facades.DocentesFacade;
 import com.proyecto.facades.FacultadFacade;
 import com.proyecto.persistences.Convenciones;
 import com.proyecto.persistences.Coordinacion;
@@ -34,12 +35,17 @@ public class CoordinacionController implements Serializable{
     private FacultadFacade _facultadFacade;
 
     @EJB
-    private CoordinacionFacade _ejbFacade;    
+    private CoordinacionFacade _ejbFacade;  
+    
+    @EJB
+    private DocentesFacade _facadeDocentes; 
+    
     private Coordinacion _obj;    
     private FacesMessage message;
     private int codFacultad;
     
     public CoordinacionController() {
+        
     }
     
     public Coordinacion getCampo()
@@ -70,6 +76,37 @@ public class CoordinacionController implements Serializable{
         options.put("draggable", false);
         options.put("modal", true);
         RequestContext.getCurrentInstance().openDialog("/coordinacion/crear", options, null);
+    }
+    
+    public void procesar()
+    {        
+        String titulo, detalle;       
+        _obj = _facadeDocentes.getCurrentDocente().getCodcoordinacion();
+        System.out.println("LO Q HAY EN COORDI " + _obj);        
+       
+        try {
+            
+            //actualizar
+            System.out.println("ACTUALIZAR");
+            _ejbFacade.actualizar(_obj);
+            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
+            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
+                                    
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
+            //System.out.println("coordinacion =" + coordinacion + " investigacion= extension=" + actMisionalexten + " comite=" + actMisionalcom + " ODA=" + actMisionalODA + " acreditacion=" + actMisionalacred + " virtualidad=" + actMisionalVirt);
+           
+            RequestContext context = RequestContext.getCurrentInstance();
+            context.closeDialog(null);
+        } catch (Exception e) {
+            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
+            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardarError");
+            message = new FacesMessage(FacesMessage.SEVERITY_ERROR, titulo, detalle);
+            RequestContext context = RequestContext.getCurrentInstance();
+            context.closeDialog(null);
+
+            Logger.getLogger(Coordinacion.class.getName()).log(Level.SEVERE, null, e);
+
+        }
     }
     
     public void agregar()

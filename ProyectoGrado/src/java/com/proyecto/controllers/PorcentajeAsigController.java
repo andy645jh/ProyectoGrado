@@ -5,6 +5,7 @@ import com.proyecto.facades.AsignacionFacade;
 import com.proyecto.facades.CoordinacionFacade;
 import com.proyecto.facades.DocentesFacade;
 import com.proyecto.facades.PorcentajeAsigFacade;
+import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.PorcentajeAsig;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -44,8 +45,8 @@ public class PorcentajeAsigController implements Serializable {
 
     @EJB
     private ActividadMisionalFacade _actMisionalFacade;
-    private TiempAsgController _asigController;
-
+    private TiempAsgController _asigController;  
+    
     public PorcentajeAsigController() {      
         
     }
@@ -73,12 +74,46 @@ public class PorcentajeAsigController implements Serializable {
         RequestContext.getCurrentInstance().openDialog("/porcentaje/crear", options, null);
     }
 
-    public void agregar(int codCoordinacion)
+    public void agregar()
     {
         
         String titulo, detalle;       
 
-        System.out.println("LO Q HAY EN COORDI " + codCoordinacion);
+        System.out.println("LO Q HAY EN COORDI " + _docenteFacade.getCurrentDocente().getCodcoordinacion());
+        Coordinacion coord = _docenteFacade.getCurrentDocente().getCodcoordinacion();
+        _obj.setCodcoordinacion(coord);
+        //_ejbFacade.buscar(this)
+        try {
+            if(_obj.getCodPorcentajeAsig()==0)
+            {
+                //crear            
+                System.out.println("CREAR");
+                _ejbFacade.crear(_obj);
+                titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
+                detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
+            }else{
+                //actualizar
+                System.out.println("ACTUALIZAR");
+                _ejbFacade.actualizar(_obj);
+                titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
+                detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
+            }
+                        
+            _message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
+            //System.out.println("coordinacion =" + coordinacion + " investigacion= extension=" + actMisionalexten + " comite=" + actMisionalcom + " ODA=" + actMisionalODA + " acreditacion=" + actMisionalacred + " virtualidad=" + actMisionalVirt);
+           
+            RequestContext context = RequestContext.getCurrentInstance();
+            //context.closeDialog(null);
+        } catch (Exception e) {
+            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
+            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardarError");
+            _message = new FacesMessage(FacesMessage.SEVERITY_ERROR, titulo, detalle);
+            RequestContext context = RequestContext.getCurrentInstance();
+            //context.closeDialog(null);
+
+            Logger.getLogger(PorcentajeAsig.class.getName()).log(Level.SEVERE, null, e);
+
+        }
 //        System.out.println("LO Q HAY EN ACT MISIONAL " + _obj.getCodmisional());
         /*try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");

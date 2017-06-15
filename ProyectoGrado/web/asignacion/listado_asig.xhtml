@@ -14,38 +14,38 @@
             </ui:decorate> 
         </ui:define>
         <ui:define name="content">
-
-            <p:outputLabel value="Coordinacion #{docentesController.codCoord}" />
+              
+            <p:outputLabel value="Coordinacion #{coordinacionController.campo.codcoordinacion}" />
             <h:form id="form">
                 <div class="ui-g form-asig-label">
 
                     <div class="ui-g-12">
                         <div class="ui-g-3 ">
                             <p:outputLabel value="Investigación" for="inv" />
-                            <p:inputText id="inv" value="#{porcentajeAsigController.campo.investigacion}"/>
+                            <p:inputText id="inv" value="#{coordinacionController.campo.investigacion}"/>
                         </div>
                         <div class="ui-g-3">
                             <p:outputLabel value="Extensión" for="ext" />
-                            <p:inputText id="ext" value="#{porcentajeAsigController.campo.extension}"/> 
+                            <p:inputText id="ext" value="#{coordinacionController.campo.extension}"/> 
                         </div>
                         <div class="ui-g-3">
                             <p:outputLabel value="Comites" for="com" />
-                            <p:inputText id="com" value="#{porcentajeAsigController.campo.comites}"/> 
+                            <p:inputText id="com" value="#{coordinacionController.campo.comites}"/> 
                         </div>
                         <div class="ui-g-3">
                             <p:outputLabel value="ODA" for="oda" />
-                            <p:inputText id="oda" value="#{porcentajeAsigController.campo.oda}"/> 
+                            <p:inputText id="oda" value="#{coordinacionController.campo.oda}"/> 
                         </div>
                     </div>                
                     <br/> 
                     <div class="ui-g-12">
                         <div class="ui-g-3">
                             <p:outputLabel value="Acreditación" for="acred" />
-                            <p:inputText id="acred" value="#{porcentajeAsigController.campo.acreditacion}"/> 
+                            <p:inputText id="acred" value="#{coordinacionController.campo.acreditacion}"/> 
                         </div>
                         <div class="ui-g-3">
                             <p:outputLabel value="Virtualidad" for="virt" />
-                            <p:inputText id="virt" value="#{porcentajeAsigController.campo.virtualidad}"/> 
+                            <p:inputText id="virt" value="#{coordinacionController.campo.virtualidad}"/> 
                         </div>
                         <!--
                         <div class="ui-g-3">
@@ -56,7 +56,7 @@
                         </div>
                         -->
                         <div class="ui-g-3">
-                            <p:commandButton value="Calcular" actionListener="#{porcentajeAsigController.agregar(docentesController.codCoord)}" icon="ui-icon-disk" ajax="true" >
+                            <p:commandButton value="Guardar" actionListener="#{coordinacionController.procesar()}" icon="ui-icon-disk" ajax="true" >
                                 <p:ajax event="dialogReturn" update=":form:listar :form:mensajito" />                          
                             </p:commandButton>
                         </div>
