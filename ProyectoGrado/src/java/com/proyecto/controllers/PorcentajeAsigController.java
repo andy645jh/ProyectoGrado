@@ -7,6 +7,7 @@ import com.proyecto.facades.DocentesFacade;
 import com.proyecto.facades.PorcentajeAsigFacade;
 import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.PorcentajeAsig;
+import com.proyecto.utilities.SessionUtils;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -78,10 +79,11 @@ public class PorcentajeAsigController implements Serializable {
     {
         
         String titulo, detalle;       
-
-        System.out.println("LO Q HAY EN COORDI " + _docenteFacade.getCurrentDocente().getCodcoordinacion());
-        Coordinacion coord = _docenteFacade.getCurrentDocente().getCodcoordinacion();
+        
+        Coordinacion coord = (Coordinacion) SessionUtils.get("coordinacion");
         _obj.setCodcoordinacion(coord);
+        System.out.println("COORDINACION " + coord);
+        
         //_ejbFacade.buscar(this)
         try {
             if(_obj.getCodPorcentajeAsig()==0)

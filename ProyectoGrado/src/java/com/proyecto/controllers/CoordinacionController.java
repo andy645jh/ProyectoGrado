@@ -8,6 +8,7 @@ import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Facultad;
 import com.proyecto.utilities.Formulario;
 import com.proyecto.utilities.Mensajes;
+import com.proyecto.utilities.SessionUtils;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +25,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
+import javax.inject.Inject;
 import org.primefaces.context.RequestContext;
 
 
@@ -39,7 +41,7 @@ public class CoordinacionController implements Serializable{
     
     @EJB
     private DocentesFacade _facadeDocentes; 
-    
+         
     private Coordinacion _obj;    
     private FacesMessage message;
     private int codFacultad;
@@ -52,6 +54,11 @@ public class CoordinacionController implements Serializable{
     {
         if(_obj==null)  _obj= new Coordinacion();
         return _obj;        
+    }
+    
+    public void obtenerCod()
+    {        
+        _obj = (Coordinacion) SessionUtils.get("coordinacion");
     }
     
     public void resetear()
@@ -81,7 +88,7 @@ public class CoordinacionController implements Serializable{
     public void procesar()
     {        
         String titulo, detalle;       
-        _obj = _facadeDocentes.getCurrentDocente().getCodcoordinacion();
+        _obj = (Coordinacion) SessionUtils.get("coordinacion");
         System.out.println("LO Q HAY EN COORDI " + _obj);        
        
         try {
@@ -93,11 +100,14 @@ public class CoordinacionController implements Serializable{
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
                                     
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
-            //System.out.println("coordinacion =" + coordinacion + " investigacion= extension=" + actMisionalexten + " comite=" + actMisionalcom + " ODA=" + actMisionalODA + " acreditacion=" + actMisionalacred + " virtualidad=" + actMisionalVirt);
-           
+            System.out.print("coordinacion =" + _obj.getCodcoordinacion() + " investigacion="+_obj.getInvestigacion()+" extension=" + _obj.getExtension());
+            System.out.println(" comite=" + _obj.getComites() + " ODA=" + _obj.getOda() + " acreditacion=" + _obj.getAcreditacion() + " virtualidad=" + _obj.getVirtualidad());
+            
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);
         } catch (Exception e) {
+            
+            System.out.println("ERROR");
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardarError");
             message = new FacesMessage(FacesMessage.SEVERITY_ERROR, titulo, detalle);

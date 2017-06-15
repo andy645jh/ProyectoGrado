@@ -4,6 +4,7 @@ package com.proyecto.controllers;
 import com.proyecto.facades.DocentesFacade;
 import com.proyecto.persistences.Docentes;
 import com.proyecto.utilities.Mensajes;
+import com.proyecto.utilities.SessionUtils;
 import java.io.Serializable;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
@@ -11,6 +12,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginController implements Serializable{
     @EJB
     private DocentesFacade docentesFacade;
-    
+       
     private String _usuario;
     private String _clave;
     private String _nombreUsuario;
@@ -80,15 +82,22 @@ public class LoginController implements Serializable{
             if(request.isUserInRole("administrador"))
             {   
                 System.out.println("ADMINISTRADOR");   
-                docentesFacade.setCurrentDocente(buscarDocente());
-                _nombreUsuario=buscarDocente().toString();
+                Docentes doc = buscarDocente();
+                docentesFacade.setCurrentDocente(doc);                
+                _nombreUsuario = doc.toString();
+                
+                SessionUtils.add("docente", doc);
+                SessionUtils.add("coordinacion", doc.getCodcoordinacion());
                 
                 return "/docentes/listado?faces-redirect=true";
             }else if(request.isUserInRole("docente"))
             {
                 System.out.println("DOCENTES");
-                docentesFacade.setCurrentDocente(buscarDocente());
-                _nombreUsuario=buscarDocente().toString();
+                Docentes doc = buscarDocente();
+                docentesFacade.setCurrentDocente(doc);
+                _nombreUsuario = doc.toString();
+                SessionUtils.add("docente", doc);
+                SessionUtils.add("coordinacion", doc.getCodcoordinacion());
                 return "/actividades/listado?faces-redirect=true";
             }else if(request.isUserInRole("evaluador"))
             {
