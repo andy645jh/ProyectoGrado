@@ -111,7 +111,7 @@ public class DocentesController implements Serializable {
         return listaItems;
 
     }
-
+    
     public List<Docentes> getListado() {
         
         Docentes doc = _ejbFacade.getCurrentDocente();

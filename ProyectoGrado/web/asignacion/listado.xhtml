@@ -15,13 +15,10 @@
         </ui:define>
         <ui:define name="content">
 
-<<<<<<< HEAD
+
             <h:form id="form">
-                <div class="ui-g">
-=======
-            <h:form>
                 <div class="ui-g form-asig-label">
->>>>>>> c05fe7248692bde55f893e0084abe48d0cf71a31
+
                     <div class="ui-g-12">
                         <div class="ui-g-3 ">
                             <p:outputLabel value="Investigación" for="inv" />
@@ -50,12 +47,14 @@
                             <p:outputLabel value="Virtualidad" for="virt" />
                             <p:inputText id="virt" value="#{porcentajeController.porcentaje_virtualidad}"/> 
                         </div>
+                        <!--
                         <div class="ui-g-3">
                             <p:outputLabel value="Docentes" for="doc" />
                             <p:selectCheckboxMenu id="doc" value="#{porcentajeController.selectedDocentes}" label="Cities" filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
                                 <f:selectItems value="#{docentesController.combo('')}" />
                             </p:selectCheckboxMenu>
                         </div>
+                        -->
                         <div class="ui-g-3">
                             <p:commandButton value="Calcular" actionListener="#{porcentajeController.agregar()}" icon="ui-icon-disk" ajax="true" >
                                 <p:ajax event="dialogReturn" update=":form:listar :form:mensajito" />                          

@@ -16,12 +16,21 @@
                     <p:growl id="mensajes" sticky="true" showDetail="true"/>                
                     <br/>
                     <p:panelGrid columns="2">
+                        
+                        <p:outputLabel value="Tipo" for="codtipo" />
+                        <p:selectOneMenu id="codtipo" value="#{informacionAcademicaController.campo.tipo}"> 
+                            <f:selectItem itemLabel="Titulos" itemValue="1" />
+                            <f:selectItem itemLabel="Cursos" itemValue="2" />
+                        </p:selectOneMenu>
 
                         <p:outputLabel value="Nivel" for="nombre" />
                         <p:inputText id="nombre" value="#{informacionAcademicaController.campo.nivel}"/> 
 
                         <p:outputLabel value="Título" for="titulo" />
                         <p:inputText id="titulo" value="#{informacionAcademicaController.campo.titulo}"/> 
+                        
+                        <p:outputLabel value="Institución" for="inst" />
+                        <p:inputText id="inst" value="#{informacionAcademicaController.campo.institucion}"/>
 
                         <p:outputLabel value="Año de graduación" for="fechanac" />
                         <p:calendar id="fechanac" showOn="button" value="#{informacionAcademicaController.campo.ano_grado}"></p:calendar>
@@ -34,12 +43,6 @@
                         
                         <p:outputLabel value="Horas" for="horas" />
                         <p:inputText id="horas" value="#{informacionAcademicaController.campo.horas}"/> 
-                        
-                        <p:outputLabel value="Tipo" for="codtipo" />
-                        <p:selectOneMenu id="codtipo" value="#{informacionAcademicaController.campo.tipo}"> 
-                            <f:selectItem itemLabel="Titulos" itemValue="1" />
-                            <f:selectItem itemLabel="Cursos" itemValue="2" />
-                        </p:selectOneMenu>
                         
                         <f:facet name="footer">
                             <p:commandButton id="btngrabar" value="#{actividadesTxt.crear}" actionListener="#{informacionAcademicaController.agregar()}" ajax="true"/>                             

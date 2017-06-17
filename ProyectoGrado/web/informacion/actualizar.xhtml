@@ -4,45 +4,54 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/plantilla_modal.xhtml">
-        <ui:define name="content">           
-            <h:form id="form">
-                <p:panel>
-                    
-                    <p:growl id="mensajito" sticky="true" showDetail="true"/>           
+            
+        <ui:define name="content">
+           
+            <h:form>
+                <p:panel>  
+                 
+                    <p:growl id="mensajes" sticky="true" showDetail="true"/>                
                     <br/>
                     <p:panelGrid columns="2">
-
-                        <p:outputLabel value="#{actividadesTxt.nombre} " for="nombre" />
-                        <p:inputText id="nombre" value="#{actividadesController.campo.nombre}"/> 
-
-                        <p:outputLabel value="#{actividadesTxt.horas}  " for="horas" />
-                        <p:inputText id="horas" value="#{actividadesController.campo.horas}"/> 
-
-                        <p:outputLabel value="#{actividadesTxt.descripcion}  " for="descripcion" />
-                        <p:inputText id="descripcion" value="#{actividadesController.campo.descripcion}"/> 
-
-                        <p:outputLabel value="#{actividadesTxt.responsable}  " for="responsable" />
-                        <p:inputText id="responsable" value="#{actividadesController.campo.responsable}"/> 
-
-
-                        <p:outputLabel value="#{actividadesTxt.tipoMod}  " for="codtipo" />
-                        <p:selectOneMenu id="codtipo" value="#{actividadesController.codigo}"> 
-                            <f:selectItems value="#{tipoModalidadesController.combo('Selecione un opcion')}" />
+                        
+                        <p:outputLabel value="Tipo" for="codtipo" />
+                        <p:selectOneMenu id="codtipo" value="#{informacionAcademicaController.campo.tipo}"> 
+                            <f:selectItem itemLabel="Titulos" itemValue="1" />
+                            <f:selectItem itemLabel="Cursos" itemValue="2" />
                         </p:selectOneMenu>
 
-                        <p:outputLabel value="Valoración" for="valoracion" />
-                        <p:inputText id="valoracion" value="#{actividadesController.campo.valoracion}"/> 
+                        <p:outputLabel value="Nivel" for="nombre" />
+                        <p:inputText id="nombre" value="#{informacionAcademicaController.campo.nivel}"/> 
+
+                        <p:outputLabel value="Título" for="titulo" />
+                        <p:inputText id="titulo" value="#{informacionAcademicaController.campo.titulo}"/> 
+                        
+                        <p:outputLabel value="Institución" for="inst" />
+                        <p:inputText id="inst" value="#{informacionAcademicaController.campo.institucion}"/>
+
+                        <p:outputLabel value="Año de graduación" for="fechanac" />
+                        <p:calendar id="fechanac" showOn="button" value="#{informacionAcademicaController.campo.ano_grado}"></p:calendar>
+
+                        <p:outputLabel value="No Registro" for="responsable" />
+                        <p:inputText id="responsable" value="#{informacionAcademicaController.campo.registro}"/> 
+
+                        <p:outputLabel value="País" for="valoracion" />
+                        <p:inputText id="valoracion" value="#{informacionAcademicaController.campo.pais}"/> 
+                        
+                        <p:outputLabel value="Horas" for="horas" />
+                        <p:inputText id="horas" value="#{informacionAcademicaController.campo.horas}"/> 
                         
                         <f:facet name="footer">
-                            <p:commandButton id="btngrabar" value="#{actividadesTxt.actualizar}" ajax="true" action="#{actividadesController.actualizar()}"/>                                
+                            <p:commandButton id="btngrabar" value="#{actividadesTxt.crear}" actionListener="#{informacionAcademicaController.actualizar()}" ajax="true"/>                             
                         </f:facet>
                     </p:panelGrid>
-                </p:panel>  
+                </p:panel> 
             </h:form>
+            
         </ui:define>
+        
     </ui:composition>
 </html>
 

@@ -1,12 +1,14 @@
 package com.proyecto.controllers;
 
 import com.proyecto.facades.CoordinacionFacade;
+import com.proyecto.facades.DocentesFacade;
 import com.proyecto.facades.FacultadFacade;
 import com.proyecto.persistences.Convenciones;
 import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Facultad;
 import com.proyecto.utilities.Formulario;
 import com.proyecto.utilities.Mensajes;
+import com.proyecto.utilities.SessionUtils;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +25,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
+import javax.inject.Inject;
 import org.primefaces.context.RequestContext;
 
 
@@ -34,18 +37,28 @@ public class CoordinacionController implements Serializable{
     private FacultadFacade _facultadFacade;
 
     @EJB
-    private CoordinacionFacade _ejbFacade;    
+    private CoordinacionFacade _ejbFacade;  
+    
+    @EJB
+    private DocentesFacade _facadeDocentes; 
+         
     private Coordinacion _obj;    
     private FacesMessage message;
     private int codFacultad;
     
     public CoordinacionController() {
+        
     }
     
     public Coordinacion getCampo()
     {
         if(_obj==null)  _obj= new Coordinacion();
         return _obj;        
+    }
+    
+    public void obtenerCod()
+    {        
+        _obj = (Coordinacion) SessionUtils.get("coordinacion");
     }
     
     public void resetear()
@@ -70,6 +83,40 @@ public class CoordinacionController implements Serializable{
         options.put("draggable", false);
         options.put("modal", true);
         RequestContext.getCurrentInstance().openDialog("/coordinacion/crear", options, null);
+    }
+    
+    public void procesar()
+    {        
+        String titulo, detalle;       
+        _obj = (Coordinacion) SessionUtils.get("coordinacion");
+        System.out.println("LO Q HAY EN COORDI " + _obj);        
+       
+        try {
+            
+            //actualizar
+            System.out.println("ACTUALIZAR");
+            _ejbFacade.actualizar(_obj);
+            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
+            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
+                                    
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
+            System.out.print("coordinacion =" + _obj.getCodcoordinacion() + " investigacion="+_obj.getInvestigacion()+" extension=" + _obj.getExtension());
+            System.out.println(" comite=" + _obj.getComites() + " ODA=" + _obj.getOda() + " acreditacion=" + _obj.getAcreditacion() + " virtualidad=" + _obj.getVirtualidad());
+                                    
+            RequestContext context = RequestContext.getCurrentInstance();
+            context.closeDialog(null);
+        } catch (Exception e) {
+            
+            System.out.println("ERROR");
+            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
+            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardarError");
+            message = new FacesMessage(FacesMessage.SEVERITY_ERROR, titulo, detalle);
+            RequestContext context = RequestContext.getCurrentInstance();
+            context.closeDialog(null);
+
+            Logger.getLogger(Coordinacion.class.getName()).log(Level.SEVERE, null, e);
+
+        }
     }
     
     public void agregar()

@@ -8,27 +8,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
  *
  * @author User
  */
 @Entity
-@Table(name = "coordinacion")
-public class Coordinacion implements Serializable {
+public class PorcentajeAsig implements Serializable {
    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "codcoordinacion")
-    private int _codcoordinacion;
-    
-    @Column(name = "nombre")
-    @Size(min = 1, max = 100)
-    @NotNull
-    private String _nombre;
+    @Column(name = "codporcentaje_asig")
+    private int _codPorcentajeAsig;
     
     @Column(name = "investigacion")
     private Double _investigacion;
@@ -47,36 +38,57 @@ public class Coordinacion implements Serializable {
     
     @Column(name = "virtualidad")
     private Double _virtualidad;
-    
-    @JoinColumn(name = "codfacultad", referencedColumnName = "codfacultad")
+        
+    @JoinColumn(name = "codcoordinacion", referencedColumnName = "codcoordinacion")
     @ManyToOne(optional = false)
-    private Facultad _codfacultad;
+    private Coordinacion _codcoordinacion;   
+  
 
-    public Coordinacion() {
+    public PorcentajeAsig() {
     }
 
-    public int getCodcoordinacion() {
+    public Coordinacion getCodcoordinacion() {
         return _codcoordinacion;
     }
 
-    public void setCodcoordinacion(int _codcoordinacion) {
+    public void setCodcoordinacion(Coordinacion _codcoordinacion) {
         this._codcoordinacion = _codcoordinacion;
     }
+   
 
-    public String getNombre() {
-        return _nombre;
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 89 * hash + this._codPorcentajeAsig;
+        return hash;
     }
 
-    public void setNombre(String _nombre) {
-        this._nombre = _nombre;
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PorcentajeAsig other = (PorcentajeAsig) obj;
+        if (this._codPorcentajeAsig != other._codPorcentajeAsig) {
+            return false;
+        }
+        return true;
     }
 
-    public Facultad getCodfacultad() {
-        return _codfacultad;
+    @Override
+    public String toString() {
+        return String.valueOf(_codPorcentajeAsig);
     }
 
-    public void setCodfacultad(Facultad _codfacultad) {
-        this._codfacultad = _codfacultad;
+    public int getCodPorcentajeAsig() {
+        return _codPorcentajeAsig;
+    }
+
+    public void setCodPorcentajeAsig(int _codPorcentajeAsig) {
+        this._codPorcentajeAsig = _codPorcentajeAsig;
     }
 
     public Double getInvestigacion() {
@@ -126,34 +138,5 @@ public class Coordinacion implements Serializable {
     public void setVirtualidad(Double _virtualidad) {
         this._virtualidad = _virtualidad;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 59 * hash + this._codcoordinacion;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Coordinacion other = (Coordinacion) obj;
-        if (this._codcoordinacion != other._codcoordinacion) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return _nombre;
-    }
-     
-     
-    
+   
 }

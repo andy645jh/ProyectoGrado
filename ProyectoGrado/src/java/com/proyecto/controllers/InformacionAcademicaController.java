@@ -166,7 +166,7 @@ public class InformacionAcademicaController implements Serializable
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);       
-        RequestContext.getCurrentInstance().openDialog("/actividades/actualizar", options, null);
+        RequestContext.getCurrentInstance().openDialog("/informacion/actualizar", options, null);
     }
     
     public void abrirEvaluacion(InformacionAcademica objTemp) {
