@@ -102,7 +102,7 @@ public class CoordinacionController implements Serializable{
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
             System.out.print("coordinacion =" + _obj.getCodcoordinacion() + " investigacion="+_obj.getInvestigacion()+" extension=" + _obj.getExtension());
             System.out.println(" comite=" + _obj.getComites() + " ODA=" + _obj.getOda() + " acreditacion=" + _obj.getAcreditacion() + " virtualidad=" + _obj.getVirtualidad());
-            
+                                    
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);
         } catch (Exception e) {

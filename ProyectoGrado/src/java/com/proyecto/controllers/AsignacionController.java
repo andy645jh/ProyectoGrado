@@ -7,10 +7,12 @@ import com.proyecto.facades.PorcentajeFacade;
 import com.proyecto.facades.TiempoAsignadoFacade;
 import com.proyecto.persistences.ActividadObligatoria;
 import com.proyecto.persistences.Asignacion;
+import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Docentes;
 import com.proyecto.persistences.Porcentaje;
 import com.proyecto.persistences.TiempoAsignado;
 import com.proyecto.utilities.Mensajes;
+import com.proyecto.utilities.SessionUtils;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -65,8 +67,12 @@ public class AsignacionController implements Serializable {
 
     public List<Asignacion> getListadoAsign() {
         /*prueba="prueba";*/
-
-        System.out.println("entro a la funcion");
+        Coordinacion coord = (Coordinacion) SessionUtils.get("coordinacion");
+        List<Docentes> listDoc = _facadeDoc.buscarCampo("_codcoordinacion", String.valueOf(coord.getCodcoordinacion()));
+        
+        
+        
+        System.out.println("entro a la funcion: "+listDoc.size());
 
         totalHC = 0;
         totalPC = 0;
@@ -114,7 +120,18 @@ public class AsignacionController implements Serializable {
         if (_listadoAsign == null) {
             _listadoAsign = _ejbFacade.listado();
         }
-        System.out.println("tamaño de la lista " + _listadoAsign.size());
+        System.out.println("tamaño de la lista " + _listadoAsign.size());        
+        
+        for(Docentes docTemp : listDoc)
+        {
+            if(docTemp.getTipocontrato()==1)
+            {
+                totalHC += 24;
+            }else{
+                totalHC += 12;
+            }
+        }
+        
         return _listadoAsign;
     }
 
