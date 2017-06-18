@@ -305,14 +305,102 @@
                         </p:dataTable>
                     </p:tab>
                     <p:tab title="Socialización de la Investigación">
-                        <h:panelGrid columns="2" cellpadding="10">
-                            <h:outputText value="After a break of more than 15 years..." />
-                        </h:panelGrid>
+                        <p:commandButton value="Agregar" actionListener="#{socializacionController.abrirCrear()}" icon="ui-icon-disk" >
+                                                  
+                        </p:commandButton>                   
+                        <p:separator/>
+                        <br/>
+                        <p:dataTable id="listarsocial" value="#{socializacionController.listado}" var="registro">
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Articulo</f:facet>
+                                    #{registro.articulo}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Conferencia</f:facet>
+                                    #{registro.conferencia}
+                            </p:column> 
+                            
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Informe</f:facet>
+                                    #{registro.informe}
+                            </p:column> 
+                            
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
+                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{socializacionController.borrar(registro)}"></p:commandButton>
+                                <p:commandButton icon="ui-icon-pencil" action="#{socializacionController.abrirActualizar(registro)}">
+                                    <p:ajax event="dialogReturn" update="listarsocial " oncomplete="#{socializacionController.mostrarMensaje()}"/>                                  
+                                </p:commandButton>  
+                            </p:column> 
+                        </p:dataTable>
                     </p:tab>
                     <p:tab title="Participaciones">
-                        <h:panelGrid columns="2" cellpadding="10">
-                            <h:outputText value="After a break of more than 15 years..." />
-                        </h:panelGrid>
+                        <p:commandButton value="Agregar" actionListener="#{participacionController.abrirCrear()}" icon="ui-icon-disk" >
+                                                  
+                        </p:commandButton>                   
+                        <p:separator/>
+                        <br/>
+                        <p:dataTable id="listarpartip" value="#{participacionController.listado}" var="registro">
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Tipo</f:facet>
+                                    #{registro.tipo}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Evento</f:facet>
+                                    #{registro.evento}
+                            </p:column> 
+                            
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Tipo Parti</f:facet>
+                                    #{registro.tipo_part}
+                            </p:column> 
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Tema</f:facet>
+                                    #{registro.tema}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Fecha</f:facet>
+                                    #{registro.fecha}
+                            </p:column>
+
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Ambito</f:facet>
+                                    #{registro.ambito}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Dedicación</f:facet>
+                                    #{registro.dedicacion}
+                            </p:column>
+                            
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Actividades Culturales</f:facet>
+                                    #{registro.activ_culturales}
+                            </p:column>
+                            
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Dedicación Culturales</f:facet>
+                                    #{registro.dedica_cultural}
+                            </p:column>
+                            
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Desemepño</f:facet>
+                                    #{registro.desempeno}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
+                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{participacionController.borrar(registro)}"></p:commandButton>
+                                <p:commandButton icon="ui-icon-pencil" action="#{participacionController.abrirActualizar(registro)}">
+                                    <p:ajax event="dialogReturn" update="listarpartip " oncomplete="#{participacionController.mostrarMensaje()}"/>                                  
+                                </p:commandButton>  
+                            </p:column> 
+                        </p:dataTable>
                     </p:tab>
                 </p:accordionPanel>
 

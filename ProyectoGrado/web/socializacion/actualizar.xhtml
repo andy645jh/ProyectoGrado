@@ -8,8 +8,7 @@
     <ui:composition template="/plantilla_modal.xhtml">
             
         <ui:define name="content">
-            #{socializacionController.resetear()}
-            
+                        
             <h:form>
                 <p:panel> 
                               
@@ -28,7 +27,7 @@
 
                         
                         <f:facet name="footer">
-                            <p:commandButton id="btngrabar" value="#{actividadesTxt.crear}" actionListener="#{socializacionController.agregar()}" ajax="true"/>                             
+                            <p:commandButton id="btngrabar" value="#{actividadesTxt.crear}" actionListener="#{socializacionController.actualizar()}" ajax="true"/>                             
                         </f:facet>
                     </p:panelGrid>
                 </p:panel> 
