@@ -196,14 +196,113 @@
                         </p:dataTable>
                     </p:tab>
                     <p:tab title="Experiencia">
-                        <h:panelGrid columns="2" cellpadding="10">
-                            <h:outputText value="Francis Ford Coppola's legendary..." />
-                        </h:panelGrid>
+                        <p:commandButton value="Agregar" actionListener="#{experienciaController.abrirCrear()}" icon="ui-icon-disk" >
+                                                  
+                        </p:commandButton>                   
+                        <p:separator/>
+                        <br/>
+                        <p:dataTable id="listarexp" value="#{experienciaController.listado}" var="registro">
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Institución</f:facet>
+                                    #{registro.institucion}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Actividad</f:facet>
+                                    #{registro.actividad}
+                            </p:column> 
+                            
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Dependencia</f:facet>
+                                    #{registro.dependencia}
+                            </p:column> 
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Tiempo</f:facet>
+                                    #{registro.tiempo}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Tipo Contrato</f:facet>
+                                    #{registro.tipo_contrato}
+                            </p:column>
+
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Ultima Fecha</f:facet>
+                                    #{registro.fecha_ultima}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Tipo</f:facet>
+                                    #{registro.tipo}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
+                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{experienciaController.borrar(registro)}"></p:commandButton>
+                                <p:commandButton icon="ui-icon-pencil" action="#{experienciaController.abrirActualizar(registro)}">
+                                    <p:ajax event="dialogReturn" update="listarexp " oncomplete="#{experienciaController.mostrarMensaje()}"/>                                  
+                                </p:commandButton>  
+                            </p:column> 
+                        </p:dataTable>
                     </p:tab>
                     <p:tab title="Producción Intelectual e Investigativa">
-                        <h:panelGrid columns="2" cellpadding="10">
-                            <h:outputText value="After a break of more than 15 years..." />
-                        </h:panelGrid>
+                        <p:commandButton value="Agregar" actionListener="#{produccionController.abrirCrear()}" icon="ui-icon-disk" >
+                                                  
+                        </p:commandButton>                   
+                        <p:separator/>
+                        <br/>
+                        <p:dataTable id="listarprod" value="#{produccionController.listado}" var="registro">
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Tipo</f:facet>
+                                    #{registro.tipo}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Nombre</f:facet>
+                                    #{registro.nombre}
+                            </p:column> 
+                            
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Tipo Prod</f:facet>
+                                    #{registro.tipo_prod_part}
+                            </p:column> 
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Editorial</f:facet>
+                                    #{registro.editorial_inv}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Libros</f:facet>
+                                    #{registro.libros}
+                            </p:column>
+
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Estado</f:facet>
+                                    #{registro.estado}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Meses</f:facet>
+                                    #{registro.meses}
+                            </p:column>
+                            
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">Año</f:facet>
+                                    #{registro.ano}
+                            </p:column>
+
+                            <p:column style="width: 10px; text-align: center">
+                                <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
+                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{produccionController.borrar(registro)}"></p:commandButton>
+                                <p:commandButton icon="ui-icon-pencil" action="#{produccionController.abrirActualizar(registro)}">
+                                    <p:ajax event="dialogReturn" update="listarprod " oncomplete="#{produccionController.mostrarMensaje()}"/>                                  
+                                </p:commandButton>  
+                            </p:column> 
+                        </p:dataTable>
                     </p:tab>
                     <p:tab title="Socialización de la Investigación">
                         <h:panelGrid columns="2" cellpadding="10">

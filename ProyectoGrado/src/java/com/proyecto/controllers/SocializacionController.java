@@ -5,9 +5,13 @@ import com.proyecto.utilities.Formulario;
 import com.proyecto.utilities.Mensajes;
 import com.proyecto.facades.InformacionAcademicaFacade;
 import com.proyecto.facades.DocentesFacade;
+import com.proyecto.facades.ExperienciaFacade;
+import com.proyecto.facades.SocializacionFacade;
 import com.proyecto.facades.TipoModalidadesFacade;
 import com.proyecto.persistences.InformacionAcademica;
 import com.proyecto.persistences.Docentes;
+import com.proyecto.persistences.Experiencia;
+import com.proyecto.persistences.Socializacion;
 import com.proyecto.persistences.TipoModalidades;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,15 +35,15 @@ import org.primefaces.context.RequestContext;
 
 @ManagedBean
 @SessionScoped
-public class InformacionAcademicaController implements Serializable
+public class SocializacionController implements Serializable
 {  
     @EJB
-    private InformacionAcademicaFacade _ejbFacade;
+    private SocializacionFacade _ejbFacade;
     
     @EJB
     private DocentesFacade docentesFacade;
         
-    private InformacionAcademica _obj;
+    private Socializacion _obj;
     
     private String cedula="";
     
@@ -50,10 +54,10 @@ public class InformacionAcademicaController implements Serializable
     private FacesMessage message;
     private int _codigo;
     
-    public InformacionAcademicaController() { }
+    public SocializacionController() { }
     
-    public InformacionAcademica getCampo()
-    {  if(_obj==null)  _obj= new InformacionAcademica();
+    public Socializacion getCampo()
+    {  if(_obj==null)  _obj= new Socializacion();
         return _obj;        
     }
       
@@ -64,7 +68,7 @@ public class InformacionAcademicaController implements Serializable
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);
-        RequestContext.getCurrentInstance().openDialog("/informacion/crear", options, null);
+        RequestContext.getCurrentInstance().openDialog("/socializacion/crear", options, null);
         
     }
     
@@ -81,7 +85,7 @@ public class InformacionAcademicaController implements Serializable
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
             
-            _obj.setCod_docente(d);
+            _obj.setCoddocente(d);
             _ejbFacade.crear(_obj);
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);
@@ -132,16 +136,16 @@ public class InformacionAcademicaController implements Serializable
 //       }
 //    }
      
-    public List<InformacionAcademica> getListado()
+    public List<Socializacion> getListado()
     {
         Docentes doc = docentesFacade.getCurrentDocente();
         cedula= doc.getCedula()+"";
 //        cedula= "109877";
-        return _ejbFacade.buscarCampo("cod_docente",cedula);
+        return _ejbFacade.buscarCampo("coddocente",cedula);
     }
     
     
-    public void borrar(InformacionAcademica faceObj)
+    public void borrar(Socializacion faceObj)
     {
         String titulo,detalle;
         
@@ -160,55 +164,18 @@ public class InformacionAcademicaController implements Serializable
         }
     }    
     
-    public void abrirActualizar(InformacionAcademica objtemp)
+    public void abrirActualizar(Socializacion objtemp)
     {
         _obj = objtemp;
         Map<String,Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);       
-        RequestContext.getCurrentInstance().openDialog("/informacion/actualizar", options, null);
+        RequestContext.getCurrentInstance().openDialog("/socializacion/actualizar", options, null);
     }
     
-    public void abrirEvaluacion(InformacionAcademica objTemp) {
-        
-        _obj= objTemp;
-        Map<String,Object> options = new HashMap<String, Object>();
-        options.put("resizable", false);
-        options.put("draggable", false);
-        options.put("modal", true);
-       
-        RequestContext.getCurrentInstance().openDialog("evaluaciones/actualizar", options, null);
-    }
-    
-    public void hixoClick(){
-        System.out.println("HIXO CLICL EN EL BOTON ");
-    }
-    
-    public void guardarEvaluacion()
-    {        
-        String titulo,detalle;
-        
-        try {
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
-         
-            _ejbFacade.actualizar(_obj);
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);          
-            
-        } catch (Exception e) 
-        {
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarError");
-            message = new FacesMessage(FacesMessage.SEVERITY_ERROR,titulo,detalle);
-            Logger.getLogger(InformacionAcademica.class.getName()).log(Level.SEVERE,null,e);
-          
-        }
-        
-        RequestContext context = RequestContext.getCurrentInstance();  
-        context.closeDialog(null);
-    }  
-    
+  
+   
     public void error()
     {
         String titulo,detalle;
@@ -235,7 +202,7 @@ public class InformacionAcademicaController implements Serializable
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
                        
 //            _obj.setCoddocente(docentesFacade.getCurrentDocente());
-            _obj.setCod_docente(d);
+            _obj.setCoddocente(d);
             _ejbFacade.actualizar(_obj);
             
             message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
