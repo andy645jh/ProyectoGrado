@@ -68,11 +68,10 @@ public class AsignacionController implements Serializable {
     public List<Asignacion> getListadoAsign() {
         /*prueba="prueba";*/
         Coordinacion coord = (Coordinacion) SessionUtils.get("coordinacion");
-        List<Docentes> listDoc = _facadeDoc.buscarCampo("_codcoordinacion", String.valueOf(coord.getCodcoordinacion()));
+        List<Asignacion> listAsig = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(coord.getCodcoordinacion()));
         
         
-        
-        System.out.println("entro a la funcion: "+listDoc.size());
+        System.out.println("entro a la funcion: "+listAsig.size());
 
         totalHC = 0;
         totalPC = 0;
@@ -84,10 +83,10 @@ public class AsignacionController implements Serializable {
         totalPlan = 0;
         totalvirt = 0;
         totalCom = 0;
-        for (Asignacion asg : _ejbFacade.listado()) {
-            if (asg.getHorasclase() != null) {
+        for (Asignacion asg : listAsig) {
+            /*if (asg.getHorasclase() != null) {
                 totalHC += asg.getHorasclase();
-            }
+            }*/
             if (asg.getPreparacion() != null) {
                 totalPC += asg.getPreparacion();
             }
@@ -116,23 +115,20 @@ public class AsignacionController implements Serializable {
                 totalCom += asg.getComites();
             }
 
-        }
-        if (_listadoAsign == null) {
-            _listadoAsign = _ejbFacade.listado();
-        }
-        System.out.println("tamaño de la lista " + _listadoAsign.size());        
-        
-        for(Docentes docTemp : listDoc)
-        {
-            if(docTemp.getTipocontrato()==1)
+            if(asg.getCoddocente().getTipocontrato()==1)
             {
                 totalHC += 24;
             }else{
                 totalHC += 12;
             }
         }
+        if (_listadoAsign == null) {
+            _listadoAsign = _ejbFacade.listado();
+        }
+        System.out.println("tamaño de la lista " + _listadoAsign.size());        
+               
         
-        return _ejbFacade.buscarA("_codcoordinacion", String.valueOf(coord.getCodcoordinacion()));
+        return listAsig;
     }
 
     public void abrirCrear() {
