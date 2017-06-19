@@ -132,7 +132,7 @@ public class AsignacionController implements Serializable {
             }
         }
         
-        return _listadoAsign;
+        return _ejbFacade.buscarA("_codcoordinacion", String.valueOf(coord.getCodcoordinacion()));
     }
 
     public void abrirCrear() {

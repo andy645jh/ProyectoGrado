@@ -28,9 +28,9 @@ public class Asignacion implements Serializable {
     @ManyToOne(optional = false)
     private Docentes _coddocente;
     
-    @JoinColumn(name = "codporcentaje", referencedColumnName = "codporcentaje")
+    @JoinColumn(name = "codcoord", referencedColumnName = "codcoordinacion")
     @ManyToOne(optional = false)
-    private Porcentaje _codporcentaje;
+    private Coordinacion _codcoordinacion;
     
     @Column(name = "horasclase")
     private Double _horasclase;
@@ -163,9 +163,7 @@ public class Asignacion implements Serializable {
 
     public void setComites(Double _comites) {
         this._comites = _comites;
-    }
-
-    
+    }    
 
     public Docentes getCoddocente() {
         return _coddocente;
@@ -175,13 +173,13 @@ public class Asignacion implements Serializable {
         this._coddocente = _coddocente;
     }
 
-    public Porcentaje getCodporcentaje() {
-        return _codporcentaje;
+    public Coordinacion getCodcoordinacion() {
+        return _codcoordinacion;
     }
-
-    public void setCodporcentaje(Porcentaje _codporcentaje) {
-        this._codporcentaje = _codporcentaje;
-    }
+    
+    public void setCodcoordinacion(Coordinacion _codcoordinacion) {
+        this._codcoordinacion = _codcoordinacion;
+    }  
     
     @Override
     public int hashCode() {
