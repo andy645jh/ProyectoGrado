@@ -40,7 +40,6 @@ public class Produccion implements Serializable
        
     @Column(name = "libros")
     @Size(min = 1, max = 100)
-    @NotNull
     private String libros;
     
     @Column(name = "estado")   
@@ -51,8 +50,10 @@ public class Produccion implements Serializable
     private int tipo;
         
     @Column(name = "meses")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date meses;
+    private int meses;
+    
+    @Column(name = "num_anos")
+    private int num_anos;
     
     @Column(name = "ano")
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -72,7 +73,6 @@ public class Produccion implements Serializable
         this.libros = libros;
         this.estado = estado;
         this.tipo = tipo;
-        this.meses = meses;
         this.ano = ano;
         this.coddocente = coddocente;
     }
@@ -133,12 +133,20 @@ public class Produccion implements Serializable
         this.tipo = tipo;
     }
 
-    public Date getMeses() {
+    public int getMeses() {
         return meses;
     }
 
-    public void setMeses(Date meses) {
+    public void setMeses(int meses) {
         this.meses = meses;
+    }
+
+    public int getNum_anos() {
+        return num_anos;
+    }
+
+    public void setNum_anos(int num_anos) {
+        this.num_anos = num_anos;
     }
 
     public Date getAno() {

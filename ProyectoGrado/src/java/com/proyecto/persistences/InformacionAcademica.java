@@ -43,18 +43,15 @@ public class InformacionAcademica implements Serializable
     private Docentes cod_docente;    
         
     @Column(name = "horas")   
-    @NotNull
     private double _horas;
     
     @Column(name = "tipo")   
     private int tipo;
     
     @Column(name = "registro")    
-    @NotNull
     private String registro;
     
-    @Column(name = "pais")    
-    @NotNull
+    @Column(name = "pais")  
     private String pais;
     
      @Column(name = "ano_grado")

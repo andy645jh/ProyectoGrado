@@ -52,7 +52,7 @@ public class AsignacionFacade extends AbstractFacade<Asignacion> {
         {            
             if(columna.equals("_codcoordinacion"))
             {
-                Join<Coordinacion,Docentes> doc = objDocentes.join("_codcoordinacion");
+                Join<Coordinacion,Asignacion> doc = objDocentes.join("_codcoordinacion");
                 Expression<String> valor = doc.get("_codcoordinacion");
                 String cadena = valorBuscar;
                 
