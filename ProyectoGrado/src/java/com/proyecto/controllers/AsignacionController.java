@@ -13,6 +13,7 @@ import com.proyecto.persistences.Porcentaje;
 import com.proyecto.persistences.TiempoAsignado;
 import com.proyecto.utilities.Mensajes;
 import com.proyecto.utilities.SessionUtils;
+import com.proyecto.utilities.Totales;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -58,15 +59,20 @@ public class AsignacionController implements Serializable {
     private double totalPlan;
     private double totalvirt;
     private double totalCom;
-    private String prueba;
     private double totalHoras;
+    
+    private Totales _totalesCalculados;
+    private Totales _totalesEsperados;
     private List<Asignacion> _listadoAsign;
 
-    public AsignacionController() {
+    public AsignacionController()
+    {
+        _totalesEsperados = new Totales();
+        _totalesCalculados = new Totales();
     }
 
     public List<Asignacion> getListadoAsign() {
-        /*prueba="prueba";*/
+       
         Coordinacion coord = (Coordinacion) SessionUtils.get("coordinacion");
         List<Asignacion> listAsig = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(coord.getCodcoordinacion()));
         
@@ -121,12 +127,22 @@ public class AsignacionController implements Serializable {
             }else{
                 totalHC += 12;
             }
-        }
-        if (_listadoAsign == null) {
-            _listadoAsign = _ejbFacade.listado();
-        }
-        System.out.println("tamaño de la lista " + _listadoAsign.size());        
-               
+        }                
+        
+        _totalesEsperados.setTotalHC(totalHC);
+        System.out.println("tamaño de la lista " + coord.getAcreditacion());  
+        
+        if(coord.getAcreditacion() != null)
+        {
+                  
+            _totalesEsperados.setTotalCom(coord.getComites()*totalHC/100);
+            _totalesEsperados.setTotalPlan(coord.getAcreditacion()*totalHC/100);
+            _totalesEsperados.setTotalODA(coord.getOda()*totalHC/100);
+            _totalesEsperados.setTotalPS(coord.getExtension()*totalHC/100);
+            _totalesEsperados.setTotalHI(coord.getInvestigacion()*totalHC/100);
+            _totalesEsperados.setTotalVirt(coord.getVirtualidad()*totalHC/100);
+        }       
+            
         
         return listAsig;
     }
@@ -418,14 +434,6 @@ public class AsignacionController implements Serializable {
 
     public void setTotalCom(double totalCom) {
         this.totalCom = totalCom;
-    }
-
-    public String getPrueba() {
-        return prueba;
-    }
-
-    public void setPrueba(String prueba) {
-        this.prueba = prueba;
     }
 
     public double getTotalHoras() {

@@ -1,28 +1,18 @@
 package com.proyecto.facades;
 
 import com.proyecto.persistences.Asignacion;
-import com.proyecto.persistences.Asignacion_;
 import com.proyecto.persistences.Coordinacion;
-import com.proyecto.persistences.Docentes;
-import com.proyecto.persistences.Docentes_;
-import com.proyecto.persistences.TiempoAsignado;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.Temporal;
-import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Join;
-import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.persistence.criteria.Subquery;
-
 /**
  *
  * @author User

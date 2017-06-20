@@ -56,9 +56,9 @@ public class CoordinacionController implements Serializable{
         return _obj;        
     }
     
-    public void obtenerCod()
+    public String obtenerCod()
     {        
-        _obj = (Coordinacion) SessionUtils.get("coordinacion");
+        return ((Coordinacion) SessionUtils.get("coordinacion")).toString();
     }
     
     public void resetear()
