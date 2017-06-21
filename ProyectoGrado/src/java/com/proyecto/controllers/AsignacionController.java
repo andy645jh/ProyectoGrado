@@ -130,7 +130,7 @@ public class AsignacionController implements Serializable {
         }                
         
         _totalesEsperados.setTotalHC(totalHC);
-        System.out.println("tamaño de la lista " + coord.getAcreditacion());  
+        System.out.println("tamaño de la lista " + _totalesEsperados.getTotalHC());  
         
         if(coord.getAcreditacion() != null)
         {
@@ -141,8 +141,7 @@ public class AsignacionController implements Serializable {
             _totalesEsperados.setTotalPS(coord.getExtension()*totalHC/100);
             _totalesEsperados.setTotalHI(coord.getInvestigacion()*totalHC/100);
             _totalesEsperados.setTotalVirt(coord.getVirtualidad()*totalHC/100);
-        }       
-            
+        }                  
         
         return listAsig;
     }
@@ -442,6 +441,22 @@ public class AsignacionController implements Serializable {
 
     public void setTotalHoras(double totalHoras) {
         this.totalHoras = totalHoras;
+    }
+
+    public Totales getTotalesCalculados() {
+        return _totalesCalculados;
+    }
+
+    public void setTotalesCalculados(Totales _totalesCalculados) {
+        this._totalesCalculados = _totalesCalculados;
+    }
+
+    public Totales getTotalesEsperados() {
+        return _totalesEsperados;
+    }
+
+    public void setTotalesEsperados(Totales _totalesEsperados) {
+        this._totalesEsperados = _totalesEsperados;
     }
 
 }

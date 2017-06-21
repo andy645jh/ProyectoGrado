@@ -68,9 +68,9 @@
                 <br/>           
                 <p:separator/>
                 <br/>
-                <p:dataTable class="letra-tabla" id="listar" value="#{asignacionController.listadoAsign}" var="registro"  editable="true" editMode="cell" widgetVar="cellCars">
+                <p:dataTable sortBy="#{asignacionController.totalesEsperados.totalHC}" class="letra-tabla" id="listar" value="#{asignacionController.listadoAsign}" var="registro"  editable="true" editMode="cell" widgetVar="cellCars">
 
-                    <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update=":formAsig:listar :formAsig:mensajito" />
+                    <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update="listar" />
 
                     <p:column style="text-align: center">
                         <f:facet name="header">Docente</f:facet>
@@ -173,24 +173,49 @@
                             #{asignacionController.totalHoras}
                     </p:column>
 
-                    <p:columnGroup type="footer">
-                        <p:row>
-                            <p:column colspan="2" style="text-align:right" footerText="Total de horas por actividad:" />
-                            <p:column footerText="#{asignacionController.totalHC}" />
-                            <p:column footerText="#{asignacionController.totalPC}" />
-                            <p:column footerText="#{asignacionController.totalCap}" />
-                            <p:column footerText="#{asignacionController.totalCD}" />
-                            <p:column footerText="#{asignacionController.totalHI}" />
-                            <p:column footerText="#{asignacionController.totalPS}" />
-                            <p:column footerText="#{asignacionController.totalODA}" />
-                            <p:column footerText="#{asignacionController.totalPlan}" />
-                            <p:column footerText="#{asignacionController.totalvirt}" />
-                            <p:column footerText="#{asignacionController.totalCom}" />
-                            <p:column footerText="#{asignacionController.totalCom}" />
-                        </p:row>
-                    </p:columnGroup>
+                    <p:summaryRow>
+                        <p:column colspan="2" style="text-align:right">
+                            <h:outputText value="Total de horas por actividad:"/>
+                        </p:column> 
+                        <p:column colspan="1" style="text-align:right">
+                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        </p:column> 
+                        <p:column colspan="1" style="text-align:right">
+                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        </p:column> 
+                        <p:column colspan="1" style="text-align:right">
+                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        </p:column> 
+                        <p:column colspan="1" style="text-align:right">
+                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        </p:column> 
+                        <p:column colspan="1" style="text-align:right">
+                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        </p:column> 
+                        <p:column colspan="1" style="text-align:right">
+                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        </p:column> 
+                        <p:column colspan="1" style="text-align:right">
+                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        </p:column> 
+                        <p:column colspan="1" style="text-align:right">
+                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        </p:column> 
+                        <p:column colspan="1" style="text-align:right">
+                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        </p:column> 
+                        <p:column colspan="1" style="text-align:right">
+                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        </p:column>     
+                        <p:column colspan="1" style="text-align:right">
+                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        </p:column>  
+
+                    </p:summaryRow>
 
                 </p:dataTable>
+
+                <h:outputLabel value="#{asignacionController.totalesEsperados.totalHC}"/>
                 <!--                    <p:contextMenu for="listar" widgetVar="cMenu">   
                                         <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();
                                                 return false;"/>  
