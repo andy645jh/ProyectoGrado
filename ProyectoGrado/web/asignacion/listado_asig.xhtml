@@ -68,7 +68,7 @@
                 <br/>           
                 <p:separator/>
                 <br/>
-                <p:dataTable sortBy="#{asignacionController.totalesEsperados.totalHC}" class="letra-tabla" id="listar" value="#{asignacionController.listadoAsign}" var="registro"  editable="true" editMode="cell" widgetVar="cellCars">
+                <p:dataTable sortBy="#{asignacionController.totalesEsperados.totalHC}" class="letra-tabla" id="listar" value="#{asignacionController.listadoAsign}" var="registro"  editable="#{coordinacionController.campo.asignado}" editMode="cell" widgetVar="cellCars">
 
                     <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update="listar" />
 
@@ -104,7 +104,7 @@
                     </p:column>
 
                     <p:column style="text-align: center">
-                        <f:facet name="header">HC</f:facet>
+                        <f:facet name="header">Cap</f:facet>
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{registro.capacitacion}" /></f:facet>
                             <f:facet name="input"><p:inputText id="capacitacion" value="#{registro.capacitacion}" style="width:96%"/></f:facet>
@@ -173,42 +173,42 @@
                             #{asignacionController.totalHoras}
                     </p:column>
 
-                    <p:summaryRow>
-                        <p:column colspan="2" style="text-align:right">
+                    <p:summaryRow class="texto-tabla">
+                        <p:column colspan="2" >
                             <h:outputText value="Total de horas por actividad:"/>
                         </p:column> 
-                        <p:column colspan="1" style="text-align:right">
-                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalHC}"/>
                         </p:column> 
-                        <p:column colspan="1" style="text-align:right">
-                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalPC}"/>
                         </p:column> 
-                        <p:column colspan="1" style="text-align:right">
-                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalCap}"/>
                         </p:column> 
-                        <p:column colspan="1" style="text-align:right">
-                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalCD}"/>
                         </p:column> 
-                        <p:column colspan="1" style="text-align:right">
-                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalHI}"/>
                         </p:column> 
-                        <p:column colspan="1" style="text-align:right">
-                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalPS}"/>
                         </p:column> 
-                        <p:column colspan="1" style="text-align:right">
-                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalODA}"/>
                         </p:column> 
-                        <p:column colspan="1" style="text-align:right">
-                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalPlan}"/>
                         </p:column> 
-                        <p:column colspan="1" style="text-align:right">
-                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalVirt}"/>
                         </p:column> 
-                        <p:column colspan="1" style="text-align:right">
-                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalCom}"/>
                         </p:column>     
-                        <p:column colspan="1" style="text-align:right">
-                            <h:outputText value="#{asignacionController.totalesEsperados.totalHC}"/>
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalHC} / #{asignacionController.totalesEsperados.totalHC}"/>
                         </p:column>  
 
                     </p:summaryRow>

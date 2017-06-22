@@ -585,3 +585,7 @@ table button
 .form-asig-label label{
     padding-right: 10px;
 }
+
+.ui-datatable-summaryrow{
+    text-align: center;
+}
