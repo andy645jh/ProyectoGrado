@@ -8,26 +8,22 @@
 
     <ui:composition template="/plantilla.xhtml">
         <script type="text/css">
-           .ui-md-2 {
-                    width: 15.1%;
+            .ui-md-2 {
+                width: 15.1%;
             }
         </script>
-            
-        
+
+
         <ui:define name="menu">
             <ui:decorate template="/menu_docentes.xhtml">
                 <ui:param name="estaActivo" value="perfil"/>
             </ui:decorate>            
         </ui:define>
         <ui:define name="content">   
-            
-            <h:form id="formDatos">                
-                <p:panel id="panelFoto" >
-                    <h:graphicImage value="/docentes/temp/#{editorUsuarioFotoBean.usuario.foto}" height="70" width="70" />
-                </p:panel>
-            </h:form>
-            
-            <h:form enctype="multipart/form-data">
+
+
+
+            <h:form id="formDatos" enctype="multipart/form-data">
                 <p:panel>
                     <p:breadCrumb>
                         <p:menuitem url="#"></p:menuitem>
@@ -38,129 +34,149 @@
                     <p:growl id="mensajes" sticky="true" showDetail="true"/>                
                     <br/>
                     <div class="ui-g">
-                        <div class="ui-md-3 ">
-                            
+                        <div class="ui-g-3">
+                            <p:panel id="panelFoto" >
+                                <h:graphicImage value="temp/zetatwitter-03.png" height="250" width="250" />
+                            </p:panel>
+                            <h:panelGrid border="0"
+                                         columns="1"
+                                         cellspacing="5"
+                                         width="10%">
+                                <p:panel>
+                                    <h:panelGrid columns="2" width="10%">
+                                        <p:commandButton value="Establecer como foto de perfil"
+                                                         disabled="#{editorUsuarioFotoBean.imageTemp==null}"
+                                                         action="#{editorUsuarioFotoBean.actionGuardarFoto}"
+                                                         process="@form"
+                                                         oncomplete="ventanaFoto.hide();"
+                                                         update="formDatos :formDatos:panelFoto"/>
+
+                                        <p:commandButton value="Cancelar"
+                                                         type="button"
+                                                         onclick="ventanaFoto.hide();"/>
+                                    </h:panelGrid>
+                                </p:panel>
+
+                                <p:panel styleClass="editorFoto">
+                                    <p:imageCropper value="#{editorUsuarioFotoBean.croppeFoto}"
+                                                    image="/docentes/temp/#{editorUsuarioFotoBean.imageTemp}"
+                                                    rendered="#{editorUsuarioFotoBean.imageTemp!=null}"
+                                                    initialCoords="0,0,140,150"
+                                                    minSize="70,75"
+                                                    maxSize="280,300"
+                                                    aspectRatio="0.9"/>
+
+                                    <p:fileUpload fileUploadListener="#{editorUsuarioFotoBean.uploadFile}"
+                                                  rendered="#{editorUsuarioFotoBean.imageTemp==null}"
+                                                  mode="advanced"
+                                                  label="Seleccione Foto (max.500Kb)"
+                                                  auto="true"
+                                                  update="formDatos"
+                                                  sizeLimit="500000"
+                                                  allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+                                </p:panel>
+
+                            </h:panelGrid>
+
+
                         </div>
-                        <div class="ui-md-2 ">
-                            <p:outputLabel value="#{docentesTxt.nombre}  " for="nombres" />
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"> <p:inputText id="nombres" required="true" value="#{docentesController.campo.nombres}"/> </pre>
-                        </div>
-                        <div class="ui-md-2 ">
-                            <p:outputLabel value="#{docentesTxt.apellido}  " for="apellidos" />
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="apellidos" required="true" value="#{docentesController.campo.apellidos}"/> </pre>
-                        </div> 
-                        <div class="ui-md-2 ">
-                            <p:outputLabel value="Tipo Documento" for="tipodoc" />
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="tipodoc" required="true" value="#{docentesController.campo.apellidos}"/></pre>
-                         </div>
-                        <div class="ui-md-2 ">
-                            <p:outputLabel value="Documento" for="cedula" />
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="cedula" required="true" value="#{docentesController.campo.cedula}"/></pre>  
+                        <div class="ui-g-9 ui-g-nopad">
+                            <div class="ui-g-3 ">
+                                <p:outputLabel value="#{docentesTxt.nombre}  " for="nombres" />
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"> <p:inputText id="nombres" required="true" value="#{docentesController.campo.nombres}"/> </pre>
                             </div>
-                    </div>
-                    <div class="ui-g">
-                        
-                        <div class="ui-md-3 ">
-                            
-                        </div>  
+                            <div class="ui-g-3 ">
+                                <p:outputLabel value="#{docentesTxt.apellido}  " for="apellidos" />
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="apellidos" required="true" value="#{docentesController.campo.apellidos}"/> </pre>
+                            </div> 
+                            <div class="ui-g-3 ">
+                                <p:outputLabel value="Tipo Documento" for="tipodoc" />
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="tipodoc" required="true" value="#{docentesController.campo.apellidos}"/></pre>
+                            </div>
+                            <div class="ui-g-3 ">
+                                <p:outputLabel value="Documento" for="cedula" />
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="cedula" required="true" value="#{docentesController.campo.cedula}"/></pre>  
+                            </div>
 
-                        <div class="ui-md-2 ">
-                            <p:outputLabel value="Fecha de Expedición" for="fecha_exp" />
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:calendar id="fecha_exp" showOn="button" value="#{docentesController.campo.fecha_exp}"></p:calendar></pre> 
-                        </div>
+                            <div class="ui-g-3 ">
+                                <p:outputLabel value="Fecha de Expedición" for="fecha_exp" />
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:calendar id="fecha_exp" showOn="button" value="#{docentesController.campo.fecha_exp}"></p:calendar></pre> 
+                            </div>
 
-                        <div class="ui-md-2 ">
-                            <p:outputLabel value="Lugar de Expedición" for="lugar_exp" />
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="lugar_exp" required="true" value="#{docentesController.campo.lugar_exp}"/></pre>
-                        </div>  
-                        <div class="ui-md-2 ">
-                            <p:outputLabel value="Fecha de Nacimiento" for="fechanac" />                   
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:calendar id="fechanac" showOn="button" value="#{docentesController.campo.fechanac}"></p:calendar></pre>
-                        </div>
-                        
-                        <div class="ui-md-2 ">
-                            <p:outputLabel value="Lugar de Nacimiento" for="lugar" />                   
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="lugar" required="true" value="#{docentesController.campo.lugar_nac}"/></pre>
-                        </div>
-                    </div>                 
+                            <div class="ui-g-3 ">
+                                <p:outputLabel value="Lugar de Expedición" for="lugar_exp" />
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="lugar_exp" required="true" value="#{docentesController.campo.lugar_exp}"/></pre>
+                            </div>  
+                            <div class="ui-g-3 ">
+                                <p:outputLabel value="Fecha de Nacimiento" for="fechanac" />                   
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:calendar id="fechanac" showOn="button" value="#{docentesController.campo.fechanac}"></p:calendar></pre>
+                            </div>
 
-                    <div class="ui-g">
+                            <div class="ui-g-3 ">
+                                <p:outputLabel value="Lugar de Nacimiento" for="lugar" />                   
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="lugar" required="true" value="#{docentesController.campo.lugar_nac}"/></pre>
+                            </div>
 
-                        <div class="ui-md-3 ">
-                            
-                            
-                        </div>
 
-                        <div class="ui-md-2 ">
-                            <p:outputLabel value="Genero" for="genero" />
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="genero" required="true" value="#{docentesController.campo.genero}"/> </pre>
-                        </div>  
-                        <div class="ui-md-2 ">
-                            <p:outputLabel value="#{docentesTxt.direccion}  " for="direccion" /><br/>
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="direccion" required="true" value="#{docentesController.campo.direccion}"/></pre> 
-                        </div>
+                            <div class="ui-g-3 ">
+                                <p:outputLabel value="Genero" for="genero" />
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="genero" required="true" value="#{docentesController.campo.genero}"/> </pre>
+                            </div>  
+                            <div class="ui-g-3 ">
+                                <p:outputLabel value="#{docentesTxt.direccion}  " for="direccion" /><br/>
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="direccion" required="true" value="#{docentesController.campo.direccion}"/></pre> 
+                            </div>
 
-                        <div class="ui-md-2 ">
-                            <p:outputLabel value="Municipio" for="municipio" />
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="municipio" required="true" value="#{docentesController.campo.municipio}"/></pre>
-                        </div>
+                            <div class="ui-g-3 ">
+                                <p:outputLabel value="Municipio" for="municipio" />
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="municipio" required="true" value="#{docentesController.campo.municipio}"/></pre>
+                            </div>
 
-                        <div class="ui-md-2 ">
-                            <p:outputLabel value="#{docentesTxt.telefono}  " for="telefono" />
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="telefono" required="true" value="#{docentesController.campo.telefono}"/> </pre>
-                        </div>
-                    </div>                 
+                            <div class="ui-g-3 ">
+                                <p:outputLabel value="#{docentesTxt.telefono}  " for="telefono" />
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="telefono" required="true" value="#{docentesController.campo.telefono}"/> </pre>
+                            </div>
 
-                    <div class="ui-g">  
-                        <div class="ui-md-3 ">
-                            
-                            
-                        </div>
 
-                        <div class="ui-md-2 ">
-                            <p:outputLabel value="Celular" for="celular" />
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="celular" required="true" value="#{docentesController.campo.celular}"/></pre>
-                        </div>
+                            <div class="ui-g-3 ">
+                                <p:outputLabel value="Celular" for="celular" />
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="celular" required="true" value="#{docentesController.campo.celular}"/></pre>
+                            </div>
 
-                        <div class="ui-md-2 ">
-                            <p:outputLabel value="#{docentesTxt.correo}  " for="correo" />
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="correo" required="true" value="#{docentesController.campo.correo}"/></pre> 
-                        </div>
+                            <div class="ui-g-3 ">
+                                <p:outputLabel value="#{docentesTxt.correo}  " for="correo" />
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="correo" required="true" value="#{docentesController.campo.correo}"/></pre> 
+                            </div>
 
-                        <div class="ui-md-2 ">
-                            <p:outputLabel value="Usuario" />
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:outputLabel value="#{docentesController.usuario}"/></pre>
-                        </div>
-                        <div class="ui-md-2 ">
-                            <p:outputLabel value="Clave" for="clave" />
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="clave" value="#{docentesController.clave}" required="true" /> </pre>
-                        </div>
-                        
-                    </div>
-                    <div class="ui-g">  
-                        <div class="ui-md-3 ">
-                            
-                            
-                        </div>
+                            <div class="ui-g-3 ">
+                                <p:outputLabel value="Usuario" />
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:outputLabel value="#{docentesController.usuario}"/></pre>
+                            </div>
+                            <div class="ui-g-3 ">
+                                <p:outputLabel value="Clave" for="clave" />
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="clave" value="#{docentesController.clave}" required="true" /> </pre>
+                            </div>
 
-                        <div class="ui-md-2 ">
-                            <p:outputLabel value="#{docentesTxt.codigo}  " for="codigo" />
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="codigo"  value="#{docentesController.campo.codigo}"/></pre> 
-                        </div>
 
-                        <div class="ui-md-2 ">
-                            <p:outputLabel value="Matricula Profesional" for="matricula" />
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="matricula" required="true" value="#{docentesController.campo.matricula_prof}"/></pre>
-                        </div>
+                            <div class="ui-g-3 ">
+                                <p:outputLabel value="#{docentesTxt.codigo}  " for="codigo" />
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="codigo"  value="#{docentesController.campo.codigo}"/></pre> 
+                            </div>
 
-                        <div class="ui-md-3 ">
-                            <p:outputLabel value="#{docentesTxt.formacion}" for="formacion" />
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputTextarea id="formacion" required="true" value="#{docentesController.campo.formacion}"/></pre>
-                        </div>
-                        <div class="ui-md-1 ">  
-                            <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;">
+                            <div class="ui-g-3 ">
+                                <p:outputLabel value="Matricula Profesional" for="matricula" />
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="matricula" required="true" value="#{docentesController.campo.matricula_prof}"/></pre>
+                            </div>
+
+                            <div class="ui-g-4 ">
+                                <p:outputLabel value="#{docentesTxt.formacion}" for="formacion" />
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputTextarea style="width: 230px;" id="formacion" required="true" value="#{docentesController.campo.formacion}"/></pre>
+                            </div>
+                            <div class="ui-g-2 ">  
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;">
                             <p:commandButton id="btngrabar" value="Actualizar" ajax="false" action="#{docentesController.actualizar()}"/>
-                            </pre>
+                                </pre>
+                            </div>
                         </div>
                     </div>
                 </p:panel>  
@@ -170,7 +186,7 @@
                 <p:accordionPanel>
                     <p:tab title="Información Academica">
                         <p:commandButton value="Agregar" actionListener="#{informacionAcademicaController.abrirCrear()}" icon="ui-icon-disk" >
-                                <p:ajax event="dialogReturn" update="listar " oncomplete="#{informacionAcademicaController.mostrarMensaje()}"/>                             
+                            <p:ajax event="dialogReturn" update="listar " oncomplete="#{informacionAcademicaController.mostrarMensaje()}"/>                             
                         </p:commandButton>                   
                         <p:separator/>
                         <br/>
@@ -184,7 +200,7 @@
                                 <f:facet name="header">Título</f:facet>
                                     #{registro.titulo}
                             </p:column> 
-                            
+
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">Institución</f:facet>
                                     #{registro.institucion}
@@ -219,7 +235,7 @@
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
                                 <p:commandButton ajax="false" icon="ui-icon-trash" action="#{informacionAcademicaController.borrar(registro)}">
-                                <p:ajax event="dialogReturn" update="listar " oncomplete="#{informacionAcademicaController.mostrarMensaje()}"/>           
+                                    <p:ajax event="dialogReturn" update="listar " oncomplete="#{informacionAcademicaController.mostrarMensaje()}"/>           
                                 </p:commandButton>
                                 <p:commandButton icon="ui-icon-pencil" action="#{informacionAcademicaController.abrirActualizar(registro)}">
                                     <p:ajax event="dialogReturn" update="listar " oncomplete="#{informacionAcademicaController.mostrarMensaje()}"/>                                  
@@ -229,7 +245,7 @@
                     </p:tab>
                     <p:tab title="Experiencia">
                         <p:commandButton value="Agregar" actionListener="#{experienciaController.abrirCrear()}" icon="ui-icon-disk" >
-                               <p:ajax event="dialogReturn" update="listarexp " oncomplete="#{experienciaController.mostrarMensaje()}"/>                    
+                            <p:ajax event="dialogReturn" update="listarexp " oncomplete="#{experienciaController.mostrarMensaje()}"/>                    
                         </p:commandButton>                   
                         <p:separator/>
                         <br/>
@@ -243,7 +259,7 @@
                                 <f:facet name="header">Actividad</f:facet>
                                     #{registro.actividad}
                             </p:column> 
-                            
+
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">Dependencia</f:facet>
                                     #{registro.dependencia}
@@ -283,7 +299,7 @@
                     </p:tab>
                     <p:tab title="Producción Intelectual e Investigativa">
                         <p:commandButton value="Agregar" actionListener="#{produccionController.abrirCrear()}" icon="ui-icon-disk" >
-                                   <p:ajax event="dialogReturn" update="listarprod " oncomplete="#{produccionController.mostrarMensaje()}"/>                            
+                            <p:ajax event="dialogReturn" update="listarprod " oncomplete="#{produccionController.mostrarMensaje()}"/>                            
                         </p:commandButton>                   
                         <p:separator/>
                         <br/>
@@ -297,7 +313,7 @@
                                 <f:facet name="header">Nombre</f:facet>
                                     #{registro.nombre}
                             </p:column> 
-                            
+
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">Tipo Prod</f:facet>
                                     #{registro.tipo_prod_part}
@@ -323,7 +339,7 @@
                                 <f:facet name="header">Meses</f:facet>
                                     #{registro.meses}
                             </p:column>
-                            
+
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">Año</f:facet>
                                     #{registro.ano}
@@ -332,7 +348,7 @@
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
                                 <p:commandButton ajax="false" icon="ui-icon-trash" action="#{produccionController.borrar(registro)}">
-                                <p:ajax event="dialogReturn" update="listarprod " oncomplete="#{produccionController.mostrarMensaje()}"/>             
+                                    <p:ajax event="dialogReturn" update="listarprod " oncomplete="#{produccionController.mostrarMensaje()}"/>             
                                 </p:commandButton>
                                 <p:commandButton icon="ui-icon-pencil" action="#{produccionController.abrirActualizar(registro)}">
                                     <p:ajax event="dialogReturn" update="listarprod " oncomplete="#{produccionController.mostrarMensaje()}"/>                                  
@@ -356,12 +372,12 @@
                                 <f:facet name="header">Conferencia</f:facet>
                                     #{registro.conferencia}
                             </p:column> 
-                            
+
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">Informe</f:facet>
                                     #{registro.informe}
                             </p:column> 
-                            
+
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
                                 <p:commandButton ajax="false" icon="ui-icon-trash" action="#{socializacionController.borrar(registro)}">
@@ -375,7 +391,7 @@
                     </p:tab>
                     <p:tab title="Participaciones">
                         <p:commandButton value="Agregar" actionListener="#{participacionController.abrirCrear()}" icon="ui-icon-disk" >
-                              <p:ajax event="dialogReturn" update="listarpartip " oncomplete="#{participacionController.mostrarMensaje()}"/>                      
+                            <p:ajax event="dialogReturn" update="listarpartip " oncomplete="#{participacionController.mostrarMensaje()}"/>                      
                         </p:commandButton>                   
                         <p:separator/>
                         <br/>
@@ -389,7 +405,7 @@
                                 <f:facet name="header">Evento</f:facet>
                                     #{registro.evento}
                             </p:column> 
-                            
+
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">Tipo Parti</f:facet>
                                     #{registro.tipo_part}
@@ -415,17 +431,17 @@
                                 <f:facet name="header">Dedicación</f:facet>
                                     #{registro.dedicacion}
                             </p:column>
-                            
+
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">Actividades Culturales</f:facet>
                                     #{registro.activ_culturales}
                             </p:column>
-                            
+
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">Dedicación Culturales</f:facet>
                                     #{registro.dedica_cultural}
                             </p:column>
-                            
+
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">Desemepño</f:facet>
                                     #{registro.desempeno}
