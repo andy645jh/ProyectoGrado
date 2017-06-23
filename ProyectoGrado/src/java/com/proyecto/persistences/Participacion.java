@@ -26,42 +26,34 @@ public class Participacion implements Serializable
     private int codparticipacion;
     
     @Column(name = "tipo_part")
-    @NotNull
     private int tipo_part;
     
     @Column(name = "evento")  
     @Size(min = 1, max = 200)
-    @NotNull
     private String evento;
     
     @Column(name = "tema")
-    @NotNull
     private String tema;
        
     @Column(name = "ambito")
     @Size(min = 1, max = 100)
-    @NotNull
     private String ambito;
     
     @Column(name = "activ_culturales")
     @Size(min = 1, max = 200)
-    @NotNull
     private String activ_culturales;
     
     @Column(name = "dedica_cultural")
     @Size(min = 1, max = 200)
-    @NotNull
     private String dedica_cultural;
     
     @Column(name = "desempeno")
-    @NotNull
     private String desempeno;
     
     @Column(name = "dedicacion")   
     private Double dedicacion;
     
-    @Column(name = "tipo")    
-    @NotNull
+    @Column(name = "tipo")  
     private int tipo;
         
     @Column(name = "fecha")

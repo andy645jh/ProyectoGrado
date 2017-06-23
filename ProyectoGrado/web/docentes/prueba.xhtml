@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/plantilla.xhtml">
+        <ui:define name="menu">
+            <ui:decorate template="/menu_docentes.xhtml">
+                <ui:param name="estaActivo" value="perfil"/>
+            </ui:decorate>            
+        </ui:define>
+        <ui:define name="content">
+            
+            <h:form id="formDatos">                
+                <p:panel id="panelFoto" >
+                    <h:graphicImage value="/docentes/temp/#{editorUsuarioFotoBean.usuario.foto}" height="70" width="70" />
+                </p:panel>
+            </h:form>
+            
+            <h:form id="formFoto" enctype="multipart/form-data">
+
+                <h:panelGrid border="0"
+                             columns="1"
+                             cellspacing="5"
+                             width="10%">
+                    <p:panel>
+                        <h:panelGrid columns="2" width="10%">
+                            <p:commandButton value="Establecer como foto de perfil"
+                                             disabled="#{editorUsuarioFotoBean.imageTemp==null}"
+                                             action="#{editorUsuarioFotoBean.actionGuardarFoto}"
+                                             process="@form"
+                                             oncomplete="ventanaFoto.hide();"
+                                             update="formFoto :formDatos:panelFoto"/>
+
+                            <p:commandButton value="Cancelar"
+                                             type="button"
+                                             onclick="ventanaFoto.hide();"/>
+                        </h:panelGrid>
+                    </p:panel>
+
+                    <p:panel styleClass="editorFoto">
+                        <p:imageCropper value="#{editorUsuarioFotoBean.croppeFoto}"
+                                        image="/docentes/temp/#{editorUsuarioFotoBean.imageTemp}"
+                                        rendered="#{editorUsuarioFotoBean.imageTemp!=null}"
+                                        initialCoords="0,0,140,150"
+                                        minSize="70,75"
+                                        maxSize="280,300"
+                                        aspectRatio="0.9"/>
+
+                        <p:fileUpload fileUploadListener="#{editorUsuarioFotoBean.uploadFile}"
+                                      rendered="#{editorUsuarioFotoBean.imageTemp==null}"
+                                      mode="advanced"
+                                      label="Seleccione Foto (max.500Kb)"
+                                      auto="true"
+                                      update="formFoto"
+                                      sizeLimit="500000"
+                                      allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+                    </p:panel>
+                    
+                    
+
+                </h:panelGrid>
+            </h:form>
+            
+            
+        </ui:define>
+    </ui:composition>
+</html>
+

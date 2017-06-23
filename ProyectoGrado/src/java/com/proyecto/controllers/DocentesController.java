@@ -150,8 +150,9 @@ public class DocentesController implements Serializable {
 
     public String abrirPerfil() {
 
-        _obj = _ejbFacade.buscar(109877);
+        _obj = _ejbFacade.getCurrentDocente();
         System.out.println("CODIGO " + _obj.getFoto());
+        
         Permisos p = _permFacade.buscarCampo("usuario", _obj.getCedula() + "");
         clave = p.getClave();
         usuario = p.getUsuario();
@@ -160,8 +161,12 @@ public class DocentesController implements Serializable {
 
     public void actualizar() {
         String titulo, detalle;
-        Coordinacion c = _coordFacade.buscar(_codCoord);
-        _obj.setCodcoordinacion(c);
+//        Coordinacion c = _coordFacade.buscar(_codCoord);
+//        _obj.setCodcoordinacion(c);
+        
+        Docentes doc = _ejbFacade.getCurrentDocente();
+//        String coordinacion= doc.getCodcoordinacion().getCodcoordinacion()+"";
+        _obj.setCodcoordinacion(doc.getCodcoordinacion());
         System.out.println("ACTUALIZARRRRRRRRR ");
 
         if (foto != null) {
