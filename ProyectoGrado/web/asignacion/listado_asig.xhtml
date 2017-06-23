@@ -93,7 +93,7 @@
                                 <h:outputText value="HC" />
                             </h:outputLink>                            
                             <p:tooltip for="tool-hc" value="Horas de Clase" trackMouse="true" />
-                        
+
                         </f:facet>
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{registro.horasclase}"/></f:facet>
@@ -115,7 +115,12 @@
                     </p:column>
 
                     <p:column style="text-align: center">
-                        <f:facet name="header">Cap</f:facet>
+                        <f:facet name="header">
+                            <h:outputLink id="tool-cap" value="#">
+                                <h:outputText value="Cap" />
+                            </h:outputLink>                            
+                            <p:tooltip for="tool-cap" value="Capacitacion" trackMouse="true" />
+                        </f:facet>
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{registro.capacitacion}" /></f:facet>
                             <f:facet name="input"><p:inputText id="capacitacion" value="#{registro.capacitacion}" style="width:96%"/></f:facet>
@@ -123,7 +128,12 @@
                     </p:column>
 
                     <p:column style="text-align: center">
-                        <f:facet name="header" >CD</f:facet>
+                        <f:facet name="header" >
+                            <h:outputLink id="tool-cd" value="#">
+                                <h:outputText value="CD" />
+                            </h:outputLink>                            
+                            <p:tooltip for="tool-cd" value="Colectivo" trackMouse="true" />
+                        </f:facet>
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{registro.colectivo}" /></f:facet>
                             <f:facet name="input"><p:inputText id="colectivo" value="#{registro.colectivo}" style="width:96%"/></f:facet>
@@ -131,7 +141,12 @@
                     </p:column>
 
                     <p:column style="text-align: center">
-                        <f:facet name="header">HI</f:facet>
+                        <f:facet name="header">
+                            <h:outputLink id="tool-hi" value="#">
+                                <h:outputText value="HI" />
+                            </h:outputLink>                            
+                            <p:tooltip for="tool-hi" value="Horas de Investigacion" trackMouse="true" />
+                        </f:facet>
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{registro.investigacion}" /></f:facet>
                             <f:facet name="input"><p:inputText id="inv" value="#{registro.investigacion}" style="width:96%"/></f:facet>
@@ -139,7 +154,12 @@
                     </p:column>
 
                     <p:column style="text-align: center">
-                        <f:facet name="header">PS</f:facet>
+                        <f:facet name="header">
+                            <h:outputLink id="tool-ps" value="#">
+                                <h:outputText value="PS" />
+                            </h:outputLink>                            
+                            <p:tooltip for="tool-ps" value="Social" trackMouse="true" />
+                        </f:facet>
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{registro.social}" /></f:facet>
                             <f:facet name="input"><p:inputText id="social" value="#{registro.social}" style="width:96%"/></f:facet>
@@ -147,7 +167,12 @@
                     </p:column>
 
                     <p:column style="text-align: center">
-                        <f:facet name="header">ODA</f:facet>
+                        <f:facet name="header">
+                            <h:outputLink id="tool-oda" value="#">
+                                <h:outputText value="ODA" />
+                            </h:outputLink>                            
+                            <p:tooltip for="tool-oda" value="ODA" trackMouse="true" />
+                        </f:facet>
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{registro.oda}" /></f:facet>
                             <f:facet name="input"><p:inputText id="oda" value="#{registro.oda}" style="width:96%"/></f:facet>
@@ -155,7 +180,12 @@
                     </p:column>
 
                     <p:column style="text-align: center">
-                        <f:facet name="header" >P</f:facet>
+                        <f:facet name="header" >
+                            <h:outputLink id="tool-p" value="#">
+                                <h:outputText value="P" />
+                            </h:outputLink>                            
+                            <p:tooltip for="tool-p" value="Planeacion" trackMouse="true" />                            
+                        </f:facet>
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{registro.planeacion}" /></f:facet>
                             <f:facet name="input"><p:inputText id="planeacion" value="#{registro.planeacion}" style="width:96%"/></f:facet>
@@ -164,7 +194,12 @@
                     </p:column>
 
                     <p:column style="text-align: center">
-                        <f:facet name="header">V</f:facet>
+                        <f:facet name="header">
+                            <h:outputLink id="tool-v" value="#">
+                                <h:outputText value="V" />
+                            </h:outputLink>                            
+                            <p:tooltip for="tool-v" value="Virtualidad" trackMouse="true" />       
+                        </f:facet>
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{registro.virtualidad}" /></f:facet>
                             <f:facet name="input"><p:inputText id="virtualidad" value="#{registro.virtualidad}" style="width:96%"/></f:facet>
@@ -172,7 +207,12 @@
                     </p:column>
 
                     <p:column style="text-align: center">
-                        <f:facet name="header">C</f:facet>
+                        <f:facet name="header">
+                        <h:outputLink id="tool-c" value="#">
+                                <h:outputText value="C" />
+                            </h:outputLink>                            
+                            <p:tooltip for="tool-c" value="Comites" trackMouse="true" />  
+                        </f:facet>
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{registro.comites}" /></f:facet>
                             <f:facet name="input"><p:inputText id="comites" value="#{registro.comites}" style="width:96%"/></f:facet>
