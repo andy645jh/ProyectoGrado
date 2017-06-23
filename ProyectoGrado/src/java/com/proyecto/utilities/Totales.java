@@ -10,18 +10,18 @@ package com.proyecto.utilities;
  * @author Elkin
  */
 public class Totales {
-    private double _totalHoras;
-    private double _totalHC;
-    private double _totalPC;
-    private double _totalCap;
-    private double _totalCD;        
+    private double _totalHoras = 0;
+    private double _totalHC = 0;
+    private double _totalPC = 0;
+    private double _totalCap = 0;
+    private double _totalCD = 0;        
     
-    private double _totalHI;
-    private double _totalPS;
-    private double _totalODA;
-    private double _totalPlan;
-    private double _totalVirt;
-    private double _totalCom;
+    private double _totalHI = 0;
+    private double _totalPS = 0;
+    private double _totalODA = 0;
+    private double _totalPlan = 0;
+    private double _totalVirt = 0;
+    private double _totalCom = 0;
 
     public Totales() { }    
 

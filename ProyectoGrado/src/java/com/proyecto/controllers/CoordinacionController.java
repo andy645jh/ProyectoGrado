@@ -95,6 +95,7 @@ public class CoordinacionController implements Serializable{
             
             //actualizar
             System.out.println("ACTUALIZAR");
+            _obj.setAsignado(true);
             _ejbFacade.actualizar(_obj);
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");

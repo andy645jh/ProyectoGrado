@@ -1,20 +1,13 @@
 package com.proyecto.controllers;
 
-import com.proyecto.facades.ActividadObligatoriaFacade;
 import com.proyecto.facades.AsignacionFacade;
 import com.proyecto.facades.DocentesFacade;
-import com.proyecto.facades.PorcentajeFacade;
-import com.proyecto.facades.TiempoAsignadoFacade;
-import com.proyecto.persistences.ActividadObligatoria;
 import com.proyecto.persistences.Asignacion;
 import com.proyecto.persistences.Coordinacion;
-import com.proyecto.persistences.Docentes;
-import com.proyecto.persistences.Porcentaje;
 import com.proyecto.persistences.TiempoAsignado;
 import com.proyecto.utilities.Mensajes;
 import com.proyecto.utilities.SessionUtils;
 import com.proyecto.utilities.Totales;
-import javax.inject.Named;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +19,6 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.CellEditEvent;
 
@@ -90,9 +82,9 @@ public class AsignacionController implements Serializable {
         totalvirt = 0;
         totalCom = 0;
         for (Asignacion asg : listAsig) {
-            /*if (asg.getHorasclase() != null) {
+            if (asg.getHorasclase() != null) {
                 totalHC += asg.getHorasclase();
-            }*/
+            }
             if (asg.getPreparacion() != null) {
                 totalPC += asg.getPreparacion();
             }
@@ -129,10 +121,22 @@ public class AsignacionController implements Serializable {
             }
         }                
         
+        //seteando los valores acumulados
+        _totalesCalculados.setTotalHC(totalHC);
+        _totalesCalculados.setTotalCom(totalCom);
+        _totalesCalculados.setTotalVirt(totalvirt);
+        _totalesCalculados.setTotalPlan(totalPlan);
+        _totalesCalculados.setTotalODA(totalODA);
+        _totalesCalculados.setTotalPS(totalPS);
+        _totalesCalculados.setTotalHI(totalHI);
+        _totalesCalculados.setTotalCD(totalCD);
+        _totalesCalculados.setTotalPC(totalPC);
+        _totalesCalculados.setTotalCap(totalCap);
+                
         _totalesEsperados.setTotalHC(totalHC);
         System.out.println("tamaño de la lista " + _totalesEsperados.getTotalHC());  
         
-        if(coord.getAcreditacion() != null)
+        if(coord.isAsignado())
         {
                   
             _totalesEsperados.setTotalCom(coord.getComites()*totalHC/100);

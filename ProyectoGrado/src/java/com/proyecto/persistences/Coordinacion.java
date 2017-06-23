@@ -48,6 +48,9 @@ public class Coordinacion implements Serializable {
     @Column(name = "virtualidad")
     private Double _virtualidad;
     
+    @Column(name = "asignado")
+    private boolean _asignado;
+    
     @JoinColumn(name = "codfacultad", referencedColumnName = "codfacultad")
     @ManyToOne(optional = false)
     private Facultad _codfacultad;
@@ -152,6 +155,14 @@ public class Coordinacion implements Serializable {
     @Override
     public String toString() {
         return _nombre;
+    }
+
+    public boolean isAsignado() {
+        return _asignado;
+    }
+
+    public void setAsignado(boolean _asignado) {
+        this._asignado = _asignado;
     }
      
      
