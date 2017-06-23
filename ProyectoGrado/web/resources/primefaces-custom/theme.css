@@ -588,4 +588,6 @@ table button
 
 .ui-datatable-summaryrow{
     text-align: center;
+    background-color: #bfd730;
+    font-weight: normal;
 }

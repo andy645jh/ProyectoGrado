@@ -79,16 +79,22 @@
 
                     <p:column style="text-align: center">
                         <f:facet name="header">
-                            <h:outputLink id="fade" value="#">
+                            <h:outputLink id="tool-tc" value="#">
                                 <h:outputText value="TC" />
                             </h:outputLink>                            
-                            <p:tooltip id="toolTipFocus" for="fade" position="top" showEvent="focus" hideEvent="blur" value="Tipo de Contrato"/>
+                            <p:tooltip for="tool-tc" value="Tipo de Contrato" trackMouse="true" />
                         </f:facet>                        
                         #{registro.coddocente.tipocontrato}
                     </p:column> 
 
                     <p:column  style="text-align: center">
-                        <f:facet name="header" >HC</f:facet>
+                        <f:facet name="header" >
+                            <h:outputLink id="tool-hc" value="#">
+                                <h:outputText value="HC" />
+                            </h:outputLink>                            
+                            <p:tooltip for="tool-hc" value="Horas de Clase" trackMouse="true" />
+                        
+                        </f:facet>
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{registro.horasclase}"/></f:facet>
                             <f:facet name="input"><p:inputText id="clase" value="#{registro.horasclase}" style="width:96%"/></f:facet>
@@ -96,7 +102,12 @@
                     </p:column>
 
                     <p:column style="text-align: center">
-                        <f:facet name="header">PC</f:facet>
+                        <f:facet name="header">
+                            <h:outputLink id="tool-pc" value="#">
+                                <h:outputText value="PC" />
+                            </h:outputLink>                            
+                            <p:tooltip for="tool-pc" value="Preparacion de Clase" trackMouse="true" />
+                        </f:facet>
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{registro.preparacion}" /></f:facet>
                             <f:facet name="input"><p:inputText id="preparacion" value="#{registro.preparacion}" style="width:96%"/></f:facet>
@@ -181,31 +192,31 @@
                             <h:outputText value="#{asignacionController.totalesCalculados.totalHC}"/>
                         </p:column> 
                         <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalPC}"/>
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalPC} / #{asignacionController.totalesEsperados.totalPC}"/>
                         </p:column> 
                         <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalCap}"/>
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalCap} / #{asignacionController.totalesEsperados.totalCap}"/>
                         </p:column> 
                         <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalCD}"/>
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalCD} / #{asignacionController.totalesEsperados.totalCD}"/>
                         </p:column> 
                         <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalHI}"/>
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalHI} / #{asignacionController.totalesEsperados.totalHI}"/>
                         </p:column> 
                         <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalPS}"/>
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalPS} / #{asignacionController.totalesEsperados.totalPS}"/>
                         </p:column> 
                         <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalODA}"/>
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalODA} / #{asignacionController.totalesEsperados.totalODA}"/>
                         </p:column> 
                         <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalPlan}"/>
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalPlan} / #{asignacionController.totalesEsperados.totalPlan}"/>
                         </p:column> 
                         <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalVirt}"/>
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalVirt} / #{asignacionController.totalesEsperados.totalVirt}"/>
                         </p:column> 
                         <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalCom}"/>
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalCom} / #{asignacionController.totalesEsperados.totalCom}"/>
                         </p:column>     
                         <p:column colspan="1" >
                             <h:outputText value="#{asignacionController.totalesCalculados.totalHC} / #{asignacionController.totalesEsperados.totalHC}"/>
