@@ -60,18 +60,23 @@ public void actionGuardarFoto(){
     try {
  
         if(croppeFoto!=null){
+            System.out.println("ENTRO AL croppeFoto "+croppeFoto);
             FileImageOutputStream imageOutput = new FileImageOutputStream(new File(archivo));
             imageOutput.write(croppeFoto.getBytes(), 0, croppeFoto.getBytes().length);
+            System.out.println("ENTRO AL croppeFoto 2 "+imageOutput.toString());
             imageOutput.close();
         }
         else {
+            System.out.println("ELSE");
             OutputStream outStream = new FileOutputStream(new File(archivo));
             InputStream inputStream = new FileInputStream(path+ "/temp/" + usuario.getFoto());
             byte[] buffer = new byte[6124];
             int bulk;
             while (true) {
+                System.out.println("WHILE");
                 bulk = inputStream.read(buffer);
                 if (bulk < 0) {
+                    System.out.println("BULK < 0");
                     break;
                 }
                 outStream.write(buffer, 0, bulk);

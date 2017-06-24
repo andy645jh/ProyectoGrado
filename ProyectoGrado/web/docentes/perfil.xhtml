@@ -36,20 +36,26 @@
                     <div class="ui-g">
                         <div class="ui-g-3">
                             <p:panel id="panelFoto" >
-                                <h:graphicImage value="temp/zetatwitter-03.png" height="250" width="250" />
+                                <h:graphicImage value="/temp/#{editorUsuarioFotoBean.usuario.foto}" height="150" width="150" />
                             </p:panel>
                             <h:panelGrid border="0"
                                          columns="1"
                                          cellspacing="5"
                                          width="10%">
                                 <p:panel>
+                                    <p:panelGrid id="fotos" columns="1">
+                                        <h:graphicImage value="#{clinicasController.imagenURL}" height="100" width="100"/>
+                                        <h:graphicImage value="/resources/fotos/clinicas/#{clinicasController.imagen}" height="100" width="100"/>
+                                        <p:fileUpload auto="true" label="Foto" fileUploadListener="#{clinicasController.handleFileUpload}" update="formDatos:fotos"/>
+
+                                    </p:panelGrid>
+
+
                                     <h:panelGrid columns="2" width="10%">
-                                        <p:commandButton value="Establecer como foto de perfil"
-                                                         disabled="#{editorUsuarioFotoBean.imageTemp==null}"
-                                                         action="#{editorUsuarioFotoBean.actionGuardarFoto}"
-                                                         process="@form"
-                                                         oncomplete="ventanaFoto.hide();"
-                                                         update="formDatos :formDatos:panelFoto"/>
+                                        <h:inputFile value="#{cargaArchivo.file1}" /><br/>
+                                        <h:commandButton value="Upload" action="#{cargaArchivo.upload()}"/>
+
+
 
                                         <p:commandButton value="Cancelar"
                                                          type="button"
@@ -65,6 +71,8 @@
                                                     minSize="70,75"
                                                     maxSize="280,300"
                                                     aspectRatio="0.9"/>
+
+
 
                                     <p:fileUpload fileUploadListener="#{editorUsuarioFotoBean.uploadFile}"
                                                   rendered="#{editorUsuarioFotoBean.imageTemp==null}"
@@ -119,8 +127,14 @@
 
 
                             <div class="ui-g-3 ">
-                                <p:outputLabel value="Genero" for="genero" />
-                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="genero" required="true" value="#{docentesController.campo.genero}"/> </pre>
+                                <p:outputLabel value="Sexo" for="genero" />
+                                <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;">
+                                    <p:selectOneMenu id="genero" required="true" value="#{docentesController.campo.genero}"> 
+                                        <f:selectItem itemLabel="Seleccione" itemValue="0" />
+                                        <f:selectItem itemLabel="Femenino" itemValue="1" />
+                                        <f:selectItem itemLabel="Masculino" itemValue="2" />
+                                    </p:selectOneMenu>
+                                </pre>
                             </div>  
                             <div class="ui-g-3 ">
                                 <p:outputLabel value="#{docentesTxt.direccion}  " for="direccion" /><br/>
@@ -194,6 +208,7 @@
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">Nivel</f:facet>
                                     #{registro.nivel}
+                                
                             </p:column>
 
                             <p:column style="width: 10px; text-align: center">
@@ -229,7 +244,8 @@
 
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">Tipo</f:facet>
-                                    #{registro.tipo}
+                                <h:outputText value="Titulos" rendered="#{registro.tipo == 1}"/>
+                                <h:outputText value="Cursos" rendered="#{registro.tipo == 2}"/>
                             </p:column>
 
                             <p:column style="width: 10px; text-align: center">
@@ -283,7 +299,8 @@
 
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">Tipo</f:facet>
-                                    #{registro.tipo}
+                                    <h:outputText value="Docente" rendered="#{registro.tipo == 1}"/>
+                                    <h:outputText value="Profesional" rendered="#{registro.tipo == 2}"/>
                             </p:column>
 
                             <p:column style="width: 10px; text-align: center">
@@ -306,7 +323,8 @@
                         <p:dataTable id="listarprod" value="#{produccionController.listado}" var="registro">
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">Tipo</f:facet>
-                                    #{registro.tipo}
+                                    <h:outputText value="Producción intelectual" rendered="#{registro.tipo == 1}"/>
+                                    <h:outputText value="Producción investigativa" rendered="#{registro.tipo == 2}"/>
                             </p:column>
 
                             <p:column style="width: 10px; text-align: center">
@@ -398,7 +416,9 @@
                         <p:dataTable id="listarpartip" value="#{participacionController.listado}" var="registro">
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">Tipo</f:facet>
-                                    #{registro.tipo}
+                                    <h:outputText value="Eventos Academicos" rendered="#{registro.tipo == 1}"/>
+                                    <h:outputText value="Asociaciones Profesionales o Sociales" rendered="#{registro.tipo == 2}"/>
+                                    <h:outputText value="Actividades Deportivas y Culturales" rendered="#{registro.tipo == 3}"/>
                             </p:column>
 
                             <p:column style="width: 10px; text-align: center">
