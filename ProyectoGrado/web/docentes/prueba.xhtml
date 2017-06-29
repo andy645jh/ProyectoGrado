@@ -5,7 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-
+    <!--
     <ui:composition template="/plantilla.xhtml">
         <ui:define name="menu">
             <ui:decorate template="/menu_docentes.xhtml">
@@ -66,6 +66,23 @@
             </h:form>
             
             
+        </ui:define>
+    </ui:composition>
+    -->
+    
+    <ui:composition template="/plantilla.xhtml">
+        <ui:define name="menu">
+            <ui:decorate template="/menu_docentes.xhtml">
+                <ui:param name="estaActivo" value="perfil"/>
+            </ui:decorate>            
+        </ui:define>
+        <ui:define name="content">
+
+            <h:form enctype="multipart/form-data">
+                <p:growl id="messages" showDetail="true" />
+                <p:fileUpload value="#{photoCtrl.file}" mode="simple" skinSimple="true"/>
+                <p:commandButton value="Submit" ajax="false" actionListener="#{photoCtrl.upload}" />
+            </h:form>
         </ui:define>
     </ui:composition>
 </html>
