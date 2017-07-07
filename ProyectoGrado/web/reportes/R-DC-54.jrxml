@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R-DC-54" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6432eeef-5f8d-4b30-b336-a5ced63e6148">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="73"/>
+	<property name="ireport.x" value="348"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Documents\\proyectogradoing\\ProyectoGrado\\web\\reportes\\"]]></defaultValueExpression>
+	</parameter>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -60,7 +63,7 @@
 				<text><![CDATA[PÁGINA: 1 DE: 3]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="70" y="59" width="353" height="20" uuid="8d96f095-4f29-4c8c-be35-4df5dade371c"/>
+				<reportElement x="70" y="59" width="600" height="20" uuid="8d96f095-4f29-4c8c-be35-4df5dade371c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -86,7 +89,7 @@
 				<reportElement x="1" y="58" width="801" height="1" uuid="ff0dbc34-eca8-41f9-a859-e5a449109286"/>
 			</line>
 			<staticText>
-				<reportElement x="0" y="10" width="801" height="12" uuid="1bc26f7b-6d94-42c0-a22a-85bbf8ab6243"/>
+				<reportElement mode="Opaque" x="1" y="10" width="800" height="12" backcolor="#CCCCCC" uuid="1bc26f7b-6d94-42c0-a22a-85bbf8ab6243"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -202,7 +205,13 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="224" splitType="Stretch"/>
+		<band height="248" splitType="Stretch">
+			<subreport>
+				<reportElement x="1" y="0" width="800" height="112" uuid="c2878843-1b52-463b-99a5-978dffd1d25c"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "lstActividades_RDC54.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
 	</detail>
 	<summary>
 		<band height="110" splitType="Stretch"/>
