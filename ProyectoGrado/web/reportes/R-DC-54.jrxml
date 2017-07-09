@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R-DC-54" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6432eeef-5f8d-4b30-b336-a5ced63e6148">
-	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="348"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="12"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["D:\\Documents\\proyectogradoing\\ProyectoGrado\\web\\reportes\\"]]></defaultValueExpression>
@@ -205,15 +205,66 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="248" splitType="Stretch">
+		<band height="441" splitType="Stretch">
 			<subreport>
 				<reportElement x="1" y="0" width="800" height="112" uuid="c2878843-1b52-463b-99a5-978dffd1d25c"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "lstActividades_RDC54.jasper"]]></subreportExpression>
 			</subreport>
+			<subreport>
+				<reportElement x="0" y="120" width="801" height="100" uuid="6304ff17-249e-4c23-afe3-298e1cd75a1d"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "seguimiento_actividades.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="228" width="801" height="100" uuid="f4ba6d15-75c7-4af1-9d10-2958f1660f23"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "lst_productos.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="337" width="801" height="100" uuid="785a10f2-157b-4013-acfc-98278cc0542d"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "horario_semanal.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 	</detail>
 	<summary>
-		<band height="110" splitType="Stretch"/>
+		<band height="132" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="10" width="801" height="66" uuid="dce5b0a8-0fc8-4aac-a4c1-96d4c4273861"/>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="26" width="801" height="1" uuid="656d3470-15d1-4fdf-9c53-0c1b83a487be"/>
+			</line>
+			<staticText>
+				<reportElement x="3" y="10" width="799" height="17" uuid="b42721e5-225c-47c0-8055-37da7e6895de"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[OBSERVACIONES GENERALES]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="92" width="801" height="39" uuid="4fd81809-5178-4d71-b51c-0bd4f06205bf"/>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="107" width="802" height="1" uuid="624ae5c0-99b7-471b-a36d-417e2dbf19b3"/>
+			</line>
+			<line>
+				<reportElement x="244" y="92" width="1" height="39" uuid="f86b8762-5ef8-4e2f-b3d0-94ce739117db"/>
+			</line>
+			<line>
+				<reportElement x="535" y="92" width="1" height="39" uuid="116b836b-0779-48ba-8123-2c0c912934b2"/>
+			</line>
+			<staticText>
+				<reportElement x="3" y="92" width="241" height="16" uuid="85c57dc0-a75d-40cf-9070-6b88dd313405"/>
+				<text><![CDATA[Firma Docente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="252" y="92" width="283" height="16" uuid="f57208b9-1a6a-48c7-be23-b78d749b1580"/>
+				<text><![CDATA[Firma Jefe Unidad Academica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="546" y="92" width="255" height="16" uuid="a01b680e-65f7-4287-af44-0339d6b6e9c0"/>
+				<text><![CDATA[Firma Superior Jerárquico]]></text>
+			</staticText>
+		</band>
 	</summary>
 </jasperReport>
