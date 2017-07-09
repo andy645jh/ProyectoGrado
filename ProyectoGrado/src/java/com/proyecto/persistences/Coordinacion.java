@@ -165,6 +165,14 @@ public class Coordinacion implements Serializable {
         this._asignado = _asignado;
     }
      
-     
+    public void setInfo(Coordinacion coord)
+    {
+        _acreditacion = coord.getAcreditacion();
+        _comites = coord.getComites();
+        _extension = coord.getExtension();
+        _investigacion = coord.getInvestigacion();
+        _oda = coord.getOda();
+        _virtualidad = coord.getVirtualidad();
+    }
     
 }

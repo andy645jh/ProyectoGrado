@@ -45,6 +45,7 @@ public class CoordinacionController implements Serializable{
     private Coordinacion _obj;    
     private FacesMessage message;
     private int codFacultad;
+    private final String GENERAL_TXT = "/com/proyecto/utilities/GeneralTxt"; 
     
     public CoordinacionController() {
         
@@ -52,7 +53,10 @@ public class CoordinacionController implements Serializable{
     
     public Coordinacion getCampo()
     {
-        if(_obj==null)  _obj= new Coordinacion();
+        if(_obj==null) {
+            _obj = (Coordinacion) SessionUtils.get("coordinacion");
+            if (_obj==null) _obj= new Coordinacion();
+        }
         return _obj;        
     }
     
@@ -88,7 +92,7 @@ public class CoordinacionController implements Serializable{
     public void procesar()
     {        
         String titulo, detalle;       
-        _obj = (Coordinacion) SessionUtils.get("coordinacion");
+        //_obj = (Coordinacion) SessionUtils.get("coordinacion");
         System.out.println("LO Q HAY EN COORDI " + _obj);        
        
         try {
@@ -96,21 +100,22 @@ public class CoordinacionController implements Serializable{
             //actualizar
             System.out.println("ACTUALIZAR");
             _obj.setAsignado(true);
-            _ejbFacade.actualizar(_obj);
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
-                                    
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
             System.out.print("coordinacion =" + _obj.getCodcoordinacion() + " investigacion="+_obj.getInvestigacion()+" extension=" + _obj.getExtension());
             System.out.println(" comite=" + _obj.getComites() + " ODA=" + _obj.getOda() + " acreditacion=" + _obj.getAcreditacion() + " virtualidad=" + _obj.getVirtualidad());
                                     
+            _ejbFacade.actualizar(_obj);
+            titulo = ResourceBundle.getBundle(GENERAL_TXT).getString("exitoso");
+            detalle = ResourceBundle.getBundle(GENERAL_TXT).getString("actualizarExitoso");
+                                    
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
+            
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);
         } catch (Exception e) {
             
             System.out.println("ERROR");
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardarError");
+            titulo = ResourceBundle.getBundle(GENERAL_TXT).getString("error");
+            detalle = ResourceBundle.getBundle(GENERAL_TXT).getString("guardarError");
             message = new FacesMessage(FacesMessage.SEVERITY_ERROR, titulo, detalle);
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);
@@ -127,8 +132,8 @@ public class CoordinacionController implements Serializable{
         _obj.setCodfacultad(f);
         
         try {
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
+            titulo = ResourceBundle.getBundle(GENERAL_TXT).getString("exitoso");
+            detalle = ResourceBundle.getBundle(GENERAL_TXT).getString("guardaExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
            
             _ejbFacade.crear(_obj);           
@@ -136,8 +141,8 @@ public class CoordinacionController implements Serializable{
             context.closeDialog(null);
         } catch (Exception e) 
         {
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardarError");
+            titulo = ResourceBundle.getBundle(GENERAL_TXT).getString("error");
+            detalle = ResourceBundle.getBundle(GENERAL_TXT).getString("guardarError");
             message = new FacesMessage(FacesMessage.SEVERITY_ERROR,titulo,detalle);
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);
@@ -153,14 +158,14 @@ public class CoordinacionController implements Serializable{
         
         try {
             _ejbFacade.borrar(faceObj);
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarExitoso");
+            titulo = ResourceBundle.getBundle(GENERAL_TXT).getString("exitoso");
+            detalle = ResourceBundle.getBundle(GENERAL_TXT).getString("eliminarExitoso");
             Mensajes.exito(titulo, detalle);
             
         } catch (Exception e) 
         {
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarError");
+            titulo = ResourceBundle.getBundle(GENERAL_TXT).getString("error");
+            detalle = ResourceBundle.getBundle(GENERAL_TXT).getString("eliminarError");
             Mensajes.error(titulo, detalle);
             Logger.getLogger(Coordinacion.class.getName()).log(Level.SEVERE,null,e);
         }
@@ -186,16 +191,16 @@ public class CoordinacionController implements Serializable{
         _obj.setCodfacultad(f);
         try {
             
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
+            titulo = ResourceBundle.getBundle(GENERAL_TXT).getString("exitoso");
+            detalle = ResourceBundle.getBundle(GENERAL_TXT).getString("actualizarExitoso");
             _ejbFacade.actualizar(_obj);
             message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle); 
             
             
         } catch (Exception e) 
         {
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarError");
+            titulo = ResourceBundle.getBundle(GENERAL_TXT).getString("error");
+            detalle = ResourceBundle.getBundle(GENERAL_TXT).getString("actualizarError");
             message = new FacesMessage(FacesMessage.SEVERITY_ERROR,titulo,detalle);
             Logger.getLogger(Coordinacion.class.getName()).log(Level.SEVERE,null,e);
            
