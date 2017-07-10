@@ -68,9 +68,9 @@
                 <br/>           
                 <p:separator/>
                 <br/>
-                <p:dataTable sortBy="#{asignacionController.totalesEsperados.totalHC}" class="letra-tabla" id="listar" value="#{asignacionController.listadoAsign}" var="registro"  editable="#{coordinacionController.campo.asignado}" editMode="cell" widgetVar="cellCars">
+                <p:dataTable sortBy="#{asignacionController.totalesEsperados.totalHC}" class="letra-tabla" id="listar" value="#{asignacionController.listadoAsign}" var="registro" editable="true" editMode="cell">
 
-                    <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update="listar" />
+                    <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update="listar"/>
 
                     <p:column style="text-align: center">
                         <f:facet name="header">Docente</f:facet>

@@ -94,7 +94,13 @@ public class CoordinacionController implements Serializable{
         String titulo, detalle;       
         //_obj = (Coordinacion) SessionUtils.get("coordinacion");
         System.out.println("LO Q HAY EN COORDI " + _obj);        
-       
+         
+        if(!_obj.esCien())
+        {
+            System.out.println("no se cumple la condicion");
+            return;
+        }
+        
         try {
             
             //actualizar

@@ -205,7 +205,7 @@ public class Asignacion implements Serializable {
 
     @Override
     public String toString() {
-        return "TiempoAsignado{" + _codasg;
+        return "Asignaciones -> C: "+_colectivo+", I; "+_investigacion+", O: "+_oda+" V: "+_virtualidad+", Ca:"+_capacitacion;
     }
     
     

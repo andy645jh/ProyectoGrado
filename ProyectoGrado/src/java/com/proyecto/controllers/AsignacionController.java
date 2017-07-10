@@ -69,7 +69,7 @@ public class AsignacionController implements Serializable {
         List<Asignacion> listAsig = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(coord.getCodcoordinacion()));
         
         
-        System.out.println("entro a la funcion: "+listAsig.size());
+        //System.out.println("AsignacionController.getListadoAsign -> entro a la funcion: "+listAsig.size());
 
         totalHC = 0;
         totalPC = 0;
@@ -134,7 +134,7 @@ public class AsignacionController implements Serializable {
         _totalesCalculados.setTotalCap(totalCap);
                 
         _totalesEsperados.setTotalHC(totalHC);
-        System.out.println("tamaño de la lista " + _totalesEsperados.getTotalHC());  
+        //System.out.println("AsignacionController.getListadoAsign -> tamaño de la lista " + _totalesEsperados.getTotalHC());  
         
         if(coord.isAsignado())
         {
@@ -158,16 +158,9 @@ public class AsignacionController implements Serializable {
         RequestContext.getCurrentInstance().openDialog("/tiempodoc/crear", options, null);
 //        return "/tiempodoc/crear";
     }
-
+/*
     public void agregar(String[] selectedDocentes) {
 
-//        Docentes d = _facadeDoc.buscar(codDocente);
-//        Porcentaje p = _facadePorcentaje.buscar(_codPorcentaje);
-//        ActividadObligatoria a = _facadeActDoc.buscar(codActDocencia);
-//        
-//        _obj.setCoddocente(d);
-//        _obj.setCodporcentaje(p);
-//        _obj.setCodobliatoria(a);
         System.out.println("FUNCUIN AGREGAR");
         String titulo, detalle;
 
@@ -224,7 +217,7 @@ public class AsignacionController implements Serializable {
         options.put("modal", true);
         RequestContext.getCurrentInstance().openDialog("/tiempodoc/actualizar", options, null);
     }
-
+*/
     public void actualizar(Asignacion _obj) {
         String titulo, detalle;
 //        Docentes d = _facadeDoc.buscar(codDocente);
@@ -250,7 +243,7 @@ public class AsignacionController implements Serializable {
 //        context.closeDialog(null);
     }
 
-    public String onCellEdit(CellEditEvent event) {
+    public void onCellEdit(CellEditEvent event) {
 
         Object oldValue = event.getOldValue();
         Object newValue = event.getNewValue();
@@ -258,11 +251,14 @@ public class AsignacionController implements Serializable {
         if (_listadoAsign == null) {
             _listadoAsign = _ejbFacade.listado();
         }
-
+        //Asignacion asigTemp2 = (Asignacion) event.;
+        Asignacion asigTemp = (Asignacion) _listadoAsign.get(event.getRowIndex());
+        System.out.println("AsignacionController.onCellEdit -> Nuevo Valor: "+asigTemp.toString());
+        
         actualizar(_listadoAsign.get(event.getRowIndex()));
 
-        System.out.println("VALOR ANTES " + oldValue + " FILA " + event.getRowIndex() + " COLUMNA " + _listadoAsign.get(event.getRowIndex()).getCoddocente().getTipocontrato());
-        System.out.println("VALOR DESPUES " + newValue + " OBJETO  " + _listadoAsign.get(event.getRowIndex()).getCodasg());
+        System.out.println("AsignacionController.onCellEdit -> VALOR ANTES " + oldValue );
+        System.out.println("AsignacionController.onCellEdit -> VALOR DESPUES " + newValue);
 
         if (_listadoAsign.get(event.getRowIndex()).getCapacitacion() == null) {
             _listadoAsign.get(event.getRowIndex()).setCapacitacion(0.0);
@@ -302,9 +298,7 @@ public class AsignacionController implements Serializable {
                     + _listadoAsign.get(event.getRowIndex()).getInvestigacion() + _listadoAsign.get(event.getRowIndex()).getSocial()
                     + _listadoAsign.get(event.getRowIndex()).getOda() + _listadoAsign.get(event.getRowIndex()).getPlaneacion()
                     + _listadoAsign.get(event.getRowIndex()).getVirtualidad() + _listadoAsign.get(event.getRowIndex()).getComites();
-
-            System.out.println("antes de ir a la funcion");
-            getListadoAsign();
+            
 
         } else if (_listadoAsign.get(event.getRowIndex()).getCoddocente().getTipocontrato() == 2) {
             totalHoras = _listadoAsign.get(event.getRowIndex()).getCapacitacion() + _listadoAsign.get(event.getRowIndex()).getHorasclase()
@@ -312,15 +306,12 @@ public class AsignacionController implements Serializable {
                     + _listadoAsign.get(event.getRowIndex()).getInvestigacion() + _listadoAsign.get(event.getRowIndex()).getSocial()
                     + _listadoAsign.get(event.getRowIndex()).getOda() + _listadoAsign.get(event.getRowIndex()).getPlaneacion()
                     + _listadoAsign.get(event.getRowIndex()).getVirtualidad() + _listadoAsign.get(event.getRowIndex()).getComites();
-
-            System.out.println("antes de ir a la funcion");
-            getListadoAsign();
+            
         }
+        
+        //getListadoAsign();
 
-        System.out.println("antes de ir a la funcion");
-        getListadoAsign();
-
-        return "/actividades/listado";
+        //return "/actividades/listado";
     }
 
     public void controlHoras() {

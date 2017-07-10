@@ -46,13 +46,13 @@ public class AsignacionFacade extends AbstractFacade<Asignacion> {
                 Expression<String> valor = doc.get("_codcoordinacion");
                 String cadena = valorBuscar;
                 
-                System.out.println("VALOR "+valor+" CADENA "+cadena);
+                //System.out.println("AsignacionFacade.buscarA -> VALOR "+valor+" CADENA "+cadena);
                 
                 Predicate condicion = cb.equal(valor, cadena);                
                 cq.where(condicion);
             }else{           
        
-                System.out.println("Columna: " + columna);
+                //System.out.println("AsignacionFacade.buscarA -> Columna: " + columna);
                 Expression<String> valorCampo = objDocentes.get(columna);
                 String cadena = valorBuscar;
                 Predicate condicion = cb.equal(valorCampo, cadena);
