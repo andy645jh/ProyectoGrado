@@ -1,6 +1,7 @@
 -Reporte RDC-54
 -Reporte RDC-26
--calcular y restringir las horas en la tabla de asignacion
+-calcular y restringir las horas en la tabla de asignacion --> cuando se ingresa un valor en la tabla debe calcular automaticamente el total
+--> si se borran los datos de la tabla asignacion no se ven los cambios en la tabla es decir la tabla sigue apareciendo con datos, toca reiniciar el galsfiah para ver los cambios y cuando se le da al boton guardar en la bd guarda pero no se ven los cambios en la vista
 -Controlar las horas que el docente ingresa dependiendo de lo asignado
 -Al crear los productos solo debe salir la lista de las actividaes que no se les ha asignado un producto
 -Error en perfil --> produccion intelectual
