@@ -66,9 +66,10 @@ public class AsignacionController implements Serializable {
     public List<Asignacion> getListadoAsign() {
        
         Coordinacion coord = (Coordinacion) SessionUtils.get("coordinacion");
-        List<Asignacion> listAsig = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(coord.getCodcoordinacion()));
-        
-        
+        if(_listadoAsign==null)
+        {
+            _listadoAsign = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(coord.getCodcoordinacion()));
+        }    
         //System.out.println("AsignacionController.getListadoAsign -> entro a la funcion: "+listAsig.size());
 
         totalHC = 0;
@@ -81,7 +82,7 @@ public class AsignacionController implements Serializable {
         totalPlan = 0;
         totalvirt = 0;
         totalCom = 0;
-        for (Asignacion asg : listAsig) {
+        for (Asignacion asg : _listadoAsign) {
             if (asg.getHorasclase() != null) {
                 totalHC += asg.getHorasclase();
             }
@@ -137,8 +138,7 @@ public class AsignacionController implements Serializable {
         //System.out.println("AsignacionController.getListadoAsign -> tamaño de la lista " + _totalesEsperados.getTotalHC());  
         
         if(coord.isAsignado())
-        {
-                  
+        {                  
             _totalesEsperados.setTotalCom(coord.getComites()*totalHC/100);
             _totalesEsperados.setTotalPlan(coord.getAcreditacion()*totalHC/100);
             _totalesEsperados.setTotalODA(coord.getOda()*totalHC/100);
@@ -147,7 +147,7 @@ public class AsignacionController implements Serializable {
             _totalesEsperados.setTotalVirt(coord.getVirtualidad()*totalHC/100);
         }                  
         
-        return listAsig;
+        return _listadoAsign;
     }
 
     public void abrirCrear() {
@@ -350,6 +350,10 @@ public class AsignacionController implements Serializable {
         this._codPorcentaje = _codigito;
     }
 
+    public void setListadoAsign(List<Asignacion> lista) {
+        this._listadoAsign = lista;
+    }
+    
     public double getTotalHC() {
         return totalHC;
     }
