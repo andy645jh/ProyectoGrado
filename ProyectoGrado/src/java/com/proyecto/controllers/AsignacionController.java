@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -41,6 +42,10 @@ public class AsignacionController implements Serializable {
     private int _codPorcentaje;
     private int codDocente;
     private int codActDocencia;
+    
+    private double _calculadoDC;
+    private double _esperadoDC;
+    
     private double totalHC;
     private double totalPC;
     private double totalCap;
@@ -58,20 +63,27 @@ public class AsignacionController implements Serializable {
     private List<Asignacion> _listadoAsign;
 
     public AsignacionController()
-    {
+    {        
         _totalesEsperados = new Totales();
         _totalesCalculados = new Totales();
     }
 
-    public List<Asignacion> getListadoAsign() {
-       
+    
+    public List<Asignacion> getListadoAsign() {   
+           
+        //System.out.println("AsignacionController.getListadoAsign -> entro a la funcion: "+listAsig.size());
         Coordinacion coord = (Coordinacion) SessionUtils.get("coordinacion");
         if(_listadoAsign==null)
         {
             _listadoAsign = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(coord.getCodcoordinacion()));
-        }    
-        //System.out.println("AsignacionController.getListadoAsign -> entro a la funcion: "+listAsig.size());
-
+        } 
+        //calculate();
+        return _listadoAsign;
+    }
+       
+    public void calculate(Object valueOfThisSorting)
+    {
+        Coordinacion coord = (Coordinacion) SessionUtils.get("coordinacion");
         totalHC = 0;
         totalPC = 0;
         totalCap = 0;
@@ -82,6 +94,10 @@ public class AsignacionController implements Serializable {
         totalPlan = 0;
         totalvirt = 0;
         totalCom = 0;
+        _calculadoDC =0;
+        _esperadoDC =0;
+                
+        System.out.println("-----------------");
         for (Asignacion asg : _listadoAsign) {
             if (asg.getHorasclase() != null) {
                 totalHC += asg.getHorasclase();
@@ -93,7 +109,12 @@ public class AsignacionController implements Serializable {
                 totalCap += asg.getCapacitacion();
             }
             if (asg.getColectivo() != null) {
+                
+                //System.out.println("Colectivo: "+asg.getColectivo()+" -- total: "+totalCD);
                 totalCD += asg.getColectivo();
+                //_calculadoDC += asg.getColectivo();
+                setCalculadoDC(_calculadoDC + asg.getColectivo());
+                //System.out.print(" -- total despues: "+totalCD);
             }
             if (asg.getInvestigacion() != null) {
                 totalHI += asg.getInvestigacion();
@@ -135,8 +156,7 @@ public class AsignacionController implements Serializable {
         _totalesCalculados.setTotalCap(totalCap);
                 
         _totalesEsperados.setTotalHC(totalHC);
-        //System.out.println("AsignacionController.getListadoAsign -> tamaño de la lista " + _totalesEsperados.getTotalHC());  
-        
+        System.out.println("Calculado: "+_calculadoDC);
         if(coord.isAsignado())
         {                  
             _totalesEsperados.setTotalCom(coord.getComites()*totalHC/100);
@@ -146,10 +166,10 @@ public class AsignacionController implements Serializable {
             _totalesEsperados.setTotalHI(coord.getInvestigacion()*totalHC/100);
             _totalesEsperados.setTotalVirt(coord.getVirtualidad()*totalHC/100);
         }                  
+        //System.out.println("AsignacionController.getListadoAsign -> tamaño de la lista " + _totalesEsperados.getTotalHC());  
         
-        return _listadoAsign;
     }
-
+    
     public void abrirCrear() {
         Map<String, Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
@@ -158,71 +178,11 @@ public class AsignacionController implements Serializable {
         RequestContext.getCurrentInstance().openDialog("/tiempodoc/crear", options, null);
 //        return "/tiempodoc/crear";
     }
-/*
-    public void agregar(String[] selectedDocentes) {
 
-        System.out.println("FUNCUIN AGREGAR");
+    public void actualizar(Asignacion _obj) 
+    {
+        
         String titulo, detalle;
-
-        try {
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
-
-            for (String docente : selectedDocentes) {
-                System.out.println("VA A AGREGAR UN DOCENTE " + docente);
-
-//                _obj = new TiempoAsignado();
-//                _obj.setCoddocente(null);
-            }
-
-//            _ejbFacade.crear(_obj);
-            RequestContext context = RequestContext.getCurrentInstance();
-            context.closeDialog(null);
-        } catch (Exception e) {
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardarError");
-            message = new FacesMessage(FacesMessage.SEVERITY_ERROR, titulo, detalle);
-            RequestContext context = RequestContext.getCurrentInstance();
-            context.closeDialog(null);
-
-            Logger.getLogger(TiempoAsignado.class.getName()).log(Level.SEVERE, null, e);
-
-        }
-    }
-
-    public void borrar(Asignacion faceObj) {
-        String titulo, detalle;
-
-        try {
-            _ejbFacade.borrar(faceObj);
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarExitoso");
-            Mensajes.exito(titulo, detalle);
-
-        } catch (Exception e) {
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarError");
-            Mensajes.error(titulo, detalle);
-            Logger.getLogger(TiempoAsignado.class.getName()).log(Level.SEVERE, null, e);
-        }
-    }
-
-    public void abrirActualizar(Asignacion objtemp) {
-
-        _obj = objtemp;
-        Map<String, Object> options = new HashMap<String, Object>();
-        options.put("resizable", false);
-        options.put("draggable", false);
-        options.put("modal", true);
-        RequestContext.getCurrentInstance().openDialog("/tiempodoc/actualizar", options, null);
-    }
-*/
-    public void actualizar(Asignacion _obj) {
-        String titulo, detalle;
-//        Docentes d = _facadeDoc.buscar(codDocente);
-//
-//        _obj.setCoddocente(d);
 
         try {
 
@@ -259,64 +219,9 @@ public class AsignacionController implements Serializable {
 
         System.out.println("AsignacionController.onCellEdit -> VALOR ANTES " + oldValue );
         System.out.println("AsignacionController.onCellEdit -> VALOR DESPUES " + newValue);
-
-        if (_listadoAsign.get(event.getRowIndex()).getCapacitacion() == null) {
-            _listadoAsign.get(event.getRowIndex()).setCapacitacion(0.0);
-        }
-        if (_listadoAsign.get(event.getRowIndex()).getHorasclase() == null) {
-            _listadoAsign.get(event.getRowIndex()).setHorasclase(0.0);
-        }
-        if (_listadoAsign.get(event.getRowIndex()).getPreparacion() == null) {
-            _listadoAsign.get(event.getRowIndex()).setPreparacion(0.0);
-        }
-        if (_listadoAsign.get(event.getRowIndex()).getColectivo() == null) {
-            _listadoAsign.get(event.getRowIndex()).setColectivo(0.0);
-        }
-        if (_listadoAsign.get(event.getRowIndex()).getInvestigacion() == null) {
-            _listadoAsign.get(event.getRowIndex()).setInvestigacion(0.0);
-        }
-        if (_listadoAsign.get(event.getRowIndex()).getSocial() == null) {
-            _listadoAsign.get(event.getRowIndex()).setSocial(0.0);
-        }
-        if (_listadoAsign.get(event.getRowIndex()).getOda() == null) {
-            _listadoAsign.get(event.getRowIndex()).setOda(0.0);
-        }
-        if (_listadoAsign.get(event.getRowIndex()).getPlaneacion() == null) {
-            _listadoAsign.get(event.getRowIndex()).setPlaneacion(0.0);
-        }
-        if (_listadoAsign.get(event.getRowIndex()).getVirtualidad() == null) {
-            _listadoAsign.get(event.getRowIndex()).setVirtualidad(0.0);
-        }
-        if (_listadoAsign.get(event.getRowIndex()).getComites() == null) {
-            _listadoAsign.get(event.getRowIndex()).setComites(0.0);
-        }
-
-        if (_listadoAsign.get(event.getRowIndex()).getCoddocente().getTipocontrato() == 1) {
-
-            totalHoras = _listadoAsign.get(event.getRowIndex()).getCapacitacion() + _listadoAsign.get(event.getRowIndex()).getHorasclase()
-                    + _listadoAsign.get(event.getRowIndex()).getPreparacion() + _listadoAsign.get(event.getRowIndex()).getColectivo()
-                    + _listadoAsign.get(event.getRowIndex()).getInvestigacion() + _listadoAsign.get(event.getRowIndex()).getSocial()
-                    + _listadoAsign.get(event.getRowIndex()).getOda() + _listadoAsign.get(event.getRowIndex()).getPlaneacion()
-                    + _listadoAsign.get(event.getRowIndex()).getVirtualidad() + _listadoAsign.get(event.getRowIndex()).getComites();
-            
-
-        } else if (_listadoAsign.get(event.getRowIndex()).getCoddocente().getTipocontrato() == 2) {
-            totalHoras = _listadoAsign.get(event.getRowIndex()).getCapacitacion() + _listadoAsign.get(event.getRowIndex()).getHorasclase()
-                    + _listadoAsign.get(event.getRowIndex()).getPreparacion() + _listadoAsign.get(event.getRowIndex()).getColectivo()
-                    + _listadoAsign.get(event.getRowIndex()).getInvestigacion() + _listadoAsign.get(event.getRowIndex()).getSocial()
-                    + _listadoAsign.get(event.getRowIndex()).getOda() + _listadoAsign.get(event.getRowIndex()).getPlaneacion()
-                    + _listadoAsign.get(event.getRowIndex()).getVirtualidad() + _listadoAsign.get(event.getRowIndex()).getComites();
-            
-        }
         
-        //getListadoAsign();
-
-        //return "/actividades/listado";
-    }
-
-    public void controlHoras() {
-
-    }
+        calculate(null);       
+    }  
 
     public Asignacion getObj() {
         return _obj;
@@ -456,6 +361,14 @@ public class AsignacionController implements Serializable {
 
     public void setTotalesEsperados(Totales _totalesEsperados) {
         this._totalesEsperados = _totalesEsperados;
+    }
+
+    public double getCalculadoDC() {
+        return _calculadoDC;
+    }
+
+    public void setCalculadoDC(double _calculadoDC) {
+        this._calculadoDC = _calculadoDC;
     }
 
 }

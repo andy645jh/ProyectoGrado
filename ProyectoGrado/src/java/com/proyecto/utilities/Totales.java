@@ -5,11 +5,13 @@
  */
 package com.proyecto.utilities;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Elkin
  */
-public class Totales {
+public class Totales implements Serializable {
     private double _totalHoras = 0;
     private double _totalHC = 0;
     private double _totalPC = 0;
