@@ -2,7 +2,10 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f77be251-0118-43bb-b349-e31368843289">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="4"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Documents\\proyectogradoing\\ProyectoGrado\\web\\reportes\\"]]></defaultValueExpression>
+	</parameter>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -40,7 +43,7 @@
 		</band>
 	</title>
 	<columnHeader>
-		<band height="329" splitType="Stretch">
+		<band height="298" splitType="Stretch">
 			<rectangle>
 				<reportElement x="0" y="10" width="802" height="107" uuid="b0b00e51-04d8-44eb-9018-fd630ed27b37"/>
 			</rectangle>
@@ -227,7 +230,7 @@
 				<reportElement x="119" y="255" width="1" height="38" uuid="b65056bf-3bc8-49e7-be34-960a08a77d93"/>
 			</line>
 			<line>
-				<reportElement x="490" y="177" width="1" height="38" uuid="f806129f-fd5a-49a9-89f6-2bbd45770c15"/>
+				<reportElement x="499" y="177" width="1" height="38" uuid="f806129f-fd5a-49a9-89f6-2bbd45770c15"/>
 			</line>
 			<line>
 				<reportElement x="528" y="216" width="1" height="38" uuid="1d2cd7be-2f55-4d45-8d2a-1319c92ca9b3"/>
@@ -235,18 +238,127 @@
 			<line>
 				<reportElement x="460" y="256" width="1" height="38" uuid="5dc479c4-db0a-47f1-a514-08c0fed6dcea"/>
 			</line>
+			<staticText>
+				<reportElement x="1" y="145" width="79" height="12" uuid="71e1a063-8b69-41ae-864f-475450cd5642"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[PRIMER APELLIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="182" y="145" width="82" height="12" uuid="7fb04f0d-3d85-42a3-8fcd-43abaa6b88a9"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SEGUNDO APELLIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="367" y="145" width="45" height="12" uuid="8af6c900-3728-4149-9d8f-bdc4e55e5224"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[NOMBRES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="178" width="118" height="12" uuid="8a633fc5-4509-4618-b0d8-c28b5f33e533"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DOCUMENTO DE IDENTIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="178" width="118" height="12" uuid="d9b6e141-5b22-4139-b639-0c847b0f8d94"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[NUMERO DEL DOCUMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="178" width="115" height="12" uuid="14510a22-695e-412c-9354-f49c01947a7c"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[LUGAR DE EXPEDICIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="367" y="179" width="132" height="12" uuid="41eab387-4887-464f-90cc-17667cf242e0"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[FECHA DE EXPEDICIÓN (D-M-A)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="503" y="179" width="102" height="12" uuid="4b5ae143-02d2-4066-b356-7e1715f5ab23"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[CORREO ELECTRONICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="216" width="155" height="12" uuid="3a0b516a-44a2-4395-9737-e9dbedaaa71e"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN Y BARRIO DE RESIDENCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="216" width="115" height="12" uuid="50910590-b71a-4391-afa9-ef53d50c3183"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[MUNICIPO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="367" y="216" width="115" height="12" uuid="6900d9d4-c788-4d20-bec6-54bc8a27e6a2"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[TELEFONO DE RESIDENCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="529" y="216" width="115" height="12" uuid="0fa35534-5198-4af2-8128-352fbb7e37d5"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[NÚMERO CELULAR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="256" width="115" height="12" uuid="2c6f679f-ab3d-45fb-ba24-b85791d73883"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[FECHA DE NACIMIENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="256" width="172" height="12" uuid="f9cf3c57-46b0-4efe-bd30-50c62e49d281"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[LUGAR DE NACIMIENTO(Ciudad, País)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="366" y="256" width="94" height="12" uuid="80a56b49-a5bb-4b6c-93fb-8ba4e6090d85"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[GENERO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="462" y="256" width="209" height="12" uuid="4dcdab18-57b5-4ce1-9396-1c018db403fd"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[MATRICULA PROFESIONAL]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="127" splitType="Stretch"/>
+		<band height="127" splitType="Stretch">
+			<subreport>
+				<reportElement x="2" y="3" width="800" height="100" uuid="6bcd5e6a-c618-4de6-8263-2688cde57ac0"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "lst_productos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch"/>
-	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
 </jasperReport>
