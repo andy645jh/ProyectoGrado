@@ -224,7 +224,7 @@
                             #{asignacionController.totalHoras}
                     </p:column>
 
-                    <p:summaryRow class="texto-tabla">
+                    <p:summaryRow class="texto-tabla" listener="#{asignacionController.calculate}">
                         <p:column colspan="2" >
                             <h:outputText value="Total de horas por actividad:"/>
                         </p:column> 
@@ -238,7 +238,7 @@
                             <h:outputText value="#{asignacionController.totalesCalculados.totalCap} / #{asignacionController.totalesEsperados.totalCap}"/>
                         </p:column> 
                         <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalCD} / #{asignacionController.totalesEsperados.totalCD}"/>
+                            <h:outputText value="#{asignacionController.calculadoDC} / #{asignacionController.totalesEsperados.totalCD}"/>
                         </p:column> 
                         <p:column colspan="1" >
                             <h:outputText value="#{asignacionController.totalesCalculados.totalHI} / #{asignacionController.totalesEsperados.totalHI}"/>
