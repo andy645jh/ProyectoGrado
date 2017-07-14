@@ -353,11 +353,16 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="127" splitType="Stretch">
+		<band height="246" splitType="Stretch">
 			<subreport>
 				<reportElement x="2" y="3" width="800" height="100" uuid="6bcd5e6a-c618-4de6-8263-2688cde57ac0"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "lst_productos.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="2" y="104" width="800" height="100" uuid="2ea5335a-b3b2-4015-942a-b7e4375a2441"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "cursos.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
