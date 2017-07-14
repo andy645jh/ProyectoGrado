@@ -71,7 +71,7 @@ public class AsignacionController implements Serializable {
     
     public List<Asignacion> getListadoAsign() {   
            
-        //System.out.println("AsignacionController.getListadoAsign -> entro a la funcion: "+listAsig.size());
+        //System.out.println("AsignacionController.getListadoAsign -> entro ");
         Coordinacion coord = (Coordinacion) SessionUtils.get("coordinacion");
         if(_listadoAsign==null)
         {
@@ -81,8 +81,9 @@ public class AsignacionController implements Serializable {
         return _listadoAsign;
     }
        
-    public void calculate(Object valueOfThisSorting)
+    public void calculate()
     {
+               
         Coordinacion coord = (Coordinacion) SessionUtils.get("coordinacion");
         totalHC = 0;
         totalPC = 0;
@@ -112,8 +113,8 @@ public class AsignacionController implements Serializable {
                 
                 //System.out.println("Colectivo: "+asg.getColectivo()+" -- total: "+totalCD);
                 totalCD += asg.getColectivo();
-                //_calculadoDC += asg.getColectivo();
-                setCalculadoDC(_calculadoDC + asg.getColectivo());
+                _calculadoDC += asg.getColectivo();
+                //setCalculadoDC(_calculadoDC + asg.getColectivo());
                 //System.out.print(" -- total despues: "+totalCD);
             }
             if (asg.getInvestigacion() != null) {
@@ -156,7 +157,7 @@ public class AsignacionController implements Serializable {
         _totalesCalculados.setTotalCap(totalCap);
                 
         _totalesEsperados.setTotalHC(totalHC);
-        System.out.println("Calculado: "+_calculadoDC);
+        System.out.println("AsignacionController.calculate() -> Calculado: "+_calculadoDC);
         if(coord.isAsignado())
         {                  
             _totalesEsperados.setTotalCom(coord.getComites()*totalHC/100);
@@ -167,7 +168,7 @@ public class AsignacionController implements Serializable {
             _totalesEsperados.setTotalVirt(coord.getVirtualidad()*totalHC/100);
         }                  
         //System.out.println("AsignacionController.getListadoAsign -> tamaño de la lista " + _totalesEsperados.getTotalHC());  
-        
+        //RequestContext.getCurrentInstance().update("formAsig:summary");        
     }
     
     public void abrirCrear() {
@@ -220,9 +221,15 @@ public class AsignacionController implements Serializable {
         System.out.println("AsignacionController.onCellEdit -> VALOR ANTES " + oldValue );
         System.out.println("AsignacionController.onCellEdit -> VALOR DESPUES " + newValue);
         
-        calculate(null);       
+        //RequestContext.getCurrentInstance().update(":listar:summary");
+        //calculate(null);       
     }  
 
+    public double test()
+    {
+        return _calculadoDC;
+    }
+         
     public Asignacion getObj() {
         return _obj;
     }
