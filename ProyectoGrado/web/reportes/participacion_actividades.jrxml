@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5818fbb4-adbb-46ec-8154-751114416e55">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="3641d152-f902-4388-bd0a-22ca2050122b"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="34" uuid="c9f47b86-807a-4aab-b766-dcc404a3b247"/>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="19" width="802" height="1" uuid="bd072abb-0529-4054-a6d4-017317fda5f2"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="1" width="802" height="20" uuid="525dc2d3-5320-4480-8b4d-eb6920868728"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[V. PARTICIPACIÓN EN ACTIVIDADES DEPORTIVAS Y CULTURALES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="19" width="802" height="15" uuid="fd8b125a-ac3c-4bec-9f7d-c120beb65615"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[EN LA CASILLA DESEMPEÑO ESCRIBA: JB JUEGA BIEN, JR JUEGA REGULAR, LG LE GUSTA, AF AFICIONADO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="51" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="0" y="0" width="802" height="50" uuid="0b6a793e-d53e-4bf0-ab00-f587474e99a1"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 1" uuid="82c770ad-fdd8-4c7b-a653-7fd74638fb01">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="229" uuid="a0fb176e-6366-4a1d-96ef-949b2d455b4a">
+						<jr:tableHeader style="table_TH" height="16" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="229" height="15" uuid="cbdc45c3-e14f-4bd2-af94-c4e08d11cf96"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isStrikeThrough="false"/>
+								</textElement>
+								<text><![CDATA[DEPORTE QUE PRACTICA]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="110" uuid="46ee952a-d80a-4c36-9035-8175723af48d">
+						<jr:tableHeader style="table_TH" height="16" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="110" height="15" uuid="c3de9e6e-8b95-4c9b-8635-13cece75c12c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isStrikeThrough="false"/>
+								</textElement>
+								<text><![CDATA[DESEMPEÑO]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="134" uuid="542f8cd1-d4e0-4af4-b343-41b93e23335f">
+						<jr:tableHeader style="table_TH" height="16" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="134" height="15" uuid="a8711db2-0fb3-4fde-9bee-df4e8bc7cec1"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isStrikeThrough="false"/>
+								</textElement>
+								<text><![CDATA[TIEMPO DE DEDICACIÓN]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="225" uuid="5d60bd1d-85f5-4ac4-b5e0-b1a4dc8e09c7">
+						<jr:tableHeader style="table_TH" height="16" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="225" height="15" uuid="12cb3920-8380-444b-9b66-2c8d5356f29e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isStrikeThrough="false"/>
+								</textElement>
+								<text><![CDATA[ACTIVIDADES CULTURALES]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="120" uuid="bbd47510-1ee1-4596-b94f-6f5c2da62f94">
+						<jr:tableHeader style="table_TH" height="16" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="120" height="15" uuid="7f2b574a-9d4c-46f3-86b9-61d951561d84"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isStrikeThrough="false"/>
+								</textElement>
+								<text><![CDATA[TIEMPO DEDICACIÓN]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

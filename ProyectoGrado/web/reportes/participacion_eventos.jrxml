@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e37df268-495a-4d83-84e1-3c52ba80dcc4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="80ab72da-8617-4c7b-811f-034e9c5ab35c"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="37" uuid="7f7357a3-d1ee-4237-be36-e6c4062ac014"/>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="19" width="802" height="1" uuid="66894411-ade8-4a44-a458-48bef5e5f2f3"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="802" height="19" uuid="5397ea90-909d-4590-8a0f-147815547e8c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[III, PARTICIPACION EN EVENTOS ACADEMICOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="802" height="19" uuid="9cacba89-24e7-4632-b799-bdac9dafc8f0"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[EN LA CASILLA DE TIPO DE PARTICIPACION ESCRIBA: CF CONFERENCISTA, PT PONENTE, MD MODERADOR]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="52" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" isPrintRepeatedValues="false" mode="Transparent" x="0" y="0" width="802" height="50" uuid="7caba878-1a24-4d03-98d0-9b68ea4dc5a1"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 1" uuid="984bb6cc-58ef-4525-a0b3-e76e6427773e">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="108" uuid="218f014e-4220-4c55-9a80-f2e032737794">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="108" height="30" uuid="e5a2b7d7-ebfc-4d16-a278-eb94a1588fcd"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isItalic="false"/>
+								</textElement>
+								<text><![CDATA[TIPO DE PARTICIPACION]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="240" uuid="63215e90-3bd1-450f-b417-2bda05dbfcd1">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="240" height="30" uuid="6e2e41c8-3086-40f9-962e-3eab596b1581"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isItalic="false"/>
+								</textElement>
+								<text><![CDATA[EVENTO]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="248" uuid="77c41558-ef6e-4f05-ac5c-5b0af9a1ec7a">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="248" height="30" uuid="2905a46a-f358-44be-81ec-6284cfe1d8db"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isItalic="false"/>
+								</textElement>
+								<text><![CDATA[TEMA]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="108" uuid="e6d2e7f0-04c8-4c30-8477-59578ea439fe">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="108" height="16" uuid="08682aa1-6cca-49b5-9616-0b65f8648b50"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isItalic="false"/>
+								</textElement>
+								<text><![CDATA[FECHA]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="57" y="17" width="51" height="13" uuid="197f4407-3426-4c7a-a68a-9e8e7825bb41"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isItalic="false"/>
+								</textElement>
+								<text><![CDATA[MESES]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="16" width="56" height="14" uuid="e0047c17-d408-425b-9357-a3ba952b1e86"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isItalic="false"/>
+								</textElement>
+								<text><![CDATA[AÑO]]></text>
+							</staticText>
+							<line>
+								<reportElement x="0" y="17" width="108" height="1" uuid="339885cc-7a87-41a5-9170-e70bd27a7fdb"/>
+							</line>
+							<line>
+								<reportElement x="56" y="17" width="1" height="13" uuid="92190b67-68d0-41e1-9554-883466f11ffa"/>
+							</line>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="114" uuid="a16e863d-4f35-476d-81ed-4eeb7758ba2d">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="114" height="30" uuid="e9b80d42-8684-4ca9-a83b-48276c94e670"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isItalic="false"/>
+								</textElement>
+								<text><![CDATA[AMBITO]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,29 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0f1e3b7d-5efd-409a-96d4-3412970e3ad2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="180e4c40-35c6-4220-a583-c99900608d26"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="31" uuid="feb88227-76ef-42dd-8660-cf05e5d5f848"/>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="17" width="802" height="1" uuid="50e29145-5c76-4178-86fb-cd3d581e6338"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="802" height="17" uuid="a01da2af-7191-4c1e-91c0-01b0ba65b71c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[IV. EXPERIENCIA DOCENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="18" width="802" height="13" uuid="d4a7e182-0e80-48d0-9a75-e509a6b76ead"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[EN LA CASILLA DE TIPO DE CONTRATO ESCRIBA: HC HORA CATEDRA. MT MEDIO TIEMPO, TC TIEMPO COMPLETO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="52" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="0" y="0" width="802" height="50" uuid="78447785-c7bc-42a3-ba28-ee499c809de0"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 1" uuid="7c3932ce-8015-4436-91f5-8373fbfd4af0">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="164" uuid="35154f00-18b8-4447-ba01-451fe1b205b6">
+						<jr:tableHeader style="table_TH" height="26" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="164" height="26" uuid="828fa1e4-06ee-40cc-9912-7b2ba9d9392a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<text><![CDATA[INSTITUCION EDUCATIVA]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="121" uuid="c7c26701-caf2-407a-9267-fa0fec0b4212">
+						<jr:tableHeader style="table_TH" height="26" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="121" height="26" uuid="f8f5b06a-81bf-45ed-a82d-8d087e791a20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<text><![CDATA[ACTIVIDAD DOCENTE]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="179" uuid="5d2f0a27-da7b-4e47-8bfa-80e7637b7e2f">
+						<jr:tableHeader style="table_TH" height="26" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="179" height="26" uuid="c95db77f-e7bd-4a0f-a0cd-5ef60e702643"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<text><![CDATA[DEPENDENCIA]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="127" uuid="a0372de8-ce0a-4920-a9ca-fa182a3b4e44">
+						<jr:tableHeader style="table_TH" height="26" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="127" height="12" uuid="c42fa230-14b7-44cd-8e04-249498097279"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<text><![CDATA[TIEMPO DE SERVICIO]]></text>
+							</staticText>
+							<line>
+								<reportElement x="0" y="12" width="127" height="1" uuid="ecc358bc-1815-48e9-a233-a5b715480854"/>
+							</line>
+							<staticText>
+								<reportElement x="0" y="14" width="127" height="11" uuid="79075d69-da5a-42ca-992d-d79946b86ff3"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<text><![CDATA[NUMERO DE HORAS]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="108" uuid="f7205556-da35-46f6-a8f0-7989054dda3c">
+						<jr:tableHeader style="table_TH" height="26" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="108" height="26" uuid="fdc42f72-5088-4b4e-8cc5-d7b806db1eb8"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<text><![CDATA[TIPO DE CONTRATO]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="121" uuid="48fd174b-875a-4c75-a895-65fa63fe7e89">
+						<jr:tableHeader style="table_TH" height="26" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="121" height="26" uuid="bff109ba-3000-4e04-bae7-3d173baf27f2"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<text><![CDATA[FECHA ULTIMA VINCULACION]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
 </jasperReport>
