@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -62,6 +63,9 @@ public class Asignacion implements Serializable {
     @Column(name = "comites")
     private Double _comites;
 
+    @Transient
+    private Double _totalHoras;
+    
     public Asignacion() {
     }
 
@@ -206,6 +210,14 @@ public class Asignacion implements Serializable {
     @Override
     public String toString() {
         return "Asignaciones -> C: "+_colectivo+", I; "+_investigacion+", O: "+_oda+" V: "+_virtualidad+", Ca:"+_capacitacion;
+    }
+
+    public Double getTotalHoras() {
+        return _totalHoras;
+    }
+
+    public void setTotalHoras(Double _totalHoras) {
+        this._totalHoras = _totalHoras;
     }
     
     

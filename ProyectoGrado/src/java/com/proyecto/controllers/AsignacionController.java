@@ -42,10 +42,7 @@ public class AsignacionController implements Serializable {
     private int _codPorcentaje;
     private int codDocente;
     private int codActDocencia;
-    
-    private double _calculadoDC;
-    private double _esperadoDC;
-    
+       
     private double totalHC;
     private double totalPC;
     private double totalCap;
@@ -77,7 +74,7 @@ public class AsignacionController implements Serializable {
         {
             _listadoAsign = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(coord.getCodcoordinacion()));
         } 
-        //calculate();
+        calculate();
         return _listadoAsign;
     }
        
@@ -95,11 +92,10 @@ public class AsignacionController implements Serializable {
         totalPlan = 0;
         totalvirt = 0;
         totalCom = 0;
-        _calculadoDC =0;
-        _esperadoDC =0;
                 
         System.out.println("-----------------");
         for (Asignacion asg : _listadoAsign) {
+            
             if (asg.getHorasclase() != null) {
                 totalHC += asg.getHorasclase();
             }
@@ -109,13 +105,9 @@ public class AsignacionController implements Serializable {
             if (asg.getCapacitacion() != null) {
                 totalCap += asg.getCapacitacion();
             }
-            if (asg.getColectivo() != null) {
-                
+            if (asg.getColectivo() != null) {                
                 //System.out.println("Colectivo: "+asg.getColectivo()+" -- total: "+totalCD);
-                totalCD += asg.getColectivo();
-                _calculadoDC += asg.getColectivo();
-                //setCalculadoDC(_calculadoDC + asg.getColectivo());
-                //System.out.print(" -- total despues: "+totalCD);
+                totalCD += asg.getColectivo();               
             }
             if (asg.getInvestigacion() != null) {
                 totalHI += asg.getInvestigacion();
@@ -142,7 +134,16 @@ public class AsignacionController implements Serializable {
             }else{
                 totalHC += 12;
             }
+            
+            totalHoras = asg.getHorasclase() + asg.getPlaneacion() + asg.getCapacitacion() + asg.getColectivo();
+            totalHoras += asg.getPreparacion() + asg.getInvestigacion() + asg.getSocial() + asg.getOda();
+            totalHoras += asg.getVirtualidad()+ asg.getComites();
+
+            asg.setTotalHoras(totalHoras);
+            totalHoras =0;
         }                
+        
+        
         
         //seteando los valores acumulados
         _totalesCalculados.setTotalHC(totalHC);
@@ -157,7 +158,7 @@ public class AsignacionController implements Serializable {
         _totalesCalculados.setTotalCap(totalCap);
                 
         _totalesEsperados.setTotalHC(totalHC);
-        System.out.println("AsignacionController.calculate() -> Calculado: "+_calculadoDC);
+        //System.out.println("AsignacionController.calculate() -> Calculado: "+_calculadoDC);
         if(coord.isAsignado())
         {                  
             _totalesEsperados.setTotalCom(coord.getComites()*totalHC/100);
@@ -224,11 +225,6 @@ public class AsignacionController implements Serializable {
         //RequestContext.getCurrentInstance().update(":listar:summary");
         //calculate(null);       
     }  
-
-    public double test()
-    {
-        return _calculadoDC;
-    }
          
     public Asignacion getObj() {
         return _obj;
@@ -355,7 +351,7 @@ public class AsignacionController implements Serializable {
     }
 
     public Totales getTotalesCalculados() {
-        calculate();
+        //calculate();
         return _totalesCalculados;
     }
 
@@ -370,13 +366,4 @@ public class AsignacionController implements Serializable {
     public void setTotalesEsperados(Totales _totalesEsperados) {
         this._totalesEsperados = _totalesEsperados;
     }
-
-    public double getCalculadoDC() {
-        return _calculadoDC;
-    }
-
-    public void setCalculadoDC(double _calculadoDC) {
-        this._calculadoDC = _calculadoDC;
-    }
-
 }
