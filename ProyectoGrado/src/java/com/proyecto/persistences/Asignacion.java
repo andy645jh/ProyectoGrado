@@ -1,7 +1,6 @@
 package com.proyecto.persistences;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 /**
@@ -63,8 +60,12 @@ public class Asignacion implements Serializable {
     @Column(name = "comites")
     private Double _comites;
 
+    @Column(name = "sumatoria")
+    private Double _sumatoria;
+
+    
     @Transient
-    private Double _totalHoras;
+    Double _totalHoras;
     
     public Asignacion() {
     }
@@ -213,11 +214,21 @@ public class Asignacion implements Serializable {
     }
 
     public Double getTotalHoras() {
+        _totalHoras = _colectivo + _investigacion + _oda + _virtualidad + _capacitacion + _planeacion + _comites + _preparacion + _social + _horasclase;
         return _totalHoras;
     }
 
     public void setTotalHoras(Double _totalHoras) {
         this._totalHoras = _totalHoras;
+    }
+
+    public Double getSumatoria() {
+        _sumatoria = _colectivo + _investigacion + _oda + _virtualidad + _capacitacion + _planeacion + _comites + _preparacion + _social + _horasclase;
+        return _sumatoria;
+    }
+
+    public void setSumatoria(Double _sumatoria) {
+        this._sumatoria = _sumatoria;
     }
     
     

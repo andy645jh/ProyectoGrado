@@ -133,14 +133,10 @@ public class AsignacionController implements Serializable {
                 totalHC += 24;
             }else{
                 totalHC += 12;
-            }
+            }                       
             
-            totalHoras = asg.getHorasclase() + asg.getPlaneacion() + asg.getCapacitacion() + asg.getColectivo();
-            totalHoras += asg.getPreparacion() + asg.getInvestigacion() + asg.getSocial() + asg.getOda();
-            totalHoras += asg.getVirtualidad()+ asg.getComites();
-
-            asg.setTotalHoras(totalHoras);
-            totalHoras =0;
+            System.out.println("Total Horas: "+asg.getTotalHoras());
+        
         }                
         
         
@@ -223,7 +219,7 @@ public class AsignacionController implements Serializable {
         System.out.println("AsignacionController.onCellEdit -> VALOR DESPUES " + newValue);
         
         //RequestContext.getCurrentInstance().update(":listar:summary");
-        //calculate(null);       
+        //calculate();       
     }  
          
     public Asignacion getObj() {
