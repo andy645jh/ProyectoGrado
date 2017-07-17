@@ -71,7 +71,7 @@
                     <br/>
                     <p:dataTable sortBy="#{asignacionController.totalesEsperados.totalHC}" class="letra-tabla" id="listar" value="#{asignacionController.listadoAsign}" var="registro" editable="true" editMode="cell">
 
-                        <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update="summary"/>
+                        <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update=":formAsig:summary"/>
 
                         <p:column style="text-align: center">
                             <f:facet name="header">Docente</f:facet>
@@ -223,9 +223,10 @@
                         <p:column style="text-align: center">
                             <f:facet name="header">Total Horas</f:facet>
                                 #{asignacionController.totalHoras}
-                        </p:column>
+                        </p:column>                       
 
-                        <p:summaryRow id="summary" class="texto-tabla" listener="#{asignacionController.calculate()}">
+                    </p:dataTable> 
+                    <p:dataTable id="summary" class="texto-tabla" value="#{asignacionController.totalesCalculados}" var="calculados">
                             <p:column colspan="2" >
                                 <h:outputText value="Total de horas por actividad:"/>
                             </p:column> 
@@ -239,9 +240,8 @@
                             <p:column colspan="1" >
                                 <h:outputText value="#{asignacionController.totalesCalculados.totalCap} / #{asignacionController.totalesEsperados.totalCap}"/>
                             </p:column> 
-                            <p:column colspan="1" >
-                                <p:outputLabel value="#{asignacionController.test()}" />
-                                <h:outputText value="#{asignacionController.calculadoDC} / #{asignacionController.totalesEsperados.totalCD}"/>
+                            <p:column colspan="1" >                                
+                                <h:outputText value="#{asignacionController.totalesCalculados.totalCD} / #{asignacionController.totalesEsperados.totalCD}"/>
                             </p:column> 
                             <p:column colspan="1" >
                                 <h:outputText value="#{asignacionController.totalesCalculados.totalHI} / #{asignacionController.totalesEsperados.totalHI}"/>
@@ -264,9 +264,7 @@
                             <p:column colspan="1" >
                                 <h:outputText value="#{asignacionController.totalesCalculados.totalHC} / #{asignacionController.totalesEsperados.totalHC}"/>
                             </p:column>  
-
-                        </p:summaryRow>
-                    </p:dataTable>   
+                        </p:dataTable>
                 </p:panel>   
             </h:form>            
         </ui:define>

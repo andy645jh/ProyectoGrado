@@ -355,6 +355,7 @@ public class AsignacionController implements Serializable {
     }
 
     public Totales getTotalesCalculados() {
+        calculate();
         return _totalesCalculados;
     }
 
