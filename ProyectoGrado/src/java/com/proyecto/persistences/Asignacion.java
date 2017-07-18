@@ -61,11 +61,7 @@ public class Asignacion implements Serializable {
     private Double _comites;
 
     @Column(name = "sumatoria")
-    private Double _sumatoria;
-
-    
-    @Transient
-    Double _totalHoras;
+    private Double _sumatoria;    
     
     public Asignacion() {
     }
@@ -149,9 +145,7 @@ public class Asignacion implements Serializable {
     public void setPlaneacion(Double _planeacion) {
         this._planeacion = _planeacion;
     }
-
     
-
     public Double getVirtualidad() {
         return _virtualidad;
     }
@@ -159,8 +153,6 @@ public class Asignacion implements Serializable {
     public void setVirtualidad(Double _virtualidad) {
         this._virtualidad = _virtualidad;
     }
-
-    
 
     public Double getComites() {
         return _comites;
@@ -212,16 +204,7 @@ public class Asignacion implements Serializable {
     public String toString() {
         return "Asignaciones -> C: "+_colectivo+", I; "+_investigacion+", O: "+_oda+" V: "+_virtualidad+", Ca:"+_capacitacion;
     }
-
-    public Double getTotalHoras() {
-        _totalHoras = _colectivo + _investigacion + _oda + _virtualidad + _capacitacion + _planeacion + _comites + _preparacion + _social + _horasclase;
-        return _totalHoras;
-    }
-
-    public void setTotalHoras(Double _totalHoras) {
-        this._totalHoras = _totalHoras;
-    }
-
+    
     public Double getSumatoria() {
         _sumatoria = _colectivo + _investigacion + _oda + _virtualidad + _capacitacion + _planeacion + _comites + _preparacion + _social + _horasclase;
         return _sumatoria;
@@ -229,7 +212,6 @@ public class Asignacion implements Serializable {
 
     public void setSumatoria(Double _sumatoria) {
         this._sumatoria = _sumatoria;
-    }
-    
+    }   
     
 }

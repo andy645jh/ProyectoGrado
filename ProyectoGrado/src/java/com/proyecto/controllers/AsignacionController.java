@@ -15,7 +15,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -135,11 +134,10 @@ public class AsignacionController implements Serializable {
                 totalHC += 12;
             }                       
             
-            System.out.println("Total Horas: "+asg.getTotalHoras());
+            System.out.println("Total Horas: "+asg.getSumatoria());
         
         }                
-        
-        
+               
         
         //seteando los valores acumulados
         _totalesCalculados.setTotalHC(totalHC);
