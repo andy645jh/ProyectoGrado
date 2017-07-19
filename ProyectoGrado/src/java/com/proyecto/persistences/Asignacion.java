@@ -202,11 +202,10 @@ public class Asignacion implements Serializable {
 
     @Override
     public String toString() {
-        return "Asignaciones -> C: "+_colectivo+", I; "+_investigacion+", O: "+_oda+" V: "+_virtualidad+", Ca:"+_capacitacion;
+        return "Asignaciones -> C: "+_colectivo+", I; "+_investigacion+", O: "+_oda+" V: "+_virtualidad+", Ca:"+_capacitacion+", Sum: "+_sumatoria;
     }
     
-    public Double getSumatoria() {
-        _sumatoria = _colectivo + _investigacion + _oda + _virtualidad + _capacitacion + _planeacion + _comites + _preparacion + _social + _horasclase;
+    public Double getSumatoria() {        
         return _sumatoria;
     }
 

@@ -28,10 +28,8 @@ import org.primefaces.event.CellEditEvent;
  */
 @ManagedBean
 @SessionScoped
-
 public class AsignacionController implements Serializable {
-
-    private Asignacion _obj;
+  
     @EJB
     private AsignacionFacade _ejbFacade;
     @EJB
@@ -41,7 +39,7 @@ public class AsignacionController implements Serializable {
     private int _codPorcentaje;
     private int codDocente;
     private int codActDocencia;
-       
+
     private double totalHC;
     private double totalPC;
     private double totalCap;
@@ -53,34 +51,33 @@ public class AsignacionController implements Serializable {
     private double totalvirt;
     private double totalCom;
     private double totalHoras;
-    
+
+    private Coordinacion _coordinacion;
+
     private Totales _totalesCalculados;
     private Totales _totalesEsperados;
     private List<Asignacion> _listadoAsign;
 
-    public AsignacionController()
-    {        
+    public AsignacionController() {
         _totalesEsperados = new Totales();
         _totalesCalculados = new Totales();
+        
+        _coordinacion = (Coordinacion) SessionUtils.get("coordinacion");              
     }
 
-    
-    public List<Asignacion> getListadoAsign() {   
-           
-        //System.out.println("AsignacionController.getListadoAsign -> entro ");
-        Coordinacion coord = (Coordinacion) SessionUtils.get("coordinacion");
-        if(_listadoAsign==null)
-        {
-            _listadoAsign = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(coord.getCodcoordinacion()));
-        } 
+    public List<Asignacion> getListadoAsign() {
+       
+        if (_listadoAsign == null) {
+            _listadoAsign = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(_coordinacion.getCodcoordinacion()));            
+        }
         calculate();
+        System.out.println("Pide Listado");
         return _listadoAsign;
     }
-       
-    public void calculate()
-    {
-               
-        Coordinacion coord = (Coordinacion) SessionUtils.get("coordinacion");
+
+    public void calculate() {
+
+        //_coordinacion = (Coordinacion) SessionUtils.get("coordinacion");
         totalHC = 0;
         totalPC = 0;
         totalCap = 0;
@@ -91,10 +88,10 @@ public class AsignacionController implements Serializable {
         totalPlan = 0;
         totalvirt = 0;
         totalCom = 0;
-                
+
         System.out.println("-----------------");
         for (Asignacion asg : _listadoAsign) {
-            
+
             if (asg.getHorasclase() != null) {
                 totalHC += asg.getHorasclase();
             }
@@ -104,9 +101,9 @@ public class AsignacionController implements Serializable {
             if (asg.getCapacitacion() != null) {
                 totalCap += asg.getCapacitacion();
             }
-            if (asg.getColectivo() != null) {                
+            if (asg.getColectivo() != null) {
                 //System.out.println("Colectivo: "+asg.getColectivo()+" -- total: "+totalCD);
-                totalCD += asg.getColectivo();               
+                totalCD += asg.getColectivo();
             }
             if (asg.getInvestigacion() != null) {
                 totalHI += asg.getInvestigacion();
@@ -127,18 +124,16 @@ public class AsignacionController implements Serializable {
                 totalCom += asg.getComites();
             }
 
-            if(asg.getCoddocente().getTipocontrato()==1)
-            {
+            if (asg.getCoddocente().getTipocontrato() == 1) {
                 totalHC += 24;
-            }else{
+            } else {
                 totalHC += 12;
-            }                       
-            
-            System.out.println("Total Horas: "+asg.getSumatoria());
-        
-        }                
-               
-        
+            }
+
+            System.out.println("Total Horas: " + asg.getSumatoria());
+
+        }
+
         //seteando los valores acumulados
         _totalesCalculados.setTotalHC(totalHC);
         _totalesCalculados.setTotalCom(totalCom);
@@ -150,22 +145,21 @@ public class AsignacionController implements Serializable {
         _totalesCalculados.setTotalCD(totalCD);
         _totalesCalculados.setTotalPC(totalPC);
         _totalesCalculados.setTotalCap(totalCap);
-                
+
         _totalesEsperados.setTotalHC(totalHC);
         //System.out.println("AsignacionController.calculate() -> Calculado: "+_calculadoDC);
-        if(coord.isAsignado())
-        {                  
-            _totalesEsperados.setTotalCom(coord.getComites()*totalHC/100);
-            _totalesEsperados.setTotalPlan(coord.getAcreditacion()*totalHC/100);
-            _totalesEsperados.setTotalODA(coord.getOda()*totalHC/100);
-            _totalesEsperados.setTotalPS(coord.getExtension()*totalHC/100);
-            _totalesEsperados.setTotalHI(coord.getInvestigacion()*totalHC/100);
-            _totalesEsperados.setTotalVirt(coord.getVirtualidad()*totalHC/100);
-        }                  
+        if (_coordinacion.isAsignado()) {
+            _totalesEsperados.setTotalCom(_coordinacion.getComites() * totalHC / 100);
+            _totalesEsperados.setTotalPlan(_coordinacion.getAcreditacion() * totalHC / 100);
+            _totalesEsperados.setTotalODA(_coordinacion.getOda() * totalHC / 100);
+            _totalesEsperados.setTotalPS(_coordinacion.getExtension() * totalHC / 100);
+            _totalesEsperados.setTotalHI(_coordinacion.getInvestigacion() * totalHC / 100);
+            _totalesEsperados.setTotalVirt(_coordinacion.getVirtualidad() * totalHC / 100);
+        }
         //System.out.println("AsignacionController.getListadoAsign -> tamaño de la lista " + _totalesEsperados.getTotalHC());  
         //RequestContext.getCurrentInstance().update("formAsig:summary");        
     }
-    
+
     public void abrirCrear() {
         Map<String, Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
@@ -175,16 +169,15 @@ public class AsignacionController implements Serializable {
 //        return "/tiempodoc/crear";
     }
 
-    public void actualizar(Asignacion _obj) 
-    {
-        
+    public void actualizar(Asignacion obj) {
+
         String titulo, detalle;
 
         try {
 
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
-            _ejbFacade.actualizar(_obj);
+            _ejbFacade.actualizar(obj);
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
 
         } catch (Exception e) {
@@ -199,33 +192,35 @@ public class AsignacionController implements Serializable {
 //        context.closeDialog(null);
     }
 
+    public void complete()
+    {
+        System.out.println("COmplete");
+    }
+    
     public void onCellEdit(CellEditEvent event) {
 
         Object oldValue = event.getOldValue();
         Object newValue = event.getNewValue();
 
-        if (_listadoAsign == null) {
-            _listadoAsign = _ejbFacade.listado();
-        }
-        //Asignacion asigTemp2 = (Asignacion) event.;
+        /*if (_listadoAsign == null) {
+         _listadoAsign = _ejbFacade.listado();
+         }*/
         Asignacion asigTemp = (Asignacion) _listadoAsign.get(event.getRowIndex());
-        System.out.println("AsignacionController.onCellEdit -> Nuevo Valor: "+asigTemp.toString());
-        
-        actualizar(_listadoAsign.get(event.getRowIndex()));
 
-        System.out.println("AsignacionController.onCellEdit -> VALOR ANTES " + oldValue );
+        Double sum = asigTemp.getCapacitacion() + asigTemp.getColectivo() + asigTemp.getComites();
+        sum += asigTemp.getHorasclase() + asigTemp.getInvestigacion() + asigTemp.getOda() + asigTemp.getSocial();
+        sum += asigTemp.getPlaneacion() + asigTemp.getPreparacion() + asigTemp.getVirtualidad();
+        asigTemp.setSumatoria(sum);
+
+        System.out.println("AsignacionController.onCellEdit -> Nuevo Valor: " + ((Asignacion) _listadoAsign.get(event.getRowIndex())).toString());
+
+        actualizar(asigTemp);       
+                  
+        //_listadoAsign = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(_coordinacion.getCodcoordinacion()));
+        
+        
+        System.out.println("AsignacionController.onCellEdit -> VALOR ANTES " + oldValue);
         System.out.println("AsignacionController.onCellEdit -> VALOR DESPUES " + newValue);
-        
-        //RequestContext.getCurrentInstance().update(":listar:summary");
-        //calculate();       
-    }  
-         
-    public Asignacion getObj() {
-        return _obj;
-    }
-
-    public void setObj(Asignacion _obj) {
-        this._obj = _obj;
     }
 
     public int getCodDocente() {
@@ -252,96 +247,8 @@ public class AsignacionController implements Serializable {
         this._codPorcentaje = _codigito;
     }
 
-    public void setListadoAsign(List<Asignacion> lista) {
+    public void setListadoAsign(final List<Asignacion> lista) {
         this._listadoAsign = lista;
-    }
-    
-    public double getTotalHC() {
-        return totalHC;
-    }
-
-    public void setTotalHC(double totalHC) {
-        this.totalHC = totalHC;
-    }
-
-    public double getTotalPC() {
-        return totalPC;
-    }
-
-    public void setTotalPC(double totalPC) {
-        this.totalPC = totalPC;
-    }
-
-    public double getTotalCap() {
-        return totalCap;
-    }
-
-    public void setTotalCap(double totalCap) {
-        this.totalCap = totalCap;
-    }
-
-    public double getTotalCD() {
-        return totalCD;
-    }
-
-    public void setTotalCD(double totalCD) {
-        this.totalCD = totalCD;
-    }
-
-    public double getTotalHI() {
-        return totalHI;
-    }
-
-    public void setTotalHI(double totalHI) {
-        this.totalHI = totalHI;
-    }
-
-    public double getTotalPS() {
-        return totalPS;
-    }
-
-    public void setTotalPS(double totalPS) {
-        this.totalPS = totalPS;
-    }
-
-    public double getTotalODA() {
-        return totalODA;
-    }
-
-    public void setTotalODA(double totalODA) {
-        this.totalODA = totalODA;
-    }
-
-    public double getTotalPlan() {
-        return totalPlan;
-    }
-
-    public void setTotalPlan(double totalPlan) {
-        this.totalPlan = totalPlan;
-    }
-
-    public double getTotalvirt() {
-        return totalvirt;
-    }
-
-    public void setTotalvirt(double totalvirt) {
-        this.totalvirt = totalvirt;
-    }
-
-    public double getTotalCom() {
-        return totalCom;
-    }
-
-    public void setTotalCom(double totalCom) {
-        this.totalCom = totalCom;
-    }
-
-    public double getTotalHoras() {
-        return totalHoras;
-    }
-
-    public void setTotalHoras(double totalHoras) {
-        this.totalHoras = totalHoras;
     }
 
     public Totales getTotalesCalculados() {

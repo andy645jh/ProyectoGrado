@@ -71,7 +71,7 @@
                     <br/>
                     <p:dataTable sortBy="#{asignacionController.totalesEsperados.totalHC}" class="letra-tabla" id="listar" value="#{asignacionController.listadoAsign}" var="registro" editable="true" editMode="cell">
 
-                        <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update=":formAsig:summary listar:total"/>
+                        <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update=":formAsig:summary listar" />
 
                         <p:column style="text-align: center">
                             <f:facet name="header">Docente</f:facet>
