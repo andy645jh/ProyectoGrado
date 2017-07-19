@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R-DC-54" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6432eeef-5f8d-4b30-b336-a5ced63e6148">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="12"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["D:\\Documents\\proyectogradoing\\ProyectoGrado\\web\\reportes\\"]]></defaultValueExpression>
 	</parameter>
+	<queryString>
+		<![CDATA[select d.*, c.nombre AS coord,c.codfacultad from docentes d join coordinacion c on d.codcoordinacion=c.codcoordinacion  where cedula=73167775]]>
+	</queryString>
+	<field name="cedula" class="java.lang.Integer"/>
+	<field name="apellidos" class="java.lang.String"/>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="codigo" class="java.lang.String"/>
+	<field name="formacion" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="correo" class="java.lang.String"/>
+	<field name="codcoordinacion" class="java.lang.Integer"/>
+	<field name="foto" class="java.lang.String"/>
+	<field name="fechanac" class="java.sql.Date"/>
+	<field name="tipo_contrato" class="java.math.BigDecimal"/>
+	<field name="celular" class="java.math.BigDecimal"/>
+	<field name="tipo_doc" class="java.math.BigDecimal"/>
+	<field name="lugar_exp" class="java.lang.String"/>
+	<field name="municipio" class="java.lang.String"/>
+	<field name="lugar_nac" class="java.lang.String"/>
+	<field name="genero" class="java.math.BigDecimal"/>
+	<field name="fecha_exp" class="java.sql.Date"/>
+	<field name="matricula_prof" class="java.lang.String"/>
+	<field name="coord" class="java.lang.String"/>
+	<field name="codfacultad" class="java.lang.Integer"/>
+	<variable name="apellidos_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{apellidos}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -35,8 +63,8 @@
 				<imageExpression><![CDATA["D:\\Documents\\proyectogradoing\\ProyectoGrado\\web\\resources\\img\\uts.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="244" y="22" width="56" height="20" uuid="a0a63d6c-fa16-412b-955f-e84b75023103"/>
-				<textElement>
+				<reportElement x="71" y="22" width="598" height="20" uuid="a0a63d6c-fa16-412b-955f-e84b75023103"/>
+				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>
 				<text><![CDATA[DOCENCIA]]></text>
@@ -174,7 +202,7 @@
 				<text><![CDATA[FCSE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="84" width="54" height="21" uuid="e9656329-42e1-42bd-888b-f4f189e281d5"/>
+				<reportElement x="0" y="81" width="54" height="24" uuid="e9656329-42e1-42bd-888b-f4f189e281d5"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
@@ -187,7 +215,7 @@
 				<reportElement x="381" y="80" width="1" height="24" uuid="9cf02eeb-7593-44fa-967c-c3ad3cdbf319"/>
 			</line>
 			<staticText>
-				<reportElement x="276" y="84" width="105" height="20" uuid="683d9d17-66bf-4d9e-8f88-6ea692ebf183"/>
+				<reportElement x="275" y="80" width="106" height="25" uuid="683d9d17-66bf-4d9e-8f88-6ea692ebf183"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -202,6 +230,59 @@
 			<line>
 				<reportElement x="693" y="22" width="1" height="26" uuid="f5c66b76-0485-4c92-99cd-af47c5466e52"/>
 			</line>
+			<textField>
+				<reportElement x="244" y="34" width="352" height="14" uuid="e0bc16ea-6559-4162-9360-28a974bca200"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="36" width="241" height="12" uuid="9fd3f2f3-a0ca-4979-8287-88f75b9ec0fa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cedula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="597" y="34" width="96" height="14" uuid="b31b69e4-95ff-45e9-af1a-c99899680346"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="693" y="34" width="108" height="14" uuid="a643a11a-6f56-4b74-8b35-384ca172deda"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cedula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="58" width="445" height="22" uuid="fb1771fc-d6cf-4828-ba73-47cf822e299c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direccion}-$F{telefono}-$F{correo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="382" y="80" width="420" height="25" uuid="4aff3fc3-dd28-4d10-8c52-2ffabe9c8240"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{formacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="60" width="204" height="44" uuid="8d527ebb-dedf-476b-a421-95b33e8ea2d8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{coord}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="55" y="58" width="14" height="22" uuid="2df9f67f-35bc-4857-8886-8d983f514976"/>
+				<textFieldExpression><![CDATA[$F{codfacultad}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
