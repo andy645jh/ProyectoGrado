@@ -1,7 +1,6 @@
 package com.proyecto.persistences;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 /**
@@ -63,8 +60,8 @@ public class Asignacion implements Serializable {
     @Column(name = "comites")
     private Double _comites;
 
-    @Transient
-    private Double _totalHoras;
+    @Column(name = "sumatoria")
+    private Double _sumatoria;    
     
     public Asignacion() {
     }
@@ -148,9 +145,7 @@ public class Asignacion implements Serializable {
     public void setPlaneacion(Double _planeacion) {
         this._planeacion = _planeacion;
     }
-
     
-
     public Double getVirtualidad() {
         return _virtualidad;
     }
@@ -158,8 +153,6 @@ public class Asignacion implements Serializable {
     public void setVirtualidad(Double _virtualidad) {
         this._virtualidad = _virtualidad;
     }
-
-    
 
     public Double getComites() {
         return _comites;
@@ -209,16 +202,15 @@ public class Asignacion implements Serializable {
 
     @Override
     public String toString() {
-        return "Asignaciones -> C: "+_colectivo+", I; "+_investigacion+", O: "+_oda+" V: "+_virtualidad+", Ca:"+_capacitacion;
-    }
-
-    public Double getTotalHoras() {
-        return _totalHoras;
-    }
-
-    public void setTotalHoras(Double _totalHoras) {
-        this._totalHoras = _totalHoras;
+        return "Asignaciones -> C: "+_colectivo+", I; "+_investigacion+", O: "+_oda+" V: "+_virtualidad+", Ca:"+_capacitacion+", Sum: "+_sumatoria;
     }
     
+    public Double getSumatoria() {        
+        return _sumatoria;
+    }
+
+    public void setSumatoria(Double _sumatoria) {
+        this._sumatoria = _sumatoria;
+    }   
     
 }
