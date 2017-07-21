@@ -223,48 +223,48 @@
                         <p:column style="text-align: center" id="total">
                             <f:facet name="header">Total Horas</f:facet>
                             <h:outputText value="#{registro.sumatoria}"/>                                
-                        </p:column>                       
-
+                        </p:column>   
+                        
                     </p:dataTable> 
                     <p:dataTable id="summary" class="texto-tabla" value="#{asignacionController.totalesCalculados}" var="calculados">
-                            <p:column colspan="2" >
-                                <h:outputText value="Total de horas por actividad:"/>
-                            </p:column> 
+                        <p:column colspan="2" >
+                            <h:outputText value="Total de horas por actividad:"/>
+                        </p:column> 
 
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalHC}"/>
-                            </p:column> 
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalPC} / #{asignacionController.totalesEsperados.totalPC}"/>
-                            </p:column> 
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalCap} / #{asignacionController.totalesEsperados.totalCap}"/>
-                            </p:column> 
-                            <p:column colspan="1" >                                
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalCD} / #{asignacionController.totalesEsperados.totalCD}"/>
-                            </p:column> 
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalHI} / #{asignacionController.totalesEsperados.totalHI}"/>
-                            </p:column> 
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalPS} / #{asignacionController.totalesEsperados.totalPS}"/>
-                            </p:column> 
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalODA} / #{asignacionController.totalesEsperados.totalODA}"/>
-                            </p:column> 
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalPlan} / #{asignacionController.totalesEsperados.totalPlan}"/>
-                            </p:column> 
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalVirt} / #{asignacionController.totalesEsperados.totalVirt}"/>
-                            </p:column> 
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalCom} / #{asignacionController.totalesEsperados.totalCom}"/>
-                            </p:column>     
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalHC} / #{asignacionController.totalesEsperados.totalHC}"/>
-                            </p:column>  
-                        </p:dataTable>
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalHC}"/>
+                        </p:column> 
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalPC} / #{asignacionController.totalesEsperados.totalPC}"/>
+                        </p:column> 
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalCap} / #{asignacionController.totalesEsperados.totalCap}"/>
+                        </p:column> 
+                        <p:column colspan="1" >                                
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalCD} / #{asignacionController.totalesEsperados.totalCD}"/>
+                        </p:column> 
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalHI} / #{asignacionController.totalesEsperados.totalHI}"/>
+                        </p:column> 
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalPS} / #{asignacionController.totalesEsperados.totalPS}"/>
+                        </p:column> 
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalODA} / #{asignacionController.totalesEsperados.totalODA}"/>
+                        </p:column> 
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalPlan} / #{asignacionController.totalesEsperados.totalPlan}"/>
+                        </p:column> 
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalVirt} / #{asignacionController.totalesEsperados.totalVirt}"/>
+                        </p:column> 
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalCom} / #{asignacionController.totalesEsperados.totalCom}"/>
+                        </p:column>     
+                        <p:column colspan="1" >
+                            <h:outputText value="#{asignacionController.totalesCalculados.totalHC} / #{asignacionController.totalesEsperados.totalHC}"/>
+                        </p:column>  
+                    </p:dataTable>
                 </p:panel>   
             </h:form>            
         </ui:define>

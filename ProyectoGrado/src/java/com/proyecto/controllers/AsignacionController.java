@@ -216,7 +216,7 @@ public class AsignacionController implements Serializable {
 
         actualizar(asigTemp);       
                   
-        //_listadoAsign = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(_coordinacion.getCodcoordinacion()));
+        _listadoAsign = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(_coordinacion.getCodcoordinacion()));
         
         
         System.out.println("AsignacionController.onCellEdit -> VALOR ANTES " + oldValue);
