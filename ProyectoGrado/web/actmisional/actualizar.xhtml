@@ -12,10 +12,10 @@
                     <br/>
                     <p:panelGrid columns="2">                    
                         <p:outputLabel value="#{FacultadTxt.Nombre}  " for="nombre" />
-                        <p:inputText id="nombre" value="#{actividadMisionalController.campo.nombre}"/>
+                        <p:inputText id="nombre" value="#{generarReporte.campo.nombre}"/>
 
                         <f:facet name="footer">
-                            <p:commandButton id="btngrabar" value="#{FacultadTxt.crear}" ajax="true" action="#{actividadMisionalController.actualizar()}"/>
+                            <p:commandButton id="btngrabar" value="#{FacultadTxt.crear}" ajax="true" action="#{generarReporte.actualizar()}"/>
                         </f:facet>
                     </p:panelGrid>
                 </p:panel>

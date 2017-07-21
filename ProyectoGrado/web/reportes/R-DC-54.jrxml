@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R-DC-54" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6432eeef-5f8d-4b30-b336-a5ced63e6148">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="192"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["D:\\Documents\\proyectogradoing\\ProyectoGrado\\web\\reportes\\"]]></defaultValueExpression>
 	</parameter>
@@ -54,14 +54,6 @@
 			<line>
 				<reportElement x="0" y="61" width="801" height="1" uuid="135a70ef-c579-47c5-9bcb-fda52a0d8dd9"/>
 			</line>
-			<image>
-				<reportElement x="670" y="2" width="66" height="77" uuid="2d290499-4c36-4df4-9cf7-bf41321cb134"/>
-				<imageExpression><![CDATA["D:\\Pictures\\gorro.gif"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="3" y="2" width="65" height="59" uuid="a43a32eb-30a7-41cd-b26d-c8eb56808d41"/>
-				<imageExpression><![CDATA["D:\\Documents\\proyectogradoing\\ProyectoGrado\\web\\resources\\img\\uts.jpg"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="71" y="22" width="598" height="20" uuid="a0a63d6c-fa16-412b-955f-e84b75023103"/>
 				<textElement textAlignment="Center">
@@ -288,24 +280,24 @@
 	<detail>
 		<band height="441" splitType="Stretch">
 			<subreport>
-				<reportElement x="1" y="0" width="800" height="112" uuid="c2878843-1b52-463b-99a5-978dffd1d25c"/>
+				<reportElement x="3" y="0" width="798" height="100" uuid="24c553b7-6621-4cbc-8216-7814072b75d9"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "lstActividades_RDC54.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/lstActividades_RDC54.jasper"]]></subreportExpression>
 			</subreport>
 			<subreport>
-				<reportElement x="0" y="120" width="801" height="100" uuid="6304ff17-249e-4c23-afe3-298e1cd75a1d"/>
+				<reportElement x="1" y="100" width="800" height="100" uuid="62df0581-2fa0-4b58-9b66-0581bc318995"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "seguimiento_actividades.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/seguimiento_actividades.jasper"]]></subreportExpression>
 			</subreport>
 			<subreport>
-				<reportElement x="0" y="228" width="801" height="100" uuid="f4ba6d15-75c7-4af1-9d10-2958f1660f23"/>
+				<reportElement x="0" y="200" width="801" height="100" uuid="583ef9e2-a89d-4372-9394-ea869b493386"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "lst_productos.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/lst_productos.jasper"]]></subreportExpression>
 			</subreport>
 			<subreport>
-				<reportElement x="0" y="337" width="801" height="100" uuid="785a10f2-157b-4013-acfc-98278cc0542d"/>
+				<reportElement x="0" y="300" width="802" height="100" uuid="4665d1cc-c1b2-4884-903f-a088d6be67d4"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "horario_semanal.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/horario_semanal.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>

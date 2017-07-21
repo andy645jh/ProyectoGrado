@@ -7,16 +7,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/plantilla_modal.xhtml">
         <ui:define name="content">
-            #{actividadMisionalController.resetear()}
+            #{generarReporte.resetear()}
             <h:form>
                 <p:panel>        
                     <br/>
                     <p:panelGrid columns="2">                    
                         <p:outputLabel value="#{FacultadTxt.Nombre}  " for="nombre" />
-                        <p:inputText id="nombre" value="#{actividadMisionalController.campo.nombre}"/>
+                        <p:inputText id="nombre" value="#{generarReporte.campo.nombre}"/>
 
                         <f:facet name="footer">
-                            <p:commandButton id="btngrabar" value="#{FacultadTxt.crear}" ajax="true" action="#{actividadMisionalController.agregar()}"/>
+                            <p:commandButton id="btngrabar" value="#{FacultadTxt.crear}" ajax="true" action="#{generarReporte.agregar()}"/>
                         </f:facet>
                     </p:panelGrid>
                 </p:panel>

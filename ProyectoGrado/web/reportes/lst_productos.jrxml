@@ -1,29 +1,149 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8ad7032d-cbb1-4d9b-971c-38b9d919c5aa">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="2f3e9565-8f7d-4808-8745-d7c796379963"/>
+	<subDataset name="New Dataset 1" uuid="f98096f2-cae0-4d1c-a59a-6156318128e7">
+		<queryString language="SQL">
+			<![CDATA[select a.codactividad, p.descripcion, p.fechacompromiso, p.fechaentrega, p.comentarios from productos p join actividades a on p.codact=a.codactividad where a.coddocente=109877]]>
+		</queryString>
+		<field name="codactividad" class="java.lang.Integer"/>
+		<field name="descripcion" class="java.lang.String"/>
+		<field name="fechacompromiso" class="java.sql.Date"/>
+		<field name="fechaentrega" class="java.sql.Date"/>
+		<field name="comentarios" class="java.lang.String"/>
+		<group name="comentarios">
+			<groupExpression><![CDATA[$F{comentarios}]]></groupExpression>
+		</group>
+		<group name="descripcion">
+			<groupExpression><![CDATA[$F{descripcion}]]></groupExpression>
+		</group>
+		<group name="codactividad">
+			<groupExpression><![CDATA[$F{codactividad}]]></groupExpression>
+		</group>
+		<group name="fechacompromiso">
+			<groupExpression><![CDATA[$F{fechacompromiso}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString>
+		<![CDATA[select a.codactividad, p.descripcion, p.fechacompromiso, p.fechaentrega, p.comentarios from productos p join actividades a on p.codact=a.codactividad where a.coddocente=109877]]>
+	</queryString>
+	<field name="codactividad" class="java.lang.Integer"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="fechacompromiso" class="java.sql.Date"/>
+	<field name="fechaentrega" class="java.sql.Date"/>
+	<field name="comentarios" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="1" width="802" height="20" uuid="a06c32db-7566-4c33-8445-dda837438a59"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="802" height="21" uuid="7bcaa041-1d12-42a7-a182-1d7853a173f5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[LISTA DE PRODUCTOS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="52" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 1" style="table 1" x="0" y="2" width="802" height="50" uuid="609d51d0-41e1-41af-baaa-36bc7c3c9ae0"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset 1" uuid="79645679-5955-40e0-8abc-055dbdfd5961">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="7da423cc-85c5-4121-995d-d3f92f8d85d4">
+						<jr:tableHeader style="table 1_TH" height="30"/>
+						<jr:detailCell style="table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="7b5b99e5-f25d-4c59-98fb-2f80be455383"/>
+								<textFieldExpression><![CDATA[$F{codactividad}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="d199c668-8c6f-4851-82d0-75bc2708743e">
+						<jr:tableHeader style="table 1_TH" height="30"/>
+						<jr:detailCell style="table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="9918672b-de56-448d-90f0-09bc34a813c5"/>
+								<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="939ef49c-2351-4a64-bb34-1edd4884592d">
+						<jr:tableHeader style="table 1_TH" height="30"/>
+						<jr:detailCell style="table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="dedfe6ce-e75a-45f6-8a64-3b7ee72b5811"/>
+								<textFieldExpression><![CDATA[$F{fechacompromiso}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="de90a6c1-809d-4cad-bfad-5ba7f186fa57">
+						<jr:tableHeader style="table 1_TH" height="30"/>
+						<jr:detailCell style="table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="e8301255-1d09-4688-b026-36440ed58de2"/>
+								<textFieldExpression><![CDATA[$F{fechaentrega}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="b9de09cc-53b6-4ebb-af58-c819a27bab7d">
+						<jr:tableHeader style="table 1_TH" height="30"/>
+						<jr:detailCell style="table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="c3e3f668-a3e9-471b-b069-0b5312d94ac9"/>
+								<textFieldExpression><![CDATA[$F{comentarios}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
 </jasperReport>

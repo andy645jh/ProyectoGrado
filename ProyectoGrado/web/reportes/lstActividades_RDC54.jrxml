@@ -3,6 +3,15 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select a.nombre,a.horas, t.nombre as tipo, a.descripcion, a.responsable, a.valoracion from actividades a join tipomodalidades t on a.codtipo=t.codtipo where a.coddocente=109877]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="horas" class="java.lang.Double"/>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="responsable" class="java.lang.String"/>
+	<field name="valoracion" class="java.lang.Integer"/>
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<rectangle>
@@ -77,12 +86,24 @@
 			<rectangle>
 				<reportElement x="1" y="-1" width="802" height="20" uuid="c1a09c6d-838a-47b0-8df3-14edade0561f"/>
 			</rectangle>
+			<textField>
+				<reportElement x="641" y="0" width="100" height="20" uuid="58760276-048c-4664-9a45-51f904440aa5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{responsable}]]></textFieldExpression>
+			</textField>
 			<line>
 				<reportElement x="55" y="-28" width="1" height="47" uuid="c908573a-bd2d-4843-b52b-ebdba94c541f"/>
 			</line>
 			<line>
 				<reportElement x="281" y="-28" width="1" height="47" uuid="90b137aa-052d-4b00-b679-086fa4fa7d44"/>
 			</line>
+			<textField>
+				<reportElement x="741" y="0" width="62" height="20" uuid="1ccb9bd7-a7f8-4b25-9efe-97f8109e5779"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{valoracion}]]></textFieldExpression>
+			</textField>
 			<line>
 				<reportElement x="343" y="-28" width="1" height="47" uuid="40c12a7c-b31e-49cc-a164-a08af16a13c1"/>
 			</line>
@@ -92,6 +113,26 @@
 			<line>
 				<reportElement x="740" y="-28" width="1" height="47" uuid="3f3f4ebc-eb43-427c-8c95-69859d505118"/>
 			</line>
+			<textField>
+				<reportElement x="282" y="0" width="62" height="20" uuid="a5ed0558-a1d1-428a-afb6-78eb7123255d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="56" y="0" width="178" height="20" uuid="c24a6bea-2b00-4d9b-895b-89cd5538bbbd"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="235" y="1" width="47" height="19" uuid="9f36f238-8b51-4410-a827-af3dfb3325ac"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[($F{horas})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="344" y="0" width="294" height="20" uuid="e2616f3a-5e5e-47f1-85e5-291a288ed60b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>
