@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-    
+
     <ui:composition template="/plantilla.xhtml">
         <ui:define name="menu">
             <ui:decorate template="/menu_docentes.xhtml">
@@ -19,12 +19,29 @@
                     <p:growl id="mensajito" sticky="true" showDetail="true"/>           
                     <br/>
                     <p:commandButton value="Ver RDC-54" actionListener="#{reportTestController.generateReport()}" icon="ui-icon-disk" >
-                                              
-                        </p:commandButton>                   
-                                 
+
+                    </p:commandButton>   
+
+                    <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
+                        <p:fileDownload value="#{reportTestController.fileDownloadView()}" />
+                    </p:commandButton>
+
+
                 </p:panel>  
             </h:form>
+
+
         </ui:define>
     </ui:composition>
+
+    <script type="text/javascript">
+        function start() {
+            PF('statusDialog').show();
+        }
+
+        function stop() {
+            PF('statusDialog').hide();
+        }
+    </script>
 </html>
 
