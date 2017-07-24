@@ -5,36 +5,28 @@
  */
 package com.proyecto.controllers;
 
-import com.lowagie.text.pdf.PdfAction;
-import com.lowagie.text.pdf.PdfReader;
-import com.lowagie.text.pdf.PdfStamper;
-import com.lowagie.text.pdf.PdfWriter;
-import com.proyecto.utilities.JasperReportUtil;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.JasperRunManager;
-import org.hibernate.validator.internal.util.logging.LoggerFactory;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
@@ -75,16 +67,36 @@ public class ReportTestController implements Serializable {
             map.put("SUBREPORT_DIR", ruta);
 
             String path = FacesContext.getCurrentInstance().getExternalContext().
-                    getRealPath("/reportes/newReport.jasper");
+                    getRealPath("/reportes/test1.jasper");
             String pdf = FacesContext.getCurrentInstance().getExternalContext().
                     getRealPath("/reportes/");
 
             try {
-                System.out.println("URL " + path+ " PARAMETROS " + map.size() );
-                 jasperPrint = JasperFillManager.fillReport(path, map, connection);
-                 pdf();
+                System.out.println("URL " + path + " PARAMETROS " + map.size());
+                JasperReport jasperReport = JasperCompileManager.compileReport(FacesContext.getCurrentInstance().getExternalContext().
+                 getRealPath("/reportes/test1.jrxml"));
+                /*JasperReport jasperReport = JasperCompileManager
+                        .compileReport("C:\\Users\\elkin\\Downloads\\StyledTextReport\\StyledTextReport.jrxml");*/
 
+                // Parameters for report
+                Map<String, Object> parameters = new HashMap<String, Object>();
+                JRDataSource dataSource = new JREmptyDataSource();
+                jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+                //JasperViewer.viewReport(jasperPrint);
+                //JasperViewer viewer = new JasperViewer(jasperPrint, false);
+                //viewer.setVisible(true);
+                //pdf();
+                JasperExportManager.exportReportToPdfFile(jasperPrint,"C:\\informes_jasper\\test1.pdf");
+                // Make sure the output directory exists.
+                /*File outDir = new File("C:/jasperoutput");
+                outDir.mkdirs();
+
+                // Export to PDF.
+                JasperExportManager.exportReportToHtmlFile(jasperPrint,"C:/jasperoutput/StyledTextReport.html");
+*/
+                System.out.println("Done!");
             } catch (Exception e) {
+                System.out.println("Error: " + e.toString());
                 e.printStackTrace();
             }
 
@@ -119,7 +131,7 @@ public class ReportTestController implements Serializable {
             System.out.println("ERROR " + e.getMessage());
         }
     }
-    
+
     public void pdf() throws JRException, IOException {
 
         HttpServletResponse httpReponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();

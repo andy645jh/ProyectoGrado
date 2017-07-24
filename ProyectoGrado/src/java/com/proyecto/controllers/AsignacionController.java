@@ -9,6 +9,7 @@ import com.proyecto.utilities.Mensajes;
 import com.proyecto.utilities.SessionUtils;
 import com.proyecto.utilities.Totales;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,7 +58,8 @@ public class AsignacionController implements Serializable {
     private Totales _totalesCalculados;
     private Totales _totalesEsperados;
     private List<Asignacion> _listadoAsign;
-
+    private List<Double> _listSum;
+    
     public AsignacionController() {
         _totalesEsperados = new Totales();
         _totalesCalculados = new Totales();
@@ -69,9 +71,14 @@ public class AsignacionController implements Serializable {
        
         if (_listadoAsign == null) {
             _listadoAsign = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(_coordinacion.getCodcoordinacion()));            
+            _listSum = new ArrayList<>();
+            
+            for (Asignacion asigTemp : _listadoAsign) {
+                _listSum.add(asigTemp.getSumatoria());
+            }
         }
         calculate();
-        System.out.println("Pide Listado");
+        System.out.println("Pide Listado: " + _listSum.size());
         return _listadoAsign;
     }
 
@@ -218,7 +225,10 @@ public class AsignacionController implements Serializable {
                   
         _listadoAsign = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(_coordinacion.getCodcoordinacion()));
         
-        
+        _listSum = new ArrayList<>();            
+        for (Asignacion asigT : _listadoAsign) {
+            _listSum.add(asigT.getSumatoria());
+        }
         System.out.println("AsignacionController.onCellEdit -> VALOR ANTES " + oldValue);
         System.out.println("AsignacionController.onCellEdit -> VALOR DESPUES " + newValue);
     }
@@ -266,5 +276,13 @@ public class AsignacionController implements Serializable {
 
     public void setTotalesEsperados(Totales _totalesEsperados) {
         this._totalesEsperados = _totalesEsperados;
+    }
+
+    public List<Double> getListSum() {
+        return _listSum;
+    }
+
+    public void setListSum(List<Double> _listSum) {
+        this._listSum = _listSum;
     }
 }

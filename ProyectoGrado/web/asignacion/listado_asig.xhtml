@@ -69,9 +69,9 @@
                     <br/>           
                     <p:separator/>
                     <br/>
-                    <p:dataTable sortBy="#{asignacionController.totalesEsperados.totalHC}" class="letra-tabla" id="listar" value="#{asignacionController.listadoAsign}" var="registro" editable="true" editMode="cell">
+                    <p:dataTable style="width: 80%;float: left;" sortBy="#{asignacionController.totalesEsperados.totalHC}" value="#{asignacionController.listadoAsign}" var="registro" id="listar" class="letra-tabla" editable="true" editMode="cell">
 
-                        <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update=":formAsig:summary listar" />
+                        <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update=":formAsig:summary :formAsig:total listar" />
 
                         <p:column style="text-align: center">
                             <f:facet name="header">Docente</f:facet>
@@ -220,12 +220,21 @@
                             </p:cellEditor>
                         </p:column>
 
-                        <p:column style="text-align: center" id="total">
-                            <f:facet name="header">Total Horas</f:facet>
-                            <h:outputText value="#{registro.sumatoria}"/>                                
-                        </p:column>   
-                        
+
                     </p:dataTable> 
+
+                    <p:dataTable style="float: right;" value="#{asignacionController.listSum}" var="sum" class="letra-tabla" id="total">
+
+                        <p:column style="text-align: center">    
+                            <f:facet name="header">
+                                <h:outputLink value="#">
+                                    <h:outputText value="total" />
+                                </h:outputLink> 
+                            </f:facet>  
+                            <h:outputText value="#{sum}" />                                                                         
+                        </p:column>
+                    </p:dataTable>  
+
                     <p:dataTable id="summary" class="texto-tabla" value="#{asignacionController.totalesCalculados}" var="calculados">
                         <p:column colspan="2" >
                             <h:outputText value="Total de horas por actividad:"/>
