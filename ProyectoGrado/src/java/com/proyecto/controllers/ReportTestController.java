@@ -58,7 +58,7 @@ public class ReportTestController implements Serializable {
             String logoEtiqueta = FacesContext.getCurrentInstance().getExternalContext().
                     getRealPath("/resources/img/logo_p4.png");
 
-            String cadenaConexion = "jdbc:postgresql://localhost:5432/bd_proyecto";
+            String cadenaConexion = "jdbc:postgresql://localhost:5433/bd_proyecto";
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(cadenaConexion,
                     "user_java", "123456");
@@ -149,8 +149,8 @@ public class ReportTestController implements Serializable {
     public StreamedContent fileDownloadView() {
         String pdf = FacesContext.getCurrentInstance().getExternalContext().
                 getRealPath("/reportes/");
-
-        InputStream stream = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("E:\repositorios/proyectogradoing/ProyectoGrado/build/web/reportes/report name.jrprint");
+        
+        InputStream stream = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream(pdf+"R-DC-54.jasper");
         StreamedContent file = new DefaultStreamedContent(stream, "reportes/jpg", "descargado.jrprint");
         return file;
     }

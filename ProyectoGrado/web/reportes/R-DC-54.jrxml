@@ -278,7 +278,13 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="441" splitType="Stretch"/>
+		<band height="441" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="801" height="100" uuid="8acbcb4e-ab57-4aa1-8a29-1519d015bb8d"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "lstActividades_RDC54.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
 	</detail>
 	<summary>
 		<band height="132" splitType="Stretch">
