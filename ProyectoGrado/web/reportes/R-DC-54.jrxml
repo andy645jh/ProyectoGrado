@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R-DC-54" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6432eeef-5f8d-4b30-b336-a5ced63e6148">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="192"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["D:\\Documents\\proyectogradoing\\ProyectoGrado\\web\\reportes\\"]]></defaultValueExpression>
 	</parameter>
@@ -278,28 +278,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="441" splitType="Stretch">
-			<subreport>
-				<reportElement x="3" y="0" width="798" height="100" uuid="24c553b7-6621-4cbc-8216-7814072b75d9"/>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/lstActividades_RDC54.jasper"]]></subreportExpression>
-			</subreport>
-			<subreport>
-				<reportElement x="1" y="100" width="800" height="100" uuid="62df0581-2fa0-4b58-9b66-0581bc318995"/>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/seguimiento_actividades.jasper"]]></subreportExpression>
-			</subreport>
-			<subreport>
-				<reportElement x="0" y="200" width="801" height="100" uuid="583ef9e2-a89d-4372-9394-ea869b493386"/>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/lst_productos.jasper"]]></subreportExpression>
-			</subreport>
-			<subreport>
-				<reportElement x="0" y="300" width="802" height="100" uuid="4665d1cc-c1b2-4884-903f-a088d6be67d4"/>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/horario_semanal.jasper"]]></subreportExpression>
-			</subreport>
-		</band>
+		<band height="441" splitType="Stretch"/>
 	</detail>
 	<summary>
 		<band height="132" splitType="Stretch">

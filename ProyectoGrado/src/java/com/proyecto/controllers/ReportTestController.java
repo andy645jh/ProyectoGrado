@@ -74,14 +74,14 @@ public class ReportTestController implements Serializable {
             try {
                 System.out.println("URL " + path + " PARAMETROS " + map.size());
                 JasperReport jasperReport = JasperCompileManager.compileReport(FacesContext.getCurrentInstance().getExternalContext().
-                 getRealPath("/reportes/test1.jrxml"));
+                 getRealPath("/reportes/R-DC-54.jrxml"));
                 /*JasperReport jasperReport = JasperCompileManager
                         .compileReport("C:\\Users\\elkin\\Downloads\\StyledTextReport\\StyledTextReport.jrxml");*/
 
                 // Parameters for report
                 Map<String, Object> parameters = new HashMap<String, Object>();
-                JRDataSource dataSource = new JREmptyDataSource();
-                jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+//                JRDataSource dataSource = new JREmptyDataSource();
+                jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, connection);
                 //JasperViewer.viewReport(jasperPrint);
                 //JasperViewer viewer = new JasperViewer(jasperPrint, false);
                 //viewer.setVisible(true);
