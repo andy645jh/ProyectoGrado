@@ -69,211 +69,216 @@
                     <br/>           
                     <p:separator/>
                     <br/>
-                    <p:dataTable style="width: 80%;float: left;" sortBy="#{asignacionController.totalesEsperados.totalHC}" value="#{asignacionController.listadoAsign}" var="registro" id="listar" class="letra-tabla" editable="true" editMode="cell">
+                    <div class="ui-g-12">
+                        <div class="ui-g-11">
+                            <p:dataTable sortBy="#{asignacionController.totalesEsperados.totalHC}" value="#{asignacionController.listadoAsign}" var="registro" id="listar" class="letra-tabla ui-g-11" editable="true" editMode="cell">
 
-                        <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update=":formAsig:summary :formAsig:total listar" />
+                                <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update=":formAsig:summary :formAsig:total listar" />
 
-                        <p:column style="text-align: center">
-                            <f:facet name="header">Docente</f:facet>
-                                #{registro.coddocente.toString()} 
-                        </p:column>
+                                <p:column style="text-align: center">
+                                    <f:facet name="header">Docente</f:facet>
+                                        #{registro.coddocente.toString()} 
+                                </p:column>
 
-                        <p:column style="text-align: center">
-                            <f:facet name="header">
-                                <h:outputLink id="tool-tc" value="#">
-                                    <h:outputText value="TC" />
-                                </h:outputLink>                            
-                                <p:tooltip for="tool-tc" value="Tipo de Contrato" trackMouse="true" />
-                            </f:facet>                        
-                            #{registro.coddocente.tipocontrato}
-                        </p:column> 
+                                <p:column style="text-align: center">
+                                    <f:facet name="header">
+                                        <h:outputLink id="tool-tc" value="#">
+                                            <h:outputText value="TC" />
+                                        </h:outputLink>                            
+                                        <p:tooltip for="tool-tc" value="Tipo de Contrato" trackMouse="true" />
+                                    </f:facet>                        
+                                    #{registro.coddocente.tipocontrato}
+                                </p:column> 
 
-                        <p:column  style="text-align: center">
-                            <f:facet name="header" >
-                                <h:outputLink id="tool-hc" value="#">
-                                    <h:outputText value="HC" />
-                                </h:outputLink>                            
-                                <p:tooltip for="tool-hc" value="Horas de Clase" trackMouse="true" />
+                                <p:column  style="text-align: center">
+                                    <f:facet name="header" >
+                                        <h:outputLink id="tool-hc" value="#">
+                                            <h:outputText value="HC" />
+                                        </h:outputLink>                            
+                                        <p:tooltip for="tool-hc" value="Horas de Clase" trackMouse="true" />
 
-                            </f:facet>
-                            <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{registro.horasclase}"/></f:facet>
-                                <f:facet name="input"><p:inputText id="clase" value="#{registro.horasclase}" style="width:96%"/></f:facet>
-                            </p:cellEditor>
-                        </p:column>
+                                    </f:facet>
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{registro.horasclase}"/></f:facet>
+                                        <f:facet name="input"><p:inputText id="clase" value="#{registro.horasclase}" style="width:96%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
 
-                        <p:column style="text-align: center">
-                            <f:facet name="header">
-                                <h:outputLink id="tool-pc" value="#">
-                                    <h:outputText value="PC" />
-                                </h:outputLink>                            
-                                <p:tooltip for="tool-pc" value="Preparacion de Clase" trackMouse="true" />
-                            </f:facet>
-                            <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{registro.preparacion}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="preparacion" value="#{registro.preparacion}" style="width:96%"/></f:facet>
-                            </p:cellEditor>
-                        </p:column>
+                                <p:column style="text-align: center">
+                                    <f:facet name="header">
+                                        <h:outputLink id="tool-pc" value="#">
+                                            <h:outputText value="PC" />
+                                        </h:outputLink>                            
+                                        <p:tooltip for="tool-pc" value="Preparacion de Clase" trackMouse="true" />
+                                    </f:facet>
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{registro.preparacion}" /></f:facet>
+                                        <f:facet name="input"><p:inputText id="preparacion" value="#{registro.preparacion}" style="width:96%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
 
-                        <p:column style="text-align: center">
-                            <f:facet name="header">
-                                <h:outputLink id="tool-cap" value="#">
-                                    <h:outputText value="Cap" />
-                                </h:outputLink>                            
-                                <p:tooltip for="tool-cap" value="Capacitacion" trackMouse="true" />
-                            </f:facet>
-                            <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{registro.capacitacion}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="capacitacion" value="#{registro.capacitacion}" style="width:96%"/></f:facet>
-                            </p:cellEditor>
-                        </p:column>
+                                <p:column style="text-align: center">
+                                    <f:facet name="header">
+                                        <h:outputLink id="tool-cap" value="#">
+                                            <h:outputText value="Cap" />
+                                        </h:outputLink>                            
+                                        <p:tooltip for="tool-cap" value="Capacitacion" trackMouse="true" />
+                                    </f:facet>
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{registro.capacitacion}" /></f:facet>
+                                        <f:facet name="input"><p:inputText id="capacitacion" value="#{registro.capacitacion}" style="width:96%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
 
-                        <p:column style="text-align: center">
-                            <f:facet name="header" >
-                                <h:outputLink id="tool-cd" value="#">
-                                    <h:outputText value="CD" />
-                                </h:outputLink>                            
-                                <p:tooltip for="tool-cd" value="Colectivo" trackMouse="true" />
-                            </f:facet>
-                            <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{registro.colectivo}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="colectivo" value="#{registro.colectivo}" style="width:96%"/></f:facet>
-                            </p:cellEditor>
-                        </p:column>
+                                <p:column style="text-align: center">
+                                    <f:facet name="header" >
+                                        <h:outputLink id="tool-cd" value="#">
+                                            <h:outputText value="CD" />
+                                        </h:outputLink>                            
+                                        <p:tooltip for="tool-cd" value="Colectivo" trackMouse="true" />
+                                    </f:facet>
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{registro.colectivo}" /></f:facet>
+                                        <f:facet name="input"><p:inputText id="colectivo" value="#{registro.colectivo}" style="width:96%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
 
-                        <p:column style="text-align: center">
-                            <f:facet name="header">
-                                <h:outputLink id="tool-hi" value="#">
-                                    <h:outputText value="HI" />
-                                </h:outputLink>                            
-                                <p:tooltip for="tool-hi" value="Horas de Investigacion" trackMouse="true" />
-                            </f:facet>
-                            <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{registro.investigacion}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="inv" value="#{registro.investigacion}" style="width:96%"/></f:facet>
-                            </p:cellEditor>     
-                        </p:column>
+                                <p:column style="text-align: center">
+                                    <f:facet name="header">
+                                        <h:outputLink id="tool-hi" value="#">
+                                            <h:outputText value="HI" />
+                                        </h:outputLink>                            
+                                        <p:tooltip for="tool-hi" value="Horas de Investigacion" trackMouse="true" />
+                                    </f:facet>
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{registro.investigacion}" /></f:facet>
+                                        <f:facet name="input"><p:inputText id="inv" value="#{registro.investigacion}" style="width:96%"/></f:facet>
+                                    </p:cellEditor>     
+                                </p:column>
 
-                        <p:column style="text-align: center">
-                            <f:facet name="header">
-                                <h:outputLink id="tool-ps" value="#">
-                                    <h:outputText value="PS" />
-                                </h:outputLink>                            
-                                <p:tooltip for="tool-ps" value="Social" trackMouse="true" />
-                            </f:facet>
-                            <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{registro.social}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="social" value="#{registro.social}" style="width:96%"/></f:facet>
-                            </p:cellEditor> 
-                        </p:column>
+                                <p:column style="text-align: center">
+                                    <f:facet name="header">
+                                        <h:outputLink id="tool-ps" value="#">
+                                            <h:outputText value="PS" />
+                                        </h:outputLink>                            
+                                        <p:tooltip for="tool-ps" value="Social" trackMouse="true" />
+                                    </f:facet>
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{registro.social}" /></f:facet>
+                                        <f:facet name="input"><p:inputText id="social" value="#{registro.social}" style="width:96%"/></f:facet>
+                                    </p:cellEditor> 
+                                </p:column>
 
-                        <p:column style="text-align: center">
-                            <f:facet name="header">
-                                <h:outputLink id="tool-oda" value="#">
-                                    <h:outputText value="ODA" />
-                                </h:outputLink>                            
-                                <p:tooltip for="tool-oda" value="ODA" trackMouse="true" />
-                            </f:facet>
-                            <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{registro.oda}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="oda" value="#{registro.oda}" style="width:96%"/></f:facet>
-                            </p:cellEditor>
-                        </p:column>
+                                <p:column style="text-align: center">
+                                    <f:facet name="header">
+                                        <h:outputLink id="tool-oda" value="#">
+                                            <h:outputText value="ODA" />
+                                        </h:outputLink>                            
+                                        <p:tooltip for="tool-oda" value="ODA" trackMouse="true" />
+                                    </f:facet>
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{registro.oda}" /></f:facet>
+                                        <f:facet name="input"><p:inputText id="oda" value="#{registro.oda}" style="width:96%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
 
-                        <p:column style="text-align: center">
-                            <f:facet name="header" >
-                                <h:outputLink id="tool-p" value="#">
-                                    <h:outputText value="P" />
-                                </h:outputLink>                            
-                                <p:tooltip for="tool-p" value="Planeacion" trackMouse="true" />                            
-                            </f:facet>
-                            <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{registro.planeacion}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="planeacion" value="#{registro.planeacion}" style="width:96%"/></f:facet>
-                            </p:cellEditor>
+                                <p:column style="text-align: center">
+                                    <f:facet name="header" >
+                                        <h:outputLink id="tool-p" value="#">
+                                            <h:outputText value="P" />
+                                        </h:outputLink>                            
+                                        <p:tooltip for="tool-p" value="Planeacion" trackMouse="true" />                            
+                                    </f:facet>
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{registro.planeacion}" /></f:facet>
+                                        <f:facet name="input"><p:inputText id="planeacion" value="#{registro.planeacion}" style="width:96%"/></f:facet>
+                                    </p:cellEditor>
 
-                        </p:column>
+                                </p:column>
 
-                        <p:column style="text-align: center">
-                            <f:facet name="header">
-                                <h:outputLink id="tool-v" value="#">
-                                    <h:outputText value="V" />
-                                </h:outputLink>                            
-                                <p:tooltip for="tool-v" value="Virtualidad" trackMouse="true" />       
-                            </f:facet>
-                            <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{registro.virtualidad}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="virtualidad" value="#{registro.virtualidad}" style="width:96%"/></f:facet>
-                            </p:cellEditor>
-                        </p:column>
+                                <p:column style="text-align: center">
+                                    <f:facet name="header">
+                                        <h:outputLink id="tool-v" value="#">
+                                            <h:outputText value="V" />
+                                        </h:outputLink>                            
+                                        <p:tooltip for="tool-v" value="Virtualidad" trackMouse="true" />       
+                                    </f:facet>
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{registro.virtualidad}" /></f:facet>
+                                        <f:facet name="input"><p:inputText id="virtualidad" value="#{registro.virtualidad}" style="width:96%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
 
-                        <p:column style="text-align: center">
-                            <f:facet name="header">
-                                <h:outputLink id="tool-c" value="#">
-                                    <h:outputText value="C" />
-                                </h:outputLink>                            
-                                <p:tooltip for="tool-c" value="Comites" trackMouse="true" />  
-                            </f:facet>
-                            <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{registro.comites}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="comites" value="#{registro.comites}" style="width:96%"/></f:facet>
-                            </p:cellEditor>
-                        </p:column>
+                                <p:column style="text-align: center">
+                                    <f:facet name="header">
+                                        <h:outputLink id="tool-c" value="#">
+                                            <h:outputText value="C" />
+                                        </h:outputLink>                            
+                                        <p:tooltip for="tool-c" value="Comites" trackMouse="true" />  
+                                    </f:facet>
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{registro.comites}" /></f:facet>
+                                        <f:facet name="input"><p:inputText id="comites" value="#{registro.comites}" style="width:96%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
 
 
-                    </p:dataTable> 
+                            </p:dataTable> 
+                        </div>
+                        <div class="ui-g-1">
+                            <p:dataTable value="#{asignacionController.listSum}" var="sum" class="letra-tabla" id="total">
 
-                    <p:dataTable style="float: right;" value="#{asignacionController.listSum}" var="sum" class="letra-tabla" id="total">
+                                <p:column style="text-align: center">    
+                                    <f:facet name="header">
+                                        <h:outputLink value="#">
+                                            <h:outputText value="total" />
+                                        </h:outputLink> 
+                                    </f:facet>  
+                                    <h:outputText value="#{sum}" />                                                                         
+                                </p:column>
+                            </p:dataTable>  
+                        </div>
+                    </div>
+                    <br></br>
+                    <div class="ui-g-10">
+                        <p:dataTable id="summary" class="texto-tabla" value="#{asignacionController.totalesCalculados}" var="calculados">
+                            <p:column colspan="2" >
+                                <h:outputText value="Total de horas por actividad:"/>
+                            </p:column> 
 
-                        <p:column style="text-align: center">    
-                            <f:facet name="header">
-                                <h:outputLink value="#">
-                                    <h:outputText value="total" />
-                                </h:outputLink> 
-                            </f:facet>  
-                            <h:outputText value="#{sum}" />                                                                         
-                        </p:column>
-                    </p:dataTable>  
-
-                    <p:dataTable id="summary" class="texto-tabla" value="#{asignacionController.totalesCalculados}" var="calculados">
-                        <p:column colspan="2" >
-                            <h:outputText value="Total de horas por actividad:"/>
-                        </p:column> 
-
-                        <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalHC}"/>
-                        </p:column> 
-                        <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalPC} / #{asignacionController.totalesEsperados.totalPC}"/>
-                        </p:column> 
-                        <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalCap} / #{asignacionController.totalesEsperados.totalCap}"/>
-                        </p:column> 
-                        <p:column colspan="1" >                                
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalCD} / #{asignacionController.totalesEsperados.totalCD}"/>
-                        </p:column> 
-                        <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalHI} / #{asignacionController.totalesEsperados.totalHI}"/>
-                        </p:column> 
-                        <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalPS} / #{asignacionController.totalesEsperados.totalPS}"/>
-                        </p:column> 
-                        <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalODA} / #{asignacionController.totalesEsperados.totalODA}"/>
-                        </p:column> 
-                        <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalPlan} / #{asignacionController.totalesEsperados.totalPlan}"/>
-                        </p:column> 
-                        <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalVirt} / #{asignacionController.totalesEsperados.totalVirt}"/>
-                        </p:column> 
-                        <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalCom} / #{asignacionController.totalesEsperados.totalCom}"/>
-                        </p:column>     
-                        <p:column colspan="1" >
-                            <h:outputText value="#{asignacionController.totalesCalculados.totalHC} / #{asignacionController.totalesEsperados.totalHC}"/>
-                        </p:column>  
-                    </p:dataTable>
+                            <p:column colspan="1" >
+                                <h:outputText value="#{asignacionController.totalesCalculados.totalHC}"/>
+                            </p:column> 
+                            <p:column colspan="1" >
+                                <h:outputText value="#{asignacionController.totalesCalculados.totalPC} / #{asignacionController.totalesEsperados.totalPC}"/>
+                            </p:column> 
+                            <p:column colspan="1" >
+                                <h:outputText value="#{asignacionController.totalesCalculados.totalCap} / #{asignacionController.totalesEsperados.totalCap}"/>
+                            </p:column> 
+                            <p:column colspan="1" >                                
+                                <h:outputText value="#{asignacionController.totalesCalculados.totalCD} / #{asignacionController.totalesEsperados.totalCD}"/>
+                            </p:column> 
+                            <p:column colspan="1" >
+                                <h:outputText value="#{asignacionController.totalesCalculados.totalHI} / #{asignacionController.totalesEsperados.totalHI}"/>
+                            </p:column> 
+                            <p:column colspan="1" >
+                                <h:outputText value="#{asignacionController.totalesCalculados.totalPS} / #{asignacionController.totalesEsperados.totalPS}"/>
+                            </p:column> 
+                            <p:column colspan="1" >
+                                <h:outputText value="#{asignacionController.totalesCalculados.totalODA} / #{asignacionController.totalesEsperados.totalODA}"/>
+                            </p:column> 
+                            <p:column colspan="1" >
+                                <h:outputText value="#{asignacionController.totalesCalculados.totalPlan} / #{asignacionController.totalesEsperados.totalPlan}"/>
+                            </p:column> 
+                            <p:column colspan="1" >
+                                <h:outputText value="#{asignacionController.totalesCalculados.totalVirt} / #{asignacionController.totalesEsperados.totalVirt}"/>
+                            </p:column> 
+                            <p:column colspan="1" >
+                                <h:outputText value="#{asignacionController.totalesCalculados.totalCom} / #{asignacionController.totalesEsperados.totalCom}"/>
+                            </p:column>     
+                            
+                        </p:dataTable>
+                    </div>
                 </p:panel>   
             </h:form>            
         </ui:define>
