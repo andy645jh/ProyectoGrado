@@ -22,6 +22,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.data.FilterEvent;
 
 /**
  *
@@ -82,6 +83,19 @@ public class AsignacionController implements Serializable {
         return _listadoAsign;
     }
 
+    public void filterListener(FilterEvent filter)
+    {
+        System.out.println("AsignacionController.filter -> "+filter.toString());
+    }
+    
+    public double getCalculate(Asignacion asigTemp)
+    {
+        double sum = asigTemp.getCapacitacion() + asigTemp.getColectivo() + asigTemp.getComites();
+        sum += asigTemp.getHorasclase() + asigTemp.getInvestigacion() + asigTemp.getOda() + asigTemp.getSocial();
+        sum += asigTemp.getPlaneacion() + asigTemp.getPreparacion() + asigTemp.getVirtualidad();
+        return sum;
+    }
+    
     public void calculate() {
 
         //_coordinacion = (Coordinacion) SessionUtils.get("coordinacion");

@@ -74,7 +74,8 @@
                             <p:dataTable sortBy="#{asignacionController.totalesEsperados.totalHC}" value="#{asignacionController.listadoAsign}" var="registro" id="listar" class="letra-tabla ui-g-11" editable="true" editMode="cell">
 
                                 <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update=":formAsig:summary :formAsig:total listar" />
-
+                                <p:ajax event="filter" listener="#{asignacionController.filterListener}" update="@(.sum)" />
+                                
                                 <p:column style="text-align: center">
                                     <f:facet name="header">Docente</f:facet>
                                         #{registro.coddocente.toString()} 
@@ -222,7 +223,15 @@
                                     </p:cellEditor>
                                 </p:column>
 
-
+                                <p:column style="text-align: center" styleClass="sum">
+                                    <f:facet name="header">
+                                        <h:outputLink id="tool-sum" value="#">
+                                            <h:outputText value="Sum" />
+                                        </h:outputLink>                            
+                                        <p:tooltip for="tool-sum" value="Comites" trackMouse="true" />  
+                                    </f:facet>                                    
+                                    <h:outputText value="#{registro.sumatoria}" />                                                                          
+                                </p:column>
                             </p:dataTable> 
                         </div>
                         <div class="ui-g-1">
