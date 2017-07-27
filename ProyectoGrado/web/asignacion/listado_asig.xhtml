@@ -14,9 +14,9 @@
             </ui:decorate> 
         </ui:define>
         <ui:define name="content">
+            <p:panel>      
+                <h:form id="formAsig">  
 
-            <h:form id="formAsig">  
-                <p:panel>      
                     <p:outputLabel value="Es necesario realizar la asignacion de  porcentajes" />
                     <p:growl id="mensajito" sticky="true" showDetail="true"/> 
                     <div class="ui-g form-asig-label">
@@ -73,9 +73,8 @@
                         <div class="ui-g-11">
                             <p:dataTable sortBy="#{asignacionController.totalesEsperados.totalHC}" value="#{asignacionController.listadoAsign}" var="registro" id="listar" class="letra-tabla ui-g-11" editable="true" editMode="cell">
 
-                                <p:ajax event="cellEdit" listener="#{asignacionController.onCellEdit}" update=":formAsig:summary :formAsig:total listar" />
-                                <p:ajax event="filter" listener="#{asignacionController.filterListener}" update="@(.sum)" />
-                                
+                                <p:ajax event="rowEdit" listener="#{asignacionController.onCellEdit}" update=":formAsig:summary listar:summary_cell :formAsig:total listar" />                                
+
                                 <p:column style="text-align: center">
                                     <f:facet name="header">Docente</f:facet>
                                         #{registro.coddocente.toString()} 
@@ -223,14 +222,14 @@
                                     </p:cellEditor>
                                 </p:column>
 
-                                <p:column style="text-align: center" styleClass="sum">
+                                <p:column style="text-align: center">
                                     <f:facet name="header">
                                         <h:outputLink id="tool-sum" value="#">
                                             <h:outputText value="Sum" />
                                         </h:outputLink>                            
                                         <p:tooltip for="tool-sum" value="Comites" trackMouse="true" />  
                                     </f:facet>                                    
-                                    <h:outputText value="#{registro.sumatoria}" />                                                                          
+                                    <h:outputText id="summary_cell" value="#{registro.sumatoria}" />                                                                          
                                 </p:column>
                             </p:dataTable> 
                         </div>
@@ -285,11 +284,12 @@
                             <p:column colspan="1" >
                                 <h:outputText value="#{asignacionController.totalesCalculados.totalCom} / #{asignacionController.totalesEsperados.totalCom}"/>
                             </p:column>     
-                            
+
                         </p:dataTable>
                     </div>
-                </p:panel>   
-            </h:form>            
+
+                </h:form>   
+            </p:panel>  
         </ui:define>
     </ui:composition>
 </html>

@@ -20,6 +20,9 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.context.FacesContextFactory;
+import org.primefaces.component.api.UIData;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.data.FilterEvent;
@@ -31,7 +34,7 @@ import org.primefaces.event.data.FilterEvent;
 @ManagedBean
 @SessionScoped
 public class AsignacionController implements Serializable {
-  
+
     @EJB
     private AsignacionFacade _ejbFacade;
     @EJB
@@ -60,20 +63,20 @@ public class AsignacionController implements Serializable {
     private Totales _totalesEsperados;
     private List<Asignacion> _listadoAsign;
     private List<Double> _listSum;
-    
+
     public AsignacionController() {
         _totalesEsperados = new Totales();
         _totalesCalculados = new Totales();
-        
-        _coordinacion = (Coordinacion) SessionUtils.get("coordinacion");              
+
+        _coordinacion = (Coordinacion) SessionUtils.get("coordinacion");
     }
 
     public List<Asignacion> getListadoAsign() {
-       
+
         if (_listadoAsign == null) {
-            _listadoAsign = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(_coordinacion.getCodcoordinacion()));            
+            _listadoAsign = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(_coordinacion.getCodcoordinacion()));
             _listSum = new ArrayList<>();
-            
+
             for (Asignacion asigTemp : _listadoAsign) {
                 _listSum.add(asigTemp.getSumatoria());
             }
@@ -83,19 +86,17 @@ public class AsignacionController implements Serializable {
         return _listadoAsign;
     }
 
-    public void filterListener(FilterEvent filter)
-    {
-        System.out.println("AsignacionController.filter -> "+filter.toString());
+    public void filterListener(FilterEvent filter) {
+        System.out.println("AsignacionController.filter -> " + filter.toString());
     }
-    
-    public double getCalculate(Asignacion asigTemp)
-    {
+
+    public double getCalculate(Asignacion asigTemp) {
         double sum = asigTemp.getCapacitacion() + asigTemp.getColectivo() + asigTemp.getComites();
         sum += asigTemp.getHorasclase() + asigTemp.getInvestigacion() + asigTemp.getOda() + asigTemp.getSocial();
         sum += asigTemp.getPlaneacion() + asigTemp.getPreparacion() + asigTemp.getVirtualidad();
         return sum;
     }
-    
+
     public void calculate() {
 
         //_coordinacion = (Coordinacion) SessionUtils.get("coordinacion");
@@ -213,11 +214,10 @@ public class AsignacionController implements Serializable {
 //        context.closeDialog(null);
     }
 
-    public void complete()
-    {
+    public void complete() {
         System.out.println("COmplete");
     }
-    
+
     public void onCellEdit(CellEditEvent event) {
 
         Object oldValue = event.getOldValue();
@@ -235,14 +235,19 @@ public class AsignacionController implements Serializable {
 
         System.out.println("AsignacionController.onCellEdit -> Nuevo Valor: " + ((Asignacion) _listadoAsign.get(event.getRowIndex())).toString());
 
-        actualizar(asigTemp);       
-                  
+        actualizar(asigTemp);
+
         _listadoAsign = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(_coordinacion.getCodcoordinacion()));
-        
-        _listSum = new ArrayList<>();            
+
+        _listSum = new ArrayList<>();
         for (Asignacion asigT : _listadoAsign) {
             _listSum.add(asigT.getSumatoria());
         }
+
+        UIData table = (UIData) event.getComponent();
+        String updateClientId = table.getClientId() + ":" + table.getRowIndex() + ":listar";
+        FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add(updateClientId);
+
         System.out.println("AsignacionController.onCellEdit -> VALOR ANTES " + oldValue);
         System.out.println("AsignacionController.onCellEdit -> VALOR DESPUES " + newValue);
     }
