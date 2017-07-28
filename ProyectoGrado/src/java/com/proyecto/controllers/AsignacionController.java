@@ -27,6 +27,7 @@ import org.primefaces.context.RequestContext;
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.data.FilterEvent;
+import org.primefaces.event.data.SortEvent;
 
 /**
  *
@@ -238,7 +239,7 @@ public class AsignacionController implements Serializable {
 
         actualizar(asigTemp);
 
-        _listadoAsign = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(_coordinacion.getCodcoordinacion()));
+        //_listadoAsign = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(_coordinacion.getCodcoordinacion()));
 
         _listSum = new ArrayList<>();
         for (Asignacion asigT : _listadoAsign) {
@@ -247,6 +248,11 @@ public class AsignacionController implements Serializable {
         
     }
 
+    public void sortListener(SortEvent sort)
+    {
+        System.out.println("Intenta Ordenar");
+    }
+    
     public void calculateTotales(Object obj) {
         System.out.println("Entro a calcular");
         calculate();

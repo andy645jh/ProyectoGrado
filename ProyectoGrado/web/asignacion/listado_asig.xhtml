@@ -72,8 +72,8 @@
                     <div class="ui-g-12">
                         <div class="ui-g-12">
                             <p:remoteCommand name="onCellEdit" update=":formAsig:listar:summary_cal listar" />
-                            <p:dataTable sortMode="ascending" sortBy="#{registro.horasclase}" value="#{asignacionController.listadoAsign}" var="registro" id="listar" class="letra-tabla ui-g-11" editable="true" >
-
+                            <p:dataTable sortBy="#{registro.horasclase}" value="#{asignacionController.listadoAsign}" var="registro" id="listar" class="letra-tabla ui-g-11" editable="true" >
+                                <p:ajax event="sort" listener="#{asignacionController.sortListener}" />
                                 <p:ajax event="rowEdit" listener="#{asignacionController.onCellEdit}" oncomplete="onCellEdit()" update="listar" />                                                                                                
 
                                 <p:column style="text-align: center">
@@ -297,7 +297,7 @@
                         -->
                     </div>
                     <br></br>
-                    
+
                     <div class="ui-g-10">
                         <p:dataTable id="summary" class="texto-tabla" value="#{asignacionController.totalesCalculados}" var="calculados">
                             <p:column colspan="2" >
@@ -336,9 +336,9 @@
                             </p:column>     
 
                         </p:dataTable>
-                    
+
                     </div>
-                   
+
                 </h:form>   
             </p:panel>  
             <script type="text/javascript">
