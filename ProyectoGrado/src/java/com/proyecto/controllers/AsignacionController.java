@@ -80,17 +80,15 @@ public class AsignacionController implements Serializable {
             _listadoAsign = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(_coordinacion.getCodcoordinacion()));
             _listSum = new ArrayList<>();
 
+            _totalSum =0;
             for (Asignacion asigTemp : _listadoAsign) {
+                _totalSum += asigTemp.getSumatoria();
                 _listSum.add(asigTemp.getSumatoria());
             }
         }
         calculate();
         System.out.println("Pide Listado: " + _listSum.size());
         return _listadoAsign;
-    }
-
-    public void filterListener(FilterEvent filter) {
-        System.out.println("AsignacionController.filter -> " + filter.toString());
     }
 
     public double getCalculate(Asignacion asigTemp) {
@@ -101,8 +99,7 @@ public class AsignacionController implements Serializable {
     }
 
     public void calculate() {
-
-        //_coordinacion = (Coordinacion) SessionUtils.get("coordinacion");
+        
         totalHC = 0;
         totalPC = 0;
         totalCap = 0;
@@ -244,6 +241,7 @@ public class AsignacionController implements Serializable {
 
         _listSum = new ArrayList<>();
         for (Asignacion asigT : _listadoAsign) {
+            _totalSum += asigT.getSumatoria();
             _listSum.add(asigT.getSumatoria());
         }        
         

@@ -590,4 +590,9 @@ table button
     text-align: center;
     background-color: #bfd730;
     font-weight: normal;
+    border: 1px solid #ddd;
+}
+
+tr{
+    height: 50px;
 }

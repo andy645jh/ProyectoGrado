@@ -76,9 +76,9 @@
                                 <p:ajax event="sort" listener="#{asignacionController.sortListener}" />
                                 <p:ajax event="rowEdit" listener="#{asignacionController.onCellEdit}" oncomplete="onCellEdit()" update="listar" />                                                                                                
 
-                                <p:column style="text-align: center">
+                                <p:column style="text-align: center; width: 200px;min-height: 100px;">
                                     <f:facet name="header">Docente</f:facet>
-                                        #{registro.coddocente.toString()} 
+                                    #{registro.coddocente.toString()} 
                                 </p:column>
 
                                 <p:column style="text-align: center">
@@ -97,12 +97,8 @@
                                             <h:outputText value="HC" />
                                         </h:outputLink>                            
                                         <p:tooltip for="tool-hc" value="Horas de Clase" trackMouse="true" />
-
                                     </f:facet>
-                                    <p:cellEditor>
-                                        <f:facet name="output"><h:outputText value="#{registro.horasclase}"/></f:facet>
-                                        <f:facet name="input"><p:inputText id="clase" value="#{registro.horasclase}" style="width:96%"/></f:facet>
-                                    </p:cellEditor>
+                                    <h:outputText value="#{registro.horasclase}"/>                                  
                                 </p:column>
 
                                 <p:column style="text-align: center">
@@ -112,10 +108,7 @@
                                         </h:outputLink>                            
                                         <p:tooltip for="tool-pc" value="Preparacion de Clase" trackMouse="true" />
                                     </f:facet>
-                                    <p:cellEditor>
-                                        <f:facet name="output"><h:outputText value="#{registro.preparacion}" /></f:facet>
-                                        <f:facet name="input"><p:inputText id="preparacion" value="#{registro.preparacion}" style="width:96%"/></f:facet>
-                                    </p:cellEditor>
+                                    <h:outputText value="#{registro.preparacion}" />
                                 </p:column>
 
                                 <p:column style="text-align: center">
@@ -125,10 +118,8 @@
                                         </h:outputLink>                            
                                         <p:tooltip for="tool-cap" value="Capacitacion" trackMouse="true" />
                                     </f:facet>
-                                    <p:cellEditor>
-                                        <f:facet name="output"><h:outputText value="#{registro.capacitacion}" /></f:facet>
-                                        <f:facet name="input"><p:inputText id="capacitacion" value="#{registro.capacitacion}" style="width:96%"/></f:facet>
-                                    </p:cellEditor>
+                                    <h:outputText value="#{registro.capacitacion}" />
+                                        
                                 </p:column>
 
                                 <p:column style="text-align: center">
@@ -247,10 +238,10 @@
                                         <h:outputText value="#{asignacionController.totalesCalculados.totalHC}"/>
                                     </p:column> 
                                     <p:column colspan="1" >
-                                        <h:outputText value="#{asignacionController.totalesCalculados.totalPC} / #{asignacionController.totalesEsperados.totalPC}"/>
+                                        <h:outputText value="#{asignacionController.totalesCalculados.totalPC}"/>
                                     </p:column> 
                                     <p:column colspan="1" >
-                                        <h:outputText value="#{asignacionController.totalesCalculados.totalCap} / #{asignacionController.totalesEsperados.totalCap}"/>
+                                        <h:outputText value="#{asignacionController.totalesCalculados.totalCap}"/>
                                     </p:column> 
                                     <p:column colspan="1" >                                
                                         <h:outputText value="#{asignacionController.totalesCalculados.totalCD} / #{asignacionController.totalesEsperados.totalCD}"/>
@@ -298,50 +289,7 @@
                             </p:dataTable>  
                         </div>
                         -->
-                    </div>
-                    <br></br>
-
-                    <div class="ui-g-10">
-                        <p:dataTable id="summary" class="texto-tabla" value="#{asignacionController.totalesCalculados}" var="calculados">
-                            <p:column colspan="2" >
-                                <h:outputText value="Total de horas por actividad:"/>
-                            </p:column> 
-
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalHC}"/>
-                            </p:column> 
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalPC} / #{asignacionController.totalesEsperados.totalPC}"/>
-                            </p:column> 
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalCap} / #{asignacionController.totalesEsperados.totalCap}"/>
-                            </p:column> 
-                            <p:column colspan="1" >                                
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalCD} / #{asignacionController.totalesEsperados.totalCD}"/>
-                            </p:column> 
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalHI} / #{asignacionController.totalesEsperados.totalHI}"/>
-                            </p:column> 
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalPS} / #{asignacionController.totalesEsperados.totalPS}"/>
-                            </p:column> 
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalODA} / #{asignacionController.totalesEsperados.totalODA}"/>                                                                                 
-                            </p:column> 
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalPlan} / #{asignacionController.totalesEsperados.totalPlan}"/>
-                            </p:column> 
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalVirt} / #{asignacionController.totalesEsperados.totalVirt}"/>
-                            </p:column> 
-                            <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalCom} / #{asignacionController.totalesEsperados.totalCom}"/>
-                            </p:column>     
-
-                        </p:dataTable>
-
-                    </div>
-
+                    </div>                    
                 </h:form>   
             </p:panel>  
             <script type="text/javascript">
