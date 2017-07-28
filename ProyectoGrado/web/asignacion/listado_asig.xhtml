@@ -275,6 +275,9 @@
                                             <f:convertNumber pattern="##.##"/>
                                         </h:outputText>
                                     </p:column>
+                                    <p:column colspan="1" >
+                                        <h:outputText value="#{asignacionController.totalSum} / #{asignacionController.totalesEsperados.totalHC}"/>
+                                    </p:column> 
                                 </p:summaryRow>
 
                             </p:dataTable> 

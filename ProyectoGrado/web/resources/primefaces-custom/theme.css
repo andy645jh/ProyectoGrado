@@ -88,10 +88,6 @@ a:visited.ui-button,
 
 .ui-widget-content .ui-state-hover,
 .ui-widget-header .ui-state-hover,
-.ui-state-focus,
-.ui-widget-content .ui-state-focus,
-.ui-widget-header .ui-state-focus,
-.ui-button:hover,
 .ui-button:focus {
 	/*border: 1px solid #cccccc;*/
 	background: #636365;
@@ -103,7 +99,6 @@ a:visited.ui-button,
 .ui-state-hover a:hover,
 .ui-state-hover a:link,
 .ui-state-hover a:visited,
-.ui-state-focus a,
 .ui-state-focus a:hover,
 .ui-state-focus a:link,
 .ui-state-focus a:visited,
@@ -111,6 +106,11 @@ a.ui-button:hover,
 a.ui-button:focus {
 	color: #bfd730;
 	text-decoration: none;
+}
+
+.ui-state-focus{
+    background: none;
+    color: black;
 }
 
 .ui-visual-focus {

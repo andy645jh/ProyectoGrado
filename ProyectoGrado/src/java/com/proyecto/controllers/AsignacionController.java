@@ -58,7 +58,8 @@ public class AsignacionController implements Serializable {
     private double totalvirt;
     private double totalCom;
     private double totalHoras;
-
+    private double _totalSum;
+    
     private Coordinacion _coordinacion;
 
     private Totales _totalesCalculados;
@@ -309,5 +310,13 @@ public class AsignacionController implements Serializable {
 
     public void setListSum(List<Double> _listSum) {
         this._listSum = _listSum;
+    }
+
+    public double getTotalSum() {
+        return _totalSum;
+    }
+
+    public void setTotalSum(double _totalSum) {
+        this._totalSum = _totalSum;
     }
 }
