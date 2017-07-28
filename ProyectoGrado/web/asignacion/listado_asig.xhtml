@@ -58,7 +58,7 @@
                             </div>
                             -->
                             <div class="ui-g-3">
-                                <p:commandButton value="Guardar" actionListener="#{coordinacionController.procesar()}" icon="ui-icon-disk" update=":formAsig" ajax="false">
+                                <p:commandButton value="Guardar" actionListener="#{coordinacionController.procesar()}" ajax="false" icon="ui-icon-disk" update=":formAsig">
                                     <p:ajax event="dialogReturn" update=":formAsig:listar :formAsig:mensajito" />                          
                                 </p:commandButton>
                             </div>
@@ -70,10 +70,11 @@
                     <p:separator/>
                     <br/>
                     <div class="ui-g-12">
-                        <div class="ui-g-11">
-                            <p:dataTable sortBy="#{asignacionController.totalesEsperados.totalHC}" value="#{asignacionController.listadoAsign}" var="registro" id="listar" class="letra-tabla ui-g-11" editable="true" editMode="cell">
+                        <div class="ui-g-12">
+                            <p:remoteCommand name="onCellEdit" update=":formAsig:listar:summary_cal listar" />
+                            <p:dataTable sortMode="ascending" sortBy="#{registro.horasclase}" value="#{asignacionController.listadoAsign}" var="registro" id="listar" class="letra-tabla ui-g-11" editable="true" >
 
-                                <p:ajax event="rowEdit" listener="#{asignacionController.onCellEdit}" update=":formAsig:summary listar:summary_cell :formAsig:total listar" />                                
+                                <p:ajax event="rowEdit" listener="#{asignacionController.onCellEdit}" oncomplete="onCellEdit()" update="listar" />                                                                                                
 
                                 <p:column style="text-align: center">
                                     <f:facet name="header">Docente</f:facet>
@@ -229,10 +230,57 @@
                                         </h:outputLink>                            
                                         <p:tooltip for="tool-sum" value="Comites" trackMouse="true" />  
                                     </f:facet>                                    
-                                    <h:outputText id="summary_cell" value="#{registro.sumatoria}" />                                                                          
+                                    <h:outputText id="summary_cell" value="#{registro.sumatoria}">
+                                        <f:convertNumber pattern="##.##"/>
+                                    </h:outputText>                                                                         
                                 </p:column>
+                                <p:column style="width:32px">
+                                    <p:rowEditor />
+                                </p:column>
+
+                                <p:summaryRow id="summary-row" listener="#{asignacionController.calculateTotales}">
+                                    <p:column colspan="2" >
+                                        <h:outputText value="Total de horas por actividad:"/>
+                                    </p:column> 
+
+                                    <p:column colspan="1" >
+                                        <h:outputText value="#{asignacionController.totalesCalculados.totalHC}"/>
+                                    </p:column> 
+                                    <p:column colspan="1" >
+                                        <h:outputText value="#{asignacionController.totalesCalculados.totalPC} / #{asignacionController.totalesEsperados.totalPC}"/>
+                                    </p:column> 
+                                    <p:column colspan="1" >
+                                        <h:outputText value="#{asignacionController.totalesCalculados.totalCap} / #{asignacionController.totalesEsperados.totalCap}"/>
+                                    </p:column> 
+                                    <p:column colspan="1" >                                
+                                        <h:outputText value="#{asignacionController.totalesCalculados.totalCD} / #{asignacionController.totalesEsperados.totalCD}"/>
+                                    </p:column> 
+                                    <p:column colspan="1" >
+                                        <h:outputText value="#{asignacionController.totalesCalculados.totalHI} / #{asignacionController.totalesEsperados.totalHI}"/>
+                                    </p:column> 
+                                    <p:column colspan="1" >
+                                        <h:outputText value="#{asignacionController.totalesCalculados.totalPS} / #{asignacionController.totalesEsperados.totalPS}"/>
+                                    </p:column> 
+                                    <p:column colspan="1" >
+                                        <h:outputText value="#{asignacionController.totalesCalculados.totalODA} / #{asignacionController.totalesEsperados.totalODA}"/>
+                                    </p:column> 
+                                    <p:column colspan="1" >
+                                        <h:outputText value="#{asignacionController.totalesCalculados.totalPlan} / #{asignacionController.totalesEsperados.totalPlan}"/>
+                                    </p:column> 
+                                    <p:column colspan="1" >
+                                        <h:outputText value="#{asignacionController.totalesCalculados.totalVirt} / #{asignacionController.totalesEsperados.totalVirt}"/>
+                                    </p:column> 
+                                    <p:column colspan="1" >
+                                        <h:outputText id="summary_cal" value="#{asignacionController.totalesCalculados.totalCom} / #{asignacionController.totalesEsperados.totalCom}">
+                                            <f:convertNumber pattern="##.##"/>
+                                        </h:outputText>
+                                    </p:column>
+                                </p:summaryRow>
+
                             </p:dataTable> 
+
                         </div>
+                        <!--
                         <div class="ui-g-1">
                             <p:dataTable value="#{asignacionController.listSum}" var="sum" class="letra-tabla" id="total">
 
@@ -246,8 +294,10 @@
                                 </p:column>
                             </p:dataTable>  
                         </div>
+                        -->
                     </div>
                     <br></br>
+                    
                     <div class="ui-g-10">
                         <p:dataTable id="summary" class="texto-tabla" value="#{asignacionController.totalesCalculados}" var="calculados">
                             <p:column colspan="2" >
@@ -273,7 +323,7 @@
                                 <h:outputText value="#{asignacionController.totalesCalculados.totalPS} / #{asignacionController.totalesEsperados.totalPS}"/>
                             </p:column> 
                             <p:column colspan="1" >
-                                <h:outputText value="#{asignacionController.totalesCalculados.totalODA} / #{asignacionController.totalesEsperados.totalODA}"/>
+                                <h:outputText value="#{asignacionController.totalesCalculados.totalODA} / #{asignacionController.totalesEsperados.totalODA}"/>                                                                                 
                             </p:column> 
                             <p:column colspan="1" >
                                 <h:outputText value="#{asignacionController.totalesCalculados.totalPlan} / #{asignacionController.totalesEsperados.totalPlan}"/>
@@ -286,10 +336,22 @@
                             </p:column>     
 
                         </p:dataTable>
+                    
                     </div>
-
+                   
                 </h:form>   
             </p:panel>  
+            <script type="text/javascript">
+
+                $(document).on("keydown", ".ui-cell-editor-input input", function (event) {
+                    //bloquea el uso del enter en la edicion de la tabla
+                    if (event.keyCode == 13) {
+                        event.preventDefault();
+                        //$(this).closest("tr").find(".ui-row-editor .ui-icon-check").click();
+                    }
+                });
+
+            </script>
         </ui:define>
     </ui:composition>
 </html>

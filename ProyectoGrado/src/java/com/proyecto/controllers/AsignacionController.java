@@ -25,6 +25,7 @@ import javax.faces.context.FacesContextFactory;
 import org.primefaces.component.api.UIData;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.data.FilterEvent;
 
 /**
@@ -218,22 +219,22 @@ public class AsignacionController implements Serializable {
         System.out.println("COmplete");
     }
 
-    public void onCellEdit(CellEditEvent event) {
-
-        Object oldValue = event.getOldValue();
-        Object newValue = event.getNewValue();
+    public void onCellEdit(RowEditEvent event) {
+        
+        /*Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();*/
 
         /*if (_listadoAsign == null) {
          _listadoAsign = _ejbFacade.listado();
          }*/
-        Asignacion asigTemp = (Asignacion) _listadoAsign.get(event.getRowIndex());
+        Asignacion asigTemp = (Asignacion)event.getObject();
 
         Double sum = asigTemp.getCapacitacion() + asigTemp.getColectivo() + asigTemp.getComites();
         sum += asigTemp.getHorasclase() + asigTemp.getInvestigacion() + asigTemp.getOda() + asigTemp.getSocial();
         sum += asigTemp.getPlaneacion() + asigTemp.getPreparacion() + asigTemp.getVirtualidad();
         asigTemp.setSumatoria(sum);
 
-        System.out.println("AsignacionController.onCellEdit -> Nuevo Valor: " + ((Asignacion) _listadoAsign.get(event.getRowIndex())).toString());
+        System.out.println("AsignacionController.onCellEdit -> Nuevo Valor: " + asigTemp.toString());
 
         actualizar(asigTemp);
 
@@ -242,16 +243,15 @@ public class AsignacionController implements Serializable {
         _listSum = new ArrayList<>();
         for (Asignacion asigT : _listadoAsign) {
             _listSum.add(asigT.getSumatoria());
-        }
-
-        UIData table = (UIData) event.getComponent();
-        String updateClientId = table.getClientId() + ":" + table.getRowIndex() + ":listar";
-        FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add(updateClientId);
-
-        System.out.println("AsignacionController.onCellEdit -> VALOR ANTES " + oldValue);
-        System.out.println("AsignacionController.onCellEdit -> VALOR DESPUES " + newValue);
+        }        
+        
     }
 
+    public void calculateTotales(Object obj) {
+        System.out.println("Entro a calcular");
+        calculate();
+    }
+    
     public int getCodDocente() {
         return codDocente;
     }
