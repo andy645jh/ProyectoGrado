@@ -214,6 +214,26 @@ public class AsignacionController implements Serializable {
 //        context.closeDialog(null);
     }
 
+    public String checkSum(double sum, int tipo)
+    {
+        if(tipo==1)
+        {
+            if(sum>53.33)
+            {
+                return "red-color";
+            }else{
+                return "black-color";
+            }
+        }else{
+            if(sum>26.33)
+            {
+                return "red-color";
+            }else{
+                return "black-color";
+            }            
+        }
+    }
+    
     public void complete() {
         System.out.println("COmplete");
     }

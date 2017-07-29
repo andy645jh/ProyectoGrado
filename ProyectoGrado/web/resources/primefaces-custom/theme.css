@@ -456,7 +456,7 @@ a.ui-button:active,
 
 /* agregado por elkin */
 html, body, .row-100h{
-    height: 100%;
+    height: 100% !important;
     font-family: Myriad pro regular,Helvetica,sans-serif;
 }
 
@@ -466,7 +466,7 @@ html, body, .row-100h{
 
 .menu-lateral{
     background-color: #f6f6f6;
-    height: 100%;
+    height: auto;
     border-right: 1px solid #bcbdc0;
     font-size: 1.5em;
 }
@@ -595,4 +595,12 @@ table button
 
 tr{
     height: 50px;
+}
+
+.red-color{
+    color: red;
+}
+
+.black-color{
+    color: black;
 }

@@ -14,14 +14,14 @@
         <h:outputStylesheet name="grid/grid.css" library="primefaces" />
     </h:head>
 
-    <h:body style="margin: 0;min-height: 90%">        
+    <h:body style="margin: 0;">       
 
-        <div class="ui-g row-100h">
+        <div class="ui-g" style="min-height: 100%;">
             <div class="ui-g-nopad ui-g-12 ui-md-2 menu-lateral">
                 <div class="ui-g">
                     <img src="#{facesContext.externalContext.requestContextPath}/resources/img/logo_uts_m.jpg" alt="logo" class="img-responsive"/>
-                </div>
-                <hr></hr>
+                </div>               
+                <h5>DASHBOARD</h5>
                 <ui:insert name="menu">                    
                     <span>Menu</span>
                 </ui:insert>
@@ -40,7 +40,7 @@
                             </f:facet>
 
                             <f:facet name="right">
-                                
+
                                 <p:menuButton value="#{loginController.nombreUsuario}">                                    
                                     <p:menuitem value="Salir" ajax="false" actionListener="#{loginController.logout()}" icon="ui-icon-extlink"/>                                    
                                 </p:menuButton>
