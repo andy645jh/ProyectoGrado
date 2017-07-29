@@ -146,11 +146,11 @@ public class AsignacionController implements Serializable {
                 totalCom += asg.getComites();
             }
 
-            if (asg.getCoddocente().getTipocontrato() == 1) {
+            /*if (asg.getCoddocente().getTipocontrato() == 1) {
                 totalHC += 24;
             } else {
                 totalHC += 12;
-            }
+            }*/
 
             System.out.println("Total Horas: " + asg.getSumatoria());
 
@@ -243,7 +243,7 @@ public class AsignacionController implements Serializable {
         for (Asignacion asigT : _listadoAsign) {
             _totalSum += asigT.getSumatoria();
             _listSum.add(asigT.getSumatoria());
-        }        
+        }       
         
     }
 
