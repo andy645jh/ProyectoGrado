@@ -15,10 +15,12 @@
         </ui:define>
         <ui:define name="content">
             <p:panel>      
+                <p:growl id="mensajito" showDetail="true"/> 
+               
                 <h:form id="formAsig">  
 
                     <p:outputLabel value="Es necesario realizar la asignacion de  porcentajes" />
-                    <p:growl id="mensajito" sticky="true" showDetail="true"/> 
+                    
                     <div class="ui-g form-asig-label">
 
                         <div class="ui-g-12">
@@ -52,7 +54,7 @@
 
                             <div class="ui-g-3">
                                 <p:commandButton value="Guardar" actionListener="#{coordinacionController.procesar()}" ajax="false" icon="ui-icon-disk" update=":formAsig">
-                                    <p:ajax event="dialogReturn" update=":formAsig:listar :formAsig:mensajito" />                          
+                                    <p:ajax event="dialogReturn" update=":formAsig:listar :mensajito" />                          
                                 </p:commandButton>
                             </div>
                         </div>

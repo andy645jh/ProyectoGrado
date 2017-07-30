@@ -604,3 +604,13 @@ tr{
 .black-color{
     color: black;
 }
+
+.ui-growl-error{
+    border: 1px solid #de9f9a;
+    background: #c50e0e;
+    color: #e8e8de;
+}
+
+.ui-growl-info{
+    color: #1f1f18;
+}

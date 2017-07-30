@@ -19,6 +19,6 @@ public class Mensajes
     public static void exito(String titulo, String contenido)
     {
         FacesMessage mensajito=new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,contenido);
-        FacesContext.getCurrentInstance().addMessage("SuccessInfo", mensajito);
+        FacesContext.getCurrentInstance().addMessage(null, mensajito);
     }
 }

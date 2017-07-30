@@ -90,13 +90,16 @@ public class CoordinacionController implements Serializable{
     
     public void procesar()
     {        
-        String titulo, detalle;       
-        //_obj = (Coordinacion) SessionUtils.get("coordinacion");
+        
+       
+        String titulo, detalle;      
+       
         System.out.println("LO Q HAY EN COORDI " + _obj);        
          
         if(!_obj.esCien())
         {
             System.out.println("no se cumple la condicion");
+            Mensajes.error("Algo no esta bien", "Revisar que la suma de los valores es igual a 100%");
             return;
         }
         
@@ -111,21 +114,23 @@ public class CoordinacionController implements Serializable{
             _ejbFacade.actualizar(_obj);
             titulo = ResourceBundle.getBundle(GENERAL_TXT).getString("exitoso");
             detalle = ResourceBundle.getBundle(GENERAL_TXT).getString("actualizarExitoso");
-                                    
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
-            
-            RequestContext context = RequestContext.getCurrentInstance();
-            context.closeDialog(null);
+            Mensajes.exito(titulo, detalle);
+            //message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
+            //FacesContext.getCurrentInstance().addMessage("MessageId", new FacesMessage  (FacesMessage.SEVERITY_WARN,"Be Warned!", "You did something wrong!")); 
+            //FacesContext context = FacesContext.getCurrentInstance();
+            //context.getMessageList().clear();
+            //context.addMessage("mensajito", message);
         } catch (Exception e) {
             
             System.out.println("ERROR");
             titulo = ResourceBundle.getBundle(GENERAL_TXT).getString("error");
             detalle = ResourceBundle.getBundle(GENERAL_TXT).getString("guardarError");
-            message = new FacesMessage(FacesMessage.SEVERITY_ERROR, titulo, detalle);
+            Mensajes.error(titulo, detalle);
+            /*message = new FacesMessage(FacesMessage.SEVERITY_ERROR, titulo, detalle);
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);
 
-            Logger.getLogger(Coordinacion.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(Coordinacion.class.getName()).log(Level.SEVERE, null, e);*/
 
         }
     }

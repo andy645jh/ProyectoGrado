@@ -5,7 +5,6 @@ import com.proyecto.facades.DocentesFacade;
 import com.proyecto.persistences.Asignacion;
 import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.TiempoAsignado;
-import com.proyecto.utilities.Mensajes;
 import com.proyecto.utilities.SessionUtils;
 import com.proyecto.utilities.Totales;
 import java.io.Serializable;
@@ -20,13 +19,8 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.context.FacesContextFactory;
-import org.primefaces.component.api.UIData;
 import org.primefaces.context.RequestContext;
-import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
-import org.primefaces.event.data.FilterEvent;
 import org.primefaces.event.data.SortEvent;
 
 /**
