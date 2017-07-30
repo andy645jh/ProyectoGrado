@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9949e87f-a1c8-4dba-bdd3-7a94e0b36cde">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="51"/>
 	<property name="ireport.y" value="0"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -12,98 +12,98 @@
 				<reportElement x="0" y="0" width="802" height="61" uuid="f5482836-0508-40e2-8c37-63ed5d3ee2d5"/>
 			</rectangle>
 			<line>
-				<reportElement x="0" y="15" width="802" height="1" uuid="2ca62707-43a6-481f-b49c-6a8e9b3b3944"/>
+				<reportElement x="0" y="13" width="802" height="1" uuid="2ca62707-43a6-481f-b49c-6a8e9b3b3944"/>
 			</line>
 			<line>
-				<reportElement x="1" y="31" width="802" height="1" uuid="cefa19d1-4910-4c51-af4d-d9fffd5d698f"/>
+				<reportElement x="1" y="27" width="802" height="1" uuid="cefa19d1-4910-4c51-af4d-d9fffd5d698f"/>
 			</line>
 			<line>
 				<reportElement x="50" y="46" width="720" height="1" uuid="0a2fa257-11cf-44b9-ae7b-a6a3b1c9dcdd"/>
 			</line>
 			<staticText>
-				<reportElement x="1" y="0" width="802" height="16" uuid="e7d8dd6a-0a30-4538-a5c2-d361aca0c2a8"/>
+				<reportElement mode="Opaque" x="1" y="0" width="801" height="13" backcolor="#CCCCCC" uuid="e7d8dd6a-0a30-4538-a5c2-d361aca0c2a8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SEGUIMIENTO A LAS ACTIVIDADES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="15" width="802" height="16" uuid="2e72e95a-e3b7-4a2c-9842-9963955f3cd0"/>
+				<reportElement mode="Opaque" x="1" y="14" width="801" height="13" backcolor="#CCCCCC" uuid="2e72e95a-e3b7-4a2c-9842-9963955f3cd0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Indique las horas semanales (horas academicas de 45 minutos)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="32" width="48" height="29" uuid="5b32fc95-2b7f-4038-b8ad-5a850baa1b8f"/>
+				<reportElement mode="Opaque" x="2" y="28" width="48" height="33" backcolor="#CCCCCC" uuid="5b32fc95-2b7f-4038-b8ad-5a850baa1b8f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Actividad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="771" y="31" width="32" height="29" uuid="4da9c702-df59-4ef4-9b88-3452ce48e9ad"/>
+				<reportElement mode="Opaque" x="771" y="28" width="31" height="33" backcolor="#CCCCCC" uuid="4da9c702-df59-4ef4-9b88-3452ce48e9ad"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="50" y="31" width="91" height="16" uuid="adc2c7a1-0c2d-4484-8303-f869ecb0530a"/>
+				<reportElement mode="Opaque" x="50" y="28" width="91" height="18" backcolor="#CCCCCC" uuid="adc2c7a1-0c2d-4484-8303-f869ecb0530a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isBold="true"/>
+					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Julio]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="141" y="32" width="113" height="16" uuid="4fea2ce4-8d0e-4176-9a64-9d75bfdcdb2b"/>
+				<reportElement mode="Opaque" x="141" y="28" width="113" height="18" backcolor="#CCCCCC" uuid="4fea2ce4-8d0e-4176-9a64-9d75bfdcdb2b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Agosto]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="254" y="32" width="121" height="16" uuid="778277f1-89ab-4bac-b113-4524e84cd3f6"/>
+				<reportElement mode="Opaque" x="254" y="28" width="121" height="18" backcolor="#CCCCCC" uuid="778277f1-89ab-4bac-b113-4524e84cd3f6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Septiembre]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="374" y="31" width="133" height="16" uuid="d42c7048-18dd-4be8-85b9-971d2c571f69"/>
+				<reportElement mode="Opaque" x="374" y="28" width="133" height="18" backcolor="#CCCCCC" uuid="d42c7048-18dd-4be8-85b9-971d2c571f69"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Octubre]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="507" y="31" width="140" height="16" uuid="e31ee464-6490-43dd-8658-67bb6af6dcdb"/>
+				<reportElement mode="Opaque" x="507" y="28" width="140" height="18" backcolor="#CCCCCC" uuid="e31ee464-6490-43dd-8658-67bb6af6dcdb"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Noviembre]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="647" y="30" width="123" height="16" uuid="95c5eea9-129e-43e9-819c-450d32aa24b3"/>
+				<reportElement mode="Opaque" x="647" y="28" width="124" height="18" backcolor="#CCCCCC" uuid="95c5eea9-129e-43e9-819c-450d32aa24b3"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Diciembre]]></text>
 			</staticText>
 			<line>
-				<reportElement x="140" y="32" width="1" height="14" uuid="a7490755-4e2c-42d6-8005-b0a1782eba01"/>
+				<reportElement x="140" y="27" width="1" height="19" uuid="a7490755-4e2c-42d6-8005-b0a1782eba01"/>
 			</line>
 			<line>
-				<reportElement x="253" y="30" width="1" height="16" uuid="dd34517e-1ba9-465c-b67b-f6ddf2ea5739"/>
+				<reportElement x="253" y="27" width="1" height="19" uuid="dd34517e-1ba9-465c-b67b-f6ddf2ea5739"/>
 			</line>
 			<line>
-				<reportElement x="375" y="32" width="1" height="15" uuid="ac2cba45-8b49-4b2d-bb5d-08585694b9e4"/>
+				<reportElement x="375" y="27" width="1" height="20" uuid="ac2cba45-8b49-4b2d-bb5d-08585694b9e4"/>
 			</line>
 			<line>
-				<reportElement x="506" y="30" width="1" height="16" uuid="14210a73-ff38-47f7-8f78-15aec2ce5c12"/>
+				<reportElement x="506" y="27" width="1" height="19" uuid="14210a73-ff38-47f7-8f78-15aec2ce5c12"/>
 			</line>
 			<line>
-				<reportElement x="646" y="31" width="1" height="15" uuid="3c1dc349-0cec-40c5-bc52-003a0c571bf1"/>
+				<reportElement x="646" y="28" width="1" height="18" uuid="3c1dc349-0cec-40c5-bc52-003a0c571bf1"/>
 			</line>
 		</band>
 	</columnHeader>
@@ -173,13 +173,13 @@
 				<reportElement x="738" y="-14" width="1" height="30" uuid="bb294dd2-b7d2-4d96-93c6-902fac5bc72d"/>
 			</line>
 			<line>
-				<reportElement x="772" y="-30" width="1" height="46" uuid="f4114419-1a6e-460e-9427-a4a8298b21f8"/>
+				<reportElement x="772" y="-33" width="1" height="49" uuid="f4114419-1a6e-460e-9427-a4a8298b21f8"/>
 			</line>
 			<rectangle>
 				<reportElement mode="Transparent" x="0" y="0" width="802" height="16" uuid="317c5910-daa2-4d7a-97b0-8fc39e8d0453"/>
 			</rectangle>
 			<line>
-				<reportElement x="50" y="-29" width="1" height="44" uuid="5181feba-a264-42ae-a11f-54ecb18bb6b9"/>
+				<reportElement x="50" y="-33" width="1" height="48" uuid="5181feba-a264-42ae-a11f-54ecb18bb6b9"/>
 			</line>
 			<line>
 				<reportElement x="340" y="-14" width="1" height="30" uuid="286446ef-c78f-48cd-9cfd-8617887265b0"/>

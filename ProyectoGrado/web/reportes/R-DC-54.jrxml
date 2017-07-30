@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R-DC-54" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6432eeef-5f8d-4b30-b336-a5ced63e6148">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="84"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["D:\\Documents\\proyectogradoing\\ProyectoGrado\\web\\reportes\\"]]></defaultValueExpression>
 	</parameter>
@@ -273,7 +273,7 @@
 			</staticText>
 			<image>
 				<reportElement x="9" y="9" width="53" height="42" uuid="544f9a63-41cf-4cb0-9cc4-b9bb2cee8ba2"/>
-				<imageExpression><![CDATA["E:\\repositorios\\proyectogradoing\\ProyectoGrado\\web\\resources\\img\\logo_reportes.PNG"]]></imageExpression>
+				<imageExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}.get("LOGO")]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -285,9 +285,14 @@
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "lstActividades_RDC54.jasper"]]></subreportExpression>
 			</subreport>
 			<subreport>
-				<reportElement x="0" y="115" width="200" height="100" uuid="2986da11-4620-4be1-a353-758b16dfc943"/>
+				<reportElement x="-11" y="116" width="200" height="100" uuid="2986da11-4620-4be1-a353-758b16dfc943"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "seguimiento_actividades.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="-11" y="238" width="200" height="100" uuid="63e6e001-eecc-4379-8676-b4c46d10debc"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "lst_productos.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>

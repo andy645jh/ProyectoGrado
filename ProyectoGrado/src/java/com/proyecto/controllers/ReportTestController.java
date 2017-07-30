@@ -56,14 +56,14 @@ public class ReportTestController implements Serializable {
                     getRealPath("/reportes\\");
 
             String logoEtiqueta = FacesContext.getCurrentInstance().getExternalContext().
-                    getRealPath("/resources/img/logo_p4.png");
+                    getRealPath("/resources/img/logo_reportes.PNG");
 
             String cadenaConexion = "jdbc:postgresql://localhost:5432/bd_proyecto";
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(cadenaConexion,
                     "user_java", "123456");
 
-            map.put("RUTA_LOGO", logoEtiqueta);
+            map.put("LOGO", logoEtiqueta);
             map.put("SUBREPORT_DIR", ruta+"\\");
 
             String path = FacesContext.getCurrentInstance().getExternalContext().
