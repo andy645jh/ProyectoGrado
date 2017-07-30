@@ -280,14 +280,14 @@
 	<detail>
 		<band height="441" splitType="Stretch">
 			<subreport>
-				<reportElement x="0" y="114" width="200" height="100" uuid="3c3841d9-d79d-46e8-b7c4-3ddb46139d36"/>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "lst_productos.jasper"]]></subreportExpression>
-			</subreport>
-			<subreport>
-				<reportElement x="0" y="0" width="200" height="100" uuid="a074db6d-9f22-4ff9-a510-848e48cae9f5"/>
+				<reportElement x="-11" y="0" width="200" height="100" uuid="a074db6d-9f22-4ff9-a510-848e48cae9f5"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "lstActividades_RDC54.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="115" width="200" height="100" uuid="2986da11-4620-4be1-a353-758b16dfc943"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "seguimiento_actividades.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
