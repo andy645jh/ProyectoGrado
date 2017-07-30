@@ -83,7 +83,7 @@
 				<reportElement x="0" y="1" width="802" height="20" uuid="a06c32db-7566-4c33-8445-dda837438a59"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="0" y="0" width="802" height="21" uuid="7bcaa041-1d12-42a7-a182-1d7853a173f5"/>
+				<reportElement mode="Opaque" x="0" y="2" width="802" height="17" backcolor="#CCCCCC" uuid="7bcaa041-1d12-42a7-a182-1d7853a173f5"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[LISTA DE PRODUCTOS]]></text>
 			</staticText>

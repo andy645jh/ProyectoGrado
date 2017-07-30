@@ -24,56 +24,56 @@
 				<reportElement x="1" y="32" width="802" height="1" uuid="2c3196d7-eb0c-46db-ad81-7dd30aa6e702"/>
 			</line>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="0" width="802" height="16" uuid="225a8aaa-67e5-474c-bfe6-fa8c59c0c044"/>
+				<reportElement mode="Opaque" x="2" y="0" width="800" height="16" backcolor="#CCCCCC" uuid="225a8aaa-67e5-474c-bfe6-fa8c59c0c044"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[LISTA DE ACTIVIDADES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="17" width="802" height="16" uuid="2df07c3c-6777-46df-a9fb-9939da72dbff"/>
+				<reportElement mode="Opaque" x="2" y="17" width="800" height="15" backcolor="#CCCCCC" uuid="2df07c3c-6777-46df-a9fb-9939da72dbff"/>
 				<textElement textAlignment="Center">
 					<font size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Posibles tipos de Actividades: Docencia, investigación, Proyección Social, Otros]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="33" width="54" height="28" uuid="5c5e9fb3-f7a2-4cc1-abb8-4c3ca67447a7"/>
+				<reportElement mode="Opaque" x="2" y="33" width="53" height="28" backcolor="#F0EFEF" uuid="5c5e9fb3-f7a2-4cc1-abb8-4c3ca67447a7"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Número de Actividad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="55" y="33" width="227" height="28" uuid="825aee58-50d5-458a-8880-8e6e31782d47"/>
+				<reportElement mode="Opaque" x="55" y="33" width="227" height="28" backcolor="#F0EFEF" uuid="825aee58-50d5-458a-8880-8e6e31782d47"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombre de la actividad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="282" y="33" width="61" height="28" uuid="1179f34d-6c0e-496d-b6bb-1e8276bf1b90"/>
+				<reportElement mode="Opaque" x="282" y="33" width="61" height="28" backcolor="#F0EFEF" uuid="1179f34d-6c0e-496d-b6bb-1e8276bf1b90"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tipo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="343" y="32" width="295" height="28" uuid="6175e3d8-d968-40e9-b727-bcec46f443e6"/>
+				<reportElement mode="Opaque" x="343" y="33" width="295" height="27" backcolor="#F0EFEF" uuid="6175e3d8-d968-40e9-b727-bcec46f443e6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Descripción]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="638" y="33" width="102" height="28" uuid="80b3d983-d415-4c54-b52c-6443372d0238"/>
+				<reportElement mode="Opaque" x="638" y="33" width="102" height="28" backcolor="#F0EFEF" uuid="80b3d983-d415-4c54-b52c-6443372d0238"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Responsable del seguimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="740" y="32" width="62" height="28" uuid="1dcd52f9-ca96-4ee1-a20f-16ed9554352c"/>
+				<reportElement mode="Opaque" x="740" y="33" width="62" height="27" backcolor="#F0EFEF" uuid="1dcd52f9-ca96-4ee1-a20f-16ed9554352c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R-DC-54" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6432eeef-5f8d-4b30-b336-a5ced63e6148">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="84"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["D:\\Documents\\proyectogradoing\\ProyectoGrado\\web\\reportes\\"]]></defaultValueExpression>
 	</parameter>
@@ -95,66 +95,66 @@
 				<reportElement x="2" y="121" width="801" height="1" uuid="0703246e-5e96-4d11-be85-d841466e6ae3"/>
 			</line>
 			<line>
-				<reportElement x="2" y="132" width="801" height="1" uuid="ff0dbc34-eca8-41f9-a859-e5a449109286"/>
+				<reportElement x="2" y="134" width="801" height="1" uuid="ff0dbc34-eca8-41f9-a859-e5a449109286"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="2" y="84" width="800" height="12" backcolor="#CCCCCC" uuid="1bc26f7b-6d94-42c0-a22a-85bbf8ab6243"/>
+				<reportElement mode="Opaque" x="2" y="84" width="801" height="12" backcolor="#CCCCCC" uuid="1bc26f7b-6d94-42c0-a22a-85bbf8ab6243"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[INFORMACIÓN GENERAL]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="2" y="97" width="243" height="12" uuid="e546cf3b-fa76-435c-996b-c3030571d879"/>
+				<reportElement mode="Opaque" x="2" y="97" width="243" height="12" forecolor="#000000" backcolor="#F0EFEF" uuid="e546cf3b-fa76-435c-996b-c3030571d879"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Apellidos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="245" y="98" width="352" height="12" uuid="99b990e1-aa05-444a-81e7-8cb4fc59c19f"/>
+				<reportElement mode="Opaque" x="245" y="97" width="352" height="11" backcolor="#F0EFEF" uuid="99b990e1-aa05-444a-81e7-8cb4fc59c19f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombres]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="694" y="96" width="108" height="12" uuid="93e4e95b-6e57-4d99-b7e1-62b514423ba2"/>
+				<reportElement mode="Opaque" x="694" y="97" width="108" height="12" backcolor="#F0EFEF" uuid="93e4e95b-6e57-4d99-b7e1-62b514423ba2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[C.C.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="597" y="96" width="97" height="12" uuid="2ccad61e-ed5e-47e5-bc14-cdeda115055b"/>
+				<reportElement mode="Opaque" x="597" y="97" width="97" height="11" backcolor="#F0EFEF" uuid="2ccad61e-ed5e-47e5-bc14-cdeda115055b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Código]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="2" y="121" width="65" height="12" uuid="f4733ed6-bb1a-446d-8204-39103056046d"/>
+				<reportElement mode="Opaque" x="2" y="122" width="66" height="12" backcolor="#F0EFEF" uuid="f4733ed6-bb1a-446d-8204-39103056046d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Facultad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="71" y="121" width="205" height="11" uuid="a6d71d41-1363-46b5-bf7e-5b48be0070c6"/>
+				<reportElement mode="Opaque" x="70" y="122" width="205" height="12" backcolor="#F0EFEF" uuid="a6d71d41-1363-46b5-bf7e-5b48be0070c6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Unidad Académica]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="276" y="120" width="81" height="12" uuid="cee7331d-4a06-4be9-a612-3b829d10de71"/>
+				<reportElement mode="Opaque" x="276" y="122" width="81" height="12" backcolor="#F0EFEF" uuid="cee7331d-4a06-4be9-a612-3b829d10de71"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Semestre -año]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="358" y="122" width="444" height="12" uuid="5edb404a-6774-4b29-9b99-b7da31d0d427"/>
+				<reportElement mode="Opaque" x="358" y="122" width="444" height="12" backcolor="#F0EFEF" uuid="5edb404a-6774-4b29-9b99-b7da31d0d427"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -173,17 +173,17 @@
 				<reportElement x="1" y="155" width="68" height="1" uuid="1aa21ca4-baa4-4447-a45d-98b85e119574"/>
 			</line>
 			<line>
-				<reportElement x="55" y="132" width="1" height="47" uuid="36f4919a-5bd8-4658-b5bf-84b0c753835c"/>
+				<reportElement x="55" y="134" width="1" height="45" uuid="36f4919a-5bd8-4658-b5bf-84b0c753835c"/>
 			</line>
 			<staticText>
-				<reportElement x="1" y="133" width="54" height="21" uuid="16e1201d-2278-4f53-b09b-19962de98992"/>
+				<reportElement mode="Opaque" x="3" y="135" width="52" height="20" backcolor="#F0EFEF" uuid="16e1201d-2278-4f53-b09b-19962de98992"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<text><![CDATA[FCSE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="155" width="54" height="24" uuid="e9656329-42e1-42bd-888b-f4f189e281d5"/>
+				<reportElement mode="Opaque" x="3" y="156" width="52" height="23" backcolor="#F0EFEF" uuid="e9656329-42e1-42bd-888b-f4f189e281d5"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
@@ -196,7 +196,7 @@
 				<reportElement x="382" y="154" width="1" height="24" uuid="9cf02eeb-7593-44fa-967c-c3ad3cdbf319"/>
 			</line>
 			<staticText>
-				<reportElement x="276" y="154" width="106" height="25" uuid="683d9d17-66bf-4d9e-8f88-6ea692ebf183"/>
+				<reportElement mode="Opaque" x="276" y="156" width="106" height="23" backcolor="#F0EFEF" uuid="683d9d17-66bf-4d9e-8f88-6ea692ebf183"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -271,12 +271,21 @@
 				</textElement>
 				<text><![CDATA[PLAN DE TRABAJO DOCENTES TIEMPO COMPLETO]]></text>
 			</staticText>
+			<image>
+				<reportElement x="9" y="9" width="53" height="42" uuid="544f9a63-41cf-4cb0-9cc4-b9bb2cee8ba2"/>
+				<imageExpression><![CDATA["E:\\repositorios\\proyectogradoing\\ProyectoGrado\\web\\resources\\img\\logo_reportes.PNG"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<detail>
 		<band height="441" splitType="Stretch">
 			<subreport>
-				<reportElement x="0" y="10" width="801" height="100" uuid="8acbcb4e-ab57-4aa1-8a29-1519d015bb8d"/>
+				<reportElement x="0" y="114" width="200" height="100" uuid="3c3841d9-d79d-46e8-b7c4-3ddb46139d36"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "lst_productos.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="0" width="200" height="100" uuid="a074db6d-9f22-4ff9-a510-848e48cae9f5"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "lstActividades_RDC54.jasper"]]></subreportExpression>
 			</subreport>

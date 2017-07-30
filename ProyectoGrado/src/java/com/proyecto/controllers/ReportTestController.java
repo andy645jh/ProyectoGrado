@@ -53,18 +53,18 @@ public class ReportTestController implements Serializable {
             Map<String, Object> map = new HashMap<String, Object>();
 //            
             String ruta = FacesContext.getCurrentInstance().getExternalContext().
-                    getRealPath("/reportes/");
+                    getRealPath("/reportes\\");
 
             String logoEtiqueta = FacesContext.getCurrentInstance().getExternalContext().
                     getRealPath("/resources/img/logo_p4.png");
 
-            String cadenaConexion = "jdbc:postgresql://localhost:5433/bd_proyecto";
+            String cadenaConexion = "jdbc:postgresql://localhost:5432/bd_proyecto";
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(cadenaConexion,
                     "user_java", "123456");
 
             map.put("RUTA_LOGO", logoEtiqueta);
-            map.put("SUBREPORT_DIR", ruta);
+            map.put("SUBREPORT_DIR", ruta+"\\");
 
             String path = FacesContext.getCurrentInstance().getExternalContext().
                     getRealPath("/reportes/test1.jasper");
@@ -81,7 +81,7 @@ public class ReportTestController implements Serializable {
                 // Parameters for report
                 Map<String, Object> parameters = new HashMap<String, Object>();
 //                JRDataSource dataSource = new JREmptyDataSource();
-                jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, connection);
+                jasperPrint = JasperFillManager.fillReport(jasperReport, map, connection);
                 //JasperViewer.viewReport(jasperPrint);
                 //JasperViewer viewer = new JasperViewer(jasperPrint, false);
                 //viewer.setVisible(true);
