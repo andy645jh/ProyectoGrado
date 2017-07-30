@@ -5,7 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
+
     <ui:composition template="/plantilla.xhtml">
         <ui:define name="menu">
             <ui:decorate template="/menu_docentes.xhtml">
@@ -15,49 +15,49 @@
         <ui:define name="content">           
             <h:form id="formActividades">
                 <p:panel>
-                    
+
                     <p:growl id="mensajito" sticky="true" showDetail="true"/>           
                     <br/>
-          
-                        <p:commandButton value="#{actividadesTxt.crear} #{actividadesTxt.actividades}" actionListener="#{actividadesController.abrirCrear()}" icon="ui-icon-disk" >
-                            <p:ajax event="dialogReturn" update=":formActividades:listar :formActividades:mensajito" />                          
-                        </p:commandButton>                   
-                        <p:separator/>
-                        <br/>
-                        <p:dataTable id="listar" value="#{actividadesController.listado}" var="registro">
-                                                
-                        <p:column style="width: 10px; text-align: center">
+
+                    <p:commandButton value="#{actividadesTxt.crear} #{actividadesTxt.actividades}" actionListener="#{actividadesController.abrirCrear()}" icon="ui-icon-disk" >
+                        <p:ajax event="dialogReturn" update=":formActividades:listar :formActividades:mensajito" />                          
+                    </p:commandButton>                   
+                    <p:separator/>
+                    <br/>
+                    <p:dataTable id="listar" value="#{actividadesController.listado}" var="registro">
+
+                        <p:column style="text-align: center">
                             <f:facet name="header">#{actividadesTxt.nombre}</f:facet>
-                            #{registro.nombre}
+                                #{registro.nombre}
                         </p:column> 
-                        
-                        <p:column style="width: 10px; text-align: center">
+
+                        <p:column style="width: 5%; text-align: center">
                             <f:facet name="header">#{actividadesTxt.horas}</f:facet>
-                            #{registro.horas}
+                                #{registro.horas}
                         </p:column> 
-                        
-                        <p:column style="width: 10px; text-align: center">
+
+                        <p:column style="text-align: center">
                             <f:facet name="header">#{actividadesTxt.descripcion}</f:facet>
-                            #{registro.descripcion}
+                                #{registro.descripcion}
                         </p:column>
-                        
-                        <p:column style="width: 10px; text-align: center">
+
+                        <p:column style="text-align: justify">
                             <f:facet name="header">#{actividadesTxt.responsable}</f:facet>
-                            #{registro.responsable}
+                                #{registro.responsable}
                         </p:column>
-                        
-                        
-                        <p:column style="width: 10px; text-align: center">
+
+
+                        <p:column style="width: 15%; text-align: center">
                             <f:facet name="header">#{actividadesTxt.tipoMod}</f:facet>
-                            #{registro.codtipo}
+                                #{registro.codtipo}
                         </p:column>
-                        
-                        <p:column style="width: 10px; text-align: center">
+
+                        <p:column style="width: 5%; text-align: center">
                             <f:facet name="header">Valoración</f:facet>
-                            #{registro.valoracion}
+                                #{registro.valoracion}
                         </p:column>    
-                            
-                        <p:column style="width: 10px; text-align: center">
+
+                        <p:column style="width: 15%; text-align: center">
                             <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
                             <p:commandButton ajax="false" icon="ui-icon-trash" action="#{actividadesController.borrar(registro)}"></p:commandButton>
                             <p:commandButton icon="ui-icon-pencil" action="#{actividadesController.abrirActualizar(registro)}">
@@ -65,7 +65,7 @@
                             </p:commandButton>  
                         </p:column> 
                     </p:dataTable>
-             
+
                 </p:panel>  
             </h:form>
         </ui:define>
