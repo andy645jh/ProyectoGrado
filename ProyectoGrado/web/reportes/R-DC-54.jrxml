@@ -281,7 +281,7 @@
 		<band height="45"/>
 		<band height="45">
 			<subreport>
-				<reportElement x="-20" y="0" width="200" height="45" uuid="2986da11-4620-4be1-a353-758b16dfc943"/>
+				<reportElement x="-20" y="3" width="200" height="42" uuid="2986da11-4620-4be1-a353-758b16dfc943"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "seguimiento_actividades.jasper"]]></subreportExpression>
 			</subreport>
@@ -300,7 +300,7 @@
 		</band>
 		<band height="50">
 			<subreport>
-				<reportElement x="-20" y="-2" width="200" height="50" uuid="56344e3a-528f-4ec9-bc0a-ba7cc38a3f6c"/>
+				<reportElement x="-20" y="0" width="200" height="48" uuid="56344e3a-528f-4ec9-bc0a-ba7cc38a3f6c"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "horario_semanal.jasper"]]></subreportExpression>
 			</subreport>

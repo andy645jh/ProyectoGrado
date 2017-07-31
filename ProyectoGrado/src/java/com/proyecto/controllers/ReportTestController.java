@@ -58,7 +58,7 @@ public class ReportTestController implements Serializable {
             String logoEtiqueta = FacesContext.getCurrentInstance().getExternalContext().
                     getRealPath("/resources/img/logo_reportes.PNG");
 
-            String cadenaConexion = "jdbc:postgresql://localhost:5432/bd_proyecto";
+            String cadenaConexion = "jdbc:postgresql://localhost:5433/bd_proyecto";
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(cadenaConexion,
                     "user_java", "123456");
@@ -74,7 +74,7 @@ public class ReportTestController implements Serializable {
             try {
                 System.out.println("URL " + path + " PARAMETROS " + map.size());
                 JasperReport jasperReport = JasperCompileManager.compileReport(FacesContext.getCurrentInstance().getExternalContext().
-                 getRealPath("/reportes/R-DC-54.jrxml"));
+                 getRealPath("/reportes/R-DC-26.jrxml"));
                 /*JasperReport jasperReport = JasperCompileManager
                         .compileReport("C:\\Users\\elkin\\Downloads\\StyledTextReport\\StyledTextReport.jrxml");*/
 
@@ -150,14 +150,14 @@ public class ReportTestController implements Serializable {
         String pdf = FacesContext.getCurrentInstance().getExternalContext().
                 getRealPath("/reportes/");
         
-        InputStream stream = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream(pdf+"R-DC-54.jasper");
+        InputStream stream = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream(pdf+"R-DC-26.jasper");
         StreamedContent file = new DefaultStreamedContent(stream, "reportes/jpg", "descargado.jrprint");
         return file;
     }
 
     public String getPathFileJasper() {
         return FacesContext.getCurrentInstance().getExternalContext().
-                getRealPath("/reportes/R-DC-54.jasper");
+                getRealPath("/reportes/R-DC-26.jasper");
     }
 
     public String getNameFilePdf() {
