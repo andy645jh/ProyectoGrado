@@ -2,6 +2,7 @@ package com.proyecto.facades;
 
 import com.proyecto.persistences.Asignacion;
 import com.proyecto.persistences.Coordinacion;
+import com.proyecto.persistences.Docentes;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -44,6 +45,16 @@ public class AsignacionFacade extends AbstractFacade<Asignacion> {
             {
                 Join<Coordinacion,Asignacion> doc = objDocentes.join("_codcoordinacion");
                 Expression<String> valor = doc.get("_codcoordinacion");
+                String cadena = valorBuscar;
+                
+                //System.out.println("AsignacionFacade.buscarA -> VALOR "+valor+" CADENA "+cadena);
+                
+                Predicate condicion = cb.equal(valor, cadena);                
+                cq.where(condicion);
+            }else if(columna.equals("_coddocente"))
+            {
+                Join<Docentes,Asignacion> doc = objDocentes.join("_coddocente");
+                Expression<String> valor = doc.get("_cedula");
                 String cadena = valorBuscar;
                 
                 //System.out.println("AsignacionFacade.buscarA -> VALOR "+valor+" CADENA "+cadena);

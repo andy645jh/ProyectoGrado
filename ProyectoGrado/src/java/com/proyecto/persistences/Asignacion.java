@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 /**
@@ -23,7 +24,7 @@ public class Asignacion implements Serializable {
     private int _codasg;
               
     @JoinColumn(name = "coddocente", referencedColumnName = "cedula")
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private Docentes _coddocente;
     
     @JoinColumn(name = "codcoord", referencedColumnName = "codcoordinacion")

@@ -4,11 +4,15 @@ package com.proyecto.controllers;
 import com.proyecto.utilities.Formulario;
 import com.proyecto.utilities.Mensajes;
 import com.proyecto.facades.ActividadesFacade;
+import com.proyecto.facades.AsignacionFacade;
 import com.proyecto.facades.DocentesFacade;
 import com.proyecto.facades.TipoModalidadesFacade;
 import com.proyecto.persistences.Actividades;
+import com.proyecto.persistences.Asignacion;
+import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Docentes;
 import com.proyecto.persistences.TipoModalidades;
+import com.proyecto.utilities.SessionUtils;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,6 +21,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -36,10 +41,14 @@ public class ActividadesController implements Serializable
     @EJB
     private ActividadesFacade _ejbFacade;
     
-    @EJB
-    private DocentesFacade docentesFacade;
+    @EJB 
+    private DocentesFacade docentesFacade;    
     
-    @EJB TipoModalidadesFacade _modalidadFacade;
+    @EJB 
+    private TipoModalidadesFacade _modalidadFacade;    
+    
+    @EJB 
+    private AsignacionFacade _asignacionFacade;
     
     private Actividades _obj;
     
@@ -51,6 +60,22 @@ public class ActividadesController implements Serializable
     private String _mensajeError = "No se completo la operacion";
     private FacesMessage message;
     private int _codigo;
+    private double _max;
+    
+    private Asignacion _asignacion;
+    private Coordinacion _coordinacion;
+    private Docentes _docente;
+    
+    @PostConstruct
+    private void init()
+    {
+        _coordinacion = (Coordinacion) SessionUtils.get("coordinacion");       
+        _docente = (Docentes) SessionUtils.get("docente"); 
+        List<Asignacion> list = _asignacionFacade.buscarA("_coddocente", (_docente.getCedula()+""));
+        _asignacion = list.get(0);        
+        System.out.println("Asignacion: "+_asignacion);
+        
+    }
     
     public ActividadesController() { }
     
@@ -62,6 +87,7 @@ public class ActividadesController implements Serializable
     
     public void abrirCrear() {
         System.out.print("Enttro");
+        
         Map<String,Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
         options.put("draggable", false);
@@ -276,6 +302,22 @@ public class ActividadesController implements Serializable
 
     public void setCodigo(int _codigo) {
         this._codigo = _codigo;
+    }
+
+    public Coordinacion getCoordinacion() {
+        return _coordinacion;
+    }
+
+    public double getMax() {
+        /*switch(_codigo)
+        {
+            case 
+        }*/
+        return _max;
+    }
+
+    public void setMax(double _max) {
+        this._max = _max;
     }
     
     @FacesConverter(forClass = Actividades.class, value = "actividadesConverter")
