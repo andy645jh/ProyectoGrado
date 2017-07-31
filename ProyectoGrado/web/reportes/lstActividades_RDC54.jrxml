@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b7ef0d35-bfcb-4b20-98e9-aae13b6733c4">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="6" bottomMargin="3" uuid="b7ef0d35-bfcb-4b20-98e9-aae13b6733c4">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="900"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[select a.nombre,a.horas, t.nombre as tipo, a.descripcion, a.responsable, a.valoracion from actividades a join tipomodalidades t on a.codtipo=t.codtipo where a.coddocente=109877]]>
@@ -15,23 +15,23 @@
 	<columnHeader>
 		<band height="54" splitType="Stretch">
 			<rectangle>
-				<reportElement x="1" y="0" width="795" height="54" uuid="301b467d-8200-4990-859e-b0c6770ebd69"/>
+				<reportElement x="1" y="0" width="801" height="54" uuid="301b467d-8200-4990-859e-b0c6770ebd69"/>
 			</rectangle>
 			<line>
-				<reportElement x="0" y="12" width="796" height="1" uuid="2dc7d57c-971b-4f9d-807b-69bd029dbb36"/>
+				<reportElement x="0" y="12" width="802" height="1" uuid="2dc7d57c-971b-4f9d-807b-69bd029dbb36"/>
 			</line>
 			<line>
-				<reportElement x="1" y="24" width="795" height="1" uuid="2c3196d7-eb0c-46db-ad81-7dd30aa6e702"/>
+				<reportElement x="1" y="24" width="801" height="1" uuid="2c3196d7-eb0c-46db-ad81-7dd30aa6e702"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="2" y="1" width="794" height="11" backcolor="#CCCCCC" uuid="225a8aaa-67e5-474c-bfe6-fa8c59c0c044"/>
+				<reportElement mode="Opaque" x="2" y="1" width="800" height="11" backcolor="#CCCCCC" uuid="225a8aaa-67e5-474c-bfe6-fa8c59c0c044"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[LISTA DE ACTIVIDADES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="2" y="13" width="794" height="11" backcolor="#CCCCCC" uuid="2df07c3c-6777-46df-a9fb-9939da72dbff"/>
+				<reportElement mode="Opaque" x="2" y="13" width="800" height="11" backcolor="#CCCCCC" uuid="2df07c3c-6777-46df-a9fb-9939da72dbff"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -73,7 +73,7 @@
 				<text><![CDATA[Responsable del seguimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="753" y="26" width="43" height="27" backcolor="#F0EFEF" uuid="1dcd52f9-ca96-4ee1-a20f-16ed9554352c"/>
+				<reportElement mode="Opaque" x="753" y="26" width="49" height="27" backcolor="#F0EFEF" uuid="1dcd52f9-ca96-4ee1-a20f-16ed9554352c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -84,7 +84,7 @@
 	<detail>
 		<band height="21" splitType="Stretch">
 			<rectangle>
-				<reportElement x="1" y="-1" width="795" height="22" uuid="c1a09c6d-838a-47b0-8df3-14edade0561f"/>
+				<reportElement x="1" y="-1" width="801" height="22" uuid="c1a09c6d-838a-47b0-8df3-14edade0561f"/>
 			</rectangle>
 			<textField>
 				<reportElement x="654" y="0" width="97" height="21" uuid="58760276-048c-4664-9a45-51f904440aa5"/>
@@ -100,7 +100,7 @@
 				<reportElement x="294" y="-30" width="1" height="51" uuid="90b137aa-052d-4b00-b679-086fa4fa7d44"/>
 			</line>
 			<textField isBlankWhenNull="true">
-				<reportElement x="753" y="0" width="44" height="21" uuid="1ccb9bd7-a7f8-4b25-9efe-97f8109e5779"/>
+				<reportElement x="753" y="0" width="49" height="21" uuid="1ccb9bd7-a7f8-4b25-9efe-97f8109e5779"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>

@@ -278,21 +278,31 @@
 		</band>
 	</title>
 	<detail>
-		<band height="441" splitType="Stretch">
+		<band height="45"/>
+		<band height="45">
 			<subreport>
-				<reportElement x="-11" y="0" width="200" height="100" uuid="a074db6d-9f22-4ff9-a510-848e48cae9f5"/>
+				<reportElement x="-20" y="0" width="200" height="45" uuid="2986da11-4620-4be1-a353-758b16dfc943"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "seguimiento_actividades.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="46" splitType="Stretch">
+			<subreport>
+				<reportElement x="-20" y="-89" width="200" height="44" uuid="a074db6d-9f22-4ff9-a510-848e48cae9f5"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "lstActividades_RDC54.jasper"]]></subreportExpression>
 			</subreport>
 			<subreport>
-				<reportElement x="-11" y="116" width="200" height="100" uuid="2986da11-4620-4be1-a353-758b16dfc943"/>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "seguimiento_actividades.jasper"]]></subreportExpression>
-			</subreport>
-			<subreport>
-				<reportElement x="-11" y="238" width="200" height="100" uuid="63e6e001-eecc-4379-8676-b4c46d10debc"/>
+				<reportElement x="-20" y="3" width="200" height="41" uuid="63e6e001-eecc-4379-8676-b4c46d10debc"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "lst_productos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<subreport>
+				<reportElement x="-20" y="-2" width="200" height="50" uuid="56344e3a-528f-4ec9-bc0a-ba7cc38a3f6c"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "horario_semanal.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>

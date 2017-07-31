@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9949e87f-a1c8-4dba-bdd3-7a94e0b36cde">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="3" bottomMargin="3" uuid="9949e87f-a1c8-4dba-bdd3-7a94e0b36cde">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="51"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select codsemana from semana where codsemana=4]]>
+	</queryString>
+	<field name="codsemana" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="62" splitType="Stretch">
 			<rectangle>
 				<reportElement x="0" y="0" width="802" height="61" uuid="f5482836-0508-40e2-8c37-63ed5d3ee2d5"/>
 			</rectangle>
@@ -108,7 +112,11 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="18" splitType="Stretch">
+		<band height="19" splitType="Stretch">
+			<textField>
+				<reportElement x="50" y="-1" width="29" height="16" uuid="9e0e1c1a-970b-4880-8263-210525705b53"/>
+				<textFieldExpression><![CDATA[$F{codsemana}]]></textFieldExpression>
+			</textField>
 			<line>
 				<reportElement x="132" y="-15" width="1" height="30" uuid="c0adf1a1-24e7-4156-8f86-54e5b5a9ac05"/>
 			</line>
@@ -176,7 +184,7 @@
 				<reportElement x="772" y="-33" width="1" height="49" uuid="f4114419-1a6e-460e-9427-a4a8298b21f8"/>
 			</line>
 			<rectangle>
-				<reportElement mode="Transparent" x="0" y="0" width="802" height="16" uuid="317c5910-daa2-4d7a-97b0-8fc39e8d0453"/>
+				<reportElement mode="Transparent" x="0" y="-1" width="802" height="16" uuid="317c5910-daa2-4d7a-97b0-8fc39e8d0453"/>
 			</rectangle>
 			<line>
 				<reportElement x="50" y="-33" width="1" height="48" uuid="5181feba-a264-42ae-a11f-54ecb18bb6b9"/>
