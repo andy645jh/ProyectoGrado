@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f77be251-0118-43bb-b349-e31368843289">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f77be251-0118-43bb-b349-e31368843289">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="184"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["D:\\Documents\\proyectogradoing\\ProyectoGrado\\web\\reportes\\"]]></defaultValueExpression>
 	</parameter>
@@ -14,17 +14,13 @@
 			<staticText>
 				<reportElement x="90" y="12" width="608" height="20" uuid="02e7bbce-7c08-4efd-a0d3-4e31d1561588"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[DOCENCIA]]></text>
+				<text><![CDATA[DOCENCIA333]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="90" y="47" width="608" height="20" uuid="15db7175-d76c-4473-a615-b66e6e8f1cb7"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[HOJA DE VIDA DEL DOCENTE VINCULADO A LA INSTITUCIÓN]]></text>
 			</staticText>
-			<image>
-				<reportElement x="16" y="1" width="64" height="61" uuid="fd5045a7-529a-4eb6-9d88-f252042dc25b"/>
-				<imageExpression><![CDATA["D:\\Pictures\\gorro.gif"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="29" y="57" width="51" height="20" uuid="7649dffb-0165-43c5-a3f2-ba6a3ceab8fd"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
