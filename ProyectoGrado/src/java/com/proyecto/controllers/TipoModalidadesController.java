@@ -78,6 +78,7 @@ public class TipoModalidadesController implements Serializable
         SelectItem[] listaItems = new SelectItem[lista.size()];
         int index=0;
         for (TipoModalidades modalidad : lista) {
+            System.out.println("TipoModalidadesController.combo -> Cod: "+modalidad.getCodtipo());
             SelectItem item = new SelectItem(modalidad.getCodtipo(), modalidad.getNombre());
             
             listaItems[index]=item;

@@ -1,4 +1,3 @@
-
 package com.proyecto.controllers;
 
 import com.proyecto.utilities.Formulario;
@@ -33,268 +32,250 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
 import org.primefaces.context.RequestContext;
 
-
 @ManagedBean
 @SessionScoped
-public class ActividadesController implements Serializable
-{  
+public class ActividadesController implements Serializable {
+
     @EJB
     private ActividadesFacade _ejbFacade;
-    
-    @EJB 
-    private DocentesFacade docentesFacade;    
-    
-    @EJB 
-    private TipoModalidadesFacade _modalidadFacade;    
-    
-    @EJB 
+
+    @EJB
+    private DocentesFacade docentesFacade;
+
+    @EJB
+    private TipoModalidadesFacade _modalidadFacade;
+
+    @EJB
     private AsignacionFacade _asignacionFacade;
-    
+
     private Actividades _obj;
-    
-    private String cedula="";
-    
-    private String _rutaTxt = "/com/java/utilities/txtActividades"; 
-    private String _titulo="Operacion";
+
+    private String cedula = "";
+
+    private String _rutaTxt = "/com/java/utilities/txtActividades";
+    private String _titulo = "Operacion";
     private String _mensajeCorrecto = "Se ha realizado correctamente";
     private String _mensajeError = "No se completo la operacion";
     private FacesMessage message;
     private int _codigo;
     private double _max;
-    
+
     private Asignacion _asignacion;
     private Coordinacion _coordinacion;
     private Docentes _docente;
-    
+
     @PostConstruct
-    private void init()
-    {
-        _coordinacion = (Coordinacion) SessionUtils.get("coordinacion");       
-        _docente = (Docentes) SessionUtils.get("docente"); 
-        List<Asignacion> list = _asignacionFacade.buscarA("_coddocente", (_docente.getCedula()+""));
-        _asignacion = list.get(0);        
-        System.out.println("Asignacion: "+_asignacion);
-        
+    private void init() {
+        _coordinacion = (Coordinacion) SessionUtils.get("coordinacion");
+        _docente = (Docentes) SessionUtils.get("docente");
+        List<Asignacion> list = _asignacionFacade.buscarA("_coddocente", (_docente.getCedula() + ""));
+        _asignacion = list.get(0);
+        System.out.println("Asignacion: " + _asignacion);
+
     }
-    
-    public ActividadesController() { }
-    
-    public Actividades getCampo()
-    {  if(_obj==null)  _obj= new Actividades();
-        return _obj;        
+
+    public ActividadesController() {
     }
-      
-    
+
+    public Actividades getCampo() {
+        if (_obj == null) {
+            _obj = new Actividades();
+        }
+        return _obj;
+    }
+
     public void abrirCrear() {
         System.out.print("Enttro");
-        
-        Map<String,Object> options = new HashMap<String, Object>();
+
+        Map<String, Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);
         RequestContext.getCurrentInstance().openDialog("/actividades/crear", options, null);
-        
+
     }
-    
-    public void agregar()
-    {
-        String titulo,detalle;
-        TipoModalidades modalidad= _modalidadFacade.buscar(_codigo);
-        Docentes d=docentesFacade.getCurrentDocente();
-        System.out.println("CREAR DOCENTE   "+d.getCedula());
+
+    public void agregar() {
+        String titulo, detalle;
+        TipoModalidades modalidad = _modalidadFacade.buscar(_codigo);
+        Docentes d = docentesFacade.getCurrentDocente();
+        System.out.println("CREAR DOCENTE   " + d.getCedula());
         _obj.setCodtipo(modalidad);
-        
+
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
-            
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
+
             _obj.setCoddocente(d);
             _ejbFacade.crear(_obj);
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);
-            
-        } catch (Exception e) 
-        {
+
+        } catch (Exception e) {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardarError");
-            message = new FacesMessage(FacesMessage.SEVERITY_ERROR,titulo,detalle);
-            Logger.getLogger(Actividades.class.getName()).log(Level.SEVERE,null,e);
+            message = new FacesMessage(FacesMessage.SEVERITY_ERROR, titulo, detalle);
+            Logger.getLogger(Actividades.class.getName()).log(Level.SEVERE, null, e);
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);
         }
     }
-    
-    public SelectItem[] combo(String texto)
-    {
+
+    public SelectItem[] combo(String texto) {
         return Formulario.addObject(_ejbFacade.listado(), texto);
     }
-    
-    public SelectItem[] comboFiltrado(String texto)
-    {
-        Docentes doc=docentesFacade.getCurrentDocente();
+
+    public SelectItem[] comboFiltrado(String texto) {
+        Docentes doc = docentesFacade.getCurrentDocente();
 //        Docentes doc=docentesFacade.buscar(109877);
-        
+
         int ced = doc.getCedula();
-        
-        List<Actividades> lista =_ejbFacade.buscarCampo("_coddocente", ""+ced); 
+
+        List<Actividades> lista = _ejbFacade.buscarCampo("_coddocente", "" + ced);
         SelectItem[] listaItems = new SelectItem[lista.size()];
-        int index=0;
+        int index = 0;
         for (Actividades actividad : lista) {
             SelectItem item = new SelectItem(actividad.getCodactividad(), actividad.getNombre());
-            
-            listaItems[index]=item;
+
+            listaItems[index] = item;
             index++;
         }
-        
+
         return listaItems;
     }
-    
-    public String btnBuscar()
-    {       
-        cedula= _obj.getCoddocente().getCedula()+"";        
+
+    public String btnBuscar() {
+        cedula = _obj.getCoddocente().getCedula() + "";
         return "index_evaluador";
     }
-    
-    
-    public List<Actividades> getListarEvaluaciones()
-    {
-       if(cedula==""){
+
+    public List<Actividades> getListarEvaluaciones() {
+        if (cedula == "") {
             return new ArrayList<Actividades>();
-       }else{
-            return _ejbFacade.buscarCampo("_coddocente",cedula);
-       }
+        } else {
+            return _ejbFacade.buscarCampo("_coddocente", cedula);
+        }
     }
-     
-    public List<Actividades> getListado()
-    {
+
+    public List<Actividades> getListado() {
         Docentes doc = docentesFacade.getCurrentDocente();
-        cedula= doc.getCedula()+"";
+        cedula = doc.getCedula() + "";
 //        cedula= "109877";
-        return _ejbFacade.buscarCampo("_coddocente",cedula);
+        return _ejbFacade.buscarCampo("_coddocente", cedula);
     }
-    
-    
-    public void borrar(Actividades faceObj)
-    {
-        String titulo,detalle;
-        
+
+    public void borrar(Actividades faceObj) {
+        String titulo, detalle;
+
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarExitoso");
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
             _ejbFacade.borrar(faceObj);
-            
-        } catch (Exception e) 
-        {
+
+        } catch (Exception e) {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarError");
             Mensajes.error(titulo, detalle);
-            Logger.getLogger(Actividades.class.getName()).log(Level.SEVERE,null,e);
+            Logger.getLogger(Actividades.class.getName()).log(Level.SEVERE, null, e);
         }
-    }    
-    
-    public void abrirActualizar(Actividades objtemp)
-    {
-        _obj = objtemp;
-        Map<String,Object> options = new HashMap<String, Object>();
-        options.put("resizable", false);
-        options.put("draggable", false);
-        options.put("modal", true);       
-        RequestContext.getCurrentInstance().openDialog("/actividades/actualizar", options, null);
     }
-    
-    public void abrirEvaluacion(Actividades objTemp) {
-        
-        _obj= objTemp;
-        Map<String,Object> options = new HashMap<String, Object>();
+
+    public void abrirActualizar(Actividades objtemp) {
+        _obj = objtemp;
+        Map<String, Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);
-       
+        RequestContext.getCurrentInstance().openDialog("/actividades/actualizar", options, null);
+    }
+
+    public void abrirEvaluacion(Actividades objTemp) {
+
+        _obj = objTemp;
+        Map<String, Object> options = new HashMap<String, Object>();
+        options.put("resizable", false);
+        options.put("draggable", false);
+        options.put("modal", true);
+
         RequestContext.getCurrentInstance().openDialog("evaluaciones/actualizar", options, null);
     }
-    
-    public void hixoClick(){
+
+    public void hixoClick() {
         System.out.println("HIXO CLICL EN EL BOTON ");
     }
-    
-    public void guardarEvaluacion()
-    {        
-        String titulo,detalle;
-        
+
+    public void guardarEvaluacion() {
+        String titulo, detalle;
+
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
-         
+
             _ejbFacade.actualizar(_obj);
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);          
-            
-        } catch (Exception e) 
-        {
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
+
+        } catch (Exception e) {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarError");
-            message = new FacesMessage(FacesMessage.SEVERITY_ERROR,titulo,detalle);
-            Logger.getLogger(Actividades.class.getName()).log(Level.SEVERE,null,e);
-          
+            message = new FacesMessage(FacesMessage.SEVERITY_ERROR, titulo, detalle);
+            Logger.getLogger(Actividades.class.getName()).log(Level.SEVERE, null, e);
+
         }
-        
-        RequestContext context = RequestContext.getCurrentInstance();  
+
+        RequestContext context = RequestContext.getCurrentInstance();
         context.closeDialog(null);
-    }  
-    
-    public void error()
-    {
-        String titulo,detalle;
+    }
+
+    public void error() {
+        String titulo, detalle;
         titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
         detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarError");
         Mensajes.error(titulo, detalle);
     }
-    
-    public void mostrarMensaje()
-    {        
-        if(message!=null) FacesContext.getCurrentInstance().addMessage("mensajes", message);
-        message=null;
+
+    public void mostrarMensaje() {
+        if (message != null) {
+            FacesContext.getCurrentInstance().addMessage("mensajes", message);
+        }
+        message = null;
     }
-    
-    public void actualizar()
-    {        
-        String titulo,detalle;
-        TipoModalidades modalidad= _modalidadFacade.buscar(_codigo);
-        Docentes d=docentesFacade.getCurrentDocente();
-        System.out.println("EDITAR DOCENTE   "+d.getCedula());
+
+    public void actualizar() {
+        String titulo, detalle;
+        TipoModalidades modalidad = _modalidadFacade.buscar(_codigo);
+        Docentes d = docentesFacade.getCurrentDocente();
+        System.out.println("EDITAR DOCENTE   " + d.getCedula());
         _obj.setCodtipo(modalidad);
-        
+
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
-                       
+
 //            _obj.setCoddocente(docentesFacade.getCurrentDocente());
             _obj.setCoddocente(d);
             _ejbFacade.actualizar(_obj);
-            
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
-            RequestContext context = RequestContext.getCurrentInstance();  
-            context.closeDialog(null);
-                        
-        } catch (Exception e) 
-        {
-            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarError");
-           
-            
-            message = new FacesMessage(FacesMessage.SEVERITY_ERROR,titulo,detalle);
-            
+
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);
-            Logger.getLogger(Actividades.class.getName()).log(Level.SEVERE,null,e);
+
+        } catch (Exception e) {
+            titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
+            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarError");
+
+            message = new FacesMessage(FacesMessage.SEVERITY_ERROR, titulo, detalle);
+
+            RequestContext context = RequestContext.getCurrentInstance();
+            context.closeDialog(null);
+            Logger.getLogger(Actividades.class.getName()).log(Level.SEVERE, null, e);
         }
-    }  
-    
-    public void resetear()
-    {
+    }
+
+    public void resetear() {
         _obj = null;
-    }  
+    }
 
     public int getCodigo() {
         return _codigo;
@@ -309,38 +290,75 @@ public class ActividadesController implements Serializable
     }
 
     public double getMax() {
-        /*switch(_codigo)
-        {
-            case 
-        }*/
+        _max = calculateMax();
+        System.out.println("Max Antes: "+_max);
+        _max -= acumHorasPorTipo(_codigo);
+        System.out.println("Max Despues: "+_max);
         return _max;
+    }
+
+    private double calculateMax() {
+        System.out.println("Codigo: "+_codigo);
+        switch (_codigo) {
+            case 1:
+                return _asignacion.getSocial();                
+
+            case 4:
+                return _asignacion.getComites();                
+
+            case 5:
+                return _asignacion.getInvestigacion();
+
+            case 6:
+                return _asignacion.getOda();
+
+            case 10:
+                return _asignacion.getPlaneacion();
+
+            case 11:
+                return _asignacion.getVirtualidad();             
+        }
+        return 0;
+    }
+
+    private double acumHorasPorTipo(int tipo) {
+        List<Actividades> listado = getListado();
+        double acum = 0;
+        for (Actividades actividadTemp : listado) {
+            if (actividadTemp.getCodtipo().getCodtipo() == tipo) {
+                acum += actividadTemp.getHoras();
+            }
+        }
+        return acum;
     }
 
     public void setMax(double _max) {
         this._max = _max;
     }
-    
+
     @FacesConverter(forClass = Actividades.class, value = "actividadesConverter")
-    public static class ActividadesControllerConverter implements Converter{
+    public static class ActividadesControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext context, UIComponent component, String value) {
-            try{
-                if (value == null || value.length() == 0) return null;
-                
+            try {
+                if (value == null || value.length() == 0) {
+                    return null;
+                }
+
                 Integer id = Integer.parseInt(value);
                 ActividadesController controller = (ActividadesController) context.getApplication().getELResolver().
                         getValue(context.getELContext(), null, "actividadesController");
                 return controller._ejbFacade.buscar(id);
-            }catch(NumberFormatException e){
-                Logger.getLogger(Actividades.class.getName()).log(Level.SEVERE, null, e);               
+            } catch (NumberFormatException e) {
+                Logger.getLogger(Actividades.class.getName()).log(Level.SEVERE, null, e);
                 return null;
             }
         }
 
         @Override
         public String getAsString(FacesContext context, UIComponent component, Object value) {
-            if (value instanceof Actividades){
+            if (value instanceof Actividades) {
                 Actividades obj = (Actividades) value;
                 return String.valueOf(obj.getCodactividad());
             }

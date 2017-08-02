@@ -28,6 +28,7 @@
                         
                         <p:outputLabel value="#{actividadesTxt.tipoMod}  " for="codtipo" />
                         <p:selectOneMenu id="codtipo" value="#{actividadesController.codigo}"> 
+                            <p:ajax event="valueChange" update="horas" />
                             <f:selectItems value="#{tipoModalidadesController.combo('Selecione un opcion')}" />
                         </p:selectOneMenu>
 
