@@ -35,6 +35,7 @@ import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
+import sun.util.calendar.CalendarUtils;
 
 
 @ManagedBean
@@ -142,13 +143,13 @@ public class HorarioController implements Serializable{
     //se ejecuta cuando se selecciona un evento
     public void onEventSelect(SelectEvent selectEvent) 
     {        
-        evento = (ScheduleEvent)selectEvent.getObject();        
+        evento = (ScheduleEvent)selectEvent.getObject();           
         _objHorario=(Horario)evento.getData();       
     }
      
     //se ejecuta cuando se selecciona una fecha
     public void onDateSelect(SelectEvent selectEvent)
-    {        
+    {          
         evento = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject()); 
         _objHorario=null;       
     }
