@@ -614,3 +614,7 @@ tr{
 .ui-growl-info{
     color: #1f1f18;
 }
+
+.fc-button-group{
+    display:none !important;
+}

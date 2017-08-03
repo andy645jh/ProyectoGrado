@@ -17,7 +17,7 @@
                 <p:panel>
                     <p:growl id="mensajito" sticky="true" showDetail="true"/>  
                    
-                        <p:schedule id="schedule" value="#{horarioController.eventModel}" widgetVar="myschedule" timeZone="GMT+5" locale="es"> 
+                    <p:schedule id="schedule" minTime="06:00:00" maxTime="22:00:00" view="agendaWeek" value="#{horarioController.eventModel}" widgetVar="myschedule" timeZone="GMT+5" locale="es"> 
                             <p:ajax event="dateSelect" listener="#{horarioController.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
                             <p:ajax event="eventSelect" listener="#{horarioController.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />                        
                         </p:schedule>
