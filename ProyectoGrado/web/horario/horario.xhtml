@@ -17,7 +17,7 @@
                 <p:panel>
                     <p:growl id="mensajito" sticky="true" showDetail="true"/>  
 
-                    <p:schedule id="schedule" minTime="06:00:00" maxTime="22:00:00" view="agendaWeek" value="#{horarioController.eventModel}" widgetVar="myschedule" timeZone="GMT+5" locale="es"> 
+                    <p:schedule id="schedule" allDaySlot="false" slotMinutes="15" minTime="06:00:00" maxTime="22:00:00" view="agendaWeek" value="#{horarioController.eventModel}" widgetVar="myschedule" timeZone="GMT+5" locale="es"> 
                         <p:ajax event="dateSelect" listener="#{horarioController.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
                         <p:ajax event="eventSelect" listener="#{horarioController.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />                        
                     </p:schedule>
@@ -30,10 +30,10 @@
                             <p:inputText id="nombre" value="#{horarioController.campo.nombre}"/> 
 
                             <p:outputLabel for="from" value="#{clasesTxt.horaIni} " />
-                            <p:calendar id="from" timeZone="GMT+5" pattern="dd/MM/yyyy HH:mm" value="#{horarioController.campo.horainicio}"/>
+                            <p:calendar id="from" timeZone="GMT+5" timeOnly="true" pattern="HH:mm" value="#{horarioController.campo.horainicio}"/>
 
                             <p:outputLabel for="to" value="#{clasesTxt.horafin} " />
-                            <p:calendar id="to" timeZone="GMT+5" pattern="dd/MM/yyyy HH:mm" value="#{horarioController.campo.horafinal}"/>
+                            <p:calendar id="to" timeZone="GMT+5" timeOnly="true" pattern="HH:mm" value="#{horarioController.campo.horafinal}"/>
 
                             <p:outputLabel value="#{clasesTxt.convencion} " for="codconvencion" />
                             <p:selectOneMenu id="codconvencion" value="#{horarioController.codigo}"> 
@@ -60,14 +60,14 @@
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">#{clasesTxt.horaIni}</f:facet>
                             <h:outputText value="#{registro.horainicio}">
-                                <f:convertDateTime dateStyle="full"/>                                
+                                <f:convertDateTime dateStyle="full" type="time" timeZone="GMT+5"/>                                
                             </h:outputText>
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">#{clasesTxt.horafin}</f:facet>
                             <h:outputText value="#{registro.horafinal}">
-                                <f:convertDateTime dateStyle="full"/>                                
+                                <f:convertDateTime dateStyle="full" type="time" timeZone="GMT+5"/>                                
                             </h:outputText>
                         </p:column>
 
