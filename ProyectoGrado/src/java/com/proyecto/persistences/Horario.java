@@ -52,6 +52,18 @@ public class Horario implements Serializable {
     @ManyToOne(optional = false)
     private Convenciones _codconvencion;
 
+    
+    private int _hora;
+    private int _diaa;
+
+    public int getHora() {
+        return _hora;
+    }
+
+    public void setHora(int _hora) {
+        this._hora = _hora;
+    }
+    
     public Horario() {
     }
 
@@ -139,6 +151,14 @@ public class Horario implements Serializable {
     @Override
     public String toString() {
         return "Horario{" + "_nombre=" + _nombre + '}';
+    }
+
+    public int getDiaa() {
+        return _diaa;
+    }
+
+    public void setDiaa(int _diaa) {
+        this._diaa = _diaa;
     }
     
     

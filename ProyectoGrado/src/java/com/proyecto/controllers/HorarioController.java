@@ -8,7 +8,9 @@ import com.proyecto.facades.DocentesFacade;
 import com.proyecto.persistences.Horario;
 import com.proyecto.persistences.Convenciones;
 import com.proyecto.persistences.Docentes;
+import com.proyecto.utilities.Intervalo;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -56,18 +58,27 @@ public class HorarioController implements Serializable{
    
     private FacesMessage message;
     private int _codigo;
+    private List<Intervalo> _listInterval;
+    private Intervalo[] _arrayInterval;
     
     public HorarioController() {
     }
     
     @PostConstruct
     public void init() {
+        _listInterval = new ArrayList<>();
         eventModel = new DefaultScheduleModel();        
-                System.out.println("TAMAÑO "+getListado().size());
-        for(Horario obj:getListado())
+        List<Horario> listHorario = getListado();
+        System.out.println("TAMAÑO "+listHorario.size());
+                
+        for(Horario obj:listHorario)
         {            
             eventModel.addEvent(new DefaultScheduleEvent(obj.getNombre(), obj.getHorainicio(), obj.getHorafinal(),obj));
+            
+            //cuadrando la lista de horarios        
+            _arrayInterval[obj.getHora()].setDia(obj);          
         }
+        
     }
     
     public ScheduleModel getEventModel() {
