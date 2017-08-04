@@ -618,3 +618,7 @@ tr{
 .fc-button-group{
     display:none !important;
 }
+
+.fc table tr{
+    height: 30px;
+}
