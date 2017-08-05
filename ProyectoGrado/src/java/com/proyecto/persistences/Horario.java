@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -52,8 +53,12 @@ public class Horario implements Serializable {
     @ManyToOne(optional = false)
     private Convenciones _codconvencion;
 
-    
+    @Column(name = "hora")  
+    @NotNull
     private int _hora;
+    
+    @Column(name = "coddia")    
+    @NotNull
     private int _diaa;
 
     public int getHora() {

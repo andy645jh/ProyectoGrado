@@ -67,14 +67,20 @@ public class HorarioController implements Serializable{
     @PostConstruct
     public void init() {
         _listInterval = new ArrayList<>();
-        eventModel = new DefaultScheduleModel();        
+        
+        //eventModel = new DefaultScheduleModel();        
         List<Horario> listHorario = getListado();
+        _arrayInterval = new Intervalo[16];
         System.out.println("TAMAÑO "+listHorario.size());
-                
+        for(int i=0;i<16;i++)
+        {
+            _arrayInterval[i] =new Intervalo();
+        }
+        
         for(Horario obj:listHorario)
         {            
-            eventModel.addEvent(new DefaultScheduleEvent(obj.getNombre(), obj.getHorainicio(), obj.getHorafinal(),obj));
-            
+            //eventModel.addEvent(new DefaultScheduleEvent(obj.getNombre(), obj.getHorainicio(), obj.getHorafinal(),obj));
+            System.out.println("HOra: "+obj.getHora());
             //cuadrando la lista de horarios        
             _arrayInterval[obj.getHora()].setDia(obj);          
         }

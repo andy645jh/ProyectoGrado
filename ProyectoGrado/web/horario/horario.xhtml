@@ -16,12 +16,7 @@
             <h:form id="formHorario"> 
                 <p:panel>
                     <p:growl id="mensajito" sticky="true" showDetail="true"/>  
-
-                    <p:schedule id="schedule" allDaySlot="false" slotMinutes="15" minTime="06:00:00" maxTime="22:00:00" view="agendaWeek" value="#{horarioController.eventModel}" widgetVar="myschedule" timeZone="GMT+5" locale="es"> 
-                        <p:ajax event="dateSelect" listener="#{horarioController.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
-                        <p:ajax event="eventSelect" listener="#{horarioController.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />                        
-                    </p:schedule>
-
+                   
                     <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip" onHide="#{horarioController.mostrarMensaje()}">
                         <p:ajax event="close" update=":formHorario:mensajito :formHorario:listarHorario" listener="#{horarioController.mostrarMensaje()}" />
                         <h:panelGrid id="eventDetails" columns="2">                           
