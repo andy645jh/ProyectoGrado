@@ -26,28 +26,31 @@ public class Intervalo {
     
     public void setDia(Horario base) {
         switch (base.getDiaa()) {
-            case 0:
-                _hora = base.getHora()+"";
-                break;
-                
+            
             case 1:
+                base.setHora(_lunes.getHora());
                 _lunes = base;
                 break;
 
             case 2:
+                base.setHora(_martes.getHora());                
                 _martes = base;
                 break;
 
             case 3:
+                base.setHora(_miercoles.getHora());
                 _miercoles = base;
                 break;
             case 4:
+                base.setHora(_jueves.getHora());
                 _jueves = base;
                 break;
             case 5:
+                base.setHora(_viernes.getHora());
                 _viernes = base;
                 break;
             case 6:
+                base.setHora(_sabado.getHora());
                 _sabado = base;
                 break;
         }
