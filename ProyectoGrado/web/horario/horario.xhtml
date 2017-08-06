@@ -26,37 +26,35 @@
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Lunes</f:facet>
-                            <p:commandLink value="#{intervalo.lunes.nombre}" action="#{horarioController.prueba()}"/>                                                  
+                            <p:commandLink value="#{intervalo.lunes.nombre}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.lunes)}"/>                                                  
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Martes</f:facet>
-                            <p:commandLink value="#{intervalo.martes.nombre}" actionListener="#{horarioController.prueba()}"/>                                                         
+                            <p:commandLink value="#{intervalo.martes.nombre}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.martes)}"/>                                                         
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Miercoles</f:facet>
-                            <p:commandLink value="#{intervalo.miercoles.nombre}" actionListener="#{horarioController.prueba()}"/>                                
+                            <p:commandLink value="#{intervalo.miercoles.nombre}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.miercoles)}"/>                                
                         </p:column>   
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Jueves</f:facet>
-                            <p:commandLink value="#{intervalo.jueves.nombre}" actionListener="#{horarioController.prueba()}"/>                              
+                            <p:commandLink value="#{intervalo.jueves.nombre}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.jueves)}"/>                              
                         </p:column>   
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Viernes</f:facet>
-                            <p:commandLink value="#{intervalo.viernes.nombre}" actionListener="#{horarioController.prueba()}"/>  
+                            <p:commandLink value="#{intervalo.viernes.nombre}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.viernes)}"/>  
                         </p:column>    
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Sabado</f:facet>
-                            <p:commandLink value="#{intervalo.sabado.nombre}" actionListener="#{horarioController.prueba()}" />  
+                            <p:commandLink value="#{intervalo.sabado.nombre}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.sabado)}" />  
                         </p:column>    
 
                     </p:dataTable>
-
-
 
                     <br/>
                     <p:dataTable id="listarHorario" value="#{horarioController.listado}" var="registro">
@@ -87,10 +85,9 @@
                         </p:column>                                                
                     </p:dataTable>
 
-                    <p:dialog id="dialog_horario" height="600" width="600" widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip" >
-                        
-                        <h:panelGrid id="eventDetails" columns="2">                           
+                    <p:dialog id="dialog_horario" widgetVar="eventDialog" header="Event Details" >
 
+                        <h:panelGrid id="eventDetails" columns="2">                           
                             <p:outputLabel value="#{clasesTxt.nombre}  " for="nombre" />
                             <p:inputText id="nombre" value="#{horarioController.objHorario.nombre}"/> 
 
@@ -106,10 +103,11 @@
                                 <f:selectItem itemLabel="Miercoles" itemValue="3"/>
                                 <f:selectItem itemLabel="Jueves" itemValue="4"/>
                                 <f:selectItem itemLabel="Viernes" itemValue="5"/>                
+                                <f:selectItem itemLabel="Sabado" itemValue="6"/>                
                             </p:selectOneMenu>              
 
                             <p:outputLabel value="#{clasesTxt.convencion} " for="codconvencion" />
-                            <p:selectOneMenu id="codconvencion" value="#{horarioController.objHorario.codconvencion}"> 
+                            <p:selectOneMenu rendered="#{horarioController.objHorario != null}" id="codconvencion" value="#{horarioController.objHorario.codconvencion.codconvencion}"> 
                                 <f:selectItems value="#{convencionesController.combo('')}" />
                             </p:selectOneMenu>
 
@@ -117,9 +115,10 @@
                                 <p:commandButton id="btngrabar" value="#{clasesTxt.guardar}" actionListener="#{horarioController.agregar}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>                                    
                                 <p:commandButton id="btnborrar" value="#{clasesTxt.borrar}" ajax="true" actionListener="#{horarioController.borrar}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>                                                                   
                             </f:facet>
+
                         </h:panelGrid>
                     </p:dialog>
-                    <p:commandButton value="#{GeneralTxt.cerrarsesion}" ajax="false" action="#{loginController.logout()}"/> 
+
                 </p:panel>
             </h:form>
             <script type="text/javascript">
