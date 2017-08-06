@@ -240,7 +240,7 @@ public class HorarioController implements Serializable{
         Map<String,Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
         options.put("draggable", false);
-        options.put("modal", false);
+        options.put("modal", true);
         //RequestContext.getCurrentInstance().openDialog("faces/clases/actualizar", options, null);
         RequestContext.getCurrentInstance().execute("dialog_horario.show()");
     }
