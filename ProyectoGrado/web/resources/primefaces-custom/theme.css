@@ -622,3 +622,15 @@ tr{
 .fc table tr{
     height: 30px;
 }
+
+td:has(a){
+    background: #c50e0e !important;
+}
+
+.ui-dialog{
+    display: none;
+}
+
+.ui-dialog{
+     position: absolute !important;
+}

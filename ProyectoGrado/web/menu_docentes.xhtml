@@ -8,11 +8,11 @@
 
     <h:form >  
         <p:menu class="ancho-menu fondo-menu">      
-            <p:menuitem class="#{estaActivo == 'actividades' ? 'active' : ''}" value="Actividades" action="/actividades/listado.xhtml"  />
-            <p:menuitem class="#{estaActivo == 'productos' ? 'active' : ''}" value="Productos" action="/productos/listado.xhtml"  />
-            <p:menuitem class="#{estaActivo == 'horario' ? 'active' : ''}" value="Horario" action="/horario/horario.xhtml"  />
+            <p:menuitem class="#{estaActivo == 'actividades' ? 'active' : ''}" value="Actividades" outcome="/actividades/listado.xhtml"  />
+            <p:menuitem class="#{estaActivo == 'productos' ? 'active' : ''}" value="Productos" outcome="/productos/listado.xhtml"  />
+            <p:menuitem class="#{estaActivo == 'horario' ? 'active' : ''}" value="Horario" outcome="/horario/horario.xhtml"  />
             <p:menuitem class="#{estaActivo == 'perfil' ? 'active' : ''}" value="Perfil" action="#{docentesController.abrirPerfil()}"  />
-            <p:menuitem class="#{estaActivo == 'reportes' ? 'active' : ''}" value="Reportes" action="/ver/ver_reportes.xhtml"  />
+            <p:menuitem class="#{estaActivo == 'reportes' ? 'active' : ''}" value="Reportes" outcome="/ver/ver_reportes.xhtml"  />
                       
         </p:menu>
     </h:form>

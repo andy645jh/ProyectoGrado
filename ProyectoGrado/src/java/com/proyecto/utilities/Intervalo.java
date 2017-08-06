@@ -21,7 +21,13 @@ public class Intervalo {
     private Horario _viernes;
     private Horario _sabado;
 
-    public Intervalo() {        
+    public Intervalo() {  
+        _lunes = new Horario();
+        _martes = new Horario();
+        _miercoles = new Horario();
+        _jueves = new Horario();
+        _viernes = new Horario();
+        _sabado = new Horario();
     }
     
     public void setDia(Horario base) {

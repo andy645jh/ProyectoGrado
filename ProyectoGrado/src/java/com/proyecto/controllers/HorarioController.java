@@ -11,6 +11,7 @@ import com.proyecto.persistences.Docentes;
 import com.proyecto.utilities.Intervalo;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -60,7 +61,9 @@ public class HorarioController implements Serializable{
     private int _codigo;
     private List<Intervalo> _listInterval;
     private Intervalo[] _arrayInterval;
-    private String _intervalos[] = {"6-7","7-8","8-9","9-10","10-11","11-12","13-14","15-16","16-17","17-18","18-19","19-20","20-21","21-22"};
+    
+    private final String _intervalos[] = {"6-7","7-8","8-9","9-10","10-11","11-12","13-14","15-16","16-17","17-18","18-19","19-20","20-21","21-22"};
+    private final String _dias[] = {"Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"};
     
     public HorarioController() {
     }
@@ -68,7 +71,7 @@ public class HorarioController implements Serializable{
     @PostConstruct
     public void init() {
         _listInterval = new ArrayList<>();       
-        
+        _objHorario = new Horario();
         //eventModel = new DefaultScheduleModel();        
         List<Horario> listHorario = getListado();
         _arrayInterval = new Intervalo[_intervalos.length];
@@ -88,7 +91,12 @@ public class HorarioController implements Serializable{
         }
         
         //convertir array a lista
-        //_listInterval = new ArrayList<Intervalo>(_arrayInterval);
+        _listInterval = Arrays.asList(_arrayInterval);
+    }
+    
+    public void prueba()
+    {
+        System.out.println("Click en prueba");
     }
     
     public String getHoraIntervalo(int index)
@@ -111,7 +119,9 @@ public class HorarioController implements Serializable{
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);
-        RequestContext.getCurrentInstance().openDialog("faces/clases/crear", options, null);
+        //RequestContext.getCurrentInstance().openDialog("faces/clases/crear", options, null);
+        //RequestContext.getCurrentInstance().openDialog("dialog");
+        RequestContext.getCurrentInstance().execute("dialog_horario.show()");
     }
     
     public void agregar(ActionEvent actionEvent)
@@ -230,8 +240,9 @@ public class HorarioController implements Serializable{
         Map<String,Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
         options.put("draggable", false);
-        options.put("modal", true);
-        RequestContext.getCurrentInstance().openDialog("faces/clases/actualizar", options, null);
+        options.put("modal", false);
+        //RequestContext.getCurrentInstance().openDialog("faces/clases/actualizar", options, null);
+        RequestContext.getCurrentInstance().execute("dialog_horario.show()");
     }
     
     public void actualizar()
@@ -257,6 +268,34 @@ public class HorarioController implements Serializable{
         }
     }  
     
+    public SelectItem[] comboHoras()
+    {
+        //List<Convenciones> lista =_ejbFacade.listado(); 
+        SelectItem[] listaItems = new SelectItem[_intervalos.length];
+        int index=0;
+        for (String interv : _intervalos) {
+            SelectItem item = new SelectItem(index, interv);            
+            listaItems[index]=item;
+            index++;
+        }
+        
+        return listaItems;
+    }
+    
+    public SelectItem[] comboDias()
+    {
+        //List<Convenciones> lista =_ejbFacade.listado(); 
+        SelectItem[] listaItems = new SelectItem[_dias.length];
+        int index=0;
+        for (String nombre : _dias) {
+            SelectItem item = new SelectItem(index, nombre);            
+            listaItems[index]=item;
+            index++;
+        }
+        
+        return listaItems;
+    }
+    
     public void resetear()
     {
         _objHorario = null;
@@ -268,6 +307,18 @@ public class HorarioController implements Serializable{
 
     public void setCodigo(int _codigo) {
         this._codigo = _codigo;
+    }
+
+    public List<Intervalo> getListInterval() {
+        return _listInterval;
+    }
+
+    public void setListInterval(List<Intervalo> _listInterval) {
+        this._listInterval = _listInterval;
+    }
+
+    public Horario getObjHorario() {
+        return _objHorario;
     }
     
     @FacesConverter(forClass = Horario.class, value = "horarioConverter")
