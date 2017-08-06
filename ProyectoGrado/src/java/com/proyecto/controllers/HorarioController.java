@@ -35,7 +35,6 @@ import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleEvent;
-import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 
@@ -71,9 +70,10 @@ public class HorarioController implements Serializable{
     @PostConstruct
     public void init() {
         _listInterval = new ArrayList<>();       
-        _objHorario = new Horario();
+        
         //eventModel = new DefaultScheduleModel();        
         List<Horario> listHorario = getListado();
+        _objHorario = listHorario.get(0);        
         _arrayInterval = new Intervalo[_intervalos.length];
         System.out.println("TAMAÑO "+listHorario.size());
         for(int i=0;i<_arrayInterval.length;i++)
@@ -236,13 +236,14 @@ public class HorarioController implements Serializable{
     }
     
     public void abrirActualizar(Horario objTemp) {
+        System.out.println("HorarioController.abrirActualizar() -> horario: "+objTemp);
         _objHorario = objTemp;
         Map<String,Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);
         //RequestContext.getCurrentInstance().openDialog("faces/clases/actualizar", options, null);
-        RequestContext.getCurrentInstance().execute("dialog_horario.show()");
+        RequestContext.getCurrentInstance().execute("PF('eventDialog').show();");
     }
     
     public void actualizar()
