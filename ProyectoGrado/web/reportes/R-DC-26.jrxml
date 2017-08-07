@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f77be251-0118-43bb-b349-e31368843289">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="109"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["D:\\Documents\\proyectogradoing\\ProyectoGrado\\web\\reportes\\"]]></defaultValueExpression>
 	</parameter>
@@ -505,17 +505,7 @@
 	<detail>
 		<band height="257" splitType="Stretch">
 			<subreport>
-				<reportElement x="-22" y="0" width="800" height="40" uuid="6bcd5e6a-c618-4de6-8263-2688cde57ac0"/>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "info_academica.jasper"]]></subreportExpression>
-			</subreport>
-			<subreport>
-				<reportElement x="-22" y="40" width="800" height="39" uuid="2ea5335a-b3b2-4015-942a-b7e4375a2441"/>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "experiencia_docente.jasper"]]></subreportExpression>
-			</subreport>
-			<subreport>
-				<reportElement x="7" y="138" width="800" height="39" uuid="362d752b-20e7-426e-9980-017279c73401"/>
+				<reportElement x="-20" y="0" width="200" height="100" uuid="64350e3b-9ba9-4cbf-902f-dc9cc0ba0fab"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "experiencia_docente.jasper"]]></subreportExpression>
 			</subreport>
