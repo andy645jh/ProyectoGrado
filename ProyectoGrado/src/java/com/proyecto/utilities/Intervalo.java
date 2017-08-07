@@ -14,6 +14,7 @@ import com.proyecto.persistences.Horario;
 public class Intervalo {
 
     private String _hora;
+    private int _codigo;
     private Horario _lunes;
     private Horario _martes;
     private Horario _miercoles;
@@ -28,40 +29,65 @@ public class Intervalo {
         _jueves = new Horario();
         _viernes = new Horario();
         _sabado = new Horario();
+        
+        _lunes.setDia(1);
+        _martes.setDia(2);
+        _miercoles.setDia(3);
+        _jueves.setDia(4);
+        _viernes.setDia(5);
+        _sabado.setDia(6);
     }
     
     public void setDia(Horario base) {
-        switch (base.getDiaa()) {
+        
+        base.setAsignado(true);
+        
+        switch (base.getDia()) {
             
             case 1:
-                base.setHora(_lunes.getHora());
+                base.setHora(_codigo);
                 _lunes = base;
                 break;
 
             case 2:
-                base.setHora(_martes.getHora());                
+                base.setHora(_codigo);                
                 _martes = base;
                 break;
 
             case 3:
-                base.setHora(_miercoles.getHora());
+                base.setHora(_codigo);
                 _miercoles = base;
                 break;
+                
             case 4:
-                base.setHora(_jueves.getHora());
+                base.setHora(_codigo);
                 _jueves = base;
                 break;
+                
             case 5:
-                base.setHora(_viernes.getHora());
+                base.setHora(_codigo);
                 _viernes = base;
                 break;
+                
             case 6:
-                base.setHora(_sabado.getHora());
+                base.setHora(_codigo);
                 _sabado = base;
                 break;
         }
     }
 
+    public void setInitData(String horaTemp, int codHora)
+    {
+        setHora(horaTemp);   
+        setCodigo(codHora);
+        _lunes.setHora(codHora);
+        _martes.setHora(codHora);
+        _miercoles.setHora(codHora);
+        _jueves.setHora(codHora);
+        _viernes.setHora(codHora);
+        _sabado.setHora(codHora);
+    }
+    
     public String getHora() {
         return _hora;
     }
@@ -116,6 +142,14 @@ public class Intervalo {
 
     public void setSabado(Horario _sabado) {
         this._sabado = _sabado;
+    }
+
+    public int getCodigo() {
+        return _codigo;
+    }
+
+    public void setCodigo(int _codigo) {
+        this._codigo = _codigo;
     }
 
 }

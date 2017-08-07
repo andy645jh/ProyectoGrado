@@ -26,37 +26,37 @@
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Lunes</f:facet>
                             <p:commandLink value="#{intervalo.lunes.nombre}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.lunes)}"/>                                                  
-                            <p:commandLink rendered="#{intervalo.lunes.codconvencion == null}" value="Asignar" style="color: #999;" actionListener="#{horarioController.abrirCrear()}"/>                                                  
+                            <p:commandLink rendered="#{!intervalo.lunes.asignado}" update="eventDetails" ajax="false" value="Asignar" style="color: #e2dfdf;" actionListener="#{horarioController.abrirCrear(intervalo.lunes)}"/>                                                  
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Martes</f:facet>
                             <p:commandLink value="#{intervalo.martes.nombre}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.martes)}"/>                                                         
-                            <p:commandLink rendered="#{intervalo.martes.codconvencion == null}" value="Asignar" style="color: #999;" actionListener="#{horarioController.abrirCrear()}"/>                                                  
+                            <p:commandLink rendered="#{!intervalo.martes.asignado}" update="eventDetails" ajax="false" value="Asignar" style="color: #e2dfdf;" actionListener="#{horarioController.abrirCrear(intervalo.martes)}"/>                                                  
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Miercoles</f:facet>
                             <p:commandLink value="#{intervalo.miercoles.nombre}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.miercoles)}"/>                                
-                            <p:commandLink rendered="#{intervalo.miercoles.codconvencion == null}" value="Asignar" style="color: #999;" actionListener="#{horarioController.abrirCrear()}"/>                                                  
+                            <p:commandLink rendered="#{!intervalo.miercoles.asignado}" update="eventDetails" ajax="false" value="Asignar" style="color: #e2dfdf;" actionListener="#{horarioController.abrirCrear(intervalo.miercoles)}"/>                                                  
                         </p:column>   
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Jueves</f:facet>
                             <p:commandLink value="#{intervalo.jueves.nombre}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.jueves)}"/>                              
-                            <p:commandLink rendered="#{intervalo.jueves.codconvencion == null}" value="Asignar" style="color: #999;" actionListener="#{horarioController.abrirCrear()}"/>                                                  
+                            <p:commandLink rendered="#{!intervalo.jueves.asignado}" update="eventDetails" ajax="false" value="Asignar" style="color: #e2dfdf;" actionListener="#{horarioController.abrirCrear(intervalo.jueves)}"/>                                                  
                         </p:column>   
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Viernes</f:facet>
                             <p:commandLink value="#{intervalo.viernes.nombre}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.viernes)}"/>  
-                            <p:commandLink rendered="#{intervalo.viernes.codconvencion == null}" value="Asignar" style="color: #999;" actionListener="#{horarioController.abrirCrear()}"/>                                                  
+                            <p:commandLink rendered="#{!intervalo.viernes.asignado}" update="eventDetails" ajax="false" value="Asignar" style="color: #e2dfdf;" actionListener="#{horarioController.abrirCrear(intervalo.viernes)}"/>                                                  
                         </p:column>    
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Sabado</f:facet>
                             <p:commandLink value="#{intervalo.sabado.nombre}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.sabado)}" />  
-                            <p:commandLink rendered="#{intervalo.sabado.codconvencion == null}" value="Asignar" style="color: #999;" actionListener="#{horarioController.abrirCrear()}"/>                                                  
+                            <p:commandLink rendered="#{!intervalo.sabado.asignado}" update="eventDetails" ajax="false" value="Asignar" style="color: #e2dfdf;" actionListener="#{horarioController.abrirCrear(intervalo.sabado)}"/>                                                  
                         </p:column>   
 
                     </p:dataTable>
@@ -71,17 +71,13 @@
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
-                            <f:facet name="header">#{clasesTxt.horaIni}</f:facet>
-                            <h:outputText value="#{registro.horainicio}">
-                                <f:convertDateTime dateStyle="full" type="time" timeZone="GMT+5"/>                                
-                            </h:outputText>
+                            <f:facet name="header">Dia</f:facet>
+                            <h:outputText value="#{horarioController.getDia(registro.dia)}"/>                                                                                        
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
-                            <f:facet name="header">#{clasesTxt.horafin}</f:facet>
-                            <h:outputText value="#{registro.horafinal}">
-                                <f:convertDateTime dateStyle="full" type="time" timeZone="GMT+5"/>                                
-                            </h:outputText>
+                            <f:facet name="header">Hora</f:facet>
+                            <h:outputText value="#{horarioController.getHora(registro.hora) }"/>                                                             
                         </p:column>
 
                         <p:column style="width: 10px; text-align: center">
@@ -91,7 +87,8 @@
                     </p:dataTable>
 
                     <p:dialog id="dialog_horario" widgetVar="eventDialog" header="Event Details" >
-
+                        <p:ajax event="close" update="nuevaLista" listener="#{horarioController.closeDialog()}" />
+                        
                         <h:panelGrid id="eventDetails" columns="2">                           
                             <p:outputLabel value="#{clasesTxt.nombre}  " for="nombre" />
                             <p:inputText id="nombre" value="#{horarioController.objHorario.nombre}"/> 
@@ -102,7 +99,7 @@
                             </p:selectOneMenu>           
 
                             <p:outputLabel for="dia" value="Dia" />
-                            <p:selectOneMenu id="dia" value="#{horarioController.objHorario.diaa}"> 
+                            <p:selectOneMenu id="dia" value="#{horarioController.objHorario.dia}"> 
                                 <f:selectItem itemLabel="Lunes" itemValue="1"/>
                                 <f:selectItem itemLabel="Martes" itemValue="2"/>
                                 <f:selectItem itemLabel="Miercoles" itemValue="3"/>
@@ -117,8 +114,7 @@
                             </p:selectOneMenu>
 
                             <f:facet name="footer">
-                                <p:commandButton id="btngrabar" value="#{clasesTxt.guardar}" actionListener="#{horarioController.agregar}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>                                    
-                                <p:commandButton id="btnborrar" value="#{clasesTxt.borrar}" ajax="true" actionListener="#{horarioController.borrar}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>                                                                   
+                                <p:commandButton id="btngrabar" value="#{clasesTxt.guardar}" actionListener="#{horarioController.agregar}" oncomplete="PF('eventDialog').hide();"/>                                                                    
                             </f:facet>
 
                         </h:panelGrid>

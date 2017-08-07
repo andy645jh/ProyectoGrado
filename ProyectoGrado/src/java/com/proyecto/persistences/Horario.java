@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -24,25 +25,12 @@ public class Horario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codhorario")
-    private int _codhorario;
-    
-    @Column(name = "dia")
-    @Size(min = 1, max = 300)
-    @NotNull
-    private String _dia;
-    
+    private int _codhorario;    
+   
     @Column(name = "nombre")
     @Size(min = 1, max = 300)
     @NotNull
-    private String _nombre;
-    
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "hora_inicio")    
-    private Date _horainicio;   
-    
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "hora_fin")    
-    private Date _horafinal;  
+    private String _nombre; 
         
     @JoinColumn(name = "coddocente", referencedColumnName = "cedula")
     @ManyToOne(optional = false)
@@ -56,10 +44,13 @@ public class Horario implements Serializable {
     @NotNull
     private int _hora;
     
-    @Column(name = "coddia")    
+    @Column(name = "dia")    
     @NotNull
-    private int _diaa;
+    private int _dia;
 
+    @Transient 
+    private boolean _asignado = false;
+    
     public int getHora() {
         return _hora;
     }
@@ -79,14 +70,6 @@ public class Horario implements Serializable {
         this._codhorario = _codhorario;
     }
 
-    public String getDia() {
-        return _dia;
-    }
-
-    public void setDia(String _dia) {
-        this._dia = _dia;
-    }
-
     public String getNombre() {
         return _nombre;
     }
@@ -94,24 +77,7 @@ public class Horario implements Serializable {
     public void setNombre(String _nombre) {
         this._nombre = _nombre;
     }
-
-    public Date getHorainicio() {
-        return _horainicio;
-    }
-
-    public void setHorainicio(Date _horainicio) {
-        this._horainicio = _horainicio;
-    }
-
-    public Date getHorafinal() {
-        return _horafinal;
-    }
-
-    public void setHorafinal(Date _horafinal) {
-        this._horafinal = _horafinal;
-    }
-
-
+    
     public Docentes getCoddocente() {
         return _coddocente;
     }
@@ -127,9 +93,7 @@ public class Horario implements Serializable {
     public void setCodconvencion(Convenciones _codconvencion) {
         this._codconvencion = _codconvencion;
     }
-
    
-
     @Override
     public int hashCode() {
         int hash = 7;
@@ -157,12 +121,20 @@ public class Horario implements Serializable {
         return "Horario{" + "_nombre=" + _nombre + '}';
     }
 
-    public int getDiaa() {
-        return _diaa;
+    public int getDia() {
+        return _dia;
     }
 
-    public void setDiaa(int _diaa) {
-        this._diaa = _diaa;
+    public void setDia(int _diaa) {
+        this._dia = _diaa;
+    }
+
+    public boolean isAsignado() {
+        return _asignado;
+    }
+
+    public void setAsignado(boolean _estaAsignado) {
+        this._asignado = _estaAsignado;
     }
     
     

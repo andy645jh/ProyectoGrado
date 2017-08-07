@@ -9,6 +9,8 @@ import com.proyecto.persistences.Horario;
 import com.proyecto.persistences.Convenciones;
 import com.proyecto.persistences.Docentes;
 import com.proyecto.utilities.Intervalo;
+import com.proyecto.utilities.Mensajes;
+import com.proyecto.utilities.SessionUtils;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,8 +62,9 @@ public class HorarioController implements Serializable{
     private int _codigo;
     private List<Intervalo> _listInterval;
     private Intervalo[] _arrayInterval;
+    private Docentes _currentDocente;
     
-    private final String _intervalos[] = {"6-7","7-8","8-9","9-10","10-11","11-12","13-14","15-16","16-17","17-18","18-19","19-20","20-21","21-22"};
+    private final String _intervalos[] = {"6-7","7-8","8-9","9-10","10-11","11-12","12-13","13-14","14-15","15-16","16-17","17-18","18-19","19-20","20-21","21-22"};
     private final String _dias[] = {"Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"};
     
     public HorarioController() {
@@ -69,8 +72,9 @@ public class HorarioController implements Serializable{
     
     @PostConstruct
     public void init() {
+        _currentDocente = (Docentes) SessionUtils.get("docente");
         _listInterval = new ArrayList<>();       
-        
+        System.out.println("Docente: "+ _currentDocente);
         //eventModel = new DefaultScheduleModel();        
         List<Horario> listHorario = getListado();
         _objHorario = listHorario.get(0);        
@@ -79,7 +83,7 @@ public class HorarioController implements Serializable{
         for(int i=0;i<_arrayInterval.length;i++)
         {
             _arrayInterval[i] =new Intervalo();
-            _arrayInterval[i].setHora(_intervalos[i]);
+            _arrayInterval[i].setInitData(_intervalos[i],i);
         }
         
         for(Horario obj:listHorario)
@@ -87,16 +91,11 @@ public class HorarioController implements Serializable{
             //eventModel.addEvent(new DefaultScheduleEvent(obj.getNombre(), obj.getHorainicio(), obj.getHorafinal(),obj));
             System.out.println("HOra: "+obj.getHora());
             //cuadrando la lista de horarios        
-            _arrayInterval[obj.getHora()].setDia(obj);          
+            _arrayInterval[obj.getHora()].setDia(obj);               
         }
         
         //convertir array a lista
         _listInterval = Arrays.asList(_arrayInterval);
-    }
-    
-    public void prueba()
-    {
-        System.out.println("Click en prueba");
     }
     
     public String getHoraIntervalo(int index)
@@ -114,22 +113,43 @@ public class HorarioController implements Serializable{
         return _objHorario;        
     }
     
-    public void abrirCrear() {       
+    public void abrirCrear(Horario horTemp) {      
+        
+        System.out.println("Horario Actual: " + _objHorario.getDia());
+        System.out.println("Horario Nuevo: " + horTemp.getDia());        
+        
+        _objHorario = horTemp;
+        System.out.println("Horario Reasignado: " + _objHorario.getDia());        
+        Convenciones conve;
+        
+        if(_objHorario.getCodconvencion()==null)
+        {
+            conve = new Convenciones();            
+        }else{
+            conve = _objHorario.getCodconvencion();
+        }
+        
+        conve.setCodconvencion(0);      
+        _objHorario.setCodconvencion(conve);
         Map<String,Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);
-        //RequestContext.getCurrentInstance().openDialog("faces/clases/crear", options, null);
-        //RequestContext.getCurrentInstance().openDialog("dialog");
-        RequestContext.getCurrentInstance().execute("dialog_horario.show()");
+        RequestContext.getCurrentInstance().execute("PF('eventDialog').show();");
+    }
+    
+    public void closeDialog()
+    {
+        System.out.println("HorarioController.closeDialog() -> Se cerro");
+        //_objHorario.setCodconvencion(null);        
     }
     
     public void agregar(ActionEvent actionEvent)
     {        
         String titulo,detalle;
-        Convenciones convencion = _convencionesFacade.buscar(_codigo);
+        Convenciones convencion = _convencionesFacade.buscar(_objHorario.getCodconvencion().getCodconvencion());
         _objHorario.setCodconvencion(convencion);
-        _objHorario.setDia("lunes");
+        
         System.out.println("convencion "+_objHorario.getCodconvencion());
         
         try {
@@ -137,29 +157,38 @@ public class HorarioController implements Serializable{
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
 //            _objHorario.setCoddocente(docentesFacade.getCurrentDocente());
-            _objHorario.setCoddocente(docentesFacade.buscar(109877));
+            
+            _objHorario.setCoddocente(_currentDocente);
             
             System.out.println("docente "+_objHorario.getCoddocente().getNombres());
             
-            if(evento.getId()==null)
-            {               
-                horarioFacade.crear(_objHorario);                
-            }
-            else{                           
-                horarioFacade.actualizar(_objHorario);                
-                eventModel.deleteEvent(evento);
-            }
-            
-            eventModel.addEvent(new DefaultScheduleEvent(_objHorario.getNombre(), _objHorario.getHorainicio(), _objHorario.getHorafinal(),_objHorario));
-            evento = new DefaultScheduleEvent();          
+                         
+            horarioFacade.crear(_objHorario);   
+            _objHorario.setAsignado(true);
+            Mensajes.exito(titulo, detalle);
+            //eventModel.addEvent(new DefaultScheduleEvent(_objHorario.getNombre(), _objHorario.getHorainicio(), _objHorario.getHorafinal(),_objHorario));
+            //evento = new DefaultScheduleEvent();          
             
         } catch (Exception e) 
         {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardarError");
-            message = new FacesMessage(FacesMessage.SEVERITY_ERROR,titulo,detalle);
+            //message = new FacesMessage(FacesMessage.SEVERITY_ERROR,titulo,detalle);
+            Mensajes.error(titulo, detalle);
             Logger.getLogger(Horario.class.getName()).log(Level.SEVERE,null,e);           
         }
+    }
+    
+    //devuelve el dia dependiendo del index que le pasen
+    public String getDia(int cod)
+    {
+        return _dias[cod-1];
+    }
+    
+    //devuelve el intervalo de hora dependiendo del index que le pasen
+    public String getHora(int cod)
+    {
+        return _intervalos[cod];
     }
     
     public SelectItem[] combo(String texto)
@@ -167,12 +196,10 @@ public class HorarioController implements Serializable{
         return Formulario.addObject(horarioFacade.listado(), texto);        
     }
     
+    //obtiene el listado de horarios segun el docente de la sesion
     public List<Horario> getListado()
     {
-        Docentes doc = docentesFacade.getCurrentDocente();
-//        String cedula= doc.getCedula()+"";
-        String cedula= "109877";
-       
+        String cedula= _currentDocente.getCedula()+"";       
         return horarioFacade.buscarCampo("_coddocente",cedula);
     }
     
