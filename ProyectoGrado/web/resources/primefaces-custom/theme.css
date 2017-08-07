@@ -56,13 +56,10 @@
 ----------------------------------*/
 .ui-state-default,
 .ui-widget-content .ui-state-default,
-.ui-widget-header .ui-state-default,
-.ui-button,
+.ui-widget-header .ui-state-default
 
 /* We use html here because we need a greater specificity to make sure disabled
-works properly when clicked or hovered */
-html .ui-button.ui-state-disabled:hover,
-html .ui-button.ui-state-disabled:active {
+works properly when clicked or hovered */ {
 	/*border: 1px solid #c5c5c5;*/
 	background: #bfd730;
 	font-weight: normal;
@@ -87,13 +84,12 @@ a:visited.ui-button,
 }
 
 .ui-widget-content .ui-state-hover,
-.ui-widget-header .ui-state-hover,
-.ui-button:focus {
-	/*border: 1px solid #cccccc;*/
-	background: #636365;
-	font-weight: normal;
-	color: #bfd730;
-        border:none;
+.ui-widget-header .ui-state-hover {
+    /*border: 1px solid #cccccc;*/
+    background: #636365;
+    font-weight: normal;
+    color: #bfd730;
+    border:none;
 }
 .ui-state-hover a,
 .ui-state-hover a:hover,
@@ -633,4 +629,8 @@ td:has(a){
 
 .ui-dialog{
      position: absolute !important;
+}
+
+.boton-borrar{
+    background-color: transparent !important;
 }

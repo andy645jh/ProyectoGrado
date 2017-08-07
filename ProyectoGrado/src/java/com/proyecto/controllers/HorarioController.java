@@ -76,7 +76,7 @@ public class HorarioController implements Serializable{
         _listInterval = new ArrayList<>();       
         System.out.println("Docente: "+ _currentDocente);
         //eventModel = new DefaultScheduleModel();        
-        List<Horario> listHorario = getListado();
+        /*List<Horario> listHorario = getListado();
         _objHorario = listHorario.get(0);        
         _arrayInterval = new Intervalo[_intervalos.length];
         System.out.println("TAMAÑO "+listHorario.size());
@@ -95,17 +95,39 @@ public class HorarioController implements Serializable{
         }
         
         //convertir array a lista
+        _listInterval = Arrays.asList(_arrayInterval);*/
+        organizarListas();
+    }
+    
+    private void organizarListas()
+    {
+        List<Horario> listHorario = getListado();
+        _objHorario = listHorario.get(0);   
+        _arrayInterval = new Intervalo[_intervalos.length];
+        System.out.println("TAMAÑO "+listHorario.size());
+        for(int i=0;i<_arrayInterval.length;i++)
+        {
+            _arrayInterval[i] =new Intervalo();
+            _arrayInterval[i].setInitData(_intervalos[i],i);
+        }
+        
+        for(Horario obj:listHorario)
+        {            
+            //eventModel.addEvent(new DefaultScheduleEvent(obj.getNombre(), obj.getHorainicio(), obj.getHorafinal(),obj));
+            System.out.println("HOra: "+obj.getHora());
+            //cuadrando la lista de horarios        
+            _arrayInterval[obj.getHora()].setDia(obj);               
+        }
+        
+        //convertir array a lista
         _listInterval = Arrays.asList(_arrayInterval);
+        //RequestContext.getCurrentInstance().update(":formHorario:nuevaLista");
     }
     
     public String getHoraIntervalo(int index)
     {
         return _intervalos[index];
     }    
-    
-    public ScheduleModel getEventModel() {
-        return eventModel;
-    }
     
     public Horario getCampo()
     {
@@ -138,10 +160,13 @@ public class HorarioController implements Serializable{
         RequestContext.getCurrentInstance().execute("PF('eventDialog').show();");
     }
     
-    public void closeDialog()
+    public void closeDialog(Horario horaTemp)
     {
+        _objHorario = horaTemp;
         System.out.println("HorarioController.closeDialog() -> Se cerro");
-        //_objHorario.setCodconvencion(null);        
+        borrar();
+        
+        organizarListas();
     }
     
     public void agregar(ActionEvent actionEvent)
@@ -203,31 +228,7 @@ public class HorarioController implements Serializable{
         return horarioFacade.buscarCampo("_coddocente",cedula);
     }
     
-    //se ejecuta cuando se selecciona un evento
-    public void onEventSelect(SelectEvent selectEvent) 
-    {        
-        evento = (ScheduleEvent)selectEvent.getObject();           
-        _objHorario=(Horario)evento.getData();       
-    }
-     
-    //se ejecuta cuando se selecciona una fecha
-    public void onDateSelect(SelectEvent selectEvent)
-    {          
-        evento = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject()); 
-        _objHorario=null;       
-    }
-     
-    public void onEventMove(ScheduleEntryMoveEvent event)
-    {
-        System.out.print("onEventMove: " + event);
-    }
-     
-    public void onEventResize(ScheduleEntryResizeEvent event) 
-    {
-        System.out.print("onEventResize: " + event);
-    }
-    
-    public void borrar(ActionEvent actionEvent)
+    public void borrar()
     {
         String titulo,detalle;
         
@@ -235,25 +236,29 @@ public class HorarioController implements Serializable{
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
-            
-            
-            if(evento.getId()!=null) {
-                
-                System.out.print("Borrar ---- " + _objHorario.getNombre());                
-                horarioFacade.borrar(_objHorario);            
-                eventModel.deleteEvent(evento);
-            }           
-            
-            evento = new DefaultScheduleEvent();
-            
+              
+
+            System.out.print("Borrar ---- " + _objHorario.getNombre());                
+            horarioFacade.borrar(_objHorario);       
+            Convenciones conve = new Convenciones();
+            conve.setCodconvencion(0);
+            _objHorario.setNombre("");            
+            _objHorario.setCodconvencion(conve);
+            _objHorario.setAsignado(false);
         } catch (Exception e) 
         {
+            System.out.print("HorarioController.borrar() -> Error al borrar ---- " + e.toString());    
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarError");
             message = new FacesMessage(FacesMessage.SEVERITY_ERROR,titulo,detalle);
             Logger.getLogger(Horario.class.getName()).log(Level.SEVERE,null,e);
         }        
     }    
+    
+    public void close()
+    {
+        System.out.println("Cerro Dialog");
+    }
     
     public void mostrarMensaje()
     {        
