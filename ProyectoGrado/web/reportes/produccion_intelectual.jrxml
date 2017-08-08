@@ -1,29 +1,205 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="10" bottomMargin="3" uuid="cbc81492-b177-4c11-a683-5e0513372947">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="d91539b5-8d63-41ef-84ac-551b41c740d0">
+		<queryString language="SQL">
+			<![CDATA[select * from produccion where tipo=1 and coddocente=73167775]]>
+		</queryString>
+		<field name="tipo_prod_part" class="java.math.BigDecimal"/>
+		<field name="nombre" class="java.lang.String"/>
+		<field name="editorial_inv" class="java.lang.String"/>
+		<field name="libros" class="java.lang.String"/>
+		<field name="ano" class="java.sql.Date"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[select * from produccion where tipo=1 and coddocente=73167775]]>
+	</queryString>
+	<field name="codproduccion" class="java.lang.Integer"/>
+	<field name="coddocente" class="java.math.BigDecimal"/>
+	<field name="tipo_prod_part" class="java.math.BigDecimal"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="editorial_inv" class="java.lang.String"/>
+	<field name="libros" class="java.lang.String"/>
+	<field name="estado" class="java.lang.String"/>
+	<field name="tipo" class="java.math.BigDecimal"/>
+	<field name="ano" class="java.sql.Date"/>
+	<field name="meses" class="java.lang.Integer"/>
+	<field name="num_anos" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="80" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="1" width="802" height="26" uuid="38509edd-605b-4542-94c7-8843d97185e2"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="2" width="802" height="13" backcolor="#CCCCCC" uuid="f777e211-c40b-43bb-bcd4-53888904d11b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[I. PRODUCCION INTELECTUAL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="15" width="802" height="1" uuid="93b6879c-c3cd-40f4-a271-e9592046ea1a"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="15" width="802" height="12" uuid="cb8baa64-177e-452d-92cf-8d182aeefc41"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[EN LA CASILLA DE TIPO DE PRODUCCION ESCRIBA: AR ARTICULO DE LIBROS, REVISTAS O PERIODICO, LB LIBROS COMPLETOS, CL CAPITULOS]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 1" style="table 1" x="0" y="27" width="802" height="50" uuid="59e6f2b6-5e07-4863-a898-64d884a2fa4e"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset 1" uuid="fc1ec970-365b-4f7e-a1a2-8649bf59182d">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="45eb4905-dad1-46c1-b372-f33760da4ec0">
+						<jr:tableHeader style="table 1_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="25" uuid="dd37b03c-249d-49dd-b912-c524a7489a4a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
+								<text><![CDATA[TIPO DE PRODUCCION]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="90" height="20" uuid="7f3cf0b3-1c3a-4808-814e-4e5528fe9c13"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{tipo_prod_part}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="256" uuid="ce872fe2-d8c2-4412-91a9-9c7e2e16a77b">
+						<jr:tableHeader style="table 1_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="256" height="25" uuid="7bfee828-b877-45b1-8036-29eecc884a74"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
+								<text><![CDATA[NOMBRE DE LA PRODUCCION]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="256" height="20" uuid="5f8d0da6-3102-45f4-8888-eebbaf9391b6"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="265" uuid="6d11dd2f-5d0d-424c-8b95-7b66b21c189e">
+						<jr:tableHeader style="table 1_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="265" height="25" uuid="4f9119bf-1a42-46f9-a832-0dc0424b3d35"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
+								<text><![CDATA[EDITORIAL / NOMBRE REVISTA / OTROS DATOS]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="265" height="20" uuid="ac99fe6a-f8be-4d88-bcee-ca48620b6046"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{editorial_inv}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="110" uuid="323afedb-dc30-49ae-af97-7f44a866f5b4">
+						<jr:tableHeader style="table 1_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="110" height="25" uuid="862cb4d5-5850-4c3d-94d5-30813b59dddc"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
+								<text><![CDATA[ISSBN o ISSN (de libors revistas o memorias)]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="110" height="20" uuid="04171fed-14c7-4854-87ab-44a6bae26597"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{libros}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="a7bca550-d6e5-4189-bbd4-8b916a357e75">
+						<jr:tableHeader style="table 1_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="25" uuid="f79abd91-dfd5-4b91-abbd-48fefa0f2f9b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
+								<text><![CDATA[AÑO]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="90" height="20" uuid="41484548-5dea-40a8-abcd-85fb9e4a8622"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ano}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</columnHeader>
 </jasperReport>

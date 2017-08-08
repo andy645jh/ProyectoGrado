@@ -148,7 +148,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<columnHeader>
-		<band height="132" splitType="Stretch">
+		<band height="67" splitType="Stretch">
 			<rectangle>
 				<reportElement x="0" y="0" width="802" height="42" uuid="4bcd4d46-287a-45e4-9ac0-d45db8237766"/>
 			</rectangle>
@@ -307,134 +307,6 @@
 					</jr:column>
 				</jr:table>
 			</componentElement>
-			<componentElement>
-				<reportElement key="table 4" style="table 4" x="2" y="93" width="799" height="36" uuid="4c542b33-b4cc-4303-9955-da6c9369a1af"/>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="New Dataset 1" uuid="e3b3027c-656e-4da3-b703-3896b82e677a">
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-					</datasetRun>
-					<jr:column width="69" uuid="8cb34b19-a0b0-44f8-9a00-5e3d18755add">
-						<jr:tableHeader style="table 4_TH" height="19" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="69" height="19" uuid="a94e02b4-e316-4d4f-ad26-c01620c12945"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="7"/>
-								</textElement>
-								<text><![CDATA[TIPO]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:detailCell style="table 4_TD" height="17" rowSpan="1">
-							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="69" height="16" uuid="df8e3799-0d1c-4c29-9dcf-0eb779b30729"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="9" isBold="true"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{nivel}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="256" uuid="dbfa0d16-ea32-46b3-89a6-50f6d38454c5">
-						<jr:tableHeader style="table 4_TH" height="19" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="256" height="19" uuid="e17e2339-6918-46a0-9604-17cce5bce64f"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="7"/>
-								</textElement>
-								<text><![CDATA[NOMBRE DEL PROGRAMA O ACTIVIDAD]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:detailCell style="table 4_TD" height="17" rowSpan="1">
-							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="256" height="16" uuid="949c96ad-78b7-4db1-98db-cc106b756a4f"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="9" isBold="true"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{titulo}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="297" uuid="3dd8ba52-5cb6-4285-85b9-2287359944fd">
-						<jr:tableHeader style="table 4_TH" height="19" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="297" height="19" uuid="fbdedf13-1f4a-4b1e-a706-6e413537912d"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="7"/>
-								</textElement>
-								<text><![CDATA[INSTITUCIÓN]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:detailCell style="table 4_TD" height="17" rowSpan="1">
-							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="297" height="16" uuid="07f7ed36-2016-47fc-9df1-c52e92c0a54f"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="9" isBold="true"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{institucion}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="d3c24157-ca6f-4930-b701-8283dd0906c9">
-						<jr:tableHeader style="table 4_TH" height="19" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="19" uuid="888d2c79-d7d2-4aa0-aaf9-9a5433df9eb7"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="7" isBold="false"/>
-								</textElement>
-								<text><![CDATA[No HORAS]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:detailCell style="table 4_TD" height="17" rowSpan="1">
-							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="90" height="16" uuid="5d4f9919-8709-4a6b-aac2-ae9047f0e289"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="9" isBold="true"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{horas}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="c104f7cb-7998-47a0-bfa5-d6f97b963a9f">
-						<jr:tableHeader style="table 4_TH" height="19" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="19" uuid="a43c8e69-abc7-4c95-90db-e5d8d81ec1c2"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="7"/>
-								</textElement>
-								<text><![CDATA[AÑO]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:detailCell style="table 4_TD" height="17" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="16" uuid="f2abc6cc-e426-4c02-9229-2dbfbf06d73c"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="9" isBold="true"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{ano_grado}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-				</jr:table>
-			</componentElement>
-			<rectangle>
-				<reportElement x="0" y="66" width="802" height="27" uuid="f8f18dda-d5da-4cee-b7aa-cba0dca36ff0"/>
-			</rectangle>
-			<staticText>
-				<reportElement mode="Opaque" x="1" y="67" width="800" height="13" backcolor="#CCCCCC" uuid="f9939a2b-600d-4dc5-8c28-b7e256496666"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[B. CURSOS DE EXTENCIÓN, CAPACITACION O EDUCACION CONTINUA]]></text>
-			</staticText>
-			<line>
-				<reportElement x="0" y="79" width="803" height="2" uuid="eba95b7d-5fc0-4b29-a1f6-3cd71afeabb9"/>
-			</line>
-			<staticText>
-				<reportElement x="1" y="82" width="800" height="11" uuid="85b50bdd-edc6-408b-a38c-0b6571246cb7"/>
-				<textElement>
-					<font size="7"/>
-				</textElement>
-				<text><![CDATA[EN LA CASILLA TIPO ESCRIBA:  D  DIPLOMADO, C  CURSO, S  SEMINARIO, CER  CERTIFICACIÓN, O  OTRO.]]></text>
-			</staticText>
 		</band>
 	</columnHeader>
 </jasperReport>

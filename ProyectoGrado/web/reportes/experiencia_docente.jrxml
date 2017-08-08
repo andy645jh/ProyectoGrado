@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="3" bottomMargin="0" uuid="0f1e3b7d-5efd-409a-96d4-3412970e3ad2">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="25"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
@@ -163,11 +163,8 @@
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<pageHeader>
-		<band height="74">
-			<rectangle>
-				<reportElement mode="Transparent" x="0" y="-1" width="802" height="24" uuid="33fea24c-3570-435f-86ab-288357352a52"/>
-			</rectangle>
+	<columnHeader>
+		<band height="75">
 			<componentElement>
 				<reportElement key="table 4" style="table 4" x="0" y="23" width="802" height="50" uuid="b722f8c0-379b-48e2-94ec-5a55dd88e811"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
@@ -178,12 +175,18 @@
 						<jr:tableHeader style="table 4_TH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="236" height="30" uuid="8a00af0d-7cec-49ac-ab70-1968149ac9a9"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
 								<text><![CDATA[INSTITUCION EDUCATIVA]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="531225aa-3e6a-412d-8fe3-c0a5bca83409"/>
+								<reportElement x="0" y="0" width="236" height="20" uuid="531225aa-3e6a-412d-8fe3-c0a5bca83409"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isBold="true"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{institucion}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -192,12 +195,18 @@
 						<jr:tableHeader style="table 4_TH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="110" height="30" uuid="fe837ced-d1ac-4ec9-9e3d-2ef2b860b8af"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
 								<text><![CDATA[ACTIVIDAD DOCENTE]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="7e735b79-cdc0-4a59-82fd-a99eb928ae4c"/>
+								<reportElement x="0" y="0" width="110" height="20" uuid="7e735b79-cdc0-4a59-82fd-a99eb928ae4c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isBold="true"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{actividad}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -206,12 +215,18 @@
 						<jr:tableHeader style="table 4_TH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="204" height="30" uuid="e83aabe5-0a6f-4420-8eb1-b128d5e3f8e0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
 								<text><![CDATA[DEPENDENCIA]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="65b8e32e-cb22-4d76-a950-c8dd3c2079b0"/>
+								<reportElement x="0" y="0" width="204" height="20" uuid="65b8e32e-cb22-4d76-a950-c8dd3c2079b0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{dependencia}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -219,13 +234,29 @@
 					<jr:column width="90" uuid="5dcb30da-1e13-4c22-83c2-0056e10df6e1">
 						<jr:tableHeader style="table 4_TH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="02870203-4c74-4e70-93f6-7897a5b63fdf"/>
+								<reportElement x="0" y="0" width="90" height="16" uuid="02870203-4c74-4e70-93f6-7897a5b63fdf"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
 								<text><![CDATA[TIEMPO DE SERVICIO]]></text>
 							</staticText>
+							<staticText>
+								<reportElement x="0" y="17" width="90" height="13" uuid="8cb81b64-0f01-4289-89ac-dd025ade696b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<text><![CDATA[Número de horas]]></text>
+							</staticText>
+							<line>
+								<reportElement x="0" y="16" width="90" height="1" uuid="beda2d06-6601-4a4c-8e33-72d6ea391f7f"/>
+							</line>
 						</jr:tableHeader>
 						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="90" height="20" uuid="2c54b9c2-cbf6-4512-a6b6-58cb6d8f2579"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isBold="true"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{tiempo}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -234,12 +265,18 @@
 						<jr:tableHeader style="table 4_TH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="90" height="30" uuid="1eb11f1f-d09f-4ab2-aae8-e795afef3333"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
 								<text><![CDATA[TIPO DE CONTRATO]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="90" height="20" uuid="6dc0f475-62a5-4073-83c3-15fa9776ea79"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isBold="true"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{tipo_contrato}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -248,12 +285,18 @@
 						<jr:tableHeader style="table 4_TH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="90" height="30" uuid="86658a93-8469-4d0e-9050-1ec51f7eaeb2"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
 								<text><![CDATA[FECHA ULTIMA VINCULACION]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="90" height="20" uuid="c506f52d-ebac-4755-bc10-0de77f238aae"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isBold="true"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{fecha_ultima}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -268,7 +311,7 @@
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
-				<text><![CDATA[EN LA CASILLA DE TIPO DE CONTRATO ESCRIBA: HC HORA CATEDRA. MT MEDIO TIEMPO, TC TIEMPO COMPLETO]]></text>
+				<text><![CDATA[EN LA CASILLA DE TIPO DE CONTRATO ESCRIBA: HC HORA CATEDRA. MT MEDIO TIEMPO, TC TIEMPO COMPLETO 222 333]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="0" width="802" height="13" backcolor="#CCCCCC" uuid="fcf3ca52-dcc4-4efe-88cc-8e8f6e540c89"/>
@@ -277,6 +320,9 @@
 				</textElement>
 				<text><![CDATA[IV EXPERIENCIA DOCENTE]]></text>
 			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="-1" width="802" height="24" uuid="33fea24c-3570-435f-86ab-288357352a52"/>
+			</rectangle>
 		</band>
-	</pageHeader>
+	</columnHeader>
 </jasperReport>
