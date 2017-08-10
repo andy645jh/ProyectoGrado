@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:composition template="/plantilla.xhtml">
+        <ui:define name="menu">
+            <ui:decorate template="/menu_docentes.xhtml">
+                <ui:param name="estaActivo" value="productos"/>
+            </ui:decorate>            
+        </ui:define>
+        <ui:define name="content">           
+            <h:form id="formProductos">
+                <p:panel>                    
+                    <p:growl id="mensajito" sticky="true" showDetail="true"/>           
+                    <br/>
+                    <p:commandButton value="Ver RDC-54" actionListener="#{reportTestControllerElkin.generateReport()}" icon="ui-icon-disk" >
+
+                    </p:commandButton>   
+
+                    <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
+                        <p:fileDownload value="#{reportTestControllerElkin.fileDownloadView()}" />
+                    </p:commandButton>
+
+
+                </p:panel>  
+            </h:form>
+
+
+        </ui:define>
+    </ui:composition>
+
+    <script type="text/javascript">
+        function start() {
+            PF('statusDialog').show();
+        }
+
+        function stop() {
+            PF('statusDialog').hide();
+        }
+    </script>
+</html>
+
