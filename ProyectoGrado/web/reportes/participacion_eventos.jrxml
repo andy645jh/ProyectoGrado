@@ -54,6 +54,21 @@
 		<field name="fecha" class="java.sql.Date"/>
 		<field name="ambito" class="java.lang.String"/>
 	</subDataset>
+	<queryString>
+		<![CDATA[select * from participacion where tipo=1 and coddocente=73167775]]>
+	</queryString>
+	<field name="codparticipacion" class="java.lang.Integer"/>
+	<field name="coddocente" class="java.math.BigDecimal"/>
+	<field name="tipo_part" class="java.math.BigDecimal"/>
+	<field name="tipo" class="java.math.BigDecimal"/>
+	<field name="evento" class="java.lang.String"/>
+	<field name="tema" class="java.lang.String"/>
+	<field name="fecha" class="java.sql.Date"/>
+	<field name="ambito" class="java.lang.String"/>
+	<field name="dedicacion" class="java.lang.Double"/>
+	<field name="activ_culturales" class="java.lang.String"/>
+	<field name="dedica_cultural" class="java.lang.String"/>
+	<field name="desempeno" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>

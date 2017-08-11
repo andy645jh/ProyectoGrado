@@ -62,6 +62,20 @@
 		<field name="conferencia" class="java.lang.String"/>
 		<field name="informe" class="java.lang.String"/>
 	</subDataset>
+	<queryString>
+		<![CDATA[select * from produccion where tipo=2 and coddocente=73167775]]>
+	</queryString>
+	<field name="codproduccion" class="java.lang.Integer"/>
+	<field name="coddocente" class="java.math.BigDecimal"/>
+	<field name="tipo_prod_part" class="java.math.BigDecimal"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="editorial_inv" class="java.lang.String"/>
+	<field name="libros" class="java.lang.String"/>
+	<field name="estado" class="java.lang.String"/>
+	<field name="tipo" class="java.math.BigDecimal"/>
+	<field name="ano" class="java.sql.Date"/>
+	<field name="meses" class="java.lang.Integer"/>
+	<field name="num_anos" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
