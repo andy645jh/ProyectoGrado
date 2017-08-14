@@ -5,6 +5,9 @@
  */
 package com.proyecto.controllers;
 
+import com.proyecto.facades.SemanaFacade;
+import com.proyecto.persistences.Semana;
+import com.test.ctrl.Persona;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -27,6 +31,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
@@ -43,7 +48,10 @@ public class ReportTestControllerElkin implements Serializable {
     private ByteArrayOutputStream outputStream;
     private String number;
     private JasperPrint jasperPrint;
-
+    
+    @EJB 
+    private SemanaFacade _semanaFacade;
+    
     public void generateReport() {
         try {
 //            List<country> countries = getListCountriesDummy();
@@ -78,12 +86,15 @@ public class ReportTestControllerElkin implements Serializable {
 
                 // Parameters for report
                 Map<String, Object> parameters = new HashMap<String, Object>();
-                List<String> lista = new ArrayList<String>();
-                lista.add("Elkin");
-                lista.add("Giovanny");
-                lista.add("Murillo");
-                lista.add("Quintana");
-                parameters.put("lista", lista);
+                List<Persona> lista = new ArrayList<Persona>();
+                lista.add(new Persona("Elkin",20));
+                lista.add(new Persona("Giovanny",21));
+                lista.add(new Persona("Sergio",18));
+                
+                List<Semana> listaSemanas = _semanaFacade.listado();
+                System.out.println("Semanas: "+ listaSemanas.size());
+                parameters.put("semanas", new JRBeanCollectionDataSource(listaSemanas));
+                parameters.put("lista", new JRBeanCollectionDataSource(lista));
                 parameters.put("mi_nombre", "Giovanny");
 //              JRDataSource dataSource = new JREmptyDataSource();
                 jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,new JREmptyDataSource());
