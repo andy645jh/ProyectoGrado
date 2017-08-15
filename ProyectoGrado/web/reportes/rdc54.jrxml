@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3554f85b-a9fa-428e-b864-2d6a7a51a330">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3554f85b-a9fa-428e-b864-2d6a7a51a330">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -24,7 +24,14 @@
 		<field name="responsable" class="java.lang.String"/>
 		<field name="codtipo" class="java.lang.Object"/>
 	</subDataset>
+	<subDataset name="DatasetProductos" uuid="b9958ea7-c8df-47c5-ae0b-aedd4a51df74">
+		<field name="descripcion" class="java.lang.String"/>
+		<field name="fechacompromiso" class="java.util.Date"/>
+		<field name="fechaentrega" class="java.util.Date"/>
+		<field name="comentarios" class="java.lang.String"/>
+	</subDataset>
 	<parameter name="actividades" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="productos" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -37,16 +44,16 @@
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<staticText>
-				<reportElement x="226" y="17" width="100" height="20" uuid="f959f49c-cd65-4a29-ab34-6eb80e2a2532"/>
+				<reportElement x="347" y="13" width="100" height="20" uuid="f959f49c-cd65-4a29-ab34-6eb80e2a2532"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[TABLA]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="82" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table" style="tablas" x="0" y="0" width="555" height="80" uuid="5a13abbc-265e-4cd4-a763-ae06a9a1715e"/>
+				<reportElement key="table" style="tablas" x="0" y="0" width="802" height="80" uuid="5a13abbc-265e-4cd4-a763-ae06a9a1715e"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="DatasetActividades" uuid="33e74e96-2dab-40af-a50f-53e6c90ed79f">
 						<dataSourceExpression><![CDATA[$P{actividades}]]></dataSourceExpression>
@@ -176,6 +183,72 @@
 							</jr:column>
 						</jr:columnGroup>
 					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="50">
+			<componentElement>
+				<reportElement key="table" x="0" y="0" width="802" height="50" uuid="bcc0a3b8-9973-470e-9adf-2d42706f2bfc"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="DatasetProductos" uuid="81aa817e-d4dc-48c5-b0c9-07625fddcf84">
+						<dataSourceExpression><![CDATA[$P{productos}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="389" uuid="bff46ee5-5dab-4fa8-9c36-4ecd3071e082">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="0546871e-cb22-4439-83cb-15ece1fe3418"/>
+								<text><![CDATA[descripcion]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="23" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="389" height="23" uuid="fa1cc9fe-a69a-4641-ba26-90510481abfc"/>
+								<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="109" uuid="f6c34195-b9f2-43ea-abb0-2343caaf63c5">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="cebdebfc-9921-4773-8a75-814207d9f91b"/>
+								<text><![CDATA[fechacompromiso]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="23" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="109" height="23" uuid="50f25963-9a05-4a13-a58c-6630988d7c68"/>
+								<textFieldExpression><![CDATA[$F{fechacompromiso}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="106" uuid="ba730e23-c35b-43f4-b833-3425a9568c77">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="106" height="30" uuid="390379dd-7d88-4a6d-b766-cad39cf5493b"/>
+								<text><![CDATA[fechaentrega]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="23" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="106" height="23" uuid="b91b119f-bced-4021-8ed1-3f47bdfff411"/>
+								<textFieldExpression><![CDATA[$F{fechaentrega}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="199" uuid="e1f53242-fa6d-492f-8071-08ce591c9ac8">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="132" height="30" uuid="d2bcb908-2855-4b15-99ab-5d205c9512fa"/>
+								<text><![CDATA[comentarios]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="23" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="199" height="23" uuid="a2145fba-e5e5-4dfc-b6ef-c9d3b9cf9cc3"/>
+								<textFieldExpression><![CDATA[$F{comentarios}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
 				</jr:table>
 			</componentElement>
 		</band>

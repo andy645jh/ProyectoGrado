@@ -129,7 +129,7 @@ public class ProductosController implements Serializable
         
         List<Productos> listaProd = new ArrayList<>();
         for (Actividades acti : listaActividades)
-        {
+        {            
             List<Productos> listaTemp = _ejbFacade.buscarCampo("_codactividad",acti.getCodactividad()+"");
             if(!listaTemp.isEmpty()) listaProd.addAll(listaTemp);
         }                

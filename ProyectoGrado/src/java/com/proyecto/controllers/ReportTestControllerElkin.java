@@ -6,9 +6,11 @@
 package com.proyecto.controllers;
 
 import com.proyecto.facades.ActividadesFacade;
+import com.proyecto.facades.ProductosFacade;
 import com.proyecto.facades.SemanaFacade;
 import com.proyecto.persistences.Actividades;
 import com.proyecto.persistences.Docentes;
+import com.proyecto.persistences.Productos;
 import com.proyecto.persistences.Semana;
 import com.proyecto.utilities.SessionUtils;
 import com.test.ctrl.Persona;
@@ -24,7 +26,6 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.ejb.Init;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -62,6 +63,9 @@ public class ReportTestControllerElkin implements Serializable {
     @EJB 
     private ActividadesFacade _actividadesFacade;
     
+    @EJB 
+    private ProductosFacade _productosFacade;
+    
     @PostConstruct
     public void init()
     {
@@ -98,11 +102,22 @@ public class ReportTestControllerElkin implements Serializable {
                  getRealPath("/reportes/rdc54.jrxml"));
                
                 List<Actividades> listaActividades = _actividadesFacade.buscarCampo("_coddocente", "73167775");
+                List<Productos> listaProductos = _productosFacade.listado();// _productosFacade.buscarCampo("_coddocente", "73167775");
+                List<Productos> listaFiltradaProductos = new ArrayList<>();
+                
+                for (Productos producto : listaProductos) {
+                    for (Actividades activ : listaActividades) {
+                        if(producto.getCodactividad().equals(activ)){
+                            listaFiltradaProductos.add(producto);
+                        }
+                    }                    
+                }
                 
                 // Parameters for report
                 Map<String, Object> parameters = new HashMap<String, Object>();
                 
                 parameters.put("docente", _currentDocente);
+                parameters.put("productos", new JRBeanCollectionDataSource(listaFiltradaProductos));
                 parameters.put("actividades", new JRBeanCollectionDataSource(listaActividades));
                 
                 /*List<Persona> lista = new ArrayList<Persona>();
