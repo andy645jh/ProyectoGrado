@@ -5,8 +5,12 @@
  */
 package com.proyecto.controllers;
 
+import com.proyecto.facades.ActividadesFacade;
 import com.proyecto.facades.SemanaFacade;
+import com.proyecto.persistences.Actividades;
+import com.proyecto.persistences.Docentes;
 import com.proyecto.persistences.Semana;
+import com.proyecto.utilities.SessionUtils;
 import com.test.ctrl.Persona;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -18,7 +22,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.ejb.Init;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -48,9 +54,19 @@ public class ReportTestControllerElkin implements Serializable {
     private ByteArrayOutputStream outputStream;
     private String number;
     private JasperPrint jasperPrint;
+    private Docentes _currentDocente;
     
     @EJB 
     private SemanaFacade _semanaFacade;
+    
+    @EJB 
+    private ActividadesFacade _actividadesFacade;
+    
+    @PostConstruct
+    public void init()
+    {
+        _currentDocente = (Docentes) SessionUtils.get("docente");
+    }
     
     public void generateReport() {
         try {
@@ -68,8 +84,7 @@ public class ReportTestControllerElkin implements Serializable {
 
             String cadenaConexion = "jdbc:postgresql://localhost:5432/bd_proyecto";
             Class.forName("org.postgresql.Driver");
-            Connection connection = DriverManager.getConnection(cadenaConexion,
-                    "user_java", "123456");
+            Connection connection = DriverManager.getConnection(cadenaConexion,"user_java", "123456");
 
             map.put("LOGO", logoEtiqueta);
             map.put("SUBREPORT_DIR", ruta+"\\");
@@ -80,13 +95,17 @@ public class ReportTestControllerElkin implements Serializable {
             try {
                 System.out.println("URL " + path + " PARAMETROS " + map.size());
                 JasperReport jasperReport = JasperCompileManager.compileReport(FacesContext.getCurrentInstance().getExternalContext().
-                 getRealPath("/reportes/test1.jrxml"));
-                /*JasperReport jasperReport = JasperCompileManager
-                        .compileReport("C:\\Users\\elkin\\Downloads\\StyledTextReport\\StyledTextReport.jrxml");*/
-
+                 getRealPath("/reportes/rdc54.jrxml"));
+               
+                List<Actividades> listaActividades = _actividadesFacade.buscarCampo("_coddocente", "73167775");
+                
                 // Parameters for report
                 Map<String, Object> parameters = new HashMap<String, Object>();
-                List<Persona> lista = new ArrayList<Persona>();
+                
+                parameters.put("docente", _currentDocente);
+                parameters.put("actividades", new JRBeanCollectionDataSource(listaActividades));
+                
+                /*List<Persona> lista = new ArrayList<Persona>();
                 lista.add(new Persona("Elkin",20));
                 lista.add(new Persona("Giovanny",21));
                 lista.add(new Persona("Sergio",18));
@@ -95,13 +114,16 @@ public class ReportTestControllerElkin implements Serializable {
                 System.out.println("Semanas: "+ listaSemanas.size());
                 parameters.put("semanas", new JRBeanCollectionDataSource(listaSemanas));
                 parameters.put("lista", new JRBeanCollectionDataSource(lista));
-                parameters.put("mi_nombre", "Giovanny");
-//              JRDataSource dataSource = new JREmptyDataSource();
+                parameters.put("mi_nombre", "Giovanny");*/
+//              
+                //jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,connection);
                 jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,new JREmptyDataSource());
+               
                 //JasperViewer.viewReport(jasperPrint);
                 //JasperViewer viewer = new JasperViewer(jasperPrint, false);
                 //viewer.setVisible(true);
                 //pdf();
+                
                 JasperExportManager.exportReportToPdfFile(jasperPrint,"C:\\informes_jasper\\test1.pdf");
                 // Make sure the output directory exists.
                 /*File outDir = new File("C:/jasperoutput");

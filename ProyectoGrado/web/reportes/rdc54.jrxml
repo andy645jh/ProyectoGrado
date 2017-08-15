@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3554f85b-a9fa-428e-b864-2d6a7a51a330">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="tablas" forecolor="#000000" fill="Solid">
+		<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+			<topPen lineWidth="0.25" lineColor="#000000"/>
+			<leftPen lineWidth="0.25" lineColor="#000000"/>
+			<bottomPen lineWidth="0.25" lineColor="#000000"/>
+			<rightPen lineWidth="0.25" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="celda" forecolor="#000000" fill="Solid">
+		<box>
+			<bottomPen lineWidth="0.25"/>
+			<rightPen lineWidth="0.25"/>
+		</box>
+	</style>
+	<subDataset name="DatasetActividades" uuid="52773fbf-93b6-4a4d-a6f9-a3fe07ec3d29">
+		<field name="nombre" class="java.lang.String"/>
+		<field name="descripcion" class="java.lang.String"/>
+		<field name="valoracion" class="java.lang.Integer"/>
+		<field name="responsable" class="java.lang.String"/>
+		<field name="codtipo" class="java.lang.Object"/>
+	</subDataset>
+	<parameter name="actividades" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="226" y="17" width="100" height="20" uuid="f959f49c-cd65-4a29-ab34-6eb80e2a2532"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[TABLA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="tablas" x="0" y="0" width="555" height="80" uuid="5a13abbc-265e-4cd4-a763-ae06a9a1715e"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="DatasetActividades" uuid="33e74e96-2dab-40af-a50f-53e6c90ed79f">
+						<dataSourceExpression><![CDATA[$P{actividades}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:columnGroup width="555" uuid="df2779a4-6345-4fdd-b998-2a906c0182c3">
+						<jr:tableHeader style="celda" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="555" height="30" uuid="4910e30f-f172-4749-8a00-84c2f5f71520"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[LISTA DE ACTIVIDADES]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:columnGroup width="555" uuid="4d1caeb6-7b4c-4e54-9c05-e4758c7acaa2">
+							<jr:tableHeader height="19" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="555" height="18" uuid="89fc9c82-b9af-4cb9-a23b-9dd8449a9ab5"/>
+									<textElement textAlignment="Center"/>
+									<text><![CDATA[Posibles Tipos de Actividades]]></text>
+								</staticText>
+							</jr:tableHeader>
+							<jr:column width="116" uuid="e91ffd11-d647-4bfb-999c-97af1f867019">
+								<jr:tableHeader style="celda" height="0" rowSpan="1"/>
+								<jr:columnHeader style="celda" height="19" rowSpan="1">
+									<staticText>
+										<reportElement x="0" y="0" width="90" height="16" uuid="6ea2bab9-dd92-40d0-a9e9-c84f45f2801a"/>
+										<textElement verticalAlignment="Middle">
+											<paragraph leftIndent="5" rightIndent="5"/>
+										</textElement>
+										<text><![CDATA[nombre]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="celda" height="51" rowSpan="1">
+									<textField isStretchWithOverflow="true">
+										<reportElement x="0" y="0" width="116" height="51" uuid="ad4563bc-b8dc-4f6c-902e-2f0fe21de649"/>
+										<textElement>
+											<paragraph leftIndent="5" rightIndent="5"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="144" uuid="14e25d2e-027a-420e-a9e5-8e34e62f5ca0">
+								<jr:tableHeader style="celda" height="0" rowSpan="1"/>
+								<jr:columnHeader style="celda" height="19" rowSpan="1">
+									<staticText>
+										<reportElement x="0" y="0" width="90" height="16" uuid="009818cc-9bf1-4cc1-b32e-6b0343e6ca87"/>
+										<textElement verticalAlignment="Middle">
+											<paragraph leftIndent="5" rightIndent="5"/>
+										</textElement>
+										<text><![CDATA[descripcion]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="celda" height="51" rowSpan="1">
+									<textField isStretchWithOverflow="true">
+										<reportElement x="0" y="0" width="144" height="51" uuid="24f51c3e-0205-43e8-a815-ebf43c053ff3"/>
+										<textElement>
+											<paragraph leftIndent="5" rightIndent="5"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="90" uuid="b86e5fdd-7fbc-411b-a213-39161b305c8c">
+								<jr:tableHeader style="celda" height="0" rowSpan="1"/>
+								<jr:columnHeader style="celda" height="19" rowSpan="1">
+									<staticText>
+										<reportElement x="0" y="0" width="90" height="16" uuid="658af713-f2a7-4319-9ee4-6c63b17f8f80"/>
+										<textElement verticalAlignment="Middle">
+											<paragraph leftIndent="5" rightIndent="5"/>
+										</textElement>
+										<text><![CDATA[codtipo]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="celda" height="51" rowSpan="1">
+									<textField isStretchWithOverflow="true">
+										<reportElement x="0" y="0" width="90" height="51" uuid="eda5ae9a-ff5a-4bf7-b9fa-6b56aeb4b87f"/>
+										<textElement>
+											<paragraph leftIndent="5" rightIndent="5"/>
+										</textElement>
+										<textFieldExpression><![CDATA[""+$F{codtipo}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="150" uuid="66dd1b62-edc8-49d2-bd12-205e15d4c648">
+								<jr:tableHeader style="celda" height="0" rowSpan="1"/>
+								<jr:columnHeader style="celda" height="19" rowSpan="1">
+									<staticText>
+										<reportElement x="0" y="0" width="90" height="16" uuid="7302f991-9c0c-40e5-843f-e44581607b83"/>
+										<textElement verticalAlignment="Middle">
+											<paragraph leftIndent="5" rightIndent="5"/>
+										</textElement>
+										<text><![CDATA[responsable]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="celda" height="51" rowSpan="1">
+									<textField isStretchWithOverflow="true">
+										<reportElement x="0" y="0" width="150" height="51" uuid="bc5d5a44-2d4c-4f92-ad49-5a787a662912"/>
+										<textElement>
+											<paragraph leftIndent="5" rightIndent="5"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{responsable}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="55" uuid="c3f8400d-41a9-4b03-ac93-d53bbdd1e829">
+								<jr:tableHeader style="celda" height="0" rowSpan="1"/>
+								<jr:columnHeader style="celda" height="19" rowSpan="1">
+									<staticText>
+										<reportElement x="0" y="0" width="54" height="16" uuid="57da4621-6c71-4af5-9f45-309808de902b"/>
+										<textElement verticalAlignment="Middle">
+											<paragraph leftIndent="5" rightIndent="5"/>
+										</textElement>
+										<text><![CDATA[valoracion]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="celda" height="51" rowSpan="1">
+									<textField isStretchWithOverflow="true">
+										<reportElement x="0" y="0" width="55" height="51" uuid="0dc1cf08-b306-4344-9943-70a38b6bc850"/>
+										<textElement>
+											<paragraph leftIndent="5" rightIndent="5"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{valoracion}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+						</jr:columnGroup>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
