@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="3" uuid="0cbb2aac-0637-40e1-bfdc-18d5c5148603">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="3" bottomMargin="3" uuid="0cbb2aac-0637-40e1-bfdc-18d5c5148603">
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="2536"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
@@ -62,7 +62,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<columnHeader>
-		<band height="78" splitType="Stretch">
+		<band height="74" splitType="Stretch">
 			<rectangle>
 				<reportElement x="0" y="0" width="802" height="24" uuid="71e80ac6-22e7-424b-bb8e-d915002e7b6f"/>
 			</rectangle>
@@ -70,7 +70,7 @@
 				<reportElement x="0" y="12" width="802" height="1" uuid="90984373-00e3-4b30-bc05-9b8bf93c84cf"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="802" height="12" backcolor="#CCCCCC" uuid="69c6015f-fc88-44f9-aa09-45838e996d8c"/>
+				<reportElement mode="Opaque" x="0" y="0" width="801" height="12" backcolor="#CCCCCC" uuid="69c6015f-fc88-44f9-aa09-45838e996d8c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -84,7 +84,7 @@
 				<text><![CDATA[EN LA CASILLA DE TIPO DE CONTRATO ESCRIBA: ED EMPLEADO DIRECTO, CO CONTRATO POR OBRA, ST SERVICIOS TEMPORALES, AS ASESORIA.]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement key="table 1" style="table 1" x="0" y="26" width="802" height="50" uuid="8c7420f2-2580-41e5-b941-ae3c21683b9a"/>
+				<reportElement key="table 1" style="table 1" x="0" y="24" width="802" height="50" uuid="8c7420f2-2580-41e5-b941-ae3c21683b9a"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="New Dataset 1" uuid="0e5bb5e4-1d5c-4ee8-a722-9033fed2a755">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
@@ -99,9 +99,9 @@
 								<text><![CDATA[ENTIDAD]]></text>
 							</staticText>
 						</jr:tableHeader>
-						<jr:detailCell style="table 1_TD" height="15" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="18" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="251" height="15" uuid="fb24fa0f-fa50-40c8-86c3-79324bd8a0ba"/>
+								<reportElement x="0" y="0" width="251" height="18" uuid="fb24fa0f-fa50-40c8-86c3-79324bd8a0ba"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="9" isBold="true"/>
 								</textElement>
@@ -119,9 +119,9 @@
 								<text><![CDATA[CARGO]]></text>
 							</staticText>
 						</jr:tableHeader>
-						<jr:detailCell style="table 1_TD" height="15" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="18" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="165" height="15" uuid="02c7b2bd-8db1-4999-a756-25c42a91511f"/>
+								<reportElement x="0" y="0" width="165" height="18" uuid="02c7b2bd-8db1-4999-a756-25c42a91511f"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="9" isBold="true"/>
 								</textElement>
@@ -139,9 +139,9 @@
 								<text><![CDATA[DEPENDENCIA]]></text>
 							</staticText>
 						</jr:tableHeader>
-						<jr:detailCell style="table 1_TD" height="15" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="18" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="119" height="15" uuid="3aa93623-7004-4c27-9799-99ee0f76f53e"/>
+								<reportElement x="0" y="0" width="119" height="18" uuid="3aa93623-7004-4c27-9799-99ee0f76f53e"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="9" isBold="true"/>
 								</textElement>
@@ -169,9 +169,9 @@
 								<text><![CDATA[MESES]]></text>
 							</staticText>
 						</jr:tableHeader>
-						<jr:detailCell style="table 1_TD" height="15" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="18" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="90" height="15" uuid="8f2d7d90-4d97-417f-a860-577b585929a3"/>
+								<reportElement x="0" y="0" width="90" height="18" uuid="8f2d7d90-4d97-417f-a860-577b585929a3"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="9" isBold="true" isItalic="false"/>
 								</textElement>
@@ -189,9 +189,9 @@
 								<text><![CDATA[TIPO DE CONTRATO]]></text>
 							</staticText>
 						</jr:tableHeader>
-						<jr:detailCell style="table 1_TD" height="15" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="18" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="90" height="15" uuid="ae1d89fa-d331-45cb-b794-0fae84a14783"/>
+								<reportElement x="0" y="0" width="90" height="18" uuid="ae1d89fa-d331-45cb-b794-0fae84a14783"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="9"/>
 								</textElement>
@@ -199,19 +199,19 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="e93c0060-358d-463c-be36-a7aae3e73b4c">
+					<jr:column width="87" uuid="e93c0060-358d-463c-be36-a7aae3e73b4c">
 						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="38b19479-95e5-43d8-809b-a63e6dbde5bf"/>
+								<reportElement x="0" y="0" width="87" height="30" uuid="38b19479-95e5-43d8-809b-a63e6dbde5bf"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7"/>
 								</textElement>
 								<text><![CDATA[FECHA ULTIMA VINCULACION]]></text>
 							</staticText>
 						</jr:tableHeader>
-						<jr:detailCell style="table 1_TD" height="15" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="18" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="90" height="15" uuid="dbfad06e-1562-4e54-9966-69bd41416731"/>
+								<reportElement x="0" y="0" width="87" height="18" uuid="dbfad06e-1562-4e54-9966-69bd41416731"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="9" isBold="true"/>
 								</textElement>

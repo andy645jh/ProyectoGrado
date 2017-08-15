@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="3" bottomMargin="3" uuid="803ad519-a04e-47eb-bad9-76696799f04a">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="2564"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
@@ -50,61 +50,79 @@
 		<band splitType="Stretch"/>
 	</background>
 	<columnHeader>
-		<band height="67" splitType="Stretch">
+		<band height="64" splitType="Stretch">
 			<rectangle>
 				<reportElement x="0" y="0" width="802" height="13" uuid="e7c48d58-28d6-45fd-b17c-b1150a5f6b67"/>
 			</rectangle>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="1" width="802" height="12" backcolor="#CCCCCC" uuid="48e7c4cc-7d8a-460a-a554-258215939e95"/>
+				<reportElement mode="Opaque" x="1" y="1" width="800" height="12" backcolor="#CCCCCC" uuid="48e7c4cc-7d8a-460a-a554-258215939e95"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[IV. PARTICIPACION EN ASOCIACIONES PROFESIONALES O SOCIALES]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement key="table" style="table" x="0" y="14" width="802" height="50" uuid="b28c2c2a-02ad-455c-8606-efe22f34ddcc"/>
+				<reportElement key="table" style="table" x="0" y="13" width="802" height="50" uuid="b28c2c2a-02ad-455c-8606-efe22f34ddcc"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="New Dataset 1" uuid="ed928b94-8cb6-40bc-a140-a532051247e5">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="90" uuid="f691e34c-9324-4c70-a52a-45579997fa23">
-						<jr:tableHeader style="table_TH" height="30">
+					<jr:column width="344" uuid="f691e34c-9324-4c70-a52a-45579997fa23">
+						<jr:tableHeader style="table_TH" height="21" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="a13b6f7b-4a0e-450a-a27c-be38bbe83b3c"/>
+								<reportElement x="0" y="0" width="344" height="21" uuid="a13b6f7b-4a0e-450a-a27c-be38bbe83b3c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="false"/>
+								</textElement>
 								<text><![CDATA[NOMBRE DE LA ASOCIACION O CLUB]]></text>
 							</staticText>
 						</jr:tableHeader>
-						<jr:detailCell style="table_TD" height="20">
+						<jr:detailCell style="table_TD" height="18" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="851ce7d4-ae6d-4153-a109-c14916b51c9d"/>
+								<reportElement x="0" y="0" width="344" height="18" uuid="851ce7d4-ae6d-4153-a109-c14916b51c9d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{evento}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="33274dc7-5339-4a1e-bf7a-86ce4543811b">
-						<jr:tableHeader style="table_TH" height="30">
+					<jr:column width="292" uuid="33274dc7-5339-4a1e-bf7a-86ce4543811b">
+						<jr:tableHeader style="table_TH" height="21" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="1c0eecf4-fae0-4e3f-a32c-90fa8815d796"/>
+								<reportElement x="0" y="0" width="292" height="21" uuid="1c0eecf4-fae0-4e3f-a32c-90fa8815d796"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
 								<text><![CDATA[CLASE DE PARTICIPACION]]></text>
 							</staticText>
 						</jr:tableHeader>
-						<jr:detailCell style="table_TD" height="20">
+						<jr:detailCell style="table_TD" height="18" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="baa30337-9d46-44c1-934b-d4c613cd7bc2"/>
+								<reportElement x="0" y="0" width="292" height="18" uuid="baa30337-9d46-44c1-934b-d4c613cd7bc2"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{tema}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="2b93d437-88e6-4b24-b0dd-d48a0045e18c">
-						<jr:tableHeader style="table_TH" height="30">
+					<jr:column width="166" uuid="2b93d437-88e6-4b24-b0dd-d48a0045e18c">
+						<jr:tableHeader style="table_TH" height="21" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="57bfb8ed-fd04-4a78-b7ee-78a31719f5ff"/>
+								<reportElement x="0" y="0" width="165" height="21" uuid="57bfb8ed-fd04-4a78-b7ee-78a31719f5ff"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
 								<text><![CDATA[FECHA]]></text>
 							</staticText>
 						</jr:tableHeader>
-						<jr:detailCell style="table_TD" height="20">
+						<jr:detailCell style="table_TD" height="18" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="42333634-680a-48e8-8476-a336e1f3c2c2"/>
+								<reportElement x="0" y="0" width="165" height="18" uuid="42333634-680a-48e8-8476-a336e1f3c2c2"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isBold="true"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>

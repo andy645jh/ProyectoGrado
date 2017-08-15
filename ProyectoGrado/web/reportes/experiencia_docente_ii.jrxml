@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="3" bottomMargin="0" uuid="0f1e3b7d-5efd-409a-96d4-3412970e3ad2">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="3" bottomMargin="3" uuid="0f1e3b7d-5efd-409a-96d4-3412970e3ad2">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -148,7 +148,7 @@
 		<field name="fecha_ultima" class="java.sql.Date"/>
 	</subDataset>
 	<queryString>
-		<![CDATA[select * from experiencia where tipo=1 and coddocente=73167775]]>
+		<![CDATA[select  *  from experiencia where tipo=1  and coddocente=73167775]]>
 	</queryString>
 	<field name="cod_experiencia" class="java.lang.Integer"/>
 	<field name="coddocente" class="java.math.BigDecimal"/>
@@ -164,9 +164,9 @@
 		<band splitType="Stretch"/>
 	</background>
 	<columnHeader>
-		<band height="75">
+		<band height="73">
 			<componentElement>
-				<reportElement key="table 4" style="table 4" x="0" y="23" width="802" height="50" uuid="b722f8c0-379b-48e2-94ec-5a55dd88e811"/>
+				<reportElement key="table 4" style="table 4" x="0" y="25" width="802" height="48" uuid="b722f8c0-379b-48e2-94ec-5a55dd88e811"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="New Dataset 2" uuid="2a5787b0-3e3b-4252-aeb6-235e10e12f99">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
@@ -281,10 +281,10 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="83fb7b54-eeff-444f-b4d6-c488cbb761ca">
+					<jr:column width="71" uuid="83fb7b54-eeff-444f-b4d6-c488cbb761ca">
 						<jr:tableHeader style="table 4_TH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="86658a93-8469-4d0e-9050-1ec51f7eaeb2"/>
+								<reportElement x="0" y="0" width="71" height="30" uuid="86658a93-8469-4d0e-9050-1ec51f7eaeb2"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7"/>
 								</textElement>
@@ -293,7 +293,7 @@
 						</jr:tableHeader>
 						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="c506f52d-ebac-4755-bc10-0de77f238aae"/>
+								<reportElement x="0" y="0" width="71" height="20" uuid="c506f52d-ebac-4755-bc10-0de77f238aae"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="9" isBold="true"/>
 								</textElement>
@@ -307,21 +307,21 @@
 				<reportElement x="0" y="13" width="802" height="1" uuid="50e29145-5c76-4178-86fb-cd3d581e6338"/>
 			</line>
 			<staticText>
-				<reportElement x="0" y="13" width="802" height="9" uuid="d4a7e182-0e80-48d0-9a75-e509a6b76ead"/>
+				<reportElement x="0" y="13" width="802" height="12" uuid="d4a7e182-0e80-48d0-9a75-e509a6b76ead"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[EN LA CASILLA DE TIPO DE CONTRATO ESCRIBA: HC HORA CATEDRA. MT MEDIO TIEMPO, TC TIEMPO COMPLETO 222 333]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="802" height="13" backcolor="#CCCCCC" uuid="fcf3ca52-dcc4-4efe-88cc-8e8f6e540c89"/>
+				<reportElement mode="Opaque" x="0" y="1" width="802" height="12" backcolor="#CCCCCC" uuid="fcf3ca52-dcc4-4efe-88cc-8e8f6e540c89"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[IV EXPERIENCIA DOCENTE]]></text>
+				<text><![CDATA[IV EXPERIENCIA DOCENTE  ttttt]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement mode="Transparent" x="0" y="-1" width="802" height="24" uuid="33fea24c-3570-435f-86ab-288357352a52"/>
+				<reportElement mode="Transparent" x="0" y="1" width="802" height="24" uuid="33fea24c-3570-435f-86ab-288357352a52"/>
 			</rectangle>
 		</band>
 	</columnHeader>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="6" bottomMargin="3" uuid="a4b22132-96c6-46ef-b3bf-572c0f6a0524">
-	<property name="ireport.zoom" value="1.0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="6" bottomMargin="0" uuid="a4b22132-96c6-46ef-b3bf-572c0f6a0524">
+	<property name="ireport.zoom" value="5.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
@@ -148,7 +148,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<columnHeader>
-		<band height="67" splitType="Stretch">
+		<band height="66" splitType="Stretch">
 			<rectangle>
 				<reportElement x="0" y="0" width="802" height="42" uuid="4bcd4d46-287a-45e4-9ac0-d45db8237766"/>
 			</rectangle>
@@ -159,14 +159,14 @@
 				<reportElement x="0" y="29" width="802" height="1" uuid="f220d777-0913-405b-9dac-1fcdd93bf6ba"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="1" y="1" width="801" height="15" backcolor="#CCCCCC" uuid="9039d7a6-f79e-4ef4-819b-ea1d2b46a64f"/>
+				<reportElement mode="Opaque" x="1" y="1" width="800" height="15" backcolor="#CCCCCC" uuid="9039d7a6-f79e-4ef4-819b-ea1d2b46a64f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[II. INFORMACION ACADEMICA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="1" y="17" width="801" height="12" backcolor="#CCCCCC" uuid="78737598-0467-4289-a3b2-3aec9cde9d70"/>
+				<reportElement mode="Opaque" x="1" y="17" width="800" height="12" backcolor="#CCCCCC" uuid="78737598-0467-4289-a3b2-3aec9cde9d70"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -180,13 +180,13 @@
 				<text><![CDATA[EN LA CASILLA DE NIVEL ACADÉMICO ESCRIBA: C TÉCNICO, T TECNOLÓGIA, P PROFESIONALIZACIÓN, M MAESTRIA, F FOCTORADOS, S POSDOCTORADO]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement key="table 3" style="table 3" x="0" y="42" width="802" height="24" uuid="8a71f094-88e6-477a-9f12-be2908ea1888"/>
+				<reportElement key="table 3" style="table 3" stretchType="RelativeToBandHeight" x="0" y="42" width="802" height="24" uuid="8a71f094-88e6-477a-9f12-be2908ea1888"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="New Dataset 1" uuid="be0ae962-46b8-4584-9140-e4bd45b4c842">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="66" uuid="75b661c6-5aec-4252-91be-bcb4fbcd4285">
-						<jr:tableHeader style="table 3_TH" height="26" rowSpan="1">
+						<jr:tableHeader style="table 3_TH" height="24" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="66" height="24" uuid="842e76f3-56e9-45b4-82a4-476aea8e0d68"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -206,7 +206,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="259" uuid="76a320b7-2052-44ce-a931-1bee927a5612">
-						<jr:tableHeader style="table 3_TH" height="26" rowSpan="1">
+						<jr:tableHeader style="table 3_TH" height="24" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="259" height="23" uuid="7cf3cd40-eff5-4b3d-b9c4-a1854e53dd17"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -226,9 +226,9 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="220" uuid="3c311311-3e6f-45f3-8105-1044f3a3acdb">
-						<jr:tableHeader style="table 3_TH" height="26" rowSpan="1">
+						<jr:tableHeader style="table 3_TH" height="24" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="220" height="25" uuid="13258eb8-60be-4e30-93a8-a59bd1157797"/>
+								<reportElement x="0" y="0" width="220" height="23" uuid="13258eb8-60be-4e30-93a8-a59bd1157797"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7"/>
 								</textElement>
@@ -246,7 +246,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="76" uuid="51584a6e-ec49-4a59-9cd1-b6a89da26815">
-						<jr:tableHeader style="table 3_TH" height="26" rowSpan="1">
+						<jr:tableHeader style="table 3_TH" height="24" rowSpan="1">
 							<staticText>
 								<reportElement x="1" y="0" width="75" height="24" uuid="ced00191-6860-4c03-87ab-1cb0244e0c22"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -266,9 +266,9 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="82eebea4-762a-479c-b5e5-99c525aa3cc7">
-						<jr:tableHeader style="table 3_TH" height="26" rowSpan="1">
+						<jr:tableHeader style="table 3_TH" height="24" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="25" uuid="393a11cf-6b87-4c95-a0e5-fc8d86f249dd"/>
+								<reportElement x="0" y="0" width="90" height="23" uuid="393a11cf-6b87-4c95-a0e5-fc8d86f249dd"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7"/>
 								</textElement>
@@ -285,10 +285,10 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="a06eab76-7372-4f01-9417-edee73e49570">
-						<jr:tableHeader style="table 3_TH" height="26" rowSpan="1">
+					<jr:column width="91" uuid="a06eab76-7372-4f01-9417-edee73e49570">
+						<jr:tableHeader style="table 3_TH" height="24" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="25" uuid="d7fa6262-8360-4628-8a75-1d88c83207af"/>
+								<reportElement x="0" y="0" width="90" height="23" uuid="d7fa6262-8360-4628-8a75-1d88c83207af"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7"/>
 								</textElement>

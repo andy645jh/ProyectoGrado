@@ -92,7 +92,7 @@
 				<text><![CDATA[EN LA CASILLA TIPO ESCRIBA:  D  DIPLOMADO, C  CURSO, S  SEMINARIO, CER  CERTIFICACIÓN, O  OTRO.]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement key="table 1" style="table 1" x="1" y="27" width="800" height="50" uuid="814e6907-5ff2-4fd3-b9b1-3da6eefc96bf"/>
+				<reportElement key="table 1" style="table 1" stretchType="RelativeToBandHeight" x="0" y="27" width="800" height="50" uuid="814e6907-5ff2-4fd3-b9b1-3da6eefc96bf"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="New Dataset 1" uuid="aeba040b-5917-4645-b138-3d57106ffce5">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
@@ -177,10 +177,10 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="5743c77c-9f1f-4d31-9e68-b8cec378bdd5">
+					<jr:column width="87" uuid="5743c77c-9f1f-4d31-9e68-b8cec378bdd5">
 						<jr:tableHeader style="table 1_TH" height="18" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="18" uuid="d0c9c970-0413-4e23-b22a-d2c9c2bc924b"/>
+								<reportElement x="0" y="0" width="86" height="18" uuid="d0c9c970-0413-4e23-b22a-d2c9c2bc924b"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7"/>
 								</textElement>
@@ -189,7 +189,7 @@
 						</jr:tableHeader>
 						<jr:detailCell style="table 1_TD" height="17" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="90" height="16" uuid="16dbbd3a-64be-4675-9236-044e4827d061"/>
+								<reportElement x="0" y="0" width="86" height="16" uuid="16dbbd3a-64be-4675-9236-044e4827d061"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="9" isBold="true"/>
 								</textElement>

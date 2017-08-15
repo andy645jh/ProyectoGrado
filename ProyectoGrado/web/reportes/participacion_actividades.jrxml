@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="3" bottomMargin="3" uuid="5818fbb4-adbb-46ec-8154-751114416e55">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="5.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
@@ -73,7 +73,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<columnHeader>
-		<band height="77" splitType="Stretch">
+		<band height="75" splitType="Stretch">
 			<rectangle>
 				<reportElement x="0" y="0" width="802" height="25" uuid="c9f47b86-807a-4aab-b766-dcc404a3b247"/>
 			</rectangle>
@@ -81,7 +81,7 @@
 				<reportElement x="0" y="14" width="802" height="1" uuid="bd072abb-0529-4054-a6d4-017317fda5f2"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="1" width="802" height="12" backcolor="#CCCCCC" uuid="525dc2d3-5320-4480-8b4d-eb6920868728"/>
+				<reportElement mode="Opaque" x="1" y="1" width="800" height="13" backcolor="#CCCCCC" uuid="525dc2d3-5320-4480-8b4d-eb6920868728"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -95,77 +95,107 @@
 				<text><![CDATA[EN LA CASILLA DESEMPEÑO ESCRIBA: JB JUEGA BIEN, JR JUEGA REGULAR, LG LE GUSTA, AF AFICIONADO]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement key="table 1" style="table 1" x="0" y="26" width="802" height="50" uuid="ca08b2da-9aec-41df-a76e-f6e08051ef19"/>
+				<reportElement key="table 1" style="table 1" x="0" y="25" width="802" height="50" uuid="ca08b2da-9aec-41df-a76e-f6e08051ef19"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="New Dataset 1" uuid="8631e39d-63a5-4456-8f34-e69898891d27">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="90" uuid="51e2368b-3b3d-4669-a8c4-e70967e6cc97">
-						<jr:tableHeader style="table 1_TH" height="30">
+					<jr:column width="258" uuid="51e2368b-3b3d-4669-a8c4-e70967e6cc97">
+						<jr:tableHeader style="table 1_TH" height="19" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="a7c50609-48fd-4b17-8f93-a9421d4c1fb7"/>
+								<reportElement x="0" y="0" width="258" height="19" uuid="a7c50609-48fd-4b17-8f93-a9421d4c1fb7"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
 								<text><![CDATA[DEPORTE QUE PRACTIVA]]></text>
 							</staticText>
 						</jr:tableHeader>
-						<jr:detailCell style="table 1_TD" height="20">
+						<jr:detailCell style="table 1_TD" height="16" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="eb7da266-a89b-4693-a5a7-dc253f3201dd"/>
+								<reportElement x="0" y="0" width="258" height="15" uuid="eb7da266-a89b-4693-a5a7-dc253f3201dd"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isBold="true"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{evento}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="2cd08ca9-9754-47b1-8000-d7db3ae0ca10">
-						<jr:tableHeader style="table 1_TH" height="30">
+					<jr:column width="106" uuid="2cd08ca9-9754-47b1-8000-d7db3ae0ca10">
+						<jr:tableHeader style="table 1_TH" height="19" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="4d9d9f64-d40a-4617-86a4-e4c2bdca8bd1"/>
+								<reportElement x="0" y="0" width="106" height="19" uuid="4d9d9f64-d40a-4617-86a4-e4c2bdca8bd1"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
 								<text><![CDATA[DESEMÉÑO]]></text>
 							</staticText>
 						</jr:tableHeader>
-						<jr:detailCell style="table 1_TD" height="20">
+						<jr:detailCell style="table 1_TD" height="16" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="ef12dbca-b3a4-4fa0-8626-25b462843f55"/>
+								<reportElement x="0" y="0" width="106" height="15" uuid="ef12dbca-b3a4-4fa0-8626-25b462843f55"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isBold="true"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{desempeno}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="62a57ed3-73cd-4046-96dc-57d130238b6c">
-						<jr:tableHeader style="table 1_TH" height="30">
+						<jr:tableHeader style="table 1_TH" height="19" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="450023ef-92b1-49fd-9836-e82f5fa634f0"/>
+								<reportElement x="0" y="0" width="90" height="19" uuid="450023ef-92b1-49fd-9836-e82f5fa634f0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
 								<text><![CDATA[TIEMPO DE DEDICACION]]></text>
 							</staticText>
 						</jr:tableHeader>
-						<jr:detailCell style="table 1_TD" height="20">
+						<jr:detailCell style="table 1_TD" height="16" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="3ca5ec0d-486f-4e98-aaf1-ac01ea9b804e"/>
+								<reportElement x="0" y="0" width="90" height="15" uuid="3ca5ec0d-486f-4e98-aaf1-ac01ea9b804e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isBold="true"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{dedicacion}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="97d703b1-e114-47a5-87c1-95e7b33accf9">
-						<jr:tableHeader style="table 1_TH" height="30">
+					<jr:column width="239" uuid="97d703b1-e114-47a5-87c1-95e7b33accf9">
+						<jr:tableHeader style="table 1_TH" height="19" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="ac2518eb-2d1e-4538-8553-1c9a5dec1195"/>
+								<reportElement x="0" y="0" width="239" height="19" uuid="ac2518eb-2d1e-4538-8553-1c9a5dec1195"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
 								<text><![CDATA[ACTIVIDADES CULTURALES]]></text>
 							</staticText>
 						</jr:tableHeader>
-						<jr:detailCell style="table 1_TD" height="20">
+						<jr:detailCell style="table 1_TD" height="16" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="377156b9-9fae-4153-903d-9b86c5eb07f8"/>
+								<reportElement x="0" y="0" width="239" height="16" uuid="377156b9-9fae-4153-903d-9b86c5eb07f8"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isBold="true" isStrikeThrough="false"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{activ_culturales}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="d525952b-8fc6-41f1-917e-38d225989087">
-						<jr:tableHeader style="table 1_TH" height="30">
+					<jr:column width="109" uuid="d525952b-8fc6-41f1-917e-38d225989087">
+						<jr:tableHeader style="table 1_TH" height="19" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="6e7574a2-dd41-40c4-9909-7d2748dd6fa1"/>
+								<reportElement x="0" y="0" width="108" height="19" uuid="6e7574a2-dd41-40c4-9909-7d2748dd6fa1"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7"/>
+								</textElement>
 								<text><![CDATA[TIEMPO DEDICACION]]></text>
 							</staticText>
 						</jr:tableHeader>
-						<jr:detailCell style="table 1_TD" height="20">
+						<jr:detailCell style="table 1_TD" height="16" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="01a604cb-6727-4900-bcb2-60fb5eae0195"/>
+								<reportElement x="0" y="0" width="108" height="16" uuid="01a604cb-6727-4900-bcb2-60fb5eae0195"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="9" isBold="true"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{dedica_cultural}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
