@@ -13,6 +13,24 @@
 	</style>
 	<style name="celda" forecolor="#000000" fill="Solid">
 		<box>
+			<topPen lineWidth="0.25"/>
+			<leftPen lineWidth="0.25"/>
+			<bottomPen lineWidth="0.25"/>
+			<rightPen lineWidth="0.25"/>
+		</box>
+	</style>
+	<style name="celda_titulo" mode="Opaque" forecolor="#000000" backcolor="#CCCCCC" fill="Solid" fontSize="12" isItalic="false" isUnderline="false">
+		<box>
+			<topPen lineWidth="0.25"/>
+			<leftPen lineWidth="0.25"/>
+			<bottomPen lineWidth="0.25"/>
+			<rightPen lineWidth="0.25"/>
+		</box>
+	</style>
+	<style name="celda_subtitulo" mode="Opaque" forecolor="#000000" backcolor="#E6E6E6" fill="Solid" fontSize="10" isItalic="false" isUnderline="false">
+		<box>
+			<topPen lineWidth="0.25"/>
+			<leftPen lineWidth="0.25"/>
 			<bottomPen lineWidth="0.25"/>
 			<rightPen lineWidth="0.25"/>
 		</box>
@@ -61,130 +79,137 @@
 		<band height="61" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="82" splitType="Stretch">
+		<band height="91" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table" style="tablas" x="0" y="0" width="802" height="80" uuid="5a13abbc-265e-4cd4-a763-ae06a9a1715e"/>
+				<reportElement key="table" x="0" y="0" width="802" height="80" uuid="5a13abbc-265e-4cd4-a763-ae06a9a1715e"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="DatasetActividades" uuid="33e74e96-2dab-40af-a50f-53e6c90ed79f">
 						<dataSourceExpression><![CDATA[$P{actividades}]]></dataSourceExpression>
 					</datasetRun>
-					<jr:columnGroup width="555" uuid="df2779a4-6345-4fdd-b998-2a906c0182c3">
+					<jr:columnGroup width="805" uuid="df2779a4-6345-4fdd-b998-2a906c0182c3">
 						<jr:tableHeader style="celda" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="555" height="30" uuid="4910e30f-f172-4749-8a00-84c2f5f71520"/>
+								<reportElement style="celda_titulo" mode="Opaque" x="0" y="0" width="805" height="30" uuid="4910e30f-f172-4749-8a00-84c2f5f71520"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="14" isBold="true"/>
+									<font size="12" isBold="true"/>
 								</textElement>
 								<text><![CDATA[LISTA DE ACTIVIDADES]]></text>
 							</staticText>
 						</jr:tableHeader>
-						<jr:columnGroup width="555" uuid="4d1caeb6-7b4c-4e54-9c05-e4758c7acaa2">
+						<jr:columnGroup width="805" uuid="4d1caeb6-7b4c-4e54-9c05-e4758c7acaa2">
 							<jr:tableHeader height="19" rowSpan="1">
 								<staticText>
-									<reportElement x="0" y="0" width="555" height="18" uuid="89fc9c82-b9af-4cb9-a23b-9dd8449a9ab5"/>
-									<textElement textAlignment="Center"/>
+									<reportElement style="celda_subtitulo" mode="Opaque" x="0" y="0" width="805" height="19" uuid="89fc9c82-b9af-4cb9-a23b-9dd8449a9ab5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font isBold="true"/>
+									</textElement>
 									<text><![CDATA[Posibles Tipos de Actividades]]></text>
 								</staticText>
 							</jr:tableHeader>
-							<jr:column width="116" uuid="e91ffd11-d647-4bfb-999c-97af1f867019">
+							<jr:column width="237" uuid="e91ffd11-d647-4bfb-999c-97af1f867019">
 								<jr:tableHeader style="celda" height="0" rowSpan="1"/>
 								<jr:columnHeader style="celda" height="19" rowSpan="1">
 									<staticText>
-										<reportElement x="0" y="0" width="90" height="16" uuid="6ea2bab9-dd92-40d0-a9e9-c84f45f2801a"/>
-										<textElement verticalAlignment="Middle">
+										<reportElement style="celda_subtitulo" mode="Opaque" x="0" y="0" width="237" height="19" uuid="6ea2bab9-dd92-40d0-a9e9-c84f45f2801a"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font isBold="true"/>
 											<paragraph leftIndent="5" rightIndent="5"/>
 										</textElement>
-										<text><![CDATA[nombre]]></text>
+										<text><![CDATA[Nombre de la actividad]]></text>
 									</staticText>
 								</jr:columnHeader>
-								<jr:detailCell style="celda" height="51" rowSpan="1">
+								<jr:detailCell style="celda" height="31" rowSpan="1">
 									<textField isStretchWithOverflow="true">
-										<reportElement x="0" y="0" width="116" height="51" uuid="ad4563bc-b8dc-4f6c-902e-2f0fe21de649"/>
-										<textElement>
+										<reportElement x="0" y="0" width="237" height="31" uuid="ad4563bc-b8dc-4f6c-902e-2f0fe21de649"/>
+										<textElement verticalAlignment="Middle">
 											<paragraph leftIndent="5" rightIndent="5"/>
 										</textElement>
 										<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 									</textField>
 								</jr:detailCell>
 							</jr:column>
-							<jr:column width="144" uuid="14e25d2e-027a-420e-a9e5-8e34e62f5ca0">
+							<jr:column width="110" uuid="14e25d2e-027a-420e-a9e5-8e34e62f5ca0">
 								<jr:tableHeader style="celda" height="0" rowSpan="1"/>
 								<jr:columnHeader style="celda" height="19" rowSpan="1">
 									<staticText>
-										<reportElement x="0" y="0" width="90" height="16" uuid="009818cc-9bf1-4cc1-b32e-6b0343e6ca87"/>
-										<textElement verticalAlignment="Middle">
+										<reportElement style="celda_subtitulo" x="0" y="0" width="110" height="19" uuid="009818cc-9bf1-4cc1-b32e-6b0343e6ca87"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font isBold="true"/>
 											<paragraph leftIndent="5" rightIndent="5"/>
 										</textElement>
-										<text><![CDATA[descripcion]]></text>
+										<text><![CDATA[Tipo]]></text>
 									</staticText>
 								</jr:columnHeader>
-								<jr:detailCell style="celda" height="51" rowSpan="1">
+								<jr:detailCell style="celda" height="31" rowSpan="1">
 									<textField isStretchWithOverflow="true">
-										<reportElement x="0" y="0" width="144" height="51" uuid="24f51c3e-0205-43e8-a815-ebf43c053ff3"/>
-										<textElement>
-											<paragraph leftIndent="5" rightIndent="5"/>
-										</textElement>
-										<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
-									</textField>
-								</jr:detailCell>
-							</jr:column>
-							<jr:column width="90" uuid="b86e5fdd-7fbc-411b-a213-39161b305c8c">
-								<jr:tableHeader style="celda" height="0" rowSpan="1"/>
-								<jr:columnHeader style="celda" height="19" rowSpan="1">
-									<staticText>
-										<reportElement x="0" y="0" width="90" height="16" uuid="658af713-f2a7-4319-9ee4-6c63b17f8f80"/>
-										<textElement verticalAlignment="Middle">
-											<paragraph leftIndent="5" rightIndent="5"/>
-										</textElement>
-										<text><![CDATA[codtipo]]></text>
-									</staticText>
-								</jr:columnHeader>
-								<jr:detailCell style="celda" height="51" rowSpan="1">
-									<textField isStretchWithOverflow="true">
-										<reportElement x="0" y="0" width="90" height="51" uuid="eda5ae9a-ff5a-4bf7-b9fa-6b56aeb4b87f"/>
-										<textElement>
+										<reportElement x="0" y="0" width="110" height="31" uuid="eda5ae9a-ff5a-4bf7-b9fa-6b56aeb4b87f"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
 											<paragraph leftIndent="5" rightIndent="5"/>
 										</textElement>
 										<textFieldExpression><![CDATA[""+$F{codtipo}]]></textFieldExpression>
 									</textField>
 								</jr:detailCell>
 							</jr:column>
-							<jr:column width="150" uuid="66dd1b62-edc8-49d2-bd12-205e15d4c648">
+							<jr:column width="225" uuid="b86e5fdd-7fbc-411b-a213-39161b305c8c">
 								<jr:tableHeader style="celda" height="0" rowSpan="1"/>
 								<jr:columnHeader style="celda" height="19" rowSpan="1">
 									<staticText>
-										<reportElement x="0" y="0" width="90" height="16" uuid="7302f991-9c0c-40e5-843f-e44581607b83"/>
+										<reportElement style="celda_subtitulo" x="0" y="0" width="225" height="19" uuid="658af713-f2a7-4319-9ee4-6c63b17f8f80"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font isBold="true"/>
+											<paragraph leftIndent="5" rightIndent="5"/>
+										</textElement>
+										<text><![CDATA[Descripcion]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="celda" height="31" rowSpan="1">
+									<textField isStretchWithOverflow="true">
+										<reportElement x="0" y="0" width="225" height="31" uuid="24f51c3e-0205-43e8-a815-ebf43c053ff3"/>
 										<textElement verticalAlignment="Middle">
 											<paragraph leftIndent="5" rightIndent="5"/>
 										</textElement>
-										<text><![CDATA[responsable]]></text>
+										<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="169" uuid="66dd1b62-edc8-49d2-bd12-205e15d4c648">
+								<jr:tableHeader style="celda" height="0" rowSpan="1"/>
+								<jr:columnHeader style="celda" height="19" rowSpan="1">
+									<staticText>
+										<reportElement style="celda_subtitulo" x="0" y="0" width="169" height="19" uuid="7302f991-9c0c-40e5-843f-e44581607b83"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font isBold="true"/>
+											<paragraph leftIndent="5" rightIndent="5"/>
+										</textElement>
+										<text><![CDATA[Responsable]]></text>
 									</staticText>
 								</jr:columnHeader>
-								<jr:detailCell style="celda" height="51" rowSpan="1">
+								<jr:detailCell style="celda" height="31" rowSpan="1">
 									<textField isStretchWithOverflow="true">
-										<reportElement x="0" y="0" width="150" height="51" uuid="bc5d5a44-2d4c-4f92-ad49-5a787a662912"/>
-										<textElement>
+										<reportElement x="0" y="0" width="169" height="31" uuid="bc5d5a44-2d4c-4f92-ad49-5a787a662912"/>
+										<textElement verticalAlignment="Middle">
 											<paragraph leftIndent="5" rightIndent="5"/>
 										</textElement>
 										<textFieldExpression><![CDATA[$F{responsable}]]></textFieldExpression>
 									</textField>
 								</jr:detailCell>
 							</jr:column>
-							<jr:column width="55" uuid="c3f8400d-41a9-4b03-ac93-d53bbdd1e829">
+							<jr:column width="64" uuid="c3f8400d-41a9-4b03-ac93-d53bbdd1e829">
 								<jr:tableHeader style="celda" height="0" rowSpan="1"/>
 								<jr:columnHeader style="celda" height="19" rowSpan="1">
 									<staticText>
-										<reportElement x="0" y="0" width="54" height="16" uuid="57da4621-6c71-4af5-9f45-309808de902b"/>
-										<textElement verticalAlignment="Middle">
+										<reportElement style="celda_subtitulo" x="0" y="0" width="64" height="19" uuid="57da4621-6c71-4af5-9f45-309808de902b"/>
+										<textElement textAlignment="Justified" verticalAlignment="Middle">
+											<font isBold="true"/>
 											<paragraph leftIndent="5" rightIndent="5"/>
 										</textElement>
-										<text><![CDATA[valoracion]]></text>
+										<text><![CDATA[Valoracion]]></text>
 									</staticText>
 								</jr:columnHeader>
-								<jr:detailCell style="celda" height="51" rowSpan="1">
+								<jr:detailCell style="celda" height="31" rowSpan="1">
 									<textField isStretchWithOverflow="true">
-										<reportElement x="0" y="0" width="55" height="51" uuid="0dc1cf08-b306-4344-9943-70a38b6bc850"/>
-										<textElement>
+										<reportElement x="0" y="0" width="64" height="31" uuid="0dc1cf08-b306-4344-9943-70a38b6bc850"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
 											<paragraph leftIndent="5" rightIndent="5"/>
 										</textElement>
 										<textFieldExpression><![CDATA[$F{valoracion}]]></textFieldExpression>
@@ -196,75 +221,102 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="50">
+		<band height="60">
 			<componentElement>
-				<reportElement key="table" style="tablas" x="0" y="0" width="802" height="50" uuid="bcc0a3b8-9973-470e-9adf-2d42706f2bfc"/>
+				<reportElement key="table" x="0" y="0" width="802" height="50" uuid="bcc0a3b8-9973-470e-9adf-2d42706f2bfc"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="DatasetProductos" uuid="81aa817e-d4dc-48c5-b0c9-07625fddcf84">
 						<dataSourceExpression><![CDATA[$P{productos}]]></dataSourceExpression>
 					</datasetRun>
-					<jr:column width="389" uuid="bff46ee5-5dab-4fa8-9c36-4ecd3071e082">
+					<jr:columnGroup width="803" uuid="44b36f69-5a77-47bf-b997-f558a33ad139">
 						<jr:columnHeader height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="0546871e-cb22-4439-83cb-15ece1fe3418"/>
-								<text><![CDATA[descripcion]]></text>
+								<reportElement style="celda_titulo" x="0" y="0" width="803" height="30" uuid="f41bb718-d7c6-49a1-941f-bf80a3672287"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[LISTA DE PRODUCTOS]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell height="23" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="389" height="23" uuid="fa1cc9fe-a69a-4641-ba26-90510481abfc"/>
-								<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="109" uuid="f6c34195-b9f2-43ea-abb0-2343caaf63c5">
-						<jr:columnHeader height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="cebdebfc-9921-4773-8a75-814207d9f91b"/>
-								<text><![CDATA[fechacompromiso]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell height="23" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="109" height="23" uuid="50f25963-9a05-4a13-a58c-6630988d7c68"/>
-								<textFieldExpression><![CDATA[$F{fechacompromiso}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="106" uuid="ba730e23-c35b-43f4-b833-3425a9568c77">
-						<jr:columnHeader height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="106" height="30" uuid="390379dd-7d88-4a6d-b766-cad39cf5493b"/>
-								<text><![CDATA[fechaentrega]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell height="23" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="106" height="23" uuid="b91b119f-bced-4021-8ed1-3f47bdfff411"/>
-								<textFieldExpression><![CDATA[$F{fechaentrega}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="199" uuid="e1f53242-fa6d-492f-8071-08ce591c9ac8">
-						<jr:columnHeader height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="132" height="30" uuid="d2bcb908-2855-4b15-99ab-5d205c9512fa"/>
-								<text><![CDATA[comentarios]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell height="23" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="199" height="23" uuid="a2145fba-e5e5-4dfc-b6ef-c9d3b9cf9cc3"/>
-								<textFieldExpression><![CDATA[$F{comentarios}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
+						<jr:column width="389" uuid="bff46ee5-5dab-4fa8-9c36-4ecd3071e082">
+							<jr:columnHeader height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="celda_subtitulo" x="0" y="0" width="389" height="30" uuid="0546871e-cb22-4439-83cb-15ece1fe3418"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font isBold="true"/>
+									</textElement>
+									<text><![CDATA[Descripción del Producto]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell height="23" rowSpan="1">
+								<textField>
+									<reportElement style="celda" x="0" y="0" width="389" height="23" uuid="fa1cc9fe-a69a-4641-ba26-90510481abfc"/>
+									<textElement verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="109" uuid="f6c34195-b9f2-43ea-abb0-2343caaf63c5">
+							<jr:columnHeader height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="celda_subtitulo" x="0" y="0" width="109" height="30" uuid="cebdebfc-9921-4773-8a75-814207d9f91b"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font isBold="true"/>
+									</textElement>
+									<text><![CDATA[Fecha compromiso de Entrega (Estimado)]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell height="23" rowSpan="1">
+								<textField>
+									<reportElement style="celda" x="0" y="0" width="109" height="23" uuid="50f25963-9a05-4a13-a58c-6630988d7c68"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$F{fechacompromiso}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="106" uuid="ba730e23-c35b-43f4-b833-3425a9568c77">
+							<jr:columnHeader height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="celda_subtitulo" x="0" y="0" width="106" height="30" uuid="390379dd-7d88-4a6d-b766-cad39cf5493b"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font isBold="true"/>
+									</textElement>
+									<text><![CDATA[Fecha de Entrega (Real)]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell height="23" rowSpan="1">
+								<textField>
+									<reportElement style="celda" x="0" y="0" width="106" height="23" uuid="b91b119f-bced-4021-8ed1-3f47bdfff411"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$F{fechaentrega}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="199" uuid="e1f53242-fa6d-492f-8071-08ce591c9ac8">
+							<jr:columnHeader height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="celda_subtitulo" x="0" y="0" width="199" height="30" uuid="d2bcb908-2855-4b15-99ab-5d205c9512fa"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font isBold="true"/>
+									</textElement>
+									<text><![CDATA[Comentarios]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell height="23" rowSpan="1">
+								<textField>
+									<reportElement style="celda" x="0" y="0" width="199" height="23" uuid="a2145fba-e5e5-4dfc-b6ef-c9d3b9cf9cc3"/>
+									<textElement verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$F{comentarios}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="50">
+		<band height="61">
 			<componentElement>
-				<reportElement key="table" style="tablas" x="0" y="0" width="802" height="50" uuid="42b58c90-187b-4947-9e9d-6ccee74e3d07"/>
+				<reportElement key="table" x="0" y="0" width="802" height="50" uuid="42b58c90-187b-4947-9e9d-6ccee74e3d07"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="DatasetIntervalos" uuid="9043d98c-c440-4595-a93a-39daf62331c2">
 						<dataSourceExpression><![CDATA[$P{intervalos}]]></dataSourceExpression>
@@ -272,7 +324,7 @@
 					<jr:columnGroup width="803" uuid="02e41d39-c279-43ce-b876-61b12c08e9c1">
 						<jr:columnHeader height="23" rowSpan="1">
 							<staticText>
-								<reportElement style="celda" x="0" y="0" width="803" height="23" backcolor="#CCCCCC" uuid="19f2a68b-5b12-4eb6-8ef9-30181a576239"/>
+								<reportElement style="celda_titulo" x="0" y="0" width="803" height="23" backcolor="#CCCCCC" uuid="19f2a68b-5b12-4eb6-8ef9-30181a576239"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
@@ -282,7 +334,7 @@
 						<jr:column width="56" uuid="15b746d6-01a1-4a35-bdc0-ef998f8802d4">
 							<jr:columnHeader height="30" rowSpan="1">
 								<staticText>
-									<reportElement style="celda" x="0" y="0" width="56" height="30" uuid="1077d86a-55fd-49de-954b-c6b32a59e41a"/>
+									<reportElement style="celda_subtitulo" x="0" y="0" width="56" height="30" uuid="1077d86a-55fd-49de-954b-c6b32a59e41a"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
@@ -300,7 +352,7 @@
 						<jr:column width="123" uuid="3d2ad42b-782c-4916-b69d-a0fcefb49f9d">
 							<jr:columnHeader height="30" rowSpan="1">
 								<staticText>
-									<reportElement style="celda" x="0" y="0" width="123" height="30" uuid="a001a916-1cf1-43c7-a5a4-72061ca1b896"/>
+									<reportElement style="celda_subtitulo" x="0" y="0" width="123" height="30" uuid="a001a916-1cf1-43c7-a5a4-72061ca1b896"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
@@ -318,7 +370,7 @@
 						<jr:column width="127" uuid="ad08490d-ff4c-49b1-b661-46807a88f50e">
 							<jr:columnHeader height="30" rowSpan="1">
 								<staticText>
-									<reportElement style="celda" x="0" y="0" width="127" height="30" uuid="c8d99710-7ab5-4ec4-bb26-6f73a088f802"/>
+									<reportElement style="celda_subtitulo" x="0" y="0" width="127" height="30" uuid="c8d99710-7ab5-4ec4-bb26-6f73a088f802"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
@@ -336,7 +388,7 @@
 						<jr:column width="125" uuid="79aba350-5daa-429a-8cc0-8656a8b51c80">
 							<jr:columnHeader height="30" rowSpan="1">
 								<staticText>
-									<reportElement style="celda" x="0" y="0" width="125" height="30" uuid="555eb174-f250-4b68-abc5-4b6e9679065a"/>
+									<reportElement style="celda_subtitulo" x="0" y="0" width="125" height="30" uuid="555eb174-f250-4b68-abc5-4b6e9679065a"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
@@ -354,7 +406,7 @@
 						<jr:column width="125" uuid="804843d2-2ba8-4c66-9990-10403e3ad26e">
 							<jr:columnHeader height="30" rowSpan="1">
 								<staticText>
-									<reportElement style="celda" x="0" y="0" width="125" height="30" uuid="83d77936-ddfa-4b6f-bbc7-ea50241c45dc"/>
+									<reportElement style="celda_subtitulo" x="0" y="0" width="125" height="30" uuid="83d77936-ddfa-4b6f-bbc7-ea50241c45dc"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
@@ -372,7 +424,7 @@
 						<jr:column width="129" uuid="615478f2-45f3-48d8-b468-883024f50a42">
 							<jr:columnHeader height="30" rowSpan="1">
 								<staticText>
-									<reportElement style="celda" x="0" y="0" width="129" height="30" uuid="d85a63cf-51c1-49d7-a397-7f9638192f0e"/>
+									<reportElement style="celda_subtitulo" x="0" y="0" width="129" height="30" uuid="d85a63cf-51c1-49d7-a397-7f9638192f0e"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
@@ -390,7 +442,7 @@
 						<jr:column width="118" uuid="4b80d061-e6a7-4581-a0a7-774d949bc84d">
 							<jr:columnHeader height="30" rowSpan="1">
 								<staticText>
-									<reportElement style="celda" x="0" y="0" width="118" height="30" uuid="4786d572-61d0-4d95-89cd-1875a34acf39"/>
+									<reportElement style="celda_subtitulo" x="0" y="0" width="118" height="30" uuid="4786d572-61d0-4d95-89cd-1875a34acf39"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
