@@ -338,7 +338,7 @@
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
-									<text><![CDATA[hora]]></text>
+									<text><![CDATA[Hora]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell height="21" rowSpan="1">
@@ -356,7 +356,7 @@
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
-									<text><![CDATA[lunes]]></text>
+									<text><![CDATA[Lunes]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell height="21" rowSpan="1">
@@ -374,7 +374,7 @@
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
-									<text><![CDATA[martes]]></text>
+									<text><![CDATA[Martes]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell height="21" rowSpan="1">
@@ -392,7 +392,7 @@
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
-									<text><![CDATA[miercoles]]></text>
+									<text><![CDATA[Miercoles]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell height="21" rowSpan="1">
@@ -410,7 +410,7 @@
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
-									<text><![CDATA[jueves]]></text>
+									<text><![CDATA[Jueves]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell height="21" rowSpan="1">
@@ -428,7 +428,7 @@
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
-									<text><![CDATA[viernes]]></text>
+									<text><![CDATA[Viernes]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell height="21" rowSpan="1">
@@ -446,7 +446,7 @@
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
-									<text><![CDATA[sabado]]></text>
+									<text><![CDATA[Sabado]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell height="21" rowSpan="1">
