@@ -6,12 +6,15 @@
 package com.proyecto.controllers;
 
 import com.proyecto.facades.ActividadesFacade;
+import com.proyecto.facades.HorarioFacade;
 import com.proyecto.facades.ProductosFacade;
 import com.proyecto.facades.SemanaFacade;
 import com.proyecto.persistences.Actividades;
 import com.proyecto.persistences.Docentes;
+import com.proyecto.persistences.Horario;
 import com.proyecto.persistences.Productos;
 import com.proyecto.persistences.Semana;
+import com.proyecto.utilities.Intervalo;
 import com.proyecto.utilities.SessionUtils;
 import com.test.ctrl.Persona;
 import java.io.ByteArrayOutputStream;
@@ -21,6 +24,7 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,6 +70,9 @@ public class ReportTestControllerElkin implements Serializable {
     @EJB 
     private ProductosFacade _productosFacade;
     
+    @EJB 
+    private HorarioFacade _horarioFacade;
+    
     @PostConstruct
     public void init()
     {
@@ -104,6 +111,7 @@ public class ReportTestControllerElkin implements Serializable {
                 List<Actividades> listaActividades = _actividadesFacade.buscarCampo("_coddocente", "73167775");
                 List<Productos> listaProductos = _productosFacade.listado();// _productosFacade.buscarCampo("_coddocente", "73167775");
                 List<Productos> listaFiltradaProductos = new ArrayList<>();
+                List<Intervalo> listaIntervalos = organizarIntervalos();
                 
                 for (Productos producto : listaProductos) {
                     for (Actividades activ : listaActividades) {
@@ -117,6 +125,7 @@ public class ReportTestControllerElkin implements Serializable {
                 Map<String, Object> parameters = new HashMap<String, Object>();
                 
                 parameters.put("docente", _currentDocente);
+                parameters.put("intervalos", new JRBeanCollectionDataSource(listaIntervalos));
                 parameters.put("productos", new JRBeanCollectionDataSource(listaFiltradaProductos));
                 parameters.put("actividades", new JRBeanCollectionDataSource(listaActividades));
                 
@@ -185,6 +194,31 @@ public class ReportTestControllerElkin implements Serializable {
         }
     }
 
+    private List<Intervalo> organizarIntervalos()
+    {
+        List<Horario> listHorario =_horarioFacade.listado();
+        //_objHorario = listHorario.get(0);   
+        Intervalo[] arrayInterval = new Intervalo[HorarioController._intervalos.length];
+        System.out.println("TAMAÑO "+listHorario.size());
+        for(int i=0;i<arrayInterval.length;i++)
+        {
+            arrayInterval[i] =new Intervalo();
+            arrayInterval[i].setInitData(HorarioController._intervalos[i],i);
+        }
+        
+        for(Horario obj:listHorario)
+        {            
+            //eventModel.addEvent(new DefaultScheduleEvent(obj.getNombre(), obj.getHorainicio(), obj.getHorafinal(),obj));
+            System.out.println("ReportTestControllerElkin.organizarIntervalos -> HOra: "+obj.getHora());
+            //cuadrando la lista de horarios        
+            arrayInterval[obj.getHora()].setDia(obj);               
+        }
+        
+        //convertir array a lista
+        return Arrays.asList(arrayInterval);
+        //RequestContext.getCurrentInstance().update(":formHorario:nuevaLista");
+    }
+        
     public void pdf() throws JRException, IOException {
 
         HttpServletResponse httpReponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();

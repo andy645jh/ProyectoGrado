@@ -118,7 +118,7 @@ public class Horario implements Serializable {
 
     @Override
     public String toString() {
-        return "Horario{" + "_nombre=" + _nombre + '}';
+        return _nombre;
     }
 
     public int getDia() {

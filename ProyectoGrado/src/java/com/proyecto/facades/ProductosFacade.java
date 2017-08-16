@@ -49,7 +49,10 @@ public class ProductosFacade extends AbstractFacade<Productos>{
                 String cadena = valorBuscar;
                 Predicate condicion = cb.equal(valor, cadena);                
                 cq.where(condicion);
-            }else{           
+            }/*else if(columna.equals("_coddocente"))
+            {
+                
+            }*/else{           
        
                 System.out.println("Columna: " + columna);
                 Expression<String> valorCampo = objActividades.get(columna);

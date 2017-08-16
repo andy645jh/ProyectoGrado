@@ -30,25 +30,35 @@
 		<field name="fechaentrega" class="java.util.Date"/>
 		<field name="comentarios" class="java.lang.String"/>
 	</subDataset>
+	<subDataset name="DatasetIntervalos" uuid="e9bc8791-5efd-46d0-9177-14a0a55e5f3a">
+		<field name="hora" class="java.lang.String"/>
+		<field name="lunes" class="java.lang.Object"/>
+		<field name="martes" class="java.lang.Object"/>
+		<field name="miercoles" class="java.lang.Object"/>
+		<field name="jueves" class="java.lang.Object"/>
+		<field name="viernes" class="java.lang.Object"/>
+		<field name="sabado" class="java.lang.Object"/>
+	</subDataset>
 	<parameter name="actividades" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<parameter name="productos" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="intervalos" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="340" y="13" width="100" height="20" uuid="f959f49c-cd65-4a29-ab34-6eb80e2a2532"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[TABLA]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
-			<staticText>
-				<reportElement x="347" y="13" width="100" height="20" uuid="f959f49c-cd65-4a29-ab34-6eb80e2a2532"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[TABLA]]></text>
-			</staticText>
-		</band>
+		<band height="61" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
 		<band height="82" splitType="Stretch">
@@ -188,7 +198,7 @@
 		</band>
 		<band height="50">
 			<componentElement>
-				<reportElement key="table" x="0" y="0" width="802" height="50" uuid="bcc0a3b8-9973-470e-9adf-2d42706f2bfc"/>
+				<reportElement key="table" style="tablas" x="0" y="0" width="802" height="50" uuid="bcc0a3b8-9973-470e-9adf-2d42706f2bfc"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="DatasetProductos" uuid="81aa817e-d4dc-48c5-b0c9-07625fddcf84">
 						<dataSourceExpression><![CDATA[$P{productos}]]></dataSourceExpression>
@@ -249,6 +259,153 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="50">
+			<componentElement>
+				<reportElement key="table" style="tablas" x="0" y="0" width="802" height="50" uuid="42b58c90-187b-4947-9e9d-6ccee74e3d07"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="DatasetIntervalos" uuid="9043d98c-c440-4595-a93a-39daf62331c2">
+						<dataSourceExpression><![CDATA[$P{intervalos}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:columnGroup width="803" uuid="02e41d39-c279-43ce-b876-61b12c08e9c1">
+						<jr:columnHeader height="23" rowSpan="1">
+							<staticText>
+								<reportElement style="celda" x="0" y="0" width="803" height="23" backcolor="#CCCCCC" uuid="19f2a68b-5b12-4eb6-8ef9-30181a576239"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[HORARIO SEMANAL]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:column width="56" uuid="15b746d6-01a1-4a35-bdc0-ef998f8802d4">
+							<jr:columnHeader height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="celda" x="0" y="0" width="56" height="30" uuid="1077d86a-55fd-49de-954b-c6b32a59e41a"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="11" isBold="true"/>
+									</textElement>
+									<text><![CDATA[hora]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell height="21" rowSpan="1">
+								<textField>
+									<reportElement style="celda" x="0" y="0" width="56" height="20" uuid="62d605d1-4309-4953-b661-71d79a3a7ffa"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$F{hora}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="123" uuid="3d2ad42b-782c-4916-b69d-a0fcefb49f9d">
+							<jr:columnHeader height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="celda" x="0" y="0" width="123" height="30" uuid="a001a916-1cf1-43c7-a5a4-72061ca1b896"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="11" isBold="true"/>
+									</textElement>
+									<text><![CDATA[lunes]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell height="21" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement style="celda" x="0" y="0" width="123" height="20" uuid="af1fd78e-8e97-4cd9-a72d-6cd22d7d7b20"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$F{lunes}.equals( null ) ? "":""+$F{lunes}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="127" uuid="ad08490d-ff4c-49b1-b661-46807a88f50e">
+							<jr:columnHeader height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="celda" x="0" y="0" width="127" height="30" uuid="c8d99710-7ab5-4ec4-bb26-6f73a088f802"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="11" isBold="true"/>
+									</textElement>
+									<text><![CDATA[martes]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell height="21" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement style="celda" x="0" y="0" width="127" height="20" uuid="6f29a9bb-a79f-4016-b8cc-bb710f1c96c8"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[""+$F{martes}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="125" uuid="79aba350-5daa-429a-8cc0-8656a8b51c80">
+							<jr:columnHeader height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="celda" x="0" y="0" width="125" height="30" uuid="555eb174-f250-4b68-abc5-4b6e9679065a"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="11" isBold="true"/>
+									</textElement>
+									<text><![CDATA[miercoles]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell height="21" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement style="celda" x="0" y="0" width="125" height="20" uuid="e68793c3-8c9a-42ed-b348-cd120e725435"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[""+$F{miercoles}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="125" uuid="804843d2-2ba8-4c66-9990-10403e3ad26e">
+							<jr:columnHeader height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="celda" x="0" y="0" width="125" height="30" uuid="83d77936-ddfa-4b6f-bbc7-ea50241c45dc"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="11" isBold="true"/>
+									</textElement>
+									<text><![CDATA[jueves]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell height="21" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement style="celda" x="0" y="0" width="125" height="20" uuid="cfe266e7-102f-4ca1-9f0e-bd62c500206d"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[""+$F{jueves}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="129" uuid="615478f2-45f3-48d8-b468-883024f50a42">
+							<jr:columnHeader height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="celda" x="0" y="0" width="129" height="30" uuid="d85a63cf-51c1-49d7-a397-7f9638192f0e"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="11" isBold="true"/>
+									</textElement>
+									<text><![CDATA[viernes]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell height="21" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement style="celda" x="0" y="0" width="129" height="20" uuid="3cd49084-f520-426b-ba75-78afb5d1f27f"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[""+$F{viernes}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="118" uuid="4b80d061-e6a7-4581-a0a7-774d949bc84d">
+							<jr:columnHeader height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="celda" x="0" y="0" width="118" height="30" uuid="4786d572-61d0-4d95-89cd-1875a34acf39"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="11" isBold="true"/>
+									</textElement>
+									<text><![CDATA[sabado]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell height="21" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement style="celda" x="0" y="0" width="118" height="20" uuid="2bc3f480-7eef-474d-b33d-101710bc44b7"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[""+$F{sabado}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
 				</jr:table>
 			</componentElement>
 		</band>
