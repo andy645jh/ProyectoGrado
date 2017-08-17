@@ -41,6 +41,7 @@
 		<field name="valoracion" class="java.lang.Integer"/>
 		<field name="responsable" class="java.lang.String"/>
 		<field name="codtipo" class="java.lang.Object"/>
+		<field name="horas" class="java.lang.Double"/>
 	</subDataset>
 	<subDataset name="DatasetProductos" uuid="b9958ea7-c8df-47c5-ae0b-aedd4a51df74">
 		<field name="descripcion" class="java.lang.String"/>
@@ -60,11 +61,13 @@
 	<parameter name="actividades" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<parameter name="productos" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<parameter name="intervalos" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="asignacion" class="com.proyecto.persistences.Asignacion"/>
+	<parameter name="docente" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="40" splitType="Stretch">
 			<staticText>
 				<reportElement x="340" y="13" width="100" height="20" uuid="f959f49c-cd65-4a29-ab34-6eb80e2a2532"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
@@ -73,10 +76,10 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="9" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="7" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
 		<band height="91" splitType="Stretch">
@@ -251,7 +254,9 @@
 							<jr:detailCell height="23" rowSpan="1">
 								<textField>
 									<reportElement style="celda" x="0" y="0" width="389" height="23" uuid="fa1cc9fe-a69a-4641-ba26-90510481abfc"/>
-									<textElement verticalAlignment="Middle"/>
+									<textElement verticalAlignment="Middle">
+										<paragraph leftIndent="5" rightIndent="5"/>
+									</textElement>
 									<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
@@ -269,7 +274,9 @@
 							<jr:detailCell height="23" rowSpan="1">
 								<textField>
 									<reportElement style="celda" x="0" y="0" width="109" height="23" uuid="50f25963-9a05-4a13-a58c-6630988d7c68"/>
-									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<paragraph leftIndent="5" rightIndent="5"/>
+									</textElement>
 									<textFieldExpression><![CDATA[$F{fechacompromiso}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
@@ -305,11 +312,73 @@
 							<jr:detailCell height="23" rowSpan="1">
 								<textField>
 									<reportElement style="celda" x="0" y="0" width="199" height="23" uuid="a2145fba-e5e5-4dfc-b6ef-c9d3b9cf9cc3"/>
-									<textElement verticalAlignment="Middle"/>
+									<textElement verticalAlignment="Middle">
+										<paragraph leftIndent="5" rightIndent="5"/>
+									</textElement>
 									<textFieldExpression><![CDATA[$F{comentarios}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="71">
+			<componentElement>
+				<reportElement key="table" x="0" y="0" width="802" height="61" uuid="582fb60d-0ff2-448d-a832-d5f92212087c"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="DatasetActividades" uuid="98eb51bb-b7ae-4f30-8716-25b471b58264">
+						<dataSourceExpression><![CDATA[$P{actividades}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:columnGroup width="180" uuid="5a518ce0-25a2-4263-a309-6b19f1592aa3">
+						<jr:tableHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement style="celda_titulo" x="0" y="0" width="180" height="30" uuid="b68ea7d9-4756-4630-95ac-9defd1f914e8"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[SEGUIMIENTO A LAS ACTIVIDADES]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:columnGroup width="180" uuid="ffe63950-168d-4625-bc44-e3fe7d2b3c81">
+							<jr:tableHeader height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="celda_subtitulo" x="0" y="0" width="180" height="30" uuid="d8212cff-88b2-4fa4-9023-a7c4f4c864b2"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font isBold="true"/>
+									</textElement>
+									<text><![CDATA[Indique las horas semanales (horas academicas de 45 minutos)]]></text>
+								</staticText>
+							</jr:tableHeader>
+							<jr:column width="90" uuid="a44edc10-fbea-48e8-9ec1-0441e583f9e9">
+								<jr:columnHeader height="30" rowSpan="1">
+									<staticText>
+										<reportElement x="0" y="0" width="90" height="30" uuid="1b76fda8-74ad-44f4-ae03-e64a01a19d5a"/>
+										<text><![CDATA[nombre]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell height="30" rowSpan="1">
+									<textField>
+										<reportElement x="0" y="0" width="90" height="20" uuid="c0efb51f-e37d-49fd-93f0-807cbfa3c656"/>
+										<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="90" uuid="8deff6e7-7ef1-4d94-8fc9-5aecc9d56fa8">
+								<jr:columnHeader height="30" rowSpan="1">
+									<staticText>
+										<reportElement x="0" y="0" width="90" height="30" uuid="9cc2cf15-9cc9-459a-ad20-005062e66b20"/>
+										<text><![CDATA[horas]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell height="30" rowSpan="1">
+									<textField>
+										<reportElement x="0" y="0" width="90" height="20" uuid="596dfbb1-7791-4d13-9c31-511860733feb"/>
+										<textFieldExpression><![CDATA[$F{horas}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+						</jr:columnGroup>
 					</jr:columnGroup>
 				</jr:table>
 			</componentElement>
@@ -338,7 +407,7 @@
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
-									<text><![CDATA[hora]]></text>
+									<text><![CDATA[Hora]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell height="21" rowSpan="1">
@@ -356,7 +425,7 @@
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
-									<text><![CDATA[lunes]]></text>
+									<text><![CDATA[Lunes]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell height="21" rowSpan="1">
@@ -374,7 +443,7 @@
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
-									<text><![CDATA[martes]]></text>
+									<text><![CDATA[Martes]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell height="21" rowSpan="1">
@@ -392,7 +461,7 @@
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
-									<text><![CDATA[miercoles]]></text>
+									<text><![CDATA[Miercoles]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell height="21" rowSpan="1">
@@ -410,7 +479,7 @@
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
-									<text><![CDATA[jueves]]></text>
+									<text><![CDATA[Jueves]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell height="21" rowSpan="1">
@@ -428,7 +497,7 @@
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
-									<text><![CDATA[viernes]]></text>
+									<text><![CDATA[Viernes]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell height="21" rowSpan="1">
@@ -446,7 +515,7 @@
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font size="11" isBold="true"/>
 									</textElement>
-									<text><![CDATA[sabado]]></text>
+									<text><![CDATA[Sabado]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell height="21" rowSpan="1">
