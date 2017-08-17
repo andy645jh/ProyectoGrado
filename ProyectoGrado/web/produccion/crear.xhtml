@@ -34,9 +34,9 @@
                             <p:outputLabel value="Tipo Producción" for="tipo_prod" rendered="#{produccionController.campo.tipo eq 1}"/>
                             <p:selectOneMenu id="tipo_prod" value="#{produccionController.campo.tipo_prod_part}" rendered="#{produccionController.campo.tipo eq 1}">
                                 <f:selectItem itemLabel="Seleccione" itemValue="0" />
-                                <f:selectItem itemLabel="Artículo de libros, revistas o periódicos" itemValue="AR" />
-                                <f:selectItem itemLabel="Libros completos" itemValue="LB" />
-                                <f:selectItem itemLabel="Capítulos" itemValue="CL" />
+                                <f:selectItem itemLabel="Artículo de libros, revistas o periódicos" itemValue="1" />
+                                <f:selectItem itemLabel="Libros completos" itemValue="2" />
+                                <f:selectItem itemLabel="Capítulos" itemValue="3" />
                             </p:selectOneMenu> 
 
                             <p:outputLabel value="Tipo Participación" for="tipo_part" rendered="#{produccionController.campo.tipo eq 2}"/>
