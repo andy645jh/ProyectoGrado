@@ -128,6 +128,7 @@ public class ReportTestControllerElkin implements Serializable {
                 parameters.put("intervalos", new JRBeanCollectionDataSource(listaIntervalos));
                 parameters.put("productos", new JRBeanCollectionDataSource(listaFiltradaProductos));
                 parameters.put("actividades", new JRBeanCollectionDataSource(listaActividades));
+                parameters.put("seguimientos", new JRBeanCollectionDataSource(listaActividades));
                 
                 /*List<Persona> lista = new ArrayList<Persona>();
                 lista.add(new Persona("Elkin",20));

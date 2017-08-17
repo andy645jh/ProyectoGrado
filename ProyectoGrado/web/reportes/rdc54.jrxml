@@ -58,11 +58,16 @@
 		<field name="viernes" class="java.lang.Object"/>
 		<field name="sabado" class="java.lang.Object"/>
 	</subDataset>
+	<subDataset name="DatasetSeguimiento" uuid="888174f3-5e53-4744-8bbf-be3588939964">
+		<field name="nombre" class="java.lang.String"/>
+		<field name="horas" class="java.lang.Double"/>
+	</subDataset>
 	<parameter name="actividades" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<parameter name="productos" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<parameter name="intervalos" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<parameter name="asignacion" class="com.proyecto.persistences.Asignacion"/>
 	<parameter name="docente" class="java.lang.String"/>
+	<parameter name="seguimientos" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -85,7 +90,7 @@
 		<band height="91" splitType="Stretch">
 			<componentElement>
 				<reportElement key="table" x="0" y="0" width="802" height="80" uuid="5a13abbc-265e-4cd4-a763-ae06a9a1715e"/>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
 					<datasetRun subDataset="DatasetActividades" uuid="33e74e96-2dab-40af-a50f-53e6c90ed79f">
 						<dataSourceExpression><![CDATA[$P{actividades}]]></dataSourceExpression>
 					</datasetRun>
@@ -227,7 +232,7 @@
 		<band height="60">
 			<componentElement>
 				<reportElement key="table" x="0" y="0" width="802" height="50" uuid="bcc0a3b8-9973-470e-9adf-2d42706f2bfc"/>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
 					<datasetRun subDataset="DatasetProductos" uuid="81aa817e-d4dc-48c5-b0c9-07625fddcf84">
 						<dataSourceExpression><![CDATA[$P{productos}]]></dataSourceExpression>
 					</datasetRun>
@@ -326,9 +331,9 @@
 		<band height="71">
 			<componentElement>
 				<reportElement key="table" x="0" y="0" width="802" height="61" uuid="582fb60d-0ff2-448d-a832-d5f92212087c"/>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="DatasetActividades" uuid="98eb51bb-b7ae-4f30-8716-25b471b58264">
-						<dataSourceExpression><![CDATA[$P{actividades}]]></dataSourceExpression>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="DatasetSeguimiento" uuid="5fdba073-f2fc-4c64-a3b6-f51e519374fb">
+						<dataSourceExpression><![CDATA[$P{seguimientos}]]></dataSourceExpression>
 					</datasetRun>
 					<jr:columnGroup width="180" uuid="5a518ce0-25a2-4263-a309-6b19f1592aa3">
 						<jr:tableHeader height="30" rowSpan="1">
@@ -353,13 +358,16 @@
 							<jr:column width="90" uuid="a44edc10-fbea-48e8-9ec1-0441e583f9e9">
 								<jr:columnHeader height="30" rowSpan="1">
 									<staticText>
-										<reportElement x="0" y="0" width="90" height="30" uuid="1b76fda8-74ad-44f4-ae03-e64a01a19d5a"/>
+										<reportElement style="celda_subtitulo" x="0" y="0" width="90" height="30" uuid="1b76fda8-74ad-44f4-ae03-e64a01a19d5a"/>
 										<text><![CDATA[nombre]]></text>
 									</staticText>
 								</jr:columnHeader>
 								<jr:detailCell height="30" rowSpan="1">
 									<textField>
-										<reportElement x="0" y="0" width="90" height="20" uuid="c0efb51f-e37d-49fd-93f0-807cbfa3c656"/>
+										<reportElement x="0" y="0" width="90" height="30" uuid="1e6094ef-4e31-4e99-a498-977cd6f51af0"/>
+										<textElement>
+											<paragraph leftIndent="5" rightIndent="5"/>
+										</textElement>
 										<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 									</textField>
 								</jr:detailCell>
@@ -367,13 +375,16 @@
 							<jr:column width="90" uuid="8deff6e7-7ef1-4d94-8fc9-5aecc9d56fa8">
 								<jr:columnHeader height="30" rowSpan="1">
 									<staticText>
-										<reportElement x="0" y="0" width="90" height="30" uuid="9cc2cf15-9cc9-459a-ad20-005062e66b20"/>
+										<reportElement style="celda_subtitulo" x="0" y="0" width="90" height="30" uuid="9cc2cf15-9cc9-459a-ad20-005062e66b20"/>
 										<text><![CDATA[horas]]></text>
 									</staticText>
 								</jr:columnHeader>
 								<jr:detailCell height="30" rowSpan="1">
 									<textField>
-										<reportElement x="0" y="0" width="90" height="20" uuid="596dfbb1-7791-4d13-9c31-511860733feb"/>
+										<reportElement x="0" y="0" width="90" height="30" uuid="dab9d948-8c2d-445d-a30f-c31a8ff64a5e"/>
+										<textElement>
+											<paragraph leftIndent="5" rightIndent="5"/>
+										</textElement>
 										<textFieldExpression><![CDATA[$F{horas}]]></textFieldExpression>
 									</textField>
 								</jr:detailCell>
@@ -386,7 +397,7 @@
 		<band height="61">
 			<componentElement>
 				<reportElement key="table" x="0" y="0" width="802" height="50" uuid="42b58c90-187b-4947-9e9d-6ccee74e3d07"/>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
 					<datasetRun subDataset="DatasetIntervalos" uuid="9043d98c-c440-4595-a93a-39daf62331c2">
 						<dataSourceExpression><![CDATA[$P{intervalos}]]></dataSourceExpression>
 					</datasetRun>
@@ -530,12 +541,13 @@
 				</jr:table>
 			</componentElement>
 		</band>
+		<band height="50"/>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="39" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>
