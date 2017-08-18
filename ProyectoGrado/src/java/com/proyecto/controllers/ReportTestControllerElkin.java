@@ -80,10 +80,9 @@ public class ReportTestControllerElkin implements Serializable {
     }
     
     public void generateReport() {
-        try {
+        //try {
 //            List<country> countries = getListCountriesDummy();
-            JasperReport js;
-            JasperPrint jp;
+            
 
             Map<String, Object> map = new HashMap<String, Object>();
 //            
@@ -94,8 +93,8 @@ public class ReportTestControllerElkin implements Serializable {
                     getRealPath("/resources/img/logo_reportes.PNG");
 
             String cadenaConexion = "jdbc:postgresql://localhost:5432/bd_proyecto";
-            Class.forName("org.postgresql.Driver");
-            Connection connection = DriverManager.getConnection(cadenaConexion,"user_java", "123456");
+            //Class.forName("org.postgresql.Driver");
+            //Connection connection = DriverManager.getConnection(cadenaConexion,"user_java", "123456");
 
             map.put("LOGO", logoEtiqueta);
             map.put("SUBREPORT_DIR", ruta+"\\");
@@ -107,7 +106,10 @@ public class ReportTestControllerElkin implements Serializable {
                 System.out.println("URL " + path + " PARAMETROS " + map.size());
                 JasperReport jasperReport = JasperCompileManager.compileReport(FacesContext.getCurrentInstance().getExternalContext().
                  getRealPath("/reportes/rdc54.jrxml"));
-               
+                System.out.println("Done! 0");
+                List<Docentes> listaDocentes = new ArrayList<>();
+                listaDocentes.add(_currentDocente);
+                
                 List<Actividades> listaActividades = _actividadesFacade.buscarCampo("_coddocente", "73167775");
                 List<Productos> listaProductos = _productosFacade.listado();// _productosFacade.buscarCampo("_coddocente", "73167775");
                 List<Productos> listaFiltradaProductos = new ArrayList<>();
@@ -120,11 +122,11 @@ public class ReportTestControllerElkin implements Serializable {
                         }
                     }                    
                 }
-                
+                System.out.println("Done! 1");
                 // Parameters for report
                 Map<String, Object> parameters = new HashMap<String, Object>();
                 
-                parameters.put("docente", _currentDocente);
+                parameters.put("docentes", new JRBeanCollectionDataSource(listaDocentes));
                 parameters.put("intervalos", new JRBeanCollectionDataSource(listaIntervalos));
                 parameters.put("productos", new JRBeanCollectionDataSource(listaFiltradaProductos));
                 parameters.put("actividades", new JRBeanCollectionDataSource(listaActividades));
@@ -148,7 +150,7 @@ public class ReportTestControllerElkin implements Serializable {
                 //JasperViewer viewer = new JasperViewer(jasperPrint, false);
                 //viewer.setVisible(true);
                 //pdf();
-                
+                System.out.println("Done! 2");
                 JasperExportManager.exportReportToPdfFile(jasperPrint,"C:\\informes_jasper\\test1.pdf");
                 // Make sure the output directory exists.
                 /*File outDir = new File("C:/jasperoutput");
@@ -157,7 +159,7 @@ public class ReportTestControllerElkin implements Serializable {
                 // Export to PDF.
                 JasperExportManager.exportReportToHtmlFile(jasperPrint,"C:/jasperoutput/StyledTextReport.html");
 */
-                System.out.println("Done!");
+                System.out.println("Done! 3");
             } catch (Exception e) {
                 System.out.println("Error: " + e.toString());
                 e.printStackTrace();
@@ -189,10 +191,10 @@ public class ReportTestControllerElkin implements Serializable {
 //            outputStream = JasperReportUtil.getOutputStreamFromReport(map, getPathFileJasper());
 //            media = JasperReportUtil.getStreamContentFromOutputStream(outputStream, "application/pdf", getNameFilePdf());
 //            System.out.println("MEDIA "+media);
-        } catch (Exception e) {
+       /* } catch (Exception e) {
 //            log.error(e.getMessage(), e);
             System.out.println("ERROR " + e.getMessage());
-        }
+        }*/
     }
 
     private List<Intervalo> organizarIntervalos()

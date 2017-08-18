@@ -62,11 +62,15 @@
 		<field name="nombre" class="java.lang.String"/>
 		<field name="horas" class="java.lang.Double"/>
 	</subDataset>
+	<subDataset name="DatasetDocente" uuid="3c6ef74f-a9d3-4f72-9714-53aa4ad34803">
+		<field name="nombres" class="java.lang.String"/>
+		<field name="apellidos" class="java.lang.String"/>
+	</subDataset>
 	<parameter name="actividades" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<parameter name="productos" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<parameter name="intervalos" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<parameter name="asignacion" class="com.proyecto.persistences.Asignacion"/>
-	<parameter name="docente" class="java.lang.String"/>
+	<parameter name="docentes" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<parameter name="seguimientos" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -89,7 +93,89 @@
 	<detail>
 		<band height="91" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table" x="0" y="0" width="802" height="80" uuid="5a13abbc-265e-4cd4-a763-ae06a9a1715e"/>
+				<reportElement key="table" x="0" y="0" width="802" height="79" uuid="1f269a1c-bc47-4a2f-88fa-eb1a701f2132"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="DatasetDocente" uuid="6b0add64-6086-4c50-b1a4-4b033b79e9eb">
+						<dataSourceExpression><![CDATA[$P{docentes}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:columnGroup width="810" uuid="c89f07e2-f640-45d8-9423-bc5abc3a50d0">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="810" height="30" uuid="c74abf28-c136-40dc-819a-671f0a7887e7"/>
+								<text><![CDATA[Static text]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:column width="90" uuid="eeac2bc1-6bb8-44eb-90a6-82197f0efe36">
+							<jr:columnHeader height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="90" height="30" uuid="64ea8905-f1b8-4692-b013-aed8a2232c19"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font isBold="true"/>
+									</textElement>
+									<text><![CDATA[APELLIDO]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell height="29" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="90" height="29" uuid="38054f16-2a34-47d3-a7f3-b097e801b17a"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$F{apellidos}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="c6c926d6-e233-44b0-ae61-7b19a2a62788">
+							<jr:columnHeader height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="90" height="30" uuid="66515bdb-fdb9-4ed1-ba84-5441111cbe63"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font isBold="true"/>
+									</textElement>
+									<text><![CDATA[NOMBRE]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell height="29" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="90" height="29" uuid="d86d1f93-2fd1-401c-b1b5-c5f53dfa8510"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="119b33e6-abe5-41dc-8514-ffbdddeb1bc5">
+							<jr:columnHeader height="30" rowSpan="1"/>
+							<jr:detailCell height="29" rowSpan="1"/>
+						</jr:column>
+						<jr:column width="90" uuid="f0966d38-c5e4-46a4-aca5-5b6ca2708db7">
+							<jr:columnHeader height="30" rowSpan="1"/>
+							<jr:detailCell height="29" rowSpan="1"/>
+						</jr:column>
+						<jr:column width="90" uuid="6ad50123-1757-4cc2-a0a9-5d39855f5da6">
+							<jr:columnHeader height="30" rowSpan="1"/>
+							<jr:detailCell height="29" rowSpan="1"/>
+						</jr:column>
+						<jr:column width="90" uuid="15ebb7f1-a2a0-44f4-997c-80b97d39dc1f">
+							<jr:columnHeader height="30" rowSpan="1"/>
+							<jr:detailCell height="29" rowSpan="1"/>
+						</jr:column>
+						<jr:column width="90" uuid="19a7061e-749d-4b90-afcf-318885678e3e">
+							<jr:columnHeader height="30" rowSpan="1"/>
+							<jr:detailCell height="29" rowSpan="1"/>
+						</jr:column>
+						<jr:column width="90" uuid="4c84175e-5c33-4b69-b06c-d5be6ffecca7">
+							<jr:columnHeader height="30" rowSpan="1"/>
+							<jr:detailCell height="29" rowSpan="1"/>
+						</jr:column>
+						<jr:column width="90" uuid="f708653d-66b9-466e-8545-eff92a842581">
+							<jr:columnHeader height="30" rowSpan="1"/>
+							<jr:detailCell height="29" rowSpan="1"/>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="73">
+			<componentElement>
+				<reportElement key="table" x="0" y="0" width="802" height="58" uuid="5a13abbc-265e-4cd4-a763-ae06a9a1715e"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
 					<datasetRun subDataset="DatasetActividades" uuid="33e74e96-2dab-40af-a50f-53e6c90ed79f">
 						<dataSourceExpression><![CDATA[$P{actividades}]]></dataSourceExpression>
@@ -229,9 +315,9 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="60">
+		<band height="71">
 			<componentElement>
-				<reportElement key="table" x="0" y="0" width="802" height="50" uuid="bcc0a3b8-9973-470e-9adf-2d42706f2bfc"/>
+				<reportElement key="table" x="0" y="0" width="802" height="56" uuid="bcc0a3b8-9973-470e-9adf-2d42706f2bfc"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
 					<datasetRun subDataset="DatasetProductos" uuid="81aa817e-d4dc-48c5-b0c9-07625fddcf84">
 						<dataSourceExpression><![CDATA[$P{productos}]]></dataSourceExpression>
@@ -328,9 +414,9 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="71">
+		<band height="61">
 			<componentElement>
-				<reportElement key="table" x="0" y="0" width="802" height="61" uuid="582fb60d-0ff2-448d-a832-d5f92212087c"/>
+				<reportElement key="table" x="0" y="0" width="802" height="50" uuid="582fb60d-0ff2-448d-a832-d5f92212087c"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
 					<datasetRun subDataset="DatasetSeguimiento" uuid="5fdba073-f2fc-4c64-a3b6-f51e519374fb">
 						<dataSourceExpression><![CDATA[$P{seguimientos}]]></dataSourceExpression>
@@ -394,7 +480,7 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="61">
+		<band height="62">
 			<componentElement>
 				<reportElement key="table" x="0" y="0" width="802" height="50" uuid="42b58c90-187b-4947-9e9d-6ccee74e3d07"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
@@ -541,7 +627,6 @@
 				</jr:table>
 			</componentElement>
 		</band>
-		<band height="50"/>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
