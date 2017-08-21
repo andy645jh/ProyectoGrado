@@ -58,7 +58,7 @@ public class ReportTestController implements Serializable {
             String logoEtiqueta = FacesContext.getCurrentInstance().getExternalContext().
                     getRealPath("/resources/img/logo_reportes.PNG");
 
-            String cadenaConexion = "jdbc:postgresql://localhost:5433/bd_proyecto";
+            String cadenaConexion = "jdbc:postgresql://localhost:5432/bd_proyecto";
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(cadenaConexion,
                     "user_java", "123456");

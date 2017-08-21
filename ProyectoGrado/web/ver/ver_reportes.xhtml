@@ -10,23 +10,25 @@
     <ui:composition template="/plantilla.xhtml">
         <ui:define name="menu">
             <ui:decorate template="/menu_docentes.xhtml">
-                <ui:param name="estaActivo" value="productos"/>
+                <ui:param name="estaActivo" value="reportes"/>
             </ui:decorate>            
         </ui:define>
         <ui:define name="content">           
             <h:form id="formProductos">
                 <p:panel>                    
                     <p:growl id="mensajito" sticky="true" showDetail="true"/>           
-                    <br/>
-                    <p:commandButton value="Ver RDC-54" actionListener="#{reportTestController.generateReport()}" icon="ui-icon-disk" >
-
-                    </p:commandButton>   
-
-                    <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
-                        <p:fileDownload value="#{reportTestController.fileDownloadView()}" />
-                    </p:commandButton>
-
-
+                   
+                    <h3>RDC-26</h3>
+                    <p:commandButton value="Generar RDC-26" actionListener="#{reportTestController.generateReport()}" icon="ui-icon-disk" ></p:commandButton>   
+                    <object type="application/pdf" data="test1.pdf?pfdrid_c=true" height="300px" width="100%" internalinstanceid="13">
+                        Your browser can't display pdf, <a href="test1.pdf">click</a> to download pdf instead.
+                    </object>
+                    
+                    <h3>RDC-54</h3>
+                    <p:commandButton value="Generar RDC-54" actionListener="#{reportTestController.generateReport()}" icon="ui-icon-disk" ></p:commandButton>   
+                    <object type="application/pdf" data="test1.pdf?pfdrid_c=true" height="300px" width="100%" internalinstanceid="13">
+                        Your browser can't display pdf, <a href="test1.pdf">click</a> to download pdf instead.
+                    </object>
                 </p:panel>  
             </h:form>
 
@@ -34,14 +36,6 @@
         </ui:define>
     </ui:composition>
 
-    <script type="text/javascript">
-        function start() {
-            PF('statusDialog').show();
-        }
-
-        function stop() {
-            PF('statusDialog').hide();
-        }
-    </script>
+  
 </html>
 
