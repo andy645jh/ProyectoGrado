@@ -48,18 +48,17 @@
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
-                            <p:commandButton ajax="false" icon="ui-icon-trash" actionListener="#{semanaController.borrar(registro)}" >
+                            <p:commandButton update="formSemanas:listar formSemanas:growl" icon="ui-icon-trash" actionListener="#{semanaController.borrar(registro)}" >
                                 <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
-                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                <p:commandButton value="Yes" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                            </p:confirmDialog>
                             </p:commandButton>
                             <p:commandButton icon="ui-icon-pencil" action="#{semanaController.abrirActualizar(registro)}">
                                 <p:ajax event="dialogReturn" update="formSemanas:listar formSemanas:growl" listener="#{semanaController.saveMessage()}"/>                                    
                             </p:commandButton>  
 
-                            
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Yes" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
                         </p:column> 
                     </p:dataTable> 
 
