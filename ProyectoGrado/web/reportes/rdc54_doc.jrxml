@@ -86,7 +86,7 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="129" splitType="Stretch">
+		<band height="121" splitType="Stretch">
 			<textField>
 				<reportElement style="celda" x="250" y="40" width="250" height="20" uuid="ab0a6bd6-28a7-400c-aef1-9989c1f5c973"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
