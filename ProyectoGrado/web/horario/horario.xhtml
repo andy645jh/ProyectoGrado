@@ -106,7 +106,7 @@
                     </p:dataTable>
 
                     <p:dialog id="dialog_horario" widgetVar="eventDialog" header="Event Details" >
-                        <p:ajax event="close" update="nuevaLista" listener="#{horarioController.close()}" />
+                        <p:ajax event="close" update="nuevaLista listarHorario" listener="#{horarioController.close()}" />
 
                         <h:panelGrid id="eventDetails" columns="2">                           
                             <p:outputLabel value="#{clasesTxt.nombre}  " for="nombre" />
