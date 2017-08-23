@@ -30,7 +30,7 @@ public class Horario implements Serializable {
     @Column(name = "nombre")
     @Size(min = 1, max = 300)
     @NotNull
-    private String _nombre; 
+    private String _nombre = "null"; 
         
     @JoinColumn(name = "coddocente", referencedColumnName = "cedula")
     @ManyToOne(optional = false)
@@ -70,7 +70,7 @@ public class Horario implements Serializable {
         this._codhorario = _codhorario;
     }
 
-    public String getNombre() {
+    public String getNombre() {        
         return _nombre;
     }
 

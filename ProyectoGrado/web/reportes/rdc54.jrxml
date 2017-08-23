@@ -448,7 +448,7 @@
 								<textField isBlankWhenNull="true">
 									<reportElement style="celda" x="0" y="0" width="123" height="20" uuid="af1fd78e-8e97-4cd9-a72d-6cd22d7d7b20"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle"/>
-									<textFieldExpression><![CDATA[$F{lunes}.equals( null ) ? "":""+$F{lunes}]]></textFieldExpression>
+									<textFieldExpression><![CDATA[$F{lunes}.toString()=="null" ? "" : ""+$F{lunes}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
@@ -466,7 +466,7 @@
 								<textField isBlankWhenNull="true">
 									<reportElement style="celda" x="0" y="0" width="127" height="20" uuid="6f29a9bb-a79f-4016-b8cc-bb710f1c96c8"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle"/>
-									<textFieldExpression><![CDATA[""+$F{martes}]]></textFieldExpression>
+									<textFieldExpression><![CDATA[$F{martes}.toString()=="null" ? "" : ""+$F{martes}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
@@ -484,7 +484,7 @@
 								<textField isBlankWhenNull="true">
 									<reportElement style="celda" x="0" y="0" width="125" height="20" uuid="e68793c3-8c9a-42ed-b348-cd120e725435"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle"/>
-									<textFieldExpression><![CDATA[""+$F{miercoles}]]></textFieldExpression>
+									<textFieldExpression><![CDATA[$F{miercoles}.toString()=="null" ? "" : ""+$F{miercoles}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
@@ -502,7 +502,7 @@
 								<textField isBlankWhenNull="true">
 									<reportElement style="celda" x="0" y="0" width="125" height="20" uuid="cfe266e7-102f-4ca1-9f0e-bd62c500206d"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle"/>
-									<textFieldExpression><![CDATA[""+$F{jueves}]]></textFieldExpression>
+									<textFieldExpression><![CDATA[$F{jueves}.toString()=="null" ? "" : ""+$F{jueves}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
@@ -520,7 +520,7 @@
 								<textField isBlankWhenNull="true">
 									<reportElement style="celda" x="0" y="0" width="129" height="20" uuid="3cd49084-f520-426b-ba75-78afb5d1f27f"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle"/>
-									<textFieldExpression><![CDATA[""+$F{viernes}]]></textFieldExpression>
+									<textFieldExpression><![CDATA[$F{viernes}.toString()=="null" ? "" : ""+$F{viernes}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
@@ -538,7 +538,7 @@
 								<textField isBlankWhenNull="true">
 									<reportElement style="celda" x="0" y="0" width="118" height="20" uuid="2bc3f480-7eef-474d-b33d-101710bc44b7"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle"/>
-									<textFieldExpression><![CDATA[""+$F{sabado}]]></textFieldExpression>
+									<textFieldExpression><![CDATA[$F{sabado}.toString()=="null" ? "" : ""+$F{sabado}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
