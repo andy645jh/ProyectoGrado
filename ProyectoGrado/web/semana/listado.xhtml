@@ -14,14 +14,13 @@
             </ui:decorate> 
         </ui:define>
         <ui:define name="content">           
-            <h:form id="formActividades">
-                <p:panel>
+            <h:form id="formSemanas"> 
+                <p:growl id="growl" showDetail="true" sticky="true" />               
 
-                    <p:growl id="mensajito" sticky="true" showDetail="true"/>           
-                    <br/>
+                <p:panel>               
 
                     <p:commandButton value="#{actividadesTxt.crear} Semanas" actionListener="#{semanaController.abrirCrear()}" icon="ui-icon-disk" >
-                        <p:ajax event="dialogReturn" update=":formActividades:listar :formActividades:mensajito" />                          
+                        <p:ajax event="dialogReturn" update="listar growl" listener="#{semanaController.saveMessage()}"/>                          
                     </p:commandButton>                   
                     <p:separator/>
                     <br/>
@@ -49,14 +48,26 @@
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
-                            <p:commandButton ajax="false" icon="ui-icon-trash" action="#{semanaController.borrar(registro)}"></p:commandButton>
+                            <p:commandButton ajax="false" icon="ui-icon-trash" actionListener="#{semanaController.borrar(registro)}" >
+                                <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Yes" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
+                            </p:commandButton>
                             <p:commandButton icon="ui-icon-pencil" action="#{semanaController.abrirActualizar(registro)}">
-                                <p:ajax event="dialogReturn" update=":formActividades:listar :formActividades:mensajito" oncomplete="#{semanaController.mostrarMensaje()}"/>                                  
+                                <p:ajax event="dialogReturn" update="formSemanas:listar formSemanas:growl" listener="#{semanaController.saveMessage()}"/>                                    
                             </p:commandButton>  
+
+                            
                         </p:column> 
-                    </p:dataTable>
+                    </p:dataTable> 
+
+
 
                 </p:panel>  
+
+
             </h:form>
         </ui:define>
     </ui:composition>
