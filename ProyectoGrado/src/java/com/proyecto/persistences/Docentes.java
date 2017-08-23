@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -93,6 +94,8 @@ public class Docentes implements Serializable
     @Column(name = "matricula_prof")
     private String matricula_prof;
     
+    @Transient
+    private String _nombreCoord;
    
     public Docentes() { }
 
@@ -281,6 +284,11 @@ public class Docentes implements Serializable
 
     public void setMatricula_prof(String matricula_prof) {
         this.matricula_prof = matricula_prof;
+    }
+
+    public String getNombreCoord() {
+        _nombreCoord = _codcoordinacion.getNombre();
+        return _nombreCoord;
     }
     
     

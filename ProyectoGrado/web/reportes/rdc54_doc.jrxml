@@ -48,6 +48,7 @@
 	<field name="correo" class="java.lang.String"/>
 	<field name="formacion" class="java.lang.String"/>
 	<field name="codcoordinacion" class="java.lang.Integer"/>
+	<field name="nombreCoord" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -185,6 +186,11 @@
 				<reportElement style="celda" x="439" y="100" width="363" height="20" uuid="72f72215-ece9-41b3-bb86-4588eef550f4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{formacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="celda" x="100" y="80" width="183" height="40" uuid="983216fd-1e94-4900-89e9-fb95504325e5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombreCoord}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>

@@ -97,13 +97,16 @@ public class ReportTestControllerElkin implements Serializable {
             //Connection connection = DriverManager.getConnection(cadenaConexion,"user_java", "123456");
 
             map.put("LOGO", logoEtiqueta);
-            map.put("SUBREPORT_DIR", ruta+"\\");
+            
 
             String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/reportes/test1.jasper");
             String pdf = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/reportes/");
-
+            String subreport = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/reportes\\");
+            map.put("SUBREPORT_DIR", subreport);
+            
             try {
                 System.out.println("URL " + path + " PARAMETROS " + map.size());
+                System.out.println("SUB_REPORT " + subreport);
                 JasperReport jasperReport = JasperCompileManager.compileReport(FacesContext.getCurrentInstance().getExternalContext().
                  getRealPath("/reportes/rdc54.jrxml"));
                 System.out.println("Done! 0");
@@ -126,6 +129,7 @@ public class ReportTestControllerElkin implements Serializable {
                 // Parameters for report
                 Map<String, Object> parameters = new HashMap<String, Object>();
                 
+                parameters.put("SUBREPORT_DIR", subreport);
                 parameters.put("docentes", new JRBeanCollectionDataSource(listaDocentes));
                 parameters.put("intervalos", new JRBeanCollectionDataSource(listaIntervalos));
                 parameters.put("productos", new JRBeanCollectionDataSource(listaFiltradaProductos));
