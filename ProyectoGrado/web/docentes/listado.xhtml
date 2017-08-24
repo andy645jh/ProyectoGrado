@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-    
+
     <ui:composition template="/plantilla.xhtml">
         <ui:define name="menu">
             <ui:decorate template="/menu_coordinador.xhtml">
@@ -15,14 +15,11 @@
         </ui:define>
 
         <ui:define name="content">           
-            <h:form id="formActividades" >
+            <h:form id="formDocentes" >
+                <p:growl id="mensajito" sticky="true" showDetail="true"/>           
                 <p:panel>
-
-                    <p:growl id="mensajito" sticky="true" showDetail="true"/>           
-                    <br/>
-
                     <p:commandButton value="#{actividadesTxt.crear} Docentes" actionListener="#{docentesController.abrirCrear()}" icon="ui-icon-disk" >
-                        <p:ajax event="dialogReturn" update=":formActividades:listar :formActividades:mensajito" />                          
+                        <p:ajax event="dialogReturn" update="listar" listener="#{semanaController.saveMessage()}" />                          
                     </p:commandButton>                   
                     <p:separator/>
                     <br/>
@@ -51,6 +48,7 @@
                             <f:facet name="header">Tipo Contrato</f:facet>
                             <h:outputText value="Medio Completo" rendered="#{registro.tipocontrato == 2}"/>
                             <h:outputText value="Tiempo Completo" rendered="#{registro.tipocontrato == 1}"/>                            
+                            <h:outputText value="Catedra" rendered="#{registro.tipocontrato == 3}"/>                            
                         </p:column>
 
 
@@ -59,7 +57,7 @@
                             <f:facet name="header">#{docentesTxt.opciones}</f:facet>
                             <p:commandButton ajax="false" icon="ui-icon-trash" action="#{docentesController.borrar(registro)}"></p:commandButton>
                             <p:commandButton  icon="ui-icon-pencil" action="#{docentesController.abrirActualizar(registro)}">
-                                <p:ajax event="dialogReturn" update=":formActividades:mensajito :formActividades:listar" oncomplete="#{docentesController.mostrarMensaje()}"/>                            
+                                <p:ajax event="dialogReturn" update=":formDocentes:mensajito :formDocentes:listar" oncomplete="#{docentesController.mostrarMensaje()}"/>                            
                             </p:commandButton> 
                         </p:column> 
                     </p:dataTable>
