@@ -60,6 +60,13 @@ public class DocentesController implements Serializable {
         }
         return _obj;
     }
+    
+    public void mostrarMensaje() {           
+        if(message!=null){
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, message);
+        }
+    }
 
     public void abrirCrear() {
         Map<String, Object> options = new HashMap<String, Object>();
@@ -72,18 +79,20 @@ public class DocentesController implements Serializable {
     public void agregar() {
 
         String titulo, detalle;
-        Coordinacion c = _coordFacade.buscar(_codCoord);
-        System.out.println("VA A AGREGAR DOCENTE " + _obj.getCodcoordinacion());
+//        Coordinacion c = _coordFacade.buscar(_codCoord);
         Docentes doc = _ejbFacade.getCurrentDocente();
+        System.out.println("VA A AGREGAR DOCENTE " + doc.getCodcoordinacion());
 //        String coordinacion= doc.getCodcoordinacion().getCodcoordinacion()+"";
         _obj.setCodcoordinacion(doc.getCodcoordinacion());
 //        _obj.setCodcoordinacion(c);
 //        _obj.setCod(c);
         try {
+            _ejbFacade.crear(_obj);
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
-            _ejbFacade.crear(_obj);
+            RequestContext context = RequestContext.getCurrentInstance();
+            context.closeDialog(null);
 
             //return "crear";
         } catch (Exception e) {
@@ -91,10 +100,11 @@ public class DocentesController implements Serializable {
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardarError");
             message = new FacesMessage(FacesMessage.SEVERITY_ERROR, titulo, detalle);
             Logger.getLogger(Docentes.class.getName()).log(Level.SEVERE, null, e);
+            RequestContext context = RequestContext.getCurrentInstance();
+            context.closeDialog(null);
         }
 
-        RequestContext context = RequestContext.getCurrentInstance();
-        context.closeDialog(null);
+        
     }
 
     public SelectItem[] combo(String texto) {
@@ -198,12 +208,6 @@ public class DocentesController implements Serializable {
         _obj = null;
     }
 
-    public void mostrarMensaje() {
-        if (message != null) {
-            FacesContext.getCurrentInstance().addMessage("mensajes", message);
-        }
-        message = null;
-    }
 
     public Docentes buscar() {
         System.out.println("USUARIO DE DOCENTE " + _loginController);

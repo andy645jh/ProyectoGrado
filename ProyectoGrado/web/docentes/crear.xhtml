@@ -25,8 +25,7 @@
                             <p:menuitem value="Creacion de Docentes" url="#"></p:menuitem>
                         </p:breadCrumb>
                         -->
-                        <p:growl id="mensajes" sticky="true" showDetail="true"/>                
-                        <br/>
+                        
                         <p:panelGrid columns="2">                    
                             <p:outputLabel value="#{docentesTxt.cedula}  " for="cedula" />
                             <p:inputText id="cedula" required="true" value="#{docentesController.campo.cedula}"/> 
@@ -46,7 +45,7 @@
                             </p:selectOneMenu>
                             
                             <f:facet name="footer">
-                                <p:commandButton id="btngrabar" value="#{docentesTxt.crear}" ajax="true" action="#{docentesController.agregar()}"/>
+                                <p:commandButton id="btngrabar" value="#{docentesTxt.crear}" ajax="false" action="#{docentesController.agregar()}"/>
                             </f:facet>
                         </p:panelGrid>
                     </p:panel>
