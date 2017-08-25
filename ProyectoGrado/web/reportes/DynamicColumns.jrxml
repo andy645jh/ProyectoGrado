@@ -11,7 +11,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="85" splitType="Stretch">
+		<band height="83" splitType="Stretch">
 			<textField>
 				<reportElement x="123" y="43" width="303" height="32" uuid="7ed703bc-8c60-478f-babd-c3e1cd45b9fb"/>
 				<textElement textAlignment="Center">
@@ -30,10 +30,10 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="8" splitType="Stretch"/>
+		<band height="25" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="20" splitType="Stretch"/>
+		<band height="31" splitType="Stretch"/>
 	</columnHeader>
 	<columnFooter>
 		<band splitType="Stretch"/>

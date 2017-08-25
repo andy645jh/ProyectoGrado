@@ -23,7 +23,8 @@ public class DynamicColumnReportService {
 
         System.out.println("Adding the dynamic columns");
         DynamicReportBuilder reportBuilder = new DynamicReportBuilder(jasperReportDesign, columnHeaders.size());
-        reportBuilder.addDynamicColumns();
+        //reportBuilder.addDynamicColumns();
+        reportBuilder.initConfig();
 
         System.out.println("Compiling the report");
         JasperReport jasperReport = JasperCompileManager.compileReport(jasperReportDesign);

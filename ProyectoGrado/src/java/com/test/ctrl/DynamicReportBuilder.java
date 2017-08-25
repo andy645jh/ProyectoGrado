@@ -40,16 +40,39 @@ public class DynamicReportBuilder {
         this.numColumns = numColumns;
     }
 
+    public void initConfig() throws JRException {
+        JRDesignBand detailBand = new JRDesignBand();
+        JRDesignBand headerBand = new JRDesignBand();
+        
+        detailBand.setHeight(50);
+        headerBand.setHeight(50);
+        
+        JRDesignStaticText texto = new JRDesignStaticText();
+        texto.setText("Prueba");
+        detailBand.addElement(texto);
+        headerBand.addElement(texto);
+        jasperDesign.setColumnHeader(headerBand);
+        
+        texto.setX(MARGIN);
+        texto.setY(2);
+        texto.setWidth(50);
+        texto.setHeight(10);
+
+        ((JRDesignSection)jasperDesign.getDetailSection()).addBand(detailBand);
+        //((JRDesignSection)jasperDesign.getDetailSection()).addBand(headerBand);
+    }
+    
     public void addDynamicColumns() throws JRException {
 
         JRDesignBand detailBand = new JRDesignBand();
         JRDesignBand headerBand = new JRDesignBand();
 
+        
         JRDesignStyle normalStyle = getNormalStyle();
         JRDesignStyle columnHeaderStyle = getColumnHeaderStyle();
         jasperDesign.addStyle(normalStyle);
         jasperDesign.addStyle(columnHeaderStyle);
-
+        
         int xPos = MARGIN;
         int columnWidth = (TOTAL_PAGE_WIDTH - (SPACE_BETWEEN_COLS * (numColumns - 1))) / numColumns;
 
