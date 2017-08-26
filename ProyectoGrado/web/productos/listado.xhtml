@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-    
+
     <ui:composition template="/plantilla.xhtml">
         <ui:define name="menu">
             <ui:decorate template="/menu_docentes.xhtml">
@@ -15,53 +15,63 @@
         </ui:define>
         <ui:define name="content">           
             <h:form id="formProductos">
+                <p:growl id="mensajito" sticky="true" showDetail="true"/>           
                 <p:panel>                    
-                    <p:growl id="mensajito" sticky="true" showDetail="true"/>           
                     <br/>
-                        <p:commandButton value="#{productosTxt.crear} #{productosTxt.productos}" actionListener="#{productosController.abrirCrear()}" icon="ui-icon-disk" >
-                            <p:ajax event="dialogReturn" update=":formProductos:listado :formProductos:mensajito" />                     
-                        </p:commandButton>                   
-                        <p:separator/>
-                        <br/>
-                        <p:dataTable id="listado" value="#{productosController.listado}" var="registro">
+                    <p:commandButton value="#{productosTxt.crear} #{productosTxt.productos}" actionListener="#{productosController.abrirCrear()}" icon="ui-icon-disk" >
+                        <p:ajax event="dialogReturn" update="listado mensajito" listener="#{productosController.mostrarMensaje()}"/>                     
+                    </p:commandButton>                   
+                    <p:separator/>
+                    <br/>
+                    <p:dataTable id="listado" value="#{productosController.listado}" var="registro" rows="10"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15">
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{productosTxt.actividad}</f:facet>
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">#{productosTxt.actividad}</f:facet>
                                 #{registro.codactividad}
-                            </p:column>
+                        </p:column>
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{productosTxt.descripcion}</f:facet>
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">#{productosTxt.descripcion}</f:facet>
                                 #{registro.descripcion}
-                            </p:column> 
+                        </p:column> 
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{productosTxt.fechaComp}</f:facet>
-                                <h:outputText value="#{registro.fechacompromiso}" >
-                                    <f:convertDateTime dateStyle="medium"/>
-                                </h:outputText>   
-                            </p:column>
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">#{productosTxt.fechaComp}</f:facet>
+                            <h:outputText value="#{registro.fechacompromiso}" >
+                                <f:convertDateTime dateStyle="medium"/>
+                            </h:outputText>   
+                        </p:column>
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{productosTxt.fechaEntr}</f:facet>
-                                <h:outputText value="#{registro.fechaentrega}" >
-                                    <f:convertDateTime dateStyle="medium"/>
-                                </h:outputText>   
-                            </p:column>
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">#{productosTxt.fechaEntr}</f:facet>
+                            <h:outputText value="#{registro.fechaentrega}" >
+                                <f:convertDateTime dateStyle="medium"/>
+                            </h:outputText>   
+                        </p:column>
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{productosTxt.comentarios}</f:facet>
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">#{productosTxt.comentarios}</f:facet>
                                 #{registro.comentarios}
-                            </p:column>  
+                        </p:column>  
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{productosTxt.opciones}</f:facet>
-                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{productosController.borrar(registro)}"/>                                    
-                                <p:commandButton icon="ui-icon-pencil" action="#{productosController.abrirActualiar(registro)}">
-                                    <p:ajax event="dialogReturn" update=":formProductos:listado :formProductos:mensajito" oncomplete="#{productosController.mostrarMensaje()}"/>                            
-                                </p:commandButton> 
-                            </p:column> 
-                        </p:dataTable>           
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">#{productosTxt.opciones}</f:facet>
+                            <p:commandButton update="formProductos:listado formProductos:mensajito" icon="ui-icon-trash" actionListener="#{productosController.borrar(registro)}">
+                                <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />
+                            </p:commandButton>                                    
+                            <p:commandButton icon="ui-icon-pencil" action="#{productosController.abrirActualiar(registro)}">
+                                <p:ajax event="dialogReturn" update="formProductos:listado formProductos:mensajito" listener="#{productosController.mostrarMensaje()}"/>                            
+                            </p:commandButton> 
+
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
+                        </p:column> 
+                    </p:dataTable>           
                 </p:panel>  
             </h:form>
         </ui:define>

@@ -219,8 +219,11 @@ public class InformacionAcademicaController implements Serializable
     
     public void mostrarMensaje()
     {        
-        if(message!=null) FacesContext.getCurrentInstance().addMessage("mensajes", message);
-        message=null;
+       if(message!=null){
+            System.out.println("ES DIFERENTE DE NULL");
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, message);
+        }
     }
     
     public void actualizar()

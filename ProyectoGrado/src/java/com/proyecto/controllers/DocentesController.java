@@ -63,6 +63,7 @@ public class DocentesController implements Serializable {
     
     public void mostrarMensaje() {           
         if(message!=null){
+            System.out.println("ES DIFERENTE DE NULL");
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, message);
         }
@@ -91,6 +92,7 @@ public class DocentesController implements Serializable {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
+            System.out.println("MENSAJE "+message);
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);
 
@@ -188,15 +190,17 @@ public class DocentesController implements Serializable {
 //        System.out.println("VA A AGREGAR DOCENTE "+_obj.getCodcoordinacion());
 
         try {
+            _ejbFacade.actualizar(_obj);
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
-            _ejbFacade.actualizar(_obj);
+            Mensajes.exito(titulo, detalle);
 
         } catch (Exception e) {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarError");
             message = new FacesMessage(FacesMessage.SEVERITY_ERROR, titulo, detalle);
+            Mensajes.error(titulo, detalle);
             Logger.getLogger(Docentes.class.getName()).log(Level.SEVERE, null, e);
         }
 

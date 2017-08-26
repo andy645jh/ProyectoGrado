@@ -19,11 +19,14 @@
                 <p:growl id="mensajito" sticky="true" showDetail="true"/>           
                 <p:panel>
                     <p:commandButton value="#{actividadesTxt.crear} Docentes" actionListener="#{docentesController.abrirCrear()}" icon="ui-icon-disk" >
-                        <p:ajax event="dialogReturn" update="listar" listener="#{semanaController.saveMessage()}" />                          
+                        <p:ajax event="dialogReturn" update="listar mensajito" listener="#{docentesController.mostrarMensaje()}" />                          
                     </p:commandButton>                   
                     <p:separator/>
                     <br/>
-                    <p:dataTable id="listar" value="#{docentesController.listado}" var="registro">
+                    <p:dataTable id="listar" value="#{docentesController.listado}" var="registro" rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">#{docentesTxt.cedula}</f:facet>
                                 #{registro.cedula}
@@ -55,10 +58,17 @@
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">#{docentesTxt.opciones}</f:facet>
-                            <p:commandButton ajax="false" icon="ui-icon-trash" action="#{docentesController.borrar(registro)}"></p:commandButton>
-                            <p:commandButton  icon="ui-icon-pencil" action="#{docentesController.abrirActualizar(registro)}">
-                                <p:ajax event="dialogReturn" update=":formDocentes:mensajito :formDocentes:listar" oncomplete="#{docentesController.mostrarMensaje()}"/>                            
+                            <p:commandButton update="formDocentes:mensajito formDocentes:listar"  icon="ui-icon-trash" actionListener="#{docentesController.borrar(registro)}">
+                                <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                            <p:commandButton  icon="ui-icon-pencil" action="#{docentesController.abrirActualizar(registro)}">                                
+                                <p:ajax event="dialogReturn" update="formDocentes:mensajito formDocentes:listar" listener="#{docentesController.mostrarMensaje()}"/>                            
                             </p:commandButton> 
+                            
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
                         </p:column> 
                     </p:dataTable>
 
