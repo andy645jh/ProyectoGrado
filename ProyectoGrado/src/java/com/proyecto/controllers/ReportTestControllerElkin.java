@@ -16,6 +16,7 @@ import com.proyecto.persistences.Productos;
 import com.proyecto.persistences.Semana;
 import com.proyecto.utilities.Intervalo;
 import com.proyecto.utilities.SessionUtils;
+import com.test.ctrl.DynamicColumnReportService;
 import com.test.ctrl.Persona;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -42,6 +43,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
@@ -60,168 +62,124 @@ public class ReportTestControllerElkin implements Serializable {
     private String number;
     private JasperPrint jasperPrint;
     private Docentes _currentDocente;
-    
-    @EJB 
+
+    @EJB
     private SemanaFacade _semanaFacade;
-    
-    @EJB 
+
+    @EJB
     private ActividadesFacade _actividadesFacade;
-    
-    @EJB 
+
+    @EJB
     private ProductosFacade _productosFacade;
-    
-    @EJB 
+
+    @EJB
     private HorarioFacade _horarioFacade;
-    
+
     @PostConstruct
-    public void init()
-    {
+    public void init() {
         _currentDocente = (Docentes) SessionUtils.get("docente");
     }
-    
-    public void generateReport() {
-        //try {
-//            List<country> countries = getListCountriesDummy();
-            
 
-            Map<String, Object> map = new HashMap<String, Object>();
-//            
-            String ruta = FacesContext.getCurrentInstance().getExternalContext().
-                    getRealPath("/reportes\\");
+    public void crearReport() {
+        List<String> columnHeaders = Arrays.asList(new String[]{"Col1", "Col2", "Col3", "Col4"});
+        List<List<String>> rows = new ArrayList<List<String>>();
+        List<String> row1 = Arrays.asList(new String[]{"Data1", "Data2", "Data3", "Data4"});
+        List<String> row2 = Arrays.asList(new String[]{"Data5", "Data6", "Data7", "Data8"});
+        List<String> row3 = Arrays.asList(new String[]{"Data9", "Data10", "Data11", "Data12"});
 
-            String logoEtiqueta = FacesContext.getCurrentInstance().getExternalContext().
-                    getRealPath("/resources/img/logo_reportes.PNG");
+        rows.add(row1);
+        rows.add(row2);
+        rows.add(row3);
 
-            String cadenaConexion = "jdbc:postgresql://localhost:5432/bd_proyecto";
-            //Class.forName("org.postgresql.Driver");
-            //Connection connection = DriverManager.getConnection(cadenaConexion,"user_java", "123456");
-
-            map.put("LOGO", logoEtiqueta);
-            map.put("SUBREPORT_DIR", ruta+"\\");
-
-            String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/reportes/test1.jasper");
-            String pdf = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/reportes/");
-
-            try {
-                System.out.println("URL " + path + " PARAMETROS " + map.size());
-                JasperReport jasperReport = JasperCompileManager.compileReport(FacesContext.getCurrentInstance().getExternalContext().
-                 getRealPath("/reportes/rdc54.jrxml"));
-                System.out.println("Done! 0");
-                List<Docentes> listaDocentes = new ArrayList<>();
-                listaDocentes.add(_currentDocente);
-                
-                List<Actividades> listaActividades = _actividadesFacade.buscarCampo("_coddocente", "73167775");
-                List<Productos> listaProductos = _productosFacade.listado();// _productosFacade.buscarCampo("_coddocente", "73167775");
-                List<Productos> listaFiltradaProductos = new ArrayList<>();
-                List<Intervalo> listaIntervalos = organizarIntervalos();
-                
-                for (Productos producto : listaProductos) {
-                    for (Actividades activ : listaActividades) {
-                        if(producto.getCodactividad().equals(activ)){
-                            listaFiltradaProductos.add(producto);
-                        }
-                    }                    
-                }
-                System.out.println("Done! 1");
-                // Parameters for report
-                Map<String, Object> parameters = new HashMap<String, Object>();
-                
-                parameters.put("docentes", new JRBeanCollectionDataSource(listaDocentes));
-                parameters.put("intervalos", new JRBeanCollectionDataSource(listaIntervalos));
-                parameters.put("productos", new JRBeanCollectionDataSource(listaFiltradaProductos));
-                parameters.put("actividades", new JRBeanCollectionDataSource(listaActividades));
-                parameters.put("seguimientos", new JRBeanCollectionDataSource(listaActividades));
-                
-                /*List<Persona> lista = new ArrayList<Persona>();
-                lista.add(new Persona("Elkin",20));
-                lista.add(new Persona("Giovanny",21));
-                lista.add(new Persona("Sergio",18));
-                
-                List<Semana> listaSemanas = _semanaFacade.listado();
-                System.out.println("Semanas: "+ listaSemanas.size());
-                parameters.put("semanas", new JRBeanCollectionDataSource(listaSemanas));
-                parameters.put("lista", new JRBeanCollectionDataSource(lista));
-                parameters.put("mi_nombre", "Giovanny");*/
-//              
-                //jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,connection);
-                jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,new JREmptyDataSource());
-               
-                //JasperViewer.viewReport(jasperPrint);
-                //JasperViewer viewer = new JasperViewer(jasperPrint, false);
-                //viewer.setVisible(true);
-                //pdf();
-                System.out.println("Done! 2");
-                JasperExportManager.exportReportToPdfFile(jasperPrint,"C:\\informes_jasper\\test1.pdf");
-                // Make sure the output directory exists.
-                /*File outDir = new File("C:/jasperoutput");
-                outDir.mkdirs();
-
-                // Export to PDF.
-                JasperExportManager.exportReportToHtmlFile(jasperPrint,"C:/jasperoutput/StyledTextReport.html");
-*/
-                System.out.println("Done! 3");
-            } catch (Exception e) {
-                System.out.println("Error: " + e.toString());
-                e.printStackTrace();
-            }
-
-//            System.out.println("RUTA PDF "+pdf);
-//            
-//            String printFile = JasperFillManager.fillReportToFile(path,
-//            map, connection);
-//         if (printFile != null) {
-//            JasperExportManager.exportReportToPdfFile(printFile,pdf+"prueba.pdf");
-//         
-//               System.out.println("done printing...!!");
-//         }
-//            
-//            js = JasperCompileManager.compileReport(path);
-//            jp = JasperFillManager.fillReport(js, map, connection);
-//            
-////            byte[] bites = JasperExportManager.exportReportToPdf(jp);
-//            
-//           byte[] bites = JasperRunManager.runReportToPdf(js, map, connection);
-//            PdfReader reader = new PdfReader(bites);
-//ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//            PdfStamper stamper = new PdfStamper(reader, baos);
-//            PdfWriter writer = stamper.getWriter();
-//            PdfAction action = new PdfAction(PdfAction.PRINTDIALOG);
-//writer.setOpenAction(action);
-//stamper.close();
-//            outputStream = JasperReportUtil.getOutputStreamFromReport(map, getPathFileJasper());
-//            media = JasperReportUtil.getStreamContentFromOutputStream(outputStream, "application/pdf", getNameFilePdf());
-//            System.out.println("MEDIA "+media);
-       /* } catch (Exception e) {
-//            log.error(e.getMessage(), e);
-            System.out.println("ERROR " + e.getMessage());
-        }*/
+        DynamicColumnReportService service = new DynamicColumnReportService();
+        try {
+            service.runReport(columnHeaders, rows);
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
     }
 
-    private List<Intervalo> organizarIntervalos()
-    {
-        List<Horario> listHorario =_horarioFacade.listado();
+    public void generateReport() {
+
+        String cadenaConexion = "jdbc:postgresql://localhost:5432/bd_proyecto";
+        //Class.forName("org.postgresql.Driver");
+        //Connection connection = DriverManager.getConnection(cadenaConexion,"user_java", "123456");
+
+        String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/reportes/test1.jasper");
+        String pdf = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/reportes/");
+        String subreport = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/reportes\\");
+
+        try {
+
+            System.out.println("SUB_REPORT " + subreport);
+            JasperReport jasperReport = JasperCompileManager.compileReport(FacesContext.getCurrentInstance().getExternalContext().
+                    getRealPath("/reportes/rdc54.jrxml"));
+            System.out.println("Done! 0");
+            List<Docentes> listaDocentes = new ArrayList<>();
+            listaDocentes.add(_currentDocente);
+
+            List<Actividades> listaActividades = _actividadesFacade.buscarCampo("_coddocente", "73167775");
+            List<Productos> listaProductos = _productosFacade.listado();// _productosFacade.buscarCampo("_coddocente", "73167775");
+            List<Productos> listaFiltradaProductos = new ArrayList<>();
+            List<Intervalo> listaIntervalos = organizarIntervalos();
+
+            for (Productos producto : listaProductos) {
+                for (Actividades activ : listaActividades) {
+                    if (producto.getCodactividad().equals(activ)) {
+                        listaFiltradaProductos.add(producto);
+                    }
+                }
+            }
+            System.out.println("Done! 1");
+            // Parameters for report
+            Map<String, Object> parameters = new HashMap<String, Object>();
+            List<Object> objArray = new ArrayList<>();
+            objArray.add("hola");
+            objArray.add("hola 2");
+
+            parameters.put("SUBREPORT_DIR", subreport);
+            parameters.put("array", new JRBeanCollectionDataSource(objArray));
+            parameters.put("docentes", new JRBeanCollectionDataSource(listaDocentes));
+            parameters.put("intervalos", new JRBeanCollectionDataSource(listaIntervalos));
+            parameters.put("productos", new JRBeanCollectionDataSource(listaFiltradaProductos));
+            parameters.put("actividades", new JRBeanCollectionDataSource(listaActividades));
+            parameters.put("seguimientos", new JRBeanCollectionDataSource(listaActividades));
+
+            System.out.println("URL " + path + " PARAMETROS " + parameters.size());
+            jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
+
+            System.out.println("Done! 2");
+            JasperExportManager.exportReportToPdfFile(jasperPrint, "C:\\informes_jasper\\test1.pdf");
+
+            System.out.println("Done! 3");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+
+    private List<Intervalo> organizarIntervalos() {
+        List<Horario> listHorario = _horarioFacade.listado();
         //_objHorario = listHorario.get(0);   
         Intervalo[] arrayInterval = new Intervalo[HorarioController._intervalos.length];
-        System.out.println("TAMAÑO "+listHorario.size());
-        for(int i=0;i<arrayInterval.length;i++)
-        {
-            arrayInterval[i] =new Intervalo();
-            arrayInterval[i].setInitData(HorarioController._intervalos[i],i);
+        System.out.println("TAMAÑO " + listHorario.size());
+        for (int i = 0; i < arrayInterval.length; i++) {
+            arrayInterval[i] = new Intervalo();
+            arrayInterval[i].setInitData(HorarioController._intervalos[i], i);
         }
-        
-        for(Horario obj:listHorario)
-        {            
+
+        for (Horario obj : listHorario) {
             //eventModel.addEvent(new DefaultScheduleEvent(obj.getNombre(), obj.getHorainicio(), obj.getHorafinal(),obj));
-            System.out.println("ReportTestControllerElkin.organizarIntervalos -> HOra: "+obj.getHora());
+            System.out.println("ReportTestControllerElkin.organizarIntervalos -> HOra: " + obj.getHora());
             //cuadrando la lista de horarios        
-            arrayInterval[obj.getHora()].setDia(obj);               
+            arrayInterval[obj.getHora()].setDia(obj);
         }
-        
+
         //convertir array a lista
         return Arrays.asList(arrayInterval);
         //RequestContext.getCurrentInstance().update(":formHorario:nuevaLista");
     }
-        
+
     public void pdf() throws JRException, IOException {
 
         HttpServletResponse httpReponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
@@ -239,8 +197,8 @@ public class ReportTestControllerElkin implements Serializable {
     public StreamedContent fileDownloadView() {
         String pdf = FacesContext.getCurrentInstance().getExternalContext().
                 getRealPath("/reportes/");
-        
-        InputStream stream = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream(pdf+"R-DC-26.jasper");
+
+        InputStream stream = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream(pdf + "R-DC-26.jasper");
         StreamedContent file = new DefaultStreamedContent(stream, "reportes/jpg", "descargado.jrprint");
         return file;
     }

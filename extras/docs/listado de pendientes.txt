@@ -8,8 +8,7 @@
 -Cuando se crea un docente debe crearse una asignacion por defecto con los valores estaticos de tipo de contrato, horas de clase etc
 -Controlar las horas que el docente ingresa dependiendo de lo asignado
 -Al crear los productos solo debe salir la lista de las actividaes que no se les ha asignado un producto
--El horario que solo sea por semanas de lunes a sabado (sin fechas)
--crear el perfil y el modulo para el auditor
+--crear el perfil y el modulo para el auditor
 -Organizar la vista perfil del docente
 -Sacar los msj de exitoso y error en todas las vistas
 -pagina de inicio para el docente y el coordinador
