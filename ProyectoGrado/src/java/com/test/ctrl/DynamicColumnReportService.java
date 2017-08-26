@@ -28,12 +28,14 @@ public class DynamicColumnReportService {
 
         System.out.println("Compiling the report");
         JasperReport jasperReport = JasperCompileManager.compileReport(jasperReportDesign);
-
+        
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("REPORT_TITLE", "Sample Dynamic Columns Report");
-        DynamicColumnDataSource pdfDataSource = new DynamicColumnDataSource(columnHeaders, rows);
+        params.put("header", "Mi columna");
+        params.put("col", "Mi columna 3");
+        //DynamicColumnDataSource pdfDataSource = new DynamicColumnDataSource(columnHeaders, rows);
         System.out.println("Filling the report");
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, pdfDataSource);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, new JREmptyDataSource());
 
         System.out.println("Exporting the report to pdf");
         JasperExportManager.exportReportToPdfFile(jasperPrint, "C:\\informes_jasper\\DynamicColumns.pdf");

@@ -1,14 +1,20 @@
 package com.test.ctrl;
 
+import groovy.sql.DataSet;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.design.*;
 import net.sf.jasperreports.engine.type.HorizontalAlignEnum;
+import net.sf.jasperreports.engine.type.ModeEnum;
+import net.sf.jasperreports.engine.type.PositionTypeEnum;
 
 /**
- * Uses the Jasper Reports API to dynamically build columns and add them to the Report
+ * Uses the Jasper Reports API to dynamically build columns and add them to the
+ * Report
  */
 public class DynamicReportBuilder {
+
     //The prefix used in defining the field name that is later used by the JasperFillManager
+
     public static final String COL_EXPR_PREFIX = "col";
 
     // The prefix used in defining the column header name that is later used by the JasperFillManager
@@ -41,38 +47,119 @@ public class DynamicReportBuilder {
     }
 
     public void initConfig() throws JRException {
-        JRDesignBand detailBand = new JRDesignBand();
-        JRDesignBand headerBand = new JRDesignBand();
-        
-        detailBand.setHeight(50);
-        headerBand.setHeight(50);
-        
-        JRDesignStaticText texto = new JRDesignStaticText();
-        texto.setText("Prueba");
-        detailBand.addElement(texto);
-        headerBand.addElement(texto);
-        jasperDesign.setColumnHeader(headerBand);
-        
-        texto.setX(MARGIN);
-        texto.setY(2);
-        texto.setWidth(50);
-        texto.setHeight(10);
+        //JasperDesign
+        JasperDesign jasperDesign = new JasperDesign();
+        jasperDesign.setName("The dynamically generated report");
+        jasperDesign.setPageWidth(595);
+        jasperDesign.setPageHeight(842);
+        jasperDesign.setColumnWidth(515);
+        jasperDesign.setColumnSpacing(0);
+        jasperDesign.setLeftMargin(40);
+        jasperDesign.setRightMargin(40);
+        jasperDesign.setTopMargin(50);
+        jasperDesign.setBottomMargin(50);
 
-        ((JRDesignSection)jasperDesign.getDetailSection()).addBand(detailBand);
-        //((JRDesignSection)jasperDesign.getDetailSection()).addBand(headerBand);
+        JRDesignDataset dataset = new JRDesignDataset(true);
+              
+        
+        //Fields
+        JRDesignField field = new JRDesignField();
+        field.setName("edad");
+        field.setValueClass(java.lang.Integer.class);
+        jasperDesign.addField(field);
+        dataset.addField(field);
+        
+        field = new JRDesignField();
+        field.setName("nombre");
+        field.setValueClass(java.lang.String.class);
+        jasperDesign.addField(field);
+        dataset.addField(field);
+        
+        /*field = new JRDesignField();
+        field.setName("LastName");
+        field.setValueClass(java.lang.String.class);
+        jasperDesign.addField(field);*/
+
+    //some code
+        //Detail
+        JRDesignBand band = new JRDesignBand();
+        band.setHeight(40);
+
+        JRDesignStaticText staticText = new JRDesignStaticText();
+        staticText.setX(0);
+        staticText.setY(0);
+        staticText.setWidth(60);
+        staticText.setHeight(20);
+        staticText.setMode(ModeEnum.OPAQUE);
+        staticText.setHorizontalAlignment(HorizontalAlignEnum.LEFT);
+        //staticText.setStyle(boldStyle);
+        staticText.setText("ID: ");
+        staticText.getLineBox().getLeftPen().setLineWidth(1);
+        staticText.getLineBox().getTopPen().setLineWidth(1);
+        staticText.getLineBox().setLeftPadding(10);
+        band.addElement(staticText);
+
+        JRDesignTextField textField = new JRDesignTextField();
+        textField.setX(60);
+        textField.setY(0);
+        textField.setWidth(200);
+        textField.setHeight(20);
+        textField.setHorizontalAlignment(HorizontalAlignEnum.LEFT);
+        //textField.setStyle(normalStyle);
+        JRDesignExpression expression = new JRDesignExpression();
+        expression.setValueClass(java.lang.Integer.class);
+        expression.setText("$F{Id}");
+        textField.setExpression(expression);
+        textField.getLineBox().getTopPen().setLineWidth(1);
+        textField.getLineBox().getRightPen().setLineWidth(1);
+        textField.getLineBox().setLeftPadding(10);
+        band.addElement(textField);
+
+        staticText = new JRDesignStaticText();
+        staticText.setX(0);
+        staticText.setY(20);
+        staticText.setWidth(60);
+        staticText.setHeight(20);
+        staticText.setMode(ModeEnum.OPAQUE);
+        staticText.setHorizontalAlignment(HorizontalAlignEnum.LEFT);
+        //staticText.setStyle(boldStyle);
+        staticText.setText("Name: ");
+        staticText.getLineBox().getLeftPen().setLineWidth(1);
+        staticText.getLineBox().getBottomPen().setLineWidth(1);
+        staticText.getLineBox().setLeftPadding(10);
+        band.addElement(staticText);
+
+        textField = new JRDesignTextField();
+        textField.setStretchWithOverflow(true);
+        textField.setX(60);
+        textField.setY(20);
+        textField.setWidth(200);
+        textField.setHeight(20);
+        textField.setPositionType(PositionTypeEnum.FLOAT);
+        //textField.setStyle(normalStyle);
+        expression = new JRDesignExpression();
+        expression.setValueClass(java.lang.String.class);
+        expression.setText("$F{FirstName} + \" \" + $F{LastName}");
+        textField.setExpression(expression);
+        textField.getLineBox().getRightPen().setLineWidth(1);
+        textField.getLineBox().getBottomPen().setLineWidth(1);
+        textField.getLineBox().setLeftPadding(10);
+        band.addElement(textField);
+        
+        ((JRDesignSection) jasperDesign.getDetailSection()).addBand(band);
+        jasperDesign.addDataset(dataset);
     }
-    
+
     public void addDynamicColumns() throws JRException {
 
         JRDesignBand detailBand = new JRDesignBand();
         JRDesignBand headerBand = new JRDesignBand();
 
-        
         JRDesignStyle normalStyle = getNormalStyle();
         JRDesignStyle columnHeaderStyle = getColumnHeaderStyle();
         jasperDesign.addStyle(normalStyle);
         jasperDesign.addStyle(columnHeaderStyle);
-        
+
         int xPos = MARGIN;
         int columnWidth = (TOTAL_PAGE_WIDTH - (SPACE_BETWEEN_COLS * (numColumns - 1))) / numColumns;
 
@@ -124,7 +211,7 @@ public class DynamicReportBuilder {
         }
 
         jasperDesign.setColumnHeader(headerBand);
-        ((JRDesignSection)jasperDesign.getDetailSection()).addBand(detailBand);
+        ((JRDesignSection) jasperDesign.getDetailSection()).addBand(detailBand);
     }
 
     private JRDesignStyle getNormalStyle() {
