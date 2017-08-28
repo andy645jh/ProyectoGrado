@@ -7,6 +7,7 @@
 	<parameter name="SQL" class="java.lang.String"/>
 	<parameter name="HEADER_IMAGE" class="java.lang.String"/>
 	<parameter name="CHART_IMAGE" class="java.lang.String"/>
+	<parameter name="personas" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>

@@ -60,7 +60,8 @@ public class DynamicReportBuilder {
         jasperDesign.setBottomMargin(50);
 
         JRDesignDataset dataset = new JRDesignDataset(true);
-              
+        JRDesignQuery q = new JRDesignQuery();
+        
         
         //Fields
         JRDesignField field = new JRDesignField();
@@ -108,7 +109,7 @@ public class DynamicReportBuilder {
         //textField.setStyle(normalStyle);
         JRDesignExpression expression = new JRDesignExpression();
         expression.setValueClass(java.lang.Integer.class);
-        expression.setText("$F{Id}");
+        expression.setText("$F{edad}");
         textField.setExpression(expression);
         textField.getLineBox().getTopPen().setLineWidth(1);
         textField.getLineBox().getRightPen().setLineWidth(1);
@@ -139,7 +140,7 @@ public class DynamicReportBuilder {
         //textField.setStyle(normalStyle);
         expression = new JRDesignExpression();
         expression.setValueClass(java.lang.String.class);
-        expression.setText("$F{FirstName} + \" \" + $F{LastName}");
+        expression.setText("$F{nombre}");
         textField.setExpression(expression);
         textField.getLineBox().getRightPen().setLineWidth(1);
         textField.getLineBox().getBottomPen().setLineWidth(1);
@@ -147,7 +148,7 @@ public class DynamicReportBuilder {
         band.addElement(textField);
         
         ((JRDesignSection) jasperDesign.getDetailSection()).addBand(band);
-        jasperDesign.addDataset(dataset);
+        //jasperDesign.addDataset(dataset);
     }
 
     public void addDynamicColumns() throws JRException {

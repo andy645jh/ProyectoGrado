@@ -5,6 +5,7 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,11 +29,14 @@ public class DynamicColumnReportService {
 
         System.out.println("Compiling the report");
         JasperReport jasperReport = JasperCompileManager.compileReport(jasperReportDesign);
-        
+        List<Persona> listaPersonas = new ArrayList<>();
+        listaPersonas.add(new Persona("Elkin", 10));
+        listaPersonas.add(new Persona("Giovanny", 20));
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("REPORT_TITLE", "Sample Dynamic Columns Report");
         params.put("header", "Mi columna");
         params.put("col", "Mi columna 3");
+        params.put("personas", listaPersonas);
         //DynamicColumnDataSource pdfDataSource = new DynamicColumnDataSource(columnHeaders, rows);
         System.out.println("Filling the report");
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, new JREmptyDataSource());
