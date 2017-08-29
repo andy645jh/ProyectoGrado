@@ -21,7 +21,9 @@ import com.test.ctrl.Persona;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.ArrayList;
@@ -32,10 +34,12 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -47,6 +51,7 @@ import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
+import org.xhtmlrenderer.pdf.ITextRenderer;
 
 /**
  *
@@ -81,7 +86,7 @@ public class ReportTestControllerElkin implements Serializable {
     }
 
     public void crearReport() {
-        List<String> columnHeaders = Arrays.asList(new String[]{"Col1", "Col2", "Col3", "Col4"});
+        /*List<String> columnHeaders = Arrays.asList(new String[]{"Col1", "Col2", "Col3", "Col4"});
         List<List<String>> rows = new ArrayList<List<String>>();
         List<String> row1 = Arrays.asList(new String[]{"Data1", "Data2", "Data3", "Data4"});
         List<String> row2 = Arrays.asList(new String[]{"Data5", "Data6", "Data7", "Data8"});
@@ -96,7 +101,27 @@ public class ReportTestControllerElkin implements Serializable {
             service.runReport(columnHeaders, rows);
         } catch (JRException e) {
             e.printStackTrace();
+        }*/
+        
+        FacesContext faces = FacesContext.getCurrentInstance();
+        ExternalContext external = faces.getExternalContext();
+        HttpSession session = (HttpSession) external.getSession(true);
+        String url="http://localhost:8082/ProyectoGradox/faces/horario/horario.xhtml:jsessionid="+session.getId()+"?pdf=true";
+        try {
+            ITextRenderer renderer = new ITextRenderer();
+            renderer.setDocument(new URL(url).toString());
+            renderer.layout();
+            HttpServletResponse response = (HttpServletResponse) external.getResponse();
+            response.reset();
+            response.setContentType("application/pdf");
+            response.setHeader("Content-Disposition", "inline; filename\"print=file=file-print.dpf\"");
+            OutputStream outputStream = response.getOutputStream();
+            
+            renderer.createPDF(outputStream);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        faces.responseComplete();
     }
 
     public void generateReport() {
