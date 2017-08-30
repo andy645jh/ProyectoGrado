@@ -150,10 +150,11 @@ public class ParticipacionController implements Serializable
         String titulo,detalle;
         
         try {
+            _ejbFacade.borrar(faceObj);
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarExitoso");
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
-            _ejbFacade.borrar(faceObj);
+//            message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
+            Mensajes.exito(titulo, detalle);
             
         } catch (Exception e) 
         {
@@ -186,8 +187,10 @@ public class ParticipacionController implements Serializable
     
     public void mostrarMensaje()
     {        
-        if(message!=null) FacesContext.getCurrentInstance().addMessage("mensajes", message);
-        message=null;
+        if(message!=null){
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, message);
+        }
     }
     
     public void actualizar()

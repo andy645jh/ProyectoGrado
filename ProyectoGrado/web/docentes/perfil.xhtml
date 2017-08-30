@@ -150,11 +150,11 @@
             </h:form>
 
             <h:form id="perfil">
-                <p:growl id="mensajes" sticky="true" showDetail="true"/>  
+                <p:growl id="mensajes" sticky="true" showDetail="true"/>   
                 <p:accordionPanel>
                     <p:tab title="Información Academica">
                         <p:commandButton value="Agregar" actionListener="#{informacionAcademicaController.abrirCrear()}" icon="ui-icon-disk" >
-                            <p:ajax event="dialogReturn" update="listar mensajes" listener="#{informacionAcademicaController.mostrarMensaje()}"/>                             
+                            <p:ajax event="dialogReturn" update="listar perfil:mensajes" listener="#{informacionAcademicaController.mostrarMensaje()}"/>                             
                         </p:commandButton>                   
                         <p:separator/>
                         <br/>
@@ -204,11 +204,11 @@
 
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
-                                <p:commandButton update="listar mensajes" icon="ui-icon-trash" actionListener="#{informacionAcademicaController.borrar(registro)}">
+                                <p:commandButton update="perfil:mensajes listar" icon="ui-icon-trash" actionListener="#{informacionAcademicaController.borrar(registro)}">
                                     <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />
                                 </p:commandButton>
                                 <p:commandButton icon="ui-icon-pencil" action="#{informacionAcademicaController.abrirActualizar(registro)}">
-                                    <p:ajax event="dialogReturn" update="listar mensajes" listener="#{informacionAcademicaController.mostrarMensaje()}"/>                                  
+                                    <p:ajax event="dialogReturn" update=" perfil:mensajes listar" listener="#{informacionAcademicaController.mostrarMensaje()}"/>                                  
                                 </p:commandButton> 
 
                                 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
@@ -220,7 +220,7 @@
                     </p:tab>
                     <p:tab title="Experiencia">
                         <p:commandButton value="Agregar" actionListener="#{experienciaController.abrirCrear()}" icon="ui-icon-disk" >
-                            <p:ajax event="dialogReturn" update="listarexp " oncomplete="#{experienciaController.mostrarMensaje()}"/>                    
+                            <p:ajax event="dialogReturn" update="listarexp perfil:mensajes" listener="#{experienciaController.mostrarMensaje()}"/>                             
                         </p:commandButton>                   
                         <p:separator/>
                         <br/>
@@ -264,18 +264,23 @@
 
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
-                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{experienciaController.borrar(registro)}">
-                                    <p:ajax event="dialogReturn" update="listarexp " oncomplete="#{experienciaController.mostrarMensaje()}"/>
+                                <p:commandButton  icon="ui-icon-trash" update="perfil:mensajes listarexp" actionListener="#{experienciaController.borrar(registro)}">
+                                    <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />
                                 </p:commandButton>
-                                <p:commandButton icon="ui-icon-pencil" action="#{experienciaController.abrirActualizar(registro)}">
-                                    <p:ajax event="dialogReturn" update="listarexp " oncomplete="#{experienciaController.mostrarMensaje()}"/>                                  
+                                <p:commandButton  icon="ui-icon-pencil" actionListener="#{experienciaController.abrirActualizar(registro)}">
+                                    <p:ajax event="dialogReturn" update="perfil:mensajes listarexp " listener="#{experienciaController.mostrarMensaje()}"/>  
                                 </p:commandButton>  
+                                
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
                             </p:column> 
                         </p:dataTable>
                     </p:tab>
                     <p:tab title="Producción Intelectual e Investigativa">
                         <p:commandButton value="Agregar" actionListener="#{produccionController.abrirCrear()}" icon="ui-icon-disk" >
-                            <p:ajax event="dialogReturn" update="listarprod " oncomplete="#{produccionController.mostrarMensaje()}"/>                            
+                            <p:ajax event="dialogReturn" update="listarprod perfil:mensajes" listener="#{produccionController.mostrarMensaje()}"/>                             
                         </p:commandButton>                   
                         <p:separator/>
                         <br/>
@@ -324,18 +329,23 @@
 
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
-                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{produccionController.borrar(registro)}">
-                                    <p:ajax event="dialogReturn" update="listarprod " oncomplete="#{produccionController.mostrarMensaje()}"/>             
+                                <p:commandButton update="perfil:mensajes listarprod" icon="ui-icon-trash" actionListener="#{produccionController.borrar(registro)}">
+                                    <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />
                                 </p:commandButton>
                                 <p:commandButton icon="ui-icon-pencil" action="#{produccionController.abrirActualizar(registro)}">
-                                    <p:ajax event="dialogReturn" update="listarprod " oncomplete="#{produccionController.mostrarMensaje()}"/>                                  
-                                </p:commandButton>  
+                                    <p:ajax event="dialogReturn" update="perfil:mensajes listarprod " listener="#{produccionController.mostrarMensaje()}"/>  
+                                </p:commandButton> 
+                                
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
                             </p:column> 
                         </p:dataTable>
                     </p:tab>
                     <p:tab title="Socialización de la Investigación">
-                        <p:commandButton value="Agregar" actionListener="#{socializacionController.abrirCrear()}" icon="ui-icon-disk" >
-                            <p:ajax event="dialogReturn" update="listarsocial " oncomplete="#{socializacionController.mostrarMensaje()}"/>                      
+                        <p:commandButton value="Agregar" actionListener="#{socializacionController.abrirCrear()}" icon="ui-icon-disk" >                            
+                            <p:ajax event="dialogReturn" update="listarsocial perfil:mensajes" listener="#{socializacionController.mostrarMensaje()}"/>                      
                         </p:commandButton>                   
                         <p:separator/>
                         <br/>
@@ -357,18 +367,23 @@
 
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
-                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{socializacionController.borrar(registro)}">
-                                    <p:ajax event="dialogReturn" update="listarsocial " oncomplete="#{socializacionController.mostrarMensaje()}"/>
+                                <p:commandButton update="perfil:mensajes listarsocial" icon="ui-icon-trash" actionListener="#{socializacionController.borrar(registro)}">
+                                    <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />
                                 </p:commandButton>
                                 <p:commandButton icon="ui-icon-pencil" action="#{socializacionController.abrirActualizar(registro)}">
-                                    <p:ajax event="dialogReturn" update="listarsocial " oncomplete="#{socializacionController.mostrarMensaje()}"/>                                  
-                                </p:commandButton>  
+                                    <p:ajax event="dialogReturn" update="perfil:mensajes listarsocial " listener="#{socializacionController.mostrarMensaje()}"/>
+                                </p:commandButton> 
+                                
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
                             </p:column> 
                         </p:dataTable>
                     </p:tab>
                     <p:tab title="Participaciones">
                         <p:commandButton value="Agregar" actionListener="#{participacionController.abrirCrear()}" icon="ui-icon-disk" >
-                            <p:ajax event="dialogReturn" update="listarpartip " oncomplete="#{participacionController.mostrarMensaje()}"/>                      
+                            <p:ajax event="dialogReturn" update="listarpartip perfil:mensajes" listener="#{participacionController.mostrarMensaje()}"/>                     
                         </p:commandButton>                   
                         <p:separator/>
                         <br/>
@@ -428,12 +443,17 @@
 
                             <p:column style="width: 10px; text-align: center">
                                 <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
-                                <p:commandButton ajax="false" icon="ui-icon-trash" action="#{participacionController.borrar(registro)}">
-                                    <p:ajax event="dialogReturn" update="listarpartip " oncomplete="#{participacionController.mostrarMensaje()}"/>  
+                                <p:commandButton update="perfil:mensajes listarpartip" icon="ui-icon-trash" actionListener="#{participacionController.borrar(registro)}">
+                                    <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />  
                                 </p:commandButton>
                                 <p:commandButton icon="ui-icon-pencil" action="#{participacionController.abrirActualizar(registro)}">
-                                    <p:ajax event="dialogReturn" update="listarpartip " oncomplete="#{participacionController.mostrarMensaje()}"/>                                  
+                                    <p:ajax event="dialogReturn" update="perfil:mensajes listarpartip " listener="#{participacionController.mostrarMensaje()}"/> 
                                 </p:commandButton>  
+                                
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
                             </p:column> 
                         </p:dataTable>
                     </p:tab>

@@ -152,7 +152,8 @@ public class SocializacionController implements Serializable
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarExitoso");
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
+//            message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
+            Mensajes.exito(titulo, detalle);
             _ejbFacade.borrar(faceObj);
             
         } catch (Exception e) 
@@ -186,8 +187,11 @@ public class SocializacionController implements Serializable
     
     public void mostrarMensaje()
     {        
-        if(message!=null) FacesContext.getCurrentInstance().addMessage("mensajes", message);
-        message=null;
+        if(message!=null){
+            System.out.println("ES DIFERENTE DE NULL");
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, message);
+        }
     }
     
     public void actualizar()

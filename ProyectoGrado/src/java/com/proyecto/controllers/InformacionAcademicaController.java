@@ -148,7 +148,8 @@ public class InformacionAcademicaController implements Serializable
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarExitoso");
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
+            Mensajes.exito(titulo, detalle);
+//            message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
             _ejbFacade.borrar(faceObj);
             
         } catch (Exception e) 

@@ -79,12 +79,12 @@ public class ExperienciaController implements Serializable
       
         
         try {
+            _obj.setCoddocente(d);
+            _ejbFacade.crear(_obj);
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
             
-            _obj.setCoddocente(d);
-            _ejbFacade.crear(_obj);
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);
             
@@ -148,10 +148,11 @@ public class ExperienciaController implements Serializable
         String titulo,detalle;
         
         try {
+            _ejbFacade.borrar(faceObj);
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarExitoso");
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
-            _ejbFacade.borrar(faceObj);
+//            message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
+            Mensajes.exito(titulo, detalle);
             
         } catch (Exception e) 
         {
@@ -184,8 +185,11 @@ public class ExperienciaController implements Serializable
     
     public void mostrarMensaje()
     {        
-        if(message!=null) FacesContext.getCurrentInstance().addMessage("mensajes", message);
-        message=null;
+        if(message!=null){
+            System.out.println("ES DIFERENTE DE NULL");
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, message);
+        }
     }
     
     public void actualizar()

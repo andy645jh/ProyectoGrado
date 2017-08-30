@@ -150,10 +150,11 @@ public class ProduccionController implements Serializable
         String titulo,detalle;
         
         try {
+            _ejbFacade.borrar(faceObj);
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarExitoso");
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
-            _ejbFacade.borrar(faceObj);
+//            message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
+            Mensajes.exito(titulo, detalle);
             
         } catch (Exception e) 
         {
@@ -186,8 +187,11 @@ public class ProduccionController implements Serializable
     
     public void mostrarMensaje()
     {        
-        if(message!=null) FacesContext.getCurrentInstance().addMessage("mensajes", message);
-        message=null;
+       if(message!=null){
+            System.out.println("ES DIFERENTE DE NULL");
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, message);
+        }
     }
     
     public void actualizar()
