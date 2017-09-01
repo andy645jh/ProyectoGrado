@@ -11,7 +11,9 @@ import com.proyecto.persistences.Facultad;
 import com.proyecto.persistences.Semana;
 import com.proyecto.utilities.Formulario;
 import com.proyecto.utilities.Mensajes;
+import com.test.ctrl.Persona;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,7 +58,42 @@ public class SemanaController implements Serializable {
         return _ejbFacade.listado();
     }
     
+    public List<String> getListadoHeaders()
+    {
+        List<String> lista = new ArrayList<>();
+        lista.add("nombre");
+        lista.add("edad");
+        return lista;
+    }
     
+    public List<Persona> getListadoPersonas()
+    {
+        List<Persona> lista = new ArrayList<>();
+        lista.add(new Persona("Elkin",21));
+        lista.add(new Persona("Giovanny",22));
+        return lista;
+        
+        /*
+       
+        
+        <br></br>
+        <br></br>
+        
+        <h:dataTable value="#{semanaController.listadoHeaders}" var="row">
+            <c:forEach items="#{semanaController.listadoPersonas}" var="columnName">
+                <h:column>#{row[columnName]}</h:column>
+            </c:forEach>
+        </h:dataTable>*/
+    }
+    
+     public List<String[]> getListadoDatos()
+    {
+        List<String[]> lista = new ArrayList<>();
+        lista.add(new String[]{"Elkin","21"});
+        lista.add(new String[]{"Giovanny","22"});
+        return lista;
+    }
+        
     public void saveMessage() {        
         FacesContext context = FacesContext.getCurrentInstance();     
         context.addMessage(null, message);
