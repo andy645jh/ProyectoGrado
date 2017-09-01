@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:body>
+        <h:dataTable value="#{semanaController.listado}" var="registro" rowClasses="order-table-odd-row,order-table-even-row">
+
+            <h:column>
+                <f:facet name="header">Cod No.</f:facet>               
+                    #{registro.codsemana}
+            </h:column>          
+
+            <h:column>
+                <f:facet name="header">Inicio</f:facet>
+                    #{registro.horainicio}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Final</f:facet>
+                    #{registro.horafinal}
+            </h:column>
+
+        </h:dataTable>      
+        <br></br>
+        <br></br>
+        <table style="border: 1px solid">
+            <thead>
+                <tr>                   
+                    <ui:repeat value="#{semanaController.listadoHeaders}" var="h">
+                        <th>#{h}</th>
+                    </ui:repeat>
+                </tr>
+            </thead>
+            <tbody>               
+                <ui:repeat value="#{semanaController.listadoDatos}" var="persona">
+                    <tr>
+                        <ui:repeat value="#{persona}" var="columna">
+                            <td>#{columna}</td>                            
+                        </ui:repeat>
+                    </tr>
+                </ui:repeat>
+            </tbody>
+        </table>
+        <br></br>
+        <br></br>
+        <h:dataTable value="#{semanaController.listadoDatos}" var="row">
+            <c:forEach items="#{semanaController.listadoHeaders}" var="columnName" varStatus="status">
+                <f:facet name="header">#{columnName}</f:facet>                
+            </c:forEach>
+            
+            <c:forEach items="#{semanaController.listadoHeaders}" var="columnName" varStatus="status">
+                <h:column>#{row[status.index]}</h:column>
+            </c:forEach>
+        </h:dataTable>
+    </h:body>
+
+</html>
