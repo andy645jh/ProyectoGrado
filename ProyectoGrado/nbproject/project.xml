@@ -55,7 +55,7 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.flying-saucer-pdf-9.0.1.jar}</file>
+                    <file>${file.reference.flying-saucer-pdf-9.0.1_-_copia.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
