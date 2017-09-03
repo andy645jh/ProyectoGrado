@@ -1,7 +1,6 @@
 package com.proyecto.persistences;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -30,7 +27,7 @@ public class Horario implements Serializable {
     @Column(name = "nombre")
     @Size(min = 1, max = 300)
     @NotNull
-    private String _nombre = "null"; 
+    private String _nombre; 
         
     @JoinColumn(name = "coddocente", referencedColumnName = "cedula")
     @ManyToOne(optional = false)
@@ -118,6 +115,7 @@ public class Horario implements Serializable {
 
     @Override
     public String toString() {
+        if(_nombre=="null") return "";
         return _nombre;
     }
 

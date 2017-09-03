@@ -1,15 +1,8 @@
 package com.proyecto.controllers;
 
-import com.proyecto.facades.ActividadesFacade;
-import com.proyecto.facades.CoordinacionFacade;
-import com.proyecto.facades.FacultadFacade;
 import com.proyecto.facades.SemanaFacade;
-import com.proyecto.persistences.Actividades;
-import com.proyecto.persistences.Convenciones;
 import com.proyecto.persistences.Coordinacion;
-import com.proyecto.persistences.Facultad;
 import com.proyecto.persistences.Semana;
-import com.proyecto.utilities.Formulario;
 import com.proyecto.utilities.Mensajes;
 import com.test.ctrl.Persona;
 import java.io.Serializable;
@@ -24,11 +17,7 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
-import javax.faces.model.SelectItem;
 import org.primefaces.context.RequestContext;
 
 @ManagedBean

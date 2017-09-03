@@ -6,57 +6,240 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>        
+        <h:outputStylesheet name="grid/grid.css" library="primefaces" />
+        <style type="text/css" >
+            body{
+                font-size: 12px;                
+            }
+            table{
+                border-collapse: collapse;
+                width: 100%;
+            }
 
+            tr{
+                height: auto;
+            }
+            
+            td,th{
+                border: 1px solid #e8e0e0;
+                height: 20px;
+                padding: 2px;
+                text-align: center;
+                vertical-align: middle;
+            }
+            .titulo-tabla, .titulo-tabla td{
+                font-weight: bold;
+                background-color: #e2e2e2;
+            }
+            .cab-tabla{
+                font-weight: bold;
+                background-color: #cccccc;
+            }
+            
+            .sin-borde tr, .sin-borde td{
+                /*border-color: white !important;*/
+            }
+        </style>
+    </h:head>
     <h:body>
-        <h:dataTable value="#{semanaController.listado}" var="registro" rowClasses="order-table-odd-row,order-table-even-row">
-
-            <h:column>
-                <f:facet name="header">Cod No.</f:facet>               
-                    #{registro.codsemana}
-            </h:column>          
-
-            <h:column>
-                <f:facet name="header">Inicio</f:facet>
-                    #{registro.horainicio}
-            </h:column>
-
-            <h:column>
-                <f:facet name="header">Final</f:facet>
-                    #{registro.horafinal}
-            </h:column>
-
-        </h:dataTable>      
+        <!-- TABLA DE TITULO -->
+        <table class="sin-borde">
+            <tr>
+                <td width="20%"><img src="../resources/img/logo_reportes.PNG" height="70" alt=""/></td>                
+                <td width="60%">DOCENCIA</td>
+                <td width="10%" rowspan="2"><img src="../resources/img/fotos.png" height="70" alt=""/></td>
+                <td width="10%">PAGINA</td>
+            </tr>
+            <tr>
+                <td>R-DC-54</td>
+                <td style="font-weight: bold;">PLAN DE TRABAJO DOCENTES TIEMPO COMPLETO</td>                
+                <td>VERSIÓN: 03</td>
+            </tr>
+        </table>
+        <br></br>
+        
+        <!-- TABLA DE DOCENTE -->
+        <table>
+            <thead>
+                <tr>
+                    <th class="cab-tabla" colspan="9">INFORMACION GENERAL</th>                        
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="titulo-tabla">
+                    <td width="30%" colspan="3">Apellidos</td>
+                    <td width="40%" colspan="4">Nombres</td>
+                    <td width="10%">Codigo</td>
+                    <td width="20%">C.C</td>
+                </tr>
+                <tr>
+                    <td colspan="3">#{reporteRdc.doc.apellidos}</td>
+                    <td colspan="4">#{reporteRdc.doc.nombres}</td>
+                    <td>#{reporteRdc.doc.codigo}</td>
+                    <td>#{reporteRdc.doc.cedula}</td>
+                </tr>
+                <tr class="titulo-tabla">                    
+                    <td colspan="2">Facultad</td>
+                    <td colspan="2">Unidad Academica</td>
+                    <td>Semestre-Año</td>
+                    <td colspan="4">Direccion-Telefono-Correo Electronico</td>
+                </tr>
+                <tr>
+                    <td class="titulo-tabla">FCSE</td>
+                    <td>x</td>
+                    <td colspan="2" rowspan="2">#{reporteRdc.doc.codcoordinacion.nombre}</td>
+                    <td>2017</td>
+                    <td colspan="4">#{reporteRdc.doc.direccion} - #{reporteRdc.doc.telefono} - #{reporteRdc.doc.correo}</td>
+                </tr>
+                <tr>
+                    <td class="titulo-tabla">FCNI</td>
+                    <td>x</td>
+                    <td colspan="2" class="titulo-tabla">Formacion Academica</td>
+                    <td colspan="3">#{reporteRdc.doc.formacion}</td>                    
+                </tr>
+            </tbody>
+        </table>
         <br></br>
         <br></br>
+
+        <!-- TABLA DE ACTIVIDADES -->
         <table style="border: 1px solid">
             <thead>
-                <tr>                   
-                    <ui:repeat value="#{semanaController.listadoHeaders}" var="h">
-                        <th>#{h}</th>
-                    </ui:repeat>
+
+                <tr>
+                    <th class="cab-tabla" colspan="6">LISTA DE ACTIVIDADES</th>
+                </tr>
+                <tr class="titulo-tabla">
+                    <th colspan="6">Posibles Tipos de Actividades</th>
+                </tr>
+                <tr>                  
+                    <th>Actividad</th>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Descripcion</th>
+                    <th>Responsable</th>
+                    <th>Valoracion</th>
                 </tr>
             </thead>
             <tbody>               
-                <ui:repeat value="#{semanaController.listadoDatos}" var="persona">
-                    <tr>
-                        <ui:repeat value="#{persona}" var="columna">
-                            <td>#{columna}</td>                            
-                        </ui:repeat>
+                <ui:repeat value="#{reporteRdc.actividades}" var="actividad" varStatus="state">
+                    <tr>             
+                        <td>#{state.index}</td>                          
+                        <td>#{actividad.nombre}</td>                          
+                        <td>#{actividad.codtipo}</td>      
+                        <td>#{actividad.descripcion}</td>      
+                        <td>#{actividad.responsable}</td>      
+                        <td>#{actividad.valoracion}</td>      
                     </tr>
                 </ui:repeat>
             </tbody>
         </table>
         <br></br>
         <br></br>
-        <h:dataTable value="#{semanaController.listadoDatos}" var="row">
-            <c:forEach items="#{semanaController.listadoHeaders}" var="columnName" varStatus="status">
-                <f:facet name="header">#{columnName}</f:facet>                
-            </c:forEach>
-            
-            <c:forEach items="#{semanaController.listadoHeaders}" var="columnName" varStatus="status">
-                <h:column>#{row[status.index]}</h:column>
-            </c:forEach>
-        </h:dataTable>
+
+        <!-- TABLA DE SEGUIMIENTO -->
+        <table style="border: 1px solid">
+            <thead>
+
+                <tr>
+                    <th class="cab-tabla" colspan="#{reporteRdc.listadoHeaderSeguimiento.size()+1}">LISTA DE SEGUIMIENTO</th>
+                </tr>
+                <tr class="titulo-tabla">
+                    <th colspan="#{reporteRdc.listadoHeaderSeguimiento.size()+1}">Indique las posibles horas semanales (horas academicas de 45 minutos)</th>
+                </tr>
+                <tr>        
+                    <th>Actividad</th>
+                    <ui:repeat value="#{reporteRdc.listadoHeaderSeguimiento}" var="h">
+                        <th>#{h}</th>
+                    </ui:repeat>
+                </tr>
+            </thead>
+            <tbody>               
+                <ui:repeat value="#{reporteRdc.listadoSeguimiento}" var="persona" varStatus="state">
+                    <tr>
+                        <td>#{state.index}</td>
+                        <ui:repeat value="#{persona}" var="columna">
+                            <td>#{columna}</td>                            
+                        </ui:repeat>
+                    </tr>
+                </ui:repeat>
+            </tbody>
+        </table> 
+        <br></br>
+        <br></br>
+
+        <!-- TABLA DE PRODUCTOS -->
+        <table style="border: 1px solid">
+            <thead>
+
+                <tr>
+                    <th class="cab-tabla" colspan="5">LISTA DE PRODUCTOS</th>
+                </tr>                
+                <tr class="titulo-tabla" >                  
+                    <th>Actividad</th>
+                    <th>Descripcion del Producto</th>
+                    <th>Fecha de Compromiso</th>
+                    <th>Fecha de Entrega</th>
+                    <th>Comentarios</th>                    
+                </tr>
+            </thead>
+            <tbody>               
+                <ui:repeat value="#{reporteRdc.productos}" var="producto" varStatus="state">
+                    <tr>             
+                        <td>#{state.index}</td>                          
+                        <td>#{producto.descripcion}</td> 
+                        <td>
+                            <h:outputText value="#{producto.fechacompromiso}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText> 
+                        </td>     
+                        <td>
+                            <h:outputText value="#{producto.fechaentrega}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText> 
+                        </td>                          
+                        <td>#{producto.comentarios}</td> 
+                    </tr>
+                </ui:repeat>
+            </tbody>
+        </table>
+        <br></br>
+        <br></br>
+
+        <!-- TABLA DE HORARIOS -->
+        <table style="border: 1px solid">
+            <thead>
+
+                <tr>
+                    <th class="cab-tabla" colspan="7">HORARIO SEMANAL</th>
+                </tr>                
+                <tr class="titulo-tabla" >                  
+                    <th>HORA</th>
+                    <th width="14%">LUNES</th>
+                    <th width="14%">MARTES</th>
+                    <th width="14%">MIERCOLES</th>
+                    <th width="14%">JUEVES</th>    
+                    <th width="14%">VIERNES</th>    
+                    <th width="14%">SABADO</th>    
+                </tr>
+            </thead>
+            <tbody>               
+                <ui:repeat value="#{reporteRdc.listInterval}" var="intervalo" varStatus="state">
+                    <tr>             
+                        <td>#{intervalo.hora}</td>                          
+                        <td>#{intervalo.lunes}</td>                         
+                        <td>#{intervalo.martes}</td> 
+                        <td>#{intervalo.miercoles}</td> 
+                        <td>#{intervalo.jueves}</td> 
+                        <td>#{intervalo.viernes}</td> 
+                        <td>#{intervalo.sabado}</td> 
+                    </tr>
+                </ui:repeat>
+            </tbody>
+        </table>
+        <br></br>
+        <br></br>
     </h:body>
 
 </html>

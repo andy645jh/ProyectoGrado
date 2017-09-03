@@ -106,8 +106,8 @@ public class ReportTestControllerElkin implements Serializable {
 
         FacesContext faces = FacesContext.getCurrentInstance();
         ExternalContext external = faces.getExternalContext();
-        HttpSession session = (HttpSession) external.getSession(true);
-        String url = "http://localhost:8082/ProyectoGradox/faces/test/test.xhtml";
+        HttpSession session = (HttpSession) external.getSession(true);        
+        String url = "http://localhost:8082/ProyectoGradox/faces/test/test.xhtml;jsessionid=" + session.getId();
         try {
             ITextRenderer renderer = new ITextRenderer();
             renderer.setDocument(new URL(url).toString());
