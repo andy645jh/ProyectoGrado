@@ -20,7 +20,7 @@
             tr{
                 height: auto;
             }
-            
+
             td,th{
                 border: 1px solid #e8e0e0;
                 height: 20px;
@@ -36,13 +36,14 @@
                 font-weight: bold;
                 background-color: #cccccc;
             }
-            
+
             .sin-borde tr, .sin-borde td{
                 /*border-color: white !important;*/
             }
         </style>
     </h:head>
     <h:body>
+        #{reporteDocente.init()}
         <!-- TABLA DE TITULO -->
         <table class="sin-borde">
             <tr>
@@ -57,7 +58,7 @@
             </tr>
         </table>
         <br></br>
-        
+
         <!-- TABLA DE COORDINACION -->
         <table>
             <thead>
@@ -95,7 +96,7 @@
                     <td>Vélez</td>
                     <td>X</td>
                 </tr>
-                           
+
             </tbody>
         </table>
         <br></br>
@@ -116,9 +117,9 @@
                     <td width="10%" colspan="1" rowspan="7"><img src="../resources/img/fotos.png" height="70" alt=""/></td>
                 </tr>
                 <tr>
-                    <td colspan="2">Martinez</td>
-                    <td colspan="2">Gonzales</td>
-                    <td colspan="2">Andrea</td>
+                    <td colspan="2">#{reporteDocente.doc.apellidos}</td>
+                    <td colspan="2">#{reporteDocente.doc.apellidos}</td>
+                    <td colspan="2">#{reporteDocente.doc.nombres}</td>
                 </tr>
                 <tr class="titulo-tabla">
                     <td>DOCUMENTO DE IDENTIDAD</td>
@@ -128,11 +129,11 @@
                     <td colspan="2">CORREO ELECTRONICO</td>                    
                 </tr>
                 <tr>
-                    <td>C.C</td>
+                    <td>#{reporteDocente.doc.tipo_doc}</td>
                     <td>1098</td>
-                    <td>giron</td>
+                    <td>#{reporteDocente.doc.lugar_exp}</td>
                     <td>26/02/2012</td>
-                    <td colspan="2">andrea@gmail.com</td>                    
+                    <td colspan="2">#{reporteDocente.doc.correo}</td>                    
                 </tr>
                 <tr class="titulo-tabla">
                     <td colspan="2">DIRECCION Y BARRIO DE RESIDENCIA</td>
@@ -141,10 +142,10 @@
                     <td colspan="1">NUMERO CELULAR</td>
                 </tr>
                 <tr>
-                    <td colspan="2">calle 34-56-90 Barrio Alarcon</td>
-                    <td colspan="2">Floridablanca</td>
-                    <td colspan="1">6457895</td>
-                    <td colspan="1">316 8974 153</td>
+                    <td colspan="2">#{reporteDocente.doc.direccion}</td>
+                    <td colspan="2">#{reporteDocente.doc.municipio}</td>
+                    <td colspan="1">#{reporteDocente.doc.telefono}</td>
+                    <td colspan="1">#{reporteDocente.doc.celular}</td>
                 </tr>
                 <tr></tr>
                 <tr></tr>
@@ -158,32 +159,38 @@
             <thead>
 
                 <tr>
-                    <th class="cab-tabla">II. INFORMACION ACADEMICA</th>
+                    <th class="cab-tabla" colspan="6">II. INFORMACION ACADEMICA</th>
                 </tr>
                 <tr class="titulo-tabla">
-                    <th>A. TITULOS</th>
+                    <th colspan="6">A. TITULOS</th>
                 </tr>
                 <tr>        
-                    <th>TIPO</th>
-                    <th>NOMBRE DEL PROGRAMA</th>
+                    <th>NIVEL ACADEMICO</th>
+                    <th>TITULO OBTENIDO</th>
                     <th>INSTITUCION</th>
-                    <th>No. HORAS</th>
-                    <th>AÑO</th>
+                    <th>AÑO GRADUACION</th>
+                    <th>No. REGISTRO</th>
+                    <th>PAIS</th>
                 </tr>
             </thead>
             <tbody>               
-                <ui:repeat value="#{reporteRdc.listadoSeguimiento}" var="persona" varStatus="state">
+                <ui:repeat value="#{reporteDocente.estudiosTitulados}" var="estudio" varStatus="state">
                     <tr>
-                        <td>#{state.index}</td>
-                        <ui:repeat value="#{persona}" var="columna">
-                            <td>#{columna}</td>                            
-                        </ui:repeat>
+                        <td>#{estudio.nivel}</td>                          
+                        <td>#{estudio.titulo}</td> 
+                        <td>#{estudio.institucion}</td> 
+                        <td>
+                            <h:outputText value="#{estudio.ano_grado}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText> 
+                        </td>      
+                        <td>#{estudio.registro}</td> 
+                        <td>#{estudio.pais}</td> 
                     </tr>
                 </ui:repeat>
             </tbody>
         </table> 
-        <br></br>
-        <br></br>
+        <br></br>        
 
         <!-- TABLA DE INFORMACION ACADEMICA - CURSOS -->
         <table style="border: 1px solid">
@@ -193,69 +200,101 @@
                     <th class="cab-tabla" colspan="5">B. CURSOS DE EXTENSIÓN, CAPACITACIÓN O EDUCACIÓN CONTINUA</th>
                 </tr>                
                 <tr class="titulo-tabla" >                  
-                    <th>Actividad</th>
-                    <th>Descripcion del Producto</th>
-                    <th>Fecha de Compromiso</th>
-                    <th>Fecha de Entrega</th>
-                    <th>Comentarios</th>                    
+                    <th>TIPO</th>
+                    <th width="30%">NOMBRE DEL PROGRAMA O ACTIVIDAD</th>
+                    <th width="30%">INSTITUCION</th>
+                    <th width="10%">No. HORAS</th>
+                    <th width="20%">AÑO</th>              
                 </tr>
             </thead>
             <tbody>               
-                <ui:repeat value="#{reporteRdc.productos}" var="producto" varStatus="state">
+                <ui:repeat value="#{reporteDocente.estudiosCursos}" var="estudio" varStatus="state">
                     <tr>             
-                        <td>#{state.index}</td>                          
-                        <td>#{producto.descripcion}</td> 
+                        <td>#{estudio.nivel}</td>                          
+                        <td>#{estudio.titulo}</td> 
+                        <td>#{estudio.institucion}</td> 
                         <td>
-                            <h:outputText value="#{producto.fechacompromiso}" >
+                            <h:outputText value="#{estudio.ano_grado}" >
                                 <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText> 
-                        </td>     
-                        <td>
-                            <h:outputText value="#{producto.fechaentrega}" >
-                                <f:convertDateTime pattern="dd/MM/yyyy" />
-                            </h:outputText> 
-                        </td>                          
-                        <td>#{producto.comentarios}</td> 
+                        </td>           
+                        <td>#{estudio.registro}</td>                         
                     </tr>
                 </ui:repeat>
             </tbody>
         </table>
         <br></br>
-        <br></br>
-
-        <!-- TABLA DE HORARIOS -->
+        <br></br>     
+        
+        <!-- TABLA DE EXPERIENCIA PROFESIONAL -->
         <table style="border: 1px solid">
             <thead>
 
                 <tr>
-                    <th class="cab-tabla" colspan="7">HORARIO SEMANAL</th>
+                    <th class="cab-tabla" colspan="6">III. EXPERIENCIA PROFESIONAL</th>
                 </tr>                
                 <tr class="titulo-tabla" >                  
-                    <th>HORA</th>
-                    <th width="14%">LUNES</th>
-                    <th width="14%">MARTES</th>
-                    <th width="14%">MIERCOLES</th>
-                    <th width="14%">JUEVES</th>    
-                    <th width="14%">VIERNES</th>    
-                    <th width="14%">SABADO</th>    
+                    <th width="30%">ENTIDAD</th>
+                    <th width="20%">CARGO</th>
+                    <th width="20%">DEPENDENCIA</th>
+                    <th width="10%">TIEMPO DE SERVICIO</th>
+                    <th width="10%">TIPO DE CONTRATO</th>              
+                    <th width="10%">FECHA DE ULTIMA VINCULACION</th>              
                 </tr>
             </thead>
             <tbody>               
-                <ui:repeat value="#{reporteRdc.listInterval}" var="intervalo" varStatus="state">
+                <ui:repeat value="#{reporteDocente.experienciasPro}" var="expPro" varStatus="state">
                     <tr>             
-                        <td>#{intervalo.hora}</td>                          
-                        <td>#{intervalo.lunes}</td>                         
-                        <td>#{intervalo.martes}</td> 
-                        <td>#{intervalo.miercoles}</td> 
-                        <td>#{intervalo.jueves}</td> 
-                        <td>#{intervalo.viernes}</td> 
-                        <td>#{intervalo.sabado}</td> 
+                        <td>#{expPro.institucion}</td> 
+                        <td>#{expPro.actividad}</td> 
+                        <td>#{expPro.dependencia}</td> 
+                        <td>#{expPro.tiempo}</td> 
+                        <td>#{expPro.tipo_contrato}</td>   
+                        <td>
+                            <h:outputText value="#{expPro.fecha_ultima}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText> 
+                        </td>                                                     
                     </tr>
                 </ui:repeat>
             </tbody>
         </table>
         <br></br>
-        <br></br>
+        <br></br>  
+        
+        <!-- TABLA DE EXPERIENCIA DOCENTE -->
+        <table style="border: 1px solid">
+            <thead>
+
+                <tr>
+                    <th class="cab-tabla" colspan="6">IV. EXPERIENCIA DOCENTE</th>
+                </tr>                
+                <tr class="titulo-tabla" >  
+                    <th width="30%">INSTITUCION EDUCATIVA</th>
+                    <th width="20%">ACTIVIDAD DOCENTE</th>
+                    <th width="20%">DEPENDENCIA</th>
+                    <th width="10%">TIEMPO DE SERVICIO</th>   
+                    <th width="10%">TIPO DE CONTRATO</th>   
+                    <th width="10%">FECHA DE ULTIMA VINCULACION</th>              
+                </tr>
+            </thead>
+            <tbody>               
+                <ui:repeat value="#{reporteDocente.experienciasPro}" var="expDoc" varStatus="state">
+                    <tr>             
+                        <td>#{expDoc.institucion}</td> 
+                        <td>#{expDoc.actividad}</td> 
+                        <td>#{expDoc.dependencia}</td> 
+                        <td>#{expDoc.tiempo}</td> 
+                        <td>#{expDoc.tipo_contrato}</td>   
+                        <td>
+                            <h:outputText value="#{expDoc.fecha_ultima}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText> 
+                        </td>                                                     
+                    </tr>
+                </ui:repeat>
+            </tbody>
+        </table>
     </h:body>
 
 </html>
