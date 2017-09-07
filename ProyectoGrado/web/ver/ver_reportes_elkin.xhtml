@@ -16,8 +16,8 @@
                 <p:panel>                    
                     <p:growl id="mensajito" sticky="true" showDetail="true"/>           
                     <br/>
-                    <p:commandButton value="Ver RDC-54" actionListener="#{reportTestControllerElkin.generateReport()}" icon="ui-icon-disk" onclick="this.form.target='_blank'" ajax="false"/>
-                    <p:commandButton value="Crear Reporte" actionListener="#{reportTestControllerElkin.crearReport()}" icon="ui-icon-disk" />
+                    <p:commandButton value="Reporte RDC-26" actionListener="#{reportTestControllerElkin.crearReport26()}" icon="ui-icon-disk"/>
+                    <p:commandButton value="Reporte RDC-54" actionListener="#{reportTestControllerElkin.crearReport()}" icon="ui-icon-disk" />
     
                     <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
                         <p:fileDownload value="#{reportTestControllerElkin.fileDownloadView()}" />

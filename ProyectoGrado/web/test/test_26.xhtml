@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>        
+        <h:outputStylesheet name="grid/grid.css" library="primefaces" />
+        <style type="text/css" >
+            body{
+                font-size: 12px;                
+            }
+            table{
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            tr{
+                height: auto;
+            }
+            
+            td,th{
+                border: 1px solid #e8e0e0;
+                height: 20px;
+                padding: 2px;
+                text-align: center;
+                vertical-align: middle;
+            }
+            .titulo-tabla, .titulo-tabla td{
+                font-weight: bold;
+                background-color: #e2e2e2;
+            }
+            .cab-tabla{
+                font-weight: bold;
+                background-color: #cccccc;
+            }
+            
+            .sin-borde tr, .sin-borde td{
+                /*border-color: white !important;*/
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <!-- TABLA DE TITULO -->
+        <table class="sin-borde">
+            <tr>
+                <td width="10%"><img src="../resources/img/logo_reportes.PNG" height="70" alt=""/></td>                
+                <td width="60%">DOCENCIA</td>                
+                <td width="10%">PAGINA</td>
+            </tr>
+            <tr>
+                <td>R-DC-26</td>
+                <td style="font-weight: bold;">HOJA DE VIDA DEL DOCENTE VINCULADO A LA INSTITUCION</td>                
+                <td>VERSIÓN: 07</td>
+            </tr>
+        </table>
+        <br></br>
+        
+        <!-- TABLA DE DOCENTE -->
+        <table>
+            <thead>
+                <tr>
+                    <th class="cab-tabla" colspan="12">PARA USO EXCLUSIVO DE LA COORDINACION ACADEMICA</th>                        
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>FACULTAD</td>
+                    <td>FCSE</td>
+                    <td>X</td>
+                    <td>FCNI</td>
+                    <td>X</td>
+                    <td>UNIDAD ACADEMICA</td>
+                    <td>SISTEMAS</td>
+                    <td>DEDICACION</td>
+                    <td>TC</td>
+                    <td>MT</td>
+                    <td>HC</td>
+                    <td>Dedicacion Especial</td>
+                </tr>
+                <tr>
+                    <td>FECHA ACTUALIZACIÓN</td>
+                    <td>02/02/2017</td>
+                    <td>CATEGORIA</td>
+                    <td>1</td>
+                    <td>REGIONAL</td>
+                    <td>Bucaramanga</td>
+                    <td>X</td>
+                    <td>Sangil</td>
+                    <td>X</td>
+                    <td>Piedecuesta</td>
+                    <td>X</td>
+                    <td>Vélez</td>
+                    <td>X</td>
+                </tr>
+                           
+            </tbody>
+        </table>
+        <br></br>
+        <br></br>
+
+        <!-- TABLA DE DATOS PERSONALES -->
+        <table style="border: 1px solid">
+            <thead>
+                <tr>
+                    <th class="cab-tabla" colspan="7">DATOS PERSONALES</th>
+                </tr>
+            </thead>
+            <tbody>               
+                <tr class="titulo-tabla">
+                    <td colspan="2">PRIMER APELLIDO</td>
+                    <td colspan="2">SEGUNDO APELLIDO</td>
+                    <td width="45%" colspan="2">NOMBRES</td>
+                    <td width="10%" colspan="1" rowspan="8"><img src="../resources/img/fotos.png" height="70" alt=""/></td>
+                </tr>
+                <tr>
+                    <td colspan="2">PRIMER APELLIDO</td>
+                    <td colspan="2">SEGUNDO APELLIDO</td>
+                    <td colspan="2">NOMBRES</td>
+                </tr>
+                <tr class="titulo-tabla">
+                    <td>DOCUMENTO DE IDENTIDAD</td>
+                    <td>NUMERO DE DOCUMENTO</td>
+                    <td>LUGAR DE EXPEDICION</td>
+                    <td>FECHA DE EXPEDICION</td>
+                    <td>CORREO ELECTRONICO</td>                    
+                </tr>
+                <tr>
+                    <td>C.C</td>
+                    <td>1098</td>
+                    <td>giron</td>
+                    <td>26/02/2012</td>
+                    <td>andrea@gmail.com</td>                    
+                </tr>
+                <tr class="titulo-tabla">
+                    <td>DIRECCION Y BARRIO DE RESIDENCIA</td>
+                    <td>MUNICIPIO</td>
+                    <td>TELEFONO DE RESIDENCIA</td>
+                    <td>NUMERO CELULAR</td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+            </tbody>
+        </table>
+        <br></br>
+        <br></br>
+
+        <!-- TABLA DE SEGUIMIENTO -->
+        <table style="border: 1px solid">
+            <thead>
+
+                <tr>
+                    <th class="cab-tabla" colspan="#{reporteRdc.listadoHeaderSeguimiento.size()+1}">LISTA DE SEGUIMIENTO</th>
+                </tr>
+                <tr class="titulo-tabla">
+                    <th colspan="#{reporteRdc.listadoHeaderSeguimiento.size()+1}">Indique las posibles horas semanales (horas academicas de 45 minutos)</th>
+                </tr>
+                <tr>        
+                    <th>Actividad</th>
+                    <ui:repeat value="#{reporteRdc.listadoHeaderSeguimiento}" var="h">
+                        <th>#{h}</th>
+                    </ui:repeat>
+                </tr>
+            </thead>
+            <tbody>               
+                <ui:repeat value="#{reporteRdc.listadoSeguimiento}" var="persona" varStatus="state">
+                    <tr>
+                        <td>#{state.index}</td>
+                        <ui:repeat value="#{persona}" var="columna">
+                            <td>#{columna}</td>                            
+                        </ui:repeat>
+                    </tr>
+                </ui:repeat>
+            </tbody>
+        </table> 
+        <br></br>
+        <br></br>
+
+        <!-- TABLA DE PRODUCTOS -->
+        <table style="border: 1px solid">
+            <thead>
+
+                <tr>
+                    <th class="cab-tabla" colspan="5">LISTA DE PRODUCTOS</th>
+                </tr>                
+                <tr class="titulo-tabla" >                  
+                    <th>Actividad</th>
+                    <th>Descripcion del Producto</th>
+                    <th>Fecha de Compromiso</th>
+                    <th>Fecha de Entrega</th>
+                    <th>Comentarios</th>                    
+                </tr>
+            </thead>
+            <tbody>               
+                <ui:repeat value="#{reporteRdc.productos}" var="producto" varStatus="state">
+                    <tr>             
+                        <td>#{state.index}</td>                          
+                        <td>#{producto.descripcion}</td> 
+                        <td>
+                            <h:outputText value="#{producto.fechacompromiso}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText> 
+                        </td>     
+                        <td>
+                            <h:outputText value="#{producto.fechaentrega}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText> 
+                        </td>                          
+                        <td>#{producto.comentarios}</td> 
+                    </tr>
+                </ui:repeat>
+            </tbody>
+        </table>
+        <br></br>
+        <br></br>
+
+        <!-- TABLA DE HORARIOS -->
+        <table style="border: 1px solid">
+            <thead>
+
+                <tr>
+                    <th class="cab-tabla" colspan="7">HORARIO SEMANAL</th>
+                </tr>                
+                <tr class="titulo-tabla" >                  
+                    <th>HORA</th>
+                    <th width="14%">LUNES</th>
+                    <th width="14%">MARTES</th>
+                    <th width="14%">MIERCOLES</th>
+                    <th width="14%">JUEVES</th>    
+                    <th width="14%">VIERNES</th>    
+                    <th width="14%">SABADO</th>    
+                </tr>
+            </thead>
+            <tbody>               
+                <ui:repeat value="#{reporteRdc.listInterval}" var="intervalo" varStatus="state">
+                    <tr>             
+                        <td>#{intervalo.hora}</td>                          
+                        <td>#{intervalo.lunes}</td>                         
+                        <td>#{intervalo.martes}</td> 
+                        <td>#{intervalo.miercoles}</td> 
+                        <td>#{intervalo.jueves}</td> 
+                        <td>#{intervalo.viernes}</td> 
+                        <td>#{intervalo.sabado}</td> 
+                    </tr>
+                </ui:repeat>
+            </tbody>
+        </table>
+        <br></br>
+        <br></br>
+    </h:body>
+
+</html>

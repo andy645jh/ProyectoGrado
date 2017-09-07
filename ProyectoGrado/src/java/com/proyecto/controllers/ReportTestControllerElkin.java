@@ -86,23 +86,7 @@ public class ReportTestControllerElkin implements Serializable {
         _currentDocente = (Docentes) SessionUtils.get("docente");
     }
 
-    public void crearReport() {
-        /*List<String> columnHeaders = Arrays.asList(new String[]{"Col1", "Col2", "Col3", "Col4"});
-         List<List<String>> rows = new ArrayList<List<String>>();
-         List<String> row1 = Arrays.asList(new String[]{"Data1", "Data2", "Data3", "Data4"});
-         List<String> row2 = Arrays.asList(new String[]{"Data5", "Data6", "Data7", "Data8"});
-         List<String> row3 = Arrays.asList(new String[]{"Data9", "Data10", "Data11", "Data12"});
-
-         rows.add(row1);
-         rows.add(row2);
-         rows.add(row3);
-
-         DynamicColumnReportService service = new DynamicColumnReportService();
-         try {
-         service.runReport(columnHeaders, rows);
-         } catch (JRException e) {
-         e.printStackTrace();
-         }*/
+    public void crearReport() {       
 
         FacesContext faces = FacesContext.getCurrentInstance();
         ExternalContext external = faces.getExternalContext();
@@ -115,7 +99,7 @@ public class ReportTestControllerElkin implements Serializable {
             HttpServletResponse response = (HttpServletResponse) external.getResponse();
 
             response.setContentType("application/pdf");
-            String HTML_TO_PDF = "C:\\informes_jasper\\test1.pdf";
+            String HTML_TO_PDF = "C:\\informes_jasper\\test54.pdf";
             OutputStream os = new FileOutputStream(HTML_TO_PDF);
             response.setHeader("Content-Disposition", "inline; filename\"print=file=file-print.dpf\"");
             //OutputStream outputStream = response.getOutputStream();
@@ -128,9 +112,38 @@ public class ReportTestControllerElkin implements Serializable {
             e.printStackTrace();
         }
         faces.responseComplete();
-        System.out.println("Done!!");
+        System.out.println("Done 54!!");
     }
 
+    public void crearReport26() {       
+
+        FacesContext faces = FacesContext.getCurrentInstance();
+        ExternalContext external = faces.getExternalContext();
+        HttpSession session = (HttpSession) external.getSession(true);        
+        String url = "http://localhost:8082/ProyectoGradox/faces/test/test_26.xhtml;jsessionid=" + session.getId();
+        try {
+            ITextRenderer renderer = new ITextRenderer();
+            renderer.setDocument(new URL(url).toString());
+            renderer.layout();
+            HttpServletResponse response = (HttpServletResponse) external.getResponse();
+
+            response.setContentType("application/pdf");
+            String HTML_TO_PDF = "C:\\informes_jasper\\test26.pdf";
+            OutputStream os = new FileOutputStream(HTML_TO_PDF);
+            response.setHeader("Content-Disposition", "inline; filename\"print=file=file-print.dpf\"");
+            //OutputStream outputStream = response.getOutputStream();
+
+            renderer.createPDF(os);
+            os.close();
+            //outputStream.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        faces.responseComplete();
+        System.out.println("Done 26!!");
+    }
+    
     public void generateReport() {
 
         String cadenaConexion = "jdbc:postgresql://localhost:5432/bd_proyecto";
