@@ -58,7 +58,7 @@
         </table>
         <br></br>
         
-        <!-- TABLA DE DOCENTE -->
+        <!-- TABLA DE COORDINACION -->
         <table>
             <thead>
                 <tr>
@@ -105,42 +105,47 @@
         <table style="border: 1px solid">
             <thead>
                 <tr>
-                    <th class="cab-tabla" colspan="7">DATOS PERSONALES</th>
+                    <th class="cab-tabla" colspan="7">I. DATOS PERSONALES</th>
                 </tr>
             </thead>
             <tbody>               
-                <tr class="titulo-tabla">
-                    <td colspan="2">PRIMER APELLIDO</td>
-                    <td colspan="2">SEGUNDO APELLIDO</td>
-                    <td width="45%" colspan="2">NOMBRES</td>
-                    <td width="10%" colspan="1" rowspan="8"><img src="../resources/img/fotos.png" height="70" alt=""/></td>
+                <tr>
+                    <td class="titulo-tabla" width="30%" colspan="2">PRIMER APELLIDO</td>
+                    <td class="titulo-tabla" width="30%" colspan="2">SEGUNDO APELLIDO</td>
+                    <td class="titulo-tabla" width="30%" colspan="2">NOMBRES</td>
+                    <td width="10%" colspan="1" rowspan="7"><img src="../resources/img/fotos.png" height="70" alt=""/></td>
                 </tr>
                 <tr>
-                    <td colspan="2">PRIMER APELLIDO</td>
-                    <td colspan="2">SEGUNDO APELLIDO</td>
-                    <td colspan="2">NOMBRES</td>
+                    <td colspan="2">Martinez</td>
+                    <td colspan="2">Gonzales</td>
+                    <td colspan="2">Andrea</td>
                 </tr>
                 <tr class="titulo-tabla">
                     <td>DOCUMENTO DE IDENTIDAD</td>
                     <td>NUMERO DE DOCUMENTO</td>
                     <td>LUGAR DE EXPEDICION</td>
                     <td>FECHA DE EXPEDICION</td>
-                    <td>CORREO ELECTRONICO</td>                    
+                    <td colspan="2">CORREO ELECTRONICO</td>                    
                 </tr>
                 <tr>
                     <td>C.C</td>
                     <td>1098</td>
                     <td>giron</td>
                     <td>26/02/2012</td>
-                    <td>andrea@gmail.com</td>                    
+                    <td colspan="2">andrea@gmail.com</td>                    
                 </tr>
                 <tr class="titulo-tabla">
-                    <td>DIRECCION Y BARRIO DE RESIDENCIA</td>
-                    <td>MUNICIPIO</td>
-                    <td>TELEFONO DE RESIDENCIA</td>
-                    <td>NUMERO CELULAR</td>
+                    <td colspan="2">DIRECCION Y BARRIO DE RESIDENCIA</td>
+                    <td colspan="2">MUNICIPIO</td>
+                    <td colspan="1">TELEFONO DE RESIDENCIA</td>
+                    <td colspan="1">NUMERO CELULAR</td>
                 </tr>
-                <tr></tr>
+                <tr>
+                    <td colspan="2">calle 34-56-90 Barrio Alarcon</td>
+                    <td colspan="2">Floridablanca</td>
+                    <td colspan="1">6457895</td>
+                    <td colspan="1">316 8974 153</td>
+                </tr>
                 <tr></tr>
                 <tr></tr>
             </tbody>
@@ -148,21 +153,22 @@
         <br></br>
         <br></br>
 
-        <!-- TABLA DE SEGUIMIENTO -->
+        <!-- TABLA DE INFORMACION ACADEMICA - TITULOS -->
         <table style="border: 1px solid">
             <thead>
 
                 <tr>
-                    <th class="cab-tabla" colspan="#{reporteRdc.listadoHeaderSeguimiento.size()+1}">LISTA DE SEGUIMIENTO</th>
+                    <th class="cab-tabla">II. INFORMACION ACADEMICA</th>
                 </tr>
                 <tr class="titulo-tabla">
-                    <th colspan="#{reporteRdc.listadoHeaderSeguimiento.size()+1}">Indique las posibles horas semanales (horas academicas de 45 minutos)</th>
+                    <th>A. TITULOS</th>
                 </tr>
                 <tr>        
-                    <th>Actividad</th>
-                    <ui:repeat value="#{reporteRdc.listadoHeaderSeguimiento}" var="h">
-                        <th>#{h}</th>
-                    </ui:repeat>
+                    <th>TIPO</th>
+                    <th>NOMBRE DEL PROGRAMA</th>
+                    <th>INSTITUCION</th>
+                    <th>No. HORAS</th>
+                    <th>AÑO</th>
                 </tr>
             </thead>
             <tbody>               
@@ -179,12 +185,12 @@
         <br></br>
         <br></br>
 
-        <!-- TABLA DE PRODUCTOS -->
+        <!-- TABLA DE INFORMACION ACADEMICA - CURSOS -->
         <table style="border: 1px solid">
             <thead>
 
                 <tr>
-                    <th class="cab-tabla" colspan="5">LISTA DE PRODUCTOS</th>
+                    <th class="cab-tabla" colspan="5">B. CURSOS DE EXTENSIÓN, CAPACITACIÓN O EDUCACIÓN CONTINUA</th>
                 </tr>                
                 <tr class="titulo-tabla" >                  
                     <th>Actividad</th>
