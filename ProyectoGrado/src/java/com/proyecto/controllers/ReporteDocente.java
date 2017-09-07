@@ -47,16 +47,17 @@ public class ReporteDocente implements Serializable {
     
     public void init()
     {
+        _doc = (Docentes) SessionUtils.get("docente");
         llenarListasEstudios();
         llenarListasExperiencia();
     }
     
     public void llenarListasEstudios()
     {
-        _estudios = _facEstudios.buscarCampo("cod_docente", getDoc().getCedula() + "");
+        _estudios = _facEstudios.buscarCampo("cod_docente", _doc.getCedula() + "");
         _estudiosTitulados = new ArrayList<>();
         _estudiosCursos = new ArrayList<>();
-        System.out.println("Estudio: "+_estudios.size());
+        System.out.println("Estudio: "+_doc);
         for (InformacionAcademica infoTemp : _estudios) {
             if(infoTemp.getTipo()==1)
             {
@@ -69,11 +70,11 @@ public class ReporteDocente implements Serializable {
     
     public void llenarListasExperiencia()
     {
-        _experiencias = _facExperiencia.buscarCampo("coddocente", getDoc().getCedula() + "");
+        _experiencias = _facExperiencia.buscarCampo("coddocente", _doc.getCedula() + "");
         _experienciasPro = new ArrayList<>();
         _experienciasDoc = new ArrayList<>();
         
-        System.out.println("Experiencias: "+_experiencias.size());
+        System.out.println("Experiencias: "+_doc);
         for (Experiencia infoTemp : _experiencias) {
             if(infoTemp.getTipo()==1)
             {
@@ -85,7 +86,7 @@ public class ReporteDocente implements Serializable {
     } 
 
     public Docentes getDoc() {
-        _doc = (Docentes) SessionUtils.get("docente");
+        //_doc = (Docentes) SessionUtils.get("docente");
         return _doc;
     }
 

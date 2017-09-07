@@ -147,8 +147,6 @@
                     <td colspan="1">#{reporteDocente.doc.telefono}</td>
                     <td colspan="1">#{reporteDocente.doc.celular}</td>
                 </tr>
-                <tr></tr>
-                <tr></tr>
             </tbody>
         </table>
         <br></br>
@@ -243,7 +241,7 @@
                 </tr>
             </thead>
             <tbody>               
-                <ui:repeat value="#{reporteDocente.experienciasPro}" var="expPro" varStatus="state">
+                <ui:repeat value="#{reporteDocente.experienciasPro}" var="expPro">
                     <tr>             
                         <td>#{expPro.institucion}</td> 
                         <td>#{expPro.actividad}</td> 
@@ -279,7 +277,7 @@
                 </tr>
             </thead>
             <tbody>               
-                <ui:repeat value="#{reporteDocente.experienciasPro}" var="expDoc" varStatus="state">
+                <ui:repeat value="#{reporteDocente.experienciasPro}" var="expDoc">
                     <tr>             
                         <td>#{expDoc.institucion}</td> 
                         <td>#{expDoc.actividad}</td> 
