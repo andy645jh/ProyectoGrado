@@ -1,9 +1,6 @@
 package com.proyecto.facades;
 
-import com.proyecto.persistences.ActividadMisional;
-import com.proyecto.persistences.ActividadObligatoria;
 import com.proyecto.persistences.Docentes;
-import com.proyecto.persistences.Experiencia;
 import com.proyecto.persistences.Produccion;
 import java.util.List;
 import javax.ejb.Stateless;

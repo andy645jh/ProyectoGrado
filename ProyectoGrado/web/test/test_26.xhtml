@@ -223,7 +223,7 @@
         </table>
         <br></br>
         <br></br>     
-        
+
         <!-- TABLA DE EXPERIENCIA PROFESIONAL -->
         <table style="border: 1px solid">
             <thead>
@@ -259,7 +259,7 @@
         </table>
         <br></br>
         <br></br>  
-        
+
         <!-- TABLA DE EXPERIENCIA DOCENTE -->
         <table style="border: 1px solid">
             <thead>
@@ -291,6 +291,180 @@
                         </td>                                                     
                     </tr>
                 </ui:repeat>
+            </tbody>
+        </table>
+
+        <br></br>
+        <br></br>
+        <!-- TABLA DE PRODUCCION INTELECTUAL -->
+        <table style="border: 1px solid">
+            <thead>
+
+                <tr>
+                    <th class="cab-tabla" colspan="5">V. PRODUCCION INTELECTUAL</th>
+                </tr>                
+                <tr class="titulo-tabla" >  
+                    <th width="20%">TIPO DE PRODUCCION</th>
+                    <th width="20%">NOMBRE DE LA PRODUCCION</th>
+                    <th width="20%">EDITORIAL / NOMBRE DE LA REVISTA / OTROS DATOS</th>
+                    <th width="20%">ISSBN o ISSN (de libros, revistas o memorias</th>   
+                    <th width="20%">AÑO</th>                       
+                </tr>
+            </thead>
+            <tbody>               
+                <ui:repeat value="#{reporteDocente.producciones}" var="produccion">
+                    <tr>             
+                        <td>#{produccion.tipo}</td> 
+                        <td>#{produccion.nombre}</td> 
+                        <td>#{produccion.editorial_inv}</td> 
+                        <td>#{produccion.estado}</td> 
+                        <td>#{produccion.num_anos}</td>                                                                           
+                    </tr>
+                </ui:repeat>
+            </tbody>
+        </table>
+
+        <br></br>
+        <br></br>
+        <!-- TABLA DE PARTICIPACION -->
+        <table style="border: 1px solid">
+            <thead>
+
+                <tr>
+                    <th class="cab-tabla" colspan="5">VI. PRODUCCION INVESTIGATIVA</th>
+                </tr>  
+                <tr>
+                    <th class="cab-tabla" colspan="5">A. PARTICIPACION EN INVESTIGACION</th>
+                </tr>
+                <tr class="titulo-tabla" >  
+                    <th width="20%">TIPO DE PARTICIPACION</th>
+                    <th width="20%">INSTITUCION</th>
+                    <th width="20%">INVESTIGACION</th>
+                    <th width="20%">DURACION</th>   
+                    <th width="20%">ESTADO</th>                       
+                </tr>
+            </thead>
+            <tbody>               
+                <ui:repeat value="#{reporteDocente.partInvest}" var="partInvest">
+                    <tr>             
+                        <td>#{partInvest.tipo}</td> 
+                        <td>#{partInvest.evento}</td> 
+                        <td>#{partInvest.tema}</td> 
+                        <td>#{partInvest.fecha}</td> 
+                        <td>#{partInvest.ambito}</td>                                                                           
+                    </tr>
+                </ui:repeat>
+            </tbody>
+        </table>
+
+        <!-- TABLA DE SOCIALIZACION -->
+        <table style="border: 1px solid">
+            <thead>               
+                <tr>
+                    <th class="cab-tabla" colspan="5">B. SOCIALIZACION DE  LA INVESTIGACIÓN</th>
+                </tr>
+                <tr class="titulo-tabla" >  
+                    <th width="30%">ARTICULO</th>
+                    <th width="30%">CONFERENCIA</th>
+                    <th width="40%">INFORME DE AVANCE</th>                                      
+                </tr>
+            </thead>
+            <tbody>               
+                <ui:repeat value="#{reporteDocente.socializaciones}" var="socializacion">
+                    <tr>             
+                        <td>#{socializacion.articulo}</td> 
+                        <td>#{socializacion.conferencia}</td> 
+                        <td>#{socializacion.informe}</td>                         
+                    </tr>
+                </ui:repeat>
+            </tbody>
+        </table>
+
+        <br></br>
+        <br></br>
+        <!-- TABLA DE PARTICIPACION EN EVENTOS ACADEMICOS -->
+        <table style="border: 1px solid">
+            <thead>               
+                <tr>
+                    <th class="cab-tabla" colspan="5">III. PARTICIPACION EN EVENTOS ACADEMICOS</th>
+                </tr>
+                <tr class="titulo-tabla" >  
+                    <th width="20%">TIPO DE PARTICIPACION</th>
+                    <th width="20%">EVENTO</th>
+                    <th width="20%">TEMA</th>                                      
+                    <th width="20%">FECHA</th>                                      
+                    <th width="20%">AMBITO</th>                                      
+                </tr>
+            </thead>
+            <tbody>               
+                <ui:repeat value="#{reporteDocente.partAcademicas}" var="partAcad">
+                    <tr>             
+                        <td>#{partAcad.tipo_part}</td> 
+                        <td>#{partAcad.evento}</td> 
+                        <td>#{partAcad.tema}</td>  
+                        <td>
+                            <h:outputText value="#{partAcad.fecha}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </td>
+                        <td>#{partAcad.ambito}</td>                         
+                    </tr>
+                </ui:repeat>
+            </tbody>
+        </table>
+
+        <br></br>
+        <br></br>
+        <!-- TABLA DE PARTICIPACION EN LA SOCIALIZACION -->
+        <table style="border: 1px solid">
+            <thead>               
+                <tr>
+                    <th class="cab-tabla" colspan="5">IV. PARTICIPACION EN ASOCIACIONES PROFESIONALES O SOCIALES</th>
+                </tr>
+                <tr class="titulo-tabla" >  
+                    <th width="30%">NOMBRE DE LA ASOCIACIÓN O CLUB</th>
+                    <th width="30%">CLASE DE PARTICIPACIÓN</th>
+                    <th width="40%">TIEMPO DE VINCULACION</th>                                      
+                </tr>
+            </thead>
+            <tbody>               
+                <ui:repeat value="#{reporteDocente.partSocial}" var="partSocial">
+                    <tr>             
+                        <td>#{partSocial.tema}</td> 
+                        <td>#{partSocial.evento}</td> 
+                        <td>#{partSocial.ambito}</td>                         
+                    </tr>
+                </ui:repeat>
+            </tbody>
+        </table>
+
+        <br></br>
+        <br></br>
+        <!-- TABLA DE PARTICIPACION ACTIVIDADES DEPORTIVAS -->
+        <table style="border: 1px solid">
+            <thead>               
+                <tr>
+                    <th class="cab-tabla" colspan="5">V. PARTICIPACION EN ACTIVIDADES DEPORTIVAS Y CULTURALES</th>
+                </tr>
+                <tr class="titulo-tabla" >  
+                    <th width="20%">DEPORTE QUE PRACTICA</th>
+                    <th width="20%">DESEMPEÑO</th>
+                    <th width="20%">TIEMPO DE DEDICACION</th>  
+                    <th width="20%">ACTIVIDADES CULTURALES</th>
+                    <th width="20%">TIEMPO DE DEDICACION</th>  
+                </tr>
+            </thead>
+            <tbody>               
+                <ui:repeat value="#{reporteDocente.partDeport}" var="partDeport">
+                    <tr>             
+                        <td>#{partDeport.tema}</td> 
+                        <td>#{partDeport.desempeno}</td> 
+                        <td>#{partDeport.dedicacion}</td>    
+                        <td>#{partDeport.activ_culturales}</td> 
+                        <td>#{partDeport.dedica_cultural}</td> 
+                    </tr>                   
+                </ui:repeat>
+                
             </tbody>
         </table>
     </h:body>
