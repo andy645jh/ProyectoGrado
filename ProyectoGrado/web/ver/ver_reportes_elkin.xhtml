@@ -12,18 +12,12 @@
             </ui:decorate>            
         </ui:define>
         <ui:define name="content">           
-            <h:form id="formProductos">
+            <h:form id="form">
                 <p:panel>                    
                     <p:growl id="mensajito" sticky="true" showDetail="true"/>           
                     <br/>
                     <p:commandButton value="Reporte RDC-26" actionListener="#{reportTestControllerElkin.crearReport26()}" icon="ui-icon-disk"/>
-                    <p:commandButton value="Reporte RDC-54" actionListener="#{reportTestControllerElkin.crearReport()}" icon="ui-icon-disk" />
-    
-                    <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
-                        <p:fileDownload value="#{reportTestControllerElkin.fileDownloadView()}" />
-                    </p:commandButton>
-
-
+                    <p:commandButton value="Reporte RDC-54" actionListener="#{reportTestControllerElkin.crearReport()}" icon="ui-icon-disk"/>
                 </p:panel>  
             </h:form>
 
