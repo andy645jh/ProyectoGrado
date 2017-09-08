@@ -13,9 +13,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
 import org.primefaces.model.UploadedFile;
 
 /**
@@ -27,7 +25,7 @@ import org.primefaces.model.UploadedFile;
 public class FileUploadController {
 
     private String destination = "C:\\webapp\\img\\";
-    private UploadedFile _file;
+    private UploadedFile _file = null;
     private String _url = "";
     private String _filename;
     private String _pathServer;

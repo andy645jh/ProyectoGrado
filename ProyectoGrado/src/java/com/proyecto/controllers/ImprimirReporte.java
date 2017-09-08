@@ -21,11 +21,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
 
 /**
  *
@@ -94,7 +89,7 @@ public class ImprimirReporte extends HttpServlet {
     }
     
     protected void exportPdf(HttpServletResponse response,  HashMap param) throws IOException, ClassNotFoundException, SQLException {
-        response.setContentType("application/pdf");
+        /*response.setContentType("application/pdf");
         JasperReport js;
         JasperPrint jp;
         
@@ -117,7 +112,7 @@ public class ImprimirReporte extends HttpServlet {
             op.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
-        }
+        }*/
     }
 
     /**

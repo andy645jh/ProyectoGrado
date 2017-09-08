@@ -1,44 +1,15 @@
 package com.proyecto.controllers;
 
-import com.proyecto.facades.ActividadMisionalFacade;
-import com.proyecto.persistences.ActividadMisional;
-import com.proyecto.persistences.Convenciones;
-import com.proyecto.utilities.Formulario;
-import com.proyecto.utilities.Mensajes;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
-import javax.faces.model.SelectItem;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
-import javax.xml.registry.UnexpectedObjectException;
-import net.sf.jasperreports.engine.JRExporter;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -64,13 +35,13 @@ public class GenerarReporte implements Serializable {
         args.put("RUTA_LOGO", logoEtiqueta);
             args.put("SUBREPORT_DIR", ruta);
 
-            this.exportPdf(response,  args);
+            //this.exportPdf(response,  args);
        
 
     }
 
     public void exportPdf(HttpServletResponse response,  HashMap param) throws IOException, ClassNotFoundException, SQLException {
-        response.setContentType("application/pdf");
+        /*response.setContentType("application/pdf");
         JasperReport js;
         JasperPrint jp;
         
@@ -93,7 +64,7 @@ public class GenerarReporte implements Serializable {
             op.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
-        }
+        }*/
     }
 
 //    public void generarReporte() throws UnexpectedObjectException {
