@@ -1,11 +1,9 @@
 package com.proyecto.controllers;
 
 import com.proyecto.facades.CoordinacionFacade;
-import com.proyecto.utilities.Formulario;
 import com.proyecto.utilities.Mensajes;
 import com.proyecto.facades.DocentesFacade;
 import com.proyecto.facades.PermisosFacade;
-import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Docentes;
 import com.proyecto.persistences.Permisos;
 import java.io.Serializable;

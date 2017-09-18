@@ -5,7 +5,6 @@
 
 MUAX MUAX MI GATITA PONSENTIDAA HERMOSA GR GR GRGR
 
--Quitar error del FileUpload Filter en la vista del perfil de docente
 -Reporte RDC-54
 -calcular y restringir las horas en la tabla de asignacion
 -Cuando se crea un docente debe crearse una asignacion por defecto con los valores estaticos de tipo de contrato, horas de clase etc

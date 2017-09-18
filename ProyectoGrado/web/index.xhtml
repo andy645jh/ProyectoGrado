@@ -14,14 +14,15 @@
     
     <h:body style="background-color: #f6f6f6;">
         <h:form>
-            <p:growl id="mensajes" sticky="true" showDetail="true"/>              
+            <p:growl id="mensajes" sticky="true" showDetail="true"/>          
+            
             <br/>
 
             #{loginController.resetear()}
             <div class="ui-g-12">
                 <div class="login-container">
                     <div class="ui-g">
-                        <img src="http://localhost:8082/ProyectoGradox/faces/resources/img/uts3.jpg" alt="j" class="img-responsive"/>
+                        <img src="#{loginController.urlLogo}" alt="j" class="img-responsive"/>
                         <!--<h2>Registro y Evaluación de Actividades</h2>-->
                     </div>
 

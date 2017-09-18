@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.application.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
@@ -125,8 +126,7 @@ public class LoginController implements Serializable {
         ExternalContext ctx = FacesContext.getCurrentInstance().getExternalContext();
         String ctxPath = ((ServletContext) ctx.getContext()).getContextPath();
 
-        try 
-        {
+        try {
             // Usar el contexto de JSF para invalidar la sesión,
             // NO EL DE SERVLETS (nada de HttpServletRequest)
             ((HttpSession) ctx.getSession(false)).invalidate();
@@ -138,7 +138,7 @@ public class LoginController implements Serializable {
             ctx.redirect(ctxPath + "/faces/index.xhtml");
         } catch (IOException ex) {
             System.out.println("Error");
-            ex.printStackTrace();          
+            ex.printStackTrace();
         }
     }
 
@@ -154,4 +154,10 @@ public class LoginController implements Serializable {
 
     }
 
+    public String getUrlLogo() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        Resource resource = context.getApplication().getResourceHandler().createResource("img/uts3.jpg");
+        String url = resource.getRequestPath();
+        return url;
+    }
 }
