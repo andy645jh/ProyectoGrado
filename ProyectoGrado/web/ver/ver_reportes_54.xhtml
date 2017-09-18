@@ -16,11 +16,13 @@
                 <ui:include src="../reportes/reporte_54.xhtml" />                  
             </div>            
         </ui:define>
-        
+
         <ui:define name="boton">   
-            <p:commandButton actionListener="#{reportTestControllerElkin.crearReport()}" value="Imprimir" style="margin-right: 10px;" />              
+            <p:commandButton action="#{reportTestControllerElkin.crearReport()}" value="Imprimir" style="margin-right: 10px;" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s" >
+                <p:fileDownload value="#{reportTestControllerElkin.reportFile}"/>
+            </p:commandButton>
         </ui:define>
-        
+
     </ui:composition>
 
     <script type="text/javascript">
@@ -31,6 +33,7 @@
         function stop() {
             PF('statusDialog').hide();
         }
+        
     </script>
 </html>
 
