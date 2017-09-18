@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
+
 /**
  *
  * @author User
@@ -27,7 +28,7 @@ public class ReportTestControllerElkin implements Serializable {
         FacesContext faces = FacesContext.getCurrentInstance();
         ExternalContext external = faces.getExternalContext();
         HttpSession session = (HttpSession) external.getSession(true);        
-        String url = getBase()+"test.xhtml;jsessionid=" + session.getId();
+        String url = getBase()+"reporte_54.xhtml;jsessionid=" + session.getId();
         
         try {
             ITextRenderer renderer = new ITextRenderer();
@@ -36,7 +37,7 @@ public class ReportTestControllerElkin implements Serializable {
             HttpServletResponse response = (HttpServletResponse) external.getResponse();
 
             response.setContentType("application/pdf");            
-            OutputStream os = new FileOutputStream(SessionUtils.getPathReports() + "test54.pdf");
+            OutputStream os = new FileOutputStream(SessionUtils.getPathReports() + "reporte_54.pdf");
             response.setHeader("Content-Disposition", "inline; filename\"print=file=file-print.dpf\"");
             renderer.createPDF(os);
             os.close();
@@ -56,7 +57,7 @@ public class ReportTestControllerElkin implements Serializable {
         HttpSession session = (HttpSession) external.getSession(true);     
         
         //String url = "http://localhost:8082/ProyectoGradox/faces/test/test_26.xhtml;jsessionid=" + session.getId();        
-        String url = getBase()+ "test_26.xhtml;jsessionid=" + session.getId();        
+        String url = getBase()+ "reporte_26.xhtml;jsessionid=" + session.getId();        
         
         try {
             ITextRenderer renderer = new ITextRenderer();
@@ -65,7 +66,7 @@ public class ReportTestControllerElkin implements Serializable {
             HttpServletResponse response = (HttpServletResponse) external.getResponse();
 
             response.setContentType("application/pdf");           
-            OutputStream os = new FileOutputStream(SessionUtils.getPathReports()+ "test26.pdf");
+            OutputStream os = new FileOutputStream(SessionUtils.getPathReports()+ "reporte_26.pdf");
             response.setHeader("Content-Disposition", "inline; filename\"print=file=file-print.dpf\"");
             renderer.createPDF(os);
             os.close();
@@ -87,7 +88,7 @@ public class ReportTestControllerElkin implements Serializable {
                 external.getRequestServerName() + // "myhost"
                 ":" + external.getRequestServerPort() + // ":" + "8080"
                 external.getRequestContextPath() + // "/people"
-                "/faces/test/";
+                "/faces/reportes/";
         return uri;
     }    
 }
