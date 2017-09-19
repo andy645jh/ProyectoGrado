@@ -4,6 +4,7 @@ import com.proyecto.utilities.SessionUtils;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.net.URL;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.xhtmlrenderer.pdf.ITextRenderer;
+import org.xhtmlrenderer.pdf.PDFCreationListener;
 
 /**
  *
@@ -32,30 +34,25 @@ private StreamedContent file;
         ExternalContext external = faces.getExternalContext();
         HttpSession session = (HttpSession) external.getSession(true);
         String url = getBase() + "reporte_54.xhtml;jsessionid=" + session.getId();
+        HttpServletResponse response = (HttpServletResponse) external.getResponse();
 
         try {
             ITextRenderer renderer = new ITextRenderer();
             renderer.setDocument(new URL(url).toString());
-            renderer.layout();
-            HttpServletResponse response = (HttpServletResponse) external.getResponse();
+            renderer.layout();            
 
             response.setContentType("application/pdf");
             OutputStream os = new FileOutputStream(SessionUtils.getPathReports() + "reporte_54.pdf");
-            response.setHeader("Content-Disposition", "inline; filename=reporte_54.pdf");
             renderer.createPDF(os);
+            
+            response.setHeader("Content-Type", "atachment; filename=reporte_54.pdf");            
             os.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        faces.responseComplete();
-        System.out.println("Done 54!!");
-        path = SessionUtils.getPathReports() + "reporte_54.pdf";      
-        System.out.println("Path: "+path);
-        path ="C://webapp//pdf//reporte_54.pdf";
-        //faces.getExternalContext().redirect(path);
-        //file = new DefaultStreamedContent(new FileInputStream(path), "application/pdf","reporte_54.pdf");
-        //return path;
+        
+        faces.responseComplete();         
     }
 
     private String path; 
@@ -83,6 +80,8 @@ private StreamedContent file;
             OutputStream os = new FileOutputStream(SessionUtils.getPathReports() + "reporte_26.pdf");
             response.setHeader("Content-Disposition", "inline; filename\"print=file=file-print.dpf\"");
             renderer.createPDF(os);
+            PDFCreationListener pdfCreate = renderer.getListener();
+            pdfCreate.preOpen(renderer);
             os.close();
 
         } catch (Exception e) {

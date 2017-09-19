@@ -14,16 +14,25 @@
         <ui:define name="content">   
             <div style="margin: 15px;">
                 <ui:include src="../reportes/reporte_54.xhtml" />                  
-            </div>            
+            </div>      
+            <object type="application/pdf" data="C:\webapp\pdf\reporte_54.pdf" width="100%" height="300px">
+                Your browser can't display pdf, <a href="C:\webapp\pdf\reporte_54.pdf">click</a> to download pdf instead.
+            </object>
+            
+            <p:media value="/PdfServlet" width="500" height="300" />
         </ui:define>
 
         <ui:define name="boton">   
             <p:commandButton action="#{reportTestControllerElkin.crearReport()}" value="Imprimir" style="margin-right: 10px;" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s" >
                 <p:fileDownload value="#{reportTestControllerElkin.reportFile}"/>
             </p:commandButton>
+
+            <a onclick="click()" href="#" target="_blank">Descargar</a>
+
         </ui:define>
 
     </ui:composition>
+
 
     <script type="text/javascript">
         function start() {
@@ -33,7 +42,13 @@
         function stop() {
             PF('statusDialog').hide();
         }
-        
+
+        function click(e)
+        {            
+            e.preventDefault();
+            console.log("Click")
+            window.location("C:/webapp/pdf/reporte_54.pdf");
+        }
     </script>
 </html>
 
