@@ -18,7 +18,7 @@
         </ui:define>
 
         <ui:define name="boton">   
-            <p:commandButton action="#{reportTestControllerElkin.crearReport()}" value="Imprimir" style="margin-right: 10px;" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s" >
+            <p:commandButton action="#{reportTestControllerElkin.crearReport()}" value="Imprimir" style="margin-right: 10px;" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s" >
                 <p:fileDownload value="#{reportTestControllerElkin.reportFile}"/>
             </p:commandButton>
         </ui:define>

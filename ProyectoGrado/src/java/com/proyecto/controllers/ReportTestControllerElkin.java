@@ -24,8 +24,9 @@ import org.xhtmlrenderer.pdf.ITextRenderer;
 @ViewScoped
 @ManagedBean
 public class ReportTestControllerElkin implements Serializable {
+private StreamedContent file;
 
-    public void crearReport() {
+    public void crearReport() throws IOException{
 
         FacesContext faces = FacesContext.getCurrentInstance();
         ExternalContext external = faces.getExternalContext();
@@ -40,7 +41,7 @@ public class ReportTestControllerElkin implements Serializable {
 
             response.setContentType("application/pdf");
             OutputStream os = new FileOutputStream(SessionUtils.getPathReports() + "reporte_54.pdf");
-            response.setHeader("Content-Disposition", "inline; filename\"print=file=file-print.dpf\"");
+            response.setHeader("Content-Disposition", "inline; filename=reporte_54.pdf");
             renderer.createPDF(os);
             os.close();
 
@@ -49,15 +50,18 @@ public class ReportTestControllerElkin implements Serializable {
         }
         faces.responseComplete();
         System.out.println("Done 54!!");
-        path = SessionUtils.getPathReports() + "reporte_54.pdf";
-        contentType = FacesContext.getCurrentInstance().getExternalContext().getMimeType(path);
+        path = SessionUtils.getPathReports() + "reporte_54.pdf";      
+        System.out.println("Path: "+path);
+        path ="C://webapp//pdf//reporte_54.pdf";
+        //faces.getExternalContext().redirect(path);
+        //file = new DefaultStreamedContent(new FileInputStream(path), "application/pdf","reporte_54.pdf");
+        //return path;
     }
 
-    private String path;
-    private String contentType;
+    private String path; 
 
-    public StreamedContent getReportFile() throws IOException {
-        return new DefaultStreamedContent(new FileInputStream(path), contentType);
+    public StreamedContent getReportFile() {        
+        return file;
     }
 
     public void crearReport26() {
