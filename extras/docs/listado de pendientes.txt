@@ -1,19 +1,15 @@
------------RECORDATE QUE TE AMOOOOO MUCHOOOOO ME SIENTO ORGULLOSA CUANDO DIGO Q MI NOVIO ES PROGRAMADOR DE VIDEO JUEGOS PUP PUP -------
-
------------AMORE YO TAMBN ESTOY ORGULLOSO DE TENER UNAA NOVIA COMO TU, PROGRAMADORA, AUNQUE ANTES ERAS UN HOMBRE, JAJAJA, PERO YO ME ENAMORE DE LA HEMBRA QUE ERES AHORA, GRRR, MUAX MUAX, YO SE QUE AVECES PASAMOS POR DISCUSIONES O PROBLEMAS PERO JUNTOS LO S HEMOS SUPERADO, KIEROP SEGUIR SIENDO PROGRAMADOR DE JUEGOS PARA QUE PUEDAS PICARTELAS PERO AVECES SIENTO QUE TENDRE QUE DEJARLO SI KIEROP GANAR MAS :'( .. NO SE QUE PASARA PERO PS ESTE AÑO ES DEFINITIVO, SINO MEJORA LA COSA BUSCARE OTRA SALIDA XQ KIEROP K VIVAMOS EN NUESTRO PROPIO REINO, SIN TANTAS PREOCUPACIONES :* :* TE AMOOOOO.. -------
-
-
-MUAX MUAX MI GATITA PONSENTIDAA HERMOSA GR GR GRGR
-
--Reporte RDC-54
--calcular y restringir las horas en la tabla de asignacion
--Cuando se crea un docente debe crearse una asignacion por defecto con los valores estaticos de tipo de contrato, horas de clase etc
--Al crear los productos solo debe salir la lista de las actividaes que no se les ha asignado un producto
---crear el perfil y el modulo para el auditor
--Organizar la vista perfil del docente
--pagina de inicio para el docente y el coordinador
--Buscar una manera facil de registrar las semanas del semestre
--Mejorar el diseño
+- Crear carpetas segun el docente
+- Evitar que un docente pueda abrir la carpeta de otro docente 
+- Mostrar imagen seleccionada por el docente
+- Reporte RDC-54
+- calcular y restringir las horas en la tabla de asignacion
+- Cuando se crea un docente debe crearse una asignacion por defecto con los valores estaticos de tipo de contrato, horas de clase etc
+- Al crear los productos solo debe salir la lista de las actividaes que no se les ha asignado un producto
+- crear el perfil y el modulo para el auditor
+- Organizar la vista perfil del docente
+- pagina de inicio para el docente y el coordinador
+- Buscar una manera facil de registrar las semanas del semestre
+- Mejorar el diseño
 
 
 
