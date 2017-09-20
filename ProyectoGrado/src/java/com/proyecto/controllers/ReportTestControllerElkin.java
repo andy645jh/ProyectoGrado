@@ -36,29 +36,24 @@ private StreamedContent file;
         String url = getBase() + "reporte_54.xhtml;jsessionid=" + session.getId();
         HttpServletResponse response = (HttpServletResponse) external.getResponse();
 
-        try {
+        try {         
+            
             ITextRenderer renderer = new ITextRenderer();
             renderer.setDocument(new URL(url).toString());
             renderer.layout();            
 
-            response.setContentType("application/pdf");
-            OutputStream os = new FileOutputStream(SessionUtils.getPathReports() + "reporte_54.pdf");
+            //response.setContentType("application/pdf");
+            OutputStream os = new FileOutputStream(SessionUtils.getPathReports() + "reporte_54.pdf");          
+            //response.setHeader("Content-Disposition", "inline; filename=reporte_54.pdf");   
             renderer.createPDF(os);
-            
-            response.setHeader("Content-Type", "attachment; filename=reporte_54.pdf");            
             os.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
         
-        faces.responseComplete();         
-    }
-
-    private String path; 
-
-    public StreamedContent getReportFile() {        
-        return file;
+        faces.responseComplete();   
+        System.out.println("Done 54!!");
     }
 
     public void crearReport26() {
@@ -66,22 +61,19 @@ private StreamedContent file;
         FacesContext faces = FacesContext.getCurrentInstance();
         ExternalContext external = faces.getExternalContext();
         HttpSession session = (HttpSession) external.getSession(true);
-
+        HttpServletResponse response = (HttpServletResponse) external.getResponse();
         //String url = "http://localhost:8082/ProyectoGradox/faces/test/test_26.xhtml;jsessionid=" + session.getId();        
         String url = getBase() + "reporte_26.xhtml;jsessionid=" + session.getId();
 
         try {
             ITextRenderer renderer = new ITextRenderer();
             renderer.setDocument(new URL(url).toString());
-            renderer.layout();
-            HttpServletResponse response = (HttpServletResponse) external.getResponse();
+            renderer.layout();           
 
             response.setContentType("application/pdf");
             OutputStream os = new FileOutputStream(SessionUtils.getPathReports() + "reporte_26.pdf");
             response.setHeader("Content-Disposition", "inline; filename\"print=file=file-print.dpf\"");
-            renderer.createPDF(os);
-            PDFCreationListener pdfCreate = renderer.getListener();
-            pdfCreate.preOpen(renderer);
+            renderer.createPDF(os);            
             os.close();
 
         } catch (Exception e) {

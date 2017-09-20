@@ -64,7 +64,7 @@ public class PdfSevlet extends HttpServlet {
         response.setHeader("Content-Length", String.valueOf(file.length()));
         response.setHeader("Content-Disposition", "inline; filename=\"reporte.pdf\"");
         Files.copy(file.toPath(), response.getOutputStream());
-        System.out.println("Llego aqui!!");
+        System.out.println("Llego aqui!!");        
     }
 
     /**
