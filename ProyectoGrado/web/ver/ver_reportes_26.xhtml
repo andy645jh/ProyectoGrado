@@ -16,9 +16,12 @@
                 <ui:include src="../reportes/reporte_26.xhtml" />                  
             </div>            
         </ui:define>  
-        
+
         <ui:define name="boton">   
-            <p:commandButton actionListener="#{reportTestControllerElkin.crearReport26()}" value="Imprimir" style="margin-right: 10px;" />              
+            #{reportTestControllerElkin.crearReport26()}
+            <a href="${request.contextPath}/pdfServlet" target="_blank">
+                <p:button value="Descargar" style="margin-right: 10px;" />
+            </a>   
         </ui:define>
     </ui:composition>
 

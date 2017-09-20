@@ -1,10 +1,8 @@
 package com.proyecto.controllers;
 
 import com.proyecto.utilities.SessionUtils;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.net.URL;
@@ -14,10 +12,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.xhtmlrenderer.pdf.ITextRenderer;
-import org.xhtmlrenderer.pdf.PDFCreationListener;
 
 /**
  *
@@ -70,9 +66,9 @@ private StreamedContent file;
             renderer.setDocument(new URL(url).toString());
             renderer.layout();           
 
-            response.setContentType("application/pdf");
+            //response.setContentType("application/pdf");
             OutputStream os = new FileOutputStream(SessionUtils.getPathReports() + "reporte_26.pdf");
-            response.setHeader("Content-Disposition", "inline; filename\"print=file=file-print.dpf\"");
+            //response.setHeader("Content-Disposition", "inline; filename\"print=file=file-print.dpf\"");
             renderer.createPDF(os);            
             os.close();
 
