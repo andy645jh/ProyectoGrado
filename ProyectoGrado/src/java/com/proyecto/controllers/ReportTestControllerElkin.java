@@ -45,7 +45,7 @@ private StreamedContent file;
             OutputStream os = new FileOutputStream(SessionUtils.getPathReports() + "reporte_54.pdf");
             renderer.createPDF(os);
             
-            response.setHeader("Content-Type", "atachment; filename=reporte_54.pdf");            
+            response.setHeader("Content-Type", "attachment; filename=reporte_54.pdf");            
             os.close();
 
         } catch (Exception e) {
