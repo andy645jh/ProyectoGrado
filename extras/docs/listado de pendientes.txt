@@ -1,7 +1,5 @@
-- Crear carpetas segun el docente
 - Evitar que un docente pueda abrir la carpeta de otro docente 
 - Mostrar imagen seleccionada por el docente
-- Reporte RDC-54
 - calcular y restringir las horas en la tabla de asignacion
 - Cuando se crea un docente debe crearse una asignacion por defecto con los valores estaticos de tipo de contrato, horas de clase etc
 - Al crear los productos solo debe salir la lista de las actividaes que no se les ha asignado un producto
