@@ -40,7 +40,7 @@ public class DocentesController implements Serializable {
     
     private String clave;
     private String usuario;
-    private Docentes _obj;
+    private Docentes _doc;
     private UploadedFile foto;
     private int _codCoord;
     private String _rutaTxt = "/com/java/utilities/txtDocentes";
@@ -56,10 +56,10 @@ public class DocentesController implements Serializable {
     }
 
     public Docentes getCampo() {
-        if (_obj == null) {
-            _obj = new Docentes();
+        if (_doc == null) {
+            _doc = new Docentes();
         }
-        return _obj;
+        return _doc;
     }
     
     public void mostrarMensaje() {           
@@ -85,11 +85,11 @@ public class DocentesController implements Serializable {
         Docentes doc = (Docentes) SessionUtils.get("docente");
         System.out.println("VA A AGREGAR DOCENTE " + doc.getCodcoordinacion());
 //        String coordinacion= doc.getCodcoordinacion().getCodcoordinacion()+"";
-        _obj.setCodcoordinacion(doc.getCodcoordinacion());
+        _doc.setCodcoordinacion(doc.getCodcoordinacion());
 //        _obj.setCodcoordinacion(c);
 //        _obj.setCod(c);
         try {
-            _ejbFacade.crear(_obj);
+            _ejbFacade.crear(_doc);
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
@@ -151,8 +151,8 @@ public class DocentesController implements Serializable {
 
     public void abrirActualizar(Docentes objtemp) {
 
-        _obj = objtemp;
-        _codCoord = _obj.getCodcoordinacion().getCodcoordinacion();
+        _doc = objtemp;
+        _codCoord = _doc.getCodcoordinacion().getCodcoordinacion();
         Map<String, Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
         options.put("draggable", false);
@@ -163,10 +163,10 @@ public class DocentesController implements Serializable {
 
     public String abrirPerfil() {
 
-        _obj = (Docentes) SessionUtils.get("docente");
-        System.out.println("CODIGO " + _obj.getFoto());
+        _doc = (Docentes) SessionUtils.get("docente");
+        System.out.println("CODIGO " + _doc.getFoto());
         
-        Permisos p = _permFacade.buscarCampo("usuario", _obj.getCedula() + "");
+        Permisos p = _permFacade.buscarCampo("usuario", _doc.getCedula() + "");
         clave = p.getClave();
         usuario = p.getUsuario();
         return "/docentes/perfil";
@@ -179,19 +179,19 @@ public class DocentesController implements Serializable {
         
         Docentes doc = (Docentes) SessionUtils.get("docente");
 //        String coordinacion= doc.getCodcoordinacion().getCodcoordinacion()+"";
-        _obj.setCodcoordinacion(doc.getCodcoordinacion());
+        _doc.setCodcoordinacion(doc.getCodcoordinacion());
         System.out.println("ACTUALIZARRRRRRRRR ");
 
         if (foto != null) {
             System.out.println("ENTRO A LA FUNCION ACTUALIZAR " + foto.getFileName());
-            _obj.setFoto(foto.getFileName());
+            _doc.setFoto(foto.getFileName());
         }
 //        Coordinacion c = _coordFacade.buscar(_codCoord);
 //        _obj.setCodcoordinacion(c);
 //        System.out.println("VA A AGREGAR DOCENTE "+_obj.getCodcoordinacion());
 
         try {
-            _ejbFacade.actualizar(_obj);
+            _ejbFacade.actualizar(_doc);
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
@@ -210,7 +210,7 @@ public class DocentesController implements Serializable {
     }
 
     public void resetear() {
-        _obj = null;
+        _doc = null;
     }
 
 
@@ -251,6 +251,10 @@ public class DocentesController implements Serializable {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
+    }
+
+    public Docentes getDoc() {
+        return _doc;
     }
 
     @FacesConverter(forClass = Docentes.class, value = "docentesConverter")

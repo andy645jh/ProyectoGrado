@@ -19,7 +19,7 @@
         </ui:define>
 
         <ui:define name="boton">  
-            #{reportTestControllerElkin.crearReport()}
+            #{reportController.crearReport()}
             
             <a href="${request.contextPath}/pdfServlet" target="_blank">
                 <p:button value="Descargar" style="margin-right: 10px;" />

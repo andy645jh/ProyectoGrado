@@ -5,7 +5,7 @@
  */
 package com.test.ctrl;
 
-import com.proyecto.controllers.ReportTestControllerElkin;
+import com.proyecto.controllers.ReportController;
 import com.proyecto.persistences.Docentes;
 import com.proyecto.utilities.SessionUtils;
 import java.io.File;
@@ -63,7 +63,7 @@ public class PdfSevlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Docentes doc = (Docentes) request.getSession().getAttribute("docente");
-        File file = new File("C:\\webapp\\"+doc.getCedula()+"\\reporte_"+ReportTestControllerElkin.reportNum+".pdf");
+        File file = new File("C:\\webapp\\"+doc.getCedula()+"\\reporte_"+ReportController.reportNum+".pdf");
         response.setHeader("Content-Type", getServletContext().getMimeType(file.getName()));
         response.setHeader("Content-Length", String.valueOf(file.length()));
         response.setHeader("Content-Disposition", "inline; filename=\"reporte.pdf\"");

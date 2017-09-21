@@ -13,7 +13,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.primefaces.model.StreamedContent;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
 /**
@@ -22,7 +21,7 @@ import org.xhtmlrenderer.pdf.ITextRenderer;
  */
 @ViewScoped
 @ManagedBean
-public class ReportTestControllerElkin implements Serializable {
+public class ReportController implements Serializable {
     
     public static int reportNum;
     
