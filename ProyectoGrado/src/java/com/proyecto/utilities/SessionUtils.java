@@ -29,11 +29,11 @@ public class SessionUtils {
         return FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(key);
     }
 
-    public static String getPathImages() {
-        String destination = "C:/webapp/img/";
+    public static String getPathImages(int id) {
+        String destination = "C:/webapp/"+id+"/";
         String server = FacesContext.getCurrentInstance().getExternalContext().getRequestServerName();
         if (!server.contains("localhost")) {
-            destination = "/home/webapp/img/";
+            destination = "/home/webapp/"+id+"/";
         }
         try {
             Path path = Paths.get(destination);
@@ -47,12 +47,12 @@ public class SessionUtils {
         return destination;
     }
 
-    public static String getPathReports() {
-        String destination = "C:/webapp/pdf/";
+    public static String getPathReports(int id) {
+        String destination = "C:/webapp/"+id+"/";
 
         String server = FacesContext.getCurrentInstance().getExternalContext().getRequestServerName();
         if (!server.contains("localhost")) {
-            destination = "/home/webapp/pdf/";
+            destination = "/home/webapp/"+id+"/";
         }
 
         try {

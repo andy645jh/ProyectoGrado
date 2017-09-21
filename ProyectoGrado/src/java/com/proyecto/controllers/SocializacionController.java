@@ -13,6 +13,7 @@ import com.proyecto.persistences.Docentes;
 import com.proyecto.persistences.Experiencia;
 import com.proyecto.persistences.Socializacion;
 import com.proyecto.persistences.TipoModalidades;
+import com.proyecto.utilities.SessionUtils;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,10 +40,7 @@ public class SocializacionController implements Serializable
 {  
     @EJB
     private SocializacionFacade _ejbFacade;
-    
-    @EJB
-    private DocentesFacade docentesFacade;
-        
+            
     private Socializacion _obj;
     
     private String cedula="";
@@ -76,7 +74,7 @@ public class SocializacionController implements Serializable
     {
         System.out.println("ENTRO A LA FUN AGREGAR");
         String titulo,detalle;
-        Docentes d=docentesFacade.getCurrentDocente();
+        Docentes d = (Docentes) SessionUtils.get("docente");
         System.out.println("CREAR DOCENTE   "+d.getCedula());
       
         
@@ -138,9 +136,8 @@ public class SocializacionController implements Serializable
      
     public List<Socializacion> getListado()
     {
-        Docentes doc = docentesFacade.getCurrentDocente();
+        Docentes doc = (Docentes) SessionUtils.get("docente");
         cedula= doc.getCedula()+"";
-//        cedula= "109877";
         return _ejbFacade.buscarCampo("coddocente",cedula);
     }
     
@@ -197,7 +194,7 @@ public class SocializacionController implements Serializable
     public void actualizar()
     {        
         String titulo,detalle;
-        Docentes d=docentesFacade.getCurrentDocente();
+        Docentes d = (Docentes) SessionUtils.get("docente");
         System.out.println("EDITAR DOCENTE   "+d.getCedula());
         
         

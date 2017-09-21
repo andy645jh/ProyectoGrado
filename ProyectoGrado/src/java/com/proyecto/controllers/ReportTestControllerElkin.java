@@ -1,5 +1,6 @@
 package com.proyecto.controllers;
 
+import com.proyecto.persistences.Docentes;
 import com.proyecto.utilities.SessionUtils;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -22,10 +23,11 @@ import org.xhtmlrenderer.pdf.ITextRenderer;
 @ViewScoped
 @ManagedBean
 public class ReportTestControllerElkin implements Serializable {
-private StreamedContent file;
-
+    
+    public static int reportNum;
+    
     public void crearReport() throws IOException{
-
+        Docentes doc = (Docentes) SessionUtils.get("docente");
         FacesContext faces = FacesContext.getCurrentInstance();
         ExternalContext external = faces.getExternalContext();
         HttpSession session = (HttpSession) external.getSession(true);
@@ -39,7 +41,7 @@ private StreamedContent file;
             renderer.layout();            
 
             //response.setContentType("application/pdf");
-            OutputStream os = new FileOutputStream(SessionUtils.getPathReports() + "reporte_54.pdf");          
+            OutputStream os = new FileOutputStream(SessionUtils.getPathReports(doc.getCedula()) + "reporte_54.pdf");          
             //response.setHeader("Content-Disposition", "inline; filename=reporte_54.pdf");   
             renderer.createPDF(os);
             os.close();
@@ -49,11 +51,12 @@ private StreamedContent file;
         }
         
         faces.responseComplete();   
+        reportNum = 54;
         System.out.println("Done 54!!");
     }
 
     public void crearReport26() {
-
+        Docentes doc = (Docentes) SessionUtils.get("docente");
         FacesContext faces = FacesContext.getCurrentInstance();
         ExternalContext external = faces.getExternalContext();
         HttpSession session = (HttpSession) external.getSession(true);
@@ -67,7 +70,7 @@ private StreamedContent file;
             renderer.layout();           
 
             //response.setContentType("application/pdf");
-            OutputStream os = new FileOutputStream(SessionUtils.getPathReports() + "reporte_26.pdf");
+            OutputStream os = new FileOutputStream(SessionUtils.getPathReports(doc.getCedula()) + "reporte_26.pdf");
             //response.setHeader("Content-Disposition", "inline; filename\"print=file=file-print.dpf\"");
             renderer.createPDF(os);            
             os.close();
@@ -76,6 +79,7 @@ private StreamedContent file;
             e.printStackTrace();
         }
         faces.responseComplete();
+        reportNum = 26;
         System.out.println("Done 26!!");
     }
 
@@ -94,5 +98,5 @@ private StreamedContent file;
                 + // "/people"
                 "/faces/reportes/";
         return uri;
-    }
+    }  
 }

@@ -5,6 +5,7 @@
  */
 package com.test.ctrl;
 
+import com.proyecto.persistences.Docentes;
 import com.proyecto.utilities.SessionUtils;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -50,8 +51,8 @@ public class FileUploadController {
     public void copyFile(String fileName, InputStream in) {
 
         try {
-            
-            _url = SessionUtils.getPathImages() +fileName;            
+            Docentes doc = (Docentes) SessionUtils.get("docente");
+            _url = SessionUtils.getPathImages(doc.getCedula()) +fileName;            
             OutputStream out = new FileOutputStream(new File(_url));
 
             int read = 0;

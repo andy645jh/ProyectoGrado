@@ -6,6 +6,7 @@ import com.proyecto.facades.DocentesFacade;
 import com.proyecto.facades.PermisosFacade;
 import com.proyecto.persistences.Docentes;
 import com.proyecto.persistences.Permisos;
+import com.proyecto.utilities.SessionUtils;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -33,8 +34,10 @@ public class DocentesController implements Serializable {
     private DocentesFacade _ejbFacade;
     @EJB
     private CoordinacionFacade _coordFacade;
+    
     @EJB
     private PermisosFacade _permFacade;
+    
     private String clave;
     private String usuario;
     private Docentes _obj;
@@ -79,7 +82,7 @@ public class DocentesController implements Serializable {
 
         String titulo, detalle;
 //        Coordinacion c = _coordFacade.buscar(_codCoord);
-        Docentes doc = _ejbFacade.getCurrentDocente();
+        Docentes doc = (Docentes) SessionUtils.get("docente");
         System.out.println("VA A AGREGAR DOCENTE " + doc.getCodcoordinacion());
 //        String coordinacion= doc.getCodcoordinacion().getCodcoordinacion()+"";
         _obj.setCodcoordinacion(doc.getCodcoordinacion());
@@ -124,7 +127,7 @@ public class DocentesController implements Serializable {
     
     public List<Docentes> getListado() {
         
-        Docentes doc = _ejbFacade.getCurrentDocente();
+        Docentes doc = (Docentes) SessionUtils.get("docente");
         String coordinacion= doc.getCodcoordinacion().getCodcoordinacion()+"";
         return _ejbFacade.buscarCampo("_codcoordinacion",coordinacion);
     }
@@ -160,7 +163,7 @@ public class DocentesController implements Serializable {
 
     public String abrirPerfil() {
 
-        _obj = _ejbFacade.getCurrentDocente();
+        _obj = (Docentes) SessionUtils.get("docente");
         System.out.println("CODIGO " + _obj.getFoto());
         
         Permisos p = _permFacade.buscarCampo("usuario", _obj.getCedula() + "");
@@ -174,7 +177,7 @@ public class DocentesController implements Serializable {
 //        Coordinacion c = _coordFacade.buscar(_codCoord);
 //        _obj.setCodcoordinacion(c);
         
-        Docentes doc = _ejbFacade.getCurrentDocente();
+        Docentes doc = (Docentes) SessionUtils.get("docente");
 //        String coordinacion= doc.getCodcoordinacion().getCodcoordinacion()+"";
         _obj.setCodcoordinacion(doc.getCodcoordinacion());
         System.out.println("ACTUALIZARRRRRRRRR ");

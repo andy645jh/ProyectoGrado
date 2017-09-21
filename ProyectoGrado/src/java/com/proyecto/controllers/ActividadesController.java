@@ -4,7 +4,6 @@ import com.proyecto.utilities.Formulario;
 import com.proyecto.utilities.Mensajes;
 import com.proyecto.facades.ActividadesFacade;
 import com.proyecto.facades.AsignacionFacade;
-import com.proyecto.facades.DocentesFacade;
 import com.proyecto.facades.TipoModalidadesFacade;
 import com.proyecto.persistences.Actividades;
 import com.proyecto.persistences.Asignacion;
@@ -38,9 +37,6 @@ public class ActividadesController implements Serializable {
 
     @EJB
     private ActividadesFacade _ejbFacade;
-
-    @EJB
-    private DocentesFacade docentesFacade;
 
     @EJB
     private TipoModalidadesFacade _modalidadFacade;
@@ -106,7 +102,7 @@ public class ActividadesController implements Serializable {
     public void agregar() {
         String titulo, detalle;
         TipoModalidades modalidad = _modalidadFacade.buscar(_codigo);
-        Docentes d = docentesFacade.getCurrentDocente();
+        Docentes d = (Docentes) SessionUtils.get("docente");
         System.out.println("CREAR DOCENTE   " + d.getCedula());
         _obj.setCodtipo(modalidad);
 
@@ -135,7 +131,7 @@ public class ActividadesController implements Serializable {
     }
 
     public SelectItem[] comboFiltrado(String texto) {
-        Docentes doc = docentesFacade.getCurrentDocente();
+        Docentes doc = (Docentes) SessionUtils.get("docente");
 //        Docentes doc=docentesFacade.buscar(109877);
 
         int ced = doc.getCedula();
@@ -167,7 +163,7 @@ public class ActividadesController implements Serializable {
     }
 
     public List<Actividades> getListado() {
-        Docentes doc = docentesFacade.getCurrentDocente();
+        Docentes doc = (Docentes) SessionUtils.get("docente");
         cedula = doc.getCedula() + "";
 //        cedula= "109877";
         return _ejbFacade.buscarCampo("_coddocente", cedula);
@@ -249,7 +245,7 @@ public class ActividadesController implements Serializable {
     public void actualizar() {
         String titulo, detalle;
         TipoModalidades modalidad = _modalidadFacade.buscar(_codigo);
-        Docentes d = docentesFacade.getCurrentDocente();
+        Docentes d = (Docentes) SessionUtils.get("docente");
         System.out.println("EDITAR DOCENTE   " + d.getCedula());
         _obj.setCodtipo(modalidad);
 

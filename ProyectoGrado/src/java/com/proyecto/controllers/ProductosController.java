@@ -9,6 +9,7 @@ import com.proyecto.persistences.Actividades;
 import com.proyecto.persistences.Docentes;
 import com.proyecto.persistences.Productos;
 import com.proyecto.utilities.Mensajes;
+import com.proyecto.utilities.SessionUtils;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -132,7 +133,7 @@ public class ProductosController implements Serializable
     
     public List<Productos> getListado()
     {        
-        Docentes doc =docentesFacade.getCurrentDocente();       
+        Docentes doc =(Docentes) SessionUtils.get("docente");
              
         List<Actividades> listaActividades =_actividadesFacade.buscarCampo("_coddocente",doc.getCedula()+"");
         
