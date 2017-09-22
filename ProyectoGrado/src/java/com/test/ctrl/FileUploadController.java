@@ -37,14 +37,15 @@ public class FileUploadController {
     }
     
     public void upload() {
-        try {
+        if(_file.getSize()>0)
+        {
+            try {
+                //copyFile(_file.getFileName(), _file.getInputstream());
+                copyFile("pedido.png", _file.getInputstream());
 
-            copyFile(_file.getFileName(), _file.getInputstream());
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
