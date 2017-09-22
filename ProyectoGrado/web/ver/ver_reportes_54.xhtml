@@ -6,6 +6,7 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/plantilla.xhtml">
+       
         <ui:define name="menu">
             <ui:decorate template="/menu_docentes.xhtml">
                 <ui:param name="estaActivo" value="reportes54"/>
@@ -14,16 +15,20 @@
         <ui:define name="content">   
             <div style="margin: 15px;">
                 <ui:include src="../reportes/reporte_54.xhtml" />                  
-            </div>            
+            </div>                                            
         </ui:define>
 
-        <ui:define name="boton">   
-            <p:commandButton action="#{reportTestControllerElkin.crearReport()}" value="Imprimir" style="margin-right: 10px;" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s" >
-                <p:fileDownload value="#{reportTestControllerElkin.reportFile}"/>
-            </p:commandButton>
+        <ui:define name="boton">  
+            #{reportController.crearReport()}
+            
+            <a href="${request.contextPath}/pdfServlet" target="_blank">
+                <p:button value="Descargar" style="margin-right: 10px;" />
+            </a>           
+            
         </ui:define>
 
     </ui:composition>
+
 
     <script type="text/javascript">
         function start() {
@@ -33,7 +38,13 @@
         function stop() {
             PF('statusDialog').hide();
         }
-        
+
+        function click(e)
+        {
+            e.preventDefault();
+            console.log("Click")
+            window.location("C:/webapp/pdf/reporte_54.pdf");
+        }
     </script>
 </html>
 

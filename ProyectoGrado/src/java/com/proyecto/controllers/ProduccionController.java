@@ -3,18 +3,12 @@ package com.proyecto.controllers;
 
 import com.proyecto.utilities.Formulario;
 import com.proyecto.utilities.Mensajes;
-import com.proyecto.facades.InformacionAcademicaFacade;
-import com.proyecto.facades.DocentesFacade;
-import com.proyecto.facades.ExperienciaFacade;
 import com.proyecto.facades.ProduccionFacade;
-import com.proyecto.facades.TipoModalidadesFacade;
 import com.proyecto.persistences.InformacionAcademica;
 import com.proyecto.persistences.Docentes;
-import com.proyecto.persistences.Experiencia;
 import com.proyecto.persistences.Produccion;
-import com.proyecto.persistences.TipoModalidades;
+import com.proyecto.utilities.SessionUtils;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,10 +19,7 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
 import org.primefaces.context.RequestContext;
 
@@ -39,10 +30,7 @@ public class ProduccionController implements Serializable
 {  
     @EJB
     private ProduccionFacade _ejbFacade;
-    
-    @EJB
-    private DocentesFacade docentesFacade;
-        
+           
     private Produccion _obj;
     
     private String cedula="";
@@ -76,7 +64,7 @@ public class ProduccionController implements Serializable
     {
         System.out.println("ENTRO A LA FUN AGREGAR");
         String titulo,detalle;
-        Docentes d=docentesFacade.getCurrentDocente();
+        Docentes d=(Docentes) SessionUtils.get("docente");
         System.out.println("CREAR DOCENTE   "+d.getCedula());
       
         
@@ -138,9 +126,8 @@ public class ProduccionController implements Serializable
      
     public List<Produccion> getListado()
     {
-        Docentes doc = docentesFacade.getCurrentDocente();
+        Docentes doc = (Docentes) SessionUtils.get("docente");
         cedula= doc.getCedula()+"";
-//        cedula= "109877";
         return _ejbFacade.buscarCampo("coddocente",cedula);
     }
     
@@ -197,7 +184,7 @@ public class ProduccionController implements Serializable
     public void actualizar()
     {        
         String titulo,detalle;
-        Docentes d=docentesFacade.getCurrentDocente();
+        Docentes d=(Docentes) SessionUtils.get("docente");
         System.out.println("EDITAR DOCENTE   "+d.getCedula());
         
         

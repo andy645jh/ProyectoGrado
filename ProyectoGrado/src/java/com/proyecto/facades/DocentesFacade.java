@@ -1,7 +1,6 @@
 
 package com.proyecto.facades;
 
-import com.proyecto.persistences.Actividades;
 import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Docentes;
 import java.util.List;
@@ -34,11 +33,7 @@ public class DocentesFacade extends AbstractFacade<Docentes>{
     {
         return _em;
     }   
-
-    public Docentes getCurrentDocente() {
-        return _currentDocente;
-    }
-
+    
     public void setCurrentDocente(Docentes _currentDocente) {
         this._currentDocente = _currentDocente;
     }

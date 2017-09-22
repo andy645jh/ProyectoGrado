@@ -5,6 +5,7 @@
  */
 package com.test.ctrl;
 
+import com.proyecto.persistences.Docentes;
 import com.proyecto.utilities.SessionUtils;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -36,22 +37,23 @@ public class FileUploadController {
     }
     
     public void upload() {
-        try {
+        if(_file.getSize()>0)
+        {
+            try {
+                //copyFile(_file.getFileName(), _file.getInputstream());
+                copyFile("pedido.png", _file.getInputstream());
 
-            copyFile(_file.getFileName(), _file.getInputstream());
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     public void copyFile(String fileName, InputStream in) {
 
         try {
-            
-            _url = SessionUtils.getPathImages() +fileName;            
+            Docentes doc = (Docentes) SessionUtils.get("docente");
+            _url = SessionUtils.getPathImages(doc.getCedula()) +fileName;            
             OutputStream out = new FileOutputStream(new File(_url));
 
             int read = 0;

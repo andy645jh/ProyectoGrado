@@ -14,7 +14,6 @@ import com.proyecto.utilities.SessionUtils;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,9 +32,6 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
 import org.primefaces.context.RequestContext;
-import org.primefaces.event.ScheduleEntryMoveEvent;
-import org.primefaces.event.ScheduleEntryResizeEvent;
-import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
@@ -286,8 +282,8 @@ public class HorarioController implements Serializable{
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO,titulo,detalle);
-            System.out.println("CLASES: " + docentesFacade.getCurrentDocente());
-            _objHorario.setCoddocente(docentesFacade.getCurrentDocente());
+           
+            _objHorario.setCoddocente((Docentes) SessionUtils.get("docente"));
             horarioFacade.actualizar(_objHorario);
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);

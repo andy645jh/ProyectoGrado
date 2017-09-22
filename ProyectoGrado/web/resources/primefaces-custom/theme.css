@@ -454,6 +454,7 @@ a.ui-button:active,
 html, body, .row-100h{
     height: 100% !important;
     font-family: Myriad pro regular,Helvetica,sans-serif;
+    font-size: 12px;   
 }
 
 .ui-dialog-titlebar{
