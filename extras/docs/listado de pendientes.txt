@@ -10,4 +10,6 @@
 - Mejorar el diseño
 
 
+<pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;">
+
 

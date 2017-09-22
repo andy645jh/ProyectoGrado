@@ -7,11 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/plantilla.xhtml">
-        <script type="text/css">
-            .ui-md-2 {
-                width: 15.1%;
-            }
-        </script>
+
         <ui:define name="menu">
             <ui:decorate template="/menu_docentes.xhtml">
                 <ui:param name="estaActivo" value="perfil"/>
@@ -26,11 +22,14 @@
 
                         <p:panel>                                      
                             <p:growl id="messages" showDetail="true" />
-                            
-                            <p:graphicImage rendered="#{docentesController.imageDoc != null}" value="#{docentesController.imageDoc}" height="200" width="200"/>
-                            <p:graphicImage rendered="#{docentesController.imageDoc == null}" name="img/fotos.png" height="200" width="200"/>                            
-                            <p:fileUpload style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 13px;" mode="simple" value="#{fileUploadController.file}" />
-                            <p:commandButton value="Upload" actionListener="#{fileUploadController.upload}" ajax="false"/>
+                            <div class="row">
+                                <p:graphicImage rendered="#{docentesController.imageDoc != null}" value="#{docentesController.imageDoc}" height="200" width="200"/>
+                                <p:graphicImage rendered="#{docentesController.imageDoc == null}" name="img/fotos.png" height="200" width="200"/>                            
+                            </div>
+                            <div class="row">
+                                <p:fileUpload value="#{fileUploadController.file}" mode="simple" skinSimple="false"/>
+                                <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadController.upload()}" />
+                            </div>
                         </p:panel>                               
 
                     </h:form>
@@ -44,82 +43,80 @@
                             <div class="ui-g">
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
                                     <p:outputLabel value="#{docentesTxt.nombre}  " for="nombres" />
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"> <p:inputText id="nombres" required="true" value="#{docentesController.campo.nombres}"/> </pre>
+                                    <p:inputText id="nombres" required="true" value="#{docentesController.campo.nombres}"/>
                                 </div>
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
                                     <p:outputLabel value="#{docentesTxt.apellido}  " for="apellidos" />
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="apellidos" required="true" value="#{docentesController.campo.apellidos}"/> </pre>
+                                    <p:inputText id="apellidos" required="true" value="#{docentesController.campo.apellidos}"/>
                                 </div> 
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
                                     <p:outputLabel value="Tipo Documento" for="tipodoc" />
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="tipodoc" required="true" value="#{docentesController.campo.apellidos}"/></pre>
+                                    <p:inputText id="tipodoc" required="true" value="#{docentesController.campo.apellidos}"/>
                                 </div>
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
                                     <p:outputLabel value="Documento" for="cedula" />
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="cedula" required="true" value="#{docentesController.campo.cedula}"/></pre>  
+                                    <p:inputText id="cedula" required="true" value="#{docentesController.campo.cedula}"/> 
                                 </div>
                             </div>
 
                             <div class="ui-g">
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
                                     <p:outputLabel value="Fecha de Expedición" for="fecha_exp" />
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:calendar id="fecha_exp" showOn="button" value="#{docentesController.campo.fecha_exp}"></p:calendar></pre> 
+                                    <p:calendar id="fecha_exp" showOn="button" value="#{docentesController.campo.fecha_exp}"></p:calendar>
                                 </div>
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
                                     <p:outputLabel value="Lugar de Expedición" for="lugar_exp" />
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="lugar_exp" required="true" value="#{docentesController.campo.lugar_exp}"/></pre>
+                                    <p:inputText id="lugar_exp" required="true" value="#{docentesController.campo.lugar_exp}"/>
                                 </div>  
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
                                     <p:outputLabel value="Fecha de Nacimiento" for="fechanac" />                   
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:calendar id="fechanac" showOn="button" value="#{docentesController.campo.fechanac}"></p:calendar></pre>
+                                    <p:calendar id="fechanac" showOn="button" value="#{docentesController.campo.fechanac}"></p:calendar>
                                 </div>
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
                                     <p:outputLabel value="Lugar de Nacimiento" for="lugar" />                   
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="lugar" required="true" value="#{docentesController.campo.lugar_nac}"/></pre>
+                                    <p:inputText id="lugar" required="true" value="#{docentesController.campo.lugar_nac}"/>
                                 </div>
                             </div>
 
                             <div class="ui-g">
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                    <p:outputLabel value="Sexo" for="genero" />
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;">
+                                    <p:outputLabel value="Sexo" for="genero" />                                    
                                     <p:selectOneMenu id="genero" required="true" value="#{docentesController.campo.genero}"> 
                                         <f:selectItem itemLabel="Seleccione" itemValue="0" />
                                         <f:selectItem itemLabel="Femenino" itemValue="1" />
                                         <f:selectItem itemLabel="Masculino" itemValue="2" />
                                     </p:selectOneMenu>
-                                    </pre>
                                 </div>  
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
                                     <p:outputLabel value="#{docentesTxt.direccion}  " for="direccion" /><br/>
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="direccion" required="true" value="#{docentesController.campo.direccion}"/></pre> 
+                                    <p:inputText id="direccion" required="true" value="#{docentesController.campo.direccion}"/>
                                 </div>
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
                                     <p:outputLabel value="Municipio" for="municipio" />
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="municipio" required="true" value="#{docentesController.campo.municipio}"/></pre>
+                                    <p:inputText id="municipio" required="true" value="#{docentesController.campo.municipio}"/>
                                 </div>
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
                                     <p:outputLabel value="#{docentesTxt.telefono}  " for="telefono" />
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="telefono" required="true" value="#{docentesController.campo.telefono}"/> </pre>
+                                    <p:inputText id="telefono" required="true" value="#{docentesController.campo.telefono}"/>
                                 </div>
                             </div>
 
                             <div class="ui-g">
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
                                     <p:outputLabel value="Celular" for="celular" />
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="celular" required="true" value="#{docentesController.campo.celular}"/></pre>
+                                    <p:inputText id="celular" required="true" value="#{docentesController.campo.celular}"/>
                                 </div>
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
                                     <p:outputLabel value="#{docentesTxt.correo}  " for="correo" />
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="correo" required="true" value="#{docentesController.campo.correo}"/></pre> 
+                                    <p:inputText id="correo" required="true" value="#{docentesController.campo.correo}"/>
                                 </div>
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
                                     <p:outputLabel value="Matricula Profesional" for="matricula" />
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="matricula" required="true" value="#{docentesController.campo.matricula_prof}"/></pre>
+                                    <p:inputText id="matricula" required="true" value="#{docentesController.campo.matricula_prof}"/>
                                 </div>
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
                                     <p:outputLabel value="#{docentesTxt.codigo}  " for="codigo" />
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="codigo"  value="#{docentesController.campo.codigo}"/></pre> 
+                                    <p:inputText id="codigo"  value="#{docentesController.campo.codigo}"/>
                                 </div>
                             </div>
 
@@ -127,26 +124,20 @@
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
                                     <p:outputLabel value="Usuario" />
                                     <br/>
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:outputLabel value="#{docentesController.usuario}"/></pre>
+                                    <p:outputLabel value="#{docentesController.usuario}"/>
                                     <p:outputLabel value="Clave" for="clave" />
-                                    <br/>
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;"><p:inputText id="clave" value="#{docentesController.clave}" required="true" /> </pre>
+                                    <p:inputText id="clave" value="#{docentesController.clave}" required="true" />
                                 </div>
                                 <div class="ui-g-12 ui-md-7 ui-lg-7">
                                     <div class="ui-g-9 ">
                                         <p:outputLabel value="#{docentesTxt.formacion}" for="formacion" />
-                                        <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;width: 390px;"><p:inputTextarea style="width: 230px;" id="formacion" required="true" value="#{docentesController.campo.formacion}"/></pre>
+                                        <p:inputTextarea style="width: 230px;" id="formacion" required="true" value="#{docentesController.campo.formacion}"/>
                                     </div>
                                 </div>
                                 <div class="ui-g-12 ui-md-6 ui-lg-2">  
-                                    <pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;">
-                            <p:commandButton id="btngrabar" value="Actualizar" action="#{docentesController.actualizar()}" update="mensajes" >                   
-                            </p:commandButton>
-                                    </pre>
+                                    <p:commandButton id="btngrabar" value="Actualizar" action="#{docentesController.actualizar()}" update="mensajes" />                                              
                                 </div>
                             </div> 
-
-
 
                         </p:panel>  
                     </h:form>

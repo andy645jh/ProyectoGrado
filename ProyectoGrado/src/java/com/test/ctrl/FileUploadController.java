@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import javax.faces.bean.ManagedBean;
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
 /**
@@ -36,7 +37,8 @@ public class FileUploadController {
         return !_url.isEmpty();
     }
     
-    public void upload() {
+    public void upload(/*FileUploadEvent event*/) {
+        //_file = event.getFile();
         if(_file.getSize()>0)
         {
             try {
