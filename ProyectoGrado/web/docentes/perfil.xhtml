@@ -21,13 +21,13 @@
                     <h:form id="tesy" enctype="multipart/form-data">
 
                         <p:panel>                                      
-                            <p:growl id="messages" showDetail="true" />
+                            <p:growl id="messages" showDetail="true" life="1000" globalOnly="true"/>
                             <div class="row">
                                 <p:graphicImage rendered="#{docentesController.imageDoc != null}" value="#{docentesController.imageDoc}" height="200" width="200"/>
                                 <p:graphicImage rendered="#{docentesController.imageDoc == null}" name="img/fotos.png" height="200" width="200"/>                            
                             </div>
                             <div class="row">
-                                <p:fileUpload value="#{fileUploadController.file}" mode="simple" skinSimple="false"/>
+                                <p:fileUpload value="#{fileUploadController.file}" mode="simple" skinSimple="true"/>
                                 <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadController.upload()}" />
                             </div>
                         </p:panel>                               
@@ -38,7 +38,7 @@
                     <h:form id="formDatos">
                         <p:panel>               
 
-                            <p:growl id="mensajes" sticky="true" showDetail="true"/> 
+                            <p:growl id="mensajes" sticky="true" showDetail="true" /> 
 
                             <div class="ui-g">
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">

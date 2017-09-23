@@ -7,15 +7,8 @@ import com.proyecto.facades.PermisosFacade;
 import com.proyecto.persistences.Docentes;
 import com.proyecto.persistences.Permisos;
 import com.proyecto.utilities.SessionUtils;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +16,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -32,9 +24,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-import javax.faces.event.PhaseId;
 import javax.faces.model.SelectItem;
-import javax.imageio.ImageIO;
 import org.primefaces.context.RequestContext;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
@@ -76,37 +66,12 @@ public class DocentesController implements Serializable {
         }
         return _doc;
     }
-    
-    @PostConstruct
-    public void init() {
-        /*try {
-            //Graphic Text
-            BufferedImage bufferedImg = new BufferedImage(100, 25, BufferedImage.TYPE_INT_RGB);
-            Graphics2D g2 = bufferedImg.createGraphics();
-            g2.drawString("This is a text", 0, 10);
-            ByteArrayOutputStream os = new ByteArrayOutputStream();
-            ImageIO.write(bufferedImg, "png", os);
-            graphicText = new DefaultStreamedContent(new ByteArrayInputStream(os.toByteArray()), "image/png");  
-          
-        } 
-        catch (Exception e) {
-            e.printStackTrace();
-        }*/
-        /*Docentes doc = (Docentes) SessionUtils.get("docente");
-        try{
-            int cedula = doc.getCedula();
-            _imageDoc = new DefaultStreamedContent(new FileInputStream(new File("C://webapp/"+cedula+"/pedido.png")));
-        }catch(Exception e)
-        {
-            e.printStackTrace();
-        }*/
-    }
-    
+  
     public StreamedContent getImageDoc() {
         Docentes doc = (Docentes) SessionUtils.get("docente");
         try{
-            int cedula = doc.getCedula();
-            File f = new File("C://webapp/"+cedula+"/pedido.png");
+            int cedula = doc.getCedula();            
+            File f = new File(SessionUtils.getPathImages(cedula)+"pedido.png");
             System.out.println("File->>>>> "+f.exists());
             if(!f.exists())
             {              

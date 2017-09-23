@@ -6,6 +6,7 @@
 package com.test.ctrl;
 
 import com.proyecto.persistences.Docentes;
+import com.proyecto.utilities.Mensajes;
 import com.proyecto.utilities.SessionUtils;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -27,6 +28,7 @@ public class FileUploadController {
     private UploadedFile _file = null;
     private String _url = "";
     private String _filename;
+
     /**
      * Creates a new instance of FileUploadController
      */
@@ -36,26 +38,36 @@ public class FileUploadController {
     public boolean exist() {
         return !_url.isEmpty();
     }
-    
+
     public void upload(/*FileUploadEvent event*/) {
         //_file = event.getFile();
-        if(_file.getSize()>0)
-        {
-            try {
+        if (_file.getFileName().length() <= 0) {
+            Mensajes.error("Ha ocurrido algo", "No se a seleccionado ningun archivo");
+            System.out.println("No se a seleccionado ningun archivo");
+            return;
+        }
+
+        try {
+            String str = _file.getFileName();
+            String ext = str.substring(str.lastIndexOf('.'), str.length());
+            if (ext.contains("png") || ext.contains("jpg") || ext.contains("jpeg") && _file.getSize() > 0) {
                 //copyFile(_file.getFileName(), _file.getInputstream());
                 copyFile("pedido.png", _file.getInputstream());
-
-            } catch (IOException e) {
-                e.printStackTrace();
+            } else {
+                Mensajes.error("Ha ocurrido algo", "No se puede subir ese archivo");
+                System.out.println("Solo se aceptan archivos de formato .png, .jpg, .jpeg");
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
     }
 
     public void copyFile(String fileName, InputStream in) {
 
         try {
             Docentes doc = (Docentes) SessionUtils.get("docente");
-            _url = SessionUtils.getPathImages(doc.getCedula()) +fileName;            
+            _url = SessionUtils.getPathImages(doc.getCedula()) + fileName;
             OutputStream out = new FileOutputStream(new File(_url));
 
             int read = 0;
