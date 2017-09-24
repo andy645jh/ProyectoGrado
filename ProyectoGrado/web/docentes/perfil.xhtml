@@ -13,449 +13,440 @@
                 <ui:param name="estaActivo" value="perfil"/>
             </ui:decorate>            
         </ui:define>
-        <ui:define name="content"> 
+        <ui:define name="content">             
             <div class="ui-g">
-
-                <div class="ui-g-12 ui-md-4 ui-lg-3">
+                             
+                <div class="ui-g-12 ui-md-4 ui-lg-4">
 
                     <h:form id="tesy" enctype="multipart/form-data">
 
                         <p:panel>                                      
                             <p:growl id="messages" showDetail="true" life="1000" globalOnly="true"/>
-                            <div class="row">
+                            <div class="ui-g">
                                 <p:graphicImage rendered="#{docentesController.imageDoc != null}" value="#{docentesController.imageDoc}" height="200" width="200"/>
                                 <p:graphicImage rendered="#{docentesController.imageDoc == null}" name="img/fotos.png" height="200" width="200"/>                            
                             </div>
-                            <div class="row">
+                            <div class="ui-g">
                                 <p:fileUpload value="#{fileUploadController.file}" mode="simple" skinSimple="true"/>
                                 <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadController.upload()}" />
                             </div>
-                        </p:panel>                               
-
+                        </p:panel> 
                     </h:form>
+
                 </div>
-                <div class="ui-g-12 ui-md-8 ui-lg-9">
-                    <h:form id="formDatos">
+                <h:form class="ui-g-12 ui-md-8 ui-g-nopad" id="formDatos">
+                    <div class="ui-g-12 ui-md-6 ui-g-nopad">
                         <p:panel>               
-
                             <p:growl id="mensajes" sticky="true" showDetail="true" /> 
-
-                            <div class="ui-g">
-                                <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                    <p:outputLabel value="#{docentesTxt.nombre}  " for="nombres" />
-                                    <p:inputText id="nombres" required="true" value="#{docentesController.campo.nombres}"/>
-                                </div>
-                                <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                    <p:outputLabel value="#{docentesTxt.apellido}  " for="apellidos" />
-                                    <p:inputText id="apellidos" required="true" value="#{docentesController.campo.apellidos}"/>
-                                </div> 
-                                <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                    <p:outputLabel value="Tipo Documento" for="tipodoc" />
-                                    <p:inputText id="tipodoc" required="true" value="#{docentesController.campo.apellidos}"/>
-                                </div>
-                                <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                    <p:outputLabel value="Documento" for="cedula" />
-                                    <p:inputText id="cedula" required="true" value="#{docentesController.campo.cedula}"/> 
-                                </div>
+                            
+                            <div class="ui-g-12 ajuste-form">
+                                <p:outputLabel class="ui-md-6" value="#{docentesTxt.nombre}  " for="nombres" />
+                                <p:inputText class="ui-md-6" id="nombres" required="true" value="#{docentesController.campo.nombres}"/>
                             </div>
-
-                            <div class="ui-g">
-                                <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                    <p:outputLabel value="Fecha de Expedición" for="fecha_exp" />
-                                    <p:calendar id="fecha_exp" showOn="button" value="#{docentesController.campo.fecha_exp}"></p:calendar>
-                                </div>
-                                <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                    <p:outputLabel value="Lugar de Expedición" for="lugar_exp" />
-                                    <p:inputText id="lugar_exp" required="true" value="#{docentesController.campo.lugar_exp}"/>
-                                </div>  
-                                <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                    <p:outputLabel value="Fecha de Nacimiento" for="fechanac" />                   
-                                    <p:calendar id="fechanac" showOn="button" value="#{docentesController.campo.fechanac}"></p:calendar>
-                                </div>
-                                <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                    <p:outputLabel value="Lugar de Nacimiento" for="lugar" />                   
-                                    <p:inputText id="lugar" required="true" value="#{docentesController.campo.lugar_nac}"/>
-                                </div>
-                            </div>
-
-                            <div class="ui-g">
-                                <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                    <p:outputLabel value="Sexo" for="genero" />                                    
-                                    <p:selectOneMenu id="genero" required="true" value="#{docentesController.campo.genero}"> 
-                                        <f:selectItem itemLabel="Seleccione" itemValue="0" />
-                                        <f:selectItem itemLabel="Femenino" itemValue="1" />
-                                        <f:selectItem itemLabel="Masculino" itemValue="2" />
-                                    </p:selectOneMenu>
-                                </div>  
-                                <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                    <p:outputLabel value="#{docentesTxt.direccion}  " for="direccion" /><br/>
-                                    <p:inputText id="direccion" required="true" value="#{docentesController.campo.direccion}"/>
-                                </div>
-                                <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                    <p:outputLabel value="Municipio" for="municipio" />
-                                    <p:inputText id="municipio" required="true" value="#{docentesController.campo.municipio}"/>
-                                </div>
-                                <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                    <p:outputLabel value="#{docentesTxt.telefono}  " for="telefono" />
-                                    <p:inputText id="telefono" required="true" value="#{docentesController.campo.telefono}"/>
-                                </div>
-                            </div>
-
-                            <div class="ui-g">
-                                <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                    <p:outputLabel value="Celular" for="celular" />
-                                    <p:inputText id="celular" required="true" value="#{docentesController.campo.celular}"/>
-                                </div>
-                                <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                    <p:outputLabel value="#{docentesTxt.correo}  " for="correo" />
-                                    <p:inputText id="correo" required="true" value="#{docentesController.campo.correo}"/>
-                                </div>
-                                <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                    <p:outputLabel value="Matricula Profesional" for="matricula" />
-                                    <p:inputText id="matricula" required="true" value="#{docentesController.campo.matricula_prof}"/>
-                                </div>
-                                <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                    <p:outputLabel value="#{docentesTxt.codigo}  " for="codigo" />
-                                    <p:inputText id="codigo"  value="#{docentesController.campo.codigo}"/>
-                                </div>
-                            </div>
-
-                            <div class="ui-g">
-                                <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                    <p:outputLabel value="Usuario" />
-                                    <br/>
-                                    <p:outputLabel value="#{docentesController.usuario}"/>
-                                    <p:outputLabel value="Clave" for="clave" />
-                                    <p:inputText id="clave" value="#{docentesController.clave}" required="true" />
-                                </div>
-                                <div class="ui-g-12 ui-md-7 ui-lg-7">
-                                    <div class="ui-g-9 ">
-                                        <p:outputLabel value="#{docentesTxt.formacion}" for="formacion" />
-                                        <p:inputTextarea style="width: 230px;" id="formacion" required="true" value="#{docentesController.campo.formacion}"/>
-                                    </div>
-                                </div>
-                                <div class="ui-g-12 ui-md-6 ui-lg-2">  
-                                    <p:commandButton id="btngrabar" value="Actualizar" action="#{docentesController.actualizar()}" update="mensajes" />                                              
-                                </div>
+                            <div class="ui-g-12 ajuste-form">
+                                <p:outputLabel class="ui-md-6" value="#{docentesTxt.apellido}  " for="apellidos" />
+                                <p:inputText class="ui-md-6" id="apellidos" required="true" value="#{docentesController.campo.apellidos}"/>
                             </div> 
+                            <div class="ui-g-12 ajuste-form">
+                                <p:outputLabel class="ui-md-6" value="Tipo Documento" for="tipodoc" />
+                                <p:inputText class="ui-md-6" id="tipodoc" required="true" value="#{docentesController.campo.apellidos}"/>
+                            </div>
+                            <div class="ui-g-12 ajuste-form">
+                                <p:outputLabel class="ui-md-6" value="Documento" for="cedula" />
+                                <p:inputText class="ui-md-6" id="cedula" required="true" value="#{docentesController.campo.cedula}"/> 
+                            </div>
 
+                            <div class="ui-g-12 ajuste-form">
+                                <p:outputLabel class="ui-md-6" value="Fecha de Expedición" for="fecha_exp" />
+                                <p:calendar class="ui-md-6" id="fecha_exp" showOn="button" value="#{docentesController.campo.fecha_exp}"></p:calendar>
+                            </div>
+                            <div class="ui-g-12 ajuste-form">
+                                <p:outputLabel class="ui-md-6" value="Lugar de Expedición" for="lugar_exp" />
+                                <p:inputText class="ui-md-6" id="lugar_exp" required="true" value="#{docentesController.campo.lugar_exp}"/>
+                            </div>  
+                            <div class="ui-g-12 ajuste-form">
+                                <p:outputLabel class="ui-md-6" value="Fecha de Nacimiento" for="fechanac" />                   
+                                <p:calendar class="ui-md-6" id="fechanac" showOn="button" value="#{docentesController.campo.fechanac}"></p:calendar>
+                            </div>
+                            <div class="ui-g-12 ajuste-form">
+                                <p:outputLabel class="ui-md-6" value="Lugar de Nacimiento" for="lugar" />                   
+                                <p:inputText class="ui-md-6" id="lugar" required="true" value="#{docentesController.campo.lugar_nac}"/>
+                            </div>   
+
+                            <div class="ui-g-12 ajuste-form">
+                                <p:outputLabel value="Sexo" for="genero" />                                    
+                                <p:selectOneMenu id="genero" required="true" value="#{docentesController.campo.genero}"> 
+                                    <f:selectItem itemLabel="Seleccione" itemValue="0" />
+                                    <f:selectItem itemLabel="Femenino" itemValue="1" />
+                                    <f:selectItem itemLabel="Masculino" itemValue="2" />
+                                </p:selectOneMenu>
+                            </div>  
+                            <div class="ui-g-12 ajuste-form">
+                                <p:outputLabel value="#{docentesTxt.direccion}" for="direccion" />
+                                <p:inputText id="direccion" required="true" value="#{docentesController.campo.direccion}"/>
+                            </div>
                         </p:panel>  
-                    </h:form>
-                </div>
+
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-g-nopad">
+                        <p:panel>
+                            <div class="ui-g-12 ajuste-form">
+                                <p:outputLabel value="Municipio" for="municipio" />
+                                <p:inputText id="municipio" required="true" value="#{docentesController.campo.municipio}"/>
+                            </div>
+                            
+                            <div class="ui-g-12 ajuste-form">
+                                <p:outputLabel value="#{docentesTxt.telefono}  " for="telefono" />
+                                <p:inputText id="telefono" required="true" value="#{docentesController.campo.telefono}"/>
+                            </div>
+                            
+                            <div class="ui-g-12 ajuste-form">
+                                <p:outputLabel value="Celular" for="celular" />
+                                <p:inputText id="celular" required="true" value="#{docentesController.campo.celular}"/>
+                            </div>
+                            <div class="ui-g-12 ajuste-form">
+                                <p:outputLabel value="#{docentesTxt.correo}  " for="correo" />
+                                <p:inputText id="correo" required="true" value="#{docentesController.campo.correo}"/>
+                            </div>
+                            <div class="ui-g-12 ajuste-form">
+                                <p:outputLabel value="Matricula Profesional" for="matricula" />
+                                <p:inputText id="matricula" required="true" value="#{docentesController.campo.matricula_prof}"/>
+                            </div>
+                            <div class="ui-g-12 ajuste-form">
+                                <p:outputLabel value="#{docentesTxt.codigo}  " for="codigo" />
+                                <p:inputText id="codigo"  value="#{docentesController.campo.codigo}"/>
+                            </div>             
+                            <div class="ui-g-12 ajuste-form">
+                                <p:outputLabel value="Usuario" />                                
+                                <p:outputLabel value="#{docentesController.usuario}"/>
+                                <p:outputLabel value="Clave" for="clave" />
+                                <p:inputText id="clave" value="#{docentesController.clave}" required="true" />
+                            </div>
+                            <div class="ui-g-12 ajuste-form">
+                                <p:outputLabel value="#{docentesTxt.formacion}" for="formacion" />
+                                <p:inputTextarea style="width: 230px;" id="formacion" required="true" value="#{docentesController.campo.formacion}"/>
+                            </div>
+                            <div class="ui-g-12 ajuste-form">  
+                                <p:commandButton id="btngrabar" value="Actualizar" action="#{docentesController.actualizar()}" update="mensajes" />                                              
+                            </div>
+                        </p:panel>
+                    </div>
+                </h:form>
             </div>
 
+            <div class="ui-g">
+                <h:form id="perfil">
+                    <p:growl id="mensajes" sticky="true" showDetail="true"/>   
+                    <p:accordionPanel>
+                        <p:tab title="Información Academica">
+                            <p:commandButton value="Agregar" actionListener="#{informacionAcademicaController.abrirCrear()}" icon="ui-icon-disk" >
+                                <p:ajax event="dialogReturn" update="listar perfil:mensajes" listener="#{informacionAcademicaController.mostrarMensaje()}"/>                             
+                            </p:commandButton>                   
+                            <p:separator/>
+                            <br/>
+                            <p:dataTable id="listar" value="#{informacionAcademicaController.listado}" var="registro">
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Nivel</f:facet>
+                                        #{registro.nivel}
 
-            <h:form id="perfil">
-                <p:growl id="mensajes" sticky="true" showDetail="true"/>   
-                <p:accordionPanel>
-                    <p:tab title="Información Academica">
-                        <p:commandButton value="Agregar" actionListener="#{informacionAcademicaController.abrirCrear()}" icon="ui-icon-disk" >
-                            <p:ajax event="dialogReturn" update="listar perfil:mensajes" listener="#{informacionAcademicaController.mostrarMensaje()}"/>                             
-                        </p:commandButton>                   
-                        <p:separator/>
-                        <br/>
-                        <p:dataTable id="listar" value="#{informacionAcademicaController.listado}" var="registro">
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Nivel</f:facet>
-                                    #{registro.nivel}
+                                </p:column>
 
-                            </p:column>
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Título</f:facet>
+                                        #{registro.titulo}
+                                </p:column> 
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Título</f:facet>
-                                    #{registro.titulo}
-                            </p:column> 
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Institución</f:facet>
+                                        #{registro.institucion}
+                                </p:column> 
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Institución</f:facet>
-                                    #{registro.institucion}
-                            </p:column> 
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Año de Graduación</f:facet>
+                                        #{registro.ano_grado}
+                                </p:column>
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Año de Graduación</f:facet>
-                                    #{registro.ano_grado}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Registro</f:facet>
-                                    #{registro.registro}
-                            </p:column>
-
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Horas</f:facet>
-                                    #{registro.horas}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Pais</f:facet>
-                                    #{registro.pais}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Tipo</f:facet>
-                                <h:outputText value="Titulos" rendered="#{registro.tipo == 1}"/>
-                                <h:outputText value="Cursos" rendered="#{registro.tipo == 2}"/>
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
-                                <p:commandButton update="perfil:mensajes listar" icon="ui-icon-trash" actionListener="#{informacionAcademicaController.borrar(registro)}">
-                                    <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />
-                                </p:commandButton>
-                                <p:commandButton icon="ui-icon-pencil" action="#{informacionAcademicaController.abrirActualizar(registro)}">
-                                    <p:ajax event="dialogReturn" update=" perfil:mensajes listar" listener="#{informacionAcademicaController.mostrarMensaje()}"/>                                  
-                                </p:commandButton> 
-
-                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                    <p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                                </p:confirmDialog>
-                            </p:column> 
-                        </p:dataTable>
-                    </p:tab>
-                    <p:tab title="Experiencia">
-                        <p:commandButton value="Agregar" actionListener="#{experienciaController.abrirCrear()}" icon="ui-icon-disk" >
-                            <p:ajax event="dialogReturn" update="listarexp perfil:mensajes" listener="#{experienciaController.mostrarMensaje()}"/>                             
-                        </p:commandButton>                   
-                        <p:separator/>
-                        <br/>
-                        <p:dataTable id="listarexp" value="#{experienciaController.listado}" var="registro">
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Institución</f:facet>
-                                    #{registro.institucion}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Actividad</f:facet>
-                                    #{registro.actividad}
-                            </p:column> 
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Dependencia</f:facet>
-                                    #{registro.dependencia}
-                            </p:column> 
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Tiempo</f:facet>
-                                    #{registro.tiempo}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Tipo Contrato</f:facet>
-                                    #{registro.tipo_contrato}
-                            </p:column>
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Registro</f:facet>
+                                        #{registro.registro}
+                                </p:column>
 
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Ultima Fecha</f:facet>
-                                    #{registro.fecha_ultima}
-                            </p:column>
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Horas</f:facet>
+                                        #{registro.horas}
+                                </p:column>
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Tipo</f:facet>
-                                <h:outputText value="Docente" rendered="#{registro.tipo == 1}"/>
-                                <h:outputText value="Profesional" rendered="#{registro.tipo == 2}"/>
-                            </p:column>
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Pais</f:facet>
+                                        #{registro.pais}
+                                </p:column>
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
-                                <p:commandButton  icon="ui-icon-trash" update="perfil:mensajes listarexp" actionListener="#{experienciaController.borrar(registro)}">
-                                    <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />
-                                </p:commandButton>
-                                <p:commandButton  icon="ui-icon-pencil" actionListener="#{experienciaController.abrirActualizar(registro)}">
-                                    <p:ajax event="dialogReturn" update="perfil:mensajes listarexp " listener="#{experienciaController.mostrarMensaje()}"/>  
-                                </p:commandButton>  
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Tipo</f:facet>
+                                    <h:outputText value="Titulos" rendered="#{registro.tipo == 1}"/>
+                                    <h:outputText value="Cursos" rendered="#{registro.tipo == 2}"/>
+                                </p:column>
 
-                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                    <p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                                </p:confirmDialog>
-                            </p:column> 
-                        </p:dataTable>
-                    </p:tab>
-                    <p:tab title="Producción Intelectual e Investigativa">
-                        <p:commandButton value="Agregar" actionListener="#{produccionController.abrirCrear()}" icon="ui-icon-disk" >
-                            <p:ajax event="dialogReturn" update="listarprod perfil:mensajes" listener="#{produccionController.mostrarMensaje()}"/>                             
-                        </p:commandButton>                   
-                        <p:separator/>
-                        <br/>
-                        <p:dataTable id="listarprod" value="#{produccionController.listado}" var="registro">
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Tipo</f:facet>
-                                <h:outputText value="Producción intelectual" rendered="#{registro.tipo == 1}"/>
-                                <h:outputText value="Producción investigativa" rendered="#{registro.tipo == 2}"/>
-                            </p:column>
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
+                                    <p:commandButton update="perfil:mensajes listar" icon="ui-icon-trash" actionListener="#{informacionAcademicaController.borrar(registro)}">
+                                        <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />
+                                    </p:commandButton>
+                                    <p:commandButton icon="ui-icon-pencil" action="#{informacionAcademicaController.abrirActualizar(registro)}">
+                                        <p:ajax event="dialogReturn" update=" perfil:mensajes listar" listener="#{informacionAcademicaController.mostrarMensaje()}"/>                                  
+                                    </p:commandButton> 
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Nombre</f:facet>
-                                    #{registro.nombre}
-                            </p:column> 
+                                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                        <p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                    </p:confirmDialog>
+                                </p:column> 
+                            </p:dataTable>
+                        </p:tab>
+                        <p:tab title="Experiencia">
+                            <p:commandButton value="Agregar" actionListener="#{experienciaController.abrirCrear()}" icon="ui-icon-disk" >
+                                <p:ajax event="dialogReturn" update="listarexp perfil:mensajes" listener="#{experienciaController.mostrarMensaje()}"/>                             
+                            </p:commandButton>                   
+                            <p:separator/>
+                            <br/>
+                            <p:dataTable id="listarexp" value="#{experienciaController.listado}" var="registro">
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Institución</f:facet>
+                                        #{registro.institucion}
+                                </p:column>
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Tipo Prod</f:facet>
-                                    #{registro.tipo_prod_part}
-                            </p:column> 
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Actividad</f:facet>
+                                        #{registro.actividad}
+                                </p:column> 
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Editorial</f:facet>
-                                    #{registro.editorial_inv}
-                            </p:column>
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Dependencia</f:facet>
+                                        #{registro.dependencia}
+                                </p:column> 
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Libros</f:facet>
-                                    #{registro.libros}
-                            </p:column>
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Tiempo</f:facet>
+                                        #{registro.tiempo}
+                                </p:column>
 
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Estado</f:facet>
-                                    #{registro.estado}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Meses</f:facet>
-                                    #{registro.meses}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Año</f:facet>
-                                    #{registro.ano}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
-                                <p:commandButton update="perfil:mensajes listarprod" icon="ui-icon-trash" actionListener="#{produccionController.borrar(registro)}">
-                                    <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />
-                                </p:commandButton>
-                                <p:commandButton icon="ui-icon-pencil" action="#{produccionController.abrirActualizar(registro)}">
-                                    <p:ajax event="dialogReturn" update="perfil:mensajes listarprod " listener="#{produccionController.mostrarMensaje()}"/>  
-                                </p:commandButton> 
-
-                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                    <p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                                </p:confirmDialog>
-                            </p:column> 
-                        </p:dataTable>
-                    </p:tab>
-                    <p:tab title="Socialización de la Investigación">
-                        <p:commandButton value="Agregar" actionListener="#{socializacionController.abrirCrear()}" icon="ui-icon-disk" >                            
-                            <p:ajax event="dialogReturn" update="listarsocial perfil:mensajes" listener="#{socializacionController.mostrarMensaje()}"/>                      
-                        </p:commandButton>                   
-                        <p:separator/>
-                        <br/>
-                        <p:dataTable id="listarsocial" value="#{socializacionController.listado}" var="registro">
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Articulo</f:facet>
-                                    #{registro.articulo}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Conferencia</f:facet>
-                                    #{registro.conferencia}
-                            </p:column> 
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Informe</f:facet>
-                                    #{registro.informe}
-                            </p:column> 
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
-                                <p:commandButton update="perfil:mensajes listarsocial" icon="ui-icon-trash" actionListener="#{socializacionController.borrar(registro)}">
-                                    <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />
-                                </p:commandButton>
-                                <p:commandButton icon="ui-icon-pencil" action="#{socializacionController.abrirActualizar(registro)}">
-                                    <p:ajax event="dialogReturn" update="perfil:mensajes listarsocial " listener="#{socializacionController.mostrarMensaje()}"/>
-                                </p:commandButton> 
-
-                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                    <p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                                </p:confirmDialog>
-                            </p:column> 
-                        </p:dataTable>
-                    </p:tab>
-                    <p:tab title="Participaciones">
-                        <p:commandButton value="Agregar" actionListener="#{participacionController.abrirCrear()}" icon="ui-icon-disk" >
-                            <p:ajax event="dialogReturn" update="listarpartip perfil:mensajes" listener="#{participacionController.mostrarMensaje()}"/>                     
-                        </p:commandButton>                   
-                        <p:separator/>
-                        <br/>
-                        <p:dataTable id="listarpartip" value="#{participacionController.listado}" var="registro">
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Tipo</f:facet>
-                                <h:outputText value="Eventos Academicos" rendered="#{registro.tipo == 1}"/>
-                                <h:outputText value="Asociaciones Profesionales o Sociales" rendered="#{registro.tipo == 2}"/>
-                                <h:outputText value="Actividades Deportivas y Culturales" rendered="#{registro.tipo == 3}"/>
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Evento</f:facet>
-                                    #{registro.evento}
-                            </p:column> 
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Tipo Parti</f:facet>
-                                    #{registro.tipo_part}
-                            </p:column> 
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Tema</f:facet>
-                                    #{registro.tema}
-                            </p:column>
-
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Fecha</f:facet>
-                                    #{registro.fecha}
-                            </p:column>
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Tipo Contrato</f:facet>
+                                        #{registro.tipo_contrato}
+                                </p:column>
 
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Ambito</f:facet>
-                                    #{registro.ambito}
-                            </p:column>
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Ultima Fecha</f:facet>
+                                        #{registro.fecha_ultima}
+                                </p:column>
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Dedicación</f:facet>
-                                    #{registro.dedicacion}
-                            </p:column>
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Tipo</f:facet>
+                                    <h:outputText value="Docente" rendered="#{registro.tipo == 1}"/>
+                                    <h:outputText value="Profesional" rendered="#{registro.tipo == 2}"/>
+                                </p:column>
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Actividades Culturales</f:facet>
-                                    #{registro.activ_culturales}
-                            </p:column>
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
+                                    <p:commandButton  icon="ui-icon-trash" update="perfil:mensajes listarexp" actionListener="#{experienciaController.borrar(registro)}">
+                                        <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />
+                                    </p:commandButton>
+                                    <p:commandButton  icon="ui-icon-pencil" actionListener="#{experienciaController.abrirActualizar(registro)}">
+                                        <p:ajax event="dialogReturn" update="perfil:mensajes listarexp " listener="#{experienciaController.mostrarMensaje()}"/>  
+                                    </p:commandButton>  
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Dedicación Culturales</f:facet>
-                                    #{registro.dedica_cultural}
-                            </p:column>
+                                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                        <p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                    </p:confirmDialog>
+                                </p:column> 
+                            </p:dataTable>
+                        </p:tab>
+                        <p:tab title="Producción Intelectual e Investigativa">
+                            <p:commandButton value="Agregar" actionListener="#{produccionController.abrirCrear()}" icon="ui-icon-disk" >
+                                <p:ajax event="dialogReturn" update="listarprod perfil:mensajes" listener="#{produccionController.mostrarMensaje()}"/>                             
+                            </p:commandButton>                   
+                            <p:separator/>
+                            <br/>
+                            <p:dataTable id="listarprod" value="#{produccionController.listado}" var="registro">
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Tipo</f:facet>
+                                    <h:outputText value="Producción intelectual" rendered="#{registro.tipo == 1}"/>
+                                    <h:outputText value="Producción investigativa" rendered="#{registro.tipo == 2}"/>
+                                </p:column>
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">Desemepño</f:facet>
-                                    #{registro.desempeno}
-                            </p:column>
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Nombre</f:facet>
+                                        #{registro.nombre}
+                                </p:column> 
 
-                            <p:column style="width: 10px; text-align: center">
-                                <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
-                                <p:commandButton update="perfil:mensajes listarpartip" icon="ui-icon-trash" actionListener="#{participacionController.borrar(registro)}">
-                                    <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />  
-                                </p:commandButton>
-                                <p:commandButton icon="ui-icon-pencil" action="#{participacionController.abrirActualizar(registro)}">
-                                    <p:ajax event="dialogReturn" update="perfil:mensajes listarpartip " listener="#{participacionController.mostrarMensaje()}"/> 
-                                </p:commandButton>  
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Tipo Prod</f:facet>
+                                        #{registro.tipo_prod_part}
+                                </p:column> 
 
-                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                    <p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                                </p:confirmDialog>
-                            </p:column> 
-                        </p:dataTable>
-                    </p:tab>
-                </p:accordionPanel>
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Editorial</f:facet>
+                                        #{registro.editorial_inv}
+                                </p:column>
 
-            </h:form>
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Libros</f:facet>
+                                        #{registro.libros}
+                                </p:column>
+
+
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Estado</f:facet>
+                                        #{registro.estado}
+                                </p:column>
+
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Meses</f:facet>
+                                        #{registro.meses}
+                                </p:column>
+
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Año</f:facet>
+                                        #{registro.ano}
+                                </p:column>
+
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
+                                    <p:commandButton update="perfil:mensajes listarprod" icon="ui-icon-trash" actionListener="#{produccionController.borrar(registro)}">
+                                        <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />
+                                    </p:commandButton>
+                                    <p:commandButton icon="ui-icon-pencil" action="#{produccionController.abrirActualizar(registro)}">
+                                        <p:ajax event="dialogReturn" update="perfil:mensajes listarprod " listener="#{produccionController.mostrarMensaje()}"/>  
+                                    </p:commandButton> 
+
+                                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                        <p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                    </p:confirmDialog>
+                                </p:column> 
+                            </p:dataTable>
+                        </p:tab>
+                        <p:tab title="Socialización de la Investigación">
+                            <p:commandButton value="Agregar" actionListener="#{socializacionController.abrirCrear()}" icon="ui-icon-disk" >                            
+                                <p:ajax event="dialogReturn" update="listarsocial perfil:mensajes" listener="#{socializacionController.mostrarMensaje()}"/>                      
+                            </p:commandButton>                   
+                            <p:separator/>
+                            <br/>
+                            <p:dataTable id="listarsocial" value="#{socializacionController.listado}" var="registro">
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Articulo</f:facet>
+                                        #{registro.articulo}
+                                </p:column>
+
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Conferencia</f:facet>
+                                        #{registro.conferencia}
+                                </p:column> 
+
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Informe</f:facet>
+                                        #{registro.informe}
+                                </p:column> 
+
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
+                                    <p:commandButton update="perfil:mensajes listarsocial" icon="ui-icon-trash" actionListener="#{socializacionController.borrar(registro)}">
+                                        <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />
+                                    </p:commandButton>
+                                    <p:commandButton icon="ui-icon-pencil" action="#{socializacionController.abrirActualizar(registro)}">
+                                        <p:ajax event="dialogReturn" update="perfil:mensajes listarsocial " listener="#{socializacionController.mostrarMensaje()}"/>
+                                    </p:commandButton> 
+
+                                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                        <p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                    </p:confirmDialog>
+                                </p:column> 
+                            </p:dataTable>
+                        </p:tab>
+                        <p:tab title="Participaciones">
+                            <p:commandButton value="Agregar" actionListener="#{participacionController.abrirCrear()}" icon="ui-icon-disk" >
+                                <p:ajax event="dialogReturn" update="listarpartip perfil:mensajes" listener="#{participacionController.mostrarMensaje()}"/>                     
+                            </p:commandButton>                   
+                            <p:separator/>
+                            <br/>
+                            <p:dataTable id="listarpartip" value="#{participacionController.listado}" var="registro">
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Tipo</f:facet>
+                                    <h:outputText value="Eventos Academicos" rendered="#{registro.tipo == 1}"/>
+                                    <h:outputText value="Asociaciones Profesionales o Sociales" rendered="#{registro.tipo == 2}"/>
+                                    <h:outputText value="Actividades Deportivas y Culturales" rendered="#{registro.tipo == 3}"/>
+                                </p:column>
+
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Evento</f:facet>
+                                        #{registro.evento}
+                                </p:column> 
+
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Tipo Parti</f:facet>
+                                        #{registro.tipo_part}
+                                </p:column> 
+
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Tema</f:facet>
+                                        #{registro.tema}
+                                </p:column>
+
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Fecha</f:facet>
+                                        #{registro.fecha}
+                                </p:column>
+
+
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Ambito</f:facet>
+                                        #{registro.ambito}
+                                </p:column>
+
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Dedicación</f:facet>
+                                        #{registro.dedicacion}
+                                </p:column>
+
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Actividades Culturales</f:facet>
+                                        #{registro.activ_culturales}
+                                </p:column>
+
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Dedicación Culturales</f:facet>
+                                        #{registro.dedica_cultural}
+                                </p:column>
+
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">Desemepño</f:facet>
+                                        #{registro.desempeno}
+                                </p:column>
+
+                                <p:column style="width: 10px; text-align: center">
+                                    <f:facet name="header">#{actividadesTxt.opciones}</f:facet>
+                                    <p:commandButton update="perfil:mensajes listarpartip" icon="ui-icon-trash" actionListener="#{participacionController.borrar(registro)}">
+                                        <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />  
+                                    </p:commandButton>
+                                    <p:commandButton icon="ui-icon-pencil" action="#{participacionController.abrirActualizar(registro)}">
+                                        <p:ajax event="dialogReturn" update="perfil:mensajes listarpartip " listener="#{participacionController.mostrarMensaje()}"/> 
+                                    </p:commandButton>  
+
+                                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                        <p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                    </p:confirmDialog>
+                                </p:column> 
+                            </p:dataTable>
+                        </p:tab>
+                    </p:accordionPanel>
+
+                </h:form>
+            </div>
         </ui:define>
     </ui:composition>
 </html>

@@ -636,4 +636,15 @@ td:has(a){
     background-color: transparent !important;
 }
 
+.ajuste-form{
+    display: grid;
+}
+
+.ajuste-form input{
+    width: 100%;
+}
+
+.ajuste-form label{
+    padding: 0;
+}
 @page { size: A4 landscape;}
