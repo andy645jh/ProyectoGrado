@@ -10,6 +10,7 @@ import com.proyecto.utilities.SessionUtils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,6 +53,9 @@ public class DocentesController implements Serializable {
     private String _mensajeCorrecto = "Se ha realizado correctamente";
     private String _mensajeError = "No se completo la operacion";
     private FacesMessage message;
+    
+    private String facultad="";
+    private String coordinacion="";
 
     private String usuDocente;
     private LoginController _loginController;
@@ -244,6 +248,20 @@ public class DocentesController implements Serializable {
 
         usuDocente = _loginController.getUsuario();
         return _ejbFacade.buscar(Integer.parseInt(usuDocente));
+    }
+    
+    public String btnBuscar() {
+        coordinacion = _doc.getCodcoordinacion().getCodcoordinacion()+"";
+        facultad = _doc.getCodcoordinacion().getCodfacultad().getCodfacultad()+"";
+        return "index_evaluador";
+    }
+
+    public List<Docentes> getListarDocentesFiltrado() {
+        if (coordinacion.equals("")) {
+            return new ArrayList<Docentes>();
+        } else {
+            return _ejbFacade.buscarCampo("_codcoordinacion", coordinacion);
+        }
     }
 
     public int getCodCoord() {

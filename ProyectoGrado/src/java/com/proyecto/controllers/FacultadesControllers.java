@@ -17,7 +17,10 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
 import org.primefaces.context.RequestContext;
 
@@ -155,5 +158,36 @@ public class FacultadesControllers implements Serializable{
         }
         
         return listaItems;
+    }
+    
+    @FacesConverter(forClass = Facultad.class, value = "facultadConverter")
+    public static class FacultadesControllersConverter implements Converter {
+
+        @Override
+        public Object getAsObject(FacesContext context, UIComponent component, String value) {
+            try {
+                if (value == null || value.length() == 0) {
+                    return null;
+                }
+
+                Integer id = Integer.parseInt(value);
+                FacultadesControllers controller = (FacultadesControllers) context.getApplication().getELResolver().
+                        getValue(context.getELContext(), null, "facultadesControllers");
+                System.out.println("Docentse NUMERO ENCONTRADO EN EL COMBO " + controller._ejbFacade.buscar(id));
+                return controller._ejbFacade.buscar(id);
+            } catch (NumberFormatException e) {
+                Logger.getLogger(Facultad.class.getName()).log(Level.SEVERE, null, e);
+                return null;
+            }
+        }
+
+        @Override
+        public String getAsString(FacesContext context, UIComponent component, Object value) {
+            if (value instanceof Facultad) {
+                Facultad obj = (Facultad) value;
+                return String.valueOf(obj.getCodfacultad());
+            }
+            return null;
+        }
     }
 }

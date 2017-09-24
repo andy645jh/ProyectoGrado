@@ -60,6 +60,11 @@
             <description/>
             <url-pattern>/faces/docentes/perfil.xhtml</url-pattern>
         </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>auditor</web-resource-name>
+            <description/>
+            <url-pattern>/faces/index_evaluador.xhtml</url-pattern>
+        </web-resource-collection>
         <auth-constraint>
             <description/>
             <role-name>docente</role-name>
@@ -129,9 +134,8 @@
     </security-role>
     <context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>custom</param-value>       
-    </context-param>   
-    
+        <param-value>custom</param-value>
+    </context-param>
     <filter>
         <filter-name>PrimeFaces FileUpload Filter</filter-name>
         <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
@@ -148,5 +152,4 @@
         <filter-name>PrimeFaces FileUpload Filter</filter-name>
         <servlet-name>Faces Servlet</servlet-name>
     </filter-mapping>
-    
 </web-app>
