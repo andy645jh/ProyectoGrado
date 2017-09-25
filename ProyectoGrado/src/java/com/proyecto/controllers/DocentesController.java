@@ -249,17 +249,11 @@ public class DocentesController implements Serializable {
         usuDocente = _loginController.getUsuario();
         return _ejbFacade.buscar(Integer.parseInt(usuDocente));
     }
-    
-    public String btnBuscar() {
-        coordinacion = _doc.getCodcoordinacion().getCodcoordinacion()+"";
-        facultad = _doc.getCodcoordinacion().getCodfacultad().getCodfacultad()+"";
-        return "index_evaluador";
-    }
-
+  
     public List<Docentes> getListarDocentesFiltrado() {
-        if (coordinacion.equals("")) {
+        if (coordinacion.equals("")) {                  
             return new ArrayList<Docentes>();
-        } else {
+        } else {            
             return _ejbFacade.buscarCampo("_codcoordinacion", coordinacion);
         }
     }
@@ -299,6 +293,24 @@ public class DocentesController implements Serializable {
     public Docentes getDoc() {
         return _doc;
     }
+
+    public String getFacultad() {
+        return facultad;
+    }
+
+    public void setFacultad(String facultad) {
+        this.facultad = facultad;
+    }
+
+    public String getCoordinacion() {
+        return coordinacion;
+    }
+
+    public void setCoordinacion(String coordinacion) {
+        this.coordinacion = coordinacion;
+    }
+    
+    
 
     @FacesConverter(forClass = Docentes.class, value = "docentesConverter")
     public static class DocentesControllerConverter implements Converter {
