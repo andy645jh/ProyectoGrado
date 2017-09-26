@@ -18,8 +18,7 @@
         </ui:define>  
 
         <ui:define name="boton">   
-            #{reportController.crearReport26()}
-            #{request.setAttribute("tipo", 26)}
+            #{reportController.crearReport()}
             <a href="${request.contextPath}/pdfServlet" target="_blank">
                 <p:button value="Descargar" style="margin-right: 10px;" />
             </a>   

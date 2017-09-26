@@ -81,6 +81,8 @@ public class ReportController implements Serializable {
         reportNum = 26;
         System.out.println("Done 26!!");
     }
+    
+    
 
     public String getBase() {
         FacesContext faces = FacesContext.getCurrentInstance();
