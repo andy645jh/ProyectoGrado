@@ -238,30 +238,30 @@
                                     <h:outputText value="#{asignacionController.totalesCalculados.totalCap}"/>
                                 </p:column> 
                                 <p:column colspan="1" >                                
-                                    <h:outputText value="#{asignacionController.totalesCalculados.totalCD} / #{asignacionController.totalesEsperados.totalCD}"/>
+                                    <h:outputText value="#{asignacionController.totalesCalculados.totalCD} / #{asignacionController.totalesEsperados.totalCD}" styleClass="#{ asignacionController.checkValues(asignacionController.totalesCalculados.totalCD, asignacionController.totalesEsperados.totalCD) }"/>
                                 </p:column> 
                                 <p:column colspan="1" >
-                                    <h:outputText value="#{asignacionController.totalesCalculados.totalHI} / #{asignacionController.totalesEsperados.totalHI}"/>
+                                    <h:outputText value="#{asignacionController.totalesCalculados.totalHI} / #{asignacionController.totalesEsperados.totalHI}" styleClass="#{ asignacionController.checkValues(asignacionController.totalesCalculados.totalHI, asignacionController.totalesEsperados.totalHI) }"/>
                                 </p:column> 
                                 <p:column colspan="1" >
-                                    <h:outputText value="#{asignacionController.totalesCalculados.totalPS} / #{asignacionController.totalesEsperados.totalPS}"/>
+                                    <h:outputText value="#{asignacionController.totalesCalculados.totalPS} / #{asignacionController.totalesEsperados.totalPS}" styleClass="#{ asignacionController.checkValues(asignacionController.totalesCalculados.totalPS, asignacionController.totalesEsperados.totalPS) }"/>
                                 </p:column> 
                                 <p:column colspan="1" >
-                                    <h:outputText value="#{asignacionController.totalesCalculados.totalODA} / #{asignacionController.totalesEsperados.totalODA}"/>
+                                    <h:outputText value="#{asignacionController.totalesCalculados.totalODA} / #{asignacionController.totalesEsperados.totalODA}" styleClass="#{ asignacionController.checkValues(asignacionController.totalesCalculados.totalODA, asignacionController.totalesEsperados.totalODA) }"/>
                                 </p:column> 
                                 <p:column colspan="1" >
-                                    <h:outputText value="#{asignacionController.totalesCalculados.totalPlan} / #{asignacionController.totalesEsperados.totalPlan}"/>
+                                    <h:outputText value="#{asignacionController.totalesCalculados.totalPlan} / #{asignacionController.totalesEsperados.totalPlan}" styleClass="#{ asignacionController.checkValues(asignacionController.totalesCalculados.totalPlan, asignacionController.totalesEsperados.totalPlan) }"/>
                                 </p:column> 
                                 <p:column colspan="1" >
-                                    <h:outputText value="#{asignacionController.totalesCalculados.totalVirt} / #{asignacionController.totalesEsperados.totalVirt}"/>
+                                    <h:outputText value="#{asignacionController.totalesCalculados.totalVirt} / #{asignacionController.totalesEsperados.totalVirt}" styleClass="#{ asignacionController.checkValues(asignacionController.totalesCalculados.totalVirt, asignacionController.totalesEsperados.totalVirt) }"/>
                                 </p:column> 
                                 <p:column colspan="1" >
-                                    <h:outputText id="summary_cal" value="#{asignacionController.totalesCalculados.totalCom} / #{asignacionController.totalesEsperados.totalCom}">
+                                    <h:outputText id="summary_cal" value="#{asignacionController.totalesCalculados.totalCom} / #{asignacionController.totalesEsperados.totalCom}" styleClass="#{ asignacionController.checkValues(asignacionController.totalesCalculados.totalCom, asignacionController.totalesEsperados.totalCom) }">
                                         <f:convertNumber pattern="##.##"/>
                                     </h:outputText>
                                 </p:column>
                                 <p:column colspan="1" >
-                                    <h:outputText value="#{asignacionController.totalSum} / #{asignacionController.totalesEsperados.totalHC}"/>
+                                    <h:outputText value="#{asignacionController.totalSum} / #{asignacionController.totalesEsperados.totalHC}" styleClass="#{ asignacionController.checkValues(asignacionController.totalSum, asignacionController.totalesEsperados.totalHC) }"/>
                                 </p:column> 
                             </p:summaryRow>
                         </p:dataTable> 

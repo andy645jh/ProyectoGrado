@@ -208,6 +208,15 @@ public class AsignacionController implements Serializable {
 //        context.closeDialog(null);
     }
 
+    public String checkValues(double valCal, double valMax)
+    {
+        if(valCal>valMax)
+        {
+            return "red-color";
+        }
+        return "black-color";
+    }
+    
     public String checkSum(double sum, int tipo)
     {
         if(tipo==1)
