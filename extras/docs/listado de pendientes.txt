@@ -7,7 +7,9 @@
 - Buscar una manera facil de registrar las semanas del semestre
 - Mejorar el diseño
 -En el reporte RDC-26 las zonas que estan vacias dejar las cajas vacias
-- Organizar la vista perfil del docente (dividir la zona de las cajas en 3 o 4 columnas)
 - En el reporte RDC-54 el listado de productos no esta correspondiendo a la actividad ejem el producto ="producto de la actividad pruebita" no corresponde a la actividad pruebita
 - Crear una relacion de semestre y año para el RDC-54
 - Las actividades q no tienen productos asignados deberian salir en el RDC-54??
+
+Listo para revision
+- Organizar la vista perfil del docente (dividir la zona de las cajas en 3 o 4 columnas)
