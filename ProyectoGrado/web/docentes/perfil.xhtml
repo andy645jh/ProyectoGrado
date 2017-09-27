@@ -35,7 +35,7 @@
 
                 </div>
                 <h:form class="ui-g-12 ui-md-8 ui-g-nopad" id="formDatos">
-                    <div class="ui-g-12 ui-md-6 ui-g-nopad">
+                    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
                         <p:panel>               
                             <p:growl id="mensajes" sticky="true" showDetail="true" /> 
                             
@@ -68,6 +68,13 @@
                                 <p:outputLabel class="ui-md-6 " value="Fecha Nac." for="fechanac" />                   
                                 <p:calendar class="ui-md-6" id="fechanac" value="#{docentesController.campo.fechanac}"></p:calendar>
                             </div>
+                        </p:panel>  
+
+                    </div>                    
+                    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+                        <p:panel>
+                            
+                            
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel class="ui-md-6" value="Lugar Nac." for="lugar" />                   
                                 <p:inputText class="ui-md-6" id="lugar" required="true" value="#{docentesController.campo.lugar_nac}"/>
@@ -85,11 +92,6 @@
                                 <p:outputLabel value="#{docentesTxt.direccion}" for="direccion" />
                                 <p:inputText id="direccion" required="true" value="#{docentesController.campo.direccion}"/>
                             </div>
-                        </p:panel>  
-
-                    </div>
-                    <div class="ui-g-12 ui-md-6 ui-g-nopad">
-                        <p:panel>
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel value="Municipio" for="municipio" />
                                 <p:inputText id="municipio" required="true" value="#{docentesController.campo.municipio}"/>
@@ -108,6 +110,12 @@
                                 <p:outputLabel value="#{docentesTxt.correo}  " for="correo" />
                                 <p:inputText id="correo" required="true" value="#{docentesController.campo.correo}"/>
                             </div>
+                            
+                        </p:panel>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+                        <p:panel>
+                           
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel value="Matricula Profesional" for="matricula" />
                                 <p:inputText id="matricula" required="true" value="#{docentesController.campo.matricula_prof}"/>
