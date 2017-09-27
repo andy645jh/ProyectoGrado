@@ -60,11 +60,6 @@
             <description/>
             <url-pattern>/faces/docentes/perfil.xhtml</url-pattern>
         </web-resource-collection>
-        <web-resource-collection>
-            <web-resource-name>auditor</web-resource-name>
-            <description/>
-            <url-pattern>/faces/index_evaluador.xhtml</url-pattern>
-        </web-resource-collection>
         <auth-constraint>
             <description/>
             <role-name>docente</role-name>
@@ -100,16 +95,15 @@
         </auth-constraint>
     </security-constraint>
     <security-constraint>
-        <display-name>evafaces</display-name>
+        <display-name>auditorfaces</display-name>
         <web-resource-collection>
-            <web-resource-name>foldereva</web-resource-name>
+            <web-resource-name>index</web-resource-name>
             <description/>
-            <url-pattern>/faces/evaluaciones/*</url-pattern>
-            <url-pattern>/faces/index_evaluador.xhtml</url-pattern>
+            <url-pattern>/faces/index_admin.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>
-            <role-name>evaluador</role-name>
+            <role-name>auditor</role-name>
         </auth-constraint>
     </security-constraint>
     <login-config>
@@ -127,10 +121,6 @@
     <security-role>
         <description/>
         <role-name>administrador</role-name>
-    </security-role>
-    <security-role>
-        <description/>
-        <role-name>evaluador</role-name>
     </security-role>
     <context-param>
         <param-name>primefaces.THEME</param-name>
@@ -152,4 +142,8 @@
         <filter-name>PrimeFaces FileUpload Filter</filter-name>
         <servlet-name>Faces Servlet</servlet-name>
     </filter-mapping>
+    <security-role>
+        <description/>
+        <role-name>auditor</role-name>
+    </security-role>
 </web-app>
