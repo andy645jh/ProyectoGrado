@@ -1,16 +1,13 @@
 - Evitar que un docente pueda abrir la carpeta de otro docente 
-- Mostrar imagen seleccionada por el docente
 - Cuando se crea un docente debe crearse una asignacion por defecto con los valores estaticos de tipo de contrato, horas de clase etc
 - Al crear los productos solo debe salir la lista de las actividaes que no se les ha asignado un producto
 - crear el perfil y el modulo para el auditor
-- Organizar la vista perfil del docente
 - pagina de inicio para el docente y el coordinador
 - Buscar una manera facil de registrar las semanas del semestre
 - Mejorar el diseño
--En el reporte RDC-54 el listado de productos no esta correspondiendo a la actividad 
 -En el reporte RDC-26 las zonas que estan vacias dejar las cajas vacias
 
-
-<pre style="background-color: #ffffff;border:none; padding: 0px; margin: 0 0 10px;font-size: 15px;">
-
-
+Listas para Testear 
+- En el reporte RDC-54 el listado de productos no esta correspondiendo a la actividad 
+- Mostrar imagen seleccionada por el docente
+- Organizar la vista perfil del docente
