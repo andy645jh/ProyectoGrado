@@ -21,6 +21,8 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -88,47 +90,51 @@ public class ReporteRdc implements Serializable {
         return listCompleta;
     }
 
-    public List<Intervalo> getListInterval()
-    {        
+    public List<Intervalo> getListInterval() {
         Intervalo[] _arrayInterval;
-        List<Horario> listHorario = _horarioFacade.buscarCampo("_coddocente",getDoc().getCedula()+"");         
+        List<Horario> listHorario = _horarioFacade.buscarCampo("_coddocente", getDoc().getCedula() + "");
         _arrayInterval = new Intervalo[_intervalos.length];
-        System.out.println("TAMAÑO "+listHorario.size());
-        for(int i=0;i<_arrayInterval.length;i++)
-        {
-            _arrayInterval[i] =new Intervalo();
-            _arrayInterval[i].setInitData(_intervalos[i],i);
+        System.out.println("TAMAÑO " + listHorario.size());
+        for (int i = 0; i < _arrayInterval.length; i++) {
+            _arrayInterval[i] = new Intervalo();
+            _arrayInterval[i].setInitData(_intervalos[i], i);
         }
-        
-        for(Horario obj:listHorario)
-        {            
+
+        for (Horario obj : listHorario) {
             //eventModel.addEvent(new DefaultScheduleEvent(obj.getNombre(), obj.getHorainicio(), obj.getHorafinal(),obj));
-            System.out.println("HOra: "+obj.getHora());
+            System.out.println("HOra: " + obj.getHora());
             //cuadrando la lista de horarios        
-            _arrayInterval[obj.getHora()].setDia(obj);               
+            _arrayInterval[obj.getHora()].setDia(obj);
         }
-        
+
         //convertir array a lista
         return Arrays.asList(_arrayInterval);
         //RequestContext.getCurrentInstance().update(":formHorario:nuevaLista");
     }
-    
+
     public List<Productos> getProductos() {
         List<Productos> listaProductos = _productosFacade.listado();// _productosFacade.buscarCampo("_coddocente", "73167775");
         List<Productos> listaFiltradaProductos = new ArrayList<>();
 
         for (Productos producto : listaProductos) {
             for (Actividades activ : getActividades()) {
-                if (producto.getCodactividad().equals(activ)) {
+                if (producto.getCodactividad().getCodactividad() == activ.getCodactividad()) {
                     listaFiltradaProductos.add(producto);
                 }
             }
         }
+        
+        //ordenamiento ascendente
+        Collections.sort(listaFiltradaProductos, (o1, o2) -> o1.getCodactividad().getCodactividad() - o2.getCodactividad().getCodactividad());
+        
         return listaFiltradaProductos;
     }
 
     public List<Actividades> getActividades() {
         _actividades = _actFac.buscarCampo("_coddocente", getDoc().getCedula() + "");
+        
+        //ordenamiento ascendente
+        Collections.sort(_actividades, (o1, o2) -> o1.getCodactividad() - o2.getCodactividad());        
         return _actividades;
     }
 
