@@ -1,9 +1,11 @@
 package com.proyecto.controllers;
 
+import com.proyecto.facades.AsignacionFacade;
 import com.proyecto.facades.CoordinacionFacade;
 import com.proyecto.utilities.Mensajes;
 import com.proyecto.facades.DocentesFacade;
 import com.proyecto.facades.PermisosFacade;
+import com.proyecto.persistences.Asignacion;
 import com.proyecto.persistences.Docentes;
 import com.proyecto.persistences.Permisos;
 import com.proyecto.utilities.SessionUtils;
@@ -39,10 +41,10 @@ public class DocentesController implements Serializable {
     private DocentesFacade _ejbFacade;
     @EJB
     private CoordinacionFacade _coordFacade;
-    
+
     @EJB
     private PermisosFacade _permFacade;
-    
+
     private String clave;
     private String usuario;
     private Docentes _doc;
@@ -53,13 +55,17 @@ public class DocentesController implements Serializable {
     private String _mensajeCorrecto = "Se ha realizado correctamente";
     private String _mensajeError = "No se completo la operacion";
     private FacesMessage message;
-    
-    private String facultad="";
-    private String coordinacion="";
+
+    private String facultad = "";
+    private String coordinacion = "";
 
     private String usuDocente;
     private LoginController _loginController;
     private StreamedContent _imageDoc;
+    @EJB
+    private AsignacionFacade _ejbAsignacion;
+    private int tipoContratoOld=0;
+    private Asignacion asignacion= new Asignacion();
     
     public DocentesController() {
     }
@@ -70,29 +76,27 @@ public class DocentesController implements Serializable {
         }
         return _doc;
     }
-  
+
     public StreamedContent getImageDoc() {
         Docentes doc = (Docentes) SessionUtils.get("docente");
-        try{
-            int cedula = doc.getCedula();            
-            File f = new File(SessionUtils.getPathImages(cedula)+"pedido.png");
-            System.out.println("File->>>>> "+f.exists());
-            if(!f.exists())
-            {              
-                _imageDoc = null ;                
-            }else{
-                _imageDoc = (StreamedContent) new DefaultStreamedContent(new FileInputStream(f));                
+        try {
+            int cedula = doc.getCedula();
+            File f = new File(SessionUtils.getPathImages(cedula) + "pedido.png");
+            System.out.println("File->>>>> " + f.exists());
+            if (!f.exists()) {
+                _imageDoc = null;
+            } else {
+                _imageDoc = (StreamedContent) new DefaultStreamedContent(new FileInputStream(f));
             }
             //_imageDoc = (StreamedContent) new DefaultStreamedContent(new FileInputStream(f));                
-        }catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return _imageDoc;
     }
-    
-    public void mostrarMensaje() {           
-        if(message!=null){
+
+    public void mostrarMensaje() {
+        if (message != null) {
             System.out.println("ES DIFERENTE DE NULL");
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, message);
@@ -110,23 +114,50 @@ public class DocentesController implements Serializable {
     public void agregar() {
 
         String titulo, detalle;
-//        Coordinacion c = _coordFacade.buscar(_codCoord);
         Docentes doc = (Docentes) SessionUtils.get("docente");
-        System.out.println("VA A AGREGAR DOCENTE " + doc.getCodcoordinacion());
-//        String coordinacion= doc.getCodcoordinacion().getCodcoordinacion()+"";
+        
         _doc.setCodcoordinacion(doc.getCodcoordinacion());
-//        _obj.setCodcoordinacion(c);
-//        _obj.setCod(c);
+        
+        if (_doc.getTipocontrato() == 1 || _doc.getTipocontrato() == 2) {          
+            
+            asignacion.setCoddocente(_doc);
+            asignacion.setCodcoordinacion(doc.getCodcoordinacion());
+            if (_doc.getTipocontrato() == 1) {
+                asignacion.setHorasclase(24.0);
+                asignacion.setPreparacion(4.0);
+                asignacion.setCapacitacion(4.0);
+                asignacion.setSumatoria(32.0);
+            } else {
+                asignacion.setHorasclase(12.0);
+                asignacion.setPreparacion(2.0);
+                asignacion.setCapacitacion(0.0);
+                asignacion.setSumatoria(14.0);
+            }
+            asignacion.setColectivo(0.0);
+            asignacion.setInvestigacion(0.0);
+            asignacion.setSocial(0.0);
+            asignacion.setOda(0.0);
+            asignacion.setPlaneacion(0.0);
+            asignacion.setVirtualidad(0.0);
+            asignacion.setComites(0.0);
+            
+        }
+
         try {
             _ejbFacade.crear(_doc);
+            
+            if(asignacion.getCoddocente() != null){
+                _ejbAsignacion.crear(asignacion);
+            }
+            System.out.println("SE HA CREADO EL DOCENTE EN ASIGNACION "+_doc.getCedula());
+            
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
-            System.out.println("MENSAJE "+message);
+            System.out.println("MENSAJE " + message);
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);
 
-            //return "crear";
         } catch (Exception e) {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardarError");
@@ -136,7 +167,6 @@ public class DocentesController implements Serializable {
             context.closeDialog(null);
         }
 
-        
     }
 
     public SelectItem[] combo(String texto) {
@@ -153,12 +183,12 @@ public class DocentesController implements Serializable {
         return listaItems;
 
     }
-    
+
     public List<Docentes> getListado() {
-        
+
         Docentes doc = (Docentes) SessionUtils.get("docente");
-        String coordinacion= doc.getCodcoordinacion().getCodcoordinacion()+"";
-        return _ejbFacade.buscarCampo("_codcoordinacion",coordinacion);
+        String coordinacion = doc.getCodcoordinacion().getCodcoordinacion() + "";
+        return _ejbFacade.buscarCampo("_codcoordinacion", coordinacion);
     }
 
     public void borrar(Docentes faceObj) {
@@ -181,6 +211,7 @@ public class DocentesController implements Serializable {
     public void abrirActualizar(Docentes objtemp) {
 
         _doc = objtemp;
+        tipoContratoOld=_doc.getTipocontrato();
         _codCoord = _doc.getCodcoordinacion().getCodcoordinacion();
         Map<String, Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
@@ -194,7 +225,7 @@ public class DocentesController implements Serializable {
 
         _doc = (Docentes) SessionUtils.get("docente");
         System.out.println("CODIGO " + _doc.getFoto());
-        
+
         Permisos p = _permFacade.buscarCampo("usuario", _doc.getCedula() + "");
         clave = p.getClave();
         usuario = p.getUsuario();
@@ -203,11 +234,7 @@ public class DocentesController implements Serializable {
 
     public void actualizar() {
         String titulo, detalle;
-//        Coordinacion c = _coordFacade.buscar(_codCoord);
-//        _obj.setCodcoordinacion(c);
-        
         Docentes doc = (Docentes) SessionUtils.get("docente");
-//        String coordinacion= doc.getCodcoordinacion().getCodcoordinacion()+"";
         _doc.setCodcoordinacion(doc.getCodcoordinacion());
         System.out.println("ACTUALIZARRRRRRRRR ");
 
@@ -215,12 +242,33 @@ public class DocentesController implements Serializable {
             System.out.println("ENTRO A LA FUNCION ACTUALIZAR " + foto.getFileName());
             _doc.setFoto(foto.getFileName());
         }
-//        Coordinacion c = _coordFacade.buscar(_codCoord);
-//        _obj.setCodcoordinacion(c);
-//        System.out.println("VA A AGREGAR DOCENTE "+_obj.getCodcoordinacion());
-
+        
+        if((tipoContratoOld == 3 && _doc.getTipocontrato()==1) || (tipoContratoOld == 3 && _doc.getTipocontrato()==2)){
+            asignacion.setCoddocente(_doc);
+            asignacion.setCodcoordinacion(doc.getCodcoordinacion());
+            if (_doc.getTipocontrato() == 1) {
+                asignacion.setHorasclase(24.0);
+                asignacion.setPreparacion(4.0);
+                asignacion.setCapacitacion(4.0);
+                asignacion.setSumatoria(32.0);
+            } else {
+                asignacion.setHorasclase(12.0);
+                asignacion.setPreparacion(2.0);
+                asignacion.setCapacitacion(0.0);
+                asignacion.setSumatoria(14.0);
+            }
+            asignacion.setColectivo(0.0);
+            asignacion.setInvestigacion(0.0);
+            asignacion.setSocial(0.0);
+            asignacion.setOda(0.0);
+            asignacion.setPlaneacion(0.0);
+            asignacion.setVirtualidad(0.0);
+            asignacion.setComites(0.0);
+        }
+        
         try {
             _ejbFacade.actualizar(_doc);
+            _ejbAsignacion.crear(asignacion);
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
@@ -242,18 +290,17 @@ public class DocentesController implements Serializable {
         _doc = null;
     }
 
-
     public Docentes buscar() {
         System.out.println("USUARIO DE DOCENTE " + _loginController);
 
         usuDocente = _loginController.getUsuario();
         return _ejbFacade.buscar(Integer.parseInt(usuDocente));
     }
-  
+
     public List<Docentes> getListarDocentesFiltrado() {
-        if (coordinacion.equals("")) {                  
+        if (coordinacion.equals("")) {
             return new ArrayList<Docentes>();
-        } else {            
+        } else {
             return _ejbFacade.buscarCampo("_codcoordinacion", coordinacion);
         }
     }
@@ -309,8 +356,6 @@ public class DocentesController implements Serializable {
     public void setCoordinacion(String coordinacion) {
         this.coordinacion = coordinacion;
     }
-    
-    
 
     @FacesConverter(forClass = Docentes.class, value = "docentesConverter")
     public static class DocentesControllerConverter implements Converter {

@@ -1,13 +1,11 @@
 - Evitar que un docente pueda abrir la carpeta de otro docente 
-- Cuando se crea un docente debe crearse una asignacion por defecto con los valores estaticos de tipo de contrato, horas de clase etc
+- Cuando se crea el docente aparece en la tabla asignacion la 1 vez, si se crea otro docente toca cerrar sesion para visualizarlo en la tabla asignacion
+- Si en docente se le cambia el tipo de contrato al docente que pasa con las horas de clase, preparacion de clase y capcitacion? hacerlas cambiar? o que el coordinador las pueda editar
 - Al crear los productos solo debe salir la lista de las actividaes que no se les ha asignado un producto
 - crear el perfil y el modulo para el auditor
 - pagina de inicio para el docente y el coordinador
 - Buscar una manera facil de registrar las semanas del semestre
 - Mejorar el diseño
 -En el reporte RDC-26 las zonas que estan vacias dejar las cajas vacias
-
-Listas para Testear 
-- En el reporte RDC-54 el listado de productos no esta correspondiendo a la actividad 
-- Mostrar imagen seleccionada por el docente
-- Organizar la vista perfil del docente
+- Organizar la vista perfil del docente (dividir la zona de las cajas en 3 o 4 columnas)
+- En el reporte RDC-54 el listado de productos no esta correspondiendo a la actividad ejem el producto ="producto de la actividad pruebita" no corresponde a la actividad pruebita

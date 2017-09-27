@@ -16,11 +16,11 @@
         <ui:define name="content">
             <p:panel>      
                 <p:growl id="mensajito" showDetail="true"/> 
-               
+
                 <h:form id="formAsig">  
 
                     <p:outputLabel value="Es necesario realizar la asignacion de  porcentajes" />
-                    
+
                     <div class="ui-g form-asig-label">
 
                         <div class="ui-g-12">
@@ -81,8 +81,11 @@
                                         <h:outputText value="TC" />
                                     </h:outputLink>                            
                                     <p:tooltip for="tool-tc" value="Tipo de Contrato" trackMouse="true" />
-                                </f:facet>                        
-                                #{registro.coddocente.tipocontrato}
+                                </f:facet>
+
+                                <h:outputText value="Tiempo Completo" rendered="#{registro.coddocente.tipocontrato== 1}"/>                            
+                                <h:outputText value="Medio Completo" rendered="#{registro.coddocente.tipocontrato == 2}"/>
+                                <h:outputText value="Catedra" rendered="#{registro.coddocente.tipocontrato == 3}"/> 
                             </p:column> 
 
                             <p:column  style="text-align: center">
