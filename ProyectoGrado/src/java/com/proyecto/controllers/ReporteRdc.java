@@ -49,6 +49,7 @@ public class ReporteRdc implements Serializable {
     private HorarioFacade _horarioFacade;
 
     private List<Actividades> _actividades;
+    private List<Productos> _productos;
     private Docentes _doc;
 
     public ReporteRdc() {
@@ -112,26 +113,22 @@ public class ReporteRdc implements Serializable {
         //RequestContext.getCurrentInstance().update(":formHorario:nuevaLista");
     }
 
-    public List<Productos> getProductos() {
-        List<Productos> listaProductos = _productosFacade.listado();// _productosFacade.buscarCampo("_coddocente", "73167775");
-        List<Productos> listaFiltradaProductos = new ArrayList<>();
-
-        for (Productos producto : listaProductos) {
-            for (Actividades activ : getActividades()) {
-                if (producto.getCodactividad().getCodactividad() == activ.getCodactividad()) {
-                    listaFiltradaProductos.add(producto);
-                }
-            }
-        }
-        
+    public List<Productos> getProductos() {        
         //ordenamiento ascendente
-        Collections.sort(listaFiltradaProductos, (o1, o2) -> o1.getCodactividad().getCodactividad() - o2.getCodactividad().getCodactividad());
+        Collections.sort(_productos, (o1, o2) -> o1.getCodactividad().getCodactividad() - o2.getCodactividad().getCodactividad());
         
-        return listaFiltradaProductos;
+        return _productos;
     }
 
     public List<Actividades> getActividades() {
-        _actividades = _actFac.buscarCampo("_coddocente", getDoc().getCedula() + "");
+        int cedula = getDoc().getCedula();
+        _actividades = new ArrayList<>();
+        _productos = _productosFacade.buscarCampo("_coddocente", cedula+"");
+        
+        for (Productos producto : _productos) {
+            //System.out.println("ReporteRdc.getActividades() actividad->"+producto.getCodactividad().getNombre());
+            _actividades.add(producto.getCodactividad());
+        }
         
         //ordenamiento ascendente
         Collections.sort(_actividades, (o1, o2) -> o1.getCodactividad() - o2.getCodactividad());        

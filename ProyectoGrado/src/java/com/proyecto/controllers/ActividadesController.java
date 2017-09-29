@@ -248,7 +248,7 @@ public class ActividadesController implements Serializable {
         Docentes d = (Docentes) SessionUtils.get("docente");
         System.out.println("EDITAR DOCENTE   " + d.getCedula());
         _obj.setCodtipo(modalidad);
-
+        
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");

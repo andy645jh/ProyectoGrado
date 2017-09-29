@@ -9,7 +9,7 @@
     <h:head>        
         <h:outputStylesheet name="grid/grid.css" library="primefaces" />
         <style type="text/css" >
-           
+
             table{
                 border-collapse: collapse;
                 width: 100%;
@@ -184,6 +184,20 @@
                         <td>#{estudio.pais}</td> 
                     </tr>
                 </ui:repeat>
+                <p:panel rendered="#{reporteDocente.estudiosTitulados eq null}">
+                    <tr>
+                        <td>#{estudio.nivel}</td>                          
+                        <td>#{estudio.titulo}</td> 
+                        <td>#{estudio.institucion}</td> 
+                        <td>
+                            <h:outputText value="#{estudio.ano_grado}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText> 
+                        </td>      
+                        <td>#{estudio.registro}</td> 
+                        <td>#{estudio.pais}</td> 
+                    </tr>
+                </p:panel>
             </tbody>
         </table> 
         <br></br>        
@@ -217,6 +231,19 @@
                         <td>#{estudio.registro}</td>                         
                     </tr>
                 </ui:repeat>
+                <p:panel rendered="#{reporteDocente.estudiosCursos eq null}">
+                    <tr>             
+                        <td>#{estudio.nivel}</td>                          
+                        <td>#{estudio.titulo}</td> 
+                        <td>#{estudio.institucion}</td> 
+                        <td>
+                            <h:outputText value="#{estudio.ano_grado}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText> 
+                        </td>           
+                        <td>#{estudio.registro}</td>                         
+                    </tr>
+                </p:panel>
             </tbody>
         </table>
         <br></br>
@@ -253,6 +280,20 @@
                         </td>                                                     
                     </tr>
                 </ui:repeat>
+                <p:panel rendered="#{reporteDocente.experienciasPro eq null}">
+                    <tr>             
+                        <td>#{expPro.institucion}</td> 
+                        <td>#{expPro.actividad}</td> 
+                        <td>#{expPro.dependencia}</td> 
+                        <td>#{expPro.tiempo}</td> 
+                        <td>#{expPro.tipo_contrato}</td>   
+                        <td>
+                            <h:outputText value="#{expPro.fecha_ultima}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText> 
+                        </td>                                                     
+                    </tr>
+                </p:panel>
             </tbody>
         </table>
         <br></br>
@@ -289,6 +330,20 @@
                         </td>                                                     
                     </tr>
                 </ui:repeat>
+                <p:panel rendered="#{reporteDocente.experienciasPro eq null}">
+                    <tr>             
+                        <td>#{expDoc.institucion}</td> 
+                        <td>#{expDoc.actividad}</td> 
+                        <td>#{expDoc.dependencia}</td> 
+                        <td>#{expDoc.tiempo}</td> 
+                        <td>#{expDoc.tipo_contrato}</td>   
+                        <td>
+                            <h:outputText value="#{expDoc.fecha_ultima}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText> 
+                        </td>                                                     
+                    </tr>
+                </p:panel>
             </tbody>
         </table>
 
@@ -319,6 +374,16 @@
                         <td>#{produccion.num_anos}</td>                                                                           
                     </tr>
                 </ui:repeat>
+
+                <p:panel rendered="#{reporteDocente.producciones eq null}">
+                    <tr>             
+                        <td>#{produccion.tipo}</td> 
+                        <td>#{produccion.nombre}</td> 
+                        <td>#{produccion.editorial_inv}</td> 
+                        <td>#{produccion.estado}</td> 
+                        <td>#{produccion.num_anos}</td>                                                                           
+                    </tr>
+                </p:panel>
             </tbody>
         </table>
 
@@ -352,6 +417,15 @@
                         <td>#{partInvest.ambito}</td>                                                                           
                     </tr>
                 </ui:repeat>
+                <p:panel rendered="#{reporteDocente.partInvest eq null}">
+                    <tr>             
+                        <td>#{partInvest.tipo}</td> 
+                        <td>#{partInvest.evento}</td> 
+                        <td>#{partInvest.tema}</td> 
+                        <td>#{partInvest.fecha}</td> 
+                        <td>#{partInvest.ambito}</td>                                                                           
+                    </tr>
+                </p:panel>
             </tbody>
         </table>
 
@@ -375,6 +449,14 @@
                         <td>#{socializacion.informe}</td>                         
                     </tr>
                 </ui:repeat>
+
+                <p:panel rendered="#{reporteDocente.socializaciones eq null}">
+                    <tr>             
+                        <td>#{socializacion.articulo}</td> 
+                        <td>#{socializacion.conferencia}</td> 
+                        <td>#{socializacion.informe}</td>                         
+                    </tr>
+                </p:panel>
             </tbody>
         </table>
 
@@ -408,6 +490,20 @@
                         <td>#{partAcad.ambito}</td>                         
                     </tr>
                 </ui:repeat>
+
+                <p:panel rendered="#{reporteDocente.partAcademicas eq null}">
+                    <tr>             
+                        <td>#{partAcad.tipo_part}</td> 
+                        <td>#{partAcad.evento}</td> 
+                        <td>#{partAcad.tema}</td>  
+                        <td>
+                            <h:outputText value="#{partAcad.fecha}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </td>
+                        <td>#{partAcad.ambito}</td>                         
+                    </tr>
+                </p:panel>
             </tbody>
         </table>
 
@@ -433,6 +529,13 @@
                         <td>#{partSocial.ambito}</td>                         
                     </tr>
                 </ui:repeat>
+                <p:panel rendered="#{reporteDocente.partSocial eq null}">
+                    <tr>             
+                        <td>#{partSocial.tema}</td> 
+                        <td>#{partSocial.evento}</td> 
+                        <td>#{partSocial.ambito}</td>                         
+                    </tr>
+                </p:panel>
             </tbody>
         </table>
 
@@ -462,9 +565,19 @@
                         <td>#{partDeport.dedica_cultural}</td> 
                     </tr>                   
                 </ui:repeat>
-                
+
+                <p:panel rendered="#{reporteDocente.partDeport eq null}">
+                    <tr>             
+                        <td>#{partDeport.tema}</td> 
+                        <td>#{partDeport.desempeno}</td> 
+                        <td>#{partDeport.dedicacion}</td>    
+                        <td>#{partDeport.activ_culturales}</td> 
+                        <td>#{partDeport.dedica_cultural}</td> 
+                    </tr>  
+                </p:panel>
+
             </tbody>
-        </table>
+        </table>       
     </h:body>
 
 </html>

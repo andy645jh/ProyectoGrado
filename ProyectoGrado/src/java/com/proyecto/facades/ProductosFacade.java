@@ -2,6 +2,7 @@
 package com.proyecto.facades;
 
 import com.proyecto.persistences.Actividades;
+import com.proyecto.persistences.Docentes;
 import com.proyecto.persistences.Productos;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -49,10 +50,14 @@ public class ProductosFacade extends AbstractFacade<Productos>{
                 String cadena = valorBuscar;
                 Predicate condicion = cb.equal(valor, cadena);                
                 cq.where(condicion);
-            }/*else if(columna.equals("_coddocente"))
+            }else if(columna.equals("_coddocente"))
             {
-                
-            }*/else{           
+                Join<Productos,Docentes> doc = objActividades.join("_coddocente");
+                Expression<String> valor = doc.get("_cedula");
+                String cadena = valorBuscar;
+                Predicate condicion = cb.equal(valor, cadena);                
+                cq.where(condicion);
+            }else{           
        
                 System.out.println("Columna: " + columna);
                 Expression<String> valorCampo = objActividades.get(columna);

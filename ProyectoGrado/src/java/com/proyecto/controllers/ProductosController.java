@@ -76,9 +76,13 @@ public class ProductosController implements Serializable
     public void agregar()
     {
         String titulo,detalle;
+        Docentes doc =(Docentes) SessionUtils.get("docente");
         Actividades actividad= _actividadesFacade.buscar(_codigo);
         _obj.setCodactividad(actividad);
-            System.out.println("AVTIVIDAD "+_obj.getCodactividad()+" PROD "+_obj.getDescripcion());
+        _obj.setCoddocente(doc);
+        
+        System.out.println("ProductosController.agregar -> AcTIVIDAD "+_obj.getCodactividad()+" PROD "+_obj.getDescripcion());
+        
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");

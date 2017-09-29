@@ -17,35 +17,39 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "productos")
-public class Productos implements Serializable
-{
+public class Productos implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codproducto")
     private int _codproducto;
-    
+
     @Column(name = "descripcion")
     @Size(min = 1, max = 300)
     @NotNull
     private String _descripcion;
-    
-    @Column(name = "fechacompromiso") 
+
+    @Column(name = "fechacompromiso")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date _fechacompromiso;
-    
+
     @Column(name = "fechaentrega")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date _fechaentrega;
-    
-    @Column(name = "comentarios") 
+
+    @Column(name = "comentarios")
     private String _comentarios;
-    
+
     @JoinColumn(name = "codact", referencedColumnName = "codactividad")
     @ManyToOne(optional = false)
     private Actividades _codactividad;
-    
 
-    public Productos() {  }
+    @JoinColumn(name = "coddocente", referencedColumnName = "cedula")
+    @ManyToOne(optional = false)
+    private Docentes _coddocente;
+
+    public Productos() {
+    }
 
     @Override
     public int hashCode() {
@@ -68,8 +72,6 @@ public class Productos implements Serializable
         }
         return true;
     }
-
-    
 
     @Override
     public String toString() {
@@ -122,6 +124,14 @@ public class Productos implements Serializable
 
     public void setCodactividad(Actividades _codactividad) {
         this._codactividad = _codactividad;
+    }
+
+    public Docentes getCoddocente() {
+        return _coddocente;
+    }
+
+    public void setCoddocente(Docentes _coddocente) {
+        this._coddocente = _coddocente;
     }
 
 }

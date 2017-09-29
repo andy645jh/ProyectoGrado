@@ -6,9 +6,15 @@
 - pagina de inicio para el docente y el coordinador
 - Buscar una manera facil de registrar las semanas del semestre
 - Mejorar el diseño
--En el reporte RDC-26 las zonas que estan vacias dejar las cajas vacias
-- En el reporte RDC-54 el listado de productos no esta correspondiendo a la actividad ejem el producto ="producto de la actividad pruebita" no corresponde a la actividad pruebita
 - Crear una relacion de semestre y año para el RDC-54
-- Las actividades q no tienen productos asignados deberian salir en el RDC-54??
+- Arreglar primera tabla del rdc-26
 
 Listo para revision
+- Las actividades q no tienen productos asignados deberian salir en el RDC-54 --> lo que hago es que solo muestro las actividades que han sido asignadas a un producto. es necesario agregar el campo coddocente y dejarlo como foraneo en la tabla productos:
+alter table productos add column coddocente int;
+alter table productos add  CONSTRAINT fk_docentes FOREIGN KEY (coddocente)
+ REFERENCES docentes (cedula)
+
+- En el reporte RDC-54 el listado de productos no esta correspondiendo a la actividad ejem el producto ="producto de la actividad pruebita" no corresponde a la actividad pruebita
+
+-En el reporte RDC-26 las zonas que estan vacias dejar las cajas vacias
