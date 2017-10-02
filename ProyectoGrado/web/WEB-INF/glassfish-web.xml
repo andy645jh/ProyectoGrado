@@ -12,6 +12,7 @@
   </security-role-mapping>
   <security-role-mapping>
     <role-name>auditor</role-name>
+    <group-name>auditor</group-name>
   </security-role-mapping>
   <class-loader delegate="true"/>
   <jsp-config>

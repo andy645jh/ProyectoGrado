@@ -22,3 +22,6 @@ alter table productos add  CONSTRAINT fk_docentes FOREIGN KEY (coddocente)
 Preguntas
 
 - En el RDC-26 q es la dedicacion?
+
+Dedicatoria
+-Mi corazon de melon TE AMO mucho muchoo gracias por estar conmigo, por apoyarme y hacerme feliz, no se si existe el novio perfecto pero se q tu lo intentas ser para mi TE AMOO muchooo
