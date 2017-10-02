@@ -58,10 +58,15 @@
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">#{docentesTxt.opciones}</f:facet>
-                            <p:commandButton update="formDocentes:mensajito formDocentes:listar"  icon="ui-icon-trash" actionListener="#{docentesController.borrar(registro)}">
-                                <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />
+                            
+                            <p:commandButton update="formDocentes:mensajito formDocentes:listar" title="activo"  icon="ui-icon-check" rendered="#{registro.inhabilitar == 0}" actionListener="#{docentesController.cambiarEstado(registro)}">
+                                <p:confirm header="Confirmation" message="Estas seguro que desea cambiar de estado?" icon="ui-icon-alert" />
                             </p:commandButton>
-                            <p:commandButton  icon="ui-icon-pencil" action="#{docentesController.abrirActualizar(registro)}">                                
+                            
+                            <p:commandButton update="formDocentes:mensajito formDocentes:listar" title="inactivo" rendered="#{registro.inhabilitar == 1}"  icon="ui-icon-cancel" actionListener="#{docentesController.cambiarEstado(registro)}">
+                                <p:confirm header="Confirmation" message="Estas seguro que desea cambiar de estado?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                            <p:commandButton  icon="ui-icon-pencil" action="#{docentesController.abrirActualizar(registro)}" rendered="#{registro.inhabilitar == 0}">                                
                                 <p:ajax event="dialogReturn" update="formDocentes:mensajito formDocentes:listar" listener="#{docentesController.mostrarMensaje()}"/>                            
                             </p:commandButton> 
                             

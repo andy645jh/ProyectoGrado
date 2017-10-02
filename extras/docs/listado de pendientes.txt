@@ -17,4 +17,8 @@ alter table productos add  CONSTRAINT fk_docentes FOREIGN KEY (coddocente)
 
 - En el reporte RDC-54 el listado de productos no esta correspondiendo a la actividad ejem el producto ="producto de la actividad pruebita" no corresponde a la actividad pruebita
 
--En el reporte RDC-26 las zonas que estan vacias dejar las cajas vacias
+
+
+Preguntas
+
+- En el RDC-26 q es la dedicacion?

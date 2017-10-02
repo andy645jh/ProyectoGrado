@@ -93,6 +93,9 @@ public class Docentes implements Serializable
     
     @Transient
     private String _nombreCoord;
+    
+    @Column(name = "inhabilitar")   
+    private int _inhabilitar;
    
     public Docentes() { }
 
@@ -286,6 +289,14 @@ public class Docentes implements Serializable
     public String getNombreCoord() {
         _nombreCoord = _codcoordinacion.getNombre();
         return _nombreCoord;
+    }
+
+    public int getInhabilitar() {
+        return _inhabilitar;
+    }
+
+    public void setInhabilitar(int _inhabilitar) {
+        this._inhabilitar = _inhabilitar;
     }
     
     

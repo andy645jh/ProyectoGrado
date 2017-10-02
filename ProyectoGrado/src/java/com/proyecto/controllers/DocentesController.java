@@ -191,14 +191,22 @@ public class DocentesController implements Serializable {
         return _ejbFacade.buscarCampo("_codcoordinacion", coordinacion);
     }
 
-    public void borrar(Docentes faceObj) {
+    public void cambiarEstado(Docentes faceObj) {
         String titulo, detalle;
-
+        
+        if(faceObj.getInhabilitar()==0){
+            faceObj.setInhabilitar(1);
+        }else if(faceObj.getInhabilitar()==1){
+            faceObj.setInhabilitar(0);
+        }
+        
+        
+        
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarExitoso");
             Mensajes.exito(titulo, detalle);
-            _ejbFacade.borrar(faceObj);
+            _ejbFacade.actualizar(faceObj);
 
         } catch (Exception e) {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
