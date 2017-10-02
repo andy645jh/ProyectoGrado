@@ -75,7 +75,7 @@ public class AsignacionController implements Serializable {
             _listSum = new ArrayList<>();
 
             _totalSum =0;
-            for (Asignacion asigTemp : _listadoAsign) {
+            for (Asignacion asigTemp : _listadoAsign) {                
                 _totalSum += asigTemp.getSumatoria();
                 _listSum.add(asigTemp.getSumatoria());
             }

@@ -5,14 +5,11 @@ import com.proyecto.facades.AsignacionFacade;
 import com.proyecto.facades.CoordinacionFacade;
 import com.proyecto.facades.DocentesFacade;
 import com.proyecto.facades.PorcentajeFacade;
-import com.proyecto.facades.TiempoAsignadoFacade;
 import com.proyecto.persistences.ActividadMisional;
 import com.proyecto.persistences.Asignacion;
 import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Docentes;
 import com.proyecto.persistences.Porcentaje;
-import com.proyecto.persistences.TiempoAsignado;
-import com.proyecto.persistences.TipoModalidades;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -65,7 +62,6 @@ public class PorcentajeController implements Serializable {
 
     @EJB
     private ActividadMisionalFacade _actMisionalFacade;
-    private TiempAsgController _asigController;
 
     public PorcentajeController() {
         _codActInv = 1;
