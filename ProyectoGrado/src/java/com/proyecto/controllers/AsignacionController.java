@@ -83,13 +83,15 @@ public class AsignacionController implements Serializable {
 
             _totalSum =0;
             for (Asignacion asigTemp : _listadoAsign) {    
-                if(asigTemp.getCoddocente().getTipocontrato()==2 || asigTemp.getCoddocente().getTipocontrato()==1)
+                /*if(asigTemp.getCoddocente().getTipocontrato()==2 || asigTemp.getCoddocente().getTipocontrato()==1)
                 {
                     _totalSum += asigTemp.getSumatoria();
                     _listSum.add(asigTemp.getSumatoria());
                 }else{
                     _listadoAsign.remove(asigTemp);
-                }
+                }*/
+                _totalSum += asigTemp.getSumatoria();
+                _listSum.add(asigTemp.getSumatoria());
             }
         }
         calculate();
