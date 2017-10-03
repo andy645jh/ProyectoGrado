@@ -68,6 +68,13 @@ public class AsignacionController implements Serializable {
         _coordinacion = (Coordinacion) SessionUtils.get("coordinacion");
     }
 
+    public void reset()
+    {
+        _totalesEsperados = new Totales();
+        _totalesCalculados = new Totales();
+        _listadoAsign = null;
+    }
+    
     public List<Asignacion> getListadoAsign() {
 
         if (_listadoAsign == null) {
@@ -75,9 +82,14 @@ public class AsignacionController implements Serializable {
             _listSum = new ArrayList<>();
 
             _totalSum =0;
-            for (Asignacion asigTemp : _listadoAsign) {                
-                _totalSum += asigTemp.getSumatoria();
-                _listSum.add(asigTemp.getSumatoria());
+            for (Asignacion asigTemp : _listadoAsign) {    
+                if(asigTemp.getCoddocente().getTipocontrato()==2 || asigTemp.getCoddocente().getTipocontrato()==1)
+                {
+                    _totalSum += asigTemp.getSumatoria();
+                    _listSum.add(asigTemp.getSumatoria());
+                }else{
+                    _listadoAsign.remove(asigTemp);
+                }
             }
         }
         calculate();

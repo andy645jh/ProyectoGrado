@@ -1,5 +1,4 @@
 - Evitar que un docente pueda abrir la carpeta de otro docente 
-- Cuando se crea el docente aparece en la tabla asignacion la 1 vez, si se crea otro docente toca cerrar sesion para visualizarlo en la tabla asignacion
 - Si en docente se le cambia el tipo de contrato al docente que pasa con las horas de clase, preparacion de clase y capcitacion? hacerlas cambiar? o que el coordinador las pueda editar
 - Al crear los productos solo debe salir la lista de las actividaes que no se les ha asignado un producto
 - crear el perfil y el modulo para el auditor
@@ -15,6 +14,8 @@ alter table productos add column coddocente int;
 alter table productos add  CONSTRAINT fk_docentes FOREIGN KEY (coddocente)
  REFERENCES docentes (cedula)
 
+- Cuando se crea el docente aparece en la tabla asignacion la 1 vez, si se crea otro docente toca cerrar sesion para visualizarlo en la tabla asignacion
+
 - En el reporte RDC-54 el listado de productos no esta correspondiendo a la actividad ejem el producto ="producto de la actividad pruebita" no corresponde a la actividad pruebita
 
 
@@ -25,3 +26,4 @@ Preguntas
 
 Dedicatoria
 -Mi corazon de melon TE AMO mucho muchoo gracias por estar conmigo, por apoyarme y hacerme feliz, no se si existe el novio perfecto pero se q tu lo intentas ser para mi TE AMOO muchooo
+:O awwwww pup pup pup.. amoree tu tambn para mi ers casi perfecta.. me encantas.. eres mi ponsentida hermosaa :* :* TE AMOO
