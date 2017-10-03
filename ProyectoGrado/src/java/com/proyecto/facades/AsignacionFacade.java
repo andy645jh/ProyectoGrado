@@ -1,5 +1,6 @@
 package com.proyecto.facades;
 
+import com.proyecto.persistences.Actividades;
 import com.proyecto.persistences.Asignacion;
 import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Docentes;
@@ -77,5 +78,38 @@ public class AsignacionFacade extends AbstractFacade<Asignacion> {
         
         Query consulta = em.createQuery(cq);
         return consulta.getResultList();
+    }
+    
+    public Asignacion buscarDocente(String columna,String valorBuscar)
+    {
+        CriteriaBuilder cb= obtenerEntidad().getCriteriaBuilder();
+        CriteriaQuery<Asignacion> cq= cb.createQuery(Asignacion.class);
+        Root<Asignacion> objAsignacion = cq.from(Asignacion.class);
+        
+        if(!valorBuscar.equals("") && !columna.equals(""))
+        {            
+            if(columna.equals("_coddocente"))
+            {
+                Join<Asignacion,Docentes> doc = objAsignacion.join("_coddocente");
+                Expression<String> valor = doc.get("_cedula");
+                String cadena = valorBuscar;
+                Predicate condicion = cb.equal(valor, cadena);                
+                cq.where(condicion);
+            }else{           
+       
+                System.out.println("Columna: " + columna);
+                Expression<String> valorCampo = objAsignacion.get(columna);
+                String cadena = valorBuscar;
+                Predicate condicion = cb.equal(valorCampo, cadena);
+                cq.where(condicion);               
+            }
+            
+            
+        }else{
+            cq.from(Asignacion.class);                     
+        }
+        
+        Query consulta = em.createQuery(cq);
+        return (Asignacion) consulta.getSingleResult();
     }
 }

@@ -1,22 +1,15 @@
 - Evitar que un docente pueda abrir la carpeta de otro docente 
-- Si en docente se le cambia el tipo de contrato al docente que pasa con las horas de clase, preparacion de clase y capcitacion? hacerlas cambiar? o que el coordinador las pueda editar
 - Al crear los productos solo debe salir la lista de las actividaes que no se les ha asignado un producto
-- crear el perfil y el modulo para el auditor
+- listado del los RDCs en el  auditor
 - pagina de inicio para el docente y el coordinador
 - Buscar una manera facil de registrar las semanas del semestre
 - Mejorar el diseño
 - Crear una relacion de semestre y año para el RDC-54
 - Arreglar primera tabla del rdc-26
+- Lst asignacion traer solo los docentes activos y que tengan el tipo no sea catedra
 
 Listo para revision
-- Las actividades q no tienen productos asignados deberian salir en el RDC-54 --> lo que hago es que solo muestro las actividades que han sido asignadas a un producto. es necesario agregar el campo coddocente y dejarlo como foraneo en la tabla productos:
-alter table productos add column coddocente int;
-alter table productos add  CONSTRAINT fk_docentes FOREIGN KEY (coddocente)
- REFERENCES docentes (cedula)
 
-- Cuando se crea el docente aparece en la tabla asignacion la 1 vez, si se crea otro docente toca cerrar sesion para visualizarlo en la tabla asignacion
-
-- En el reporte RDC-54 el listado de productos no esta correspondiendo a la actividad ejem el producto ="producto de la actividad pruebita" no corresponde a la actividad pruebita
 
 
 

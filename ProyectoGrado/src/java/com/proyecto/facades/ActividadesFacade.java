@@ -50,7 +50,7 @@ public class ActividadesFacade extends AbstractFacade<Actividades>{
             if(columna.equals("_coddocente"))
             {
                 Join<Actividades,Docentes> doc = objActividades.join("_coddocente");
-                Expression<String> valor = doc.get("_cedula");
+                Expression<String> valor = doc.get("_cedula" );
                 String cadena = valorBuscar;
                 Predicate condicion = cb.equal(valor, cadena);                
                 cq.where(condicion);

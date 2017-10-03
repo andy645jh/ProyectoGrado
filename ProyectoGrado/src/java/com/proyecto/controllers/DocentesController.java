@@ -274,6 +274,27 @@ public class DocentesController implements Serializable {
             asignacion.setComites(0.0);
         }
         
+        if((tipoContratoOld == 1 && _doc.getTipocontrato()==2) || (tipoContratoOld == 2 && _doc.getTipocontrato()==1)){
+            String cedula=_doc.getCedula()+"";
+            Asignacion asig=_ejbAsignacion.buscarDocente("_coddocente", cedula);
+            
+            if (_doc.getTipocontrato() == 1) {
+                asig.setHorasclase(24.0);
+                asig.setPreparacion(4.0);
+                asig.setCapacitacion(4.0);
+                asig.setSumatoria(32.0);
+            } else {
+                asig.setHorasclase(12.0);
+                asig.setPreparacion(2.0);
+                asig.setCapacitacion(0.0);
+                asig.setSumatoria(14.0);
+            }
+            
+            _ejbAsignacion.actualizar(asig);
+            
+            System.out.println("CAMBIO DE CONTRATO "+asig.getHorasclase());
+        }
+        
         try {
             _ejbFacade.actualizar(_doc);
             _ejbAsignacion.crear(asignacion);
