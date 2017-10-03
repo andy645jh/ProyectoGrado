@@ -62,8 +62,8 @@ public class PdfSevlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Docentes doc = (Docentes) request.getSession().getAttribute("docente");
-        File file = new File("C:\\webapp\\"+doc.getCedula()+"\\reporte_"+ReportController.reportNum+".pdf");
+        Docentes doc = (Docentes) request.getSession().getAttribute("docente");        
+        File file = new File(SessionUtils.getPathReports(doc.getCedula())+"reporte_"+ReportController.reportNum+".pdf");
         response.setHeader("Content-Type", getServletContext().getMimeType(file.getName()));
         response.setHeader("Content-Length", String.valueOf(file.length()));
         response.setHeader("Content-Disposition", "inline; filename=\"reporte.pdf\"");

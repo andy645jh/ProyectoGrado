@@ -8,7 +8,8 @@
     <ui:composition template="/plantilla.xhtml">
         <ui:define name="content">  
             <h:form id="form">
-                <p:panel>                    
+                <p:panel>   
+                    
                     <p:breadCrumb>
                         <p:menuitem url="#"></p:menuitem>
                         <p:menuitem value="#{GeneralTxt.bienvenidos} #{loginController.usuario}" url="#"></p:menuitem>
@@ -67,7 +68,7 @@
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Reportes</f:facet>
-
+                            
                             
                             #{request.setAttribute("tipo", 26)}
                             <a href="${request.contextPath}/pdfServlet" target="_blank">
@@ -80,6 +81,11 @@
                             </a>
  
                         </p:column> 
+                        
+                        <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">Prueba</f:facet>
+                            Prueba #{auditorController.ListaDocs(registro)}
+                        </p:column>
                     </p:dataTable>
                     <p:growl id="mensajes" sticky="true" showDetail="true"/> 
 

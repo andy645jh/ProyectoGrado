@@ -41,7 +41,7 @@ public class ReportController implements Serializable {
 
             //response.setContentType("application/pdf");
             OutputStream os = new FileOutputStream(SessionUtils.getPathReports(doc.getCedula()) + "reporte_54.pdf");          
-            //response.setHeader("Content-Disposition", "inline; filename=reporte_54.pdf");   
+            //response.setHeader("Content-Disposition", "inline; filename=reporte_54.pdf");               
             renderer.createPDF(os);
             os.close();
 
@@ -51,7 +51,7 @@ public class ReportController implements Serializable {
         
         faces.responseComplete();   
         reportNum = 54;
-        System.out.println("Done 54!!");
+        System.out.println("Done 54!! -> "+SessionUtils.getPathReports(doc.getCedula()) + "reporte_54.pdf");
     }
 
     public void crearReport26() {
