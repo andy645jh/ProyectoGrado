@@ -37,8 +37,7 @@
                     </p:panelGrid>
                     <br/>                   
 
-                    <p:dataTable id="listar" value="#{docentesController.getListarDocentesFiltrado()}" var="registro">
-
+                    <p:dataTable id="listar" value="#{docentesController.getListarDocentesFiltrado()}" var="registro">                        
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">#{docentesTxt.cedula}</f:facet>
                                 #{registro.cedula}
@@ -83,8 +82,12 @@
                         </p:column> 
                         
                         <p:column style="width: 10px; text-align: center">
-                            <f:facet name="header">Prueba</f:facet>
-                            Prueba #{auditorController.ListaDocs(registro)}
+                            <f:facet name="header">Prueba</f:facet>                           
+                            <ui:repeat value="#{auditorController.getListaDocs(registro.cedula)}" var="archivo">
+                                <p:commandLink action="#{auditorController.openPdf(registro.cedula,archivo)}">#{archivo}</p:commandLink>
+                            </ui:repeat>    
+                            
+                            <p:outputLabel rendered="#{auditorController.getListaDocs(registro.cedula).size()==0}">No hay</p:outputLabel>
                         </p:column>
                     </p:dataTable>
                     <p:growl id="mensajes" sticky="true" showDetail="true"/> 
