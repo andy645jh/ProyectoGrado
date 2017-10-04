@@ -24,9 +24,11 @@ import org.xhtmlrenderer.pdf.ITextRenderer;
 public class ReportController implements Serializable {
     
     public static int reportNum;
+    private int _cedula;
     
     public void crearReport() throws IOException{
         Docentes doc = (Docentes) SessionUtils.get("docente");
+        _cedula = doc.getCedula();
         FacesContext faces = FacesContext.getCurrentInstance();
         ExternalContext external = faces.getExternalContext();
         HttpSession session = (HttpSession) external.getSession(true);
@@ -100,4 +102,8 @@ public class ReportController implements Serializable {
                 "/faces/reportes/";
         return uri;
     }  
+
+    public int getCedula() {
+        return _cedula;
+    }
 }
