@@ -68,11 +68,11 @@
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Reportes</f:facet>
                                   
-                            <a href="#{request.contextPath}/pdfServlet?cedula=#{registro.cedula}&tipo=26" target="_blank">
+                            <a href="#{request.contextPath}/pdfServlet" target="_blank">
                                 <p:button icon="ui-icon-person" title="RDC-26" style="margin-right: 10px;" />
                             </a>
                                                         
-                            <a href="#{request.contextPath}/pdfServlet?cedula=#{registro.cedula}&tipo=54" target="_blank">
+                            <a href="#{request.contextPath}/pdfServlet" target="_blank">
                                 <p:button icon="ui-icon-document" title="RDC-54" style="margin-right: 10px;" rendered="#{registro.tipocontrato == 1}"/>
                             </a>
  

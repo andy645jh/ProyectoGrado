@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.io.Serializable;
 import java.net.URL;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -19,22 +20,23 @@ import org.xhtmlrenderer.pdf.ITextRenderer;
  *
  * @author User
  */
-@ViewScoped
+@SessionScoped
 @ManagedBean
 public class ReportController implements Serializable {
-    
-    public static int reportNum;
-    private int _cedula;
+      
+    private String _cedula;
+    private String _archivo;
     
     public void crearReport() throws IOException{
         Docentes doc = (Docentes) SessionUtils.get("docente");
-        _cedula = doc.getCedula();
+        _cedula = doc.getCedula()+"";
         FacesContext faces = FacesContext.getCurrentInstance();
         ExternalContext external = faces.getExternalContext();
         HttpSession session = (HttpSession) external.getSession(true);
         String url = getBase() + "reporte_54.xhtml;jsessionid=" + session.getId();
         HttpServletResponse response = (HttpServletResponse) external.getResponse();
-
+        String ruta ="";
+        
         try {         
             
             ITextRenderer renderer = new ITextRenderer();
@@ -42,7 +44,9 @@ public class ReportController implements Serializable {
             renderer.layout();            
 
             //response.setContentType("application/pdf");
-            OutputStream os = new FileOutputStream(SessionUtils.getPathReports(doc.getCedula()) + "reporte_54.pdf");          
+            _archivo = "reporte_54_"+SessionUtils.getYear()+"_"+SessionUtils.getSemestre()+".pdf";
+            ruta = SessionUtils.getPathReports(doc.getCedula()) + _archivo;
+            OutputStream os = new FileOutputStream(ruta);          
             //response.setHeader("Content-Disposition", "inline; filename=reporte_54.pdf");               
             renderer.createPDF(os);
             os.close();
@@ -52,36 +56,34 @@ public class ReportController implements Serializable {
         }
         
         faces.responseComplete();   
-        reportNum = 54;
-        System.out.println("Done 54!! -> "+SessionUtils.getPathReports(doc.getCedula()) + "reporte_54.pdf");
+        System.out.println("Done 54!! -> "+ruta);
     }
 
     public void crearReport26() {
         Docentes doc = (Docentes) SessionUtils.get("docente");
+        _cedula = doc.getCedula()+"";
         FacesContext faces = FacesContext.getCurrentInstance();
         ExternalContext external = faces.getExternalContext();
         HttpSession session = (HttpSession) external.getSession(true);
-        HttpServletResponse response = (HttpServletResponse) external.getResponse();
-        //String url = "http://localhost:8082/ProyectoGradox/faces/test/test_26.xhtml;jsessionid=" + session.getId();        
+        HttpServletResponse response = (HttpServletResponse) external.getResponse();        
         String url = getBase() + "reporte_26.xhtml;jsessionid=" + session.getId();
-
+        String ruta ="";
         try {
             ITextRenderer renderer = new ITextRenderer();
             renderer.setDocument(new URL(url).toString());
             renderer.layout();           
-
-            //response.setContentType("application/pdf");
-            OutputStream os = new FileOutputStream(SessionUtils.getPathReports(doc.getCedula()) + "reporte_26.pdf");
-            //response.setHeader("Content-Disposition", "inline; filename\"print=file=file-print.dpf\"");
+            _archivo = "reporte_26_"+SessionUtils.getYear()+"_"+SessionUtils.getSemestre()+".pdf";
+            ruta = SessionUtils.getPathReports(doc.getCedula()) + _archivo;
+            OutputStream os = new FileOutputStream(ruta);
+           
             renderer.createPDF(os);            
             os.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        faces.responseComplete();
-        reportNum = 26;
-        System.out.println("Done 26!!");
+        faces.responseComplete();       
+        System.out.println("Done 26!! -> "+ruta);
     }
     
     
@@ -102,8 +104,20 @@ public class ReportController implements Serializable {
                 "/faces/reportes/";
         return uri;
     }  
-
-    public int getCedula() {
+/*
+    public void openPdf(String cedula, String archivo) throws IOException{
+        System.out.println("Cedula: " + _cedula + " -- Nombre: " + _archivo);
+        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();   
+        SessionUtils.add("cedula", cedula);
+        SessionUtils.add("archivo", archivo);
+        ec.redirect(ec.getRequestContextPath() +"/pdfServlet");
+    }
+    */
+    public String getCedula() {
         return _cedula;
+    }
+
+    public String getArchivo() {
+        return _archivo;
     }
 }

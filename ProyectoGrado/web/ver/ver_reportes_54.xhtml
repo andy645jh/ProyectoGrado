@@ -24,7 +24,9 @@
             <a href="${request.contextPath}/pdfServlet" target="_blank">
                 <p:button value="Descargar" style="margin-right: 10px;" />
             </a>           
-            
+            <p:commandLink action="#{auditorController.openPdf(reportController.cedula,reportController.archivo)}" target="_blank">
+                <p:button value="Descargar 3" style="margin-right: 10px;" />                     
+            </p:commandLink>   
         </ui:define>
 
     </ui:composition>
