@@ -26,7 +26,7 @@ public class AuditorController implements Serializable {
     public List<String> getListaDocs(int cedula) {
         Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         //int cedula = Integer.parseInt(params.get("doc"));
-        System.out.println("Listado de Docs");
+        //System.out.println("Listado de Docs");
         //int cedula = doc.getCedula();
         File f = new File(SessionUtils.getPathReports(cedula));
         File[] files = f.listFiles();
@@ -40,7 +40,7 @@ public class AuditorController implements Serializable {
                     docs.add(fTemp.getName());
                 }
             }
-            System.out.println("Archivo: " + extension);
+            //System.out.println("Archivo: " + extension);
 
         }
         return docs;
