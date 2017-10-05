@@ -70,13 +70,13 @@ public class PdfSevlet extends HttpServlet {
         System.out.println("Servlet Cedula: "+cedula);
         System.out.println("Servlet Archivo: "+archivo);
         
-        Docentes doc = (Docentes) request.getSession().getAttribute("docente");        
-        File file = new File(SessionUtils.getPathReports(doc.getCedula(),request) + archivo);
+        //Docentes doc = (Docentes) request.getSession().getAttribute("docente");        
+        File file = new File(SessionUtils.getPathReports(Integer.parseInt(cedula),request) + archivo);
         response.setHeader("Content-Type", getServletContext().getMimeType(file.getName()));
         response.setHeader("Content-Length", String.valueOf(file.length()));
         response.setHeader("Content-Disposition", "inline; filename=\"reporte.pdf\"");
         Files.copy(file.toPath(), response.getOutputStream());
-        System.out.println("Llego aqui!! -> "+request.getAttribute("tipo"));   
+        System.out.println("Llego aqui!!");   
     }
 
     /**

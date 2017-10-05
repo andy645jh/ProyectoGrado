@@ -9,7 +9,7 @@
         <ui:define name="content">  
             <h:form id="form">
                 <p:panel>   
-                    
+
                     <p:breadCrumb>
                         <p:menuitem url="#"></p:menuitem>
                         <p:menuitem value="#{GeneralTxt.bienvenidos} #{loginController.usuario}" url="#"></p:menuitem>
@@ -67,25 +67,25 @@
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Reportes</f:facet>
-                                  
+
                             <a href="#{request.contextPath}/pdfServlet" target="_blank">
                                 <p:button icon="ui-icon-person" title="RDC-26" style="margin-right: 10px;" />
                             </a>
-                                                        
+
                             <a href="#{request.contextPath}/pdfServlet" target="_blank">
                                 <p:button icon="ui-icon-document" title="RDC-54" style="margin-right: 10px;" rendered="#{registro.tipocontrato == 1}"/>
                             </a>
- 
+
                         </p:column> 
-                        
+
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Prueba</f:facet>                           
                             <ui:repeat value="#{auditorController.getListaDocs(registro.cedula)}" var="archivo">
-                                <p:commandLink action="#{auditorController.openPdf(registro.cedula,archivo)}" target="_blank">
-                                    #{archivo}                                    
-                                </p:commandLink>
+                                <h:outputLink value="#{auditorController.openPdf(registro.cedula,archivo)}" target="_blank">
+                                    <p:button value="#{archivo}" style="margin-right: 10px;" />
+                                </h:outputLink>
                             </ui:repeat>    
-                            
+
                             <p:outputLabel rendered="#{auditorController.getListaDocs(registro.cedula).size()==0}">No hay</p:outputLabel>
                         </p:column>
                     </p:dataTable>

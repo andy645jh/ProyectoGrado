@@ -19,13 +19,10 @@
 
         <ui:define name="boton">   
             #{reportController.crearReport26()}
-            <a href="#{request.contextPath}/pdfServlet" target="_blank">
-                <p:button value="#{reportController.cedula} - #{reportController.archivo}" style="margin-right: 10px;" />
-            </a>   
-            <p:commandLink action="#{auditorController.openPdf(reportController.cedula,reportController.archivo)}" target="_blank">
-                <p:button value="Descargar 3" style="margin-right: 10px;" />                     
-            </p:commandLink>            
-           
+            <h:outputLink value="#{auditorController.openPdf(reportController.cedula,reportController.archivo)}" target="_blank">
+                <p:button value="Descargar" style="margin-right: 10px;" />
+            </h:outputLink>
+
         </ui:define>
     </ui:composition>
 

@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import org.primefaces.context.RequestContext;
 
 @ManagedBean
 @SessionScoped
@@ -45,11 +46,13 @@ public class AuditorController implements Serializable {
         return docs;
     }
 
-    public void openPdf(String cedula, String archivo) throws IOException{
+    public String openPdf(String cedula, String archivo) throws IOException{
         System.out.println("Cedula: " + cedula + " -- Nombre: " + archivo);
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();   
         SessionUtils.add("cedula", cedula);
-        SessionUtils.add("archivo", archivo);
-        ec.redirect(ec.getRequestContextPath() +"/pdfServlet");
+        SessionUtils.add("archivo", archivo);   
+        
+        //ec.redirect(ec.getRequestContextPath() +"/pdfServlet");
+        return ec.getRequestContextPath() +"/pdfServlet";
     }
 }
