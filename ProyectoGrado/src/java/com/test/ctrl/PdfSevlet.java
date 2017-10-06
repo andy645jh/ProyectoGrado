@@ -67,6 +67,8 @@ public class PdfSevlet extends HttpServlet {
         request.getSession().removeAttribute("cedula");
         request.getSession().removeAttribute("archivo");
         
+        /*String cedula = request.getAttribute("cedula").toString();
+        String archivo = request.getAttribute("archivo").toString();*/
         System.out.println("Servlet Cedula: "+cedula);
         System.out.println("Servlet Archivo: "+archivo);
         

@@ -30,29 +30,47 @@ public class AuditorController implements Serializable {
         //int cedula = doc.getCedula();
         File f = new File(SessionUtils.getPathReports(cedula));
         File[] files = f.listFiles();
-        List<String> docs = new ArrayList();
+        _listaDocs = new ArrayList();
         for (File fTemp : files) {
             String extension = "";
 
             if (fTemp.getName().lastIndexOf(".") != -1 && fTemp.getName().lastIndexOf(".") != 0) {
                 extension = fTemp.getName().substring(fTemp.getName().lastIndexOf(".") + 1);
                 if (extension.equals("pdf")) {
-                    docs.add(fTemp.getName());
+                    _listaDocs.add(fTemp.getName());
                 }
             }
             //System.out.println("Archivo: " + extension);
 
         }
-        return docs;
+        return _listaDocs;
     }
 
-    public String openPdf(String cedula, String archivo) throws IOException{
-        System.out.println("Cedula: " + cedula + " -- Nombre: " + archivo);
+    public String openPdf(String cedula, int archivo){
+        
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();   
+        Map<String, String> params =ec.getRequestParameterMap();
+        /*String cedula = params.get("cedula");
+        String archivo = params.get("archivo");*/
+        System.out.println("Cedula: " + cedula + " -- Nombre: " + _listaDocs.get(archivo));
+        SessionUtils.add("cedula", cedula);
+        SessionUtils.add("archivo", _listaDocs.get(archivo));   
+        
+        //ec.redirect(ec.getRequestContextPath() +"/pdfServlet");
+        return ec.getRequestContextPath() +"/pdfServlet";
+    }
+    
+    /*public String openPdf() {
+        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext(); 
+        Map<String, String> params =ec.getRequestParameterMap();
+        String cedula = params.get("cedula");
+        String archivo = params.get("archivo");
+        System.out.println("Cedula 1: " + cedula + " -- Nombre 1: " + archivo);
+          
         SessionUtils.add("cedula", cedula);
         SessionUtils.add("archivo", archivo);   
         
         //ec.redirect(ec.getRequestContextPath() +"/pdfServlet");
         return ec.getRequestContextPath() +"/pdfServlet";
-    }
+    }*/
 }

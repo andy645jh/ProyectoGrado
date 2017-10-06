@@ -80,8 +80,9 @@
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Prueba</f:facet>                           
-                            <ui:repeat value="#{auditorController.getListaDocs(registro.cedula)}" var="archivo">
-                                <h:outputLink value="#{auditorController.openPdf(registro.cedula,archivo)}" target="_blank">
+                            <ui:repeat value="#{auditorController.getListaDocs(registro.cedula)}" var="archivo" varStatus="status">
+
+                                <h:outputLink value="#{auditorController.openPdf(registro.cedula,status.index)}" target="_blank">                                      
                                     <p:button value="#{archivo}" style="margin-right: 10px;" />
                                 </h:outputLink>
                             </ui:repeat>    
