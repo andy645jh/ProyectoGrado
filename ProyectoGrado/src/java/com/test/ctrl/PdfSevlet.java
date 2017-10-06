@@ -36,19 +36,11 @@ public class PdfSevlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet PdfSevlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet PdfSevlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        
+        String cedula = request.getAttribute("cedula")+"";
+        String archivo = request.getAttribute("archivo")+"";
+        System.out.println("Servlet Cedula: "+cedula);
+        System.out.println("Servlet Archivo: "+archivo);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -62,25 +54,26 @@ public class PdfSevlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String cedula = request.getSession().getAttribute("cedula").toString();
-        String archivo = request.getSession().getAttribute("archivo").toString();
-        request.getSession().removeAttribute("cedula");
-        request.getSession().removeAttribute("archivo");
+        /*String cedula = request.getSession().getAttribute("cedula").toString();
+        String archivo = request.getSession().getAttribute("archivo").toString();*/
+        /*request.getSession().removeAttribute("cedula");
+        request.getSession().removeAttribute("archivo");*/
         
-        /*String cedula = request.getAttribute("cedula").toString();
-        String archivo = request.getAttribute("archivo").toString();*/
-        System.out.println("Servlet Cedula: "+cedula);
+        String cedula = request.getAttribute("cedula")+"";
+        String archivo = request.getAttribute("archivo")+"";
+        System.out.println("Servlet Cedula: "+request.getAttribute("cedula"));
         System.out.println("Servlet Archivo: "+archivo);
-        
-        //Docentes doc = (Docentes) request.getSession().getAttribute("docente");        
-        File file = new File(SessionUtils.getPathReports(Integer.parseInt(cedula),request) + archivo);
+          
+        /*File file = new File(SessionUtils.getPathReports(Integer.parseInt(cedula),request) + archivo);
         response.setHeader("Content-Type", getServletContext().getMimeType(file.getName()));
         response.setHeader("Content-Length", String.valueOf(file.length()));
         response.setHeader("Content-Disposition", "inline; filename=\"reporte.pdf\"");
-        Files.copy(file.toPath(), response.getOutputStream());
+        Files.copy(file.toPath(), response.getOutputStream());*/
         System.out.println("Llego aqui!!");   
+        //RequestDispatcher view = getServletContext().getRequestDispatcher("/UseBean.jsp"); 
+        //view.forward(request,response); 
     }
-
+     
     /**
      * Handles the HTTP <code>POST</code> method.
      *

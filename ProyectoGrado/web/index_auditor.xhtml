@@ -79,12 +79,15 @@
                         </p:column> 
 
                         <p:column style="width: 10px; text-align: center">
-                            <f:facet name="header">Prueba</f:facet>                           
+                            <f:facet name="header">Prueba</f:facet>   
+
                             <ui:repeat value="#{auditorController.getListaDocs(registro.cedula)}" var="archivo" varStatus="status">
 
-                                <h:outputLink value="#{auditorController.openPdf(registro.cedula,status.index)}" target="_blank">                                      
-                                    <p:button value="#{archivo}" style="margin-right: 10px;" />
-                                </h:outputLink>
+                                <form action="#{request.contextPath}/pdfServlet" method="GET" target="_blank">
+                                    <input type="hidden" name="cedula" value="456"/>
+                                    <input type="hidden" name="archivo" value="10"/>  
+                                    <input type="submit" value="#{archivo}" style="margin-right: 10px;" />                                                                      
+                                </form>
                             </ui:repeat>    
 
                             <p:outputLabel rendered="#{auditorController.getListaDocs(registro.cedula).size()==0}">No hay</p:outputLabel>
