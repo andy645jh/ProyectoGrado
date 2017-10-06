@@ -24,7 +24,7 @@
 
                     <p:outputLabel value="#{productosTxt.actividad}  " for="codact" />
                     <p:selectOneMenu id="codact" value="#{productosController.codigo}"> 
-                        <f:selectItems value="#{actividadesController.comboFiltrado('Selecione un opcion')}" />
+                        <f:selectItems value="#{actividadesController.comboActividadesRestantes('Selecione un opcion')}" />
                     </p:selectOneMenu>
 
                     <f:facet name="footer">
