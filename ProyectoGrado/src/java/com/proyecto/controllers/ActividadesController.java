@@ -4,11 +4,13 @@ import com.proyecto.utilities.Formulario;
 import com.proyecto.utilities.Mensajes;
 import com.proyecto.facades.ActividadesFacade;
 import com.proyecto.facades.AsignacionFacade;
+import com.proyecto.facades.ProductosFacade;
 import com.proyecto.facades.TipoModalidadesFacade;
 import com.proyecto.persistences.Actividades;
 import com.proyecto.persistences.Asignacion;
 import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Docentes;
+import com.proyecto.persistences.Productos;
 import com.proyecto.persistences.TipoModalidades;
 import com.proyecto.utilities.SessionUtils;
 import java.io.Serializable;
@@ -43,6 +45,9 @@ public class ActividadesController implements Serializable {
 
     @EJB
     private AsignacionFacade _asignacionFacade;
+    
+    @EJB
+    private ProductosFacade _productosFacade;
 
     private Actividades _obj;
 
@@ -128,6 +133,43 @@ public class ActividadesController implements Serializable {
 
     public SelectItem[] combo(String texto) {
         return Formulario.addObject(_ejbFacade.listado(), texto);
+    }
+   
+    
+    public SelectItem[] comboActividadesRestantes(String texto) {
+        
+        Docentes doc = (Docentes) SessionUtils.get("docente");
+        cedula = doc.getCedula() + "";
+        List<Actividades> lstActividades= _ejbFacade.buscarCampo("_coddocente", cedula);
+        List<Productos> lstProductos = _productosFacade.buscarCampo("_coddocente", cedula);
+        List<Actividades> lstActFaltantes= new ArrayList<>();
+        SelectItem[] listaItems = new SelectItem[lstActividades.size()];
+        
+        
+        for(int i=0; i<lstActividades.size(); i++){  
+            boolean existe=false;
+            
+            SelectItem item = new SelectItem(lstActividades.get(i).getCodactividad(), lstActividades.get(i).getNombre());
+            listaItems[i] = item;
+            
+            for(int j=0; j<lstProductos.size(); j++){                
+                if(lstProductos.get(j).getCodactividad().getCodactividad()!=lstActividades.get(i).getCodactividad()){
+                    existe=false;
+                    
+                }else{
+                    existe=true;
+                    
+                }
+            }
+            
+            if(existe==true){
+                System.out.println("ACTIVIDADES Q NO ESTAN "+lstActividades.get(i).getCodactividad());
+            }
+        }
+        
+        
+        
+        return listaItems;
     }
 
     public SelectItem[] comboFiltrado(String texto) {
