@@ -35,12 +35,8 @@ public class PdfSevlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        String cedula = request.getAttribute("cedula")+"";
-        String archivo = request.getAttribute("archivo")+"";
-        System.out.println("Servlet Cedula: "+cedula);
-        System.out.println("Servlet Archivo: "+archivo);
+            throws ServletException, IOException {        
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -54,24 +50,18 @@ public class PdfSevlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        /*String cedula = request.getSession().getAttribute("cedula").toString();
-        String archivo = request.getSession().getAttribute("archivo").toString();*/
-        /*request.getSession().removeAttribute("cedula");
-        request.getSession().removeAttribute("archivo");*/
-        
-        String cedula = request.getAttribute("cedula")+"";
-        String archivo = request.getAttribute("archivo")+"";
-        System.out.println("Servlet Cedula: "+request.getAttribute("cedula"));
+        String cedula = request.getSession().getAttribute("cedula").toString();
+        String archivo = request.getSession().getAttribute("archivo").toString();
+       
+        System.out.println("Servlet Cedula: "+cedula);
         System.out.println("Servlet Archivo: "+archivo);
           
-        /*File file = new File(SessionUtils.getPathReports(Integer.parseInt(cedula),request) + archivo);
+        File file = new File(SessionUtils.getPathReports(Integer.parseInt(cedula),request) + archivo);
         response.setHeader("Content-Type", getServletContext().getMimeType(file.getName()));
         response.setHeader("Content-Length", String.valueOf(file.length()));
         response.setHeader("Content-Disposition", "inline; filename=\"reporte.pdf\"");
-        Files.copy(file.toPath(), response.getOutputStream());*/
+        Files.copy(file.toPath(), response.getOutputStream());
         System.out.println("Llego aqui!!");   
-        //RequestDispatcher view = getServletContext().getRequestDispatcher("/UseBean.jsp"); 
-        //view.forward(request,response); 
     }
      
     /**

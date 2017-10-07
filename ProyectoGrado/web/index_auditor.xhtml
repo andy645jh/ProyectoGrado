@@ -81,13 +81,8 @@
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Prueba</f:facet>   
 
-                            <ui:repeat value="#{auditorController.getListaDocs(registro.cedula)}" var="archivo" varStatus="status">
-
-                                <form action="#{request.contextPath}/pdfServlet" method="GET" target="_blank">
-                                    <input type="hidden" name="cedula" value="456"/>
-                                    <input type="hidden" name="archivo" value="10"/>  
-                                    <input type="submit" value="#{archivo}" style="margin-right: 10px;" />                                                                      
-                                </form>
+                            <ui:repeat value="#{auditorController.getListaDocs(registro.cedula)}" var="archivo" varStatus="status">                                
+                                <p:commandButton value="#{archivo}" onclick="this.form.target = '_blank'" actionListener="#{auditorController.openPdf(registro.cedula, archivo)}" ajax="false" />
                             </ui:repeat>    
 
                             <p:outputLabel rendered="#{auditorController.getListaDocs(registro.cedula).size()==0}">No hay</p:outputLabel>
