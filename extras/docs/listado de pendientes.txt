@@ -1,5 +1,4 @@
 - Evitar que un docente pueda abrir la carpeta de otro docente 
-- Al crear los productos solo debe salir la lista de las actividaes que no se les ha asignado un producto
 - listado del los RDCs en el  auditor
 - pagina de inicio para el docente y el coordinador
 - Buscar una manera facil de registrar las semanas del semestre

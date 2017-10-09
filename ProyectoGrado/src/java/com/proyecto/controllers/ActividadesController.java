@@ -31,6 +31,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
+import javax.sound.midi.Soundbank;
 import org.primefaces.context.RequestContext;
 
 @ManagedBean
@@ -45,7 +46,7 @@ public class ActividadesController implements Serializable {
 
     @EJB
     private AsignacionFacade _asignacionFacade;
-    
+
     @EJB
     private ProductosFacade _productosFacade;
 
@@ -84,9 +85,9 @@ public class ActividadesController implements Serializable {
         }
         return _obj;
     }
-    
-    public void mostrarMensaje() {           
-        if(message!=null){
+
+    public void mostrarMensaje() {
+        if (message != null) {
             System.out.println("ES DIFERENTE DE NULL");
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, message);
@@ -134,42 +135,35 @@ public class ActividadesController implements Serializable {
     public SelectItem[] combo(String texto) {
         return Formulario.addObject(_ejbFacade.listado(), texto);
     }
-   
-    
+
     public SelectItem[] comboActividadesRestantes(String texto) {
-        
+
         Docentes doc = (Docentes) SessionUtils.get("docente");
         cedula = doc.getCedula() + "";
-        List<Actividades> lstActividades= _ejbFacade.buscarCampo("_coddocente", cedula);
+        List<Actividades> lstActividades = _ejbFacade.buscarCampo("_coddocente", cedula);
         List<Productos> lstProductos = _productosFacade.buscarCampo("_coddocente", cedula);
-        List<Actividades> lstActFaltantes= new ArrayList<>();
-        SelectItem[] listaItems = new SelectItem[lstActividades.size()];
-        
-        
-        for(int i=0; i<lstActividades.size(); i++){  
-            boolean existe=false;
-            
-            SelectItem item = new SelectItem(lstActividades.get(i).getCodactividad(), lstActividades.get(i).getNombre());
-            listaItems[i] = item;
-            
-            for(int j=0; j<lstProductos.size(); j++){                
-                if(lstProductos.get(j).getCodactividad().getCodactividad()!=lstActividades.get(i).getCodactividad()){
-                    existe=false;
-                    
-                }else{
-                    existe=true;
-                    
-                }
-            }
-            
-            if(existe==true){
-                System.out.println("ACTIVIDADES Q NO ESTAN "+lstActividades.get(i).getCodactividad());
+        List<Actividades> lstActFaltantes = new ArrayList<>();
+        SelectItem[] lista =new SelectItem[1];;
+
+        for (int i = 0; i < lstActividades.size(); i++) {
+            if (_productosFacade.buscarCampo("_codactividad", lstActividades.get(i).getCodactividad() + "").isEmpty()) {
+                lstActFaltantes.add(lstActividades.get(i));
+                System.out.println("NO ESTA "+lstActividades.get(i).getCodactividad());
             }
         }
+
+        if (!lstActFaltantes.isEmpty()) {
+            SelectItem[] listaItems = new SelectItem[lstActFaltantes.size()];
+            for (int i = 0; i < lstActFaltantes.size(); i++) {
+                SelectItem item = new SelectItem(lstActFaltantes.get(i).getCodactividad(), lstActFaltantes.get(i).getNombre());
+                listaItems[i] = item;
+            }
+            return listaItems;
+        }
+            SelectItem item = new SelectItem(0, "No hay actividades");
+            lista[0] = item;
         
-        
-        
-        return listaItems;
+        return lista;
     }
 
     public SelectItem[] comboFiltrado(String texto) {
@@ -282,15 +276,13 @@ public class ActividadesController implements Serializable {
         Mensajes.error(titulo, detalle);
     }
 
-
-
     public void actualizar() {
         String titulo, detalle;
         TipoModalidades modalidad = _modalidadFacade.buscar(_codigo);
         Docentes d = (Docentes) SessionUtils.get("docente");
         System.out.println("EDITAR DOCENTE   " + d.getCedula());
         _obj.setCodtipo(modalidad);
-        
+
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
@@ -333,20 +325,20 @@ public class ActividadesController implements Serializable {
 
     public double getMax() {
         _max = calculateMax();
-        System.out.println("Max Antes: "+_max);
+        System.out.println("Max Antes: " + _max);
         _max -= acumHorasPorTipo(_codigo);
-        System.out.println("Max Despues: "+_max);
+        System.out.println("Max Despues: " + _max);
         return _max;
     }
 
     private double calculateMax() {
-        System.out.println("Codigo: "+_codigo);
+        System.out.println("Codigo: " + _codigo);
         switch (_codigo) {
             case 1:
-                return _asignacion.getSocial();                
+                return _asignacion.getSocial();
 
             case 4:
-                return _asignacion.getComites();                
+                return _asignacion.getComites();
 
             case 5:
                 return _asignacion.getInvestigacion();
@@ -358,7 +350,7 @@ public class ActividadesController implements Serializable {
                 return _asignacion.getPlaneacion();
 
             case 11:
-                return _asignacion.getVirtualidad();             
+                return _asignacion.getVirtualidad();
         }
         return 0;
     }
