@@ -19,10 +19,7 @@
 
         <ui:define name="boton">   
             #{reportController.crearReport26()}
-            <h:outputLink value="#{auditorController.openPdf(reportController.cedula,reportController.archivo)}" target="_blank">
-                <p:button value="Descargar" style="margin-right: 10px;" />
-            </h:outputLink>
-
+            <p:commandButton value="Descargar" onclick="this.form.target = '_blank'" actionListener="#{auditorController.openPdf(reportController.cedula, reportController.archivo)}" ajax="false" />
         </ui:define>
     </ui:composition>
 
