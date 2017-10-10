@@ -80,18 +80,29 @@ public class AsignacionController implements Serializable {
         if (_listadoAsign == null) {
             _listadoAsign = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(_coordinacion.getCodcoordinacion()));
             _listSum = new ArrayList<>();
-
+            List<Asignacion> listaRemover = new ArrayList<Asignacion>();
+            
             _totalSum =0;
             for (Asignacion asigTemp : _listadoAsign) {    
-                /*if(asigTemp.getCoddocente().getTipocontrato()==2 || asigTemp.getCoddocente().getTipocontrato()==1)
+                System.out.println("Habilitado: "+ asigTemp.getCoddocente().getInhabilitar());
+                if((asigTemp.getCoddocente().getTipocontrato()==2 || asigTemp.getCoddocente().getTipocontrato()==1) && asigTemp.getCoddocente().getInhabilitar()==0)
                 {
                     _totalSum += asigTemp.getSumatoria();
                     _listSum.add(asigTemp.getSumatoria());
                 }else{
-                    _listadoAsign.remove(asigTemp);
-                }*/
-                _totalSum += asigTemp.getSumatoria();
-                _listSum.add(asigTemp.getSumatoria());
+                    listaRemover.add(asigTemp);
+                }
+               // _totalSum += asigTemp.getSumatoria();
+                //_listSum.add(asigTemp.getSumatoria());
+            }
+            
+            for (Asignacion asignacion : listaRemover) {
+                for (int i = 0; i < _listadoAsign.size(); i++) {
+                    if(_listadoAsign.get(i)==asignacion)
+                    {                        
+                        _listadoAsign.remove(asignacion);
+                    }
+                }
             }
         }
         calculate();
