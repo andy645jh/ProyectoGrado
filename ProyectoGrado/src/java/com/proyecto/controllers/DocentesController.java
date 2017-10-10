@@ -64,9 +64,9 @@ public class DocentesController implements Serializable {
     private StreamedContent _imageDoc;
     @EJB
     private AsignacionFacade _ejbAsignacion;
-    private int tipoContratoOld=0;
-    private Asignacion asignacion= new Asignacion();
-    
+    private int tipoContratoOld = 0;
+    private Asignacion asignacion = new Asignacion();
+
     public DocentesController() {
     }
 
@@ -115,14 +115,15 @@ public class DocentesController implements Serializable {
 
         String titulo, detalle;
         Docentes doc = (Docentes) SessionUtils.get("docente");
-        
+
         _doc.setCodcoordinacion(doc.getCodcoordinacion());
-        
-        if (_doc.getTipocontrato() == 1 || _doc.getTipocontrato() == 2) {          
-            
-            asignacion.setCoddocente(_doc);
-            asignacion.setCodcoordinacion(doc.getCodcoordinacion());
-            if (_doc.getTipocontrato() == 1) {
+
+        //if (_doc.getTipocontrato() == 1 || _doc.getTipocontrato() == 2) {          
+        asignacion.setCoddocente(_doc);
+        asignacion.setCodcoordinacion(doc.getCodcoordinacion());
+        configurarAsignacion(_doc.getTipocontrato());
+
+        /*if (_doc.getTipocontrato() == 1) {
                 asignacion.setHorasclase(24.0);
                 asignacion.setPreparacion(4.0);
                 asignacion.setCapacitacion(4.0);
@@ -139,18 +140,16 @@ public class DocentesController implements Serializable {
             asignacion.setOda(0.0);
             asignacion.setPlaneacion(0.0);
             asignacion.setVirtualidad(0.0);
-            asignacion.setComites(0.0);
-            
-        }
-
+            asignacion.setComites(0.0);*/
+        //}
         try {
             _ejbFacade.crear(_doc);
-            
-            if(asignacion.getCoddocente() != null){
+
+            if (asignacion.getCoddocente() != null) {
                 _ejbAsignacion.crear(asignacion);
             }
-            System.out.println("SE HA CREADO EL DOCENTE EN ASIGNACION "+_doc.getCedula());
-            
+            System.out.println("SE HA CREADO EL DOCENTE EN ASIGNACION " + _doc.getCedula());
+
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("guardaExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
@@ -193,15 +192,13 @@ public class DocentesController implements Serializable {
 
     public void cambiarEstado(Docentes faceObj) {
         String titulo, detalle;
-        
-        if(faceObj.getInhabilitar()==0){
+
+        if (faceObj.getInhabilitar() == 0) {
             faceObj.setInhabilitar(1);
-        }else if(faceObj.getInhabilitar()==1){
+        } else if (faceObj.getInhabilitar() == 1) {
             faceObj.setInhabilitar(0);
         }
-        
-        
-        
+
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarExitoso");
@@ -219,7 +216,7 @@ public class DocentesController implements Serializable {
     public void abrirActualizar(Docentes objtemp) {
 
         _doc = objtemp;
-        tipoContratoOld=_doc.getTipocontrato();
+        tipoContratoOld = _doc.getTipocontrato();
         _codCoord = _doc.getCodcoordinacion().getCodcoordinacion();
         Map<String, Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
@@ -242,16 +239,18 @@ public class DocentesController implements Serializable {
 
     public void actualizar() {
         String titulo, detalle;
-        Docentes doc = (Docentes) SessionUtils.get("docente");
-        _doc.setCodcoordinacion(doc.getCodcoordinacion());
-        System.out.println("ACTUALIZARRRRRRRRR ");
+        Docentes userSession = (Docentes) SessionUtils.get("docente");
+        _doc.setCodcoordinacion(userSession.getCodcoordinacion());
+        System.out.println("DocentesController.Actualizar cedula: "+_doc.getCedula());
 
         if (foto != null) {
             System.out.println("ENTRO A LA FUNCION ACTUALIZAR " + foto.getFileName());
             _doc.setFoto(foto.getFileName());
         }
         
-        if((tipoContratoOld == 3 && _doc.getTipocontrato()==1) || (tipoContratoOld == 3 && _doc.getTipocontrato()==2)){
+        asignacion = _ejbAsignacion.buscarDocente("_coddocente", _doc.getCedula() + "");
+        configurarAsignacion(_doc.getTipocontrato());
+        /*if((tipoContratoOld == 3 && _doc.getTipocontrato()==1) || (tipoContratoOld == 3 && _doc.getTipocontrato()==2)){
             asignacion.setCoddocente(_doc);
             asignacion.setCodcoordinacion(doc.getCodcoordinacion());
             if (_doc.getTipocontrato() == 1) {
@@ -293,8 +292,8 @@ public class DocentesController implements Serializable {
             _ejbAsignacion.actualizar(asig);
             
             System.out.println("CAMBIO DE CONTRATO "+asig.getHorasclase());
-        }
-        
+        }*/
+
         try {
             _ejbFacade.actualizar(_doc);
             _ejbAsignacion.crear(asignacion);
@@ -313,6 +312,30 @@ public class DocentesController implements Serializable {
 
         RequestContext context = RequestContext.getCurrentInstance();
         context.closeDialog(null);
+    }
+
+    private void configurarAsignacion(int tipoContrato) {
+        //tiempo completo=1
+        //medio tiempo=2
+        //catedra=3        
+        if (tipoContrato == 1) {
+            asignacion.setHorasclase(24.0);
+            asignacion.setPreparacion(4.0);
+            asignacion.setCapacitacion(4.0);
+            asignacion.setSumatoria(32.0);
+        } else {
+            asignacion.setHorasclase(12.0);
+            asignacion.setPreparacion(2.0);
+            asignacion.setCapacitacion(0.0);
+            asignacion.setSumatoria(14.0);
+        }
+        /*asignacion.setColectivo(0.0);
+        asignacion.setInvestigacion(0.0);
+        asignacion.setSocial(0.0);
+        asignacion.setOda(0.0);
+        asignacion.setPlaneacion(0.0);
+        asignacion.setVirtualidad(0.0);
+        asignacion.setComites(0.0);*/
     }
 
     public void resetear() {

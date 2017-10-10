@@ -87,9 +87,10 @@ public class AsignacionFacade extends AbstractFacade<Asignacion> {
         Root<Asignacion> objAsignacion = cq.from(Asignacion.class);
         
         if(!valorBuscar.equals("") && !columna.equals(""))
-        {            
+        {                        
             if(columna.equals("_coddocente"))
             {
+                System.out.println("AsignacionFacade.buscarDocente");
                 Join<Asignacion,Docentes> doc = objAsignacion.join("_coddocente");
                 Expression<String> valor = doc.get("_cedula");
                 String cadena = valorBuscar;
@@ -106,6 +107,7 @@ public class AsignacionFacade extends AbstractFacade<Asignacion> {
             
             
         }else{
+            System.out.println("AsignacionFacade.buscarDocente vacios");
             cq.from(Asignacion.class);                     
         }
         

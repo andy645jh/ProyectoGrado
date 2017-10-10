@@ -91,9 +91,7 @@ public class AsignacionController implements Serializable {
                     _listSum.add(asigTemp.getSumatoria());
                 }else{
                     listaRemover.add(asigTemp);
-                }
-               // _totalSum += asigTemp.getSumatoria();
-                //_listSum.add(asigTemp.getSumatoria());
+                }             
             }
             
             for (Asignacion asignacion : listaRemover) {
