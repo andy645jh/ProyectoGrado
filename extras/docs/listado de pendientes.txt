@@ -1,15 +1,13 @@
 - Evitar que un docente pueda abrir la carpeta de otro docente 
-- listado del los RDCs en el  auditor
 - pagina de inicio para el docente y el coordinador
 - Buscar una manera facil de registrar las semanas del semestre
 - Mejorar el diseño
 - Crear una relacion de semestre y año para el RDC-54
 - Arreglar primera tabla del rdc-26
-- Lst asignacion traer solo los docentes activos y que tengan el tipo no sea catedra
+- Listado de asignacion traer solo los docentes activos y que tengan el tipo no sea catedra
 
 Listo para revision
-
-
+- listado del los RDCs en el  auditor
 
 
 Preguntas
