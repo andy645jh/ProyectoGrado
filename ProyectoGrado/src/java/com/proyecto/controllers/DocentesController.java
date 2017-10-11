@@ -118,33 +118,13 @@ public class DocentesController implements Serializable {
 
         _doc.setCodcoordinacion(doc.getCodcoordinacion());
 
-        //if (_doc.getTipocontrato() == 1 || _doc.getTipocontrato() == 2) {          
-        asignacion.setCoddocente(_doc);
-        asignacion.setCodcoordinacion(doc.getCodcoordinacion());
         configurarAsignacion(_doc.getTipocontrato());
 
-        /*if (_doc.getTipocontrato() == 1) {
-                asignacion.setHorasclase(24.0);
-                asignacion.setPreparacion(4.0);
-                asignacion.setCapacitacion(4.0);
-                asignacion.setSumatoria(32.0);
-            } else {
-                asignacion.setHorasclase(12.0);
-                asignacion.setPreparacion(2.0);
-                asignacion.setCapacitacion(0.0);
-                asignacion.setSumatoria(14.0);
-            }
-            asignacion.setColectivo(0.0);
-            asignacion.setInvestigacion(0.0);
-            asignacion.setSocial(0.0);
-            asignacion.setOda(0.0);
-            asignacion.setPlaneacion(0.0);
-            asignacion.setVirtualidad(0.0);
-            asignacion.setComites(0.0);*/
-        //}
         try {
             _ejbFacade.crear(_doc);
-
+            asignacion.setCoddocente(_doc);
+            asignacion.setCodcoordinacion(doc.getCodcoordinacion());
+            
             if (asignacion.getCoddocente() != null) {
                 _ejbAsignacion.crear(asignacion);
             }
@@ -241,62 +221,19 @@ public class DocentesController implements Serializable {
         String titulo, detalle;
         Docentes userSession = (Docentes) SessionUtils.get("docente");
         _doc.setCodcoordinacion(userSession.getCodcoordinacion());
-        System.out.println("DocentesController.Actualizar cedula: "+_doc.getCedula());
+        System.out.println("DocentesController.Actualizar cedula: " + _doc.getCedula());
 
         if (foto != null) {
             System.out.println("ENTRO A LA FUNCION ACTUALIZAR " + foto.getFileName());
             _doc.setFoto(foto.getFileName());
         }
-        
+
         asignacion = _ejbAsignacion.buscarDocente("_coddocente", _doc.getCedula() + "");
         configurarAsignacion(_doc.getTipocontrato());
-        /*if((tipoContratoOld == 3 && _doc.getTipocontrato()==1) || (tipoContratoOld == 3 && _doc.getTipocontrato()==2)){
-            asignacion.setCoddocente(_doc);
-            asignacion.setCodcoordinacion(doc.getCodcoordinacion());
-            if (_doc.getTipocontrato() == 1) {
-                asignacion.setHorasclase(24.0);
-                asignacion.setPreparacion(4.0);
-                asignacion.setCapacitacion(4.0);
-                asignacion.setSumatoria(32.0);
-            } else {
-                asignacion.setHorasclase(12.0);
-                asignacion.setPreparacion(2.0);
-                asignacion.setCapacitacion(0.0);
-                asignacion.setSumatoria(14.0);
-            }
-            asignacion.setColectivo(0.0);
-            asignacion.setInvestigacion(0.0);
-            asignacion.setSocial(0.0);
-            asignacion.setOda(0.0);
-            asignacion.setPlaneacion(0.0);
-            asignacion.setVirtualidad(0.0);
-            asignacion.setComites(0.0);
-        }
-        
-        if((tipoContratoOld == 1 && _doc.getTipocontrato()==2) || (tipoContratoOld == 2 && _doc.getTipocontrato()==1)){
-            String cedula=_doc.getCedula()+"";
-            Asignacion asig=_ejbAsignacion.buscarDocente("_coddocente", cedula);
-            
-            if (_doc.getTipocontrato() == 1) {
-                asig.setHorasclase(24.0);
-                asig.setPreparacion(4.0);
-                asig.setCapacitacion(4.0);
-                asig.setSumatoria(32.0);
-            } else {
-                asig.setHorasclase(12.0);
-                asig.setPreparacion(2.0);
-                asig.setCapacitacion(0.0);
-                asig.setSumatoria(14.0);
-            }
-            
-            _ejbAsignacion.actualizar(asig);
-            
-            System.out.println("CAMBIO DE CONTRATO "+asig.getHorasclase());
-        }*/
 
         try {
             _ejbFacade.actualizar(_doc);
-            _ejbAsignacion.crear(asignacion);
+            _ejbAsignacion.actualizar(asignacion);
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
@@ -330,12 +267,12 @@ public class DocentesController implements Serializable {
             asignacion.setSumatoria(14.0);
         }
         /*asignacion.setColectivo(0.0);
-        asignacion.setInvestigacion(0.0);
-        asignacion.setSocial(0.0);
-        asignacion.setOda(0.0);
-        asignacion.setPlaneacion(0.0);
-        asignacion.setVirtualidad(0.0);
-        asignacion.setComites(0.0);*/
+         asignacion.setInvestigacion(0.0);
+         asignacion.setSocial(0.0);
+         asignacion.setOda(0.0);
+         asignacion.setPlaneacion(0.0);
+         asignacion.setVirtualidad(0.0);
+         asignacion.setComites(0.0);*/
     }
 
     public void resetear() {
