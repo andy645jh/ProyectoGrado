@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 /**
  *
@@ -62,6 +63,11 @@ public class Asignacion implements Serializable {
 
     @Column(name = "sumatoria")
     private Double _sumatoria;    
+    
+    //esto se usa en el summary para evitar
+    //que se divida la lista de asignacion
+    @Transient
+    private int _sortVal=0;
     
     public Asignacion() {
     }
@@ -212,5 +218,9 @@ public class Asignacion implements Serializable {
     public void setSumatoria(Double _sumatoria) {
         this._sumatoria = _sumatoria;
     }   
+
+    public int getSortVal() {
+        return _sortVal;
+    }
     
 }
