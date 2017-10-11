@@ -12,6 +12,9 @@ import com.proyecto.utilities.SessionUtils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,6 +47,7 @@ public class DocentesController implements Serializable {
 
     @EJB
     private PermisosFacade _permFacade;
+    
 
     private String clave;
     private String usuario;
@@ -111,10 +115,26 @@ public class DocentesController implements Serializable {
         RequestContext.getCurrentInstance().openDialog("/docentes/crear", options, null);
     }
 
-    public void agregar() {
+    public void agregar() throws NoSuchAlgorithmException, UnsupportedEncodingException {
 
         String titulo, detalle;
         Docentes doc = (Docentes) SessionUtils.get("docente");
+        Permisos p = new Permisos();
+        
+        
+        String password=_doc.getCedula()+"";
+        MessageDigest sha256=MessageDigest.getInstance("SHA-256");
+        sha256.update(password.getBytes("UTF-8"));
+        byte[] digest = sha256.digest();
+        StringBuffer sb=new StringBuffer();
+        for(byte b : digest) {        
+		sb.append(String.format("%02x", b));
+	}
+        String hash=sb.toString(); 
+                
+        p.setUsuario(_doc.getCedula()+"");
+        p.setRol("docente");
+        p.setClave(hash);
 
         _doc.setCodcoordinacion(doc.getCodcoordinacion());
 
@@ -122,6 +142,7 @@ public class DocentesController implements Serializable {
 
         try {
             _ejbFacade.crear(_doc);
+            _permFacade.crear(p);
             asignacion.setCoddocente(_doc);
             asignacion.setCodcoordinacion(doc.getCodcoordinacion());
             

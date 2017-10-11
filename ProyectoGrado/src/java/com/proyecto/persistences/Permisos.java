@@ -18,6 +18,7 @@ import javax.validation.constraints.Size;
 public class Permisos implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codpermiso")
     private int codpermiso;
     
