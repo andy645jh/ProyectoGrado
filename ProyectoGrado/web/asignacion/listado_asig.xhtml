@@ -67,7 +67,7 @@
                     <br/>
                     <div class="ui-g-12">
                         <p:remoteCommand name="onCellEdit" update=":formAsig:listar:summary_cal listar" />
-                        <p:dataTable sortBy="#{registro.horasclase}" value="#{asignacionController.listadoAsign}" var="registro" id="listar" class="letra-tabla" editable="true" >
+                        <p:dataTable sortBy="#{registro.sortVal}" value="#{asignacionController.listadoAsign}" var="registro" id="listar" class="letra-tabla" editable="true" >
                             <p:ajax event="sort" listener="#{asignacionController.sortListener}" />
                             <p:ajax event="rowEdit" listener="#{asignacionController.onCellEdit}" oncomplete="onCellEdit()" update="listar" />                                                                                                
 

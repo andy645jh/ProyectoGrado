@@ -93,15 +93,15 @@ public class AsignacionController implements Serializable {
                     listaRemover.add(asigTemp);
                 }             
             }
-            
-            for (Asignacion asignacion : listaRemover) {
+            _listadoAsign.removeAll(listaRemover);
+            /*for (Asignacion asignacion : listaRemover) {
                 for (int i = 0; i < _listadoAsign.size(); i++) {
                     if(_listadoAsign.get(i)==asignacion)
                     {                        
                         _listadoAsign.remove(asignacion);
                     }
                 }
-            }
+            }*/
         }
         calculate();
         System.out.println("Pide Listado: " + _listSum.size());
