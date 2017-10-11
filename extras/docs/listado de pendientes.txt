@@ -4,12 +4,9 @@
 - Mejorar el diseño
 - Crear una relacion de semestre y año para el RDC-54
 - Arreglar primera tabla del rdc-26
-- Error en el listar asignacion para cada tipo de contrato medio tiempo o tiempo completo crea un footer
 - Al seleccionar un registro en la lista asignacion las cajas de texto se pierden, no se ven
 - Ponerle el color de la convencion de la actividad al horario
-- Los coordinadores y auditores no deberian estar en el listado de docentes
-- Cuando un docente nuenvo entra en horario aparece un error
-
+- El coordinador puede crear docentes, auditores y mas coordinadores que pertenezcan a la misma coordinacion
 
 Listo para revision
 - listado del los RDCs en el  auditor
