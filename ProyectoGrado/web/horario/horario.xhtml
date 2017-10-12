@@ -41,10 +41,10 @@
                             <p:commandLink rendered="#{!intervalo.martes.asignado}" update="eventDetails" ajax="false" value="Asignar" style="color: #e2dfdf;" actionListener="#{horarioController.abrirCrear(intervalo.martes)}"/>                                                  
                         </p:column>
 
-                        <p:column style="width: 10px; text-align: center">
+                        <p:column style="width: 10px; text-align: center;background-color: #{intervalo.miercoles.codconvencion.color}">
                             <f:facet name="header">Miercoles</f:facet>
-                            <p:commandLink value="#{intervalo.miercoles.nombre}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.miercoles)}"/>                                
-                            <p:commandButton rendered="#{intervalo.miercoles.asignado}" ajax="true" update="nuevaLista"  class="boton-borrar" icon="ui-icon-trash" title="Quitar" action="#{horarioController.closeDialog(intervalo.miercoles)}">
+                            <p:commandLink value="#{intervalo.miercoles.nombre}" update="eventDetails" ajax="false"  actionListener="#{horarioController.abrirActualizar(intervalo.miercoles)}"/>                                
+                            <p:commandButton rendered="#{intervalo.miercoles.asignado}" ajax="true" update="nuevaLista" class="boton-borrar" icon="ui-icon-trash" title="Quitar" action="#{horarioController.closeDialog(intervalo.miercoles)}">
                                 <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
                             </p:commandButton> 
                             <p:commandLink rendered="#{!intervalo.miercoles.asignado}" update="eventDetails" ajax="false" value="Asignar" style="color: #e2dfdf;" actionListener="#{horarioController.abrirCrear(intervalo.miercoles)}"/>                                                  
@@ -112,7 +112,7 @@
                             <p:inputText id="nombre" value="#{horarioController.objHorario.nombre}"/>                                   
 
                             <p:outputLabel value="#{clasesTxt.convencion} " for="codconvencion" />
-                            <p:selectOneMenu rendered="#{horarioController.objHorario != null}" id="codconvencion" value="#{horarioController.objHorario.codconvencion.codconvencion}"> 
+                            <p:selectOneMenu rendered="#{horarioController.objHorario != null and horarioController.objHorario.codconvencion!=null}" id="codconvencion" value="#{horarioController.objHorario.codconvencion.codconvencion}"> 
                                 <f:selectItems value="#{convencionesController.combo('')}" />
                             </p:selectOneMenu>
 

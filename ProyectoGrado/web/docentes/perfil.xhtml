@@ -27,8 +27,8 @@
                                 <p:graphicImage rendered="#{docentesController.imageDoc == null}" name="img/fotos.png" height="200" width="200"/>                            
                             </div>
                             <div class="ui-g">
-                                <p:fileUpload value="#{fileUploadController.file}" mode="simple" skinSimple="true"/>
-                                <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadController.upload()}" />
+                                <p:fileUpload value="#{docentesController.file}" mode="simple" skinSimple="true"/>
+                                <p:commandButton value="Submit" ajax="false" actionListener="#{docentesController.upload()}" />
                             </div>
                         </p:panel> 
                     </h:form>

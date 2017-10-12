@@ -48,7 +48,11 @@
             <tr>
                 <td width="20%"><img src="../resources/img/logo_reportes.png" height="70" alt=""/></td>                
                 <td width="60%">DOCENCIA</td>
-                <td width="10%" rowspan="2"><img src="../resources/img/fotos.png" height="70" alt=""/></td>
+                <td width="10%" rowspan="2">
+                    <p:graphicImage rendered="#{docentesController.imageDoc != null}" height="70" value="#{docentesController.imageDoc}" class="img-responsive"/>
+                    <p:graphicImage rendered="#{docentesController.imageDoc == null}" height="70" name="img/fotos.png"/>                                                        
+                    
+                </td>
                 <td width="10%">PAGINA</td>
             </tr>
             <tr>

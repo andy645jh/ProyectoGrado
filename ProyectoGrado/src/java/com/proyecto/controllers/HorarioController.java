@@ -98,11 +98,13 @@ public class HorarioController implements Serializable{
     private void organizarListas()
     {
         List<Horario> listHorario = getListado();
-        //if(listHorario.size()<=0) return;
         
-        _objHorario = listHorario.get(0);   
+        if(listHorario.size()>0) _objHorario = listHorario.get(0);
+        else getCampo();
+        //System.out.println("TAMAÑO "+listHorario.size());
+           
         _arrayInterval = new Intervalo[_intervalos.length];
-        System.out.println("TAMAÑO "+listHorario.size());
+        
         for(int i=0;i<_arrayInterval.length;i++)
         {
             _arrayInterval[i] =new Intervalo();

@@ -11,6 +11,10 @@ import com.proyecto.persistences.Permisos;
 import com.proyecto.utilities.SessionUtils;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -48,16 +52,14 @@ public class DocentesController implements Serializable {
     @EJB
     private PermisosFacade _permFacade;
     
-
+    @EJB
+    private AsignacionFacade _ejbAsignacion;
+ 
     private String clave;
     private String usuario;
     private Docentes _doc;
     private UploadedFile foto;
-    private int _codCoord;
-    private String _rutaTxt = "/com/java/utilities/txtDocentes";
-    private String _titulo = "Operacion";
-    private String _mensajeCorrecto = "Se ha realizado correctamente";
-    private String _mensajeError = "No se completo la operacion";
+    private int _codCoord;    
     private FacesMessage message;
 
     private String facultad = "";
@@ -66,11 +68,14 @@ public class DocentesController implements Serializable {
     private String usuDocente;
     private LoginController _loginController;
     private StreamedContent _imageDoc;
-    @EJB
-    private AsignacionFacade _ejbAsignacion;
+   
     private int tipoContratoOld = 0;
     private Asignacion asignacion = new Asignacion();
 
+    private UploadedFile _file = null;
+    private String _url = "";
+    private String _filename;
+    
     public DocentesController() {
     }
 
@@ -315,6 +320,55 @@ public class DocentesController implements Serializable {
         }
     }
 
+        public void upload(/*FileUploadEvent event*/) {
+        //_file = event.getFile();
+        if (_file.getFileName().length() <= 0) {
+            Mensajes.error("Ha ocurrido algo", "No se a seleccionado ningun archivo");
+            System.out.println("No se a seleccionado ningun archivo");
+            return;
+        }
+
+        try {
+            String str = _file.getFileName();
+            String ext = str.substring(str.lastIndexOf('.'), str.length());
+            if (ext.contains("png") || ext.contains("jpg") || ext.contains("jpeg") && _file.getSize() > 0) {
+                //copyFile(_file.getFileName(), _file.getInputstream());
+                copyFile("pedido.png", _file.getInputstream());
+                /*_doc.setFoto(_url);
+                _ejbFacade.actualizar(_doc);*/
+            } else {
+                Mensajes.error("Ha ocurrido algo", "No se puede subir ese archivo");
+                System.out.println("Solo se aceptan archivos de formato .png, .jpg, .jpeg");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void copyFile(String fileName, InputStream in) {
+
+        try {
+            Docentes doc = (Docentes) SessionUtils.get("docente");
+            _url = SessionUtils.getPathImages(doc.getCedula()) + fileName;
+            OutputStream out = new FileOutputStream(new File(_url));
+
+            int read = 0;
+            byte[] bytes = new byte[1024];
+
+            while ((read = in.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+
+            in.close();
+            out.flush();
+            out.close();
+            System.out.println("Archivo creado en: " + (_url));
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
     public int getCodCoord() {
         return _codCoord;
     }
@@ -367,6 +421,30 @@ public class DocentesController implements Serializable {
         this.coordinacion = coordinacion;
     }
 
+    public UploadedFile getFile() {
+        return _file;
+    }
+
+    public void setFile(UploadedFile _file) {
+        this._file = _file;
+    }
+
+    public String getUrl() {
+        return _url;
+    }
+
+    public void setUrl(String _url) {
+        this._url = _url;
+    }
+
+    public String getFilename() {
+        return _filename;
+    }
+
+    public void setFilename(String _filename) {
+        this._filename = _filename;
+    }
+    
     @FacesConverter(forClass = Docentes.class, value = "docentesConverter")
     public static class DocentesControllerConverter implements Converter {
 
