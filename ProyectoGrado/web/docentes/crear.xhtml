@@ -10,12 +10,12 @@
             #{docentesController.resetear()}
 
             <div style="width: auto;
-                        height: auto;
-                        left: 479px;
-                        top: -100px !important;
-                        visibility: visible;
-                        z-index: 1002;
-                        display: block;">
+                 height: auto;
+                 left: 479px;
+                 top: -100px !important;
+                 visibility: visible;
+                 z-index: 1002;
+                 display: block;">
                 <h:form >
                     <p:panel>
                         <!--
@@ -25,7 +25,7 @@
                             <p:menuitem value="Creacion de Docentes" url="#"></p:menuitem>
                         </p:breadCrumb>
                         -->
-                        
+
                         <p:panelGrid columns="2">                    
                             <p:outputLabel value="#{docentesTxt.cedula}  " for="cedula" />
                             <p:inputText id="cedula" required="true" value="#{docentesController.campo.cedula}"/> 
@@ -36,18 +36,35 @@
                             <p:outputLabel value="#{docentesTxt.apellido}  " for="apellidos" />
                             <p:inputText id="apellidos" required="true" value="#{docentesController.campo.apellidos}"/> 
 
-                            <p:outputLabel value="Tipo Contrato" for="contrato" />
-                            <p:selectOneMenu id="contrato" required="true" value="#{docentesController.campo.tipocontrato}"> 
+                            <p:outputLabel value="Tipo Usuario" for="usuario" />
+                            <p:selectOneMenu id="usuario" required="true" value="#{docentesController.campo.tipo_usuario}"> 
                                 <f:selectItem itemLabel="Seleccione" itemValue="0" />
-                                <f:selectItem itemLabel="Tiempo Completo" itemValue="1" />
-                                <f:selectItem itemLabel="Medio Tiempo" itemValue="2" />
-                                <f:selectItem itemLabel="Catedra" itemValue="3" />
-                            </p:selectOneMenu>
-                            
-                            <f:facet name="footer">
-                                <p:commandButton id="btngrabar" value="#{docentesTxt.crear}" ajax="false" action="#{docentesController.agregar()}"/>
-                            </f:facet>
+                                <f:selectItem itemLabel="Docente" itemValue="1" />
+                                <f:selectItem itemLabel="Coordinador" itemValue="2" />
+                                <f:selectItem itemLabel="Auditor" itemValue="3" />
+                                <p:ajax event="change" update="nivelInfo"/>
+                            </p:selectOneMenu>                            
                         </p:panelGrid>
+
+                        <p:outputPanel id="nivelInfo" >
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="Tipo Contrato" for="contrato" rendered="#{docentesController.campo.tipo_usuario eq 1}" />
+                                <p:selectOneMenu id="contrato" required="true" value="#{docentesController.campo.tipocontrato}" rendered="#{docentesController.campo.tipo_usuario eq 1}"> 
+                                    <f:selectItem itemLabel="Seleccione" itemValue="0" />
+                                    <f:selectItem itemLabel="Tiempo Completo" itemValue="1" />
+                                    <f:selectItem itemLabel="Medio Tiempo" itemValue="2" />
+                                    <f:selectItem itemLabel="Catedra" itemValue="3" />
+                                </p:selectOneMenu>
+
+                                <f:facet name="footer">
+                                    <p:commandButton id="btngrabar" value="#{docentesTxt.crear}" ajax="false" action="#{docentesController.agregar()}"/>
+                                </f:facet>
+                            </p:panelGrid>
+                        </p:outputPanel>
+
+
+
+
                     </p:panel>
                 </h:form>
             </div>

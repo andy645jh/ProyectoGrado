@@ -138,7 +138,14 @@ public class DocentesController implements Serializable {
         String hash=sb.toString(); 
                 
         p.setUsuario(_doc.getCedula()+"");
-        p.setRol("docente");
+        if(_doc.getTipo_usuario()==1){
+            p.setRol("docente");
+        }else if(_doc.getTipo_usuario()==2){
+            p.setRol("administrador");
+        }else if(_doc.getTipo_usuario()==3){
+            p.setRol("auditor");
+        }
+        
         p.setClave(hash);
 
         _doc.setCodcoordinacion(doc.getCodcoordinacion());

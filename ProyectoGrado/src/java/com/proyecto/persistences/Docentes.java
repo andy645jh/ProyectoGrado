@@ -96,6 +96,20 @@ public class Docentes implements Serializable
     
     @Column(name = "inhabilitar")   
     private int _inhabilitar;
+    
+    @Column(name = "tipo_usuario")   
+    private int _tipo_usuario;
+
+    public int getTipo_usuario() {
+        return _tipo_usuario;
+    }
+
+    public void setTipo_usuario(int _tipo_usuario) {
+        this._tipo_usuario = _tipo_usuario;
+    }
+    
+
+    
    
     public Docentes() { }
 
