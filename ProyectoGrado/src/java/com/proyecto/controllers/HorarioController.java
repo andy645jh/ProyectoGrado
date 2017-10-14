@@ -73,7 +73,7 @@ public class HorarioController implements Serializable {
     public void init() {
         _currentDocente = (Docentes) SessionUtils.get("docente");
         _listInterval = new ArrayList<>();
-        System.out.println("Docente: " + _currentDocente);
+        
         _actualAction = Action.NINGUNA;     
         organizarListas();
     }
@@ -95,7 +95,7 @@ public class HorarioController implements Serializable {
         }
 
         for (Horario obj : listHorario) {           
-            System.out.println("HOra: " + obj.getHora());
+            //System.out.println("HOra: " + obj.getHora());
             //cuadrando la lista de horarios        
             _arrayInterval[obj.getHora()].setDia(obj);
         }
@@ -173,6 +173,8 @@ public class HorarioController implements Serializable {
             Mensajes.error(titulo, detalle);
             Logger.getLogger(Horario.class.getName()).log(Level.SEVERE, null, e);
         }
+        //_objHorario = null;
+        _actualAction = Action.NINGUNA;
     }
 
     //devuelve el dia dependiendo del index que le pasen
@@ -218,6 +220,8 @@ public class HorarioController implements Serializable {
             message = new FacesMessage(FacesMessage.SEVERITY_ERROR, titulo, detalle);
             Logger.getLogger(Horario.class.getName()).log(Level.SEVERE, null, e);
         }
+        
+        _actualAction = Action.NINGUNA;
     }
 
     public void close() {
@@ -236,7 +240,7 @@ public class HorarioController implements Serializable {
     public void abrirActualizar(Horario objTemp) {
         
         _actualAction = Action.ACTUALIZAR;
-        System.out.println("HorarioController.abrirActualizar() -> horario: " + objTemp.getCodhorario());
+        System.out.println("HorarioController.abrirActualizar() -> horario: " + objTemp.getCodconvencion().getNombre());
         _objHorario = objTemp;
         Map<String, Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
@@ -252,7 +256,7 @@ public class HorarioController implements Serializable {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
-            System.out.println("HorarioController.actualizar() -> horario: " + _objHorario.getCodhorario());
+            System.out.println("HorarioController.actualizar() -> horario: " + _objHorario.getCodconvencion().getNombre());
             _objHorario.setCoddocente((Docentes) SessionUtils.get("docente"));
             horarioFacade.actualizar(_objHorario);
            
@@ -263,6 +267,9 @@ public class HorarioController implements Serializable {
             message = new FacesMessage(FacesMessage.SEVERITY_ERROR, titulo, detalle);
             Logger.getLogger(Horario.class.getName()).log(Level.SEVERE, null, e);
         }
+        
+        //_objHorario = null;
+        _actualAction = Action.NINGUNA;
     }
 
     public SelectItem[] comboHoras() {

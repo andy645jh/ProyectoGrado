@@ -26,7 +26,7 @@
 
                         <p:column style="width: 10px; text-align: center;background-color: #{intervalo.lunes.codconvencion.color}">
                             <f:facet name="header">Lunes</f:facet>
-                            <p:commandLink value="#{intervalo.lunes.nombre}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.lunes)}"/>                           
+                            <p:commandLink value="#{intervalo.lunes.nombre}" update="eventDetails formHorario:dialog_horario" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.lunes)}"/>                           
                             <p:commandButton rendered="#{intervalo.lunes.asignado}" ajax="true" update="nuevaLista formHorario:listarHorario" class="boton-borrar" icon="ui-icon-trash" title="Quitar" action="#{horarioController.closeDialog(intervalo.lunes)}">
                                 <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
                             </p:commandButton> 
@@ -112,8 +112,8 @@
                             <p:outputLabel value="#{clasesTxt.nombre}  " for="nombre" />
                             <p:inputText id="nombre" value="#{horarioController.objHorario.nombre}"/>                                   
 
-                            <p:outputLabel value="#{clasesTxt.convencion} " for="codconvencion" />
-                            <p:selectOneMenu rendered="#{horarioController.objHorario != null and horarioController.objHorario.codconvencion!=null}" id="codconvencion" value="#{horarioController.objHorario.codconvencion.codconvencion}"> 
+                            <p:outputLabel value="#{clasesTxt.convencion} #{horarioController.objHorario.codconvencion.codconvencion}" for="codconvencion" />
+                            <p:selectOneMenu rendered="#{horarioController.objHorario != null}" id="codconvencion" value="#{horarioController.objHorario.codconvencion.codconvencion}"> 
                                 <f:selectItems value="#{convencionesController.combo('')}" />
                             </p:selectOneMenu>
 
