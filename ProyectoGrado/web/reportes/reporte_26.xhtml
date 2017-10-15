@@ -112,7 +112,10 @@
                     <td class="titulo-tabla" width="30%" colspan="2">PRIMER APELLIDO</td>
                     <td class="titulo-tabla" width="30%" colspan="2">SEGUNDO APELLIDO</td>
                     <td class="titulo-tabla" width="30%" colspan="2">NOMBRES</td>
-                    <td width="10%" colspan="1" rowspan="7"><img src="../resources/img/fotos.png" height="70" alt=""/></td>
+                    <td width="10%" colspan="1" rowspan="7">
+                        <p:graphicImage rendered="#{docentesController.imageDoc != null}" height="70" value="#{docentesController.imageDoc}" class="img-responsive"/>
+                        <p:graphicImage rendered="#{docentesController.imageDoc == null}" height="70" name="img/fotos.png"/>   
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">#{reporteDocente.doc.apellidos}</td>

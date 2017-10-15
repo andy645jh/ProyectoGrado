@@ -80,8 +80,7 @@ public class ConvencionesController implements Serializable{
         SelectItem[] listaItems = new SelectItem[lista.size()];
         int index=0;
         for (Convenciones convencion : lista) {
-            SelectItem item = new SelectItem(convencion.getCodconvencion(), convencion.getNombre());
-            
+            SelectItem item = new SelectItem(convencion.getCodconvencion(), convencion.getNombre());            
             listaItems[index]=item;
             index++;
         }

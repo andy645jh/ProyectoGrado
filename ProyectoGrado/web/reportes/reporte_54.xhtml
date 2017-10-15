@@ -20,7 +20,7 @@
             tr{
                 height: auto;
             }
-            
+
             td,th{
                 border: 1px solid #e8e0e0;
                 height: 20px;
@@ -36,7 +36,7 @@
                 font-weight: bold;
                 background-color: #cccccc;
             }
-            
+
             .sin-borde tr, .sin-borde td{
                 /*border-color: white !important;*/
             }
@@ -51,7 +51,7 @@
                 <td width="10%" rowspan="2">
                     <p:graphicImage rendered="#{docentesController.imageDoc != null}" height="70" value="#{docentesController.imageDoc}" class="img-responsive"/>
                     <p:graphicImage rendered="#{docentesController.imageDoc == null}" height="70" name="img/fotos.png"/>                                                        
-                    
+
                 </td>
                 <td width="10%">PAGINA</td>
             </tr>
@@ -62,7 +62,7 @@
             </tr>
         </table>
         <br></br>
-        
+
         <!-- TABLA DE DOCENTE -->
         <table>
             <thead>
@@ -232,17 +232,34 @@
                 <ui:repeat value="#{reporteRdc.listInterval}" var="intervalo" varStatus="state">
                     <tr>             
                         <td>#{intervalo.hora}</td>                          
-                        <td>#{intervalo.lunes}</td>                         
-                        <td>#{intervalo.martes}</td> 
-                        <td>#{intervalo.miercoles}</td> 
-                        <td>#{intervalo.jueves}</td> 
-                        <td>#{intervalo.viernes}</td> 
-                        <td>#{intervalo.sabado}</td> 
+                        <td style="background-color: #{intervalo.lunes.codconvencion.color}">#{intervalo.lunes}</td>                         
+                        <td style="background-color: #{intervalo.martes.codconvencion.color}">#{intervalo.martes}</td> 
+                        <td style="background-color: #{intervalo.miercoles.codconvencion.color}">#{intervalo.miercoles}</td> 
+                        <td style="background-color: #{intervalo.jueves.codconvencion.color}">#{intervalo.jueves}</td> 
+                        <td style="background-color: #{intervalo.viernes.codconvencion.color}">#{intervalo.viernes}</td> 
+                        <td style="background-color: #{intervalo.sabado.codconvencion.color}">#{intervalo.sabado}</td> 
                     </tr>
                 </ui:repeat>
             </tbody>
         </table>
         <br></br>
+
+        <!-- TABLA DE CONVENCION -->
+        <table style="border: 1px solid">
+            <thead>
+                <tr>
+                    <th class="cab-tabla" colspan="#{reporteRdc.lstConvenciones.size()}">Convenciones</th>
+                </tr>        
+            </thead>
+            <tbody>     
+                <tr>  
+                    <ui:repeat value="#{reporteRdc.lstConvenciones}" var="convencion" varStatus="state">
+                        <td style="background-color: #{convencion.color}">#{convencion.nombre}</td>
+                    </ui:repeat>
+                </tr>
+            </tbody>
+        </table>
+
         <br></br>
     </h:body>
 

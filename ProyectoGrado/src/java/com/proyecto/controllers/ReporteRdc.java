@@ -7,10 +7,12 @@ package com.proyecto.controllers;
 
 import static com.proyecto.controllers.HorarioController._intervalos;
 import com.proyecto.facades.ActividadesFacade;
+import com.proyecto.facades.ConvencionesFacade;
 import com.proyecto.facades.HorarioFacade;
 import com.proyecto.facades.ProductosFacade;
 import com.proyecto.facades.SemanaFacade;
 import com.proyecto.persistences.Actividades;
+import com.proyecto.persistences.Convenciones;
 import com.proyecto.persistences.Docentes;
 import com.proyecto.persistences.Horario;
 import com.proyecto.persistences.Productos;
@@ -24,7 +26,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.ejb.Init;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -47,15 +51,24 @@ public class ReporteRdc implements Serializable {
 
     @EJB
     private HorarioFacade _horarioFacade;
-
+    
+    @EJB
+    private ConvencionesFacade _convFacade;
+    
     private List<Actividades> _actividades;
     private List<Productos> _productos;
     private Docentes _doc;
-
+    private List<Convenciones> _lstConvenciones;
+    
     public ReporteRdc() {
 
     }
 
+    @PostConstruct
+    public void init() {
+        _lstConvenciones=_convFacade.listado();
+    }
+    
     public List<String> getListadoHeaderSeguimiento() {
         SimpleDateFormat sdf = new SimpleDateFormat("MMM dd");
 
@@ -138,6 +151,14 @@ public class ReporteRdc implements Serializable {
     public Docentes getDoc() {
         _doc = (Docentes) SessionUtils.get("docente");
         return _doc;
+    }
+
+    public List<Convenciones> getLstConvenciones() {
+        return _lstConvenciones;
+    }
+
+    public void setLstConvenciones(List<Convenciones> _lstConvenciones) {
+        this._lstConvenciones = _lstConvenciones;
     }
 
 }

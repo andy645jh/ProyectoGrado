@@ -113,8 +113,9 @@
                             <p:inputText id="nombre" value="#{horarioController.objHorario.nombre}"/>                                   
 
                             <p:outputLabel value="#{clasesTxt.convencion} #{horarioController.objHorario.codconvencion.codconvencion}" for="codconvencion" />
-                            <p:selectOneMenu rendered="#{horarioController.objHorario != null}" id="codconvencion" value="#{horarioController.objHorario.codconvencion.codconvencion}"> 
-                                <f:selectItems value="#{convencionesController.combo('')}" />
+                            <p:selectOneMenu id="codconvencion" value="#{horarioController.codigo}"> 
+                                <p:ajax event="change" update="@this" listener="#{horarioController.actualizandoMenu()}" />
+                                <f:selectItems value="#{convencionesController.combo('Seleccione una Opcion')}" />
                             </p:selectOneMenu>
 
                             <f:facet name="footer">

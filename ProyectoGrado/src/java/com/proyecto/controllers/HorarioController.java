@@ -148,7 +148,7 @@ public class HorarioController implements Serializable {
 
     public void agregar() {
         String titulo, detalle;
-        Convenciones convencion = _convencionesFacade.buscar(_objHorario.getCodconvencion().getCodconvencion());
+        Convenciones convencion = _convencionesFacade.buscar(_codigo);
         _objHorario.setCodconvencion(convencion);
 
         System.out.println("convencion " + _objHorario.getCodconvencion());
@@ -236,6 +236,11 @@ public class HorarioController implements Serializable {
         }
         message = null;
     }
+            
+    public void actualizandoMenu()
+    {
+        System.out.println("actualizandoMenu -> "+_objHorario.getCodconvencion().getCodconvencion());        
+    }
 
     public void abrirActualizar(Horario objTemp) {
         
@@ -251,7 +256,8 @@ public class HorarioController implements Serializable {
     
     public void actualizar() {
         String titulo, detalle;
-
+        Convenciones convencion = _convencionesFacade.buscar(_codigo);
+        _objHorario.setCodconvencion(convencion);
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
