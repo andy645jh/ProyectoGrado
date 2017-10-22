@@ -67,10 +67,14 @@ works properly when clicked or hovered */ {
         border:none;
 }
 
-.ui-inputfield, .ui-inputfield:hover
+.ui-inputfield[type="text"]{
+    background-color: #FFF !important;
+}
+
+/*.ui-inputfield, .ui-inputfield[type="text"]:hover
 {
     background: none !important;
-}
+}*/
 
 .ui-state-default a,
 .ui-state-default a:link,
