@@ -3,7 +3,6 @@ package com.proyecto.controllers;
 import com.proyecto.utilities.Formulario;
 import com.proyecto.facades.HorarioFacade;
 import com.proyecto.facades.ConvencionesFacade;
-import com.proyecto.facades.DocentesFacade;
 import com.proyecto.persistences.Horario;
 import com.proyecto.persistences.Convenciones;
 import com.proyecto.persistences.Docentes;
@@ -28,19 +27,12 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
 import org.primefaces.context.RequestContext;
-import org.primefaces.model.DefaultScheduleEvent;
-import org.primefaces.model.ScheduleEvent;
-import org.primefaces.model.ScheduleModel;
 
 @ManagedBean
 @SessionScoped
 public class HorarioController implements Serializable {
-
-    @EJB
-    private DocentesFacade docentesFacade;
 
     @EJB
     private HorarioFacade horarioFacade;
@@ -49,9 +41,6 @@ public class HorarioController implements Serializable {
     private ConvencionesFacade _convencionesFacade;
 
     private Horario _objHorario;
-    private ScheduleModel eventModel;
-    private ScheduleEvent evento = new DefaultScheduleEvent();
-
     private FacesMessage message;
     private int _codigo;
     private List<Intervalo> _listInterval;
