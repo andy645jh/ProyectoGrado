@@ -67,7 +67,7 @@ works properly when clicked or hovered */ {
         border:none;
 }
 
-.ui-inputfield[type="text"]{
+.ui-inputfield[type="text"],textarea.ui-inputfield{
     background-color: #FFF !important;
 }
 
