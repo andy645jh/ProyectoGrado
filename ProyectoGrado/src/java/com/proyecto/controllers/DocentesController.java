@@ -133,7 +133,7 @@ public class DocentesController implements Serializable {
         byte[] digest = sha256.digest();
         StringBuffer sb=new StringBuffer();
         for(byte b : digest) {        
-		sb.append(String.format("%02x", b));
+            sb.append(String.format("%02x", b));
 	}
         String hash=sb.toString(); 
                 
@@ -353,7 +353,7 @@ public class DocentesController implements Serializable {
 
     }
 
-    public void copyFile(String fileName, InputStream in) {
+    private void copyFile(String fileName, InputStream in) {
 
         try {
             Docentes doc = (Docentes) SessionUtils.get("docente");

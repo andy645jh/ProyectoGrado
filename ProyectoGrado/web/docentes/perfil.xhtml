@@ -15,11 +15,9 @@
         </ui:define>
         <ui:define name="content">             
             <div class="ui-g espacio-abajo-15">
-                             
+
                 <div class="ui-g-12 ui-md-4 ui-lg-4">
-
                     <h:form id="tesy" enctype="multipart/form-data">
-
                         <p:panel>                                      
                             <p:growl id="messages" showDetail="true" life="1000" globalOnly="true"/>
                             <div class="ui-g espacio-abajo-15">
@@ -33,12 +31,40 @@
                         </p:panel> 
                     </h:form>
 
+                    <!-- ACTUALIZACION DE CONTRASEÑA -->
+                    <div class="ui-g">
+                        <div>
+                            <h:form id="pass">
+                                <p:panel>                                      
+                                    <p:growl id="messages" showDetail="true" life="1000" globalOnly="true"/>
+                                    <div class="ui-g-12 ajuste-form">
+                                        <p:outputLabel class="ui-md-6" value="Clave Actual" for="actual" />
+                                        <p:inputText class="ui-md-6" id="actual" required="true" value="#{permisoController.actual}"/>
+                                    </div>
+                                    <div class="ui-g-12 ajuste-form">
+                                        <p:outputLabel class="ui-md-6" value="Nueva Clave" for="nueva" />
+                                        <p:inputText class="ui-md-6" id="nueva" required="true" value="#{permisoController.nueva}"/>
+                                    </div> 
+                                    <div class="ui-g-12 ajuste-form">
+                                        <p:outputLabel class="ui-md-6" value="Confirmar Nueva Clave" for="confirmar" />
+                                        <p:inputText class="ui-md-6" id="confirmar" required="true" value="#{permisoController.confirma}"/>
+                                    </div>
+                                    
+                                    <div class="ui-g-12 ajuste-form">
+                                        <p:commandButton value="Cambiar" ajax="false" actionListener="#{permisoController.actualizar()}" />                                        
+                                    </div>
+                                </p:panel> 
+                            </h:form>
+                        </div>
+                    </div>
+
                 </div>
+
                 <h:form class="ui-g-12 ui-md-8 ui-g-nopad" id="formDatos">
                     <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
                         <p:panel>               
                             <p:growl id="mensajes" sticky="true" showDetail="true" /> 
-                            
+
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel class="ui-md-6" value="#{docentesTxt.nombre}  " for="nombres" />
                                 <p:inputText class="ui-md-6" id="nombres" required="true" value="#{docentesController.campo.nombres}"/>
@@ -73,8 +99,8 @@
                     </div>                    
                     <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
                         <p:panel>
-                            
-                            
+
+
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel class="ui-md-6" value="Lugar Nac." for="lugar" />                   
                                 <p:inputText class="ui-md-6" id="lugar" required="true" value="#{docentesController.campo.lugar_nac}"/>
@@ -96,12 +122,12 @@
                                 <p:outputLabel value="Municipio" for="municipio" />
                                 <p:inputText id="municipio" required="true" value="#{docentesController.campo.municipio}"/>
                             </div>
-                            
+
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel value="#{docentesTxt.telefono}  " for="telefono" />
                                 <p:inputText id="telefono" required="true" value="#{docentesController.campo.telefono}"/>
                             </div>
-                            
+
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel value="Celular" for="celular" />
                                 <p:inputText id="celular" required="true" value="#{docentesController.campo.celular}"/>
@@ -110,12 +136,12 @@
                                 <p:outputLabel value="#{docentesTxt.correo}  " for="correo" />
                                 <p:inputText id="correo" required="true" value="#{docentesController.campo.correo}"/>
                             </div>
-                            
+
                         </p:panel>
                     </div>
                     <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
                         <p:panel>
-                           
+
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel value="Matricula Profesional" for="matricula" />
                                 <p:inputText id="matricula" required="true" value="#{docentesController.campo.matricula_prof}"/>

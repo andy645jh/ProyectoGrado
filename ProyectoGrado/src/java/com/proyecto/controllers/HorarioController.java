@@ -48,9 +48,9 @@ public class HorarioController implements Serializable {
     private Docentes _currentDocente;
 
     private enum Action {
-
         CREAR, ACTUALIZAR, NINGUNA
     };
+    
     private Action _actualAction = null;
     public static final String _intervalos[] = {"6-7", "7-8", "8-9", "9-10", "10-11", "11-12", "12-13", "13-14", "14-15", "15-16", "16-17", "17-18", "18-19", "19-20", "20-21", "21-22"};
     public static final String _dias[] = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"};
@@ -84,7 +84,6 @@ public class HorarioController implements Serializable {
         }
 
         for (Horario obj : listHorario) {           
-            //System.out.println("HOra: " + obj.getHora());
             //cuadrando la lista de horarios        
             _arrayInterval[obj.getHora()].setDia(obj);
         }
