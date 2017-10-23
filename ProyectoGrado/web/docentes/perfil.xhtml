@@ -19,37 +19,40 @@
                 <div class="ui-g-12 ui-md-4 ui-lg-4">
                     <h:form id="tesy" enctype="multipart/form-data">
                         <p:panel>                                      
-                            <p:growl id="messages" showDetail="true" life="1000" globalOnly="true"/>
-                            <div class="ui-g espacio-abajo-15">
-                                <p:graphicImage rendered="#{docentesController.imageDoc != null}" value="#{docentesController.imageDoc}" class="img-responsive"/>
-                                <p:graphicImage rendered="#{docentesController.imageDoc == null}" name="img/fotos.png" height="200" width="200"/>                            
-                            </div>
-                            <div class="ui-g">
-                                <p:fileUpload value="#{docentesController.file}" mode="simple" skinSimple="true"/>
-                                <p:commandButton value="Submit" ajax="false" actionListener="#{docentesController.upload()}" />
+                            <div class="marco">
+                                <p:growl id="messages" showDetail="true" life="1000" globalOnly="true"/>
+                                <div class="ui-g espacio-abajo-15">
+                                    <p:graphicImage rendered="#{docentesController.imageDoc != null}" value="#{docentesController.imageDoc}" height="200" width="200" class="ui-panelgrid"/>
+                                    <p:graphicImage rendered="#{docentesController.imageDoc == null}" name="img/fotos.png" height="200" width="200" class="ui-panelgrid"/>                            
+                                </div>
+                                <div class="ui-g">
+                                    <p:fileUpload value="#{docentesController.file}" mode="simple" skinSimple="true"/>
+                                    <p:commandButton value="Submit" ajax="false" actionListener="#{docentesController.upload()}" />
+                                </div>
                             </div>
                         </p:panel> 
                     </h:form>
 
                     <!-- ACTUALIZACION DE CONTRASEÑA -->
-                    <div class="ui-g">
+                    <div class="ui-g marco">
                         <div>
+                            <h3 align="center">Modificar Clave</h3>
                             <h:form id="pass">
                                 <p:panel>                                      
                                     <p:growl id="messages" showDetail="true" life="1000" globalOnly="true"/>
                                     <div class="ui-g-12 ajuste-form">
-                                        <p:outputLabel class="ui-md-6" value="Clave Actual" for="actual" />
-                                        <p:inputText class="ui-md-6" id="actual" required="true" value="#{permisoController.actual}"/>
+                                        <p:outputLabel value="Clave Actual" for="actual" />
+                                        <p:password class="ui-md-6" id="actual" required="true" value="#{permisoController.actual}"/>
                                     </div>
                                     <div class="ui-g-12 ajuste-form">
-                                        <p:outputLabel class="ui-md-6" value="Nueva Clave" for="nueva" />
-                                        <p:inputText class="ui-md-6" id="nueva" required="true" value="#{permisoController.nueva}"/>
+                                        <p:outputLabel value="Nueva Clave" for="nueva" />
+                                        <p:password id="nueva" class="ui-md-6" required="true" value="#{permisoController.nueva}"/>
                                     </div> 
                                     <div class="ui-g-12 ajuste-form">
-                                        <p:outputLabel class="ui-md-6" value="Confirmar Nueva Clave" for="confirmar" />
-                                        <p:inputText class="ui-md-6" id="confirmar" required="true" value="#{permisoController.confirma}"/>
+                                        <p:outputLabel value="Confirmar Nueva Clave" for="confirmar" />
+                                        <p:password class="ui-md-6" match="nueva" id="confirmar" required="true" value="#{permisoController.confirma}"/>
                                     </div>
-                                    
+
                                     <div class="ui-g-12 ajuste-form">
                                         <p:commandButton value="Cambiar" ajax="false" actionListener="#{permisoController.actualizar()}" />                                        
                                     </div>

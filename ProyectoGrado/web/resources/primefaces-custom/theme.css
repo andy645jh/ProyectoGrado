@@ -67,7 +67,7 @@ works properly when clicked or hovered */ {
         border:none;
 }
 
-.ui-inputfield[type="text"],textarea.ui-inputfield{
+.ui-inputfield[type="text"], .ui-inputfield[type="password"], textarea.ui-inputfield{
     background-color: #FFF !important;
 }
 
@@ -114,7 +114,7 @@ a.ui-button:focus {
 }
 
 .ui-visual-focus {
-	box-shadow: 0 0 3px 1px rgb(94, 158, 214);
+    box-shadow: 0 0 3px 1px rgb(94, 158, 214);
 }
 .ui-state-active,
 .ui-widget-content .ui-state-active,
@@ -690,5 +690,15 @@ button span{
 .espacio-abajo-15
 {
     padding-bottom: 15px;
+}
+
+.marco{
+    border: 1px solid #d5d5d5;
+    padding: 15px;
+    margin: 15px;
+}
+
+.w-100{
+    width: 100%;
 }
 @page { size: A4 landscape;}
