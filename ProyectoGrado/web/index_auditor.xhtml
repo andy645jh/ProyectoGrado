@@ -31,66 +31,51 @@
 
 
 
-                        <p:commandButton ajax="true" value="#{actividadesTxt.buscar}" update="listar" >
+                        <p:commandButton ajax="true" value="#{actividadesTxt.busregistro}" update="listar" >
 
                         </p:commandButton> 
                     </p:panelGrid>
                     <br/>                   
 
-                    <p:dataTable id="listar" value="#{docentesController.getListarDocentesFiltrado()}" var="registro">                        
-                        <p:column style="width: 10px; text-align: center">
-                            <f:facet name="header">#{docentesTxt.cedula}</f:facet>
-                                #{registro.cedula}
+                    <p:dataTable id="listar" var="registro" value="#{docentesController.getListarDocentesFiltrado()}">
+                        <f:facet name="header">                            
+                            Expandir filas para ver información detallada
+                        </f:facet>
+                        <p:column style="width:16px">
+                            <p:rowToggler rendered="#{auditorController.getListaDocs(registro.cedula).size()!=0}" />
+                        </p:column>
+                        <p:column headerText="Cedula">
+                            <h:outputText value="#{registro.cedula}" />
+                        </p:column>
+                        <p:column headerText="Nombres">
+                            <h:outputText value="#{registro.nombres}" />
                         </p:column>
 
-                        <p:column style="width: 10px; text-align: center">
-                            <f:facet name="header">#{docentesTxt.nombre}</f:facet>
-                                #{registro.nombres}
-                        </p:column> 
-
-                        <p:column style="width: 10px; text-align: center">
-                            <f:facet name="header">#{docentesTxt.apellido}</f:facet>
-                                #{registro.apellidos}
+                        <p:column headerText="Apellidos">
+                            <h:outputText value="#{registro.apellidos}" />
                         </p:column>
 
-                        <p:column style="width: 10px; text-align: center">
-                            <f:facet name="header">#{docentesTxt.unidadAcadem}</f:facet>
-                                #{registro.codcoordinacion}
+                        <p:column headerText="Unidad Academica">
+                            <h:outputText value="#{registro.codcoordinacion.nombre}" />
                         </p:column>
 
-                        <p:column style="width: 10px; text-align: center">
-                            <f:facet name="header">Tipo Contrato</f:facet>
-                            <h:outputText value="Medio Completo" rendered="#{registro.tipocontrato == 2}"/>
+                        <p:column headerText="Tipo Contrato">
                             <h:outputText value="Tiempo Completo" rendered="#{registro.tipocontrato == 1}"/>                            
-                            <h:outputText value="Catedra" rendered="#{registro.tipocontrato == 3}"/>                            
+                            <h:outputText value="Medio Completo" rendered="#{registro.tipocontrato == 2}"/>
+                            <h:outputText value="Catedra" rendered="#{registro.tipocontrato == 3}"/> 
                         </p:column>
 
-                        <p:column style="width: 10px; text-align: center">
-                            <f:facet name="header">Reportes</f:facet>
-
-                            <a href="#{request.contextPath}/pdfServlet" target="_blank">
-                                <p:button icon="ui-icon-person" title="RDC-26" style="margin-right: 10px;" />
-                            </a>
-
-                            <a href="#{request.contextPath}/pdfServlet" target="_blank">
-                                <p:button icon="ui-icon-document" title="RDC-54" style="margin-right: 10px;" rendered="#{registro.tipocontrato == 1}"/>
-                            </a>
-
-                        </p:column> 
-
-                        <p:column style="width: 10px; text-align: center">
-                            <f:facet name="header">Prueba</f:facet>   
-
-                            <ui:repeat value="#{auditorController.getListaDocs(registro.cedula)}" var="archivo" varStatus="status">                                
-                                <p:commandButton value="#{archivo}" onclick="this.form.target = '_blank'" actionListener="#{auditorController.openPdf(registro.cedula, archivo)}" ajax="false" />
-                            </ui:repeat>    
-
-                            <p:outputLabel rendered="#{auditorController.getListaDocs(registro.cedula).size()==0}">No hay</p:outputLabel>
-                        </p:column>
+                        <p:rowExpansion>
+                            <p:panelGrid  columns="2" columnClasses="label,value" style="width:300px">
+                                <ui:repeat value="#{auditorController.getListaDocs(registro.cedula)}" var="archivo" varStatus="status">                                
+                                    <p:commandButton value="#{archivo}" onclick="this.form.target = '_blank'" actionListener="#{auditorController.openPdf(registro.cedula, archivo)}" ajax="false" />
+                                </ui:repeat> 
+                                <p:outputLabel rendered="#{auditorController.getListaDocs(registro.cedula).size()==0}">No hay</p:outputLabel>
+                            </p:panelGrid>
+                        </p:rowExpansion>
                     </p:dataTable>
+
                     <p:growl id="mensajes" sticky="true" showDetail="true"/> 
-
-
                 </p:panel>
             </h:form>
         </ui:define>

@@ -4,13 +4,11 @@
 - Mejorar el diseño
 - Crear una relacion de semestre y año para el RDC-54
 - Arreglar primera tabla del rdc-26
-- El coordinador puede crear docentes, auditores y mas coordinadores que pertenezcan a la misma coordinacion
 - La contraseña en el perfil debe ser legible y que el docente la pueda modificar
+- Arreglar el filtro en el auditor que pueda filtrar por facultad y coordinacion
 
 Listo para revision
-- listado del los RDCs en el  auditor
-- Ponerle el color de la convencion de la actividad al horario
-- Al seleccionar un registro en la lista asignacion las cajas de texto se pierden, no se ven
+
 
 Preguntas
 
