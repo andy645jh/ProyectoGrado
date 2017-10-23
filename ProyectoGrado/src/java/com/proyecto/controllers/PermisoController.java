@@ -52,8 +52,13 @@ public class PermisoController {
         {
             _permiso.setClave(encrypt(_nueva));
             _ejbFacade.actualizar(_permiso);
+            _actual = "";
+            _nueva = "";
+            _confirma = "";
+            System.out.println("PermisoController.actualizar -> Se actualizo");
         }else{
             // mostrar mensaje
+            System.out.println("PermisoController.actualizar -> No se actualizo");
         }
     }
     
