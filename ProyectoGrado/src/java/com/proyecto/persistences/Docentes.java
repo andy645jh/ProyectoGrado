@@ -67,7 +67,7 @@ public class Docentes implements Serializable
     private Date _fechanac;
     
     @Column(name = "celular")
-    private int celular;
+    private String celular;
     
     @Column(name = "tipo_doc")
     private int tipo_doc;
@@ -236,11 +236,11 @@ public class Docentes implements Serializable
         this._tipocontrato = _tipocontrato;
     }
 
-    public int getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 
