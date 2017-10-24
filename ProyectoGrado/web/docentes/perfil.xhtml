@@ -20,7 +20,7 @@
                     <h:form id="tesy" enctype="multipart/form-data">
                         <p:panel>                                      
                             <div class="marco">
-                                <p:growl id="messages" showDetail="true" life="1000" globalOnly="true"/>
+                                
                                 <div class="ui-g espacio-abajo-15">
                                     <p:graphicImage rendered="#{docentesController.imageDoc != null}" value="#{docentesController.imageDoc}" height="200" width="200" class="ui-panelgrid"/>
                                     <p:graphicImage rendered="#{docentesController.imageDoc == null}" name="img/fotos.png" height="200" width="200" class="ui-panelgrid"/>                            
@@ -38,8 +38,8 @@
                         <div>
                             <h3 align="center">Modificar Clave</h3>
                             <h:form id="pass">
-                                <p:panel>                                      
-                                    <p:growl id="messages" showDetail="true" life="1000" globalOnly="true"/>
+                                <p:panel>                                     
+                                    
                                     <div class="ui-g-12 ajuste-form">
                                         <p:outputLabel value="Clave Actual" for="actual" />
                                         <p:password class="ui-md-6" id="actual" required="true" value="#{permisoController.actual}"/>
@@ -50,7 +50,7 @@
                                     </div> 
                                     <div class="ui-g-12 ajuste-form">
                                         <p:outputLabel value="Confirmar Nueva Clave" for="confirmar" />
-                                        <p:password class="ui-md-6" match="nueva" id="confirmar" required="true" value="#{permisoController.confirma}"/>
+                                        <p:password class="ui-md-6" id="confirmar" required="true" value="#{permisoController.confirma}"/>
                                     </div>
 
                                     <div class="ui-g-12 ajuste-form">
@@ -66,7 +66,7 @@
                 <h:form class="ui-g-12 ui-md-8 ui-g-nopad" id="formDatos">
                     <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
                         <p:panel>               
-                            <p:growl id="mensajes" sticky="true" showDetail="true" /> 
+                            <p:growl id="mensajes" showDetail="true" redisplay="false" life="500" /> 
 
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel class="ui-md-6" value="#{docentesTxt.nombre}  " for="nombres" />
@@ -177,7 +177,7 @@
 
             <div class="ui-g">
                 <h:form id="perfil" style="width: 100%;">
-                    <p:growl id="mensajes" sticky="true" showDetail="true"/>   
+                    <p:growl id="mensajes" showDetail="true" life="500" />   
                     <p:accordionPanel>
                         <p:tab title="Información Academica">
                             <p:commandButton value="Agregar" actionListener="#{informacionAcademicaController.abrirCrear()}" icon="ui-icon-disk" >

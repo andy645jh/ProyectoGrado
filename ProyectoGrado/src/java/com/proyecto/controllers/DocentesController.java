@@ -91,7 +91,7 @@ public class DocentesController implements Serializable {
         try {
             int cedula = doc.getCedula();
             File f = new File(SessionUtils.getPathImages(cedula) + "pedido.png");
-            System.out.println("File->>>>> " + f.exists());
+            //System.out.println("File->>>>> " + f.exists());
             if (!f.exists()) {
                 _imageDoc = null;
             } else {

@@ -8,10 +8,15 @@ package com.proyecto.controllers;
 import com.proyecto.facades.PermisosFacade;
 import com.proyecto.persistences.Docentes;
 import com.proyecto.persistences.Permisos;
+import com.proyecto.utilities.Mensajes;
 import com.proyecto.utilities.SessionUtils;
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -23,7 +28,7 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class PermisoController {
+public class PermisoController implements Serializable{
 
     @EJB
     private PermisosFacade _ejbFacade;
@@ -46,10 +51,15 @@ public class PermisoController {
 
     public void actualizar() throws UnsupportedEncodingException, NoSuchAlgorithmException 
     {
+        String titulo, detalle;
         String hash = encrypt(_actual);
         
         if(hash.equals(_permiso.getClave()) && _nueva.equals(_confirma))
         {
+            titulo = "Clave Modificada";
+            detalle = "Operacion exitosa";
+            Mensajes.exito(titulo, detalle);
+            
             _permiso.setClave(encrypt(_nueva));
             _ejbFacade.actualizar(_permiso);
             _actual = "";
@@ -58,6 +68,10 @@ public class PermisoController {
             System.out.println("PermisoController.actualizar -> Se actualizo");
         }else{
             // mostrar mensaje
+            titulo = "Algo paso";
+            detalle = "No se pudo realizar el cambio de clave";
+            Mensajes.error(titulo, detalle);
+            //Logger.getLogger(Permisos.class.getName()).log(Level.SEVERE, null, e);
             System.out.println("PermisoController.actualizar -> No se actualizo");
         }
     }
