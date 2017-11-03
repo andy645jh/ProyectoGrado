@@ -9,29 +9,28 @@
         <ui:define name="content">  
             <h:form id="form">
                 <p:panel>   
-
-                    <p:breadCrumb>
-                        <p:menuitem url="#"></p:menuitem>
-                        <p:menuitem value="#{GeneralTxt.bienvenidos} #{loginController.usuario}" url="#"></p:menuitem>
-                    </p:breadCrumb>
-                    <br/>
+                    
+                     <div class="ui-g" style="text-align: center;">
+                        <p:outputLabel > Listado de Formatos de los docentes </p:outputLabel>                               
+                    </div>
 
                     <p:panelGrid columns="5" style="border-color: gray; border-width: 2px; border-style: double">
-
-
-                        <p:outputLabel value="Coordinacion" for="coord" />
-                        <p:selectOneMenu id="coord" required="false" requiredMessage="No ha seleccionado" value="#{docentesController.coordinacion}" > 
-                            <f:selectItems value="#{coordinacionController.combo('Seleccione un Docente')}" />
-                        </p:selectOneMenu>
 
                         <p:outputLabel value="Facultad" for="doc" />
                         <p:selectOneMenu id="doc" required="false" requiredMessage="No ha seleccionado" value="#{docentesController.facultad}" > 
                             <f:selectItems value="#{facultadesControllers.combo('Seleccione un Docente')}" />
                         </p:selectOneMenu>
 
+                        <p:outputLabel value="Coordinacion" for="coord" />
+                        <p:selectOneMenu id="coord" required="false" requiredMessage="No ha seleccionado" value="#{docentesController.coordinacion}" > 
+                            <f:selectItems value="#{coordinacionController.combo('Seleccione un Docente')}" />
+                        </p:selectOneMenu>
+
+                        
 
 
-                        <p:commandButton ajax="true" value="#{actividadesTxt.busregistro}" update="listar" >
+
+                        <p:commandButton ajax="true" value="Buscar" update="listar" >
 
                         </p:commandButton> 
                     </p:panelGrid>
