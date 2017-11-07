@@ -21,11 +21,18 @@
             #{loginController.resetear()}
             <div class="ui-g-12">
                 <div class="login-container">
+                    
+                    
+                    
                     <div class="ui-g">
                         <img src="#{loginController.urlLogo}" alt="j" class="img-responsive"/>
                         <!--<h2>Registro y Evaluación de Actividades</h2>-->
                     </div>
-
+                    
+                    <div class="ui-g" style="text-align: center;">
+                        <p:outputLabel >  PLAN DE TRABAJO DEL DOCENTE </p:outputLabel>                               
+                    </div>
+                    
                     <div class="ui-g">
                         <p:inputText placeholder="#{GeneralTxt.usuario}" id="usuario" required="true" requiredMessage="ingrese un usuario" value="#{loginController.usuario}"/>
                     </div>
