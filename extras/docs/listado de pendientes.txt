@@ -4,7 +4,6 @@
 - Mejorar el diseño
 - Crear una relacion de semestre y año para el RDC-54
 - Arreglar primera tabla del rdc-26
-- La contraseña en el perfil debe ser legible y que el docente la pueda modificar
 - Arreglar el filtro en el auditor que pueda filtrar por facultad y coordinacion
 - el articulo no tiene metodologia
 - graficas del articulo(bd, clases,modelos,pantallazos)
