@@ -9,6 +9,9 @@
 - graficas del articulo(bd, clases,modelos,pantallazos)
 - conclusiones en el articulo
 - actualizar las graficas en el doc final
+- Actualizar y poner graficas del articulo
+- Agregar descripcion de cada seccion de los modulos en el articulo
+- Agregar informacion en las secciones del trabajo que esten vacias
 
 Listo para revision
 
