@@ -109,16 +109,16 @@
             </thead>
             <tbody>               
                 <tr>
-                    <td class="titulo-tabla" width="45%" colspan="2">APELLIDOS</td>                    
-                    <td class="titulo-tabla" width="45%" colspan="2">NOMBRES</td>
+                    <td class="titulo-tabla" width="30%" colspan="3">PRIMER APELLIDO</td>                    
+                    <td class="titulo-tabla" width="30%" colspan="3">NOMBRES</td>
                     <td width="10%" colspan="1" rowspan="7">
                         <p:graphicImage rendered="#{docentesController.imageDoc != null}" height="70" value="#{docentesController.imageDoc}" class="img-responsive"/>
                         <p:graphicImage rendered="#{docentesController.imageDoc == null}" height="70" name="img/fotos.png"/>   
                     </td>
                 </tr>
                 <tr>                    
-                    <td colspan="2">#{reporteDocente.doc.apellidos}</td>
-                    <td colspan="2">#{reporteDocente.doc.nombres}</td>
+                    <td colspan="3">#{reporteDocente.doc.apellidos}</td>
+                    <td colspan="3">#{reporteDocente.doc.nombres}</td>
                 </tr>
                 <tr class="titulo-tabla">
                     <td>DOCUMENTO DE IDENTIDAD</td>
@@ -128,7 +128,11 @@
                     <td colspan="2">CORREO ELECTRONICO</td>                    
                 </tr>
                 <tr>
-                    <td>#{reporteDocente.doc.tipo_doc}</td>
+                    <td>
+                        <p:outputLabel rendered="#{reporteDocente.doc.tipo_doc == 1}" value="Cédula de Ciudadanía"/>
+                        <p:outputLabel rendered="#{reporteDocente.doc.tipo_doc == 2}" value="Cédula de Extrangería"/>
+                        <p:outputLabel rendered="#{reporteDocente.doc.tipo_doc == 3}" value="Pasaporte"/>
+                    </td>
                     <td>#{reporteDocente.doc.cedula}</td>
                     <td>#{reporteDocente.doc.lugar_exp}</td>
                     <td>26/02/2012</td>
