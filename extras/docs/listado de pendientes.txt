@@ -7,12 +7,15 @@
 - Arreglar el filtro en el auditor que pueda filtrar por facultad y coordinacion
 - el articulo no tiene metodologia
 - graficas del articulo(bd, clases,modelos,pantallazos)
-- conclusiones en el articulo
-- actualizar las graficas en el doc final
 - Actualizar y poner graficas del articulo
 - Agregar informacion en las secciones del trabajo que esten vacias
-- Agregar plantillas para las pruebas
 
+Encontrados el 11/12/2017
+- Poner 0 por defecto en las asignaciones
+- Poner por defecto contrato a los coordinadores y auditores
+- No dejar que el docente intente crear actividades o productos si aun no ha sido asignado
+- Validar numeros en login
 Listo para revision
 
 Preguntas
+

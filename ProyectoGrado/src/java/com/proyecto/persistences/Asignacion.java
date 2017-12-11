@@ -32,37 +32,37 @@ public class Asignacion implements Serializable {
     private Coordinacion _codcoordinacion;
     
     @Column(name = "horasclase")
-    private Double _horasclase;
+    private Double _horasclase = 0.0;
     
     @Column(name = "preparacion")
-    private Double _preparacion;
+    private Double _preparacion = 0.0;
    
     @Column(name = "capacitacion")
-    private Double _capacitacion;
+    private Double _capacitacion = 0.0;
     
     @Column(name = "colectivo")
-    private Double _colectivo;
+    private Double _colectivo = 0.0;
    
     @Column(name = "investigacion")
-    private Double _investigacion;
+    private Double _investigacion = 0.0;
   
     @Column(name = "social")
-    private Double _social;
+    private Double _social = 0.0;
     
     @Column(name = "oda")
-    private Double _oda;
+    private Double _oda = 0.0;
   
     @Column(name = "planeacion")
-    private Double _planeacion;
+    private Double _planeacion = 0.0;
    
     @Column(name = "virtualidad")
-    private Double _virtualidad;
+    private Double _virtualidad = 0.0;
     
     @Column(name = "comites")
-    private Double _comites;
+    private Double _comites = 0.0;
 
     @Column(name = "sumatoria")
-    private Double _sumatoria;    
+    private Double _sumatoria = 0.0;    
     
     //esto se usa en el summary para evitar
     //que se divida la lista de asignacion

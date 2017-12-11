@@ -284,8 +284,9 @@ public class AsignacionController implements Serializable {
         actualizar(asigTemp);
 
         //_listadoAsign = _ejbFacade.buscarA("_codcoordinacion", String.valueOf(_coordinacion.getCodcoordinacion()));
-
+        
         _listSum = new ArrayList<>();
+        _totalSum = 0;
         for (Asignacion asigT : _listadoAsign) {
             _totalSum += asigT.getSumatoria();
             _listSum.add(asigT.getSumatoria());
