@@ -70,15 +70,15 @@
 
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel class="ui-md-6" value="#{docentesTxt.nombre}  " for="nombres" />
-                                <p:inputText class="ui-md-6" id="nombres" required="true" value="#{docentesController.campo.nombres}"/>
+                                <p:inputText  class="ui-md-6" id="nombres" required="true" value="#{docentesController.campo.nombres}"/>
                             </div>
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel class="ui-md-6" value="#{docentesTxt.apellido}  " for="apellidos" />
-                                <p:inputText class="ui-md-6" id="apellidos" required="true" value="#{docentesController.campo.apellidos}"/>
+                                <p:inputText  class="ui-md-6" id="apellidos" required="true" value="#{docentesController.campo.apellidos}"/>
                             </div> 
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel value="Tipo Documento" for="tipodoc" />
-                                <p:selectOneMenu id="tipodoc" required="true" value="#{docentesController.campo.tipo_doc}" > 
+                                <p:selectOneMenu  id="tipodoc" required="true" value="#{docentesController.campo.tipo_doc}" > 
                                     <f:selectItem itemLabel="Seleccione" itemValue="0" />
                                     <f:selectItem itemLabel="Cédula de Ciudadanía" itemValue="1" />
                                     <f:selectItem itemLabel="Cédula de Extrangería" itemValue="2" />
@@ -87,16 +87,16 @@
                             </div>
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel class="ui-md-6" value="Documento" for="cedula" />
-                                <p:inputText class="ui-md-6" id="cedula" required="true" value="#{docentesController.campo.cedula}"/> 
+                                <p:inputText  class="ui-md-6" id="cedula" required="true" value="#{docentesController.campo.cedula}"/> 
                             </div>
 
                             <div class="ui-g-12 ajuste-form ajuste-form-block">
                                 <p:outputLabel class="ui-md-6" value="Fecha Exp." for="fecha_exp" />
-                                <p:calendar navigator="true" class="ui-md-6" id="fecha_exp" value="#{docentesController.campo.fecha_exp}"></p:calendar>
+                                <p:calendar required="true" navigator="true" class="ui-md-6" id="fecha_exp" value="#{docentesController.campo.fecha_exp}"></p:calendar>
                             </div>
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel class="ui-md-6 " value="Lugar Exp." for="lugar_exp" />
-                                <p:inputText class="ui-md-6" id="lugar_exp" required="true" value="#{docentesController.campo.lugar_exp}"/>
+                                <p:inputText  class="ui-md-6" id="lugar_exp" required="true" value="#{docentesController.campo.lugar_exp}"/>
                             </div>  
                             
                         </p:panel>  
@@ -108,12 +108,12 @@
 
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel class="ui-md-6" value="Lugar Nac." for="lugar" />                   
-                                <p:inputText class="ui-md-6" id="lugar" required="true" value="#{docentesController.campo.lugar_nac}"/>
+                                <p:inputText  class="ui-md-6" id="lugar" required="true" value="#{docentesController.campo.lugar_nac}"/>
                             </div>   
 
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel value="Sexo" for="genero" />                                    
-                                <p:selectOneMenu id="genero" required="true" value="#{docentesController.campo.genero}"> 
+                                <p:selectOneMenu  id="genero" required="true" value="#{docentesController.campo.genero}"> 
                                     <f:selectItem itemLabel="Seleccione" itemValue="0" />
                                     <f:selectItem itemLabel="Femenino" itemValue="1" />
                                     <f:selectItem itemLabel="Masculino" itemValue="2" />
@@ -121,21 +121,21 @@
                             </div>  
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel value="#{docentesTxt.direccion}" for="direccion" />
-                                <p:inputText id="direccion" required="true" value="#{docentesController.campo.direccion}"/>
+                                <p:inputText  id="direccion" required="true" value="#{docentesController.campo.direccion}"/>
                             </div>
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel value="Municipio" for="municipio" />
-                                <p:inputText id="municipio" required="true" value="#{docentesController.campo.municipio}"/>
+                                <p:inputText  id="municipio" required="true" value="#{docentesController.campo.municipio}"/>
                             </div>
 
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel value="#{docentesTxt.telefono}  " for="telefono" />
-                                <p:inputText id="telefono" required="true" value="#{docentesController.campo.telefono}"/>
+                                <p:inputText  id="telefono" required="true" value="#{docentesController.campo.telefono}"/>
                             </div>
 
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel value="Celular" for="celular" />
-                                <p:inputText id="celular" required="true" value="#{docentesController.campo.celular}"/>
+                                <p:inputText  id="celular" required="true" value="#{docentesController.campo.celular}"/>
                             </div>
                             
 
@@ -146,7 +146,7 @@
 
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel value="Matricula Profesional" for="matricula" />
-                                <p:inputText id="matricula" required="true" value="#{docentesController.campo.matricula_prof}"/>
+                                <p:inputText  id="matricula" required="true" value="#{docentesController.campo.matricula_prof}"/>
                             </div>
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel value="#{docentesTxt.codigo}  " for="codigo" />
@@ -155,12 +155,12 @@
                             
                             <div class="ui-g-12 ajuste-form ajuste-form-block">
                                 <p:outputLabel class="ui-md-6 " value="Fecha Nac." for="fechanac" />                   
-                                <p:calendar navigator="true" class="ui-md-6" id="fechanac" value="#{docentesController.campo.fechanac}"></p:calendar>
+                                <p:calendar required="true" navigator="true" class="ui-md-6" id="fechanac" value="#{docentesController.campo.fechanac}"></p:calendar>
                             </div>
                             
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel value="#{docentesTxt.correo}  " for="correo" />
-                                <p:inputText id="correo" required="true" value="#{docentesController.campo.correo}"/>
+                                <p:inputText  id="correo" required="true" value="#{docentesController.campo.correo}"/>
                             </div>
                             
                             <div class="ui-g-12 ajuste-form">

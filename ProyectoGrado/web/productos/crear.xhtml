@@ -11,19 +11,19 @@
             <h:form>           
                 <p:panelGrid columns="2">                    
                     <p:outputLabel value="#{productosTxt.descripcion}  " for="descripcion" />
-                    <p:inputText id="descripcion" value="#{productosController.campo.descripcion}"/> 
+                    <p:inputText required="true" id="descripcion" value="#{productosController.campo.descripcion}"/> 
 
                     <p:outputLabel value="#{productosTxt.fechaComp} " for="fechacompromiso" />                    
-                    <p:calendar id="fechacompromiso" showOn="button" value="#{productosController.campo.fechacompromiso}"></p:calendar>
+                    <p:calendar required="true" id="fechacompromiso" showOn="button" value="#{productosController.campo.fechacompromiso}"></p:calendar>
 
                     <p:outputLabel value="#{productosTxt.fechaEntr}  " for="fechaentrega" />                   
-                    <p:calendar id="fechaentrega" showOn="button" value="#{productosController.campo.fechaentrega}"></p:calendar>
+                    <p:calendar required="true" id="fechaentrega" showOn="button" value="#{productosController.campo.fechaentrega}"></p:calendar>
 
                     <p:outputLabel value="#{productosTxt.comentarios}  " for="comentarios" />
                     <p:inputTextarea id="comentarios" value="#{productosController.campo.comentarios}"/> 
 
                     <p:outputLabel value="#{productosTxt.actividad}  " for="codact" />
-                    <p:selectOneMenu id="codact" value="#{productosController.codigo}"> 
+                    <p:selectOneMenu required="true" id="codact" value="#{productosController.codigo}"> 
                         <f:selectItems value="#{actividadesController.comboActividadesRestantes('Selecione un opcion')}" />
                     </p:selectOneMenu>
 

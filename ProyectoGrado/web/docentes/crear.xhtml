@@ -28,7 +28,7 @@
 
                         <p:panelGrid columns="2">                    
                             <p:outputLabel value="#{docentesTxt.cedula}  " for="cedula" />
-                            <p:inputText id="cedula" required="true" value="#{docentesController.campo.cedula}"/> 
+                            <p:inputNumber id="cedula" required="true" value="#{docentesController.campo.cedula}" decimalPlaces="0"/> 
 
                             <p:outputLabel value="#{docentesTxt.nombre}  " for="nombres" />
                             <p:inputText id="nombres" required="true" value="#{docentesController.campo.nombres}"/> 

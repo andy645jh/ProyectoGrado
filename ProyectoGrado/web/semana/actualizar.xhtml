@@ -24,10 +24,10 @@
                     <p:panelGrid columns="2">
 
                         <p:outputLabel for="from" value="Fecha Inicio" />
-                        <p:calendar id="from"  pattern="dd/MM/yyyy" value="#{semanaController.campo.horainicio}"/>
+                        <p:calendar id="from" required="true" pattern="dd/MM/yyyy" value="#{semanaController.campo.horainicio}"/>
 
                         <p:outputLabel for="to" value="Fecha Fin" />
-                        <p:calendar id="to"  pattern="dd/MM/yyyy" value="#{semanaController.campo.horafinal}"/>
+                        <p:calendar id="to" required="true" pattern="dd/MM/yyyy" value="#{semanaController.campo.horafinal}"/>
 
                         <f:facet name="footer">
                             <p:commandButton id="btngrabar" value="Actualizar" actionListener="#{semanaController.actualizar()}" ajax="false" />                             

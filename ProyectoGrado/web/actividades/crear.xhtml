@@ -24,25 +24,25 @@
                     <p:panelGrid columns="2">
 
                         <p:outputLabel value="#{actividadesTxt.nombre} " for="nombre" />
-                        <p:inputText id="nombre" value="#{actividadesController.campo.nombre}"/> 
+                        <p:inputText required="true" id="nombre" value="#{actividadesController.campo.nombre}"/> 
                         
                         <p:outputLabel value="#{actividadesTxt.tipoMod}  " for="codtipo" />
-                        <p:selectOneMenu id="codtipo" value="#{actividadesController.codigo}"> 
+                        <p:selectOneMenu required="true" id="codtipo" value="#{actividadesController.codigo}"> 
                             <p:ajax event="valueChange" update="horas" />
                             <f:selectItems value="#{tipoModalidadesController.combo('Selecione un opcion')}" />
                         </p:selectOneMenu>
 
                         <p:outputLabel value="#{actividadesTxt.horas}  " for="horas" />
-                        <p:spinner id="horas" value="#{actividadesController.campo.horas}" stepFactor="0.1" min="0.1" max="#{actividadesController.max}"/>                        
+                        <p:spinner required="true" id="horas" value="#{actividadesController.campo.horas}" stepFactor="0.1" min="0.1" max="#{actividadesController.max}"/>                        
 
                         <p:outputLabel value="#{actividadesTxt.descripcion}  " for="descripcion" />
-                        <p:inputText id="descripcion" value="#{actividadesController.campo.descripcion}"/> 
+                        <p:inputText  id="descripcion" value="#{actividadesController.campo.descripcion}"/> 
 
                         <p:outputLabel value="#{actividadesTxt.responsable}  " for="responsable" />
-                        <p:inputText id="responsable" value="#{actividadesController.campo.responsable}"/> 
+                        <p:inputText required="true" id="responsable" value="#{actividadesController.campo.responsable}"/> 
                                              
                         <p:outputLabel value="Valoración" for="valoracion" />
-                        <p:inputText id="valoracion" value="#{actividadesController.campo.valoracion}"/> 
+                        <p:inputNumber required="true" id="valoracion" value="#{actividadesController.campo.valoracion}" decimalPlaces="0"/> 
                         
                         <f:facet name="footer">
                             <p:commandButton id="btngrabar" value="#{actividadesTxt.crear}" actionListener="#{actividadesController.agregar()}" ajax="true"/>                             
