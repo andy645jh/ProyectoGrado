@@ -91,6 +91,15 @@ public class Docentes implements Serializable
     @Column(name = "matricula_prof")
     private String matricula_prof;
     
+    @Column(name = "categoria")
+    private String categoria;
+    
+    @Column(name = "dedica_especial")
+    private String dedica_especial;
+    
+    @Column(name = "sucursal")
+    private String sucursal;
+    
     @Transient
     private String _nombreCoord;
     
@@ -102,6 +111,14 @@ public class Docentes implements Serializable
 
     public int getTipo_usuario() {
         return _tipo_usuario;
+    }
+
+    public String getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(String sucursal) {
+        this.sucursal = sucursal;
     }
 
     public void setTipo_usuario(int _tipo_usuario) {
@@ -313,6 +330,22 @@ public class Docentes implements Serializable
 
     public void setInhabilitar(int _inhabilitar) {
         this._inhabilitar = _inhabilitar;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getDedica_especial() {
+        return dedica_especial;
+    }
+
+    public void setDedica_especial(String dedica_especial) {
+        this.dedica_especial = dedica_especial;
     }
     
     

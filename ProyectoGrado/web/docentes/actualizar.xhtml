@@ -35,6 +35,17 @@
                                 <f:selectItem itemLabel="Medio Tiempo" itemValue="2" />
                                 <f:selectItem itemLabel="Catedra" itemValue="3" />
                             </p:selectOneMenu>
+                        
+                        <p:outputLabel value="Sucursal" for="sucursal" />
+                            <p:selectOneMenu id="sucursal" required="true" value="#{docentesController.campo.sucursal}"> 
+                                <f:selectItem itemLabel="Seleccione" itemValue="0" />
+                                <f:selectItem itemLabel="Bucaramanga" itemValue="Bucaramanga" />
+                                <f:selectItem itemLabel="Barrancabermeja" itemValue="Barrancabermeja" />
+                                <f:selectItem itemLabel="Piedecuesta" itemValue="Piedecuesta" />
+                                <f:selectItem itemLabel="Velez" itemValue="Velez" />
+                                <f:selectItem itemLabel="San Gil" itemValue="San Gil" />
+                                <f:selectItem itemLabel="Cucuta" itemValue="Cucuta" />
+                            </p:selectOneMenu>  
 
 
                         <f:facet name="footer" class="no-background">
