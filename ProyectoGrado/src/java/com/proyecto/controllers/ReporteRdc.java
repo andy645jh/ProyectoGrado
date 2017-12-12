@@ -51,14 +51,16 @@ public class ReporteRdc implements Serializable {
 
     @EJB
     private HorarioFacade _horarioFacade;
-    
+
     @EJB
     private ConvencionesFacade _convFacade;
-    
+
     private List<Actividades> _actividades;
     private List<Productos> _productos;
     private Docentes _doc;
     private List<Convenciones> _lstConvenciones;
+    private double _horasSemestre = 0.0;
+    private double _totalHoras = 0.0;
     
     public ReporteRdc() {
 
@@ -66,9 +68,9 @@ public class ReporteRdc implements Serializable {
 
     @PostConstruct
     public void init() {
-        _lstConvenciones=_convFacade.listado();
+        _lstConvenciones = _convFacade.listado();
     }
-    
+
     public List<String> getListadoHeaderSeguimiento() {
         SimpleDateFormat sdf = new SimpleDateFormat("MMM dd");
 
@@ -84,7 +86,7 @@ public class ReporteRdc implements Serializable {
     }
 
     public List<String[]> getListadoSeguimiento() {
-
+        _horasSemestre=0;
         SimpleDateFormat sdf = new SimpleDateFormat("MMM dd");
         int size = getListadoHeaderSeguimiento().size();
 
@@ -95,9 +97,11 @@ public class ReporteRdc implements Serializable {
         List<Actividades> listaActividades = getActividades();
 
         for (int i = 0; i < listaActividades.size(); i++) {
+            listFila = new String[size];
             for (int j = 0; j < size; j++) {
                 String horas = listaActividades.get(i).getHoras() + "";
                 listFila[j] = horas;
+                _horasSemestre += listaActividades.get(i).getHoras();
             }
             listCompleta.add(listFila);
         }
@@ -114,38 +118,57 @@ public class ReporteRdc implements Serializable {
             _arrayInterval[i].setInitData(_intervalos[i], i);
         }
 
+        _totalHoras=0;
         for (Horario obj : listHorario) {
             //eventModel.addEvent(new DefaultScheduleEvent(obj.getNombre(), obj.getHorainicio(), obj.getHorafinal(),obj));
             System.out.println("HOra: " + obj.getHora());
             //cuadrando la lista de horarios        
             _arrayInterval[obj.getHora()].setDia(obj);
-        }
+            
+            
+            if(obj.getCodActividad()!=null)
+            {
+                //calculando horas            
+                _totalHoras += obj.getCodActividad().getHoras();
+                System.out.println("Horas: "+obj.getCodActividad().getHoras());            
+                System.out.println("Id: "+obj.getCodActividad().getCodactividad());  
+            }
+                      
+        }        
 
         //convertir array a lista
         return Arrays.asList(_arrayInterval);
         //RequestContext.getCurrentInstance().update(":formHorario:nuevaLista");
     }
 
-    public List<Productos> getProductos() {        
+    public double getTotalHoras() {        
+        return _totalHoras;
+    }
+
+    public List<Productos> getProductos() {
         //ordenamiento ascendente
         Collections.sort(_productos, (o1, o2) -> o1.getCodactividad().getCodactividad() - o2.getCodactividad().getCodactividad());
-        
+
         return _productos;
     }
 
     public List<Actividades> getActividades() {
         int cedula = getDoc().getCedula();
         _actividades = new ArrayList<>();
-        _productos = _productosFacade.buscarCampo("_coddocente", cedula+"");
-        
+        _productos = _productosFacade.buscarCampo("_coddocente", cedula + "");
+
         for (Productos producto : _productos) {
             //System.out.println("ReporteRdc.getActividades() actividad->"+producto.getCodactividad().getNombre());
             _actividades.add(producto.getCodactividad());
         }
-        
+
         //ordenamiento ascendente
-        Collections.sort(_actividades, (o1, o2) -> o1.getCodactividad() - o2.getCodactividad());        
+        Collections.sort(_actividades, (o1, o2) -> o1.getCodactividad() - o2.getCodactividad());
         return _actividades;
+    }
+
+    public String getSemestre() {
+        return SessionUtils.getSemestre() + " - " + SessionUtils.getYear();
     }
 
     public Docentes getDoc() {
@@ -161,4 +184,11 @@ public class ReporteRdc implements Serializable {
         this._lstConvenciones = _lstConvenciones;
     }
 
+    public double getHorasSemestre() {
+        return _horasSemestre;
+    }
+
+    public void setHorasSemestre(double _horasSemestre) {
+        this._horasSemestre = _horasSemestre;
+    }
 }

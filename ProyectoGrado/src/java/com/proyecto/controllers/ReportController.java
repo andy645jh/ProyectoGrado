@@ -11,7 +11,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.xhtmlrenderer.pdf.ITextRenderer;
@@ -43,8 +42,9 @@ public class ReportController implements Serializable {
             renderer.setDocument(new URL(url).toString());
             renderer.layout();            
 
-            //response.setContentType("application/pdf");
-            _archivo = "reporte_54_"+SessionUtils.getYear()+"_"+SessionUtils.getSemestre()+".pdf";
+            //reporte unico
+            _archivo = "reporte_54.pdf";
+            //_archivo = "reporte_54_"+SessionUtils.getYear()+"_"+SessionUtils.getSemestre()+".pdf";
             ruta = SessionUtils.getPathReports(doc.getCedula()) + _archivo;
             OutputStream os = new FileOutputStream(ruta);          
             //response.setHeader("Content-Disposition", "inline; filename=reporte_54.pdf");               
@@ -71,8 +71,10 @@ public class ReportController implements Serializable {
         try {
             ITextRenderer renderer = new ITextRenderer();
             renderer.setDocument(new URL(url).toString());
-            renderer.layout();           
-            _archivo = "reporte_26_"+SessionUtils.getYear()+"_"+SessionUtils.getSemestre()+".pdf";
+            renderer.layout();   
+            //reporte unico
+            _archivo = "reporte_26.pdf";
+            //_archivo = "reporte_26_"+SessionUtils.getYear()+"_"+SessionUtils.getSemestre()+".pdf";
             ruta = SessionUtils.getPathReports(doc.getCedula()) + _archivo;
             OutputStream os = new FileOutputStream(ruta);
            
