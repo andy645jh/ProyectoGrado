@@ -287,25 +287,17 @@ public class DocentesController implements Serializable {
     private void configurarAsignacion(int tipoContrato) {
         //tiempo completo=1
         //medio tiempo=2
-        //catedra=3        
+        //catedra=3       
+        //planta=4   
         if (tipoContrato == 1) {
             asignacion.setHorasclase(24.0);
-            asignacion.setPreparacion(4.0);
-            asignacion.setCapacitacion(4.0);
+            asignacion.setPreparacion(4.0);           
             asignacion.setSumatoria(32.0);
         } else {
             asignacion.setHorasclase(12.0);
-            asignacion.setPreparacion(2.0);
-            asignacion.setCapacitacion(0.0);
+            asignacion.setPreparacion(2.0);           
             asignacion.setSumatoria(14.0);
-        }
-        /*asignacion.setColectivo(0.0);
-         asignacion.setInvestigacion(0.0);
-         asignacion.setSocial(0.0);
-         asignacion.setOda(0.0);
-         asignacion.setPlaneacion(0.0);
-         asignacion.setVirtualidad(0.0);
-         asignacion.setComites(0.0);*/
+        }    
     }
 
     public void resetear() {

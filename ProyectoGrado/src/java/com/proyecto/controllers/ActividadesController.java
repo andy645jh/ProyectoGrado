@@ -335,7 +335,7 @@ public class ActividadesController implements Serializable {
         System.out.println("Codigo: " + _codigo);
         switch (_codigo) {
             case 1:
-                return _asignacion.getSocial();
+                return _asignacion.getExtension();
 
             case 4:
                 return _asignacion.getComites();
@@ -347,7 +347,7 @@ public class ActividadesController implements Serializable {
                 return _asignacion.getOda();
 
             case 10:
-                return _asignacion.getPlaneacion();
+                return _asignacion.getAcreditacion();
 
             case 11:
                 return _asignacion.getVirtualidad();

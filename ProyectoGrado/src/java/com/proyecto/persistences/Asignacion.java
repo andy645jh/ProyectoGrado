@@ -35,10 +35,7 @@ public class Asignacion implements Serializable {
     private Double _horasclase = 0.0;
     
     @Column(name = "preparacion")
-    private Double _preparacion = 0.0;
-   
-    @Column(name = "capacitacion")
-    private Double _capacitacion = 0.0;
+    private Double _preparacion = 0.0;   
     
     @Column(name = "colectivo")
     private Double _colectivo = 0.0;
@@ -46,14 +43,14 @@ public class Asignacion implements Serializable {
     @Column(name = "investigacion")
     private Double _investigacion = 0.0;
   
-    @Column(name = "social")
-    private Double _social = 0.0;
+    @Column(name = "extension")
+    private Double _extension = 0.0;
     
     @Column(name = "oda")
     private Double _oda = 0.0;
   
-    @Column(name = "planeacion")
-    private Double _planeacion = 0.0;
+    @Column(name = "acreditacion")
+    private Double _acreditacion = 0.0;
    
     @Column(name = "virtualidad")
     private Double _virtualidad = 0.0;
@@ -88,23 +85,12 @@ public class Asignacion implements Serializable {
         this._horasclase = _horasclase;
     }
 
-   
-
     public Double getPreparacion() {
         return _preparacion;
     }
 
     public void setPreparacion(Double _preparacion) {
         this._preparacion = _preparacion;
-    }
-
-   
-    public Double getCapacitacion() {
-        return _capacitacion;
-    }
-
-    public void setCapacitacion(Double _capacitacion) {
-        this._capacitacion = _capacitacion;
     }
 
     public Double getColectivo() {
@@ -114,7 +100,6 @@ public class Asignacion implements Serializable {
     public void setColectivo(Double _colectivo) {
         this._colectivo = _colectivo;
     }
-
    
     public Double getInvestigacion() {
         return _investigacion;
@@ -124,18 +109,14 @@ public class Asignacion implements Serializable {
         this._investigacion = _investigacion;
     }
 
-  
-
-    public Double getSocial() {
-        return _social;
+    public Double getExtension() {
+        return _extension;
     }
 
-    public void setSocial(Double _social) {
-        this._social = _social;
+    public void setExtension(Double _extension) {
+        this._extension = _extension;
     }
-
     
-
     public Double getOda() {
         return _oda;
     }
@@ -144,12 +125,12 @@ public class Asignacion implements Serializable {
         this._oda = _oda;
     }
 
-    public Double getPlaneacion() {
-        return _planeacion;
+    public Double getAcreditacion() {
+        return _acreditacion;
     }
 
-    public void setPlaneacion(Double _planeacion) {
-        this._planeacion = _planeacion;
+    public void setAcreditacion(Double acreditacion) {
+        this._acreditacion = acreditacion;
     }
     
     public Double getVirtualidad() {
@@ -208,7 +189,7 @@ public class Asignacion implements Serializable {
 
     @Override
     public String toString() {
-        return "Asignaciones -> C: "+_colectivo+", I; "+_investigacion+", O: "+_oda+" V: "+_virtualidad+", Ca:"+_capacitacion+", Sum: "+_sumatoria;
+        return "Asignaciones -> C: "+_colectivo+", I; "+_investigacion+", O: "+_oda+" V: "+_virtualidad+", Sum: "+_sumatoria;
     }
     
     public Double getSumatoria() {        
