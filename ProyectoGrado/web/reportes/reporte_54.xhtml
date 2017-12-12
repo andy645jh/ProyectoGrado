@@ -53,7 +53,7 @@
                     <p:graphicImage rendered="#{docentesController.imageDoc == null}" height="80" name="img/fotos.png"/>                                                        
 
                 </td>
-                <td width="10%">PAGINA</td>
+                <td width="10%">PÁGINA</td>
             </tr>
             <tr>
                 <td>R-DC-54</td>
@@ -67,7 +67,7 @@
         <table>
             <thead>
                 <tr>
-                    <th class="cab-tabla" colspan="9">INFORMACION GENERAL</th>                        
+                    <th class="cab-tabla" colspan="9">INFORMACIÓN GENERAL</th>                        
                 </tr>
             </thead>
             <tbody>
@@ -85,22 +85,19 @@
                 </tr>
                 <tr class="titulo-tabla">                    
                     <td colspan="2">Facultad</td>
-                    <td colspan="2">Unidad Academica</td>
-                    <td>Semestre-Año</td>
-                    <td colspan="4">Direccion-Telefono-Correo Electronico</td>
+                    <td colspan="3">Unidad Academica</td>                    
+                    <td colspan="4">Dirección-Teléfono-Correo Electrónico</td>
                 </tr>
                 <tr>
-                    <td class="titulo-tabla">FCSE</td>
-                    <td>x</td>
-                    <td colspan="2" rowspan="2">#{reporteRdc.doc.codcoordinacion.nombre}</td>
-                    <td>2017</td>
+                    <td colspan="2">#{reporteRdc.doc.codcoordinacion.codfacultad.abreviatura}</td>                   
+                    <td colspan="3">#{reporteRdc.doc.codcoordinacion.nombre}</td>                    
                     <td colspan="4">#{reporteRdc.doc.direccion} - #{reporteRdc.doc.telefono} - #{reporteRdc.doc.correo}</td>
                 </tr>
                 <tr>
-                    <td class="titulo-tabla">FCNI</td>
-                    <td>x</td>
-                    <td colspan="2" class="titulo-tabla">Formacion Academica</td>
-                    <td colspan="3">#{reporteRdc.doc.formacion}</td>                    
+                    <td colspan="2" class="titulo-tabla">Semestre-Año</td>
+                    <td colspan="3">II - 2017</td>
+                    <td colspan="2" class="titulo-tabla">Formación Académica</td>
+                    <td colspan="2">#{reporteRdc.doc.formacion}</td>                    
                 </tr>
             </tbody>
         </table>
@@ -121,9 +118,9 @@
                     <th>Actividad</th>
                     <th>Nombre</th>
                     <th>Tipo</th>
-                    <th>Descripcion</th>
+                    <th>Descripción</th>
                     <th>Responsable</th>
-                    <th>Valoracion</th>
+                    <th>Valoración</th>
                 </tr>
             </thead>
             <tbody>               
@@ -163,16 +160,27 @@
                 <ui:repeat value="#{reporteRdc.listadoSeguimiento}" var="persona" varStatus="state">
                     <tr>
                         <td>#{state.index}</td>
-                        <ui:repeat value="#{persona}" var="columna">
+                        <ui:repeat value="#{persona}" var="columna" varStatus="ind">
                             <td>#{columna}</td>                            
                         </ui:repeat>
                     </tr>
                 </ui:repeat>
             </tbody>
         </table> 
-        <br></br>
-        <br></br>
-
+      
+        <table style="width: 100%;font-size: 30px; background-color: #e2dfdf">
+            <tr>
+                <td>
+                    TOTAL HORAS SEMESTRE
+                </td>
+                <td>
+                    <p:outputLabel id="horas_semestre" style="" value="#{reporteRdc.horasSemestre}"/>
+                </td>
+            </tr>
+        </table>
+        <br/>
+        <br/>
+        
         <!-- TABLA DE PRODUCTOS -->
         <table style="border: 1px solid">
             <thead>
@@ -182,7 +190,7 @@
                 </tr>                
                 <tr class="titulo-tabla" >                  
                     <th>Actividad</th>
-                    <th>Descripcion del Producto</th>
+                    <th>Descripción del Producto</th>
                     <th>Fecha de Compromiso</th>
                     <th>Fecha de Entrega</th>
                     <th>Comentarios</th>                    
@@ -242,8 +250,19 @@
                 </ui:repeat>
             </tbody>
         </table>
-        <br></br>
-
+        
+        <br/>
+        <table style="width: 100%;font-size: 30px; background-color: #e2dfdf">
+            <tr>
+                <td>
+                    TOTAL HORAS ASIGNADAS
+                </td>
+                <td>
+                    <p:outputLabel id="totalhoras" style="" value="#{actividadesController.totalHoras}"/>
+                </td>
+            </tr>
+        </table>
+        <br/>
         <!-- TABLA DE CONVENCION -->
         <table style="border: 1px solid">
             <thead>

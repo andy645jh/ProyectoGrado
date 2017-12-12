@@ -24,11 +24,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.ejb.Init;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -59,6 +57,7 @@ public class ReporteRdc implements Serializable {
     private List<Productos> _productos;
     private Docentes _doc;
     private List<Convenciones> _lstConvenciones;
+    private double _horasSemestre = 0.0;
     
     public ReporteRdc() {
 
@@ -84,23 +83,28 @@ public class ReporteRdc implements Serializable {
     }
 
     public List<String[]> getListadoSeguimiento() {
-
+        _horasSemestre = 0.0;
         SimpleDateFormat sdf = new SimpleDateFormat("MMM dd");
         int size = getListadoHeaderSeguimiento().size();
 
         String[] listFila = new String[size];
         List<String[]> listCompleta = new ArrayList<>();
         Docentes docente = getDoc();
-        System.out.println("--> Docente: " + docente.getCedula());
+     
         List<Actividades> listaActividades = getActividades();
 
         for (int i = 0; i < listaActividades.size(); i++) {
+            listFila = new String[size];
             for (int j = 0; j < size; j++) {
                 String horas = listaActividades.get(i).getHoras() + "";
                 listFila[j] = horas;
+                //System.out.println("ReporteRdc-> Codigo Actividad: "+listaActividades.get(i).getCodactividad());
+                //System.out.println("ReporteRdc-> Horas Actividad: "+listaActividades.get(i).getHoras());
+                _horasSemestre += listaActividades.get(i).getHoras();
             }
             listCompleta.add(listFila);
         }
+        //System.out.println("Cantidad: "+listCompleta.size());
         return listCompleta;
     }
 
@@ -159,6 +163,14 @@ public class ReporteRdc implements Serializable {
 
     public void setLstConvenciones(List<Convenciones> _lstConvenciones) {
         this._lstConvenciones = _lstConvenciones;
+    }
+
+    public double getHorasSemestre() {
+        return _horasSemestre;
+    }
+
+    public void setHorasSemestre(double _horasSemestre) {
+        this._horasSemestre = _horasSemestre;
     }
 
 }
