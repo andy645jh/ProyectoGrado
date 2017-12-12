@@ -10,7 +10,7 @@
     <h:form >  
         <p:menu class="ancho-menu fondo-menu">   
             <p:menuitem class="#{estaActivo == 'perfil' ? 'active' : ''}" value="Perfil" outcome="#{docentesController.abrirPerfil()}"  />            
-            <c:if test="#{docentesController.estaAsignado()}">
+            <c:if test="#{docentesController.estaAsignado()}" >
                 <p:menuitem class="#{estaActivo == 'actividades' ? 'active' : ''}" value="Actividades" outcome="/actividades/listado.xhtml"  />
                 <p:menuitem class="#{estaActivo == 'productos' ? 'active' : ''}" value="Productos" outcome="/productos/listado.xhtml"  />
                 <p:menuitem class="#{estaActivo == 'horario' ? 'active' : ''}" value="Horario" outcome="/horario/horario.xhtml"  />
