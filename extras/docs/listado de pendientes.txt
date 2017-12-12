@@ -44,12 +44,12 @@ Cambios del Profesor
 - Quitar historial de reportes
 
 
-
 Listo para revision
 - Quitar la tabla de lista de clases
 - Buscar docente en el modulo de coordinador
 - Arreglar mensaje de cambio a habilitado del docente
 - Error cuando guarda guarda semana
+
 
 Preguntas
 

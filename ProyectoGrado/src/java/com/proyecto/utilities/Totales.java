@@ -13,17 +13,16 @@ import java.io.Serializable;
  */
 public class Totales implements Serializable {
     private double _totalHoras = 0;
-    private double _totalHC = 0;
-    private double _totalPC = 0;
-    private double _totalCap = 0;
-    private double _totalCD = 0;        
+    private double _totalHorasClase = 0;
+    private double _totalPreparacion = 0;   
+    private double _totalColectivo = 0;        
     
-    private double _totalHI = 0;
-    private double _totalPS = 0;
+    private double _totalHoraInv = 0;
+    private double _totalExtension = 0;
     private double _totalODA = 0;
-    private double _totalPlan = 0;
+    private double _totalAcreditacion = 0;
     private double _totalVirt = 0;
-    private double _totalCom = 0;
+    private double _totalComites = 0;
 
     public Totales() { }    
 
@@ -35,52 +34,44 @@ public class Totales implements Serializable {
         this._totalHoras = _totalHoras;
     }
 
-    public double getTotalHC() {
-        return _totalHC;
+    public double getTotalHorasClase() {
+        return _totalHorasClase;
     }
 
-    public void setTotalHC(double _totalHC) {
-        this._totalHC = _totalHC;
+    public void setTotalHorasClase(double _totalHC) {
+        this._totalHorasClase = _totalHC;
     }
 
-    public double getTotalPC() {
-        return _totalPC;
+    public double getTotalPreparacion() {
+        return _totalPreparacion;
     }
 
-    public void setTotalPC(double _totalPC) {
-        this._totalPC = _totalPC;
+    public void setTotalPreparacion(double _totalPC) {
+        this._totalPreparacion = _totalPC;
     }
 
-    public double getTotalCap() {
-        return _totalCap;
+    public double getTotalColectivo() {
+        return _totalColectivo;
     }
 
-    public void setTotalCap(double _totalCap) {
-        this._totalCap = _totalCap;
+    public void setTotalColectivo(double _totalCD) {
+        this._totalColectivo = _totalCD;
     }
 
-    public double getTotalCD() {
-        return _totalCD;
+    public double getTotaHoraInv() {
+        return _totalHoraInv;
     }
 
-    public void setTotalCD(double _totalCD) {
-        this._totalCD = _totalCD;
+    public void setTotalHoraInv(double _totalHI) {
+        this._totalHoraInv = _totalHI;
     }
 
-    public double getTotalHI() {
-        return _totalHI;
+    public double getTotalExtension() {
+        return _totalExtension;
     }
 
-    public void setTotalHI(double _totalHI) {
-        this._totalHI = _totalHI;
-    }
-
-    public double getTotalPS() {
-        return _totalPS;
-    }
-
-    public void setTotalPS(double _totalPS) {
-        this._totalPS = _totalPS;
+    public void setTotalExtension(double _totalPS) {
+        this._totalExtension = _totalPS;
     }
 
     public double getTotalODA() {
@@ -91,12 +82,12 @@ public class Totales implements Serializable {
         this._totalODA = _totalODA;
     }
 
-    public double getTotalPlan() {
-        return _totalPlan;
+    public double getTotalAcreditacion() {
+        return _totalAcreditacion;
     }
 
-    public void setTotalPlan(double _totalPlan) {
-        this._totalPlan = _totalPlan;
+    public void setTotalAcreditacion(double _totalPlan) {
+        this._totalAcreditacion = _totalPlan;
     }
 
     public double getTotalVirt() {
@@ -107,12 +98,12 @@ public class Totales implements Serializable {
         this._totalVirt = _totalVirt;
     }
 
-    public double getTotalCom() {
-        return _totalCom;
+    public double getTotalComites() {
+        return _totalComites;
     }
 
-    public void setTotalCom(double _totalCom) {
-        this._totalCom = _totalCom;
+    public void setTotalComites(double _totalCom) {
+        this._totalComites = _totalCom;
     }
     
     

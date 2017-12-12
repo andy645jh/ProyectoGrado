@@ -79,7 +79,7 @@
                             <p:column style="text-align: center">
                                 <f:facet name="header">
                                     <h:outputLink id="tool-tc" value="#">
-                                        <h:outputText value="TC" />
+                                        <h:outputText value="Tipo Cont" />
                                     </h:outputLink>                            
                                     <p:tooltip for="tool-tc" value="Tipo de Contrato" trackMouse="true" />
                                 </f:facet>
@@ -87,12 +87,13 @@
                                 <h:outputText value="Tiempo Completo" rendered="#{registro.coddocente.tipocontrato== 1}"/>                            
                                 <h:outputText value="Medio Tiempo" rendered="#{registro.coddocente.tipocontrato == 2}"/>
                                 <h:outputText value="Catedra" rendered="#{registro.coddocente.tipocontrato == 3}"/> 
+                                <h:outputText value="Planta" rendered="#{registro.coddocente.tipocontrato == 4}"/>
                             </p:column> 
 
                             <p:column  style="text-align: center">
                                 <f:facet name="header" >
                                     <h:outputLink id="tool-hc" value="#">
-                                        <h:outputText value="HC" />
+                                        <h:outputText value="H. Clase" />
                                     </h:outputLink>                            
                                     <p:tooltip for="tool-hc" value="Horas de Clase" trackMouse="true" />
                                 </f:facet>
@@ -102,28 +103,17 @@
                             <p:column style="text-align: center">
                                 <f:facet name="header">
                                     <h:outputLink id="tool-pc" value="#">
-                                        <h:outputText value="PC" />
+                                        <h:outputText value="P. Clase" />
                                     </h:outputLink>                            
-                                    <p:tooltip for="tool-pc" value="Preparacion de Clase" trackMouse="true" />
+                                    <p:tooltip for="tool-pc" value="Preparación de Clase" trackMouse="true" />
                                 </f:facet>
                                 <h:outputText value="#{registro.preparacion}" />
-                            </p:column>
-
-                            <p:column style="text-align: center">
-                                <f:facet name="header">
-                                    <h:outputLink id="tool-cap" value="#">
-                                        <h:outputText value="Cap" />
-                                    </h:outputLink>                            
-                                    <p:tooltip for="tool-cap" value="Capacitacion" trackMouse="true" />
-                                </f:facet>
-                                <h:outputText value="#{registro.capacitacion}" />
-
-                            </p:column>
+                            </p:column>      
 
                             <p:column style="text-align: center">
                                 <f:facet name="header" >
                                     <h:outputLink id="tool-cd" value="#">
-                                        <h:outputText value="CD" />
+                                        <h:outputText value="Colectivo" />
                                     </h:outputLink>                            
                                     <p:tooltip for="tool-cd" value="Colectivo" trackMouse="true" />
                                 </f:facet>
@@ -132,13 +122,13 @@
                                     <f:facet name="input"><p:inputText id="colectivo" value="#{registro.colectivo}" style="width:96%"/></f:facet>
                                 </p:cellEditor>
                             </p:column>
-
+                            
                             <p:column style="text-align: center">
                                 <f:facet name="header">
                                     <h:outputLink id="tool-hi" value="#">
-                                        <h:outputText value="HI" />
+                                        <h:outputText value="Investiga" />
                                     </h:outputLink>                            
-                                    <p:tooltip for="tool-hi" value="Horas de Investigacion" trackMouse="true" />
+                                    <p:tooltip for="tool-hi" value="Horas de Investigación" trackMouse="true" />
                                 </f:facet>
                                 <p:cellEditor>
                                     <f:facet name="output"><h:outputText value="#{registro.investigacion}" /></f:facet>
@@ -148,14 +138,27 @@
 
                             <p:column style="text-align: center">
                                 <f:facet name="header">
-                                    <h:outputLink id="tool-ps" value="#">
-                                        <h:outputText value="PS" />
+                                    <h:outputLink id="tool-c" value="#">
+                                        <h:outputText value="Comites" />
                                     </h:outputLink>                            
-                                    <p:tooltip for="tool-ps" value="Social" trackMouse="true" />
+                                    <p:tooltip for="tool-c" value="Comites" trackMouse="true" />  
                                 </f:facet>
                                 <p:cellEditor>
-                                    <f:facet name="output"><h:outputText value="#{registro.social}" /></f:facet>
-                                    <f:facet name="input"><p:inputText id="social" value="#{registro.social}" style="width:96%"/></f:facet>
+                                    <f:facet name="output"><h:outputText value="#{registro.comites}" /></f:facet>
+                                    <f:facet name="input"><p:inputText id="comites" value="#{registro.comites}" style="width:96%"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            
+                            <p:column style="text-align: center">
+                                <f:facet name="header">
+                                    <h:outputLink id="tool-ps" value="#">
+                                        <h:outputText value="Extensión" />
+                                    </h:outputLink>                            
+                                    <p:tooltip for="tool-ps" value="Extensión" trackMouse="true" />
+                                </f:facet>
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{registro.extension}" /></f:facet>
+                                    <f:facet name="input"><p:inputText id="social" value="#{registro.extension}" style="width:96%"/></f:facet>
                                 </p:cellEditor> 
                             </p:column>
 
@@ -175,13 +178,13 @@
                             <p:column style="text-align: center">
                                 <f:facet name="header" >
                                     <h:outputLink id="tool-p" value="#">
-                                        <h:outputText value="P" />
+                                        <h:outputText value="Acreditación" />
                                     </h:outputLink>                            
-                                    <p:tooltip for="tool-p" value="Planeacion" trackMouse="true" />                            
+                                    <p:tooltip for="tool-p" value="Acreditación" trackMouse="true" />                            
                                 </f:facet>
                                 <p:cellEditor>
-                                    <f:facet name="output"><h:outputText value="#{registro.planeacion}" /></f:facet>
-                                    <f:facet name="input"><p:inputText id="planeacion" value="#{registro.planeacion}" style="width:96%"/></f:facet>
+                                    <f:facet name="output"><h:outputText value="#{registro.acreditacion}" /></f:facet>
+                                    <f:facet name="input"><p:inputText id="planeacion" value="#{registro.acreditacion}" style="width:96%"/></f:facet>
                                 </p:cellEditor>
 
                             </p:column>
@@ -189,7 +192,7 @@
                             <p:column style="text-align: center">
                                 <f:facet name="header">
                                     <h:outputLink id="tool-v" value="#">
-                                        <h:outputText value="V" />
+                                        <h:outputText value="Virtualidad" />
                                     </h:outputLink>                            
                                     <p:tooltip for="tool-v" value="Virtualidad" trackMouse="true" />       
                                 </f:facet>
@@ -197,29 +200,16 @@
                                     <f:facet name="output"><h:outputText value="#{registro.virtualidad}" /></f:facet>
                                     <f:facet name="input"><p:inputText id="virtualidad" value="#{registro.virtualidad}" style="width:96%"/></f:facet>
                                 </p:cellEditor>
-                            </p:column>
-
-                            <p:column style="text-align: center">
-                                <f:facet name="header">
-                                    <h:outputLink id="tool-c" value="#">
-                                        <h:outputText value="C" />
-                                    </h:outputLink>                            
-                                    <p:tooltip for="tool-c" value="Comites" trackMouse="true" />  
-                                </f:facet>
-                                <p:cellEditor>
-                                    <f:facet name="output"><h:outputText value="#{registro.comites}" /></f:facet>
-                                    <f:facet name="input"><p:inputText id="comites" value="#{registro.comites}" style="width:96%"/></f:facet>
-                                </p:cellEditor>
-                            </p:column>
+                            </p:column>                            
 
                             <p:column style="text-align: center">
                                 <f:facet name="header">
                                     <h:outputLink id="tool-sum" value="#">
-                                        <h:outputText value="Sum" />
+                                        <h:outputText value="Total" />
                                     </h:outputLink>                            
                                     <p:tooltip for="tool-sum" value="Comites" trackMouse="true" />  
                                 </f:facet>                                    
-                                <h:outputText id="summary_cell" styleClass="#{ asignacionController.checkSum(registro.sumatoria, registro.coddocente.tipocontrato) }" value="#{registro.sumatoria}">
+                                <h:outputText id="summary_cell" styleClass="#{ asignacionController.checkSum(registro.sumatoria, registro.coddocente.tipocontrato) }" value="#{registro.sumatoria} / #{asignacionController.valorMax(registro.coddocente)}">
                                     <f:convertNumber pattern="##.##"/>
                                 </h:outputText>                                                                         
                             </p:column>
@@ -233,39 +223,47 @@
                                 </p:column> 
 
                                 <p:column colspan="1" >
-                                    <h:outputText value="#{asignacionController.totalesCalculados.totalHC}"/>
+                                    <h:outputText value="#{asignacionController.totalesCalculados.totalHorasClase}"/>
                                 </p:column> 
                                 <p:column colspan="1" >
-                                    <h:outputText value="#{asignacionController.totalesCalculados.totalPC}"/>
-                                </p:column> 
-                                <p:column colspan="1" >
-                                    <h:outputText value="#{asignacionController.totalesCalculados.totalCap}"/>
-                                </p:column> 
+                                    <h:outputText value="#{asignacionController.totalesCalculados.totalPreparacion}"/>
+                                </p:column>                               
                                 <p:column colspan="1" >                                
-                                    <h:outputText value="#{asignacionController.totalesCalculados.totalCD} / #{asignacionController.totalesEsperados.totalCom}" styleClass="#{ asignacionController.checkValues(asignacionController.totalesCalculados.totalCD, asignacionController.totalesEsperados.totalCom) }"/>
+                                    <h:outputText value="#{asignacionController.totalesCalculados.totalColectivo}" />                                         
                                 </p:column> 
                                 <p:column colspan="1" >
-                                    <h:outputText value="#{asignacionController.totalesCalculados.totalHI} / #{asignacionController.totalesEsperados.totalHI}" styleClass="#{ asignacionController.checkValues(asignacionController.totalesCalculados.totalHI, asignacionController.totalesEsperados.totalHI) }"/>
+                                    <h:outputText value="#{asignacionController.calcularPorcentaje(asignacionController.totalesCalculados.totaHoraInv)}" >
+                                        <f:convertNumber pattern="##.##%"/>
+                                    </h:outputText>  
                                 </p:column> 
                                 <p:column colspan="1" >
-                                    <h:outputText value="#{asignacionController.totalesCalculados.totalPS} / #{asignacionController.totalesEsperados.totalPS}" styleClass="#{ asignacionController.checkValues(asignacionController.totalesCalculados.totalPS, asignacionController.totalesEsperados.totalPS) }"/>
-                                </p:column> 
-                                <p:column colspan="1" >
-                                    <h:outputText value="#{asignacionController.totalesCalculados.totalODA} / #{asignacionController.totalesEsperados.totalODA}" styleClass="#{ asignacionController.checkValues(asignacionController.totalesCalculados.totalODA, asignacionController.totalesEsperados.totalODA) }"/>
-                                </p:column> 
-                                <p:column colspan="1" >
-                                    <h:outputText value="#{asignacionController.totalesCalculados.totalPlan} / #{asignacionController.totalesEsperados.totalPlan}" styleClass="#{ asignacionController.checkValues(asignacionController.totalesCalculados.totalPlan, asignacionController.totalesEsperados.totalPlan) }"/>
-                                </p:column> 
-                                <p:column colspan="1" >
-                                    <h:outputText value="#{asignacionController.totalesCalculados.totalVirt} / #{asignacionController.totalesEsperados.totalVirt}" styleClass="#{ asignacionController.checkValues(asignacionController.totalesCalculados.totalVirt, asignacionController.totalesEsperados.totalVirt) }"/>
-                                </p:column> 
-                                <p:column colspan="1" >
-                                    <h:outputText id="summary_cal" value="#{asignacionController.totalesCalculados.totalCom} / #{asignacionController.totalesEsperados.totalCom}" styleClass="#{ asignacionController.checkValues(asignacionController.totalesCalculados.totalCom, asignacionController.totalesEsperados.totalCom) }">
-                                        <f:convertNumber pattern="##.##"/>
+                                    <h:outputText id="summary_cal" value="#{asignacionController.calcularPorcentaje(asignacionController.totalesCalculados.totalComites)}">
+                                        <f:convertNumber pattern="##.##%"/>
                                     </h:outputText>
                                 </p:column>
                                 <p:column colspan="1" >
-                                    <h:outputText value="#{asignacionController.totalSum} / #{asignacionController.totalesEsperados.totalHC}" styleClass="#{ asignacionController.checkValues(asignacionController.totalSum, asignacionController.totalesEsperados.totalHC) }"/>
+                                    <h:outputText value="#{asignacionController.calcularPorcentaje(asignacionController.totalesCalculados.totalExtension)}" >
+                                        <f:convertNumber pattern="##.##%"/>
+                                    </h:outputText>  
+                                </p:column> 
+                                <p:column colspan="1" >
+                                    <h:outputText value="#{asignacionController.calcularPorcentaje(asignacionController.totalesCalculados.totalODA)}" >
+                                        <f:convertNumber pattern="##.##%"/>
+                                    </h:outputText>  
+                                </p:column> 
+                                <p:column colspan="1" >
+                                    <h:outputText value="#{asignacionController.calcularPorcentaje(asignacionController.totalesCalculados.totalAcreditacion)}">
+                                        <f:convertNumber pattern="##.##%"/>
+                                    </h:outputText>  
+                                </p:column> 
+                                <p:column colspan="1" >
+                                    <h:outputText value="#{asignacionController.calcularPorcentaje(asignacionController.totalesCalculados.totalVirt)}">
+                                        <f:convertNumber pattern="##.##%"/>
+                                    </h:outputText>  
+                                </p:column> 
+                                
+                                <p:column colspan="1" >
+                                    <h:outputText value="#{asignacionController.totalSum} / #{asignacionController.totalesEsperados.totalHorasClase}" styleClass="#{ asignacionController.checkValues(asignacionController.totalSum, asignacionController.totalesEsperados.totalHorasClase) }"/>
                                 </p:column> 
                             </p:summaryRow>
                         </p:dataTable> 
