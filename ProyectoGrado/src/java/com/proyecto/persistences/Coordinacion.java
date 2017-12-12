@@ -167,6 +167,7 @@ public class Coordinacion implements Serializable {
      
     public boolean esCien()
     {        
+        System.out.println(getAcreditacion() +"--"+ getComites() +"--"+ getExtension() +"--"+ getInvestigacion() +"--"+ getOda() +"--"+ getVirtualidad());
         return getAcreditacion() + getComites() + getExtension() + getInvestigacion() + getOda() + getVirtualidad() == 100;
     }
     

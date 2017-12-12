@@ -185,8 +185,8 @@ public class ProductosController implements Serializable
     public void actualizar()
     {
         String titulo,detalle;
-        Actividades actividad= _actividadesFacade.buscar(_codigo);
-        _obj.setCodactividad(actividad);
+//        Actividades actividad= _actividadesFacade.buscar(_codigo);
+//        _obj.setCodactividad(actividad);
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");

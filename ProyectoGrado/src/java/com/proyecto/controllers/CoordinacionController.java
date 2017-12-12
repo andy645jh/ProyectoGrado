@@ -92,7 +92,7 @@ public class CoordinacionController implements Serializable{
        
         String titulo, detalle;      
        
-        System.out.println("LO Q HAY EN COORDI " + _obj);        
+        System.out.println("LO Q HAY EN COORDI " + _obj.esCien());        
          
         if(!_obj.esCien())
         {
