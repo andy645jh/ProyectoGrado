@@ -29,7 +29,6 @@ Cambios del Profesor
 - AL  eliminar una actividad toca cerrar sesion para que se vea el cambio en el horario
 - Restringuir al docente q no le han asignado los porcentajes para que no cree actividades
 - Los docentes catedra no deben ver el menu de lo q corresponde al RDC-54
-- Error al editar el perfil
 
 Listo para revision
 - Quitar capacitacion de la tabla
