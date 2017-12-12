@@ -19,6 +19,7 @@ Encontrados el 11/12/2017
 Cambios del Profesor
 - Mostrar el total en el seguimiento
 - El coordinador evalua al docente
+- El coordinador llena la parte de entrega y comentarios por cada actividad
 
 Listo para revision
 
