@@ -45,7 +45,7 @@
         <!-- TABLA DE TITULO -->
         <table class="sin-borde">
             <tr>
-                <td width="10%"><img src="../resources/img/logo_reportes.png" height="70" alt=""/></td>                
+                <td width="10%"><img src="../resources/img/logo_reportes.png" height="70" alt="logo-reporte"/></td>                
                 <td width="60%">DOCENCIA</td>                
                 <td width="10%">PAGINA</td>
             </tr>
@@ -61,38 +61,31 @@
         <table>
             <thead>
                 <tr>
-                    <th class="cab-tabla" colspan="12">PARA USO EXCLUSIVO DE LA COORDINACION ACADEMICA</th>                        
+                    <th class="cab-tabla" colspan="12">PARA USO EXCLUSIVO DE LA COORDINACIÓN ACADEMICA</th>                        
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="titulo-tabla">FACULTAD</td>
-                    <td>#{reporteDocente.doc.codcoordinacion.codfacultad.abreviatura} FCSE</td>
-                    <td>X</td>
-                    <td>FCNI</td>
-                    <td>REGIONAL</td>
-                    <td class="titulo-tabla">UNIDAD ACADEMICA</td>
-                    <td>SISTEMAS</td>
+                    <td class="titulo-tabla">CATEGORIA</td>                                    
+                    <td class="titulo-tabla">UNIDAD ACADEMICA</td>                    
                     <td class="titulo-tabla">DEDICACION</td>
-                    <td>TC</td>
+                    <td class="titulo-tabla">REGIONAL</td>    
+                    <!--<td>TC</td>
                     <td>MT</td>
-                    <td>HC</td>
-                    <td>Dedicacion Especial</td>
+                    <td>HC</td>-->
+                    <td class="titulo-tabla">Dedicacion Especial</td>
+                    <td class="titulo-tabla">FECHA ACTUALIZACIÓN</td>
+                    
                 </tr>
                 <tr>
-                    <td class="titulo-tabla">FECHA ACTUALIZACIÓN</td>
-                    <td>02/02/2017</td>
-                    <td class="titulo-tabla">CATEGORIA</td>
-                    <td>1</td>
-                    <td class="titulo-tabla">REGIONAL</td>
-                    <td>Bucaramanga</td>
-                    <td>X</td>
-                    <td>Sangil</td>
-                    <td>X</td>
-                    <td>Piedecuesta</td>
-                    <td>X</td>
-                    <td>Vélez</td>
-                    <td>X</td>
+                    <td>#{reporteDocente.doc.codcoordinacion.codfacultad.abreviatura}</td>                                     
+                    <td>1*</td>                    
+                    <td>Sistemas*</td>
+                    <td>TC*</td>
+                    <td>Bucaramanga*</td>                    
+                    <td>Docente Planta*</td>
+                    <td>02/02/2012*</td>   
                 </tr>
 
             </tbody>
@@ -111,9 +104,9 @@
                 <tr>
                     <td class="titulo-tabla" width="30%" colspan="3">PRIMER APELLIDO</td>                    
                     <td class="titulo-tabla" width="30%" colspan="3">NOMBRES</td>
-                    <td width="10%" colspan="1" rowspan="7">
-                        <p:graphicImage rendered="#{docentesController.imageDoc != null}" height="70" value="#{docentesController.imageDoc}" class="img-responsive"/>
-                        <p:graphicImage rendered="#{docentesController.imageDoc == null}" height="70" name="img/fotos.png"/>   
+                    <td width="10%" colspan="1" rowspan="8">
+                        <p:graphicImage rendered="#{docentesController.imageDoc != null}" height="100" value="#{docentesController.imageDoc}"/>
+                        <p:graphicImage rendered="#{docentesController.imageDoc == null}" height="100" name="img/fotos.png"/>   
                     </td>
                 </tr>
                 <tr>                    
@@ -135,7 +128,11 @@
                     </td>
                     <td>#{reporteDocente.doc.cedula}</td>
                     <td>#{reporteDocente.doc.lugar_exp}</td>
-                    <td>26/02/2012</td>
+                    <td>
+                        <h:outputText value="#{reporteDocente.doc.fecha_exp}" >
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText> 
+                    </td>
                     <td colspan="2">#{reporteDocente.doc.correo}</td>                    
                 </tr>
                 <tr class="titulo-tabla">
@@ -149,6 +146,25 @@
                     <td colspan="2">#{reporteDocente.doc.municipio}</td>
                     <td colspan="1">#{reporteDocente.doc.telefono}</td>
                     <td colspan="1">#{reporteDocente.doc.celular}</td>
+                </tr>
+                <tr class="titulo-tabla">
+                    <td colspan="2">FECHA DE NACIMIENTO</td>
+                    <td colspan="2">LUGAR DE NACIMIENTO</td>
+                    <td colspan="1">GENERO</td>
+                    <td colspan="1">MATRICULA PROFESIONAL</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h:outputText value="#{reporteDocente.doc.fechanac}" >
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText> 
+                    </td>
+                    <td colspan="2">#{reporteDocente.doc.lugar_nac}</td>
+                    <td colspan="1">
+                        <p:outputLabel rendered="#{reporteDocente.doc.genero == 1}" value="Femenino"/>
+                        <p:outputLabel rendered="#{reporteDocente.doc.genero == 2}" value="Masculino"/>
+                    </td>
+                    <td colspan="1">#{reporteDocente.doc.matricula_prof}</td>
                 </tr>
             </tbody>
         </table>
@@ -307,7 +323,7 @@
                     <th width="30%">INSTITUCION EDUCATIVA</th>
                     <th width="20%">ACTIVIDAD DOCENTE</th>
                     <th width="20%">DEPENDENCIA</th>
-                    <th width="10%">TIEMPO DE SERVICIO(MESES)</th>   
+                    <th width="10%">TIEMPO DE SERVICIO(DIAS)</th>   
                     <th width="10%">TIPO DE CONTRATO</th>   
                     <th width="10%">FECHA DE ULTIMA VINCULACION</th>              
                 </tr>

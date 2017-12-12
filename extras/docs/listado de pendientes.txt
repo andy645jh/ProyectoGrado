@@ -17,7 +17,9 @@ Encontrados el 11/12/2017
 - Validar numeros en login
 
 Cambios del Profesor
-- Mostrar el total en el seguimiento
+- Mostrar el total en el seguimiento en el horario,actividades y reporte
+- Revisar si la dedicacion es un campo que ingresa el docente
+- Traer dato para llenar la primera tabla del rdc26, actualmente esta quemado
 - El coordinador evalua al docente
 - El coordinador llena la parte de entrega y comentarios por cada actividad
 - El docente no debe modificar la entrega y comentarios pero puede visualizarlos
@@ -29,7 +31,8 @@ Cambios del Profesor
 - Falta una fila en el rdc-26, fecha nacimiento,genero,matricula pro
 - Coordinador puede decir si un rdc esta bn o mal y dejar un comentario que debe ser visible por el docente
 - Quitar historial de reportes
-
+- Dar formato a la fechas en el perfil y los rdc
+- Error cuando se abre la seccion perfil de primera despues de iniciar sesion
 
 Listo para revision
 - Quitar capacitacion de la tabla

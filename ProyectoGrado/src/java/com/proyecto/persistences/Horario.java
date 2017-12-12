@@ -24,10 +24,9 @@ public class Horario implements Serializable {
     @Column(name = "codhorario")
     private int _codhorario;    
    
-    @Column(name = "nombre")
-    @Size(min = 1, max = 300)
-    @NotNull
-    private String _nombre; 
+    @JoinColumn(name = "codactividad", referencedColumnName = "codactividad")
+    @ManyToOne(optional = false)
+    private Actividades _codActividad; 
         
     @JoinColumn(name = "coddocente", referencedColumnName = "cedula")
     @ManyToOne(optional = false)
@@ -67,12 +66,12 @@ public class Horario implements Serializable {
         this._codhorario = _codhorario;
     }
 
-    public String getNombre() {        
-        return _nombre;
+    public Actividades getCodActividad() {        
+        return _codActividad;
     }
 
-    public void setNombre(String _nombre) {
-        this._nombre = _nombre;
+    public void setCodActividad(Actividades _nombre) {
+        this._codActividad = _nombre;
     }
     
     public Docentes getCoddocente() {
@@ -115,8 +114,7 @@ public class Horario implements Serializable {
 
     @Override
     public String toString() {
-        if(_nombre=="null") return "";
-        return _nombre;
+        return _codActividad==null ? "": _codActividad.getNombre();
     }
 
     public int getDia() {

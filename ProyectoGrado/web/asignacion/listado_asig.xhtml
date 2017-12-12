@@ -97,7 +97,10 @@
                                     </h:outputLink>                            
                                     <p:tooltip for="tool-hc" value="Horas de Clase" trackMouse="true" />
                                 </f:facet>
-                                <h:outputText value="#{registro.horasclase}"/>                                  
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{registro.horasclase}" /></f:facet>
+                                    <f:facet name="input"><p:inputText id="horasclase" value="#{registro.horasclase}" style="width:96%"/></f:facet>
+                                </p:cellEditor>                                                                 
                             </p:column>
 
                             <p:column style="text-align: center">
@@ -107,7 +110,10 @@
                                     </h:outputLink>                            
                                     <p:tooltip for="tool-pc" value="Preparación de Clase" trackMouse="true" />
                                 </f:facet>
-                                <h:outputText value="#{registro.preparacion}" />
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{registro.preparacion}" /></f:facet>
+                                    <f:facet name="input"><p:inputText id="preparacion" value="#{registro.preparacion}" style="width:96%"/></f:facet>
+                                </p:cellEditor>                                
                             </p:column>      
 
                             <p:column style="text-align: center">

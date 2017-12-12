@@ -128,6 +128,7 @@ public class ProduccionController implements Serializable
     {
         Docentes doc = (Docentes) SessionUtils.get("docente");
         cedula= doc.getCedula()+"";
+        System.out.println("ProduccionController getListado-> "+cedula);
         return _ejbFacade.buscarCampo("coddocente",cedula);
     }
     

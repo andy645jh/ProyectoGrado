@@ -26,8 +26,8 @@
 
                         <p:column style="width: 10px; text-align: center;background-color: #{intervalo.lunes.codconvencion.color}">
                             <f:facet name="header">Lunes</f:facet>
-                            <p:commandLink value="#{intervalo.lunes.nombre}" update="eventDetails formHorario:dialog_horario" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.lunes)}"/>                           
-                            <p:commandButton rendered="#{intervalo.lunes.asignado}" ajax="true" update="nuevaLista " class="boton-borrar" icon="ui-icon-trash" title="Quitar" action="#{horarioController.closeDialog(intervalo.lunes)}">
+                            <p:commandLink value="#{intervalo.lunes.codActividad}" update="eventDetails formHorario:dialog_horario" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.lunes)}"/>                           
+                            <p:commandButton rendered="#{intervalo.lunes.asignado}" ajax="true" update="nuevaLista" class="boton-borrar" icon="ui-icon-trash" title="Quitar" action="#{horarioController.closeDialog(intervalo.lunes)}">
                                 <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
                             </p:commandButton> 
                             <p:commandLink rendered="#{!intervalo.lunes.asignado}" update="eventDetails" ajax="false" value="Asignar" style="color: #e2dfdf;" actionListener="#{horarioController.abrirCrear(intervalo.lunes)}"/>                                                  
@@ -35,8 +35,8 @@
 
                         <p:column style="width: 10px; text-align: center;background-color: #{intervalo.martes.codconvencion.color}">
                             <f:facet name="header">Martes</f:facet>
-                            <p:commandLink value="#{intervalo.martes.nombre}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.martes)}"/>                                                         
-                            <p:commandButton rendered="#{intervalo.martes.asignado}" ajax="true" update="nuevaLista "  class="boton-borrar" icon="ui-icon-trash" title="Quitar" action="#{horarioController.closeDialog(intervalo.martes)}">
+                            <p:commandLink value="#{intervalo.martes.codActividad}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.martes)}"/>                                                         
+                            <p:commandButton rendered="#{intervalo.martes.asignado}" ajax="true" update="nuevaLista"  class="boton-borrar" icon="ui-icon-trash" title="Quitar" action="#{horarioController.closeDialog(intervalo.martes)}">
                                 <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
                             </p:commandButton> 
                             <p:commandLink rendered="#{!intervalo.martes.asignado}" update="eventDetails" ajax="false" value="Asignar" style="color: #e2dfdf;" actionListener="#{horarioController.abrirCrear(intervalo.martes)}"/>                                                  
@@ -44,7 +44,7 @@
 
                         <p:column style="width: 10px; text-align: center;background-color: #{intervalo.miercoles.codconvencion.color}">
                             <f:facet name="header">Miercoles</f:facet>
-                            <p:commandLink value="#{intervalo.miercoles.nombre}" update="eventDetails" ajax="false"  actionListener="#{horarioController.abrirActualizar(intervalo.miercoles)}"/>                                
+                            <p:commandLink value="#{intervalo.miercoles.codActividad}" update="eventDetails" ajax="false"  actionListener="#{horarioController.abrirActualizar(intervalo.miercoles)}"/>                                
                             <p:commandButton rendered="#{intervalo.miercoles.asignado}" ajax="true" update="nuevaLista" class="boton-borrar" icon="ui-icon-trash" title="Quitar" action="#{horarioController.closeDialog(intervalo.miercoles)}">
                                 <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
                             </p:commandButton> 
@@ -53,7 +53,7 @@
 
                         <p:column style="width: 10px; text-align: center;background-color: #{intervalo.jueves.codconvencion.color}">
                             <f:facet name="header">Jueves</f:facet>
-                            <p:commandLink value="#{intervalo.jueves.nombre}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.jueves)}"/> 
+                            <p:commandLink value="#{intervalo.jueves.codActividad}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.jueves)}"/> 
                             <p:commandButton rendered="#{intervalo.jueves.asignado}" ajax="true" update="nuevaLista "  class="boton-borrar" icon="ui-icon-trash" title="Quitar" action="#{horarioController.closeDialog(intervalo.jueves)}">
                                 <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
                             </p:commandButton> 
@@ -62,7 +62,7 @@
 
                         <p:column style="width: 10px; text-align: center;background-color: #{intervalo.viernes.codconvencion.color}">
                             <f:facet name="header">Viernes</f:facet>
-                            <p:commandLink value="#{intervalo.viernes.nombre}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.viernes)}"/>  
+                            <p:commandLink value="#{intervalo.viernes.codActividad}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.viernes)}"/>  
                             <p:commandButton rendered="#{intervalo.viernes.asignado}" ajax="true" update="nuevaLista"  class="boton-borrar" icon="ui-icon-trash" title="Quitar" action="#{horarioController.closeDialog(intervalo.viernes)}">
                                 <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
                             </p:commandButton> 
@@ -71,7 +71,7 @@
 
                         <p:column style="width: 10px; text-align: center;background-color: #{intervalo.sabado.codconvencion.color}">
                             <f:facet name="header">Sabado</f:facet>
-                            <p:commandLink value="#{intervalo.sabado.nombre}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.sabado)}" />
+                            <p:commandLink value="#{intervalo.sabado.codActividad}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.sabado)}" />
                             <p:commandButton rendered="#{intervalo.sabado.asignado}" ajax="true" update="nuevaLista"  class="boton-borrar" icon="ui-icon-trash" title="Quitar" action="#{horarioController.closeDialog(intervalo.sabado)}">
                                 <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
                             </p:commandButton> 
@@ -79,24 +79,38 @@
                         </p:column>   
 
                     </p:dataTable>
-
+                    <br/>
+                    
+                    <table style="width: 100%;font-size: 30px; background-color: #e2dfdf">
+                        <tr>
+                            <td>
+                                TOTAL HORAS ASIGNADAS
+                            </td>
+                            <td>
+                                <p:outputLabel id="totalhoras" style="" value="#{horarioController.totalHoras}"/>
+                            </td>
+                        </tr>
+                    </table>
                     
 
                     <p:dialog id="dialog_horario" widgetVar="eventDialog" header="Event Details" >
 
                         <h:panelGrid id="eventDetails" columns="2">                           
                             <p:outputLabel value="#{clasesTxt.nombre}  " for="nombre" />
-                            <p:inputText required="true" id="nombre" value="#{horarioController.objHorario.nombre}"/>                                   
+                            <p:selectOneMenu required="true" id="nombre" value="#{horarioController.codigoAct}"> 
+                                <p:ajax event="change" update="@this" listener="#{horarioController.actualizandoMenu()}" />
+                                <f:selectItems value="#{actividadesController.comboFiltrado('Seleccione una opción')}" />
+                            </p:selectOneMenu>                                                             
 
-                            <p:outputLabel value="#{clasesTxt.convencion} #{horarioController.objHorario.codconvencion.codconvencion}" for="codconvencion" />
+                            <p:outputLabel value="#{clasesTxt.convencion}" for="codconvencion" />
                             <p:selectOneMenu required="true" id="codconvencion" value="#{horarioController.codigo}"> 
                                 <p:ajax event="change" update="@this" listener="#{horarioController.actualizandoMenu()}" />
                                 <f:selectItems value="#{convencionesController.combo('Seleccione una Opcion')}" />
                             </p:selectOneMenu>
 
                             <f:facet name="footer">
-                                <p:commandButton rendered="#{horarioController.esGuardar()}" value="#{clasesTxt.guardar}" actionListener="#{horarioController.agregar()}" oncomplete="PF('eventDialog').hide();"/>                                                                    
-                                <p:commandButton rendered="#{horarioController.esActualizar()}" value="#{clasesTxt.guardar}" actionListener="#{horarioController.actualizar()}" oncomplete="PF('eventDialog').hide();"/>                                                                    
+                                <p:commandButton rendered="#{horarioController.esGuardar()}" value="#{clasesTxt.guardar}" ajax="true" update="nuevaLista totalhoras" actionListener="#{horarioController.agregar()}" oncomplete="PF('eventDialog').hide();"/>                                                                    
+                                <p:commandButton rendered="#{horarioController.esActualizar()}" value="#{clasesTxt.guardar}" ajax="true" update="nuevaLista totalhoras" actionListener="#{horarioController.actualizar()}" oncomplete="PF('eventDialog').hide();"/>                                                                    
                             </f:facet>
 
                         </h:panelGrid>

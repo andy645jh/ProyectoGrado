@@ -1,8 +1,10 @@
 package com.proyecto.controllers;
 
+import com.proyecto.facades.ActividadesFacade;
 import com.proyecto.utilities.Formulario;
 import com.proyecto.facades.HorarioFacade;
 import com.proyecto.facades.ConvencionesFacade;
+import com.proyecto.persistences.Actividades;
 import com.proyecto.persistences.Horario;
 import com.proyecto.persistences.Convenciones;
 import com.proyecto.persistences.Docentes;
@@ -38,6 +40,9 @@ public class HorarioController implements Serializable {
     private HorarioFacade horarioFacade;
 
     @EJB
+    private ActividadesFacade _actividadesFacade;
+    
+    @EJB
     private ConvencionesFacade _convencionesFacade;
 
     private Horario _objHorario;
@@ -46,7 +51,10 @@ public class HorarioController implements Serializable {
     private List<Intervalo> _listInterval;
     private Intervalo[] _arrayInterval;
     private Docentes _currentDocente;
-
+    private int _codigoAct;
+    private double _totalHoras = 0.0;
+  
+    
     private enum Action {
         CREAR, ACTUALIZAR, NINGUNA
     };
@@ -86,6 +94,12 @@ public class HorarioController implements Serializable {
         for (Horario obj : listHorario) {           
             //cuadrando la lista de horarios        
             _arrayInterval[obj.getHora()].setDia(obj);
+            
+            //calculando horas
+            /*if(obj.getCodActividad()!=null)
+            {
+                _totalHoras += obj.getCodActividad().getHoras();
+            }*/
         }
 
         //convertir array a lista
@@ -138,7 +152,9 @@ public class HorarioController implements Serializable {
         String titulo, detalle;
         Convenciones convencion = _convencionesFacade.buscar(_codigo);
         _objHorario.setCodconvencion(convencion);
-
+        Actividades actividad = _actividadesFacade.buscar(_codigoAct);
+        _objHorario.setCodActividad(actividad);
+        
         System.out.println("convencion " + _objHorario.getCodconvencion());
 
         try {
@@ -193,11 +209,11 @@ public class HorarioController implements Serializable {
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
 
-            System.out.print("Borrar ---- " + _objHorario.getNombre());
+            System.out.print("Borrar ---- " + _objHorario.getCodActividad());
             horarioFacade.borrar(_objHorario);
             Convenciones conve = new Convenciones();
             conve.setCodconvencion(0);
-            _objHorario.setNombre("");
+            _objHorario.setCodActividad(null);
             _objHorario.setCodconvencion(conve);
             _objHorario.setAsignado(false);
             
@@ -234,6 +250,7 @@ public class HorarioController implements Serializable {
         
         _actualAction = Action.ACTUALIZAR;
         System.out.println("HorarioController.abrirActualizar() -> horario: " + objTemp.getCodconvencion().getNombre());
+        
         _objHorario = objTemp;
         Map<String, Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
@@ -244,8 +261,13 @@ public class HorarioController implements Serializable {
     
     public void actualizar() {
         String titulo, detalle;
+        System.out.println("HorarioController.actualizar() -> nombre: " + _objHorario.getCodActividad());
         Convenciones convencion = _convencionesFacade.buscar(_codigo);
         _objHorario.setCodconvencion(convencion);
+        Actividades actividad = _actividadesFacade.buscar(_codigoAct);
+        _objHorario.setCodActividad(actividad);
+        
+        System.out.println("HorarioController.actualizar() -> nombre 2: " + _objHorario.getCodActividad());
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
@@ -302,6 +324,22 @@ public class HorarioController implements Serializable {
         return _actualAction==Action.ACTUALIZAR;
     }
     
+    public double getTotalHoras() {
+        _totalHoras=0;
+        for (Horario obj : getListado()) {              
+            //calculando horas
+            if(obj.getCodActividad()!=null)
+            {
+                _totalHoras += obj.getCodActividad().getHoras();
+            }
+        }
+        return _totalHoras;
+    }
+
+    public void setTotalHoras(double _totalHoras) {
+        this._totalHoras = _totalHoras;
+    }
+    
     public void resetear() {
         _objHorario = null;
     }
@@ -326,6 +364,14 @@ public class HorarioController implements Serializable {
         return _objHorario;
     }
 
+    public int getCodigoAct() {
+        return _codigoAct;
+    }
+
+    public void setCodigoAct(int _codigoAct) {
+        this._codigoAct = _codigoAct;
+    }
+    
     @FacesConverter(forClass = Horario.class, value = "horarioConverter")
     public static class HorarioControllerConverter implements Converter {
 
