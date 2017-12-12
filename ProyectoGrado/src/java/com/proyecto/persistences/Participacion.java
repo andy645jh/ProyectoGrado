@@ -29,22 +29,18 @@ public class Participacion implements Serializable
     private String tipo_part;
     
     @Column(name = "evento")  
-    @Size(min = 1, max = 200)
     private String evento;
     
     @Column(name = "tema")
     private String tema;
        
     @Column(name = "ambito")
-    @Size(min = 1, max = 100)
     private String ambito;
     
     @Column(name = "activ_culturales")
-    @Size(min = 1, max = 200)
     private String activ_culturales;
     
     @Column(name = "dedica_cultural")
-    @Size(min = 1, max = 200)
     private String dedica_cultural;
     
     @Column(name = "desempeno")
