@@ -47,11 +47,11 @@
             <tr>
                 <td width="10%"><img src="../resources/img/logo_reportes.png" height="70" alt="logo-reporte"/></td>                
                 <td width="60%">DOCENCIA</td>                
-                <td width="10%">PAGINA</td>
+                <td width="10%">PÁGINA</td>
             </tr>
             <tr>
                 <td>R-DC-26</td>
-                <td style="font-weight: bold;">HOJA DE VIDA DEL DOCENTE VINCULADO A LA INSTITUCION</td>                
+                <td style="font-weight: bold;">HOJA DE VIDA DEL DOCENTE VINCULADO A LA INSTITUCIÓN</td>                
                 <td>VERSIÓN: 07</td>
             </tr>
         </table>
@@ -61,20 +61,20 @@
         <table>
             <thead>
                 <tr>
-                    <th class="cab-tabla" colspan="12">PARA USO EXCLUSIVO DE LA COORDINACIÓN ACADEMICA</th>                        
+                    <th class="cab-tabla" colspan="12">PARA USO EXCLUSIVO DE LA COORDINACIÓN ACADÉMICA</th>                        
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="titulo-tabla">FACULTAD</td>
-                    <td class="titulo-tabla">CATEGORIA</td>                                    
-                    <td class="titulo-tabla">UNIDAD ACADEMICA</td>                    
-                    <td class="titulo-tabla">DEDICACION</td>
+                    <td class="titulo-tabla">CATEGORÍA</td>                                    
+                    <td class="titulo-tabla">UNIDAD ACADÉMICA</td>                    
+                    <td class="titulo-tabla">DEDICACIÓN</td>
                     <td class="titulo-tabla">REGIONAL</td>    
                     <!--<td>TC</td>
                     <td>MT</td>
                     <td>HC</td>-->
-                    <td class="titulo-tabla">Dedicacion Especial</td>
+                    <td class="titulo-tabla">Dedicación Especial</td>
                     <td class="titulo-tabla">FECHA ACTUALIZACIÓN</td>
                     
                 </tr>
@@ -115,15 +115,15 @@
                 </tr>
                 <tr class="titulo-tabla">
                     <td>TIPO DE DOCUMENTO</td>
-                    <td>NUMERO DE DOCUMENTO</td>
-                    <td>LUGAR DE EXPEDICION</td>
-                    <td>FECHA DE EXPEDICION</td>
-                    <td colspan="2">CORREO ELECTRONICO</td>                    
+                    <td>NÚMERO DE DOCUMENTO</td>
+                    <td>LUGAR DE EXPEDICIÓN</td>
+                    <td>FECHA DE EXPEDICIÓN</td>
+                    <td colspan="2">CORREO ELECTRÓNICO</td>                    
                 </tr>
                 <tr>
                     <td>
                         <p:outputLabel rendered="#{reporteDocente.doc.tipo_doc == 1}" value="Cédula de Ciudadanía"/>
-                        <p:outputLabel rendered="#{reporteDocente.doc.tipo_doc == 2}" value="Cédula de Extrangería"/>
+                        <p:outputLabel rendered="#{reporteDocente.doc.tipo_doc == 2}" value="Cédula de Extranjería"/>
                         <p:outputLabel rendered="#{reporteDocente.doc.tipo_doc == 3}" value="Pasaporte"/>
                     </td>
                     <td>#{reporteDocente.doc.cedula}</td>
@@ -136,10 +136,10 @@
                     <td colspan="2">#{reporteDocente.doc.correo}</td>                    
                 </tr>
                 <tr class="titulo-tabla">
-                    <td colspan="2">DIRECCION Y BARRIO DE RESIDENCIA</td>
+                    <td colspan="2">DIRECCIÓN Y BARRIO DE RESIDENCIA</td>
                     <td colspan="2">MUNICIPIO</td>
-                    <td colspan="1">TELEFONO DE RESIDENCIA</td>
-                    <td colspan="1">NUMERO CELULAR</td>
+                    <td colspan="1">TELÉFONO DE RESIDENCIA</td>
+                    <td colspan="1">NÚMERO CELULAR</td>
                 </tr>
                 <tr>
                     <td colspan="2">#{reporteDocente.doc.direccion}</td>
@@ -150,8 +150,8 @@
                 <tr class="titulo-tabla">
                     <td colspan="2">FECHA DE NACIMIENTO</td>
                     <td colspan="2">LUGAR DE NACIMIENTO</td>
-                    <td colspan="1">GENERO</td>
-                    <td colspan="1">MATRICULA PROFESIONAL</td>
+                    <td colspan="1">GÉNERO</td>
+                    <td colspan="1">MATRÍCULA PROFESIONAL</td>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -176,18 +176,18 @@
             <thead>
 
                 <tr>
-                    <th class="cab-tabla" colspan="6">II. INFORMACION ACADEMICA</th>
+                    <th class="cab-tabla" colspan="6">II. INFORMACIÓN ACADÉMICA</th>
                 </tr>
                 <tr class="titulo-tabla">
-                    <th colspan="6">A. TITULOS</th>
+                    <th colspan="6">A. TÍTULOS</th>
                 </tr>
                 <tr>        
-                    <th>NIVEL ACADEMICO</th>
-                    <th>TITULO OBTENIDO</th>
-                    <th>INSTITUCION</th>
-                    <th>AÑO GRADUACION</th>
+                    <th>NIVEL ACADÉMICO</th>
+                    <th>TÍTULO OBTENIDO</th>
+                    <th>INSTITUCIÓN</th>
+                    <th>AÑO GRADUACIÓN</th>
                     <th>No. REGISTRO</th>
-                    <th>PAIS</th>
+                    <th>PAÍS</th>
                 </tr>
             </thead>
             <tbody>               
@@ -233,7 +233,7 @@
                 <tr class="titulo-tabla" >                  
                     <th>TIPO</th>
                     <th width="30%">NOMBRE DEL PROGRAMA O ACTIVIDAD</th>
-                    <th width="30%">INSTITUCION</th>
+                    <th width="30%">INSTITUCIÓN</th>
                     <th width="10%">No. HORAS</th>
                     <th width="20%">AÑO</th>              
                 </tr>
@@ -275,7 +275,7 @@
                     <th width="20%">DEPENDENCIA</th>
                     <th width="10%">TIEMPO DE SERVICIO(MESES)</th>
                     <th width="10%">TIPO DE CONTRATO</th>              
-                    <th width="10%">FECHA DE ULTIMA VINCULACION</th>              
+                    <th width="10%">FECHA DE ÚLTIMA VINCULACIÓN</th>              
                 </tr>
             </thead>
             <tbody>               
@@ -320,12 +320,12 @@
                     <th class="cab-tabla" colspan="6">IV. EXPERIENCIA DOCENTE</th>
                 </tr>                
                 <tr class="titulo-tabla" >  
-                    <th width="30%">INSTITUCION EDUCATIVA</th>
+                    <th width="30%">INSTITUCIÓN EDUCATIVA</th>
                     <th width="20%">ACTIVIDAD DOCENTE</th>
                     <th width="20%">DEPENDENCIA</th>
                     <th width="10%">TIEMPO DE SERVICIO(DIAS)</th>   
                     <th width="10%">TIPO DE CONTRATO</th>   
-                    <th width="10%">FECHA DE ULTIMA VINCULACION</th>              
+                    <th width="10%">FECHA DE ÚLTIMA VINCULACIÓN</th>              
                 </tr>
             </thead>
             <tbody>               
@@ -367,11 +367,11 @@
             <thead>
 
                 <tr>
-                    <th class="cab-tabla" colspan="5">V. PRODUCCION INTELECTUAL</th>
+                    <th class="cab-tabla" colspan="5">V. PRODUCCIÓN INTELECTUAL</th>
                 </tr>                
                 <tr class="titulo-tabla" >  
-                    <th width="20%">TIPO DE PRODUCCION</th>
-                    <th width="20%">NOMBRE DE LA PRODUCCION</th>
+                    <th width="20%">TIPO DE PRODUCCIÓN</th>
+                    <th width="20%">NOMBRE DE LA PRODUCCIÓN</th>
                     <th width="20%">EDITORIAL / NOMBRE DE LA REVISTA / OTROS DATOS</th>
                     <th width="20%">ISSBN o ISSN (de libros, revistas o memorias</th>   
                     <th width="20%">AÑO</th>                       
@@ -407,16 +407,16 @@
             <thead>
 
                 <tr>
-                    <th class="cab-tabla" colspan="5">VI. PRODUCCION INVESTIGATIVA</th>
+                    <th class="cab-tabla" colspan="5">VI. PRODUCCIÓN INVESTIGATIVA</th>
                 </tr>  
                 <tr>
-                    <th class="cab-tabla" colspan="5">A. PARTICIPACION EN INVESTIGACION</th>
+                    <th class="cab-tabla" colspan="5">A. PARTICIPACIÓN EN INVESTIGACIÓN</th>
                 </tr>
                 <tr class="titulo-tabla" >  
-                    <th width="20%">TIPO DE PARTICIPACION</th>
-                    <th width="20%">INSTITUCION</th>
-                    <th width="20%">INVESTIGACION</th>
-                    <th width="20%">DURACION</th>   
+                    <th width="20%">TIPO DE PARTICIPACIÓN</th>
+                    <th width="20%">INSTITUCIÓN</th>
+                    <th width="20%">INVESTIGACIÓN</th>
+                    <th width="20%">DURACIÓN</th>   
                     <th width="20%">ESTADO</th>                       
                 </tr>
             </thead>
@@ -446,10 +446,10 @@
         <table style="border: 1px solid">
             <thead>               
                 <tr>
-                    <th class="cab-tabla" colspan="5">B. SOCIALIZACION DE  LA INVESTIGACIÓN</th>
+                    <th class="cab-tabla" colspan="5">B. SOCIALIZACIÓN DE  LA INVESTIGACIÓN</th>
                 </tr>
                 <tr class="titulo-tabla" >  
-                    <th width="30%">ARTICULO</th>
+                    <th width="30%">ARTÍCULO</th>
                     <th width="30%">CONFERENCIA</th>
                     <th width="40%">INFORME DE AVANCE</th>                                      
                 </tr>
@@ -479,14 +479,14 @@
         <table style="border: 1px solid">
             <thead>               
                 <tr>
-                    <th class="cab-tabla" colspan="5">III. PARTICIPACION EN EVENTOS ACADEMICOS</th>
+                    <th class="cab-tabla" colspan="5">III. PARTICIPACIÓN EN EVENTOS ACADÉMICOS</th>
                 </tr>
                 <tr class="titulo-tabla" >  
-                    <th width="20%">TIPO DE PARTICIPACION</th>
+                    <th width="20%">TIPO DE PARTICIPACIÓN</th>
                     <th width="20%">EVENTO</th>
                     <th width="20%">TEMA</th>                                      
                     <th width="20%">FECHA</th>                                      
-                    <th width="20%">AMBITO</th>                                      
+                    <th width="20%">ÁMBITO</th>                                      
                 </tr>
             </thead>
             <tbody>               
@@ -526,12 +526,12 @@
         <table style="border: 1px solid">
             <thead>               
                 <tr>
-                    <th class="cab-tabla" colspan="5">IV. PARTICIPACION EN ASOCIACIONES PROFESIONALES O SOCIALES</th>
+                    <th class="cab-tabla" colspan="5">IV. PARTICIPACIÓN EN ASOCIACIONES PROFESIONALES O SOCIALES</th>
                 </tr>
                 <tr class="titulo-tabla" >  
                     <th width="30%">NOMBRE DE LA ASOCIACIÓN O CLUB</th>
                     <th width="30%">CLASE DE PARTICIPACIÓN</th>
-                    <th width="40%">TIEMPO DE VINCULACION</th>                                      
+                    <th width="40%">TIEMPO DE VINCULACIÓN</th>                                      
                 </tr>
             </thead>
             <tbody>               
