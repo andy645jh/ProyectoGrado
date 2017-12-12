@@ -114,7 +114,7 @@ public class Horario implements Serializable {
 
     @Override
     public String toString() {
-        return _codActividad==null ? "": _codActividad.getNombre();
+        return _codActividad==null ? "": _codActividad.getNombre_corto();
     }
 
     public int getDia() {

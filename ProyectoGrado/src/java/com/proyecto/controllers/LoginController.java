@@ -92,7 +92,7 @@ public class LoginController implements Serializable {
                 _nombreUsuario = doc.toString();
                 SessionUtils.add("docente", doc);
                 SessionUtils.add("coordinacion", doc.getCodcoordinacion());
-                return "/actividades/listado?faces-redirect=true";
+                return "/docentes/perfil?faces-redirect=true";
             } else if (request.isUserInRole("auditor")) {
                 System.out.println("AUDITOR");
                 return "index_auditor?faces-redirect=true";

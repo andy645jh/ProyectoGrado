@@ -98,7 +98,7 @@ public class Actividades implements Serializable
 
     @Override
     public String toString() {
-        return _nombre;
+        return nombre_corto;
     }
 
     public int getCodactividad() {

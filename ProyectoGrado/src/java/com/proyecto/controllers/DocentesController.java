@@ -241,11 +241,17 @@ public class DocentesController implements Serializable {
         RequestContext.getCurrentInstance().openDialog("/docentes/actualizar", options, null);
     }
 
+    public boolean estaAsignado()
+    {
+        _doc = (Docentes) SessionUtils.get("docente");
+        return _doc.getCodcoordinacion().isAsignado();
+    }
+    
     public String abrirPerfil() {
 
         _doc = (Docentes) SessionUtils.get("docente");
         System.out.println("CODIGO " + _doc.getFoto());
-
+        
         Permisos p = _permFacade.buscarCampo("usuario", _doc.getCedula() + "");
         clave = p.getClave();
         usuario = p.getUsuario();

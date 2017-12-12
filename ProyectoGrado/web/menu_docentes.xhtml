@@ -4,15 +4,18 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:form >  
-        <p:menu class="ancho-menu fondo-menu">      
-            <p:menuitem class="#{estaActivo == 'actividades' ? 'active' : ''}" value="Actividades" outcome="/actividades/listado.xhtml"  />
-            <p:menuitem class="#{estaActivo == 'productos' ? 'active' : ''}" value="Productos" outcome="/productos/listado.xhtml"  />
-            <p:menuitem class="#{estaActivo == 'horario' ? 'active' : ''}" value="Horario" outcome="/horario/horario.xhtml"  />
-            <p:menuitem class="#{estaActivo == 'perfil' ? 'active' : ''}" value="Perfil" outcome="#{docentesController.abrirPerfil()}"  />
-            <p:menuitem class="#{estaActivo == 'reportes54' ? 'active' : ''}" value="Formato RDC-54" outcome="/ver/ver_reportes_54.xhtml"  />
+        <p:menu class="ancho-menu fondo-menu">   
+            <p:menuitem class="#{estaActivo == 'perfil' ? 'active' : ''}" value="Perfil" outcome="#{docentesController.abrirPerfil()}"  />            
+            <c:if test="#{docentesController.estaAsignado()}">
+                <p:menuitem class="#{estaActivo == 'actividades' ? 'active' : ''}" value="Actividades" outcome="/actividades/listado.xhtml"  />
+                <p:menuitem class="#{estaActivo == 'productos' ? 'active' : ''}" value="Productos" outcome="/productos/listado.xhtml"  />
+                <p:menuitem class="#{estaActivo == 'horario' ? 'active' : ''}" value="Horario" outcome="/horario/horario.xhtml"  />
+                <p:menuitem class="#{estaActivo == 'reportes54' ? 'active' : ''}" value="Formato RDC-54" outcome="/ver/ver_reportes_54.xhtml"  />
+            </c:if>
             <p:menuitem class="#{estaActivo == 'reportes26' ? 'active' : ''}" value="Formato RDC-26" outcome="/ver/ver_reportes_26.xhtml"  />
                       
         </p:menu>

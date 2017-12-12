@@ -12,7 +12,9 @@
             </ui:decorate>            
         </ui:define>
         <ui:define name="content">   
+           
             <h:form id="formHorario"> 
+                
                 <p:panel>
                     
                     <p:growl id="mensajito" sticky="true" showDetail="true"/>     
@@ -71,7 +73,7 @@
 
                         <p:column style="width: 10px; text-align: center;background-color: #{intervalo.sabado.codconvencion.color}">
                             <f:facet name="header">Sabado</f:facet>
-                            <p:commandLink value="#{intervalo.sabado.codActividad}" update="eventDetails" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.sabado)}" />
+                            <p:commandLink value="#{intervalo.sabado.codActividad}" update="eventDetails dialog_horario" ajax="false" actionListener="#{horarioController.abrirActualizar(intervalo.sabado)}" />
                             <p:commandButton rendered="#{intervalo.sabado.asignado}" ajax="true" update="nuevaLista"  class="boton-borrar" icon="ui-icon-trash" title="Quitar" action="#{horarioController.closeDialog(intervalo.sabado)}">
                                 <p:confirm header="Confirmation" message="Esta seguro que desea eliminar?" icon="ui-icon-alert" />
                             </p:commandButton> 
@@ -108,7 +110,7 @@
                                 <f:selectItems value="#{convencionesController.combo('Seleccione una Opcion')}" />
                             </p:selectOneMenu>
 
-                            <f:facet name="footer">
+                            <f:facet id="foot" name="footer">
                                 <p:commandButton rendered="#{horarioController.esGuardar()}" value="#{clasesTxt.guardar}" ajax="true" update="nuevaLista totalhoras" actionListener="#{horarioController.agregar()}" oncomplete="PF('eventDialog').hide();"/>                                                                    
                                 <p:commandButton rendered="#{horarioController.esActualizar()}" value="#{clasesTxt.guardar}" ajax="true" update="nuevaLista totalhoras" actionListener="#{horarioController.actualizar()}" oncomplete="PF('eventDialog').hide();"/>                                                                    
                             </f:facet>

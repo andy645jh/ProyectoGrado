@@ -202,7 +202,6 @@ public class ActividadesController implements Serializable {
         int index = 0;
         for (Actividades actividad : lista) {
             SelectItem item = new SelectItem(actividad.getCodactividad(), actividad.getNombre_corto());
-
             listaItems[index] = item;
             index++;
         }
@@ -230,7 +229,8 @@ public class ActividadesController implements Serializable {
         return _ejbFacade.buscarCampo("_coddocente", cedula);
     }
 
-    public void borrar(Actividades faceObj) {
+    public void borrar(Actividades faceObj, HorarioController horaControl) {
+        
         String titulo, detalle;
 
         try {
@@ -239,7 +239,7 @@ public class ActividadesController implements Serializable {
 //            message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
             Mensajes.exito(titulo, detalle);
             _ejbFacade.borrar(faceObj);
-
+            horaControl.resetear();
         } catch (Exception e) {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarError");

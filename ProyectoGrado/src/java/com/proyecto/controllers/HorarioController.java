@@ -66,8 +66,9 @@ public class HorarioController implements Serializable {
     public HorarioController() {
     }
 
-    @PostConstruct
+    @PostConstruct   
     public void init() {
+        System.out.println("HorarioController.Init");
         _currentDocente = (Docentes) SessionUtils.get("docente");
         _listInterval = new ArrayList<>();
         
@@ -93,13 +94,7 @@ public class HorarioController implements Serializable {
 
         for (Horario obj : listHorario) {           
             //cuadrando la lista de horarios        
-            _arrayInterval[obj.getHora()].setDia(obj);
-            
-            //calculando horas
-            /*if(obj.getCodActividad()!=null)
-            {
-                _totalHoras += obj.getCodActividad().getHoras();
-            }*/
+            _arrayInterval[obj.getHora()].setDia(obj);     
         }
 
         //convertir array a lista
@@ -209,7 +204,7 @@ public class HorarioController implements Serializable {
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarExitoso");
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
 
-            System.out.print("Borrar ---- " + _objHorario.getCodActividad());
+            System.out.print("Borrar ---- " + _objHorario.getCodhorario());
             horarioFacade.borrar(_objHorario);
             Convenciones conve = new Convenciones();
             conve.setCodconvencion(0);
@@ -249,9 +244,11 @@ public class HorarioController implements Serializable {
     public void abrirActualizar(Horario objTemp) {
         
         _actualAction = Action.ACTUALIZAR;
-        System.out.println("HorarioController.abrirActualizar() -> horario: " + objTemp.getCodconvencion().getNombre());
+        System.out.println("HorarioController.abrirActualizar() -> horario: " + objTemp.getCodActividad().getNombre());
         
         _objHorario = objTemp;
+        _codigoAct = _objHorario.getCodActividad().getCodactividad();
+        _codigo = _objHorario.getCodconvencion().getCodconvencion();
         Map<String, Object> options = new HashMap<String, Object>();
         options.put("resizable", false);
         options.put("draggable", false);
@@ -341,7 +338,9 @@ public class HorarioController implements Serializable {
     }
     
     public void resetear() {
-        _objHorario = null;
+        //_objHorario = null;
+        _listInterval = null;
+        organizarListas();        
     }
 
     public int getCodigo() {
