@@ -190,7 +190,7 @@ public class ActividadesController implements Serializable {
         SelectItem[] listaItems = new SelectItem[lista.size()];
         int index = 0;
         for (Actividades actividad : lista) {
-            SelectItem item = new SelectItem(actividad.getCodactividad(), actividad.getNombre());
+            SelectItem item = new SelectItem(actividad.getCodactividad(), actividad.getNombre_corto());
 
             listaItems[index] = item;
             index++;
