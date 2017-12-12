@@ -24,29 +24,25 @@
                     <p:separator/>
                     <br/>
                     <p:dataTable id="listar" value="#{docentesController.listado}" var="registro" rows="10"
-                         paginator="true"
-                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15">
-                        <p:column style="width: 10px; text-align: center">
-                            <f:facet name="header">#{docentesTxt.cedula}</f:facet>
+                                 paginator="true" widgetVar="carsTable"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15" filteredValue="#{docentesController.filteredCars}">
+
+                        <p:column style="width: 10px; text-align: center; " filterMatchMode="contains" filterBy="#{registro.cedula}">
+                            <f:facet name="header" >#{docentesTxt.cedula}</f:facet>
                                 #{registro.cedula}
                         </p:column>
 
-                        <p:column style="width: 10px; text-align: center">
+                        <p:column style="width: 10px; text-align: center" filterMatchMode="contains" filterBy="#{registro.nombres}" >
                             <f:facet name="header">#{docentesTxt.nombre}</f:facet>
                                 #{registro.nombres}
                         </p:column> 
 
-                        <p:column style="width: 10px; text-align: center">
+                        <p:column style="width: 10px; text-align: center" filterMatchMode="contains" filterBy="#{registro.apellidos}">
                             <f:facet name="header">#{docentesTxt.apellido}</f:facet>
                                 #{registro.apellidos}
                         </p:column>
-
-                        <p:column style="width: 10px; text-align: center">
-                            <f:facet name="header">#{docentesTxt.unidadAcadem}</f:facet>
-                                #{registro.codcoordinacion}
-                        </p:column>
-
+                        
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Tipo Contrato</f:facet>
                             <h:outputText value="Tiempo Completo" rendered="#{registro.tipocontrato == 1}"/>                            
@@ -55,22 +51,28 @@
                             <h:outputText value="NA" rendered="#{registro.tipocontrato == 0}"/> 
                         </p:column>
 
-
-
                         <p:column style="width: 10px; text-align: center">
+                            <f:facet name="header">Tipo Usuario</f:facet>
+                                
+                            <h:outputText value="Docente" rendered="#{registro.tipo_usuario == 1}"/>                            
+                            <h:outputText value="Coordinador" rendered="#{registro.tipo_usuario == 2}"/>
+                            <h:outputText value="Auditor" rendered="#{registro.tipo_usuario == 3}"/>  
+                        </p:column>
+
+                        <p:column style="width: 10px; text-align: center" >
                             <f:facet name="header">#{docentesTxt.opciones}</f:facet>
-                            
+
                             <p:commandButton update="formDocentes:mensajito formDocentes:listar" title="activo"  icon="ui-icon-check" rendered="#{registro.inhabilitar == 0}" actionListener="#{docentesController.cambiarEstado(registro)}">
-                                <p:confirm header="Confirmation" message="Estas seguro que desea cambiar de estado?" icon="ui-icon-alert" />
+                                <p:confirm header="Confirmation" message="Estas seguro que desea inhabilitar el docente?" icon="ui-icon-alert" />
                             </p:commandButton>
-                            
+
                             <p:commandButton update="formDocentes:mensajito formDocentes:listar" title="inactivo" rendered="#{registro.inhabilitar == 1}"  icon="ui-icon-cancel" actionListener="#{docentesController.cambiarEstado(registro)}">
-                                <p:confirm header="Confirmation" message="Estas seguro que desea cambiar de estado?" icon="ui-icon-alert" />
+                                <p:confirm header="Confirmation" message="Estas seguro que desea habilitar el docente?" icon="ui-icon-alert" />
                             </p:commandButton>
                             <p:commandButton  icon="ui-icon-pencil" action="#{docentesController.abrirActualizar(registro)}" rendered="#{registro.inhabilitar == 0}">                                
                                 <p:ajax event="dialogReturn" update="formDocentes:mensajito formDocentes:listar" listener="#{docentesController.mostrarMensaje()}"/>                            
                             </p:commandButton> 
-                            
+
                             <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
                                 <p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                                 <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />

@@ -49,12 +49,8 @@
                         <p:outputPanel id="nivelInfo" >
                             <p:panelGrid columns="2">
                                 <p:outputLabel value="Tipo Contrato" for="contrato" rendered="#{docentesController.campo.tipo_usuario eq 1}" />
-                                <p:selectOneMenu id="contrato" required="true" value="#{docentesController.campo.tipocontrato}" rendered="#{docentesController.campo.tipo_usuario eq 1}"> 
-                                    <f:selectItem itemLabel="Seleccione" itemValue="0" />
-                                    <f:selectItem itemLabel="Tiempo Completo" itemValue="1" />
-                                    <f:selectItem itemLabel="Medio Tiempo" itemValue="2" />
-                                    <f:selectItem itemLabel="Catedra" itemValue="3" />
-                                </p:selectOneMenu>
+                                <p:inputText id="contrato" required="true" value="#{docentesController.campo.tipocontrato}" rendered="#{docentesController.campo.tipo_usuario eq 1}"/> 
+                         
 
                                 <f:facet name="footer">
                                     <p:commandButton id="btngrabar" value="#{docentesTxt.crear}" ajax="false" action="#{docentesController.agregar()}"/>

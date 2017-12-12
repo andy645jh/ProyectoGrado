@@ -76,6 +76,8 @@ public class DocentesController implements Serializable {
     private String _url = "";
     private String _filename;
     
+    private List<Docentes> filteredCars;
+    
     public DocentesController() {
     }
 
@@ -214,13 +216,13 @@ public class DocentesController implements Serializable {
 
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarExitoso");
+            detalle = "Ha cambiado de estado";
             Mensajes.exito(titulo, detalle);
             _ejbFacade.actualizar(faceObj);
 
         } catch (Exception e) {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("error");
-            detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("eliminarError");
+            detalle = "No ha cambiado de estado";
             Mensajes.error(titulo, detalle);
             Logger.getLogger(Docentes.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -450,6 +452,14 @@ public class DocentesController implements Serializable {
 
     public void setFilename(String _filename) {
         this._filename = _filename;
+    }
+
+    public List<Docentes> getFilteredCars() {
+        return filteredCars;
+    }
+
+    public void setFilteredCars(List<Docentes> filteredCars) {
+        this.filteredCars = filteredCars;
     }
     
     @FacesConverter(forClass = Docentes.class, value = "docentesConverter")
