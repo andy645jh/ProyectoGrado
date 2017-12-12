@@ -27,6 +27,12 @@ public class Actividades implements Serializable
     @NotNull
     private String _nombre;
     
+    @Column(name = "nombre_corto")
+    @Size(min = 1, max = 50)
+    @NotNull
+    private String nombre_corto;
+    
+    
     @Column(name = "descripcion")    
     @NotNull
     private String _descripcion;
@@ -157,6 +163,14 @@ public class Actividades implements Serializable
 
     public void setValoracion(int _valoracion) {
         this._valoracion = _valoracion;
+    }
+
+    public String getNombre_corto() {
+        return nombre_corto;
+    }
+
+    public void setNombre_corto(String nombre_corto) {
+        this.nombre_corto = nombre_corto;
     }
 
     

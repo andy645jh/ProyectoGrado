@@ -22,7 +22,6 @@ Cambios del Profesor
 - El coordinador llena la parte de entrega y comentarios por cada actividad
 - El docente no debe modificar la entrega y comentarios pero puede visualizarlos
 - Cambiar las horas por las que lleva el formato
-- Revisar si es mejor poner el nombre de la actividad en el horario o crear un campo de nombre corto en la actividad
 - Permitir seleccionar el nombre de la actividad en la creacion del horario
 - Revisar el error al intentar crear asignacion
 - En la lista de productos mostrar los productos ya creados y que sea solo modificar
@@ -31,12 +30,10 @@ Cambios del Profesor
 - Falta una fila en el rdc-26, fecha nacimiento,genero,matricula pro
 - Poner varias opciones para el nivel academico
 - POner tiempo en horas en la parte de cursos del rdc-26
-- Tipo de contrato que se a escrito
 - Teimpo de servicio profesional en meses
 - En la asignacion si se usa abreviaturas agregar en alguna parte lo que significa cada abreviatur
 - Cambiar los nombres de la tabla de asignacion
 - Quitar capacitacion de la tabla
-- Agregar tipo planta al crear docente el tendra 20 horas
 - Recalcular porcentajes de asignacion
 - Quitar color rojo en los numeros de la parte inferior de la tabla
 - Marcar en rojo el total de horas a la derecha
@@ -49,7 +46,13 @@ Listo para revision
 - Buscar docente en el modulo de coordinador
 - Arreglar mensaje de cambio a habilitado del docente
 - Error cuando guarda guarda semana
+- Tipo de contrato que se a escrito en la experiencia
+- Revisar si es mejor poner el nombre de la actividad en el horario o crear un campo de nombre corto en la actividad
+- Agregar tipo planta al crear docente el tendra 20 horas
+
+
 
 
 Preguntas
+
 

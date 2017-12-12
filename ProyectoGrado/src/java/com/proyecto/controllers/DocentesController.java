@@ -295,11 +295,15 @@ public class DocentesController implements Serializable {
             asignacion.setHorasclase(24.0);
             asignacion.setPreparacion(4.0);           
             asignacion.setSumatoria(32.0);
-        } else {
+        } else if (tipoContrato == 4)  {
+            asignacion.setHorasclase(20.0);
+            asignacion.setPreparacion(4.0);           
+            asignacion.setSumatoria(32.0);
+        }  else {
             asignacion.setHorasclase(12.0);
             asignacion.setPreparacion(2.0);           
             asignacion.setSumatoria(14.0);
-        }    
+        }   
     }
 
     public void resetear() {

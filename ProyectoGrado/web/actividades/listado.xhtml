@@ -29,6 +29,11 @@
                          rowsPerPageTemplate="5,10,15">
 
                         <p:column style="text-align: center">
+                            <f:facet name="header">Nombre Corto</f:facet>
+                                #{registro.nombre_corto}
+                        </p:column> 
+                        
+                        <p:column style="text-align: center">
                             <f:facet name="header">#{actividadesTxt.nombre}</f:facet>
                                 #{registro.nombre}
                         </p:column> 

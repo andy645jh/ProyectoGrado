@@ -14,6 +14,9 @@
                     <p:growl id="mensajito" sticky="true" showDetail="true"/>           
                     <br/>
                     <p:panelGrid columns="2">
+                        
+                        <p:outputLabel value="Nombre Corto" for="nombre_corto" />
+                        <p:inputText required="true" id="nombre_corto" value="#{actividadesController.campo.nombre_corto}"/> 
 
                         <p:outputLabel value="#{actividadesTxt.nombre} " for="nombre" />
                         <p:inputText required="true" id="nombre" value="#{actividadesController.campo.nombre}"/> 

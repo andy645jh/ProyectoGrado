@@ -86,7 +86,7 @@ public class AsignacionController implements Serializable {
             _totalSum =0;
             for (Asignacion asigTemp : _listadoAsign) {    
                 System.out.println("Habilitado: "+ asigTemp.getCoddocente().getInhabilitar());
-                if((asigTemp.getCoddocente().getTipocontrato()==2 || asigTemp.getCoddocente().getTipocontrato()==1) && asigTemp.getCoddocente().getInhabilitar()==0)
+                if((asigTemp.getCoddocente().getTipocontrato()==2 || asigTemp.getCoddocente().getTipocontrato()==1 || asigTemp.getCoddocente().getTipocontrato()==4) && asigTemp.getCoddocente().getInhabilitar()==0)
                 {
                     _totalSum += asigTemp.getSumatoria();
                     _listSum.add(asigTemp.getSumatoria());
