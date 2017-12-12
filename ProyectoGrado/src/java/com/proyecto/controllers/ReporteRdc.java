@@ -152,6 +152,11 @@ public class ReporteRdc implements Serializable {
         return _actividades;
     }
 
+    public String getSemestre()
+    {
+        return SessionUtils.getSemestre()+" - "+SessionUtils.getYear();
+    }
+    
     public Docentes getDoc() {
         _doc = (Docentes) SessionUtils.get("docente");
         return _doc;
