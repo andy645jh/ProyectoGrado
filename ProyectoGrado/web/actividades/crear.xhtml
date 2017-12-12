@@ -43,10 +43,7 @@
 
                         <p:outputLabel value="#{actividadesTxt.responsable}  " for="responsable" />
                         <p:inputText required="true" id="responsable" value="#{actividadesController.campo.responsable}"/> 
-                                             
-                        <p:outputLabel value="Valoración" for="valoracion" />
-                        <p:inputNumber required="true" id="valoracion" value="#{actividadesController.campo.valoracion}" decimalPlaces="0"/> 
-                        
+                       
                         <f:facet name="footer">
                             <p:commandButton id="btngrabar" value="#{actividadesTxt.crear}" actionListener="#{actividadesController.agregar()}" ajax="true"/>                             
                         </f:facet>

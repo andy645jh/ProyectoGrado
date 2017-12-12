@@ -20,7 +20,7 @@
                     <p:calendar required="true" id="fechaentrega" showOn="button" value="#{productosController.campo.fechaentrega}"></p:calendar>
 
                     <p:outputLabel value="#{productosTxt.comentarios}  " for="comentarios" />
-                    <p:inputTextarea id="comentarios" value="#{productosController.campo.comentarios}"/> 
+                    <p:outputLabel id="comentarios" value="#{productosController.campo.comentarios}"/> 
 
                     <p:outputLabel value="#{productosTxt.actividad}  " for="codact" />
                     <p:selectOneMenu required="true" id="codact" value="#{productosController.codigo}"> 

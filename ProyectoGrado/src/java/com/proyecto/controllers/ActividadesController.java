@@ -211,7 +211,8 @@ public class ActividadesController implements Serializable {
 
     public String btnBuscar() {
         cedula = _obj.getCoddocente().getCedula() + "";
-        return "index_evaluador";
+        System.out.println("CEDULA EVALUAR "+cedula);
+        return "evaluar/listado";
     }
 
     public List<Actividades> getListarEvaluaciones() {

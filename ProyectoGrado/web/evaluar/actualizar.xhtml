@@ -17,27 +17,28 @@
                     <p:panelGrid columns="2">   
 
                         <p:outputLabel value="#{productosTxt.actividad}  "  />
-                        <p:outputLabel value="#{productosController.campo.codactividad}  "  />
+                        <p:outputLabel value="#{evaluarController.campo.codactividad} "  />
 
                         <p:outputLabel value="#{productosTxt.descripcion}  " for="descripcion" />
-                        <p:inputText required="true" id="descripcion" value="#{productosController.campo.descripcion}"/> 
+                        <p:outputLabel  id="descripcion" value="#{evaluarController.campo.descripcion}"/> 
 
-                        <p:outputLabel value="#{productosTxt.fechaComp} " for="fechacompromiso" />                    
-                        <p:calendar required="true" id="fechacompromiso" showOn="button" value="#{productosController.campo.fechacompromiso}"></p:calendar>
-
-                        <p:outputLabel value="#{productosTxt.fechaEntr}  " for="fechaentrega" />                   
-                        <h:outputText value="#{productosController.campo.fechaentrega}" id="fechaentrega">
+                        <p:outputLabel value="#{productosTxt.fechaComp} " for="fechacompromiso" /> 
+                        <h:outputText id="fechacompromiso" value="#{evaluarController.campo.fechacompromiso}" >
                             <f:convertDateTime dateStyle="medium"/>
                         </h:outputText> 
 
+
+                        <p:outputLabel value="#{productosTxt.fechaEntr}  " for="fechaentrega" />                   
+                        <p:calendar  id="fechaentrega" showOn="button" value="#{evaluarController.campo.fechaentrega}"></p:calendar>
+
                         <p:outputLabel value="#{productosTxt.comentarios}  " for="comentarios" />
-                        <p:outputLabel id="comentarios" value="#{productosController.campo.comentarios}"/> 
-
-
-
+                        <p:inputTextarea id="comentarios" value="#{evaluarController.campo.comentarios}"/> 
+                        
+                        <p:outputLabel value="Valoración" for="valoracion" />
+                        <p:inputTextarea id="valoracion" value="#{evaluarController.campo.valoracion}"/> 
 
                         <f:facet name="footer">
-                            <p:commandButton id="btngrabar" value="#{productosTxt.actulizar}" ajax="true" action="#{productosController.actualizar()}"/>
+                            <p:commandButton id="btngrabar" value="#{productosTxt.actulizar}" ajax="true" action="#{evaluarController.guardarEvaluacion()}"/>
                         </f:facet>
                     </p:panelGrid>
                 </p:panel> 
