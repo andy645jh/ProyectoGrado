@@ -29,8 +29,14 @@
                         </p:selectOneMenu> 
 
                         <p:outputPanel id="eventos" >
-                            <p:outputLabel value="tipo participación" for="tipo_part" rendered="#{participacionController.campo.tipo eq 1}"/>
-                            <p:inputText id="tipo_part" value="#{participacionController.campo.tipo_part}" rendered="#{participacionController.campo.tipo eq 1}"/> 
+                            <p:outputLabel value="Tipo Participación" for="tipo_part" rendered="#{participacionController.campo.tipo eq 1}"/>
+
+                            <p:selectOneMenu id="tipo_part" value="#{participacionController.campo.tipo_part}" rendered="#{participacionController.campo.tipo eq 1}">
+                                <f:selectItem itemLabel="Seleccione" itemValue="0" />
+                                <f:selectItem itemLabel="Conferencista" itemValue="CF" />
+                                <f:selectItem itemLabel="Potenente" itemValue="PT" />
+                                <f:selectItem itemLabel="Moderador" itemValue="MD" />
+                            </p:selectOneMenu> 
 
                             <p:outputLabel value="Evento" for="evento" rendered="#{participacionController.campo.tipo eq 1}"/>
                             <p:inputText id="evento" value="#{participacionController.campo.evento}" rendered="#{participacionController.campo.tipo eq 1}"/>
@@ -64,16 +70,22 @@
                             <p:inputText id="deport" value="#{participacionController.campo.evento}" rendered="#{participacionController.campo.tipo eq 3}"/>
 
                             <p:outputLabel value="Desempeno" for="desempeno" rendered="#{participacionController.campo.tipo eq 3}"/>
-                            <p:inputText id="desempeno" value="#{participacionController.campo.desempeno}" rendered="#{participacionController.campo.tipo eq 3}"/>
+                            <p:selectOneMenu id="desempeno" value="#{participacionController.campo.desempeno}" rendered="#{participacionController.campo.tipo eq 3}">
+                                <f:selectItem itemLabel="Seleccione" itemValue="0" />
+                                <f:selectItem itemLabel="Juega Bien" itemValue="JB" />
+                                <f:selectItem itemLabel="Juega Regular" itemValue="JR" />
+                                <f:selectItem itemLabel="Le Gusta" itemValue="LG" />
+                                <f:selectItem itemLabel="Aficionado" itemValue="AF" />
+                            </p:selectOneMenu> 
 
-                            <p:outputLabel value="Dedicacion deportista" for="dedicacion" rendered="#{participacionController.campo.tipo eq 3}"/>
-                            <p:inputText id="dedicacion" value="#{participacionController.campo.dedicacion}" rendered="#{participacionController.campo.tipo eq 3}"/>
+                            <p:outputLabel value="Dedicacion deportista (horas x semana)" for="dedicacion" rendered="#{participacionController.campo.tipo eq 3}"/>
+                            <p:inputNumber id="dedicacion" value="#{participacionController.campo.dedicacion}" rendered="#{participacionController.campo.tipo eq 3}" decimalPlaces="0" />
 
                             <p:outputLabel value="Actividades culturales" for="activ_culturales" rendered="#{participacionController.campo.tipo eq 3}"/>
-                            <p:inputText id="activ_culturales" value="#{participacionController.campo.activ_culturales}" rendered="#{participacionController.campo.tipo eq 3}"/>
+                            <p:inputText id="activ_culturales" value="#{participacionController.campo.activ_culturales}" rendered="#{participacionController.campo.tipo eq 3}" />
 
-                            <p:outputLabel value="Dedicación cultural" for="dedica_cultural" rendered="#{participacionController.campo.tipo eq 3}"/>
-                            <p:inputText id="dedica_cultural" value="#{participacionController.campo.dedica_cultural}" rendered="#{participacionController.campo.tipo eq 3}"/>
+                            <p:outputLabel value="Dedicación cultural (horas x semana)" for="dedica_cultural" rendered="#{participacionController.campo.tipo eq 3}"/>
+                            <p:inputNumber id="dedica_cultural" value="#{participacionController.campo.dedica_cultural}" rendered="#{participacionController.campo.tipo eq 3}" decimalPlaces="0"/>
                         </p:outputPanel>
 
                         <f:facet name="footer">

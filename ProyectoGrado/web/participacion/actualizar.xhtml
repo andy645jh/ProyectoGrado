@@ -28,7 +28,12 @@
 
                         <p:outputPanel id="eventos" >
                             <p:outputLabel value="tipo participación" for="tipo_part" rendered="#{participacionController.campo.tipo eq 1}"/>
-                            <p:inputText id="tipo_part" value="#{participacionController.campo.tipo_part}" rendered="#{participacionController.campo.tipo eq 1}"/> 
+                            <p:selectOneMenu id="tipo_part" value="#{participacionController.campo.tipo_part}" rendered="#{participacionController.campo.tipo eq 1}">
+                            <f:selectItem itemLabel="Seleccione" itemValue="0" />
+                            <f:selectItem itemLabel="Conferencista" itemValue="CF" />
+                            <f:selectItem itemLabel="Potenente" itemValue="PT" />
+                            <f:selectItem itemLabel="Moderador" itemValue="MD" />
+                        </p:selectOneMenu> 
 
                             <p:outputLabel value="Evento" for="evento" rendered="#{participacionController.campo.tipo eq 1}"/>
                             <p:inputText id="evento" value="#{participacionController.campo.evento}" rendered="#{participacionController.campo.tipo eq 1}"/>
