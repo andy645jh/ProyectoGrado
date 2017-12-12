@@ -10,6 +10,7 @@ import com.proyecto.persistences.Actividades;
 import com.proyecto.persistences.Asignacion;
 import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Docentes;
+import com.proyecto.persistences.Horario;
 import com.proyecto.persistences.Productos;
 import com.proyecto.persistences.TipoModalidades;
 import com.proyecto.utilities.SessionUtils;
@@ -65,7 +66,8 @@ public class ActividadesController implements Serializable {
     private Asignacion _asignacion;
     private Coordinacion _coordinacion;
     private Docentes _docente;
-
+    private double _totalHoras = 0.0;
+    
     @PostConstruct
     private void init() {
         _coordinacion = (Coordinacion) SessionUtils.get("coordinacion");
@@ -132,6 +134,18 @@ public class ActividadesController implements Serializable {
         }
     }
 
+    public double getTotalHoras() {
+        _totalHoras=0;
+        for (Actividades obj : getListado()) {              
+            //calculando horas
+            if(obj!=null)
+            {
+                _totalHoras += obj.getHoras();
+            }
+        }
+        return _totalHoras;
+    }
+    
     public SelectItem[] combo(String texto) {
         return Formulario.addObject(_ejbFacade.listado(), texto);
     }
