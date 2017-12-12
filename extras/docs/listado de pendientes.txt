@@ -15,6 +15,11 @@ Encontrados el 11/12/2017
 - Poner por defecto contrato a los coordinadores y auditores
 - No dejar que el docente intente crear actividades o productos si aun no ha sido asignado
 - Validar numeros en login
+
+Cambios del Profesor
+- Mostrar el total en el seguimiento
+- El coordinador evalua al docente
+
 Listo para revision
 
 Preguntas
