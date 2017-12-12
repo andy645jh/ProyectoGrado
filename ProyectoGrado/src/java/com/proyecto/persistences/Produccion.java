@@ -27,7 +27,7 @@ public class Produccion implements Serializable
     
     @Column(name = "tipo_prod_part")
     @NotNull
-    private int tipo_prod_part;
+    private String tipo_prod_part;
     
     @Column(name = "nombre")  
     @NotNull
@@ -65,7 +65,7 @@ public class Produccion implements Serializable
    
     public Produccion() {  }
 
-    public Produccion(int codproduccion, int tipo_prod_part, String nombre, String editorial_inv, String libros, String estado, int tipo, Date meses, Date ano, Docentes coddocente) {
+    public Produccion(int codproduccion, String tipo_prod_part, String nombre, String editorial_inv, String libros, String estado, int tipo, Date meses, Date ano, Docentes coddocente) {
         this.codproduccion = codproduccion;
         this.tipo_prod_part = tipo_prod_part;
         this.nombre = nombre;
@@ -85,11 +85,11 @@ public class Produccion implements Serializable
         this.codproduccion = codproduccion;
     }
 
-    public int getTipo_prod_part() {
+    public String getTipo_prod_part() {
         return tipo_prod_part;
     }
 
-    public void setTipo_prod_part(int tipo_prod_part) {
+    public void setTipo_prod_part(String tipo_prod_part) {
         this.tipo_prod_part = tipo_prod_part;
     }
 

@@ -26,11 +26,7 @@ Cambios del Profesor
 - Revisar el error al intentar crear asignacion
 - En la lista de productos mostrar los productos ya creados y que sea solo modificar
 - Buscar las categorias de rdc-26
-- Cambiar texto del tipo de documento
 - Falta una fila en el rdc-26, fecha nacimiento,genero,matricula pro
-- Poner varias opciones para el nivel academico
-- POner tiempo en horas en la parte de cursos del rdc-26
-- Teimpo de servicio profesional en meses
 - Coordinador puede decir si un rdc esta bn o mal y dejar un comentario que debe ser visible por el docente
 - Quitar historial de reportes
 
@@ -49,3 +45,7 @@ Listo para revision
 - Recalcular porcentajes de asignacion
 - Cambiar los nombres de la tabla de asignacion
 - En la asignacion si se usa abreviaturas agregar en alguna parte lo que significa cada abreviatur
+- Cambiar texto del tipo de documento
+- POner tiempo en horas en la parte de cursos del rdc-26
+- Teimpo de servicio profesional en meses
+- Poner varias opciones para el nivel academico

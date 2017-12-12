@@ -121,7 +121,7 @@
                     <td colspan="3">#{reporteDocente.doc.nombres}</td>
                 </tr>
                 <tr class="titulo-tabla">
-                    <td>DOCUMENTO DE IDENTIDAD</td>
+                    <td>TIPO DE DOCUMENTO</td>
                     <td>NUMERO DE DOCUMENTO</td>
                     <td>LUGAR DE EXPEDICION</td>
                     <td>FECHA DE EXPEDICION</td>
@@ -228,11 +228,7 @@
                         <td>#{estudio.nivel}</td>                          
                         <td>#{estudio.titulo}</td> 
                         <td>#{estudio.institucion}</td> 
-                        <td>
-                            <h:outputText value="#{estudio.ano_grado}" >
-                                <f:convertDateTime pattern="dd/MM/yyyy" />
-                            </h:outputText> 
-                        </td>           
+                        <td>#{estudio.horas}</td>         
                         <td>#{estudio.registro}</td>                         
                     </tr>
                 </ui:repeat>
@@ -241,11 +237,7 @@
                         <td>#{estudio.nivel}</td>                          
                         <td>#{estudio.titulo}</td> 
                         <td>#{estudio.institucion}</td> 
-                        <td>
-                            <h:outputText value="#{estudio.ano_grado}" >
-                                <f:convertDateTime pattern="dd/MM/yyyy" />
-                            </h:outputText> 
-                        </td>           
+                        <td>#{estudio.horas}</td> 
                         <td>#{estudio.registro}</td>                         
                     </tr>
                 </p:panel>
@@ -265,7 +257,7 @@
                     <th width="30%">ENTIDAD</th>
                     <th width="20%">CARGO</th>
                     <th width="20%">DEPENDENCIA</th>
-                    <th width="10%">TIEMPO DE SERVICIO</th>
+                    <th width="10%">TIEMPO DE SERVICIO(MESES)</th>
                     <th width="10%">TIPO DE CONTRATO</th>              
                     <th width="10%">FECHA DE ULTIMA VINCULACION</th>              
                 </tr>
@@ -315,7 +307,7 @@
                     <th width="30%">INSTITUCION EDUCATIVA</th>
                     <th width="20%">ACTIVIDAD DOCENTE</th>
                     <th width="20%">DEPENDENCIA</th>
-                    <th width="10%">TIEMPO DE SERVICIO</th>   
+                    <th width="10%">TIEMPO DE SERVICIO(MESES)</th>   
                     <th width="10%">TIPO DE CONTRATO</th>   
                     <th width="10%">FECHA DE ULTIMA VINCULACION</th>              
                 </tr>

@@ -26,7 +26,7 @@ public class Participacion implements Serializable
     private int codparticipacion;
     
     @Column(name = "tipo_part")
-    private int tipo_part;
+    private String tipo_part;
     
     @Column(name = "evento")  
     @Size(min = 1, max = 200)
@@ -66,7 +66,7 @@ public class Participacion implements Serializable
    
     public Participacion() {  }
 
-    public Participacion(int codparticipacion, int tipo_part, String evento, String tema, String ambito, String activ_culturales, String dedica_cultural, String desempeno, Double dedicacion, int tipo, Date fecha, Docentes coddocente) {
+    public Participacion(int codparticipacion, String tipo_part, String evento, String tema, String ambito, String activ_culturales, String dedica_cultural, String desempeno, Double dedicacion, int tipo, Date fecha, Docentes coddocente) {
         this.codparticipacion = codparticipacion;
         this.tipo_part = tipo_part;
         this.evento = evento;
@@ -89,11 +89,11 @@ public class Participacion implements Serializable
         this.codparticipacion = codparticipacion;
     }
 
-    public int getTipo_part() {
+    public String getTipo_part() {
         return tipo_part;
     }
 
-    public void setTipo_part(int tipo_part) {
+    public void setTipo_part(String tipo_part) {
         this.tipo_part = tipo_part;
     }
 
