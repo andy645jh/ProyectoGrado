@@ -82,7 +82,11 @@
                     <td>#{reporteDocente.doc.codcoordinacion.codfacultad.abreviatura}</td>                                     
                     <td>#{reporteDocente.doc.categoria}</td>                    
                     <td>#{reporteDocente.doc.codcoordinacion.nombre}</td>
-                    <td>#{reporteDocente.doc.categoria}</td>
+                    <td><h:outputText value="Tiempo Completo" rendered="#{reporteDocente.doc.tipocontrato == 1}"/>                            
+                            <h:outputText value="Medio Completo" rendered="#{reporteDocente.doc.tipocontrato == 2}"/>
+                            <h:outputText value="Catedra" rendered="#{reporteDocente.doc.tipocontrato == 3}"/>    
+                            <h:outputText value="Planta" rendered="#{reporteDocente.doc.tipocontrato == 4}"/>    
+                            <h:outputText value="NA" rendered="#{reporteDocente.doc.tipocontrato == 0}"/> </td>
                     <td>#{reporteDocente.doc.sucursal}</td>                    
                     <td>#{reporteDocente.doc.dedica_especial}</td>
                     <td>02/02/2012*</td>   

@@ -18,13 +18,9 @@ Encontrados el 11/12/2017
 
 Cambios del Profesor
 - Mostrar el total en el seguimiento en el horario,actividades y reporte
-- Revisar si la dedicacion es un campo que ingresa el docente
-- Traer dato para llenar la primera tabla del rdc26, actualmente esta quemado
 - El coordinador evalua al docente
 - El coordinador llena la parte de entrega y comentarios por cada actividad
 - El docente no debe modificar la entrega y comentarios pero puede visualizarlos
-- Cambiar las horas por las que lleva el formato
-- Permitir seleccionar el nombre de la actividad en la creacion del horario
 - Revisar el error al intentar crear asignacion
 - En la lista de productos mostrar los productos ya creados y que sea solo modificar
 - Coordinador puede decir si un rdc esta bn o mal y dejar un comentario que debe ser visible por el docente
@@ -55,3 +51,7 @@ Listo para revision
 - Dar formato a la fechas en el perfil y los rdc
 - Buscar las categorias de rdc-26
 - Falta una fila en el rdc-26, fecha nacimiento,genero,matricula pro
+- Revisar si la dedicacion es un campo que ingresa el docente
+- Traer dato para llenar la primera tabla del rdc26, actualmente esta quemado
+- Permitir seleccionar el nombre de la actividad en la creacion del horario
+- Cambiar las horas por las que lleva el formato

@@ -60,7 +60,7 @@ public class HorarioController implements Serializable {
     };
     
     private Action _actualAction = null;
-    public static final String _intervalos[] = {"6-7", "7-8", "8-9", "9-10", "10-11", "11-12", "12-13", "13-14", "14-15", "15-16", "16-17", "17-18", "18-19", "19-20", "20-21", "21-22"};
+    public static final String _intervalos[] = {"6:00 a.m.  a 6:45 a.m.", "6:45 a.m. a 7:30 a.m.", "7:30 a.m. a 8:15 a.m", "8:15 a.m. a 9:00 a.m.", "9:00 a.m. a 9:45 a.m.", "9:45 a.m. a 10:30 a.m.", "10:30 a.m. a 11:15 a.m.", "11:15 a.m. a 12:00 a.m.", "12:00 p.m a 12:45 p.m.", "12:45 p.m. a 1:30 p.m.", "1:30 p.m. a 2:15 p.m.", "2:15 p.m. a 3:00 p.m.", "3:00 p.m. a 3:45 p.m.", "3:45 p.m. a 4:30 p.m.", "4:30 p.m. a 5:15 p.m.", "5:15 p.m. a 6:00 p.m.", "6:30 p.m. a 7:15 p.m.", "7:15 p.m. a 8:00 p.m.", "8:15 p.m. a 9:00 p.m.", "9:00 p.m. a 9:45 p.m."};
     public static final String _dias[] = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"};
 
     public HorarioController() {
