@@ -236,6 +236,8 @@ public class Docentes implements Serializable
         this._tipocontrato = _tipocontrato;
     }
 
+    
+
     public String getCelular() {
         return celular;
     }
