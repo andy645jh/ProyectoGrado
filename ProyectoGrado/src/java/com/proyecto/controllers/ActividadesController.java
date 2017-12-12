@@ -111,7 +111,8 @@ public class ActividadesController implements Serializable {
         String titulo, detalle;
         TipoModalidades modalidad = _modalidadFacade.buscar(_codigo);
         Docentes d = (Docentes) SessionUtils.get("docente");
-        System.out.println("CREAR DOCENTE   " + d.getCedula());
+        Productos producto = new Productos();
+       
         _obj.setCodtipo(modalidad);
 
         try {
@@ -121,6 +122,16 @@ public class ActividadesController implements Serializable {
 
             _obj.setCoddocente(d);
             _ejbFacade.crear(_obj);
+
+            producto.setCodactividad(_obj);
+            producto.setFechacompromiso(null);
+            producto.setFechaentrega(null);
+            producto.setComentarios(null);
+            producto.setDescripcion(null);
+            producto.setCoddocente(d);
+        
+            _productosFacade.crear(producto);
+            
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);
 

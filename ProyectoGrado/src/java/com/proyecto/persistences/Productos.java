@@ -26,7 +26,6 @@ public class Productos implements Serializable {
 
     @Column(name = "descripcion")
     @Size(min = 1, max = 300)
-    @NotNull
     private String _descripcion;
 
     @Column(name = "fechacompromiso")

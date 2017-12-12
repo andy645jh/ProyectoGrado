@@ -22,11 +22,11 @@ Cambios del Profesor
 - El coordinador llena la parte de entrega y comentarios por cada actividad
 - El docente no debe modificar la entrega y comentarios pero puede visualizarlos
 - Revisar el error al intentar crear asignacion
-- En la lista de productos mostrar los productos ya creados y que sea solo modificar
 - Coordinador puede decir si un rdc esta bn o mal y dejar un comentario que debe ser visible por el docente
 - Quitar historial de reportes
 - RDC-26 falta llenar el campo ultima actualizacion 
 - RDC-54 falta llenar el campo semestre
+- AL  eliminar una actividad toca cerrar sesion para que se vea el cambio en el horario
 
 
 Listo para revision
@@ -55,3 +55,4 @@ Listo para revision
 - Traer dato para llenar la primera tabla del rdc26, actualmente esta quemado
 - Permitir seleccionar el nombre de la actividad en la creacion del horario
 - Cambiar las horas por las que lleva el formato
+- En la lista de productos mostrar los productos ya creados y que sea solo modificar

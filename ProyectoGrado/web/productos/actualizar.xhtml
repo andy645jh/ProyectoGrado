@@ -12,7 +12,13 @@
                  
                     <p:growl id="mensajes" sticky="true" showDetail="true"/>                
                     <br/>
-                    <p:panelGrid columns="2">                    
+                    
+                    
+                    <p:panelGrid columns="2">   
+                        
+                        <p:outputLabel value="#{productosTxt.actividad}  "  />
+                    <p:outputLabel value="#{productosController.campo.codactividad.nombre_corto}  "  />
+                        
                         <p:outputLabel value="#{productosTxt.descripcion}  " for="descripcion" />
                     <p:inputText required="true" id="descripcion" value="#{productosController.campo.descripcion}"/> 
 
@@ -25,10 +31,8 @@
                     <p:outputLabel value="#{productosTxt.comentarios}  " for="comentarios" />
                     <p:inputTextarea id="comentarios" value="#{productosController.campo.comentarios}"/> 
 
-                    <p:outputLabel value="#{productosTxt.actividad}  " for="codact" />
-                    <p:selectOneMenu required="true" id="codact" value="#{productosController.codigo}"> 
-                        <f:selectItems value="#{actividadesController.comboFiltrado('Selecione un opcion')}" />
-                    </p:selectOneMenu>
+                    
+                   
 
                         <f:facet name="footer">
                             <p:commandButton id="btngrabar" value="#{productosTxt.actulizar}" ajax="true" action="#{productosController.actualizar()}"/>

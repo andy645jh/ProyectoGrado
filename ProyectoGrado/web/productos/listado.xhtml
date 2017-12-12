@@ -18,9 +18,9 @@
                 <p:growl id="mensajito" sticky="true" showDetail="true"/>           
                 <p:panel>                    
                     <br/>
-                    <p:commandButton value="#{productosTxt.crear} #{productosTxt.productos}" actionListener="#{productosController.abrirCrear()}" icon="ui-icon-disk" >
+<!--                    <p:commandButton value="#{productosTxt.crear} #{productosTxt.productos}" actionListener="#{productosController.abrirCrear()}" icon="ui-icon-disk" >
                         <p:ajax event="dialogReturn" update="listado mensajito" listener="#{productosController.mostrarMensaje()}"/>                     
-                    </p:commandButton>                   
+                    </p:commandButton>                   -->
                     <p:separator/>
                     <br/>
                     <p:dataTable id="listado" value="#{productosController.listado}" var="registro" rows="10"
