@@ -43,6 +43,11 @@
                                 #{registro.apellidos}
                         </p:column>
                         
+                        <p:column style="width: 10px; text-align: center" filterMatchMode="contains" filterBy="#{registro.sucursal}">
+                            <f:facet name="header">Sucursal</f:facet>
+                                #{registro.sucursal}
+                        </p:column>
+                        
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Tipo Contrato</f:facet>
                             <h:outputText value="Tiempo Completo" rendered="#{registro.tipocontrato == 1}"/>                            

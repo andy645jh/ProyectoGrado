@@ -35,6 +35,17 @@
 
                             <p:outputLabel value="#{docentesTxt.apellido}  " for="apellidos" />
                             <p:inputText id="apellidos" required="true" value="#{docentesController.campo.apellidos}"/> 
+                            
+                            <p:outputLabel value="Sucursal" for="sucursal" />
+                            <p:selectOneMenu id="sucursal" required="true" value="#{docentesController.campo.sucursal}"> 
+                                <f:selectItem itemLabel="Seleccione" itemValue="0" />
+                                <f:selectItem itemLabel="Bucaramanga" itemValue="Bucaramanga" />
+                                <f:selectItem itemLabel="Barrancabermeja" itemValue="Barrancabermeja" />
+                                <f:selectItem itemLabel="Piedecuesta" itemValue="Piedecuesta" />
+                                <f:selectItem itemLabel="Velez" itemValue="Velez" />
+                                <f:selectItem itemLabel="San Gil" itemValue="San Gil" />
+                                <f:selectItem itemLabel="Cucuta" itemValue="Cucuta" />
+                            </p:selectOneMenu>  
 
                             <p:outputLabel value="Tipo Usuario" for="usuario" />
                             <p:selectOneMenu id="usuario" required="true" value="#{docentesController.campo.tipo_usuario}"> 
