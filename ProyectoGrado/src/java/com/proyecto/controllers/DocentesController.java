@@ -6,6 +6,7 @@ import com.proyecto.utilities.Mensajes;
 import com.proyecto.facades.DocentesFacade;
 import com.proyecto.facades.PermisosFacade;
 import com.proyecto.persistences.Asignacion;
+import com.proyecto.persistences.Coordinacion_;
 import com.proyecto.persistences.Docentes;
 import com.proyecto.persistences.Permisos;
 import com.proyecto.utilities.SessionUtils;
@@ -244,7 +245,11 @@ public class DocentesController implements Serializable {
     public boolean estaAsignado()
     {
         _doc = (Docentes) SessionUtils.get("docente");
-        return _doc.getCodcoordinacion().isAsignado();
+        Asignacion asig = _ejbAsignacion.buscarDocente("_coddocente", _doc.getCedula()+"");
+        return asig.getAcreditacion()>0.0 && asig.getComites()>0.0
+                && asig.getExtension()>0.0 && asig.getInvestigacion()>0.0
+                && asig.getOda()>0.0 && asig.getVirtualidad()>0.0
+                && _doc.getTipocontrato()!=3;
     }
     
     public String abrirPerfil() {
