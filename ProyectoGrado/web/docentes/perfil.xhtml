@@ -20,7 +20,7 @@
                     <h:form id="tesy" enctype="multipart/form-data">
                         <p:panel>                                      
                             <div class="marco">
-                                
+
                                 <div class="ui-g espacio-abajo-15">
                                     <p:graphicImage rendered="#{docentesController.imageDoc != null}" value="#{docentesController.imageDoc}" height="200" width="200" class="ui-panelgrid"/>
                                     <p:graphicImage rendered="#{docentesController.imageDoc == null}" name="img/fotos.png" height="200" width="200" class="ui-panelgrid"/>                            
@@ -39,7 +39,7 @@
                             <h3 align="center">Modificar Clave</h3>
                             <h:form id="pass">
                                 <p:panel>                                     
-                                    
+
                                     <div class="ui-g-12 ajuste-form">
                                         <p:outputLabel value="Clave Actual" for="actual" />
                                         <p:password class="ui-md-6" id="actual" required="true" value="#{permisoController.actual}"/>
@@ -92,13 +92,13 @@
 
                             <div class="ui-g-12 ajuste-form ajuste-form-block">
                                 <p:outputLabel class="ui-md-6" value="Fecha Exp." for="fecha_exp" />
-                                <p:calendar required="true" navigator="true" class="ui-md-6" id="fecha_exp" value="#{docentesController.campo.fecha_exp}"></p:calendar>
+                                <p:calendar required="true" pattern="dd-MM-yyyy" navigator="true" class="ui-md-6" id="fecha_exp" value="#{docentesController.campo.fecha_exp}"></p:calendar>
                             </div>
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel class="ui-md-6 " value="Lugar Exp." for="lugar_exp" />
                                 <p:inputText  class="ui-md-6" id="lugar_exp" required="true" value="#{docentesController.campo.lugar_exp}"/>
                             </div>  
-                            
+
                         </p:panel>  
 
                     </div>                    
@@ -137,7 +137,7 @@
                                 <p:outputLabel value="Celular" for="celular" />
                                 <p:inputText  id="celular" required="true" value="#{docentesController.campo.celular}"/>
                             </div>
-                            
+
 
                         </p:panel>
                     </div>
@@ -152,17 +152,17 @@
                                 <p:outputLabel value="#{docentesTxt.codigo}  " for="codigo" />
                                 <p:inputText id="codigo"  value="#{docentesController.campo.codigo}"/>
                             </div>     
-                            
+
                             <div class="ui-g-12 ajuste-form ajuste-form-block">
                                 <p:outputLabel class="ui-md-6 " value="Fecha Nac." for="fechanac" />                   
-                                <p:calendar required="true" navigator="true" class="ui-md-6" id="fechanac" value="#{docentesController.campo.fechanac}"></p:calendar>
+                                <p:calendar required="true" pattern="dd-MM-yyyy" navigator="true" class="ui-md-6" id="fechanac" value="#{docentesController.campo.fechanac}"></p:calendar>
                             </div>
-                            
+
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel value="#{docentesTxt.correo}  " for="correo" />
                                 <p:inputText  id="correo" required="true" value="#{docentesController.campo.correo}"/>
                             </div>
-                            
+
                             <div class="ui-g-12 ajuste-form">
                                 <p:outputLabel value="#{docentesTxt.formacion}" for="formacion" />
                                 <p:inputTextarea style="width: 230px;" id="formacion" required="true" value="#{docentesController.campo.formacion}"/>
@@ -204,7 +204,7 @@
 
                                 <p:column style="width: 10px; text-align: center">
                                     <f:facet name="header">Año de Graduación</f:facet>
-                                        #{registro.ano_grado}
+                                    #{registro.ano_grado}
                                 </p:column>
 
                                 <p:column style="width: 10px; text-align: center">
@@ -280,7 +280,9 @@
 
                                 <p:column style="width: 10px; text-align: center">
                                     <f:facet name="header">Ultima Fecha</f:facet>
-                                        #{registro.fecha_ultima}
+                                    <h:outputText value="#{registro.fecha_ultima}">
+                                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                                    </h:outputText>
                                 </p:column>
 
                                 <p:column style="width: 10px; text-align: center">
@@ -439,7 +441,9 @@
 
                                 <p:column style="width: 10px; text-align: center">
                                     <f:facet name="header">Fecha</f:facet>
-                                        #{registro.fecha}
+                                    <h:outputText value="#{registro.fecha}">
+                                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                                    </h:outputText>
                                 </p:column>
 
 

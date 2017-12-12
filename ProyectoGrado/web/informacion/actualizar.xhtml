@@ -72,7 +72,8 @@
                         <p:inputText id="inst" value="#{informacionAcademicaController.campo.institucion}"/>
                         
                         <p:outputLabel value="Año de graduación" for="fechanac" />
-                        <p:calendar id="fechanac" showOn="button" value="#{informacionAcademicaController.campo.ano_grado}"></p:calendar>
+                        <p:inputText id="fechanac" value="#{informacionAcademicaController.campo.ano_grado}"/>
+                        
 
                         <p:outputPanel id="regPais" >
                             <p:outputLabel value="No Registro" for="reg" rendered="#{informacionAcademicaController.campo.tipo eq 1}"/>

@@ -56,8 +56,7 @@ public class Produccion implements Serializable
     private int num_anos;
     
     @Column(name = "ano")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date ano;
+    private int ano;
   
     @JoinColumn(name = "coddocente", referencedColumnName = "cedula")
     @ManyToOne(optional = false)
@@ -65,7 +64,7 @@ public class Produccion implements Serializable
    
     public Produccion() {  }
 
-    public Produccion(int codproduccion, String tipo_prod_part, String nombre, String editorial_inv, String libros, String estado, int tipo, Date meses, Date ano, Docentes coddocente) {
+    public Produccion(int codproduccion, String tipo_prod_part, String nombre, String editorial_inv, String libros, String estado, int tipo, Date meses, int ano, Docentes coddocente) {
         this.codproduccion = codproduccion;
         this.tipo_prod_part = tipo_prod_part;
         this.nombre = nombre;
@@ -149,11 +148,11 @@ public class Produccion implements Serializable
         this.num_anos = num_anos;
     }
 
-    public Date getAno() {
+    public int getAno() {
         return ano;
     }
 
-    public void setAno(Date ano) {
+    public void setAno(int ano) {
         this.ano = ano;
     }
 

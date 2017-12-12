@@ -70,7 +70,7 @@
                             <p:inputText id="lib" value="#{produccionController.campo.libros}" rendered="#{produccionController.campo.tipo eq 1}"/>
 
                             <p:outputLabel value="Año" for="ano" rendered="#{produccionController.campo.tipo eq 1}"/>
-                            <p:calendar id="ano" showOn="button" value="#{produccionController.campo.ano}" rendered="#{produccionController.campo.tipo eq 1}"></p:calendar>
+                            <p:inputText id="ano" value="#{produccionController.campo.ano}" rendered="#{produccionController.campo.tipo eq 1}"/>
                         </p:outputPanel>
 
 

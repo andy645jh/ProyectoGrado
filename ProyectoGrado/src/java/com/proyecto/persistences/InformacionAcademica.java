@@ -55,13 +55,12 @@ public class InformacionAcademica implements Serializable
     private String pais;
     
      @Column(name = "ano_grado")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date ano_grado;
+    private int ano_grado;
   
 
     public InformacionAcademica() {  }
 
-    public InformacionAcademica(int codcademico, String nivel, String titulo, String institucion, Docentes cod_docente, double _horas, int tipo, String registro, String pais, Date ano_grado) {
+    public InformacionAcademica(int codcademico, String nivel, String titulo, String institucion, Docentes cod_docente, double _horas, int tipo, String registro, String pais, int ano_grado) {
         this.codcademico = codcademico;
         this.nivel = nivel;
         this.titulo = titulo;
@@ -146,11 +145,11 @@ public class InformacionAcademica implements Serializable
         this.pais = pais;
     }
 
-    public Date getAno_grado() {
+    public int getAno_grado() {
         return ano_grado;
     }
 
-    public void setAno_grado(Date ano_grado) {
+    public void setAno_grado(int ano_grado) {
         this.ano_grado = ano_grado;
     }
 

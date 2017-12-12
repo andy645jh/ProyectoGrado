@@ -39,7 +39,7 @@
                             <p:inputText id="tema" value="#{participacionController.campo.tema}" rendered="#{participacionController.campo.tipo eq 1}"/>
 
                             <p:outputLabel value="Fecha" for="fecha" rendered="#{participacionController.campo.tipo eq 1}"/>
-                            <p:calendar id="fecha" showOn="button" value="#{participacionController.campo.fecha}" rendered="#{participacionController.campo.tipo eq 1}"></p:calendar>
+                            <p:calendar id="fecha" navigator="true" showOn="button" value="#{participacionController.campo.fecha}" rendered="#{participacionController.campo.tipo eq 1}"></p:calendar>
 
                             <p:outputLabel value="Ambito" for="ambito" rendered="#{participacionController.campo.tipo eq 1}"/>
                             <p:inputText id="ambito" value="#{participacionController.campo.ambito}" rendered="#{participacionController.campo.tipo eq 1}"/>
@@ -54,7 +54,7 @@
                             <p:inputText id="clase" value="#{participacionController.campo.tema}" rendered="#{participacionController.campo.tipo eq 2}"/>
 
                             <p:outputLabel value="Fecha" for="tiempo" rendered="#{participacionController.campo.tipo eq 2}"/>
-                            <p:calendar id="tiempo" showOn="button" value="#{participacionController.campo.fecha}" rendered="#{participacionController.campo.tipo eq 2}"></p:calendar>
+                            <p:calendar id="tiempo" navigator="true" showOn="button" value="#{participacionController.campo.fecha}" rendered="#{participacionController.campo.tipo eq 2}"></p:calendar>
 
                         </p:outputPanel>
 
