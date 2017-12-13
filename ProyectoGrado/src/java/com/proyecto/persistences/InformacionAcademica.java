@@ -46,7 +46,7 @@ public class InformacionAcademica implements Serializable
     private double _horas;
     
     @Column(name = "tipo")   
-    private int tipo;
+    private int tipo = 1;
     
     @Column(name = "registro")    
     private String registro;

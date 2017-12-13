@@ -7,35 +7,24 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/plantilla_modal.xhtml">
 
-        <ui:define name="content">
+        <ui:define name="content">         
             #{informacionAcademicaController.resetear()}
-
             <h:form>
                 <p:panel>  
-
                     <p:growl id="mensajes" sticky="true" showDetail="true"/>                
                     <br/>
-
-
-                    <p:outputPanel id="tipoInfo" >
-                        <p:panelGrid columns="2">
-                            <p:outputLabel value="Tipo Estudio" for="tipo" />
-                            <p:selectOneMenu id="tipo" value="#{informacionAcademicaController.campo.tipo}">
-                                <f:selectItem itemLabel="Seleccione" itemValue="0" />
+                    <p:outputPanel id="pnlContainerInfo" layout="block">  
+                       
+                        <h:panelGrid style="margin: 0 auto;" columns="2" rendered="#{informacionAcademicaController.campo.tipo==1}">
+                            <p:outputLabel value="Tipo Estudio" for="estudio1" />
+                            <p:selectOneMenu id="estudio1" value="#{informacionAcademicaController.campo.tipo}">                               
                                 <f:selectItem itemLabel="Titulos" itemValue="1" />
                                 <f:selectItem itemLabel="Cursos" itemValue="2" />
-                                <p:ajax event="change" update="nivelInfo"/>
-                                <p:ajax event="change" update="tituloNombre"/>
-                                <p:ajax event="change" update="regPais"/>
-                                <p:ajax event="change" update="horas"/>
+                                <p:ajax event="change" update="pnlContainerInfo"/>                                
                             </p:selectOneMenu> 
-                        </p:panelGrid>
-                    </p:outputPanel>
 
-                    <p:outputPanel id="nivelInfo" >
-                        <p:panelGrid columns="2">
-                            <p:outputLabel value="Nivel Academico" for="nivel" rendered="#{informacionAcademicaController.campo.tipo eq 1}"/>
-                            <p:selectOneMenu id="nivel" value="#{informacionAcademicaController.campo.nivel}" rendered="#{informacionAcademicaController.campo.tipo eq 1}">
+                            <p:outputLabel value="Nivel Academico" for="nivel" />
+                            <p:selectOneMenu id="nivel" value="#{informacionAcademicaController.campo.nivel}" >
                                 <f:selectItem itemLabel="Seleccione" itemValue="0" />
                                 <f:selectItem itemLabel="Técnico" itemValue="C" />
                                 <f:selectItem itemLabel="Tecnológia" itemValue="T" />
@@ -46,8 +35,34 @@
                                 <f:selectItem itemLabel="PostDoctorado" itemValue="S" />
                             </p:selectOneMenu> 
 
-                            <p:outputLabel value="Tipo" for="tip" rendered="#{informacionAcademicaController.campo.tipo eq 2}"/>
-                            <p:selectOneMenu id="tip" value="#{informacionAcademicaController.campo.nivel}" rendered="#{informacionAcademicaController.campo.tipo eq 2}">
+                            <p:outputLabel value="Titulo Obtenido" for="titulo" />
+                            <p:inputText id="titulo" value="#{informacionAcademicaController.campo.titulo}" />
+
+                            <p:outputLabel value="Institución" for="inst1" />
+                            <p:inputText id="inst1" value="#{informacionAcademicaController.campo.institucion}"/>
+
+                            <p:outputLabel value="Año de graduación" for="fechanac1" />
+                            <p:inputText id="fechanac1" value="#{informacionAcademicaController.campo.ano_grado}"/>
+
+                            <p:outputLabel value="No Registro" for="reg1" />
+                            <p:inputText id="reg1" value="#{informacionAcademicaController.campo.registro}" />
+
+                            <f:facet name="footer">
+                                <p:commandButton value="#{actividadesTxt.crear}" actionListener="#{informacionAcademicaController.agregar()}" ajax="true"/>                             
+                            </f:facet>
+                        </h:panelGrid>
+
+                        <h:panelGrid style="margin: 0 auto;" columns="2" rendered="#{informacionAcademicaController.campo.tipo==2}">
+
+                            <p:outputLabel value="Tipo Estudio" for="estudio2"/>
+                            <p:selectOneMenu id="estudio2" value="#{informacionAcademicaController.campo.tipo}">                               
+                                <f:selectItem itemLabel="Titulos" itemValue="1" />
+                                <f:selectItem itemLabel="Cursos" itemValue="2" />
+                                <p:ajax event="change" update="pnlContainerInfo"/>   
+                            </p:selectOneMenu> 
+
+                            <p:outputLabel value="Tipo" for="tip" />
+                            <p:selectOneMenu id="tip" value="#{informacionAcademicaController.campo.nivel}" >
                                 <f:selectItem itemLabel="Seleccione" itemValue="0" />
                                 <f:selectItem itemLabel="Certificacion" itemValue="CER" />
                                 <f:selectItem itemLabel="Curso" itemValue="C" />
@@ -55,75 +70,27 @@
                                 <f:selectItem itemLabel="Seminario" itemValue="S" />
                                 <f:selectItem itemLabel="Otro" itemValue="O" />
                             </p:selectOneMenu> 
-                        </p:panelGrid>
-                    </p:outputPanel>
 
-                    <p:outputPanel id="tituloNombre" >
-                        <p:panelGrid columns="2">
-                            <p:outputLabel value="Titulo Obtenido" for="titulo" rendered="#{informacionAcademicaController.campo.tipo eq 1}"/>
-                            <p:inputText id="titulo" 
-                                         value="#{informacionAcademicaController.campo.titulo}" 
-                                         rendered="#{informacionAcademicaController.campo.tipo eq 1}"
-                                         >
-                            </p:inputText>
+                            <p:outputLabel value="Nombre del programa" for="nomb" />
+                            <p:inputText id="nomb" value="#{informacionAcademicaController.campo.titulo}" />
 
-                            <p:outputLabel value="Nombre del programa" for="nomb" rendered="#{informacionAcademicaController.campo.tipo eq 2}"/>
-                            <p:inputText id="nomb" 
-                                         value="#{informacionAcademicaController.campo.titulo}" 
-                                         rendered="#{informacionAcademicaController.campo.tipo eq 2}"
-                                         >
-                            </p:inputText>
-                        </p:panelGrid>
-                    </p:outputPanel>
+                            <p:outputLabel value="Institución" for="inst" />
+                            <p:inputText id="inst" value="#{informacionAcademicaController.campo.institucion}"/>
 
-                    <p:panelGrid columns="2">
-                        <p:outputLabel value="Institución" for="inst" />
+                            <p:outputLabel value="Año de graduación" for="fechanac" />
+                            <p:inputText id="fechanac" value="#{informacionAcademicaController.campo.ano_grado}"/>
 
-                        <p:inputText id="inst" value="#{informacionAcademicaController.campo.institucion}"/>
+                            <p:outputLabel value="No De Horas" for="hora" />
+                            <p:inputText id="hora" value="#{informacionAcademicaController.campo.horas}" />
 
-                        <p:outputLabel value="Año de graduación" for="fechanac" />
-                        <p:inputText id="fechanac" value="#{informacionAcademicaController.campo.ano_grado}"/>
-                    </p:panelGrid>
-                    <p:outputPanel id="regPais" >
-                        <p:panelGrid columns="2">
-                            <p:outputLabel value="No Registro" for="reg" rendered="#{informacionAcademicaController.campo.tipo eq 1}"/>
-                            <p:inputText id="reg" 
-                                         value="#{informacionAcademicaController.campo.registro}" 
-                                         rendered="#{informacionAcademicaController.campo.tipo eq 1}"
-                                         >
-                            </p:inputText> <br/>
-
-                            <p:outputLabel value="País" for="pais" rendered="#{informacionAcademicaController.campo.tipo eq 1}"/>
-                            <p:inputText id="pais" 
-                                         value="#{informacionAcademicaController.campo.pais}" 
-                                         rendered="#{informacionAcademicaController.campo.tipo eq 1}"
-                                         >
-                            </p:inputText>
-                        </p:panelGrid>
-                    </p:outputPanel>
-
-                    <p:outputPanel id="horas" >
-                        <p:panelGrid columns="2">
-                            <p:outputLabel value="No De Horas" for="hora" rendered="#{informacionAcademicaController.campo.tipo eq 2}"/>
-                            <p:inputText id="hora" 
-                                         value="#{informacionAcademicaController.campo.horas}" 
-                                         rendered="#{informacionAcademicaController.campo.tipo eq 2}"
-                                         >
-                            </p:inputText>
-                        </p:panelGrid>
-                    </p:outputPanel>
-
-
-
-                    <f:facet name="footer">
-                        <p:commandButton id="btngrabar" value="#{actividadesTxt.crear}" actionListener="#{informacionAcademicaController.agregar()}" ajax="true"/>                             
-                    </f:facet>
-
+                            <f:facet name="footer">
+                                <p:commandButton value="#{actividadesTxt.crear}" actionListener="#{informacionAcademicaController.agregar()}" ajax="true"/>                             
+                            </f:facet>
+                        </h:panelGrid>
+                    </p:outputPanel> 
                 </p:panel> 
             </h:form>
-
         </ui:define>
-
     </ui:composition>
 </html>
 
