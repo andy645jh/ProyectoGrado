@@ -198,6 +198,21 @@ public class DocentesController implements Serializable {
         return listaItems;
 
     }
+    
+    public SelectItem[] comboFiltrado(String texto) {
+        List<Docentes> lista = this.getListado();
+        SelectItem[] listaItems = new SelectItem[lista.size()];
+        int index = 0;
+        for (Docentes doc : lista) {
+            SelectItem item = new SelectItem(doc.getCedula(), doc.getNombres() + " " + doc.getApellidos());
+
+            listaItems[index] = item;
+            index++;
+        }
+
+        return listaItems;
+
+    }
 
     public List<Docentes> getListado() {
 

@@ -22,16 +22,12 @@
                     <p:panelGrid columns="3" style="border-color: gray; border-width: 2px; border-style: double">
                         <p:outputLabel value="#{actividadesTxt.docente}  " for="doc" />
                         <p:selectOneMenu id="doc" required="false" requiredMessage="No ha seleccionado" value="#{evaluarController.cedula}" > 
-                            <f:selectItems value="#{docentesController.combo('Seleccione un Docente')}" />
+                            <f:selectItems value="#{docentesController.comboFiltrado('Seleccione un Docente')}" />
                         </p:selectOneMenu>
                         <p:commandButton value="#{actividadesTxt.buscar}" update="listar" actionListener="#{evaluarController.btnBuscar()}">
 
                         </p:commandButton> 
                     </p:panelGrid>
-                    <br/>
-
-
-
                     <br/>
 
 
