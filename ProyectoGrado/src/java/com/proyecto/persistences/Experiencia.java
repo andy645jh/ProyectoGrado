@@ -48,7 +48,7 @@ public class Experiencia implements Serializable
     
     @Column(name = "tipo")    
     @NotNull
-    private int tipo;
+    private int tipo = 1;
         
     @Column(name = "fecha_ultima")
     @Temporal(javax.persistence.TemporalType.DATE)
