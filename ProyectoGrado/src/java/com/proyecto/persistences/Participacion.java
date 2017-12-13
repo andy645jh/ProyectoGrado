@@ -50,7 +50,7 @@ public class Participacion implements Serializable
     private Double dedicacion;
     
     @Column(name = "tipo")  
-    private int tipo;
+    private int tipo = 1;
         
     @Column(name = "fecha")
     @Temporal(javax.persistence.TemporalType.DATE)

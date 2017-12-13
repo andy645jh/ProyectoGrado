@@ -14,16 +14,7 @@
                     <br/>
                     
                     <p:outputPanel id="pnlContainer" layout="block">
-                        <h:panelGrid style="margin: 0 auto;" columns="2" rendered="#{produccionController.campo.tipo==0}">
-                            <p:outputLabel value="Tipo" for="codtipo" />
-                            <p:selectOneMenu id="codtipo" value="#{produccionController.campo.tipo}"> 
-                                <f:selectItem itemLabel="Seleccione" itemValue="0" />
-                                <f:selectItem itemLabel="Producción Intelectual" itemValue="1" />
-                                <f:selectItem itemLabel="Producción Investigativa" itemValue="2" />                               
-                                <p:ajax event="change" update="pnlContainer"/> 
-                            </p:selectOneMenu>                        
-                        </h:panelGrid> 
-
+                        
                         <h:panelGrid style="margin: 0 auto;" columns="2" rendered="#{produccionController.campo.tipo eq 1}">
 
                             <p:outputLabel value="Tipo" for="codtipo1" />
