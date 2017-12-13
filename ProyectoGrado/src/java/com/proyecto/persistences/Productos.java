@@ -38,9 +38,7 @@ public class Productos implements Serializable {
 
     @Column(name = "comentarios")
     private String _comentarios;
-    
-    @Column(name = "valoracion")
-    private int _valoracion;
+  
 
     @JoinColumn(name = "codact", referencedColumnName = "codactividad")
     @ManyToOne(optional = false)
@@ -50,13 +48,6 @@ public class Productos implements Serializable {
     @ManyToOne(optional = false)
     private Docentes _coddocente;
 
-    public int getValoracion() {
-        return _valoracion;
-    }
-
-    public void setValoracion(int _valoracion) {
-        this._valoracion = _valoracion;
-    }
 
     public Productos() {
     }
