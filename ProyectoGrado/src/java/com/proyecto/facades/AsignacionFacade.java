@@ -1,6 +1,5 @@
 package com.proyecto.facades;
 
-import com.proyecto.persistences.Actividades;
 import com.proyecto.persistences.Asignacion;
 import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Docentes;

@@ -19,6 +19,7 @@ import com.proyecto.persistences.Socializacion;
 import com.proyecto.utilities.SessionUtils;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -146,6 +147,11 @@ public class ReporteDocente implements Serializable {
                 _estudiosCursos.add(infoTemp);
             }
         }
+    }
+    
+    public Date getFechaActual()
+    {
+        return new Date();
     }
     
     public void llenarListasExperiencia()

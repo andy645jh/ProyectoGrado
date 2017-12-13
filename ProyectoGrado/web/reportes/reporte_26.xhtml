@@ -89,7 +89,11 @@
                             <h:outputText value="NA" rendered="#{reporteDocente.doc.tipocontrato == 0}"/> </td>
                     <td>#{reporteDocente.doc.sucursal}</td>                    
                     <td>#{reporteDocente.doc.dedica_especial}</td>
-                    <td>02/02/2012*</td>   
+                    <td>
+                        <h:outputText value="#{reporteDocente.fechaActual}" >
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>                         
+                    </td>   
                 </tr>
 
             </tbody>
