@@ -56,6 +56,7 @@ public class ProduccionController implements Serializable
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);
+        //options.put("height", 500);
         RequestContext.getCurrentInstance().openDialog("/produccion/crear", options, null);
         
     }

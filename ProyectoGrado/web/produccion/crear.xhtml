@@ -12,83 +12,83 @@
 
             <h:form>
                 <p:panel> 
-
                     <p:growl id="mensajes" sticky="true" showDetail="true"/>                
                     <br/>
-                    <p:panelGrid columns="1">
-                        <p:outputPanel id="tipoProd">
-                            <p:outputLabel value="Tipo" for="codtipo" />
-                            <p:selectOneMenu id="codtipo" value="#{produccionController.campo.tipo}"> 
-                                <f:selectItem itemLabel="Seleccione" itemValue="0" />
-                                <f:selectItem itemLabel="Producción Intelectual" itemValue="1" />
-                                <f:selectItem itemLabel="Producción Investigativa" itemValue="2" />
-                                <p:ajax event="change" update="prodPart"/>
-                                <p:ajax event="change" update="nombInst"/>
-                                <p:ajax event="change" update="edtInv"/>
-                                <p:ajax event="change" update="libros"/>
-                                <p:ajax event="change" update="duracion"/>
-                            </p:selectOneMenu>                        
-                        </p:outputPanel>
+                    
+                    <p:outputPanel id="pnlContainer" layout="block">
+                        
+                        <h:panelGrid style="margin: 0 auto;" columns="2" rendered="#{produccionController.campo.tipo eq 1}">
 
-                        <p:outputPanel id="prodPart" >
-                            <p:outputLabel value="Tipo Producción" for="tipo_prod" rendered="#{produccionController.campo.tipo eq 1}"/>
-                            <p:selectOneMenu id="tipo_prod" value="#{produccionController.campo.tipo_prod_part}" rendered="#{produccionController.campo.tipo eq 1}">
+                            <p:outputLabel value="Tipo" for="codtipo1" />
+                            <p:selectOneMenu id="codtipo1" value="#{produccionController.campo.tipo}">                                 
+                                <f:selectItem itemLabel="Producción Intelectual" itemValue="1" />
+                                <f:selectItem itemLabel="Producción Investigativa" itemValue="2" />                               
+                                <p:ajax event="change" update="pnlContainer"/> 
+                            </p:selectOneMenu> 
+                            
+                            <p:outputLabel value="Tipo Producción" for="tipo_prod"/>
+                            <p:selectOneMenu id="tipo_prod" value="#{produccionController.campo.tipo_prod_part}">
                                 <f:selectItem itemLabel="Seleccione" itemValue="0" />
                                 <f:selectItem itemLabel="Artículo de libros, revistas o periódicos" itemValue="1" />
                                 <f:selectItem itemLabel="Libros completos" itemValue="2" />
                                 <f:selectItem itemLabel="Capítulos" itemValue="3" />
                             </p:selectOneMenu> 
 
-                            <p:outputLabel value="Tipo Participación" for="tipo_part" rendered="#{produccionController.campo.tipo eq 2}"/>
-                            <p:selectOneMenu id="tipo_part" value="#{produccionController.campo.tipo_prod_part}" rendered="#{produccionController.campo.tipo eq 2}">
+                            <p:outputLabel value="Nombre Producción" for="nomb"/>
+                            <p:inputText id="nomb" value="#{produccionController.campo.nombre}"/>
+
+                            <p:outputLabel value="Editorial /Nombre revista /Otros datos" for="edi"/>
+                            <p:inputText id="edi" value="#{produccionController.campo.editorial_inv}"/>
+
+                            <p:outputLabel value="Libros" for="lib"/>
+                            <p:inputText id="lib" value="#{produccionController.campo.libros}"/>                            
+
+                            <p:outputLabel value="Año" for="ano"/>
+                            <p:inputText id="ano" value="#{produccionController.campo.ano}"/>
+
+                            <f:facet name="footer">
+                                <p:commandButton value="#{actividadesTxt.crear}" actionListener="#{produccionController.agregar()}" ajax="false"/>                             
+                            </f:facet>
+                        </h:panelGrid>
+
+                        <h:panelGrid style="margin: 0 auto;" columns="2" rendered="#{produccionController.campo.tipo eq 2}">
+
+                            <p:outputLabel value="Tipo" for="codtipo2" />
+                            <p:selectOneMenu id="codtipo2" value="#{produccionController.campo.tipo}">                                
+                                <f:selectItem itemLabel="Producción Intelectual" itemValue="1" />
+                                <f:selectItem itemLabel="Producción Investigativa" itemValue="2" />                               
+                                <p:ajax event="change" update="pnlContainer"/> 
+                            </p:selectOneMenu> 
+                            
+                            <p:outputLabel value="Tipo Participación" for="tipo_part"/>
+                            <p:selectOneMenu id="tipo_part" value="#{produccionController.campo.tipo_prod_part}">
                                 <f:selectItem itemLabel="Seleccione" itemValue="0" />
                                 <f:selectItem itemLabel="Investigador Principal" itemValue="IP" />
                                 <f:selectItem itemLabel="Investigador" itemValue="IV" />
                                 <f:selectItem itemLabel="Asistente de Investigación" itemValue="AI" />
                                 <f:selectItem itemLabel="Estudiante Investigación" itemValue="EI" />
-                            </p:selectOneMenu>                             
-                        </p:outputPanel>
+                            </p:selectOneMenu>     
 
-                        <p:outputPanel id="edtInv" >
-                            <p:outputLabel value="Nombre Producción" for="nomb" rendered="#{produccionController.campo.tipo eq 1}"/>
-                            <p:inputText id="nomb" value="#{produccionController.campo.nombre}" rendered="#{produccionController.campo.tipo eq 1}"/>
+                            <p:outputLabel value="Institución" for="inst"/>
+                            <p:inputText id="inst" value="#{produccionController.campo.nombre}"/>
 
-                            <p:outputLabel value="Institución" for="inst" rendered="#{produccionController.campo.tipo eq 2}"/>
-                            <p:inputText id="inst" value="#{produccionController.campo.nombre}" rendered="#{produccionController.campo.tipo eq 2}"/>
-                        </p:outputPanel>
+                            <p:outputLabel value="Investigación" for="inv"/>
+                            <p:inputText id="inv" value="#{produccionController.campo.editorial_inv}"/>
 
-                        <p:outputPanel id="nombInst" >
-                            <p:outputLabel value="Editorial /Nombre revista /Otros datos" for="edi" rendered="#{produccionController.campo.tipo eq 1}"/>
-                            <p:inputText id="edi" value="#{produccionController.campo.editorial_inv}" rendered="#{produccionController.campo.tipo eq 1}"/>
+                            <p:outputLabel value="Años" for="num_ano"/>
+                            <p:inputText id="num_ano" value="#{produccionController.campo.num_anos}"/>
 
-                            <p:outputLabel value="Investigación" for="inv" rendered="#{produccionController.campo.tipo eq 2}"/>
-                            <p:inputText id="inv" value="#{produccionController.campo.editorial_inv}" rendered="#{produccionController.campo.tipo eq 2}"/>
-                        </p:outputPanel>
+                            <p:outputLabel value="Meses" for="meses"/>
+                            <p:inputText id="meses" value="#{produccionController.campo.meses}"/>
 
-                        <p:outputPanel id="libros" >
-                            <p:outputLabel value="Libros" for="lib" rendered="#{produccionController.campo.tipo eq 1}"/>
-                            <p:inputText id="lib" value="#{produccionController.campo.libros}" rendered="#{produccionController.campo.tipo eq 1}"/>
+                            <p:outputLabel value="Estado" for="est"/>
+                            <p:inputText id="est" value="#{produccionController.campo.estado}"/>
 
-                            <p:outputLabel value="Año" for="ano" rendered="#{produccionController.campo.tipo eq 1}"/>
-                            <p:inputText id="ano" value="#{produccionController.campo.ano}" rendered="#{produccionController.campo.tipo eq 1}"/>
-                        </p:outputPanel>
-
-
-                        <p:outputPanel id="duracion" >
-                            <p:outputLabel value="Años" for="num_ano" rendered="#{produccionController.campo.tipo eq 2}"/>
-                            <p:inputText id="num_ano" value="#{produccionController.campo.num_anos}" rendered="#{produccionController.campo.tipo eq 2}"/>
-
-                            <p:outputLabel value="Meses" for="meses" rendered="#{produccionController.campo.tipo eq 2}"/>
-                            <p:inputText id="meses" value="#{produccionController.campo.meses}" rendered="#{produccionController.campo.tipo eq 2}"/>
-
-                            <p:outputLabel value="Estado" for="est" rendered="#{produccionController.campo.tipo eq 2}"/>
-                            <p:inputText id="est" value="#{produccionController.campo.estado}" rendered="#{produccionController.campo.tipo eq 2}"/>
-                        </p:outputPanel>
-
-                        <f:facet name="footer">
-                            <p:commandButton id="btngrabar" value="#{actividadesTxt.crear}" actionListener="#{produccionController.agregar()}" ajax="false"/>                             
-                        </f:facet>
-                    </p:panelGrid>
+                            <f:facet name="footer">
+                                <p:commandButton value="#{actividadesTxt.crear}" actionListener="#{produccionController.agregar()}" ajax="false"/>                             
+                            </f:facet>
+                        </h:panelGrid>
+                    </p:outputPanel>
                 </p:panel> 
             </h:form>
 

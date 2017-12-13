@@ -47,7 +47,7 @@ public class Produccion implements Serializable
     
     @Column(name = "tipo")    
     @NotNull
-    private int tipo;
+    private int tipo=1;
         
     @Column(name = "meses")
     private int meses;
