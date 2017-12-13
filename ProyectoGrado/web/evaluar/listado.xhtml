@@ -10,7 +10,7 @@
     <ui:composition template="/plantilla.xhtml">
         <ui:define name="menu">
             <ui:decorate template="/menu_coordinador.xhtml">
-                <ui:param name="estaActivo" value="docentes"/>
+                <ui:param name="estaActivo" value="evaluar"/>
             </ui:decorate>            
         </ui:define>
 
@@ -21,9 +21,8 @@
 
                     <p:panelGrid columns="3" style="border-color: gray; border-width: 2px; border-style: double">
                         <p:outputLabel value="#{actividadesTxt.docente}  " for="doc" />
-                        <p:selectOneMenu id="doc" required="false" requiredMessage="No ha seleccionado" value="#{evaluarController.cedula}" > 
-                            <f:selectItems value="#{docentesController.comboFiltrado('Seleccione un Docente')}" />
-                        </p:selectOneMenu>
+                        <p:autoComplete id="doc" dropdown="true" value="#{evaluarController.cedula}" completeMethod="#{docentesController.completeText}">
+                        </p:autoComplete>
                         <p:commandButton value="#{actividadesTxt.buscar}" update="listar" actionListener="#{evaluarController.btnBuscar()}">
 
                         </p:commandButton> 
@@ -67,7 +66,7 @@
 
                         <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">Valoración</f:facet>
-                                #{registro.valoracion}
+                                #{registro.codactividad.valoracion}
                         </p:column>  
 
                         <p:column style="width: 10px; text-align: center">

@@ -199,6 +199,15 @@ public class DocentesController implements Serializable {
 
     }
     
+   public List<String> completeText(String query) {
+        List<String> results = new ArrayList<String>();
+        for(int i = 0; i < 10; i++) {
+            results.add(query + i);
+        }
+         
+        return results;
+    }
+    
     public SelectItem[] comboFiltrado(String texto) {
         List<Docentes> lista = this.getListado();
         SelectItem[] listaItems = new SelectItem[lista.size()];
