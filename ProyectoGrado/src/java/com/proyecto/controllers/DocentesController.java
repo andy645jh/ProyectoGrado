@@ -246,9 +246,9 @@ public class DocentesController implements Serializable {
     {
         _doc = (Docentes) SessionUtils.get("docente");
         Asignacion asig = _ejbAsignacion.buscarDocente("_coddocente", _doc.getCedula()+"");
-        return asig.getAcreditacion()>0.0 && asig.getComites()>0.0
-                && asig.getExtension()>0.0 && asig.getInvestigacion()>0.0
-                && asig.getOda()>0.0 && asig.getVirtualidad()>0.0
+        return (asig.getAcreditacion()>0.0 || asig.getComites()>0.0
+                || asig.getExtension()>0.0 || asig.getInvestigacion()>0.0
+                || asig.getOda()>0.0 || asig.getVirtualidad()>0.0)
                 && _doc.getTipocontrato()!=3;
     }
     
