@@ -6,83 +6,88 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/plantilla_modal.xhtml">
-            
+
         <ui:define name="content">
             #{experienciaController.resetear()}
-            
+
             <h:form>
                 <p:panel> 
-                              
+
                     <p:growl id="mensajes" sticky="true" showDetail="true"/>                
                     <br/>
-                    <p:panelGrid columns="1">
-                        
-                        <p:outputPanel id="tipoInfo">
-                            <p:outputLabel value="Tipo Experiencia" for="codtipo" />
-                            <p:selectOneMenu id="codtipo" value="#{experienciaController.campo.tipo}">
-                                <f:selectItem itemLabel="Seleccione" itemValue="0" />
+
+                    <p:outputPanel id="pnlContainer" layout="block">  
+
+                        <h:panelGrid style="margin: 0 auto;" columns="2" rendered="#{experienciaController.campo.tipo==1}">
+
+                            <p:outputLabel value="Tipo Experiencia" for="codtipo1" />
+                            <p:selectOneMenu id="codtipo1" value="#{experienciaController.campo.tipo}">                                  
                                 <f:selectItem itemLabel="Docente" itemValue="1" />
                                 <f:selectItem itemLabel="Profesional" itemValue="2" />
-                                <p:ajax event="change" update="instEntidad"/>
-                                <p:ajax event="change" update="actCargo"/>
+                                <p:ajax event="change" update="pnlContainer"/>                                    
                             </p:selectOneMenu> 
-                        </p:outputPanel>
-                        
-                        <p:outputPanel id="instEntidad" >
-                            <p:outputLabel value="Institucion" for="institucion" rendered="#{experienciaController.campo.tipo eq 1}"/>
-                            <p:inputText id="institucion" 
-                                         value="#{experienciaController.campo.institucion}" 
-                                         rendered="#{experienciaController.campo.tipo eq 1}"
-                                         >
-                            </p:inputText>
-                            
-                            <p:outputLabel value="Entidad" for="entidad" rendered="#{experienciaController.campo.tipo eq 2}"/>
-                            <p:inputText id="entidad" 
-                                         value="#{experienciaController.campo.institucion}" 
-                                         rendered="#{experienciaController.campo.tipo eq 2}"
-                                         >
-                            </p:inputText>
-                        </p:outputPanel>
-                        
-                        <p:outputPanel id="actCargo" >
-                            <p:outputLabel value="Actividad Docente" for="actv" rendered="#{experienciaController.campo.tipo eq 1}"/>
-                            <p:inputText id="actv" 
-                                         value="#{experienciaController.campo.actividad}" 
-                                         rendered="#{experienciaController.campo.tipo eq 1}"
-                                         >
-                            </p:inputText>
-                            
-                            <p:outputLabel value="Cargo" for="cargo" rendered="#{experienciaController.campo.tipo eq 2}"/>
-                            <p:inputText id="cargo" 
-                                         value="#{experienciaController.campo.actividad}" 
-                                         rendered="#{experienciaController.campo.tipo eq 2}"
-                                         >
-                            </p:inputText>
-                        </p:outputPanel>
-                        
-                        <p:outputLabel value="Dependencia" for="dependencia" />
-                        <p:inputText id="dependencia" value="#{experienciaController.campo.dependencia}"/>
 
-                        <p:outputLabel value="Tiempo de Servicio (meses)" for="tiempo" />
-                        <p:inputText id="tiempo" value="#{experienciaController.campo.tiempo}"/>
-                        
+                            <p:outputLabel value="Institucion" for="institucion" />
+                            <p:inputText id="institucion" value="#{experienciaController.campo.institucion}"/>
+
+                            <p:outputLabel value="Actividad Docente" for="actv" />
+                            <p:inputText id="actv" value="#{experienciaController.campo.actividad}" />
+
+                            <p:outputLabel value="Dependencia" for="dependencia" />
+                            <p:inputText id="dependencia" value="#{experienciaController.campo.dependencia}"/>
+
+                            <p:outputLabel value="Tiempo de Servicio (meses)" for="tiempo" />
+                            <p:inputText id="tiempo" value="#{experienciaController.campo.tiempo}"/>
+
                             <p:outputLabel value="Tipo contrato" for="tipo_contrato" />
                             <p:inputText id="tipo_contrato" value="#{experienciaController.campo.tipo_contrato}" />
-                                               
 
-                        <p:outputLabel value="Fecha última vinculación" for="fecha_ultima" />
-                        <p:calendar id="fecha_ultima" navigator="true" showOn="button" value="#{experienciaController.campo.fecha_ultima}"></p:calendar>
-                         
-                        
-                        <f:facet name="footer">
-                            <p:commandButton id="btngrabar" value="#{actividadesTxt.crear}" actionListener="#{experienciaController.agregar()}" ajax="true"/>                             
-                        </f:facet>
-                    </p:panelGrid>
+                            <p:outputLabel value="Fecha última vinculación" for="fecha_ultima" />
+                            <p:calendar id="fecha_ultima" navigator="true" showOn="button" value="#{experienciaController.campo.fecha_ultima}"></p:calendar>
+
+                            <f:facet name="footer">
+                                <p:commandButton value="#{actividadesTxt.crear}" actionListener="#{experienciaController.agregar()}" ajax="true"/>                             
+                            </f:facet>
+                        </h:panelGrid>
+
+                        <h:panelGrid style="margin: 0 auto;" columns="2" rendered="#{experienciaController.campo.tipo==2}">
+
+                            <p:outputLabel value="Tipo Experiencia" for="codtipo2" />
+                            <p:selectOneMenu id="codtipo2" value="#{experienciaController.campo.tipo}">                                  
+                                <f:selectItem itemLabel="Docente" itemValue="1" />
+                                <f:selectItem itemLabel="Profesional" itemValue="2" />
+                                <p:ajax event="change" update="pnlContainer"/>                                    
+                            </p:selectOneMenu> 
+
+                            <p:outputLabel value="Entidad" for="entidad" />
+                            <p:inputText id="entidad" value="#{experienciaController.campo.institucion}"/>
+
+                            <p:outputLabel value="Cargo" for="cargo" />
+                            <p:inputText id="cargo" value="#{experienciaController.campo.actividad}"/>
+
+                            <p:outputLabel value="Dependencia" for="dependencia2" />
+                            <p:inputText id="dependencia2" value="#{experienciaController.campo.dependencia}"/>
+
+                            <p:outputLabel value="Tiempo de Servicio (meses)" for="tiempo2" />
+                            <p:inputText id="tiempo2" value="#{experienciaController.campo.tiempo}"/>
+
+                            <p:outputLabel value="Tipo contrato" for="tipo_contrato2" />
+                            <p:inputText id="tipo_contrato2" value="#{experienciaController.campo.tipo_contrato}" />
+
+                            <p:outputLabel value="Fecha última vinculación" for="fecha_ultima2" />
+                            <p:calendar id="fecha_ultima2" navigator="true" showOn="button" value="#{experienciaController.campo.fecha_ultima}"></p:calendar>
+
+                            <f:facet name="footer">
+                                <p:commandButton value="#{actividadesTxt.crear}" actionListener="#{experienciaController.agregar()}" ajax="true"/>                             
+                            </f:facet>
+                        </h:panelGrid>
+
+                    </p:outputPanel>
                 </p:panel> 
             </h:form>
-            
+
         </ui:define>
-        
+
     </ui:composition>
 </html>
 
