@@ -44,7 +44,7 @@
                             <p:inputText id="lib" value="#{produccionController.campo.libros}"/>                            
 
                             <p:outputLabel value="Año" for="ano"/>
-                            <p:inputText id="ano" value="#{produccionController.campo.ano}"/>
+                            <p:inputNumber id="ano" value="#{produccionController.campo.ano}" decimalPlaces="0"/>
 
                             <f:facet name="footer">
                                 <p:commandButton value="#{actividadesTxt.crear}" actionListener="#{produccionController.agregar()}" ajax="false"/>                             
@@ -76,10 +76,10 @@
                             <p:inputText id="inv" value="#{produccionController.campo.editorial_inv}"/>
 
                             <p:outputLabel value="Años" for="num_ano"/>
-                            <p:inputText id="num_ano" value="#{produccionController.campo.num_anos}"/>
+                            <p:inputNumber id="num_ano" value="#{produccionController.campo.num_anos}" decimalPlaces="0"/>
 
                             <p:outputLabel value="Meses" for="meses"/>
-                            <p:inputText id="meses" value="#{produccionController.campo.meses}"/>
+                            <p:inputNumber id="meses" value="#{produccionController.campo.meses}" decimalPlaces="0"/>
 
                             <p:outputLabel value="Estado" for="est"/>
                             <p:inputText id="est" value="#{produccionController.campo.estado}"/>

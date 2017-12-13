@@ -42,7 +42,7 @@
                             <p:inputText id="inst1" value="#{informacionAcademicaController.campo.institucion}"/>
 
                             <p:outputLabel value="Año de graduación" for="fechanac1" />
-                            <p:inputText id="fechanac1" value="#{informacionAcademicaController.campo.ano_grado}"/>
+                            <p:inputNumber id="fechanac1" required="true" value="#{informacionAcademicaController.campo.ano_grado}" decimalPlaces="0"/>
 
                             <p:outputLabel value="No Registro" for="reg1" />
                             <p:inputText id="reg1" value="#{informacionAcademicaController.campo.registro}" />
@@ -77,11 +77,11 @@
                             <p:outputLabel value="Institución" for="inst" />
                             <p:inputText id="inst" value="#{informacionAcademicaController.campo.institucion}"/>
 
-                            <p:outputLabel value="Año de graduación" for="fechanac" />
-                            <p:inputText id="fechanac" value="#{informacionAcademicaController.campo.ano_grado}"/>
+                           <p:outputLabel value="Año de graduación" for="fechanac" />
+                            <p:inputNumber id="fechanac" value="#{informacionAcademicaController.campo.ano_grado}" decimalPlaces="0"/>
 
                             <p:outputLabel value="No De Horas" for="hora" />
-                            <p:inputText id="hora" value="#{informacionAcademicaController.campo.horas}" />
+                            <p:inputNumber id="hora" value="#{informacionAcademicaController.campo.horas}" decimalPlaces="1"/>
 
                             <f:facet name="footer">
                                 <p:commandButton value="Editar" actionListener="#{informacionAcademicaController.actualizar()}" ajax="true"/>                             
