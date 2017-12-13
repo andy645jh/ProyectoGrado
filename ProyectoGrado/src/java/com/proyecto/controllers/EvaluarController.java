@@ -40,13 +40,9 @@ import org.primefaces.context.RequestContext;
 public class EvaluarController implements Serializable {
 
     @EJB
-    private ActividadesFacade _ejbFacade;
+    private ActividadesFacade _actividadesFacade;
 
-    @EJB
-    private TipoModalidadesFacade _modalidadFacade;
-
-    @EJB
-    private AsignacionFacade _asignacionFacade;
+    
 
     @EJB
     private ProductosFacade _productosFacade;
@@ -105,29 +101,7 @@ public class EvaluarController implements Serializable {
     }
 
     
-    public SelectItem[] combo(String texto) {
-        return Formulario.addObject(_ejbFacade.listado(), texto);
-    }
-
-    
-
-    public SelectItem[] comboFiltrado(String texto) {
-        Docentes doc = (Docentes) SessionUtils.get("docente");
-//        Docentes doc=docentesFacade.buscar(109877);
-
-        int ced = doc.getCedula();
-
-        List<Actividades> lista = _ejbFacade.buscarCampo("_coddocente", "" + ced);
-        SelectItem[] listaItems = new SelectItem[lista.size()];
-        int index = 0;
-        for (Actividades actividad : lista) {
-            SelectItem item = new SelectItem(actividad.getCodactividad(), actividad.getNombre_corto());
-            listaItems[index] = item;
-            index++;
-        }
-
-        return listaItems;
-    }
+   
 
     public String btnBuscar() {
 //        cedula = _obj.getCoddocente().getCedula() + "";
@@ -139,15 +113,9 @@ public class EvaluarController implements Serializable {
         if (cedula == "") {
             return new ArrayList<Productos>();
         } else {
+            System.out.println("CEDULA EVALUAR2 "+cedula);
             return _productosFacade.buscarCampo("_coddocente", cedula);
         }
-    }
-
-    public List<Actividades> getListado() {
-        Docentes doc = (Docentes) SessionUtils.get("docente");
-        cedula = doc.getCedula() + "";
-
-        return _ejbFacade.buscarCampo("_coddocente", cedula);
     }
 
 
@@ -168,12 +136,14 @@ public class EvaluarController implements Serializable {
 
     public void guardarEvaluacion() {
         String titulo, detalle;
+        Actividades act = _obj.getCodactividad();
 
         try {
             titulo = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("exitoso");
             detalle = ResourceBundle.getBundle("/com/proyecto/utilities/GeneralTxt").getString("actualizarExitoso");
 
             _productosFacade.actualizar(_obj);
+            _actividadesFacade.actualizar(act);
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, detalle);
 
         } catch (Exception e) {

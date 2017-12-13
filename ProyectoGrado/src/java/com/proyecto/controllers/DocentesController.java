@@ -199,13 +199,14 @@ public class DocentesController implements Serializable {
 
     }
     
-   public List<String> completeText(String query) {
-        List<String> results = new ArrayList<String>();
-        for(int i = 0; i < 10; i++) {
-            results.add(query + i);
-        }
-         
-        return results;
+   public void completeText(String query) {
+//        List<String> results = new ArrayList<String>();
+//        int cedula = Integer.parseInt(query);
+//        SelectItem[] listaItems = new SelectItem[0];
+//        Docentes doce= _ejbFacade.buscar(cedula);
+//        SelectItem item = new SelectItem(doce.getCedula(), doce.getNombres() + " " + doce.getApellidos());
+//         listaItems[0] = item;
+//        return listaItems;
     }
     
     public SelectItem[] comboFiltrado(String texto) {

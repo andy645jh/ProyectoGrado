@@ -58,11 +58,6 @@
                         </p:column> 
                         
                         <p:column style="width: 10px; text-align: center">
-                            <f:facet name="header">Valoración</f:facet>
-                                #{registro.valoracion}
-                        </p:column> 
-
-                        <p:column style="width: 10px; text-align: center">
                             <f:facet name="header">#{productosTxt.opciones}</f:facet>
                             <p:commandButton update="formProductos:listado formProductos:mensajito" icon="ui-icon-trash" actionListener="#{productosController.borrar(registro)}">
                                 <p:confirm header="Confirmation" message="Estas seguro de eliminar?" icon="ui-icon-alert" />

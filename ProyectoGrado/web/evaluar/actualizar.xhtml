@@ -35,7 +35,7 @@
                         <p:inputTextarea id="comentarios" value="#{evaluarController.campo.comentarios}"/> 
                         
                         <p:outputLabel value="Valoración" for="valoracion" />
-                        <p:inputTextarea id="valoracion" value="#{evaluarController.campo.codactividad.valoracion}"/> 
+                        <p:spinner id="valoracion" value="#{evaluarController.campo.codactividad.valoracion}" min="1" max="5" /> 
 
                         <f:facet name="footer">
                             <p:commandButton id="btngrabar" value="#{productosTxt.actulizar}" ajax="true" action="#{evaluarController.guardarEvaluacion()}"/>

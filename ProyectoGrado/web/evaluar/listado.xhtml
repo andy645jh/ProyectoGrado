@@ -21,15 +21,36 @@
 
                     <p:panelGrid columns="3" style="border-color: gray; border-width: 2px; border-style: double">
                         <p:outputLabel value="#{actividadesTxt.docente}  " for="doc" />
-                        <p:autoComplete id="doc" dropdown="true" value="#{evaluarController.cedula}" completeMethod="#{docentesController.completeText}">
-                        </p:autoComplete>
+                        <p:inputNumber id="doc"  value="#{evaluarController.cedula}" decimalPlaces="0" />
+                    
                         <p:commandButton value="#{actividadesTxt.buscar}" update="listar" actionListener="#{evaluarController.btnBuscar()}">
 
                         </p:commandButton> 
                     </p:panelGrid>
                     <br/>
+                    
+                    <p:dataTable id="listardoc" value="#{docentesController.listado}" var="docente" rows="5"
+                                 paginator="true" widgetVar="carsTable"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                  filteredValue="#{docentesController.filteredCars}">
 
+                        <p:column style="width: 10px; text-align: center; " filterMatchMode="contains" >
+                            <f:facet name="header" >#{docentesTxt.cedula}</f:facet>
+                                #{docente.cedula}
+                        </p:column>
 
+                        <p:column style="width: 10px; text-align: center" filterMatchMode="contains" filterBy="#{docente.nombres}" >
+                            <f:facet name="header">#{docentesTxt.nombre}</f:facet>
+                                #{docente.nombres}
+                        </p:column> 
+
+                        <p:column style="width: 10px; text-align: center" filterMatchMode="contains" filterBy="#{docente.apellidos}">
+                            <f:facet name="header">#{docentesTxt.apellido}</f:facet>
+                                #{docente.apellidos}
+                        </p:column>
+                    </p:dataTable>
+
+<br/>
                     <p:dataTable id="listar" value="#{evaluarController.listarEvaluaciones}" var="registro" rows="10"
                                  paginator="true"
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
