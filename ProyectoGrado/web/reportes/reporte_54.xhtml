@@ -50,7 +50,7 @@
                 <td width="60%">DOCENCIA</td>
                 <td width="10%" rowspan="2">
                     <p:graphicImage rendered="#{docentesController.imageDoc != null}" height="80" value="#{docentesController.imageDoc}"/>
-                    <p:graphicImage rendered="#{docentesController.imageDoc == null}" height="80" name="img/fotos.png"/>                                                        
+                    <p:graphicImage rendered="#{docentesController.imageDoc == null}" height="80" name="img/fotos.png"/>                                                       
 
                 </td>
                 <td width="10%">PÁGINA</td>
@@ -167,20 +167,22 @@
                 </ui:repeat>
             </tbody>
         </table> 
-      
+
         <table style="width: 100%;font-size: 30px; background-color: #e2dfdf">
             <tr>
                 <td>
                     TOTAL HORAS SEMESTRE
                 </td>
                 <td>
-                    <p:outputLabel id="horas_semestre" style="" value="#{reporteRdc.horasSemestre}"/>
+                    <p:outputLabel id="horas_semestre" value="#{reporteRdc.horasSemestre}">
+                        <f:convertNumber pattern="##.##"/>
+                    </p:outputLabel>
                 </td>
             </tr>
         </table>
         <br/>
         <br/>
-        
+
         <!-- TABLA DE PRODUCTOS -->
         <table style="border: 1px solid">
             <thead>
@@ -250,7 +252,7 @@
                 </ui:repeat>
             </tbody>
         </table>
-        
+
         <br/>
         <table style="width: 100%;font-size: 30px; background-color: #e2dfdf">
             <tr>
@@ -258,7 +260,9 @@
                     TOTAL HORAS ASIGNADAS
                 </td>
                 <td>
-                    <p:outputLabel id="totalhoras" style="" value="#{reporteRdc.totalHoras}"/>
+                    <p:outputLabel id="totalhoras" style="" value="#{reporteRdc.totalHoras}">
+                        <f:convertNumber pattern="##.##"/>
+                    </p:outputLabel>
                 </td>
             </tr>
         </table>

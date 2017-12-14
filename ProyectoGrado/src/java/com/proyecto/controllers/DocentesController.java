@@ -19,6 +19,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -90,6 +93,29 @@ public class DocentesController implements Serializable {
         return _doc;
     }
 
+    public  String urlImage()
+    {        
+        int id = _doc.getCedula();
+        String server = FacesContext.getCurrentInstance().getExternalContext().getRequestServerName();
+        String destination = "";
+        if (!server.contains("localhost")) {
+            Path path = Paths.get("http://190.96.192.7:8080/home/webapp/"+id+"/pedido.png");           
+            destination = "http://190.96.192.7:8080/home/webapp/"+id+"/pedido.png";
+            
+        }else{
+            Path path = Paths.get("file:///C:/webapp/"+id+"/pedido.png");
+            if(!Files.exists(path))
+            {
+                destination = "img/fotos.png";
+            }else{
+                destination = "file:///C:/webapp/"+id+"/pedido.png";
+            }
+        }
+        
+        
+        return destination;
+    }
+    
     public StreamedContent getImageDoc() {
         Docentes doc = (Docentes) SessionUtils.get("docente");        
         

@@ -112,9 +112,9 @@
                 <tr>
                     <td class="titulo-tabla" width="30%" colspan="3">PRIMER APELLIDO</td>                    
                     <td class="titulo-tabla" width="30%" colspan="3">NOMBRES</td>
-                    <td width="10%" colspan="1" rowspan="8">
-                        <p:graphicImage rendered="#{docentesController.imageDoc != null}" height="100" value="#{docentesController.imageDoc}"/>
-                        <p:graphicImage rendered="#{docentesController.imageDoc == null}" height="100" name="img/fotos.png"/>   
+                    <td width="10%" colspan="1" rowspan="8">   
+                        <p:graphicImage rendered="#{docentesController.imageDoc != null}" height="150" value="#{docentesController.imageDoc}"/>
+                        <p:graphicImage rendered="#{docentesController.imageDoc == null}" height="150" name="img/fotos.png"/> 
                     </td>
                 </tr>
                 <tr>                    
@@ -253,7 +253,7 @@
                         <td>#{estudio.titulo}</td> 
                         <td>#{estudio.institucion}</td> 
                         <td>#{estudio.horas}</td>         
-                        <td>#{estudio.registro}</td>                         
+                        <td>#{estudio.ano_grado}</td>                         
                     </tr>
                 </ui:repeat>
                 <p:panel rendered="#{reporteDocente.estudiosCursos eq null}">
@@ -262,7 +262,7 @@
                         <td>#{estudio.titulo}</td> 
                         <td>#{estudio.institucion}</td> 
                         <td>#{estudio.horas}</td> 
-                        <td>#{estudio.registro}</td>                         
+                        <td>#{estudio.ano_grado}</td>                         
                     </tr>
                 </p:panel>
             </tbody>

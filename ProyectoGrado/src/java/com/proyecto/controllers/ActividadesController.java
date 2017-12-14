@@ -10,7 +10,6 @@ import com.proyecto.persistences.Actividades;
 import com.proyecto.persistences.Asignacion;
 import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Docentes;
-import com.proyecto.persistences.Horario;
 import com.proyecto.persistences.Productos;
 import com.proyecto.persistences.TipoModalidades;
 import com.proyecto.utilities.SessionUtils;
@@ -32,7 +31,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
-import javax.sound.midi.Soundbank;
 import org.primefaces.context.RequestContext;
 
 @ManagedBean
@@ -67,7 +65,7 @@ public class ActividadesController implements Serializable {
     private Coordinacion _coordinacion;
     private Docentes _docente;
     private double _totalHoras = 0.0;
-    
+
     @PostConstruct
     private void init() {
         _coordinacion = (Coordinacion) SessionUtils.get("coordinacion");
@@ -112,7 +110,7 @@ public class ActividadesController implements Serializable {
         TipoModalidades modalidad = _modalidadFacade.buscar(_codigo);
         Docentes d = (Docentes) SessionUtils.get("docente");
         Productos producto = new Productos();
-       
+
         _obj.setCodtipo(modalidad);
 
         try {
@@ -129,9 +127,9 @@ public class ActividadesController implements Serializable {
             producto.setComentarios(null);
             producto.setDescripcion(null);
             producto.setCoddocente(d);
-        
+
             _productosFacade.crear(producto);
-            
+
             RequestContext context = RequestContext.getCurrentInstance();
             context.closeDialog(null);
 
@@ -146,17 +144,16 @@ public class ActividadesController implements Serializable {
     }
 
     public double getTotalHoras() {
-        _totalHoras=0;
-        for (Actividades obj : getListado()) {              
+        _totalHoras = 0;
+        for (Actividades obj : getListado()) {
             //calculando horas
-            if(obj!=null)
-            {
+            if (obj != null) {
                 _totalHoras += obj.getHoras();
             }
         }
         return _totalHoras;
     }
-    
+
     public SelectItem[] combo(String texto) {
         return Formulario.addObject(_ejbFacade.listado(), texto);
     }
@@ -168,12 +165,12 @@ public class ActividadesController implements Serializable {
         List<Actividades> lstActividades = _ejbFacade.buscarCampo("_coddocente", cedula);
         List<Productos> lstProductos = _productosFacade.buscarCampo("_coddocente", cedula);
         List<Actividades> lstActFaltantes = new ArrayList<>();
-        SelectItem[] lista =new SelectItem[1];;
+        SelectItem[] lista = new SelectItem[1];;
 
         for (int i = 0; i < lstActividades.size(); i++) {
             if (_productosFacade.buscarCampo("_codactividad", lstActividades.get(i).getCodactividad() + "").isEmpty()) {
                 lstActFaltantes.add(lstActividades.get(i));
-                System.out.println("NO ESTA "+lstActividades.get(i).getCodactividad());
+                System.out.println("NO ESTA " + lstActividades.get(i).getCodactividad());
             }
         }
 
@@ -185,9 +182,9 @@ public class ActividadesController implements Serializable {
             }
             return listaItems;
         }
-            SelectItem item = new SelectItem(0, "No hay actividades");
-            lista[0] = item;
-        
+        SelectItem item = new SelectItem(0, "No hay actividades");
+        lista[0] = item;
+
         return lista;
     }
 
@@ -211,7 +208,7 @@ public class ActividadesController implements Serializable {
 
     public String btnBuscar() {
         cedula = _obj.getCoddocente().getCedula() + "";
-        System.out.println("CEDULA EVALUAR "+cedula);
+        System.out.println("CEDULA EVALUAR " + cedula);
         return "evaluar/listado";
     }
 
@@ -231,7 +228,7 @@ public class ActividadesController implements Serializable {
     }
 
     public void borrar(Actividades faceObj, HorarioController horaControl) {
-        
+
         String titulo, detalle;
 
         try {
@@ -377,6 +374,15 @@ public class ActividadesController implements Serializable {
 
             case 11:
                 return _asignacion.getVirtualidad();
+
+            case 12:
+                return _asignacion.getHorasclase();
+
+            case 13:
+                return _asignacion.getPreparacion();
+
+            case 14:
+                return _asignacion.getColectivo();
         }
         return 0;
     }
