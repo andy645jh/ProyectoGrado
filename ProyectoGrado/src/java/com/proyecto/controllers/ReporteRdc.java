@@ -129,13 +129,13 @@ public class ReporteRdc implements Serializable {
             if(obj.getCodActividad()!=null)
             {
                 //calculando horas            
-                _totalHoras += obj.getCodActividad().getHoras();
+                _totalHoras += 1;
                 System.out.println("Horas: "+obj.getCodActividad().getHoras());            
                 System.out.println("Id: "+obj.getCodActividad().getCodactividad());  
             }
                       
         }        
-
+        _totalHoras+=0.33;
         //convertir array a lista
         return Arrays.asList(_arrayInterval);
         //RequestContext.getCurrentInstance().update(":formHorario:nuevaLista");
