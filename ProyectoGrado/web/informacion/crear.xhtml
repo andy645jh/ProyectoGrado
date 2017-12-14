@@ -46,6 +46,9 @@
 
                             <p:outputLabel value="No Registro" for="reg1" />
                             <p:inputText id="reg1" value="#{informacionAcademicaController.campo.registro}" />
+                            
+                            <p:outputLabel value="País" for="pais1" />
+                            <p:inputText id="pais1" value="#{informacionAcademicaController.campo.pais}" />
 
                             <f:facet name="footer">
                                 <p:commandButton value="#{actividadesTxt.crear}" actionListener="#{informacionAcademicaController.agregar()}" ajax="true"/>                             
