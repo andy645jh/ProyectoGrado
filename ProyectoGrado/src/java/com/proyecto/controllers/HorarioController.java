@@ -327,10 +327,10 @@ public class HorarioController implements Serializable {
             //calculando horas
             if(obj.getCodActividad()!=null)
             {
-                _totalHoras += obj.getCodActividad().getHoras();
+                _totalHoras += 1;
             }
         }
-        return _totalHoras;
+        return _totalHoras+0.33;
     }
 
     public void setTotalHoras(double _totalHoras) {
