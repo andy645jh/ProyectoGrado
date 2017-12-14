@@ -25,16 +25,13 @@
                         <p:outputLabel value="#{productosTxt.fechaComp} " for="fechacompromiso" />                    
                         <p:calendar required="true" id="fechacompromiso" showOn="button" value="#{productosController.campo.fechacompromiso}"></p:calendar>
 
-                        <p:outputLabel value="#{productosTxt.fechaEntr}  " for="fechaentrega" />                   
-                        <h:outputText value="#{productosController.campo.fechaentrega}" id="fechaentrega">
-                            <f:convertDateTime dateStyle="medium"/>
-                        </h:outputText> 
+                        <br/>
+                        <br/>
+                        <p:outputLabel value="  " for="fechaentrega" />                   
+                        <p:outputLabel value="#{productosController.campo.fechaentrega}" id="fechaentrega" />                          
 
-                        <p:outputLabel value="#{productosTxt.comentarios}  " for="comentarios" />
+                        <p:outputLabel value="  " for="comentarios" />
                         <p:outputLabel id="comentarios" value="#{productosController.campo.comentarios}"/> 
-
-
-
 
                         <f:facet name="footer">
                             <p:commandButton id="btngrabar" value="#{productosTxt.actulizar}" ajax="true" action="#{productosController.actualizar()}"/>
