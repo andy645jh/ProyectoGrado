@@ -9,6 +9,7 @@ import com.proyecto.persistences.Asignacion;
 import com.proyecto.persistences.Coordinacion_;
 import com.proyecto.persistences.Docentes;
 import com.proyecto.persistences.Permisos;
+import com.proyecto.utilities.AutoFileCloser;
 import com.proyecto.utilities.SessionUtils;
 import java.io.File;
 import java.io.FileInputStream;
@@ -90,7 +91,8 @@ public class DocentesController implements Serializable {
     }
 
     public StreamedContent getImageDoc() {
-        Docentes doc = (Docentes) SessionUtils.get("docente");
+        Docentes doc = (Docentes) SessionUtils.get("docente");        
+        
         try {
             int cedula = doc.getCedula();
             File f = new File(SessionUtils.getPathImages(cedula) + "pedido.png");
@@ -98,7 +100,16 @@ public class DocentesController implements Serializable {
             if (!f.exists()) {
                 _imageDoc = null;
             } else {
-                _imageDoc = (StreamedContent) new DefaultStreamedContent(new FileInputStream(f));
+                new AutoFileCloser() {
+                @Override
+                protected void doWork() throws Throwable {
+                    // declare variables for the readers and "watch" them     
+                    File f = new File(SessionUtils.getPathImages(cedula) + "pedido.png");
+                    FileInputStream fi = autoClose(fi = new FileInputStream(f));                
+                    _imageDoc = (StreamedContent) new DefaultStreamedContent(new FileInputStream(f)); 
+                }
+            };
+                //_imageDoc = (StreamedContent) new DefaultStreamedContent(new FileInputStream(f));                
             }
             //_imageDoc = (StreamedContent) new DefaultStreamedContent(new FileInputStream(f));                
         } catch (Exception e) {

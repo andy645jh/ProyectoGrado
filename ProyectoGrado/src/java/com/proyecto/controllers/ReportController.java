@@ -1,6 +1,7 @@
 package com.proyecto.controllers;
 
 import com.proyecto.persistences.Docentes;
+import com.proyecto.utilities.AutoFileCloser;
 import com.proyecto.utilities.SessionUtils;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -22,31 +23,31 @@ import org.xhtmlrenderer.pdf.ITextRenderer;
 @SessionScoped
 @ManagedBean
 public class ReportController implements Serializable {
-      
+
     private String _cedula;
     private String _archivo;
-    
-    public void crearReport() throws IOException{
+
+    public void crearReport() throws IOException {
         Docentes doc = (Docentes) SessionUtils.get("docente");
-        _cedula = doc.getCedula()+"";
+        _cedula = doc.getCedula() + "";
         FacesContext faces = FacesContext.getCurrentInstance();
         ExternalContext external = faces.getExternalContext();
         HttpSession session = (HttpSession) external.getSession(true);
         String url = getBase() + "reporte_54.xhtml;jsessionid=" + session.getId();
         HttpServletResponse response = (HttpServletResponse) external.getResponse();
-        String ruta ="";
-        
-        try {         
-            
+        String ruta = "";
+
+        try {
+
             ITextRenderer renderer = new ITextRenderer();
             renderer.setDocument(new URL(url).toString());
-            renderer.layout();            
+            renderer.layout();
 
             //reporte unico
-            _archivo = "reporte_54.pdf";
-            //_archivo = "reporte_54_"+SessionUtils.getYear()+"_"+SessionUtils.getSemestre()+".pdf";
+            //_archivo = "reporte_54.pdf";
+            _archivo = "reporte_54_"+SessionUtils.getYear()+"_"+SessionUtils.getSemestre()+".pdf";
             ruta = SessionUtils.getPathReports(doc.getCedula()) + _archivo;
-            OutputStream os = new FileOutputStream(ruta);          
+            OutputStream os = new FileOutputStream(ruta);
             //response.setHeader("Content-Disposition", "inline; filename=reporte_54.pdf");               
             renderer.createPDF(os);
             os.close();
@@ -54,41 +55,48 @@ public class ReportController implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        faces.responseComplete();   
-        System.out.println("Done 54!! -> "+ruta);
+
+        faces.responseComplete();
+        System.out.println("Done 54!! -> " + ruta);
     }
 
     public void crearReport26() {
         Docentes doc = (Docentes) SessionUtils.get("docente");
-        _cedula = doc.getCedula()+"";
+        _cedula = doc.getCedula() + "";
         FacesContext faces = FacesContext.getCurrentInstance();
         ExternalContext external = faces.getExternalContext();
         HttpSession session = (HttpSession) external.getSession(true);
-        HttpServletResponse response = (HttpServletResponse) external.getResponse();        
+        HttpServletResponse response = (HttpServletResponse) external.getResponse();
         String url = getBase() + "reporte_26.xhtml;jsessionid=" + session.getId();
-        String ruta ="";
+        String ruta = "";
         try {
             ITextRenderer renderer = new ITextRenderer();
             renderer.setDocument(new URL(url).toString());
-            renderer.layout();   
+            renderer.layout();
             //reporte unico
-            _archivo = "reporte_26.pdf";
-            //_archivo = "reporte_26_"+SessionUtils.getYear()+"_"+SessionUtils.getSemestre()+".pdf";
+            //_archivo = "reporte_26.pdf";
+            _archivo = "reporte_26_"+SessionUtils.getYear()+"_"+SessionUtils.getSemestre()+".pdf";
             ruta = SessionUtils.getPathReports(doc.getCedula()) + _archivo;
-            OutputStream os = new FileOutputStream(ruta);
-           
-            renderer.createPDF(os);            
-            os.close();
 
+            /*new AutoFileCloser() {
+                @Override
+                protected void doWork() throws Throwable {
+                    // declare variables for the readers and "watch" them                   
+                    OutputStream os = autoClose(os = new FileOutputStream(SessionUtils.getPathReports(doc.getCedula()) + "reporte_26.pdf"));
+                    renderer.createPDF(os);
+                    os.close();
+                }
+            };*/
+
+            OutputStream os = new FileOutputStream(ruta);
+            renderer.createPDF(os);
+            os.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        faces.responseComplete();       
-        System.out.println("Done 26!! -> "+ruta);
+        faces.responseComplete();
+        System.out.println("Done 26!! -> " + ruta);
     }
-    
-    
 
     public String getBase() {
         FacesContext faces = FacesContext.getCurrentInstance();
@@ -105,16 +113,17 @@ public class ReportController implements Serializable {
                 + // "/people"
                 "/faces/reportes/";
         return uri;
-    }  
-/*
-    public void openPdf(String cedula, String archivo) throws IOException{
-        System.out.println("Cedula: " + _cedula + " -- Nombre: " + _archivo);
-        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();   
-        SessionUtils.add("cedula", cedula);
-        SessionUtils.add("archivo", archivo);
-        ec.redirect(ec.getRequestContextPath() +"/pdfServlet");
     }
-    */
+    /*
+     public void openPdf(String cedula, String archivo) throws IOException{
+     System.out.println("Cedula: " + _cedula + " -- Nombre: " + _archivo);
+     ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();   
+     SessionUtils.add("cedula", cedula);
+     SessionUtils.add("archivo", archivo);
+     ec.redirect(ec.getRequestContextPath() +"/pdfServlet");
+     }
+     */
+
     public String getCedula() {
         return _cedula;
     }
