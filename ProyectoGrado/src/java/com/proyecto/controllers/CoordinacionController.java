@@ -39,6 +39,7 @@ public class CoordinacionController implements Serializable{
     @EJB
     private DocentesFacade _facadeDocentes; 
          
+    private Facultad facultad;
     private Coordinacion _obj;    
     private FacesMessage message;
     private int codFacultad;
@@ -232,6 +233,8 @@ public class CoordinacionController implements Serializable{
         
         return listaItems;
     }
+    
+    
     
     
     @FacesConverter(forClass = Coordinacion.class, value = "coordinacionConverter")

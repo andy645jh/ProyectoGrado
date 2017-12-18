@@ -6,8 +6,10 @@ import com.proyecto.utilities.Mensajes;
 import com.proyecto.facades.DocentesFacade;
 import com.proyecto.facades.PermisosFacade;
 import com.proyecto.persistences.Asignacion;
+import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Coordinacion_;
 import com.proyecto.persistences.Docentes;
+import com.proyecto.persistences.Facultad;
 import com.proyecto.persistences.Permisos;
 import com.proyecto.utilities.AutoFileCloser;
 import com.proyecto.utilities.SessionUtils;
@@ -67,8 +69,8 @@ public class DocentesController implements Serializable {
     private int _codCoord;    
     private FacesMessage message;
 
-    private String facultad = "";
-    private String coordinacion = "";
+    private String facultad="";
+    private String coordinacion="";
 
     private String usuDocente;
     private LoginController _loginController;
@@ -389,12 +391,25 @@ public class DocentesController implements Serializable {
         usuDocente = _loginController.getUsuario();
         return _ejbFacade.buscar(Integer.parseInt(usuDocente));
     }
-
+    
     public List<Docentes> getListarDocentesFiltrado() {
         if (coordinacion.equals("")) {
             return new ArrayList<Docentes>();
         } else {
             return _ejbFacade.buscarCampo("_codcoordinacion", coordinacion);
+        }
+    }
+
+    public List<Coordinacion> getListarCoordinacinesFiltrado() {
+        
+        System.out.println("ENTRO A BUSCAR COORDINACION "+facultad);
+        
+        if (facultad.equals("") || facultad == null) {
+            System.out.println("LA FACULTAD ES VACIA");
+            return _coordFacade.listado();
+        } else {
+            System.out.println("FACULTAD --> "+facultad);
+            return _coordFacade.buscarCampo("_codfacultad", facultad);
         }
     }
 
@@ -490,6 +505,8 @@ public class DocentesController implements Serializable {
     public void setFacultad(String facultad) {
         this.facultad = facultad;
     }
+
+    
 
     public String getCoordinacion() {
         return coordinacion;

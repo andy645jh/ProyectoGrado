@@ -1,26 +1,14 @@
-- Evitar que un docente pueda abrir la carpeta de otro docente 
-- pagina de inicio para el docente y el coordinador
-- Buscar una manera facil de registrar las semanas del semestre
-- Mejorar el diseño
-- Crear una relacion de semestre y año para el RDC-54
-- Arreglar primera tabla del rdc-26
 - Arreglar el filtro en el auditor que pueda filtrar por facultad y coordinacion
-- el articulo no tiene metodologia
-- graficas del articulo(bd, clases,modelos,pantallazos)
-- Actualizar y poner graficas del articulo
-- Agregar informacion en las secciones del trabajo que esten vacias
+- Agregarle al documento las pruebas de funcionalidad y de carga
 
 Encontrados el 11/12/2017
 - Poner 0 por defecto en las asignaciones
 - Poner por defecto contrato a los coordinadores y auditores
-- No dejar que el docente intente crear actividades o productos si aun no ha sido asignado
 - Validar numeros en login
 
 Cambios del Profesor
-- Mostrar el total en el seguimiento en el horario,actividades y reporte
 - Coordinador puede decir si un rdc esta bn o mal y dejar un comentario que debe ser visible por el docente
-- RDC-26 falta llenar el campo ultima actualizacion 
-- RDC-54 falta llenar el campo semestre
+
 
 
 Listo para revision
@@ -57,4 +45,8 @@ Listo para revision
 - Quitar historial de reportes
 - El coordinador llena la parte de entrega y comentarios por cada actividad
 - El docente no debe modificar la entrega y comentarios pero puede visualizarlos
-- El coordinador evalua al docente (HICE TRAMPA CREE UN NUEVO CAMPO VALORACION EN PRODUCTOS PARA Q LO PUDIERA EVALUAR)
+- El coordinador evalua al docente 
+- No dejar que el docente intente crear actividades o productos si aun no ha sido asignado
+- Mostrar el total en el seguimiento en el horario,actividades y reporte
+- RDC-26 falta llenar el campo ultima actualizacion 
+- RDC-54 falta llenar el campo semestre
