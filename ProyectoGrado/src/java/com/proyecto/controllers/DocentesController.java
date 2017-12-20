@@ -38,6 +38,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
@@ -105,12 +106,14 @@ public class DocentesController implements Serializable {
             destination = "http://190.96.192.7:8080/home/webapp/"+id+"/pedido.png";
             
         }else{
-            Path path = Paths.get("file:///C:/webapp/"+id+"/pedido.png");
+            FacesContext faces = FacesContext.getCurrentInstance();
+            ExternalContext external = faces.getExternalContext();
+            Path path = Paths.get(external.getRequestScheme() + "://"+ external.getRequestServerName()+ ":" + external.getRequestServerPort()+id+"/pedido.png");
             if(!Files.exists(path))
             {
                 destination = "img/fotos.png";
             }else{
-                destination = "file:///C:/webapp/"+id+"/pedido.png";
+                destination = external.getRequestScheme() + "://"+ external.getRequestServerName()+ ":" + external.getRequestServerPort()+id+"/pedido.png";
             }
         }
         
@@ -443,7 +446,9 @@ public class DocentesController implements Serializable {
 
         try {
             Docentes doc = (Docentes) SessionUtils.get("docente");
-            _url = SessionUtils.getPathImages(doc.getCedula()) + fileName;
+            //_url = SessionUtils.getPathImages(doc.getCedula()) + fileName;
+            ExternalContext  external = FacesContext.getCurrentInstance().getExternalContext();
+            _url = external.getRequestScheme() + ":"+File.separator+ external.getRequestServerName()+ ":" + external.getRequestServerPort()+File.separator+doc.getCedula()+File.separator+"pedido.png";
             OutputStream out = new FileOutputStream(new File(_url));
 
             int read = 0;
@@ -505,8 +510,6 @@ public class DocentesController implements Serializable {
     public void setFacultad(String facultad) {
         this.facultad = facultad;
     }
-
-    
 
     public String getCoordinacion() {
         return coordinacion;

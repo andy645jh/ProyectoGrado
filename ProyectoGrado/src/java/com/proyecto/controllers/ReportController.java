@@ -75,19 +75,13 @@ public class ReportController implements Serializable {
             renderer.setDocument(new URL(url).toString());          
             renderer.layout();
             //reporte unico
+            
             _archivo = "reporte_26.pdf";
             //_archivo = "reporte_26_"+SessionUtils.getYear()+"_"+SessionUtils.getSemestre()+".pdf";
             ruta = SessionUtils.getPathReports(doc.getCedula()) + _archivo;
-
-            /*new AutoFileCloser() {
-                @Override
-                protected void doWork() throws Throwable {
-                    // declare variables for the readers and "watch" them                   
-                    OutputStream os = autoClose(os = new FileOutputStream(SessionUtils.getPathReports(doc.getCedula()) + "reporte_26.pdf"));
-                    renderer.createPDF(os);
-                    os.close();
-                }
-            };*/
+            // http:myhost:port
+            //ruta = external.getRequestScheme() + "://"+ external.getRequestServerName()+ ":" + external.getRequestServerPort()+"/7969/"+_archivo;
+         
             System.out.println("ReportController---> Creando PDF");
             OutputStream os = new FileOutputStream(ruta);
             renderer.createPDF(os);
