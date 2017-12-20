@@ -7,32 +7,6 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/plantilla.xhtml">
         <ui:define name="content">  
-
-            <h:form>
-                <p:growl id="msgs" showDetail="true" />
-
-                <p:panel header="Select a Location" style="margin-bottom:10px;">
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <p:outputLabel for="country" value="Country: " />
-                        <p:selectOneMenu id="country" value="#{docentesController.facultad}" style="width:150px">
-                            <p:ajax listener="#{docentesController.listarCoordinacinesFiltrado}" update="city" />
-                            <f:selectItem itemLabel="-- Seleccione --" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{facultadesControllers.combo('Seleccione un Docente')}" />
-                        </p:selectOneMenu>
-
-                        <p:outputLabel for="city" value="City: " />
-                        <p:selectOneMenu id="city" value="#{docentesController.coordinacion}" style="width:150px">
-                            <f:selectItem itemLabel="-- Seleccione --" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{docentesController.listarCoordinacinesFiltrado}" />
-                        </p:selectOneMenu>
-                    </h:panelGrid>
-
-                    <p:separator />
-
-                    <p:commandButton value="Submit" update="msgs" actionListener="#{dropdownView.displayLocation}" icon="ui-icon-check" />
-                </p:panel>
-            </h:form>
-
             <h:form id="form">
                 <p:panel>   
 
@@ -43,13 +17,16 @@
                     <p:panelGrid columns="5" style="border-color: gray; border-width: 2px; border-style: double">
 
                         <p:outputLabel value="Facultad" for="doc" />
-                        <p:selectOneMenu id="doc" required="false" requiredMessage="No ha seleccionado" value="#{docentesController.facultad}" > 
+                        <p:selectOneMenu id="doc" value="#{docentesController.facultad}" style="width:150px">
+                            <p:ajax  update="coord" />
+                            <f:selectItem itemLabel="-- Seleccione --" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{facultadesControllers.combo('Seleccione un Docente')}" />
                         </p:selectOneMenu>
 
                         <p:outputLabel value="Coordinacion" for="coord" />
-                        <p:selectOneMenu id="coord" required="false" requiredMessage="No ha seleccionado" value="#{docentesController.coordinacion}" > 
-                            <f:selectItems value="#{coordinacionController.combo('Seleccione un Docente')}" />
+                        <p:selectOneMenu id="coord" value="#{docentesController.coordinacion}" style="width:150px">
+                            <f:selectItem itemLabel="-- Seleccione --" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{docentesController.listarCoordinacinesFiltrado}" />
                         </p:selectOneMenu>
 
                         <p:commandButton ajax="true" value="Buscar" update="listar" >
