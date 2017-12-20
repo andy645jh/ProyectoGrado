@@ -403,17 +403,31 @@ public class DocentesController implements Serializable {
         }
     }
 
-    public List<Coordinacion> getListarCoordinacinesFiltrado() {
+    public SelectItem[] getListarCoordinacinesFiltrado() {
         
-        System.out.println("ENTRO A BUSCAR COORDINACION "+facultad);
-        
+        SelectItem[] listaItems;
+        List<Coordinacion> lista;
         if (facultad.equals("") || facultad == null) {
-            System.out.println("LA FACULTAD ES VACIA");
-            return _coordFacade.listado();
+            System.out.println("VACIA");
+                    
+            lista =_coordFacade.listado(); 
+            listaItems = new SelectItem[lista.size()];
         } else {
-            System.out.println("FACULTAD --> "+facultad);
-            return _coordFacade.buscarCampo("_codfacultad", facultad);
+            System.out.println("FACULTAD "+facultad);
+            lista = _coordFacade.buscarCampo("_codfacultad", facultad);
+            listaItems = new SelectItem[lista.size()];
         }
+        
+        
+        int index=0;
+        for (Coordinacion coordinacion : lista) {
+            SelectItem item = new SelectItem(coordinacion.getCodcoordinacion(), coordinacion.getNombre());
+            
+            listaItems[index]=item;
+            index++;
+        }
+        
+        return listaItems;
     }
 
         public void upload(/*FileUploadEvent event*/) {

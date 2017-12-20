@@ -1,4 +1,3 @@
-- Arreglar el filtro en el auditor que pueda filtrar por facultad y coordinacion
 - Agregarle al documento las pruebas de funcionalidad y de carga
 
 Encontrados el 11/12/2017
@@ -50,3 +49,4 @@ Listo para revision
 - Mostrar el total en el seguimiento en el horario,actividades y reporte
 - RDC-26 falta llenar el campo ultima actualizacion 
 - RDC-54 falta llenar el campo semestre
+- Arreglar el filtro en el auditor que pueda filtrar por facultad y coordinacion
