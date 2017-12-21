@@ -462,7 +462,7 @@ public class DocentesController implements Serializable {
             Docentes doc = (Docentes) SessionUtils.get("docente");
             //_url = SessionUtils.getPathImages(doc.getCedula()) + fileName;
             ExternalContext  external = FacesContext.getCurrentInstance().getExternalContext();
-            _url = external.getRequestScheme() + ":"+File.separator+ external.getRequestServerName()+ ":" + external.getRequestServerPort()+File.separator+doc.getCedula()+File.separator+"pedido.png";
+            _url = File.separator+"pedido.png";
             OutputStream out = new FileOutputStream(new File(_url));
 
             int read = 0;
