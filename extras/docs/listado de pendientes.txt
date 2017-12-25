@@ -1,4 +1,4 @@
-- Agregarle al documento las pruebas de funcionalidad y de carga
+- Editar el menu del doc
 
 Encontrados el 11/12/2017
 - Poner 0 por defecto en las asignaciones
@@ -50,3 +50,4 @@ Listo para revision
 - RDC-26 falta llenar el campo ultima actualizacion 
 - RDC-54 falta llenar el campo semestre
 - Arreglar el filtro en el auditor que pueda filtrar por facultad y coordinacion
+- Agregarle al documento las pruebas de funcionalidad y de carga
