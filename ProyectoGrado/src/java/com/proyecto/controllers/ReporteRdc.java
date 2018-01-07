@@ -61,7 +61,7 @@ public class ReporteRdc implements Serializable {
     private List<Convenciones> _lstConvenciones;
     private double _horasSemestre = 0.0;
     private double _totalHoras = 0.0;
-    
+
     public ReporteRdc() {
 
     }
@@ -86,7 +86,7 @@ public class ReporteRdc implements Serializable {
     }
 
     public List<String[]> getListadoSeguimiento() {
-        _horasSemestre=0;
+        _horasSemestre = 0;
         SimpleDateFormat sdf = new SimpleDateFormat("MMM dd");
         int size = getListadoHeaderSeguimiento().size();
 
@@ -118,30 +118,28 @@ public class ReporteRdc implements Serializable {
             _arrayInterval[i].setInitData(_intervalos[i], i);
         }
 
-        _totalHoras=0;
+        _totalHoras = 0;
         for (Horario obj : listHorario) {
             //eventModel.addEvent(new DefaultScheduleEvent(obj.getNombre(), obj.getHorainicio(), obj.getHorafinal(),obj));
             System.out.println("HOra: " + obj.getHora());
             //cuadrando la lista de horarios        
             _arrayInterval[obj.getHora()].setDia(obj);
-            
-            
-            if(obj.getCodActividad()!=null)
-            {
+
+            if (obj.getCodActividad() != null) {
                 //calculando horas            
                 _totalHoras += 1;
-                System.out.println("Horas: "+obj.getCodActividad().getHoras());            
-                System.out.println("Id: "+obj.getCodActividad().getCodactividad());  
+                System.out.println("Horas: " + obj.getCodActividad().getHoras());
+                System.out.println("Id: " + obj.getCodActividad().getCodactividad());
             }
-                      
-        }        
-        _totalHoras+=0.33;
+
+        }
+        _totalHoras += 0.33;
         //convertir array a lista
         return Arrays.asList(_arrayInterval);
         //RequestContext.getCurrentInstance().update(":formHorario:nuevaLista");
     }
 
-    public double getTotalHoras() {        
+    public double getTotalHoras() {
         return _totalHoras;
     }
 
@@ -165,6 +163,10 @@ public class ReporteRdc implements Serializable {
         //ordenamiento ascendente
         Collections.sort(_actividades, (o1, o2) -> o1.getCodactividad() - o2.getCodactividad());
         return _actividades;
+    }
+
+    public String getUrlImageTemp() {
+        return DocentesController.urlImage;
     }
 
     public String getSemestre() {

@@ -113,8 +113,7 @@
                     <td class="titulo-tabla" width="30%" colspan="3">PRIMER APELLIDO</td>                    
                     <td class="titulo-tabla" width="30%" colspan="3">NOMBRES</td>
                     <td width="10%" colspan="1" rowspan="8">   
-                        <p:graphicImage rendered="#{docentesController.imageDoc != null}" height="150" value="#{docentesController.imageDoc}"/>
-                        <p:graphicImage rendered="#{docentesController.imageDoc == null}" height="150" name="img/fotos.png"/> 
+                        <p:graphicImage height="150" name="#{reporteRdc.urlImageTemp}"/> 
                     </td>
                 </tr>
                 <tr>                    
