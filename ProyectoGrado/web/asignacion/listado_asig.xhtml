@@ -128,7 +128,7 @@
                                     <f:facet name="input"><p:inputText id="colectivo" value="#{registro.colectivo}" style="width:96%"/></f:facet>
                                 </p:cellEditor>
                             </p:column>
-                            
+
                             <p:column style="text-align: center">
                                 <f:facet name="header">
                                     <h:outputLink id="tool-hi" value="#">
@@ -154,7 +154,7 @@
                                     <f:facet name="input"><p:inputText id="comites" value="#{registro.comites}" style="width:96%"/></f:facet>
                                 </p:cellEditor>
                             </p:column>
-                            
+
                             <p:column style="text-align: center">
                                 <f:facet name="header">
                                     <h:outputLink id="tool-ps" value="#">
@@ -267,15 +267,32 @@
                                         <f:convertNumber pattern="##.##%"/>
                                     </h:outputText>  
                                 </p:column> 
-                                
+
                                 <p:column colspan="1" >
                                     <h:outputText value="#{asignacionController.totalSum} / #{asignacionController.totalesEsperados.totalHorasClase}" styleClass="#{ asignacionController.checkValues(asignacionController.totalSum, asignacionController.totalesEsperados.totalHorasClase) }"/>
                                 </p:column> 
                             </p:summaryRow>
                         </p:dataTable> 
-                    </div>         
-                </h:form>   
+                    </div>      
+
+                </h:form>
+
             </p:panel>  
+
+            <p:panel>
+                <h:form>
+                    <div class="ui-g-12">
+                        <p:commandButton  icon="ui-icon-refresh" value="Resetear semestre" actionListener="#{asignacionController.resetearSemestre()}" >
+                            <p:confirm header="Información" message="Este botón eliminará todos los productos y actividades de los docentes de esta coordinación. ¿Estas seguro de eliminar?" icon="ui-icon-alert" />
+                        </p:commandButton>
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Si" type="button"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+                    </div>
+                </h:form>
+            </p:panel>
+
             <script type="text/javascript">
 
                 $(document).on("keydown", ".ui-cell-editor-input input", function (event) {

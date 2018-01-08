@@ -1,10 +1,16 @@
 package com.proyecto.controllers;
 
+import com.proyecto.facades.ActividadesFacade;
 import com.proyecto.facades.AsignacionFacade;
 import com.proyecto.facades.DocentesFacade;
+import com.proyecto.facades.HorarioFacade;
+import com.proyecto.facades.ProductosFacade;
+import com.proyecto.persistences.Actividades;
 import com.proyecto.persistences.Asignacion;
 import com.proyecto.persistences.Coordinacion;
 import com.proyecto.persistences.Docentes;
+import com.proyecto.persistences.Horario;
+import com.proyecto.persistences.Productos;
 import com.proyecto.persistences.TiempoAsignado;
 import com.proyecto.utilities.SessionUtils;
 import com.proyecto.utilities.Totales;
@@ -36,6 +42,12 @@ public class AsignacionController implements Serializable {
     private AsignacionFacade _ejbFacade;
     @EJB
     private DocentesFacade _facadeDoc;
+    @EJB
+    private ActividadesFacade _facadeAct;
+    @EJB
+    private ProductosFacade _facadeProd;
+    @EJB
+    private HorarioFacade _facadeHorario;
 
     private FacesMessage message;
     private int _codPorcentaje;
@@ -317,6 +329,30 @@ public class AsignacionController implements Serializable {
         System.out.println("Entro a calcular");
         calculate();
     }
+    
+    public void resetearSemestre() {
+      
+       List<Docentes> lstDoc= _facadeDoc.buscarCampo("_codcoordinacion", String.valueOf(_coordinacion.getCodcoordinacion()));
+       
+        for (Docentes doc : lstDoc) {
+            
+            List<Actividades> lstAct = _facadeAct.buscarCampo("_coddocente", String.valueOf(doc.getCedula()));
+            List<Productos> lstProd = _facadeProd.buscarCampo("_coddocente", String.valueOf(doc.getCedula()));
+            List<Horario> lstHorario = _facadeHorario.buscarCampo("_coddocente", String.valueOf(doc.getCedula()));
+            
+            for (Actividades act : lstAct) {
+                _facadeAct.borrar(act);
+            }
+            
+            for (Productos prod : lstProd) {
+                _facadeProd.borrar(prod);
+            }
+            
+            for (Horario horario : lstHorario) {
+                _facadeHorario.borrar(horario);
+            }
+        }
+    }    
     
     public int getCodDocente() {
         return codDocente;
