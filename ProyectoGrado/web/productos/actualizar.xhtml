@@ -19,19 +19,23 @@
                         <p:outputLabel value="#{productosTxt.actividad}  "  />
                         <p:outputLabel value="#{productosController.campo.codactividad}  "  />
 
-                        <p:outputLabel value="#{productosTxt.descripcion}  " for="descripcion" />
-                        <p:inputText required="true" id="descripcion" value="#{productosController.campo.descripcion}"/> 
-
+                        
                         <p:outputLabel value="#{productosTxt.fechaComp} " for="fechacompromiso" />                    
-                        <p:calendar required="true" id="fechacompromiso" showOn="button" value="#{productosController.campo.fechacompromiso}"></p:calendar>
+                        <p:outputLabel value="#{productosController.campo.fechacompromiso}" id="fechacompromiso" >
+                            <f:convertDateTime dateStyle="medium"/>
+                        </p:outputLabel>  
+                        
+                        <p:outputLabel value="#{productosTxt.descripcion}  " for="descripcion" />
+                        <p:outputLabel id="descripcion" value="#{productosController.campo.descripcion}"/> 
 
-                        <br/>
-                        <br/>
-                        <p:outputLabel value="  " for="fechaentrega" />                   
-                        <p:outputLabel value="#{productosController.campo.fechaentrega}" id="fechaentrega" />                          
+                        <p:outputLabel value="Fecha de entrega" for="fechaentrega" />   
+                        <p:calendar required="true" id="fechaentrega" showOn="button" value="#{productosController.campo.fechaentrega}"></p:calendar>
+                                               
+                        
+                        <p:outputLabel value="Comentarios" for="comentarios" />
+                        <p:inputTextarea id="comentarios" value="#{productosController.campo.comentarios}"/> 
+                        
 
-                        <p:outputLabel value="  " for="comentarios" />
-                        <p:outputLabel id="comentarios" value="#{productosController.campo.comentarios}"/> 
 
                         <f:facet name="footer">
                             <p:commandButton id="btngrabar" value="#{productosTxt.actulizar}" ajax="true" action="#{productosController.actualizar()}"/>
